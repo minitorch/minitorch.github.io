@@ -15,7 +15,7 @@ modules. It also includes some basic mathematical foundations.
 Finally it will start to build up some of the
 infrastructure for MiniTorch itself.
 
-All starter code is available in https://github.com/minitorch/module0 .
+All starter code is available in https://github.com/minitorch/Module-0 .
 Before beginning this assignment be to setup your directories following :doc:`setup` and
 read :doc:`contributing` to understand how the code is organized.
 

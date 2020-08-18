@@ -19,7 +19,7 @@ these repeated operations to save python overhead and to pass off
 grouped operations to faster implementations.
 
 
-All starter code is available in https://github.com/minitorch/module2 .
+All starter code is available in https://github.com/minitorch/Module-2 .
 
 To begin this module, remember to first activate your virtual environment.
 

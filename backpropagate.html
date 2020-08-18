@@ -103,7 +103,6 @@
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
-<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
@@ -208,7 +207,7 @@ two new variables on the queue (which correspond to <span class="math notranslat
 <p>Finally we pull an arrow from the queue that represents an orginal leaf node (<span class="math notranslate nohighlight">\(x\)</span>).</p>
 <img alt="_images/backprop7.png" class="align-center" src="_images/backprop7.png" />
 <p>Since each step of this process was an application of the chain rule, we can show that this final value
-is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next step of the algorithm would then produce <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>. By convention if <span class="math notranslate nohighlight">\(x, y\)</span> are instances of  <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code>, these are stored as</p>
+is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next step of the algorithm would then produce <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>. By convention if <span class="math notranslate nohighlight">\(x, y\)</span> are instances of  <a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>, these are stored as</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">derivative</span>
 </pre></div>
 </div>

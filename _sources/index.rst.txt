@@ -7,7 +7,7 @@
            :width: 40pt
 
 
-Welcome to MiniTorch!
+Welcome to MiniTorch! (https://github.com/minitorch/minitorch.github.io)
 
 MiniTorch is a *teaching library* for machine learning engineers who
 wish to learn about the internal concepts underlying deep learning

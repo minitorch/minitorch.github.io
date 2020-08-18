@@ -5,6 +5,8 @@
 Module 0 - Fundamentals
 ============================
 
+.. image:: figs/Module/module.png
+   :align: center
 
 
 This introductory module is focused on introducing several core
@@ -33,7 +35,7 @@ each task.
 
 Tasks
 ******
-   
+
 
 Task 0.1: Operators
 ========================
@@ -48,9 +50,9 @@ some of the terminology might be new.
 it is a `no-op`. We will come back to its role in Module 3.)
 
 
-.. todo:: 
+.. todo::
    Complete the following functions in `minitorch/operators.py` and pass tests marked as `task0_1`.
-  
+
 .. autofunction:: minitorch.operators.mul
 .. autofunction:: minitorch.operators.id
 .. autofunction:: minitorch.operators.neg
@@ -85,16 +87,16 @@ high-level mathematical properties for any input.
 .. autofunction:: minitorch_tests.test_symmetric
 .. autofunction:: minitorch_tests.test_distribute
 .. autofunction:: minitorch_tests.test_other
-                  
 
-  
+
+
 
 Task 0.3: Functional Python
 ============================
 
 
 .. note::
-   
+
    This task requires familiarity with basic functional programming concepts and notation.
    This subject is outside the scope of these guides, but this `tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
 
@@ -109,7 +111,7 @@ to build up more complex mathematical operations that work on lists instead of s
 
 .. todo::
    Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`
-  
+
 .. autofunction:: minitorch.operators.map
 .. autofunction:: minitorch.operators.negList
 .. autofunction:: minitorch.operators.zipWith
@@ -118,7 +120,7 @@ to build up more complex mathematical operations that work on lists instead of s
 .. autofunction:: minitorch.operators.sum
 .. autofunction:: minitorch.operators.prod
 
-                  
+
 
 
 Task 0.4: Modules
@@ -128,7 +130,7 @@ Task 0.4: Modules
           Please read :doc:`modules` to get started.
           If you want more context for how modules are used
           you may find it helpful to skip ahead and read the `torch module
-          tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.  
+          tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.
 
 
 
@@ -146,14 +148,14 @@ interest.
 .. autofunction:: minitorch.Module.train
 .. autofunction:: minitorch.Module.eval
 .. autofunction:: minitorch.Module.named_parameters
-                  
+
 
 
 Task 0.5: Visualization
 =====================
 
 .. note::
-   
+
    This task requires familiarity with visualization tools described in :doc:`visualization` as well
    as the documentation for `Visdom <https://github.com/facebookresearch/visdom>`_.
 
@@ -178,7 +180,7 @@ You can also provide a model that attempts to classify the points in the dataset
           return 0.0
 
   Split(N, vis=True).graph("initial")
-  
+
 
 .. todo::
    Start a visdom server and print an image of the dataset. Hand-create classifiers that
@@ -187,11 +189,6 @@ You can also provide a model that attempts to classify the points in the dataset
 
 Optional
 ===========
-   
+
 Read through the code in `project/run_torch.py` to get a sneak peek of
 an implementation of a model for these datasets using Torch.
-
-
-
-
- 

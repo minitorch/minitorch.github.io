@@ -2,7 +2,7 @@
 Module 2 - Tensors
 ========================
 
-.. image:: figs/Ops/zip\ back.png
+.. image:: figs/Tensors/stride4.png
            :align: center
 
 

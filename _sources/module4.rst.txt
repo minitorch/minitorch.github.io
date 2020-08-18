@@ -20,6 +20,8 @@ Module 4 - Inference
    nn_in_js
    assignment4
 
+Tasks
+********
 
 Task 4.1: Model Size and Speed
 ==================================

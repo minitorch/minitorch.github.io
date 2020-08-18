@@ -1,0 +1,197 @@
+..
+  Done
+
+============================
+Module 0 - Fundamentals
+============================
+
+
+
+This introductory module is focused on introducing several core
+technologies used for testing and debugging in future
+modules. It also includes some basic mathematical foundations.
+Finally it will start to build up some of the
+infrastructure for MiniTorch itself.
+
+All starter code is available in https://github.com/minitorch/module0 .
+Before beginning this assignment be to setup your directories following :doc:`setup` and
+read :doc:`contributing` to understand how the code is organized.
+
+
+Each module has a set of `Guides` to help with the tasks. We recommend
+working through the assignment and utilizing the Guides suggested for
+each task.
+
+.. toctree::
+   :maxdepth: 3
+   :glob:
+   :caption: Guides
+
+   property_testing
+   modules
+   visualization
+
+Tasks
+******
+   
+
+Task 0.1: Operators
+========================
+
+This task is designed to help you get comfortable with style checking
+and testing. We ask you to re-implement a series of basic mathematical
+functions.  These functions are simple, but they will form the basis
+of MiniTorch. Be sure you are understand each of them  as
+some of the terminology might be new.
+
+(For now you can ignore the @jit symbol at the top of functions,
+it is a `no-op`. We will come back to its role in Module 3.)
+
+
+.. todo:: 
+   Complete the following functions in `minitorch/operators.py` and pass tests marked as `task0_1`.
+  
+.. autofunction:: minitorch.operators.mul
+.. autofunction:: minitorch.operators.id
+.. autofunction:: minitorch.operators.neg
+.. autofunction:: minitorch.operators.add
+.. autofunction:: minitorch.operators.lt
+.. autofunction:: minitorch.operators.sigmoid
+.. autofunction:: minitorch.operators.relu
+.. autofunction:: minitorch.operators.relu_back
+
+
+
+Task 0.2: Testing and Debugging
+===============================
+
+.. note::
+
+   This task requires familiarity with testing and property
+   tests. Be sure to first carefully read the guide on
+   :doc:`property_testing`, and consult the `Hypothesis <https://hypothesis.readthedocs.io/>`_ documentation.
+
+
+Implement a property tests for your operators from Task 0.1. These
+tests should ensure that your functions not only work, but obey
+high-level mathematical properties for any input.
+
+
+
+
+.. todo::
+   Complete the following functions in `tests/test_operators.py` and pass tests marked as `task0_2`.
+
+.. autofunction:: minitorch_tests.test_symmetric
+.. autofunction:: minitorch_tests.test_distribute
+.. autofunction:: minitorch_tests.test_other
+                  
+
+  
+
+Task 0.3: Functional Python
+============================
+
+
+.. note::
+   
+   This task requires familiarity with basic functional programming concepts and notation.
+   This subject is outside the scope of these guides, but this `tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
+
+.. |tutorial|
+
+
+To practice the use of higher-order functions in Python, implement three basic
+functional concepts. Use these in combination with the operators described in Task 0.1
+to build up more complex mathematical operations that work on lists instead of single values.
+
+
+
+.. todo::
+   Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`
+  
+.. autofunction:: minitorch.operators.map
+.. autofunction:: minitorch.operators.negList
+.. autofunction:: minitorch.operators.zipWith
+.. autofunction:: minitorch.operators.addLists
+.. autofunction:: minitorch.operators.reduce
+.. autofunction:: minitorch.operators.sum
+.. autofunction:: minitorch.operators.prod
+
+                  
+
+
+Task 0.4: Modules
+=====================
+
+.. note:: This task requires familiarity with neural network Modules.
+          Please read :doc:`modules` to get started.
+          If you want more context for how modules are used
+          you may find it helpful to skip ahead and read the `torch module
+          tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.  
+
+
+
+This task is to implement the core structure of the :class:`minitorch.Module`
+class.  You will implement a tree-data structure that
+stores named :class:`minitorch.Parameter` on each node. This datastructures  makes it
+easy for users to create trees that can be `walked` to find all of the parameters of
+interest.
+
+
+.. todo::
+   Complete the functions in `minitorch/module.py` and pass tests marked as `tasks0_4`.
+
+
+.. autofunction:: minitorch.Module.train
+.. autofunction:: minitorch.Module.eval
+.. autofunction:: minitorch.Module.named_parameters
+                  
+
+
+Task 0.5: Visualization
+=====================
+
+.. note::
+   
+   This task requires familiarity with visualization tools described in :doc:`visualization` as well
+   as the documentation for `Visdom <https://github.com/facebookresearch/visdom>`_.
+
+
+
+For the first few assignments we will be using a set of datasets
+that are implemented in `project/datasets.py`. These datasets are
+simple 2D point classification datasets (see `TensorFlow Playground <https://playground.tensorflow.org/`
+for similar examples.) Each of them can be added to the visualization using ::
+
+  from project.datasets import Simple, Split, Xor
+  N = 100
+  Simple(N, vis=True).graph("initial")
+
+You can also provide a model that attempts to classify the points in the dataset.::
+
+  def classify(pt):
+      "Classify based on x position"
+      if pt[0] > 0.5:
+          return 1.0
+      else:
+          return 0.0
+
+  Split(N, vis=True).graph("initial")
+  
+
+.. todo::
+   Start a visdom server and print an image of the dataset. Hand-create classifiers that
+   split each of the datasets into the correct colors. Display your images on the README file of the
+   repo.
+
+Optional
+===========
+   
+Read through the code in `project/run_torch.py` to get a sneak peek of
+an implementation of a model for these datasets using Torch.
+
+
+
+
+ 

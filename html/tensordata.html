@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tensors &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Operations" href="tensorops.html" />
+    <link rel="prev" title="Module 2 - Tensors" href="module2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module2.html">Module 2 - Tensors</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tensor-shapes">Tensor Shapes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tensor-strides">Tensor Strides</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tensorops.html">Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="broadcasting.html">Broadcasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module2.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="module2.html">Module 2 - Tensors</a> &raquo;</li>
+        
+      <li>Tensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/tensordata.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tensors">
+<h1>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h1>
+<p>Tensor is a fancy name for a simple concept. A tensor is a
+<cite>multi-dimensional array</cite> of arbitrary dimensions. It is a convenient
+and efficient way to hold data, that becomes much more powerful when
+paired with fast operators and autodifferentiation.</p>
+<div class="section" id="tensor-shapes">
+<h2>Tensor Shapes<a class="headerlink" href="#tensor-shapes" title="Permalink to this headline">¶</a></h2>
+<p>So far we have focused on <cite>scalars</cite> which correspond to 0-dimension tensors.
+Next is a 1-dimensional tensors (<cite>vector</cite>).</p>
+<img alt="_images/vector.png" class="align-center" src="_images/vector.png" />
+<p>Then 2-dimensional tensors (<cite>matrix</cite>)</p>
+<img alt="_images/matrix.png" class="align-center" src="_images/matrix.png" />
+<p>In addition to its dimension (<cite>dims</cite>) the other critical aspect of a tensor are its
+<cite>shape</cite> and <cite>size</cite>. The <cite>shape</cite> of the above vector is (5,) and its size (number of squares) is 5.
+The <cite>shape</cite> of the matrix is (2,5) and its size (number of squares) is 10.</p>
+<p>A 3-dimensional tensor looks like with shape (3, 3, 2) and size (18) looks like this.</p>
+<img alt="_images/tensor.png" class="align-center" src="_images/tensor.png" />
+<p>We access an element of the tensor by tensor index notation, <cite>tensor[i]</cite> for 1-dimension,
+<cite>tensor[i, j]</cite> for 2-dimension, <cite>tensor[i, j, k]</cite> for 3-dimension, and so forth. For example
+<cite>tensor[1, 2, 0]</cite> would give this blue cube.</p>
+<img alt="_images/tensor2.png" class="align-center" src="_images/tensor2.png" />
+<p>Typically we access tensors just like multi-dimensional arrays, but
+there are of special geometric properties that make them different.</p>
+<p>First, tensors make it easy to change the order of the
+dimensions. For example, to <cite>transpose</cite> the dimensions of a matrix. For
+a general tensor we will refer to this operation as <cite>permute</cite>. Calling
+permute will arbitrarily reoder the original tensor. For example, <cite>permute(1,0)</cite></p>
+<img alt="_images/matrix1.png" src="_images/matrix1.png" />
+<img alt="_images/matrix2.png" src="_images/matrix2.png" />
+<p>This makes the original matrix of size (2, 5) become (5, 2). Additionally element <cite>tensor[i, j]</cite>
+is now accessed as <cite>tensor[j, i]</cite></p>
+<p>Next, tensors make it really easy to add or remove additional
+dimensions. We do this by noting that a matrix of size (2, 5) stores
+exactly the same data as a matrix of size (2, 5, 1), we can see that
+they are the same size.</p>
+<img alt="_images/matrix2.png" src="_images/matrix2.png" />
+<img alt="_images/broad.png" src="_images/broad.png" />
+<p>We would like to easily increase and lower the size of our tensors
+without changing the data. We will do this with a <cite>view</cite> function
+<cite>view(5, 2, 1)</cite>. Element <cite>tensor[i, j]</cite> is now <cite>tensor[i, j, 0]</cite>.</p>
+<p>Critically neither of these operations changes anything about the
+tensor itself. Both view and permute are <cite>tensor tricks</cite>, operations
+that modify how we look at the tensor, but not any of its
+data. Another way to say this is that they do not move or copy the
+data in any way, but only the external tensor wrapper.</p>
+</div>
+<div class="section" id="tensor-strides">
+<h2>Tensor Strides<a class="headerlink" href="#tensor-strides" title="Permalink to this headline">¶</a></h2>
+<p>Users of a Tensor library only have to be aware of the <cite>shape</cite> and
+<cite>size</cite> of a tensor. However there are important implementation details
+that we need to keep track of.  To make our code a bit cleaner, we
+will seperate out the internal <cite>tensor data</cite> from the user-facing
+tensor.  In addition to the shape, <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.TensorData</span></code>
+manages tensor <cite>storage</cite> and <cite>strides</cite>.</p>
+<ul class="simple">
+<li><p><strong>Storage</strong> is where the core data of the tensor is kept. It is always a
+1-D array of numbers of length <cite>size</cite>, no matter the dimensionality or
+shape of the tensor. Keeping a 1-D storage allows us to have tensors with
+different  dimensionality and shape point to the same underlying data.</p></li>
+<li><p><strong>Strides</strong> is a tuple that provides the mapping from user indexing
+down to the position in the 1-D storage. Strides can get a bit confusing
+to think about so it is easiest to see by example.</p></li>
+</ul>
+<p>Consider a matrix of shape (5, 2). The standard mapping is to walk left-to-right,
+top-to-bottom to order this matrix to the storage. We call this the <cite>contiguous</cite>
+mapping, since it is in the natural counting order (bigger strides left). The mapping looks like this.</p>
+<a class="reference internal image-reference" href="_images/stride2.png"><img alt="_images/stride2.png" class="align-center" src="_images/stride2.png" style="width: 400px;" /></a>
+<p>Here the strides are <span class="math notranslate nohighlight">\((5, 1)\)</span>. We read this as each column moves 1 steps in storage and each row
+moves 5 steps. We note though that we can have different strides for the same shape. If for instance,
+we were walking top-to-bottom, left-to-right, we would have the following stride map.</p>
+<a class="reference internal image-reference" href="_images/stride2.png"><img alt="_images/stride2.png" class="align-center" src="_images/stride2.png" style="width: 400px;" /></a>
+<p>Contiguous strides are generally preferred, but non-contiguous strides
+can be quite useful as well.  The most common case would be if we
+started with a contiguous (5,2) matrix above and transposed it.</p>
+<a class="reference internal image-reference" href="_images/stride3.png"><img alt="_images/stride3.png" class="align-center" src="_images/stride3.png" style="width: 400px;" /></a>
+<p>This yields new strides and new shape, but notably <em>no change in the
+storage</em>. This is one of the super-pwers of tensors mentioned above,
+we can often manipulate how we view the same underlying storage.</p>
+<p>Strides naturally extend to higher-dimensional tensors.</p>
+<img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
+<p>Finally strides can be used to implement indexing into the tensor.
+Assuming strides are <span class="math notranslate nohighlight">\((s_1, s_2)\)</span> and the user want to lookup
+<cite>tensor[i, j]</cite> we can directly use strides to find the storage
+position:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">storage</span><span class="p">[</span><span class="n">s1</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">*</span> <span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Or in general</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">storage</span><span class="p">[</span><span class="n">s1</span> <span class="o">*</span> <span class="n">index1</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">*</span> <span class="n">index2</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">*</span> <span class="n">index3</span> <span class="o">...</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tensorops.html" class="btn btn-neutral float-right" title="Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="module2.html" class="btn btn-neutral float-left" title="Module 2 - Tensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

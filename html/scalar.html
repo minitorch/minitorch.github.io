@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tracking Variables &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Autodifferentiation" href="chainrule.html" />
+    <link rel="prev" title="Derivatives" href="derivative.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivatives</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tracking Variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables-and-functions">Variables and Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scalar-functions">Scalar Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syntactic-sugar">Syntactic Sugar</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module1.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="module1.html">Module 1 - Auto-Differentiation</a> &raquo;</li>
+        
+      <li>Tracking Variables</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/scalar.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tracking-variables">
+<h1>Tracking Variables<a class="headerlink" href="#tracking-variables" title="Permalink to this headline">¶</a></h1>
+<p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> discussed two ways to compute derivatives.
+<cite>Symbolic</cite> derivatives require access to the full symbolic function,
+whereas <cite>numerical</cite> derivatives requires only a black-box
+function. The first is precise but rigid, whereas the second is
+imprecise but more flexible. This modules implements  a third
+approach known as <cite>autodifferentiation</cite> which is a tradeoff between
+these methods.</p>
+<p>We will see that autodifferentiation works by collecting information about the
+computation path used within the function. It then transforms this
+information into a procedure for computing derivatives. Unlike the
+black-box method, this information will allow us to more precisely
+compute each step.</p>
+<p>However, in order to collect this information, we need to track the
+internal computation of the function. This can be hard to do since
+Python does not expose how its inputs are used in the function
+directly; all we get is the output. This doc describes one method
+for tracking computation.</p>
+<div class="section" id="variables-and-functions">
+<h2>Variables and Functions<a class="headerlink" href="#variables-and-functions" title="Permalink to this headline">¶</a></h2>
+<p>The main trick for tracking computation is surprisingly simple and direct.</p>
+<ol class="arabic simple">
+<li><p>Replace all Python values with proxy classes, known as <a href="#id1"><span class="problematic" id="id2">`</span></a>Variable`s.</p></li>
+<li><p>Replace all mathematical operators with proxy operators, known <a href="#id3"><span class="problematic" id="id4">`</span></a>Function`s.</p></li>
+<li><p>Augment Variables to remember what Function's were applied to them in the past.</p></li>
+</ol>
+<p>The goal will be for variables and functions to behave exactly like Python numbers such that the
+user cannot tell the difference. It's a bit hacky, but pretty neat under-the-hood. We
+literatlly just create a generic Variable class</p>
+<p>As well as a generic Function class.</p>
+<p>If we have two variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we as a user <strong>cannot</strong> ever
+change or manipulate their values directly. We <strong>must</strong> create a
+<cite>Function</cite> class that acts on them.</p>
+<p>It will be useful to think of these functions as little boxes. For
+instance a one-arg function would look like</p>
+<img alt="_images/autograd1.png" class="align-center" src="_images/autograd1.png" />
+<p>Internally the box <cite>unwraps</cite> the content of the variable, manipulates it, and returns a new <cite>wrapped</cite>
+variable.</p>
+<p>And a two-arg function <cite>unwraps</cite> the content of both variables,
+manipulates them, and returns a new <cite>wrapped</cite> variable.</p>
+<img alt="_images/autograd2.png" class="align-center" src="_images/autograd2.png" />
+</div>
+<div class="section" id="scalar-functions">
+<h2>Scalar Functions<a class="headerlink" href="#scalar-functions" title="Permalink to this headline">¶</a></h2>
+<p>To make this whole Variable/Function idea more tangible, let us focus
+on Scalar class, a sub-class of <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code>. It wraps a
+single scalar float (which is stored in the <cite>data</cite> attribute).</p>
+<p>This variable has a corresponding function class that
+is a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionBase</span></code></p>
+<p>Let's assume we want to implement a simple function <span class="math notranslate nohighlight">\(f(x)\)</span> that is from
+float-to-float.  We implement it as a class with a static method:
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ScalarFunction.forward()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">f</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="c1"># Compute g(x) (ignore ctx for now)</span>
+        <span class="o">...</span>
+</pre></div>
+</div>
+<img alt="_images/autograd1.png" class="align-center" src="_images/autograd1.png" />
+<p>For example, say our function is <cite>TimesFive</cite>, <span class="math notranslate nohighlight">\(f(x) = x \times 5\)</span></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimesFive</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">5</span>
+</pre></div>
+</div>
+<p>Or, say our function is <cite>Mul</cite>, <span class="math notranslate nohighlight">\(g(x, y) = x \times y\)</span> that multiplies x by y.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mul</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+<img alt="_images/autograd2.png" class="align-center" src="_images/autograd2.png" />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Within forward x and y are always numbers (not Variables). Forward is processing
+and returning the unwrapped values.</p>
+</div>
+<p>If we have a scalars <span class="math notranslate nohighlight">\(x, y\)</span>, applying these functions is done by</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="c1"># or</span>
+<span class="n">out2</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Critically, we must not call <cite>forward</cite> but instead <cite>apply</cite>. This is because internally
+the apply function is converting variables to floats to call <cite>forward</cite>. It is also
+creating a trail of the history and creating a variable for the output. Here <cite>z</cite>, <cite>out</cite>,
+and <cite>out2</cite> are all variables.</p>
+<img alt="_images/chain1.png" class="align-center" src="_images/chain1.png" />
+<p>This history is representated by a chain of the previous boxes that we
+led to the given point.</p>
+</div>
+<div class="section" id="syntactic-sugar">
+<h2>Syntactic Sugar<a class="headerlink" href="#syntactic-sugar" title="Permalink to this headline">¶</a></h2>
+<p>There is still one minor issue. This is what our code looks like</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out2</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>It's annoying to write code this way and bug-prone. Also, we promised
+that we would have functions that look just like the functions we are
+used to writing.</p>
+<p>To get around this issue we need to augment the <code class="xref py py-class docutils literal notranslate"><span class="pre">Scalar</span></code> class
+to behave normally under standard mathematical operations.  Instead of
+calling regular +, Python will call our +.  Once this is done we have
+the ability to record and track all the ways that x was used in the
+function, while still being able to write</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>To do this the class needs to provide syntax that makes it appear like
+a number in its use. To see how this is done be sure to read,
+<a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types">https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="chainrule.html" class="btn btn-neutral float-right" title="Autodifferentiation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="derivative.html" class="btn btn-neutral float-left" title="Derivatives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

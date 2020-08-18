@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Backpropagate &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 2 - Tensors" href="module2.html" />
+    <link rel="prev" title="Autodifferentiation" href="chainrule.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar.html">Tracking Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Backpropagate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#algorithm">Algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="module1.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="module1.html">Module 1 - Auto-Differentiation</a> &raquo;</li>
+        
+      <li>Backpropagate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/backpropagate.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="backpropagate">
+<h1>Backpropagate<a class="headerlink" href="#backpropagate" title="Permalink to this headline">¶</a></h1>
+<p>The backward function tells us how to compute the derivative of one
+operation.  The chain-rule tells us how to the derivative of two
+sequential operations.  In this section we show how to use these to
+compute the derivative for an arbitrary series of operations.</p>
+<p>The underlying approach we will use is a Breadth-First Search over the computation
+graph constructed by Variables and Functions. Before going over the algorithm though,
+let's work through a specific example step by step.</p>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Assume we have variables <span class="math notranslate nohighlight">\(x,y\)</span> and a function <span class="math notranslate nohighlight">\(h(x,y)\)</span>. We want to compute
+the derivatives <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+z &amp;=&amp; x \times y \\
+h(x, y) &amp;=&amp; \log(z) + \exp(z)
+\end{eqnarray*}\end{split}\]</div>
+<p>Here we are assuming <a href="#id1"><span class="problematic" id="id2">*</span></a>, +, log, and exp are all implemented as ScalarFunctions and store
+their history. This means that the final variable has constructed a graph of its history
+that looks like this:</p>
+<img alt="_images/backprop1.png" class="align-center" src="_images/backprop1.png" />
+<p>Here, starting from the left, the arrows represent variables <span class="math notranslate nohighlight">\(x,y\)</span>, then <span class="math notranslate nohighlight">\(z, z\)</span>, then <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span>, and finally <span class="math notranslate nohighlight">\(h(x, y)\)</span>. Forward computation proceeds left-to-right.</p>
+<p>The chain rule tells us that to compute the derivatives, we need to apply the backward functions right-to-left until we reach the original variables, which we call <cite>leaf</cite> variables. We do this by maintaining a queue of active variables to process. At each step we pull a variable off the queue, apply the chain rule to the last Function that acted on it, and then put its inputs into the queue.</p>
+<p>We start with only the last variable <span class="math notranslate nohighlight">\(h(x,y)\)</span> in the queue. Its derivative is by default 1.</p>
+<img alt="_images/backprop2.png" class="align-center" src="_images/backprop2.png" />
+<p>We then process it with the chain rule. This calls the backward function of +, and produces
+two new variables on the queue (which correspond to <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span> from the forward pass).</p>
+<img alt="_images/backprop3.png" class="align-center" src="_images/backprop3.png" />
+<p>The next element on the queue is the top arrow. We pass its derivative as <span class="math notranslate nohighlight">\(d_out\)</span> to chain rule, which adds a new arrow (corresponding to <span class="math notranslate nohighlight">\(z\)</span>) to the queue.</p>
+<img alt="_images/backprop4.png" class="align-center" src="_images/backprop4.png" />
+<p>The next element on the queue is the top arrow. Here we have an interesting result. We have a new arrow, but it is corresponds to the same variable which is already in the queue. We can apply an optimization, and simply add it derivative to the derivative computed at the last step. This means there is only one arrow to process.</p>
+<img alt="_images/backprop5.png" class="align-center" src="_images/backprop5.png" />
+<img alt="_images/backprop6.png" class="align-center" src="_images/backprop6.png" />
+<p>Finally we pull an arrow from the queue that represents an orginal leaf node (<span class="math notranslate nohighlight">\(x\)</span>).</p>
+<img alt="_images/backprop7.png" class="align-center" src="_images/backprop7.png" />
+<p>Since each step of this process was an application of the chain rule, we can show that this final value
+is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next step of the algorithm would then produce <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>. By convention if <span class="math notranslate nohighlight">\(x, y\)</span> are instances of  <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code>, these are stored as</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">derivative</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="algorithm">
+<h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h2>
+<p>This algorithm is an instance of <a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a> a class graph algorithm.</p>
+<p>Here each of the red arrows is represented by an object <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.VariableWithDeriv</span></code>, that stores the Variable and its current derivative (what gets passed to <span class="math notranslate nohighlight">\(d_{out}\)</span> in chain rule). Starting from the last arrow, which is passed in as an argument, backpropagate should run the following algorithm.</p>
+<blockquote>
+<div><ol class="arabic simple" start="0">
+<li><p>Initialize a queue with the final variable+derivative.</p></li>
+</ol>
+<p>1. While the queue is not empty, pull a variable+derivative from the queue.
+2.</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>If the variable is a leaf then add its final derivative (<cite>_add_deriv</cite>) and loop to (1).</p></li>
+<li><p>If the variables is not a leaf call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span>.</p></li>
+<li><p>Loop through all the variables+derivative produced by chain rule.</p></li>
+<li><p>If the variable is in the queue (check <cite>.name</cite>), add to its current derivative. Otherwise, add to the queue.</p></li>
+</ol>
+</div></blockquote>
+</div></blockquote>
+<p>Important note. Only leaf variables should ever have non-None
+.derivative value. All the intermediate variables should only keep
+their current derivative value in the queue.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="module2.html" class="btn btn-neutral float-right" title="Module 2 - Tensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="chainrule.html" class="btn btn-neutral float-left" title="Autodifferentiation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

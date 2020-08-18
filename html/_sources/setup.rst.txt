@@ -1,0 +1,88 @@
+..
+  Done!
+
+================
+Workspace Setup
+================
+
+We suggest two options for setting up the course workspace.
+
+
+Online IDE
+-----------
+
+MiniTorch can be run entirely on an online IDE for simplicity.
+Each assignment is configured to work directly with the Repl.it
+environment which you can setup through the Github page. You will
+need to signup for a `Repl.it <Repl.it>` account and create an environment repo through
+the link.  
+
+For each module, you will need to rerun the following commands to get
+setup.
+
+>>> pip install -r requirements.txt
+>>> pip install -r requirements.extra.txt
+>>> pip install -Ue .
+
+Make sure that everything is installed by running `python` and then checking:
+
+>>> import minitorch
+
+
+Hacker Mode
+-------------
+
+Alternatively you can set things up in a standard Python environment.
+
+MiniTorch requires Python 3.6 or higher.  Please follow directions
+online to help get this set up, as it will vary depending on your
+system. To check run either:
+
+>>> python -v
+>>> python3 -v
+
+
+We recommend creating a global MiniTorch workspace directory that you will use
+for all modules.
+
+>>> mkdir workspace; cd workspace
+
+Within this directory you need to setup a `virtual
+environment`. The virtual environment you can install packages that
+are only used for your assignments and do not impact the rest of the
+system. (See https://docs.python.org/3/library/venv.html for further
+instructions on how this works.)
+
+>>> python -m venv venv
+>>> source venv/bin/activate
+
+The first line you should run only once, whereas the second needs to
+be run whenever you open a new terminal to get started for the class.
+You can tell if the second line worked because your terminal will now have
+`(venv)` on the end.
+
+
+Each assignment is distributed through a Git repo. You first should
+fork the template of the assignment and edit yours in your forked
+repo. We will assume knowledge of git throughout the course, see
+https://guides.github.com for a tutorial about using git and github.
+
+Once you have forked the template code, you can clone your own version by running the command:
+
+>>> git clone {{STUDENT_ASSIGNMENT_URL}}
+>>> cd {{STUDENT_ASSIGNMENT_NAME}}
+
+
+The last step is to install packages.  There are several packages that we will
+use throughout these assignments, and you can install them now into
+your virtual env. You do this by running:
+
+
+>>> python -m pip install -r requirements.txt
+>>> python -m pip install -r requirements.extra.txt
+>>> python -m pip install -Ue .
+
+
+Make sure that everything is installed by running `python` and then checking:
+
+>>> import minitorch

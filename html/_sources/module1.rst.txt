@@ -1,0 +1,137 @@
+..
+  done
+
+================================
+Module 1 - Auto-Differentiation
+================================
+
+This module shows how to build a first version of MiniTorch
+(mini-MiniTorch?) using only Scalar values. This covers the key aspects
+of auto-differentiation the key technique in the system. You will then
+use your code to train a preliminary model.
+
+All starter code is available in https://github.com/minitorch/module1 .
+
+To begin, remember to first activate your virtual environment.
+
+>>> source venv/bin/activate
+
+And then clone your assignment.
+
+>>> git clone {{STUDENT_ASSIGNMENT1_URL}}
+>>> cd minitorch1
+
+You will also need the files from Assignment 0 so be sure to pull them over
+to your new repo.
+
+Be sure to continue to follow the :doc:`contributing` guidelines.
+
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :caption: Guides
+
+  
+   derivative
+   scalar
+   chainrule
+   backpropagate
+
+Tasks
+******
+
+
+Task 1.1: Numerical Derivatives
+==================================
+
+.. note:: This task requires basic familiarity with derivatives.
+   Be sure to review `differentiation rules <https://en.wikipedia.org/wiki/Differentiation_rules>`_
+   and the notation for derivatives.
+   Then carefully read the section on
+   :doc:`derivative`. 
+
+.. todo::
+   Complete the following function in `minitorch/scalar.py` and pass tests marked as `task1_1`.
+
+.. autofunction:: minitorch.scalar.central_difference
+
+                  
+
+Task 1.2: Scalars
+========================
+
+.. note:: This task requires familiarity with the :class:`minitorch.Scalar` class .
+   Be sure to first carefully read the section on
+   :doc:`scalar` and to refresh your memory on `Python numerical overrides 
+   <https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/>`_.
+
+Implement the overridden mathematical functions required for the scalar class.
+Each of these requires wiring the internal python operator to the correct
+:func:`minitorch.Function.forward` call.
+
+.. autofunction:: minitorch.scalar.ScalarFunction.forward
+      
+
+.. todo::
+   Add calls in `minitorch/scalar.py` for each of the following and pass tests marked as `task1_2`.
+
+.. autofunction:: minitorch.Scalar.__mul__
+.. autofunction:: minitorch.scalar.Mul.forward
+.. autofunction:: minitorch.Scalar.__add__
+.. autofunction:: minitorch.scalar.Add.forward
+.. autofunction:: minitorch.Scalar.__lt__
+.. autofunction:: minitorch.scalar.LT.forward
+.. autofunction:: minitorch.Scalar.__neg__
+.. autofunction:: minitorch.scalar.Neg.forward
+
+                  
+
+
+Task 1.3: Chain-Rule
+========================
+
+.. note::  This task is quite tricky, so be sure you
+   understand the chain-rule, Variables, and Functions. 
+   Be sure to first very carefully read the section on
+   :doc:`chainrule` and read the code for other ScalarFunctions.
+
+
+Implement the `chain_rule` method on FunctionBase for functions of arbitrary arguments.
+
+
+.. autofunction:: minitorch.scalar.ScalarFunction.backward
+
+.. todo::
+   Add calls in `minitorch.FunctionBase` for each of the following, and pass tests marked as `task1_3`.
+
+
+.. autofunction:: minitorch.FunctionBase.chain_rule
+
+
+                  
+Task 1.4: Backpropagate
+========================
+
+.. note::  
+   Be sure to first very carefully read the section on
+   :doc:`backpropagate` and read the code for other ScalarFunctions.
+
+
+Implement backpropagation.
+
+
+.. todo::
+   Add calls in `minitorch/scalar.py` and `minitorch/autodiff.py` for the following function, and pass tests marked as `task1_4`.
+
+.. autofunction:: minitorch.backpropagate                  
+
+.. autofunction:: minitorch.scalar.Mul.backward
+.. autofunction:: minitorch.scalar.Add.backward
+.. autofunction:: minitorch.scalar.LT.backward
+.. autofunction:: minitorch.scalar.Neg.backward
+
+
+..
+   Task 1.5: Training
+   ========================

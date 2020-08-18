@@ -1,0 +1,13 @@
+========================
+Module 3 - Efficiency
+========================
+
+
+(In progress)
+
+.. toctree::
+   :maxdepth: 3
+   :glob:
+   :caption: Contents
+
+   assignment3

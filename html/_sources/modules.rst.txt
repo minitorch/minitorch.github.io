@@ -1,0 +1,36 @@
+..
+  done
+
+========
+Modules
+========
+
+Researchers often disagree on exactly what the term `deep` learning
+means, but one aspect that everyone agrees on is that deep
+models are quite big and complex!  Common models can include 100s of
+millions of learned `parameters` that span over hundreds of informal
+`module` groups.  In order to work with such complex systems, it is
+important to have data structures that abstract away this complexity
+and make it easy to access and manipulate specific components, and
+group together shared regions.
+
+
+On the programming side, `Modules` have become a popular paradigm to
+group parameters together to make them easy to manage, access, and
+address.  There is nothing specific to machine learning about this
+setup, (and everything in MiniTorch could be done with modules), but they
+make life easier and code more organized. 
+
+First let's define a Parameter. For now, we will just think of Parameter as a holder. It is just a special object that stores a value.
+
+
+.. autoclass:: minitorch.Parameter
+
+
+
+Parameters become more interesting when they are grouped with
+`Modules`. Modules provide a way of storing and finding these
+parameters. Let's look at the `Module` class to see how this works. 
+
+               
+.. autoclass:: minitorch.Module

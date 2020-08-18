@@ -1,0 +1,53 @@
+..
+  done
+
+==============
+Visualization
+==============
+
+
+While testing is nice for maintaining correctness, exploratory
+analysis is also critical for gaining intuition.  When you are stuck,
+often the best thing to do is to just look at your data and
+outputs. Visualizing our system can't prove that it is correct, but it
+can often times lead us directly to figure out what is wrong.
+Throughout our development we will be using visualization to observe
+intermediate states, training progress, outputs, and even final models.
+
+The main library we will use it called `Visdom`
+(https://github.com/facebookresearch/visdom). Here's an example of
+what it looks like
+
+.. image:: visdom.png
+
+
+You can think of it as a pasteboard for sending images and graphs from
+you code to a centralized, organized place.  Nothing that magical, we
+could just output them to a directory, but we will see this as some
+nice benefits.
+
+
+To start Visdom, you need to run the following from a command-line in your virtual env (this will also work in online environment like Repl.it):
+
+>>> visdom &
+
+Next, open up a browser window and go to http://localhost:8097 (or whichever port it started on).
+
+You can then plot functions that go directly to this board. For instance if we want to plot a simple
+graph we can run the following code.::
+
+    import visdom
+    import matplotlib.pyplot as plt
+    vis = visdom.Visdom()
+
+    # Loss goes does!
+    plt.plot([2.0, 1.0, 0.0], c="blue")
+    plt.title("Model Loss")
+
+    # Send to visdom
+    vis.matplot(plt, win="loss")
+
+.. image:: visdom2.png
+
+
+There is a lot more you can do in this environment. Check out `Visdom <https://github.com/facebookresearch/visdom>`_ for a list of goodies.

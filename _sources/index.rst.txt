@@ -1,0 +1,37 @@
+
+=================
+miniTorch |logo|
+=================
+
+.. |logo| image:: match.png
+           :width: 40pt
+
+
+
+.. toctree::
+   :maxdepth: 3
+   :caption: Contents
+
+   operations
+   layers
+   assignments
+   cheatsheet
+   links
+   assignment0
+   assignment1
+   assignment2
+
+
+miniTorch is a teaching library for learning about the internals of machine learning coding.
+It is developed for the course `Machine Learning Engineering` being taught at Cornell Tech.
+
+
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

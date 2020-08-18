@@ -2,6 +2,10 @@
 Module 2 - Tensors
 ========================
 
+.. image:: figs/Ops/zip\ back.png
+           :align: center
+
+
 We now have a fully developed autodifferentiation system built around
 scalars. This system is correct, but it very inefficient. All numbers
 are wrap with an object, and each operation requires storing a graph of

@@ -35,9 +35,29 @@ Enjoy!
 
 Sasha (`@srush_nlp <https://twitter.com/srush_nlp>`_)
 
+:doc:`module0`
+
+.. image:: figs/Module/module.png
+           :align: center
+
+:doc:`module1`
+
+.. image:: figs/Tensors/stride4.png
+           :align: center
+
+:doc:`module2`
+
+.. image:: figs/Ops/zip\ back.png
+           :align: center
+
+(Coming Soon)
+
+:doc:`module3`
+:doc:`module4`
+
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :glob:
    :caption: Contents
 

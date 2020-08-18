@@ -1,45 +1,42 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="english" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Assignment 1 - Auto-Derivatives &mdash; MiniTorch 0.1 documentation</title>
+  <title>Assignment &mdash; MiniTorch 0.1 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignment 2 - Tensors" href="assignment2.html" />
-    <link rel="prev" title="Assignment 0 - Getting Started" href="assignment0.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -53,7 +50,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> MiniTorch
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
           
 
           
@@ -76,6 +73,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -84,27 +82,21 @@
             
             
               <p class="caption"><span class="caption-text">Contents</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment0.html">Assignment 0 - Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 1 - Auto-Derivatives</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#task-0-setup">Task 0: Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-1-derivative-checks">Task 1: Derivative Checks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-2-a-scalar-class">Task 2.a: Scalar Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-2-b-scalar-functions">Task 2.b: Scalar Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-3-auto-derivative">Task 3: Auto-Derivative</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#task-4-training">Task 4: Training</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Assignment 2 - Tensors</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -143,9 +135,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="index.html">Docs</a> &raquo;</li>
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Assignment 1 - Auto-Derivatives</li>
+      <li>Assignment</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -164,221 +156,179 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast + .nbinput {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="assignment-1-auto-derivatives">
-<h1>Assignment 1 - Auto-Derivatives<a class="headerlink" href="#assignment-1-auto-derivatives" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="assignment">
+<h1>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">¶</a></h1>
 <p>Now that preliminaries are done we can really get started.  In this
 assignment you will implement a complete basic version of MiniTorch
 using scalar values. You will then use this system to train a
 mini-model and get your first real results.</p>
-<div class="section" id="task-0-setup">
-<h2>Task 0: Setup<a class="headerlink" href="#task-0-setup" title="Permalink to this headline">¶</a></h2>
 <p>To begin, remember to first activate your virtual environment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
 <p>And then clone your assignment.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT1_URL</span><span class="p">}}</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT1_URL</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">minitorch1</span>
 </pre></div>
 </div>
-<p>You will need the files from Assignment 0 so be sure to pull them over
+<p>You will also need the files from Assignment 0 so be sure to pull them over
 to your new repo.</p>
+<p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
+<div class="section" id="task-1-1-approximate-derivatives">
+<h2>Task 1.1: Approximate Derivatives<a class="headerlink" href="#task-1-1-approximate-derivatives" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires familiarity with derivative .
+Be sure to first carefully read the section on
+<a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> as well as reviewing the basic rules of
+univariate differentiation.</p>
 </div>
-<div class="section" id="task-1-derivative-checks">
-<h2>Task 1: Derivative Checks<a class="headerlink" href="#task-1-derivative-checks" title="Permalink to this headline">¶</a></h2>
-<p>Let us begin by discussing derivatives in the setting of
-programming. If we are given a function,</p>
-<div class="math notranslate nohighlight">
-\[f(x) = sin(2 x)\]</div>
-<p>We can compute a function for its derivative applying rules from univariate calculus, i.e.</p>
-<div class="math notranslate nohighlight">
-\[f'(x) = 2 \times cos(2 x)\]</div>
-<p>We will refer to this as the symbolic derivative of the function. In
-some sense this is the ideal term to compute since it tells use
-everything we need to know about the derivative of the function.</p>
-<p>However, what if instead we are just given an arbitrary python function</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="s2">&quot;Compute some unknown function of x.&quot;</span>
-    <span class="o">...</span>
-</pre></div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/scalar.py</cite> and pass tests marked as <cite>task1_1</cite>.</p>
 </div>
-<p>Knowing nothing about this function, we are a bit stuck. However, if we recall the definition of the derivative it gives us a hint of what we can do.</p>
-<div class="math notranslate nohighlight">
-\[f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x + \epsilon) - f(x)}{\episilon}\]</div>
-<p>Or informally, in the limit as we get infintissimally close to x the
-value of this difference quotient will approach the derivative.</p>
-<p>Practically, this means that if we sent <span class="math notranslate nohighlight">\(epsilon\)</span> to be very small and call the function it will
-give us a way to approximate the derivative.</p>
-<div class="math notranslate nohighlight">
-\[f'(x) \approx  \frac{f(x + \epsilon) - f(x)}{\epsilon}\]</div>
-<p>Alternatively you could imagine approaching x from the other side, which would yield a different approximation.</p>
-<div class="math notranslate nohighlight">
-\[f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x) - f(x- \epsilon)}{\epsilon}\]</div>
-<p>You can show that doing both simultaneously yields the best approximation. This is known as the <cite>central difference</cite>.</p>
-<div class="math notranslate nohighlight">
-\[f'(x) \approx  \frac{f(x + \epsilon) - f(x-\epsilon)}{2\epsilon}\]</div>
-<p>Practically, this means that there is another way to compute approximate derivative that works for black-box functions. You simply pick as value of epsilon, say 1e-6, and compute the above term. This leads to a <cite>higher-order function</cite> of the following form</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">approx_derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="o">...</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Implement this function.</p></li>
-<li></li>
+<dl class="py function">
+<dt id="minitorch.scalar.central_difference">
+<code class="sig-prename descclassname">minitorch.scalar.</code><code class="sig-name descname">central_difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">vals</span></em>, <em class="sig-param"><span class="n">arg</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-06</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.central_difference" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes an approximation to the derivative of <cite>f</cite> with respect to one arg.</p>
+<p>See <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">https://en.wikipedia.org/wiki/Finite_difference</a> for more details.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>f</strong> -- arbitrary function from n-args to one value</p></li>
+<li><p><strong>*vals</strong> (<em>floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_1 \ldots x_n\)</span></p></li>
+<li><p><strong>arg</strong> (<em>int</em>) -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
+<li><p><strong>epsilon</strong> (<em>float</em>) -- a small constant</p></li>
 </ul>
-</div>
-<div class="section" id="task-2-a-scalar-class">
-<h2>Task 2.a: Scalar Class<a class="headerlink" href="#task-2-a-scalar-class" title="Permalink to this headline">¶</a></h2>
-<p>Symbolic derivatives require knowing the whole function, whereas our
-above approximation requires only a single black box. We hope to build
-something in between, <cite>autoderivatives</cite>. However to do this we need to
-collect more information about the function f(x) itself. This can be
-hard to do since Python does not expose how x is used in the function
-directly, all we get is the output.</p>
-<p>How can we open up this black box? Our approach will be to replace x
-with a surrogate value and override its set of mathematical
-operations. Instead of calling regular +, Python will call our +.
-Instead of calling <span class="math notranslate nohighlight">\(log\)</span>, Python will call our <span class="math notranslate nohighlight">\(log\)</span>.
-Once this is done we have the ability to record and track all the ways that
-x was used in the function. This will allow us a better method for computing the
-derivative of interest.</p>
-<ul class="simple">
-<li><dl class="simple">
-<dt>read python operator overloading. Add calls in scaler.py for</dt><dd><p>def __mul__(self, b):
-def __radd__(self, b):
-def __add__(self, b):
-def __rmul__(self, b):
-def __lt__(self, b):
-def __gt__(self, b):
-def __sub__(self, b):
-def __neg__(self):</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>An approximation of <span class="math notranslate nohighlight">\(f'_i(x_1, \ldots, x_n)\)</span></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
 </dd>
 </dl>
-</li>
+</dd></dl>
+
+</div>
+<div class="section" id="task-1-2-scalars">
+<h2>Task 1.2: Scalars<a class="headerlink" href="#task-1-2-scalars" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires familiarity with the scalar class .
+Be sure to first carefully read the section on
+<a class="reference internal" href="scalar.html"><span class="doc">Tracking Variables</span></a> and <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/">Python numerical overrides</a>.</p>
+</div>
+<p>Implement the overridden mathematical functions required for the scalar class.
+Each of these requires wiring the internal python operator to the correct
+<code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.forward()</span></code> call.</p>
+<dl class="py function">
+<dt id="minitorch.scalar.ScalarFunction.forward">
+<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.forward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- A special container object to save
+any information that may be needed for the call to backward.</p></li>
+<li><p><strong>*inputs</strong> (<em>list of numbers</em>) -- Numerical arguments.</p></li>
 </ul>
-</div>
-<div class="section" id="task-2-b-scalar-functions">
-<h2>Task 2.b: Scalar Functions<a class="headerlink" href="#task-2-b-scalar-functions" title="Permalink to this headline">¶</a></h2>
-<p>Once we have this overloading we need to define each of the functions that we use in a special
-way.</p>
-<p>Assume we have a function :math:g(x):. We implement it as a class with two static methods: <cite>forward</cite>
-and <cite>backward</cite>. The responsibility of forward is to compute the function value, the responsibility of backward is to compute the derivative g’(x) times an argument (you can ignore this for now) .</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GFunction</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="c1"># Compute g(x)</span>
-        <span class="o">...</span>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The computation of the function f.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>number</p>
+</dd>
+</dl>
+</dd></dl>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="c1"># Compute g&#39;(x) * d</span>
-        <span class="o">...</span>
-</pre></div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Add calls in <cite>minitorch/scalar.py</cite> for each of the following and pass tests marked as <cite>task1_2</cite>.</p>
 </div>
-<p>To make this tangible, imagine a function <cite>TimesFive</cite>, <span class="math notranslate nohighlight">\(g(x) = x
-\times 5\)</span>  that multiplies x by 5 and its derivative <span class="math notranslate nohighlight">\(g'(x) =  5\)</span>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimesFive</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">5</span>
+<dl class="py function">
+<dt id="minitorch.scalar.Mul.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Mul.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="n">derivative</span> <span class="o">=</span> <span class="mi">5</span>
-        <span class="k">return</span> <span class="n">derivative</span> <span class="o">*</span> <span class="n">d</span>
-</pre></div>
-</div>
-<p>Note that the way <cite>ScalarFunction</cite> works looks a bit different than
-the math notation. You can see that <span class="math notranslate nohighlight">\(g'(x)\)</span> depends on x but
-<cite>backward</cite> does not take x as an argument. This was not a problem for
-the function above, but things get a bit more interesting when the
-derivative also depends on x itself.</p>
-<p>Consider a function <cite>Square</cite>, <span class="math notranslate nohighlight">\(g(x) = x^2\)</span> that squares x
-and its derivative <span class="math notranslate nohighlight">\(g'(x) = 2x\)</span>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimesFive</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">x</span>
+<dl class="py function">
+<dt id="minitorch.scalar.Add.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Add.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Add.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_values</span>
-        <span class="n">derivative</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
-        <span class="k">return</span> <span class="n">derivative</span> <span class="o">*</span> <span class="n">d</span>
-</pre></div>
-</div>
-<p>This function style requires that we explicitly save and unpack
-anything that in the <cite>forward</cite> function we save anything we might need
-for the backward function explicitly. This is an optimization that
-limits the amount of storage this process requires.</p>
-<p>Finally, for functions that take multiple arguments, we return
-multiple backward arguments for each of the inputs. If the function computes
-<span class="math notranslate nohighlight">\(g(x, y)\)</span>, we need to return <span class="math notranslate nohighlight">\(g'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(g'_y(x, y)\)</span>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GFunction</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-        <span class="c1"># Compute g(x, y)</span>
-        <span class="o">...</span>
+<dl class="py function">
+<dt id="minitorch.scalar.LT.forward">
+<code class="sig-prename descclassname">minitorch.scalar.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="c1"># Compute g&#39;_x(x, y) * d, g&#39;_y(x, y) * d,</span>
-        <span class="o">...</span>
-</pre></div>
+<dl class="py function">
+<dt id="minitorch.scalar.Neg.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
-<ul class="simple">
-<li><p>Implement Scalar Functions for each of the terms.</p></li>
-<li><p>Pass the tests in <cite>test_scalar</cite>.</p></li>
-</ul>
-</div>
-<div class="section" id="task-3-auto-derivative">
-<h2>Task 3: Auto-Derivative<a class="headerlink" href="#task-3-auto-derivative" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-1-3-chain-rule">
+<h2>Task 1.3: Chain-Rule<a class="headerlink" href="#task-1-3-chain-rule" title="Permalink to this headline">¶</a></h2>
 <p>Now we have a cute way of grouping together function implementation
 and implmentations of their symbolic derivatives. We are making
 progress, but we still do not have a better method for taking
 derivatives of unseen functions. This is where <cite>autodifferentiation</cite>
 comes in. It provides a way to chain together individual scalar
 functions.</p>
-<p>Recall the chain rule from calculus () .</p>
-<div class="math notranslate nohighlight">
-\[f'_x(g(x)) = g'(x) \times f'_{g(x)}(g(x))\]</div>
-<p>Or alternatively, it may be easier to visualize if we name each part.</p>
-<div class="math notranslate nohighlight">
-\[y = g(x)
-d = g'(x)
-f'_x(g(x)) = f'(y) * d\]</div>
-<p>We can also view this as a graph.</p>
-<ul class="simple">
-<li><p>Every <cite>Scalar</cite> stores what was the last function that computed it.</p></li>
+<dl class="py function">
+<dt id="minitorch.scalar.ScalarFunction.backward">
+<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
+<li><p><strong>d_output</strong> (<em>number</em>) -- </p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The computation of the derive function f' for each inputs times <cite>d_output</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numbers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Add calls in <cite>minitorch/scalar.py</cite> and <cite>minitorch.FunctionBase</cite> for each of the following, and pass tests marked as <cite>task1_3</cite>.</p>
 </div>
-<div class="section" id="task-4-training">
-<h2>Task 4: Training<a class="headerlink" href="#task-4-training" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="minitorch.scalar.Mul.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Mul.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.Add.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Add.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Add.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.LT.backward">
+<code class="sig-prename descclassname">minitorch.scalar.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.LT.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.Neg.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="task-1-4-backpropagate">
+<h2>Task 1.4: Backpropagate<a class="headerlink" href="#task-1-4-backpropagate" title="Permalink to this headline">¶</a></h2>
+<p>We can also view this as a graph.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Add calls in <cite>minitorch/autodiff.py</cite> for the following function, and pass tests marked as <cite>task1_4</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-1-5-training">
+<h2>Task 1.5: Training<a class="headerlink" href="#task-1-5-training" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -388,25 +338,24 @@ f'_x(g(x)) = f'(y) * d\]</div>
           </div>
           <footer>
   
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="assignment2.html" class="btn btn-neutral float-right" title="Assignment 2 - Tensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="assignment0.html" class="btn btn-neutral float-left" title="Assignment 0 - Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Sasha Rush
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -417,7 +366,6 @@ f'_x(g(x)) = f'(y) * d\]</div>
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

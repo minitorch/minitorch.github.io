@@ -1,7 +1,5 @@
-Assignment 0 - Getting Started
-********************************
-
-
+Assignment
+************
 
 
 Welcome to the preliminary assignment for MiniTorch assignment. This
@@ -10,277 +8,145 @@ library and to introduce the testing, dataset and visualization
 frameworks that we will use throughout the course. Additionally we
 will start building up some of the infrastructure for MiniTorch itself.
 
-=============
-Task 0: Setup
-=============
 
-First things first, you will need to make sure you have Python 3.6 or greater installed.
-Please follow directions online to help get this set up as it will vary depending on your
-system. To check run
-
->>> python -v
-
-or on some systems
-
->>> python3 -v
-
-
-Throughout the course you should be sure to work within a single classroom folder.
-We recommend first creating a workspace directory that you will use.
-
->>> mkdir workspace; cd workspace
-
-Within this directory you need to setup a python `virtual
-environment`. The virtual environment you can install packages that
-are only used for your assignments and do not impact the rest of the
-system. (See https://docs.python.org/3/library/venv.html for further
-instructions on how this works.)
-
->>> python -m venv venv
->>> source venv/bin/activate
-
-The first line you should run only once, whereas the second needs to
-be run whenever you open a new terminal to get started for the class.
-You can tell if the second line worked because your terminal will now have
-`(venv)` on the end.
-
-
-Each assignment is distributed through a `git` repo. You first should
-fork the template of the assignment and edit yours in your forked
-repo. We will assume knowledge of git throughout the course, see
-https://guides.github.com for a tutorial about using git and github.
-
-
-Once you have forked the template code, you can clone your own version by running the command:
-
->>> git clone {{STUDENT_ASSIGNMENT0_URL}}
->>> cd minitorch0
-
-
-Great! You now have the code and the virtual environment. The last
-step is to install packages.  There are several packages that we will
-use throughout these assignments, and you can install them now into
-your virtual env. You do this by running:
-
-
->>> python -m pip install -r requirements.txt
->>> python -m pip install -r requirements.dev.txt
->>> python -m pip install -e .
-
-Be sure these steps worked before continuing on.
-
-
-=======================
-Task 1: Code Formatting
-=======================
-
-It is a requirement of these assignments to keep your code organized
-and clean to make it easier to debug, optimize, and document. To help
-with this process, we will utilize required formatting on all the
-assignments. To check the style, run the command:
-
->>> bash style.sh
-
-When you first check out the repo there will be two errors. One is a simple
-spacing bug and the other is a misnamed variable typo. Next run:
-
->>> black minitorch/ tests/
-
-This command will go through and fix all the simple formatting issues in the code.
-Rerunning the style command will now only return one error.
-
->>> bash style.sh
-
-Fix this error manually, commit, and push to your fork.
-
->>> git commit -am "Fix formatting"; git push origin master
-
-Throughout development it will be your responsibility to make sure the
-code is correctly formatted by running these checks. See
-https://black.readthedocs.io for more details.
-
+Before beginning this assignment be sure to read Module 0, in particular :doc:`setup`
+and :doc:`contributing` which will help you get started.
 
 =============================
-Task 2: Testing and Debugging
+Task 0.1: Operators
 =============================
 
-Testing and debugging are an important aspect of software engineering,
-and critical for framework code that may be used in unexpected ways.
-On the other hand, Machine learning code is notoriously hard to test
-and debug as we will see throughout the assignments. In addition to
-judging our code by how well it perform on ML tasks, we will use
-testing as a way to check and assess the internal code itself.
+Implement a series of basic mathematical functions in Python.  Each of
+these functions is quite simple, but we they will form the basis for
+the the library. Be sure you are familar with each of the functions as
+some might be new.
+
+.. note::
+
+   For now you can ignore the @jit symbol at the top of functions,
+   it is a `no-op`. We will come back to its role in Module 3.
 
 
-But how do you even test mathematical code? For instance, let's say for example you have
-a function that is meant to add two numbers (this sounds really silly, but we will see it is not!)::
-
-    def add(a, b):
-        "Super-efficient specialized add function"
-         ...
-
-
-If you have done unit testing for non-math code you might be used to unit tests that look like something like this::
-
-    def test_add_basic():
-        # Check same as slow-system add
-        assert add(10, 5) == 10 + 5
-        # Check that order doesn't matter
-        assert add(10, 7) == add(7, 10)
-
-This is fine, and certainly can help catch easy bugs. But it is not
-very reassuring when your model code has been running for 20 hours and
-then it finds some case where your add function fails.
-
-An alternative idea is to test for `properties`. That is, key aspects of
-your models behavior that you want to check for as you run. For instance, you might
-imagine directly checking that these properties hold for every pair::
-
-    def test_add_naive():
-        for a in range(-10000, 10000):
-            for b in range(-10000, 10000)
-                 assert add(a, b) == a + b
-                 assert add(a, b) == add(b, a)
+.. todo:: 
+   Complete the following functions in `minitorch/operators.py` and pass tests marked as `task0_1`.
+  
+.. autofunction:: minitorch.operators.mul
+.. autofunction:: minitorch.operators.id
+.. autofunction:: minitorch.operators.neg
+.. autofunction:: minitorch.operators.add
+.. autofunction:: minitorch.operators.lt
+.. autofunction:: minitorch.operators.sigmoid
+.. autofunction:: minitorch.operators.relu
+.. autofunction:: minitorch.operators.relu_back
 
 
-However this also seems hopelessly inefficient. Unit-tests are
-supposed to be quick easy snippets of code that quickly can be run
-while developing.
+===============================
+Task 0.2: Testing and Debugging
+===============================
 
-A clever middle ground is to use `randomized` property checking. This
-method was popularized by a library called QuickCheck
-(http://wikipedia.org/wiki/quickcheck). These library select
-interesting inputs in order to test your code bases correctness. This
-gives you the speed of the first approach and the breadth of the
-second. Another really neat benefit of property checking is that it
-actually makes tests easier to write (in programming, being incredibly
-lazy is considered a virtue).
-
-The best implementation of this concept in Python is `Hypothesis`
-(https://hypothesis.readthedocs.io/) which we will use throughout
-development. Hypothesis predefines a whole set of building block
-`strategies` that the user can pick from when writing tests. These let
-you generate integers, floats, lists, string, etc. In the next assignment
-we will even write our own strategies::
-
-    from hypothesis.strategies import integers
-    from hypothesis import given
-
-Now each test can be `decorated` with the values it operates on::
-
-    @given(integers(), integers())
-    def test_add(a, b):
-        # Check same as slow-system add
-        assert add(a, b) == a + b
-        # Check that order doesn't matter
-        assert add(a, b) == add(b, a)
-
-For task 2, you should go to `minitorch/operators.py` and implement
-some core mathematical operations. Then modify `test/test_operators.py`
-to ensure that the stated properties hold.
+.. note:: This task requires familiarity with testing and property
+   tests. Be sure to first carefully read the section on
+   :doc:`property_testing` and the `Hypothesis
+   <https://hypothesis.readthedocs.io/>`_ documentation.
 
 
-=====================
-Task 3: Visualization
-=====================
-
-While testing is nice when you are getting close to the answer,
-sometimes the best thing to do is to just look at your data and
-outputs. Visualizing our system can't prove that it is correct, but it
-can often times lead us directly to figure out what is wrong.
-
-Throughout our development we will be using visualization to observe
-intermediate states, training progress, outputs, and even final models.
-
-Technically the main library we will use it called `Visdom`
-(https://github.com/facebookresearch/visdom). Here's an example of what it looks like
-
-.. image:: visdom.png
+Implement a set of tests for your operators. These tests will ensure
+that you functions not only work, but obey high-level mathematical
+properties for  any input. 
 
 
-You can think of it as a pasteboard for sending images and graphs from
-you code to a centralized, organized place.  Nothing that magical, we
-could just output them to a directory, but we will see this as some
-nice benefits.
 
 
-To start Visdom, you need to run the following from a command-line in your virtual env:
+.. todo::
+   Complete the following functions in `tests/test_operators.py` and pass tests marked as `task0_2`.
 
->>> visdom
+.. autofunction:: minitorch_tests.test_symmetric
+.. autofunction:: minitorch_tests.test_distribute
+.. autofunction:: minitorch_tests.test_other
+                  
 
-Next, open up a browser window and go to http://localhost:8097 (or whichever port it started on).
-
-Finally::
-
-    import visdom
-    import matplotlib.pyplot as plt
-    vis = visdom.Visdom()
-
-    # Loss goes does!
-    plt.plot([2.0, 1.0, 0.0], c="blue")
-    plt.title("Model Loss")
-
-    # Send to visdom
-    vis.matplot(plt, win="loss")
-
-.. image:: visdom2.png
+  
+============================
+Task 0.3: Functional Python
+============================
 
 
-For the first few assignments we will be using a set of datasets that
-are implemented in `data/point_datasets.py`. Make sure these work by
-reading their docs and calling the `graph` function to write them to
-visdom.
+.. note::
+   
+   This task requires familiarity with basic functional programming concepts and notation.
+   This `Tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
+
+.. |tutorial|
+
+
+To practice the use of higher-order functions in Python, implement three basic
+functional concepts. Use these in combination with the operators described in Task 0.1
+to build up more complex mathematical operations that work on lists instead of single values.
+
+
+
+.. todo::
+   Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`
+  
+.. autofunction:: minitorch.operators.map
+.. autofunction:: minitorch.operators.negList
+.. autofunction:: minitorch.operators.zipWith
+.. autofunction:: minitorch.operators.addLists
+.. autofunction:: minitorch.operators.reduce
+.. autofunction:: minitorch.operators.sum
+.. autofunction:: minitorch.operators.prod
+
+                  
 
 =====================
-Task 4: Modules
+Task 0.4: Modules
 =====================
 
-Finally we will implement one aspect of the minitorch library to get
-started, Modules.  Modules are a common way to group operators
-together to make it easy for users to employ them. To see an example
-you can look at `examples/modules.py` which shows how modules work in
-PyTorch. In our models, we will use modules extensively as the main
-front-end for our library. You can read up more about how modules work
-at (). For now, we will just implement the core structure of the
-Module class, and leave the technical underpinnings for later.
+.. note:: This task requires familiarity with modules.
+          Please read :doc:`modules` to get started.
+          If you want more context for how modules  are used
+          you may find it helpful to skip ahead and read the `torch module
+          tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.  
 
 
 
-Modules are a recursive tree-shaped data-structure. Each module can
-store three things: 1) parameters, 2) non-parameter data, 3) other
-modules. Internally the user stores each of these directly on `self`,
-but the module spies under the hood to determine the type of each
-assignment.
-
-Here is an example of the simplest usage of a module::
-
-  class MyModule(Module):
-      def __init__(self, arg):
-          # Initialize the super-class (so it can spy.)
-          super().__init__()
-
-            # A parameter member (subclass of Parameter)
-          self.parameter1 = Parameter(15)
-
-          # Another member
-          self.data = 25
-
-          # A module member (subclass of Module)
-          self.sub_module = OtherModule(arg, arg+10)
+This task is to implement the core structure of the :class:`Module`
+class.  You will implement a tree-data structure that
+stores named `Parameters` on each node. This  datastructures  makes it
+easy for users to create trees that can be `walked` to find all of the parameters of
+interest.
 
 
-Internally, parameters (type 1) are stored in `self._parameters`, data (type 2)
-is stored in on `self`, modules (type 3) are stored in `self._modules`.
+.. todo::
+   Complete the functions in `minitorch/module.py` and pass tests marked as `tasks0_4`.
 
 
-The main benefit of this approach is that we can chain modules
-together to create complex structures. We can then go back and `walk`
-over the module to find all of the parameters that are used. Within
-standard ML models there are often 1000s of module instances and 100s of
-millions of paramaters.
+.. autofunction:: minitorch.Module.train
+.. autofunction:: minitorch.Module.eval
+.. autofunction:: minitorch.Module.named_parameters
+                  
+
+=====================
+Task 0.5: Visualization
+=====================
+
+.. note::
+   
+   This task requires familiarity with visualization tools described in :doc:`visualization`.
+
+For the first few assignments we will be using a set of datasets
+that are implemented in `project/datasets.py`. Read through the code
+in `project/run_torch.py` to see an implementation of a model for this
+code in Torch.
+
+.. todo::
+   Start a visdom server. Make sure you are able to run this code and observe the
+   progress of the model with the Visdom setup.
+
+>>> python project/run_torch.py
+
+* Save the loss graph of this model and the final image it generates
+  and commit them to your repo. Add the images to the README before
+  checking in.
 
 
-* Implement the necessary functions in the module class and make sure
-the corresponding tests pass.
-
-* Implement a linear module.

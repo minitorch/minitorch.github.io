@@ -1,4 +1,4 @@
-Assignment 1 - Auto-Derivatives
+Assignment
 ********************************
 
 
@@ -6,11 +6,6 @@ Now that preliminaries are done we can really get started.  In this
 assignment you will implement a complete basic version of MiniTorch
 using scalar values. You will then use this system to train a
 mini-model and get your first real results.
-
-
-=============
-Task 0: Setup
-=============
 
 To begin, remember to first activate your virtual environment.
 
@@ -21,204 +16,59 @@ And then clone your assignment.
 >>> git clone {{STUDENT_ASSIGNMENT1_URL}}
 >>> cd minitorch1
 
-You will need the files from Assignment 0 so be sure to pull them over
+You will also need the files from Assignment 0 so be sure to pull them over
 to your new repo.
 
+Be sure to continue to follow the :doc:`contributing` guidelines.
 
 
+==================================
+Task 1.1: Approximate Derivatives
+==================================
 
+.. note:: This task requires familiarity with derivative .
+   Be sure to first carefully read the section on
+   :doc:`derivative` as well as reviewing the basic rules of
+   univariate differentiation. 
 
-=========================
-Task 1: Derivative Checks
-=========================
+.. todo::
+   Complete the following function in `minitorch/scalar.py` and pass tests marked as `task1_1`.
 
+.. autofunction:: minitorch.scalar.central_difference
 
-Let us begin by discussing derivatives in the setting of
-programming. If we are given a function,
-
-.. math ::
-
-   f(x) = sin(2 x)
-
-We can compute a function for its derivative applying rules from univariate calculus, i.e.
-
-.. math ::
-
-    f'(x) = 2 \times cos(2 x)
-
-We will refer to this as the symbolic derivative of the function. In
-some sense this is the ideal term to compute since it tells use
-everything we need to know about the derivative of the function.
-
-However, what if instead we are just given an arbitrary python function ::
-
-  def f(x):
-      "Compute some unknown function of x."
-      ...
-
-Knowing nothing about this function, we are a bit stuck. However, if we recall the definition of the derivative it gives us a hint of what we can do.
-
-.. math ::
-
-    f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x + \epsilon) - f(x)}{\episilon}
-
-Or informally, in the limit as we get infintissimally close to x the
-value of this difference quotient will approach the derivative.
-
-Practically, this means that if we sent :math:`epsilon` to be very small and call the function it will
-give us a way to approximate the derivative.
-
-.. math ::
-
-     f'(x) \approx  \frac{f(x + \epsilon) - f(x)}{\epsilon}
-
-
-Alternatively you could imagine approaching x from the other side, which would yield a different approximation.
-
-.. math ::
-
-    f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x) - f(x- \epsilon)}{\epsilon}
-
-
-You can show that doing both simultaneously yields the best approximation. This is known as the `central difference`.
-
-
-.. math ::
-
-     f'(x) \approx  \frac{f(x + \epsilon) - f(x-\epsilon)}{2\epsilon}
-
-
-Practically, this means that there is another way to compute approximate derivative that works for black-box functions. You simply pick as value of epsilon, say 1e-6, and compute the above term. This leads to a `higher-order function` of the following form ::
-
-    def approx_derivative(f, x):
-        ...
-
-
-
-* Implement this function.
-
-*
-
+                  
 ========================
-Task 2.a: Scalar Class
+Task 1.2: Scalars
 ========================
 
+.. note:: This task requires familiarity with the scalar class .
+   Be sure to first carefully read the section on
+   :doc:`scalar` and `Python numerical overrides 
+   <https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/>`_.
 
-Symbolic derivatives require knowing the whole function, whereas our
-above approximation requires only a single black box. We hope to build
-something in between, `autoderivatives`. However to do this we need to
-collect more information about the function f(x) itself. This can be
-hard to do since Python does not expose how x is used in the function
-directly, all we get is the output.
+Implement the overridden mathematical functions required for the scalar class.
+Each of these requires wiring the internal python operator to the correct
+:func:`minitorch.Function.forward` call.
 
-How can we open up this black box? Our approach will be to replace x
-with a surrogate value and override its set of mathematical
-operations. Instead of calling regular +, Python will call our +.
-Instead of calling :math:`log`, Python will call our :math:`log`.
-Once this is done we have the ability to record and track all the ways that
-x was used in the function. This will allow us a better method for computing the
-derivative of interest.
+.. autofunction:: minitorch.scalar.ScalarFunction.forward
+      
 
+.. todo::
+   Add calls in `minitorch/scalar.py` for each of the following and pass tests marked as `task1_2`.
 
-* read python operator overloading. Add calls in scaler.py for
-    def __mul__(self, b):
-    def __radd__(self, b):
-    def __add__(self, b):
-    def __rmul__(self, b):
-    def __lt__(self, b):
-    def __gt__(self, b):
-    def __sub__(self, b):
-    def __neg__(self):
+.. autofunction:: minitorch.Scalar.__mul__
+.. autofunction:: minitorch.scalar.Mul.forward
+.. autofunction:: minitorch.Scalar.__add__
+.. autofunction:: minitorch.scalar.Add.forward
+.. autofunction:: minitorch.Scalar.__lt__
+.. autofunction:: minitorch.scalar.LT.forward
+.. autofunction:: minitorch.Scalar.__neg__
+.. autofunction:: minitorch.scalar.Neg.forward
 
-========================
-Task 2.b: Scalar Functions
-========================
-
-
-Once we have this overloading we need to define each of the functions that we use in a special
-way.
-
-
-Assume we have a function :math:g(x):. We implement it as a class with two static methods: `forward`
-and `backward`. The responsibility of forward is to compute the function value, the responsibility of backward is to compute the derivative g'(x) times an argument (you can ignore this for now) . ::
-
-
-  class GFunction(ScalarFunction):
-      @staticmethod
-      def forward(ctx, x):
-          # Compute g(x)
-          ...
-
-      @staticmethod
-      def backward(ctx, d):
-          # Compute g'(x) * d
-          ...
-
-
-To make this tangible, imagine a function `TimesFive`, :math:`g(x) = x
-\times 5`  that multiplies x by 5 and its derivative :math:`g'(x) =  5`. ::
-
-
-  class TimesFive(ScalarFunction):
-      @staticmethod
-      def forward(ctx, x):
-          return x * 5
-
-      @staticmethod
-      def backward(ctx, d):
-          derivative = 5
-          return derivative * d
-
-Note that the way `ScalarFunction` works looks a bit different than
-the math notation. You can see that :math:`g'(x)` depends on x but
-`backward` does not take x as an argument. This was not a problem for
-the function above, but things get a bit more interesting when the
-derivative also depends on x itself.
-
-Consider a function `Square`, :math:`g(x) = x^2` that squares x
-and its derivative :math:`g'(x) = 2x`. ::
-
-
-  class TimesFive(ScalarFunction):
-      @staticmethod
-      def forward(ctx, x):
-          ctx.save_for_backward(x)
-          return x * x
-
-      @staticmethod
-      def backward(ctx, d):
-          x = ctx.saved_values
-          derivative = 2 * x
-          return derivative * d
-
-This function style requires that we explicitly save and unpack
-anything that in the `forward` function we save anything we might need
-for the backward function explicitly. This is an optimization that
-limits the amount of storage this process requires.
-
-
-Finally, for functions that take multiple arguments, we return
-multiple backward arguments for each of the inputs. If the function computes
-:math:`g(x, y)`, we need to return :math:`g'_x(x, y)` and :math:`g'_y(x, y)`. ::
-
-  class GFunction(ScalarFunction):
-      @staticmethod
-      def forward(ctx, x, y):
-          # Compute g(x, y)
-          ...
-
-      @staticmethod
-      def backward(ctx, d):
-          # Compute g'_x(x, y) * d, g'_y(x, y) * d,
-          ...
-
-* Implement Scalar Functions for each of the terms.
-
-* Pass the tests in `test_scalar`.
-
+                  
 
 ========================
-Task 3: Auto-Derivative
+Task 1.3: Chain-Rule
 ========================
 
 Now we have a cute way of grouping together function implementation
@@ -229,29 +79,31 @@ comes in. It provides a way to chain together individual scalar
 functions.
 
 
-Recall the chain rule from calculus () .
 
-.. math ::
+.. autofunction:: minitorch.scalar.ScalarFunction.backward
 
-    f'_x(g(x)) = g'(x) \times f'_{g(x)}(g(x))
+.. todo::
+   Add calls in `minitorch/scalar.py` and `minitorch.FunctionBase` for each of the following, and pass tests marked as `task1_3`.
 
-Or alternatively, it may be easier to visualize if we name each part.
+.. autofunction:: minitorch.scalar.Mul.backward
+.. autofunction:: minitorch.scalar.Add.backward
+.. autofunction:: minitorch.scalar.LT.backward
+.. autofunction:: minitorch.scalar.Neg.backward
 
-.. math ::
-
-    y = g(x)
-    d = g'(x)
-    f'_x(g(x)) = f'(y) * d
-
-
-We can also view this as a graph.
-
-.. image ::
-
-
-* Every `Scalar` stores what was the last function that computed it.
+.. autofunction:: minitorch.FunctionBase.chain_rule
 
 
 ========================
-Task 4: Training
+Task 1.4: Backpropagate
+========================
+
+We can also view this as a graph.
+
+.. todo::
+   Add calls in `minitorch/autodiff.py` for the following function, and pass tests marked as `task1_4`.
+
+.. autofunction:: minitorch.backpropagate                  
+ 
+========================
+Task 1.5: Training
 ========================

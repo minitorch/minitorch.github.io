@@ -1,44 +1,43 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="english" >
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>miniTorch &mdash; MiniTorch 0.1 documentation</title>
+  <title>MiniTorch &mdash; MiniTorch 0.1 documentation</title>
   
-
-  
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
 
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Operations" href="operations.html" /> 
+    <link rel="next" title="Workspace Setup" href="setup.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -52,7 +51,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> MiniTorch
+            <a href="#" class="icon icon-home" alt="Documentation Home"> MiniTorch
           
 
           
@@ -75,6 +74,7 @@
           
         </div>
 
+        
         <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
           
             
@@ -84,18 +84,20 @@
             
               <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
-<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment0.html">Assignment 0 - Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1 - Auto-Derivatives</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Assignment 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
 </ul>
 
             
           
         </div>
+        
       </div>
     </nav>
 
@@ -134,9 +136,9 @@
 
   <ul class="wy-breadcrumbs">
     
-      <li><a href="#">Docs</a> &raquo;</li>
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
         
-      <li>miniTorch </li>
+      <li>MiniTorch </li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -155,72 +157,81 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
-<style>
-/* CSS overrides for sphinx_rtd_theme */
-
-/* 24px margin */
-.nbinput.nblast,
-.nboutput.nblast {
-    margin-bottom: 19px;  /* padding has already 5px */
-}
-
-/* ... except between code cells! */
-.nblast + .nbinput {
-    margin-top: -19px;
-}
-
-.admonition > p:before {
-    margin-right: 4px;  /* make room for the exclamation icon */
-}
-
-/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
-.math {
-    text-align: unset;
-}
-</style>
-<div class="section" id="minitorch-logo">
-<h1>miniTorch <a class="reference internal" href="_images/match.png"><img alt="logo" src="_images/match.png" style="width: 40pt;" /></a><a class="headerlink" href="#minitorch-logo" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="minitorch-logo">
+<h1>MiniTorch <a class="reference internal" href="_images/match.png"><img alt="logo" src="_images/match.png" style="width: 40pt;" /></a><a class="headerlink" href="#minitorch-logo" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to MiniTorch!</p>
+<p>MiniTorch is a <em>teaching library</em> for machine learning engineers who
+wish to learn about the internal concepts underlying deep learning
+systems.  Specifically, it is a pure Python re-implementation of the
+<a class="reference external" href="http://www.pytorch.org">Torch</a> API designed to be simple,
+easy-to-read, tested, and incremental. The final library can run Torch
+code with minimal changes (at some efficiency cost). The project was
+developed for the course <cite>Machine Learning Engineering</cite> at Cornell
+Tech.</p>
+<p>MiniTorch is strictly <em>DIY</em>. It is a not a library, per se, but a
+series of practically-oriented modules. These modules aim to provide
+the user with guidance on re-building the codebase themselves, through
+a series of incremental implementations. These implementations can be
+done with a course or by an interested learner.</p>
+<p>To get started, first read <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a> and <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to
+build your workspace.  Then follow through each of the modules to the
+right. Minimal computational resources are required.
+Module starting code is available on GitHub, and each proceeds
+incrementally from past assignments.</p>
+<p>Enjoy!</p>
+<p>Sasha (<a class="reference external" href="https://twitter.com/srush_nlp">&#64;srush_nlp</a>)</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#online-ide">Online IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup.html#hacker-mode">Hacker Mode</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="cheatsheet.html">Cheatsheet</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="cheatsheet.html#math">Math</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#style">Style</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#testing">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#documentation">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contributing.html#continuous-integration-ci">Continuous Integration (CI)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="assignment0.html">Assignment 0 - Getting Started</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assignment0.html#task-0-setup">Task 0: Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment0.html#task-1-code-formatting">Task 1: Code Formatting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment0.html#task-2-testing-and-debugging">Task 2: Testing and Debugging</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment0.html#task-3-visualization">Task 3: Visualization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment0.html#task-4-modules">Task 4: Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="property_testing.html">Property Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="visualization.html">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module0.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1 - Auto-Derivatives</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-0-setup">Task 0: Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-1-derivative-checks">Task 1: Derivative Checks</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-2-a-scalar-class">Task 2.a: Scalar Class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-2-b-scalar-functions">Task 2.b: Scalar Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-3-auto-derivative">Task 3: Auto-Derivative</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment1.html#task-4-training">Task 4: Training</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="scalar.html">Tracking Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module1.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Assignment 2 - Tensors</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="assignment2.html#tasks-1-tensor-data-indexing">Tasks 1: Tensor Data - Indexing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment2.html#tasks-2-tensor-operations">Tasks 2: Tensor Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment2.html#tasks-3-gradients-and-autograd">Tasks 3: Gradients and Autograd</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment2.html#tasks-4-tensor-broadcasting">Tasks 4: Tensor Broadcasting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tensordata.html">Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensorops.html">Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="broadcasting.html">Broadcasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module2.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="assignment3.html">Assignment 3 - Speed</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="references.html#math">Math</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html#coding">Coding</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<p>miniTorch is a teaching library for learning about the internals of machine learning coding.
-It is developed for the course <cite>Machine Learning Engineering</cite> being taught at Cornell Tech.</p>
 <div class="section" id="indices-and-tables">
 <h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -239,7 +250,7 @@ It is developed for the course <cite>Machine Learning Engineering</cite> being t
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="operations.html" class="btn btn-neutral float-right" title="Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="setup.html" class="btn btn-neutral float-right" title="Workspace Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -249,11 +260,19 @@ It is developed for the course <cite>Machine Learning Engineering</cite> being t
 
   <div role="contentinfo">
     <p>
+        
         &copy; Copyright 2020, Sasha Rush
 
     </p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
 
@@ -264,7 +283,6 @@ It is developed for the course <cite>Machine Learning Engineering</cite> being t
 
   </div>
   
-
 
   <script type="text/javascript">
       jQuery(function () {

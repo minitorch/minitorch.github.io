@@ -1,19 +1,58 @@
-========================
+k========================
 Module 4 - Inference
 ========================
 
 
-(In progress)
+(Work In progress)
 
 * Inference (no grad)
 * GPU operators
 * ONNX export
 * JS model
 
-
 .. toctree::
    :maxdepth: 3
    :glob:
    :caption: Guides
 
+   compression
+   onnx
+   nn_in_js
    assignment4
+
+
+Task 4.1: Model Size and Speed
+==================================
+
+
+.. todo::
+   Complete the following function in `minitorch/compress.py` and pass tests marked as `task4_1`.
+   
+Task 4.2: Model Compression
+==================================
+
+.. note:: This task requires basic familiarity with compression.
+   Be sure to read the section on
+   :doc:`compression`. 
+
+.. todo::
+   Complete the following function in `minitorch/compress.py` and pass tests marked as `task4_2`.
+
+
+
+Task 4.3: Shipping a Model
+==================================
+
+.. note:: This task requires basic familiarity with compression.
+   Be sure to read the section on
+   :doc:`onnx`. 
+
+.. todo::
+   Complete the following function in `minitorch/export.py` and pass tests marked as `task4_3`.
+
+
+                  
+Task 4.4: Serving a Model
+==================================
+
+

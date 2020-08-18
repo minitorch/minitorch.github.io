@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignment 3 - Speed" href="assignment3.html" />
+    <link rel="next" title="Matrix Multiplication" href="matrixmult.html" />
     <link rel="prev" title="Broadcasting" href="broadcasting.html" /> 
 </head>
 
@@ -91,10 +91,23 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module 3 - Efficiency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda.html">The GPU</a></li>
 <li class="toctree-l2"><a class="reference internal" href="assignment3.html">Assignment 3 - Speed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-1-matrix-mult">Task 3.1: Matrix Mult</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-2-parallelization">Task 3.2: Parallelization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-4-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onnx.html">Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn_in_js.html">Running Anywhere</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Task 4.1: Model Size and Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-2-model-compression">Task 4.2: Model Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-3-shipping-a-model">Task 4.3: Shipping a Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-4-serving-a-model">Task 4.4: Serving a Model</a></li>
 </ul>
 
             
@@ -162,18 +175,90 @@
             
   <div class="section" id="module-3-efficiency">
 <h1>Module 3 - Efficiency<a class="headerlink" href="#module-3-efficiency" title="Permalink to this headline">¶</a></h1>
-<p>(In progress)</p>
-<ul class="simple">
-<li><p>Numba parallel</p></li>
-<li><p>GPU operators (Numba)</p></li>
-<li><p>Matrix multiply and fusion</p></li>
-<li><p>Convolution</p></li>
-</ul>
+<p>(Work in progress)</p>
+<p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/module-3">https://github.com/minitorch/module-3</a> .</p>
+<p>To begin, remember to first activate your virtual environment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>And then clone your assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT3_URL</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">minitorch1</span>
+</pre></div>
+</div>
+<p>You will also need the files so be sure to pull them over
+to your new repo.</p>
+<p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Guides</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="matrixmult.html">Matrix Multiplication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda.html">The GPU</a></li>
 <li class="toctree-l1"><a class="reference internal" href="assignment3.html">Assignment 3 - Speed</a></li>
 </ul>
+</div>
+<div class="section" id="task-3-1-matrix-mult">
+<h2>Task 3.1: Matrix Mult<a class="headerlink" href="#task-3-1-matrix-mult" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with matrix multiplication.
+Be sure to read the section on
+<a class="reference internal" href="matrixmult.html"><span class="doc">Matrix Multiplication</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/scalar.py</cite> and pass tests marked as <cite>task3_1</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.functions.zipreduce">
+<code class="sig-prename descclassname">minitorch.functions.</code><code class="sig-name descname">zipreduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.functions.zipreduce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="task-3-2-parallelization">
+<h2>Task 3.2: Parallelization<a class="headerlink" href="#task-3-2-parallelization" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with Numba <cite>prange</cite>.
+Be sure to read the section on
+<a class="reference internal" href="parallel.html"><span class="doc">Parallel Computation</span></a> and review <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Revisit in <cite>minitorch/tensorops.py</cite> and pass speed tests marked as <cite>task3_2</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-3-3-cuda-operations">
+<h2>Task 3.3: CUDA Operations<a class="headerlink" href="#task-3-3-cuda-operations" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with CUDA.
+Be sure to read the section on
+<span class="xref std std-doc">gpu</span> and the Numba CUDA guide.</p>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Revisit in <cite>minitorch/cudaops.py</cite> and pass speed tests marked as <cite>task3_3</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-3-4-cuda-matrix-multiplication">
+<h2>Task 3.4: CUDA Matrix Multiplication<a class="headerlink" href="#task-3-4-cuda-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with CUDA.
+Be sure to read the section on
+<span class="xref std std-doc">gpu</span> and the Numba CUDA guide.</p>
+</div>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Revisit in <cite>minitorch/cudaops.py</cite> and pass speed tests marked as <cite>task3_4</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.zipreduce">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">zipreduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.zipreduce" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 
@@ -185,7 +270,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="assignment3.html" class="btn btn-neutral float-right" title="Assignment 3 - Speed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="matrixmult.html" class="btn btn-neutral float-right" title="Matrix Multiplication" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="broadcasting.html" class="btn btn-neutral float-left" title="Broadcasting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

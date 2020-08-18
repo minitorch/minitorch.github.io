@@ -3,12 +3,23 @@ Module 3 - Efficiency
 ========================
 
 
-(In progress)
+(Work in progress)
 
-* Numba parallel
-* GPU operators (Numba)
-* Matrix multiply and fusion
-* Convolution
+All starter code is available in https://github.com/minitorch/module-3 .
+
+To begin, remember to first activate your virtual environment.
+
+>>> source venv/bin/activate
+
+And then clone your assignment.
+
+>>> git clone {{STUDENT_ASSIGNMENT3_URL}}
+>>> cd minitorch1
+
+You will also need the files so be sure to pull them over
+to your new repo.
+
+Be sure to continue to follow the :doc:`contributing` guidelines.
 
 
 .. toctree::
@@ -16,4 +27,69 @@ Module 3 - Efficiency
    :glob:
    :caption: Guides
 
+   matrixmult
+   parallel
+   cuda
    assignment3
+
+
+
+
+Task 3.1: Matrix Mult
+==================================
+
+.. note:: This task requires basic familiarity with matrix multiplication.
+   Be sure to read the section on
+   :doc:`matrixmult`. 
+
+.. todo::
+   Complete the following function in `minitorch/scalar.py` and pass tests marked as `task3_1`.
+
+.. autofunction:: minitorch.functions.zipreduce
+
+Task 3.2: Parallelization
+==================================
+
+.. note:: This task requires basic familiarity with Numba `prange`.
+   Be sure to read the section on
+   :doc:`parallel` and review :doc:`module2`. 
+
+.. todo::
+   Revisit in `minitorch/tensorops.py` and pass speed tests marked as `task3_2`.
+
+
+.. autofunction:: minitorch.tensor_map
+.. autofunction:: minitorch.tensor_zip
+.. autofunction:: minitorch.tensor_reduce
+
+                  
+
+Task 3.3: CUDA Operations
+==================================
+
+
+.. note:: This task requires basic familiarity with CUDA.
+   Be sure to read the section on
+   :doc:`gpu` and the Numba CUDA guide. 
+
+.. todo::
+   Revisit in `minitorch/cudaops.py` and pass speed tests marked as `task3_3`.
+
+
+.. autofunction:: minitorch.cuda_tensor_map
+.. autofunction:: minitorch.cuda_tensor_zip
+.. autofunction:: minitorch.cuda_tensor_reduce
+
+
+Task 3.4: CUDA Matrix Multiplication
+=========================================
+
+.. note:: This task requires basic familiarity with CUDA.
+   Be sure to read the section on
+   :doc:`gpu` and the Numba CUDA guide. 
+
+.. todo::
+   Revisit in `minitorch/cudaops.py` and pass speed tests marked as `task3_4`.
+
+
+.. autofunction:: minitorch.zipreduce

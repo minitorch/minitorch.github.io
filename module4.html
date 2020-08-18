@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module 4 - Inference &mdash; MiniTorch 0.1 documentation</title>
+  <title>Task 4.1: Model Size and Speed &mdash; MiniTorch 0.1 documentation</title>
   
 
   
@@ -37,6 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Compression" href="compression.html" />
     <link rel="prev" title="Assignment 3 - Speed" href="assignment3.html" /> 
 </head>
 
@@ -90,9 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 4 - Inference</a><ul class="simple">
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onnx.html">Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn_in_js.html">Running Anywhere</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Task 4.1: Model Size and Speed</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#task-4-2-model-compression">Task 4.2: Model Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#task-4-3-shipping-a-model">Task 4.3: Shipping a Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#task-4-4-serving-a-model">Task 4.4: Serving a Model</a></li>
 </ul>
 
             
@@ -139,7 +144,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Module 4 - Inference</li>
+      <li>Task 4.1: Model Size and Speed</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -158,9 +163,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="module-4-inference">
-<h1>Module 4 - Inference<a class="headerlink" href="#module-4-inference" title="Permalink to this headline">¶</a></h1>
-<p>(In progress)</p>
+  <p>k========================
+Module 4 - Inference
+========================</p>
+<p>(Work In progress)</p>
 <ul class="simple">
 <li><p>Inference (no grad)</p></li>
 <li><p>GPU operators</p></li>
@@ -168,7 +174,48 @@
 <li><p>JS model</p></li>
 </ul>
 <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="compression.html">Compression</a></li>
+<li class="toctree-l1"><a class="reference internal" href="onnx.html">Export</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nn_in_js.html">Running Anywhere</a></li>
+</ul>
 </div>
+<div class="section" id="task-4-1-model-size-and-speed">
+<h1>Task 4.1: Model Size and Speed<a class="headerlink" href="#task-4-1-model-size-and-speed" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/compress.py</cite> and pass tests marked as <cite>task4_1</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-4-2-model-compression">
+<h1>Task 4.2: Model Compression<a class="headerlink" href="#task-4-2-model-compression" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with compression.
+Be sure to read the section on
+<a class="reference internal" href="compression.html"><span class="doc">Compression</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/compress.py</cite> and pass tests marked as <cite>task4_2</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-4-3-shipping-a-model">
+<h1>Task 4.3: Shipping a Model<a class="headerlink" href="#task-4-3-shipping-a-model" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with compression.
+Be sure to read the section on
+<a class="reference internal" href="onnx.html"><span class="doc">Export</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/export.py</cite> and pass tests marked as <cite>task4_3</cite>.</p>
+</div>
+</div>
+<div class="section" id="task-4-4-serving-a-model">
+<h1>Task 4.4: Serving a Model<a class="headerlink" href="#task-4-4-serving-a-model" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -178,6 +225,8 @@
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="compression.html" class="btn btn-neutral float-right" title="Compression" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="assignment3.html" class="btn btn-neutral float-left" title="Assignment 3 - Speed" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

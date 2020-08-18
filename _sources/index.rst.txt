@@ -8,7 +8,7 @@
 
 
 Welcome to MiniTorch!
-                   
+
 MiniTorch is a *teaching library* for machine learning engineers who
 wish to learn about the internal concepts underlying deep learning
 systems.  Specifically, it is a pure Python re-implementation of the
@@ -23,7 +23,7 @@ MiniTorch is strictly *DIY*. It is a not a library, per se, but a
 series of practically-oriented modules. These modules aim to provide
 the user with guidance on re-building the codebase themselves, through
 a series of incremental implementations. These implementations can be
-done with a course or by an interested learner. 
+done with a course or by an interested learner.
 
 To get started, first read :doc:`setup` and :doc:`contributing` to
 build your workspace.  Then follow through each of the modules to the
@@ -48,7 +48,6 @@ Sasha (`@srush_nlp <https://twitter.com/srush_nlp>`_)
    module2
    module3
    module4
-   references
 
 
 

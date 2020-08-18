@@ -386,15 +386,41 @@ If you want more context for how modules are used
 you may find it helpful to skip ahead and read the <a class="reference external" href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py">torch module
 tutorial</a>.</p>
 </div>
-<p>This task is to implement the core structure of the <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Module</span></code>
+<p>This task is to implement the core structure of the <a class="reference internal" href="modules.html#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Module</span></code></a>
 class.  You will implement a tree-data structure that
-stores named <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code> on each node. This datastructures  makes it
+stores named <a class="reference internal" href="modules.html#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code></a> on each node. This datastructures  makes it
 easy for users to create trees that can be <cite>walked</cite> to find all of the parameters of
 interest.</p>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <p>Complete the functions in <cite>minitorch/module.py</cite> and pass tests marked as <cite>tasks0_4</cite>.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.Module.train">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Module.eval">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Module.named_parameters">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">named_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.named_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect all the ancestor parameters of this module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Each name (key) and <code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code> (value) under this module.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="task-0-5-visualization">
 <h3>Task 0.5: Visualization<a class="headerlink" href="#task-0-5-visualization" title="Permalink to this headline">¶</a></h3>

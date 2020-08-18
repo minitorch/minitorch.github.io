@@ -181,6 +181,12 @@ it is a <cite>no-op</cite>. We will come back to its role in Module 3.</p>
 <p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass tests marked as <cite>task0_1</cite>.</p>
 </div>
 <dl class="py function">
+<dt id="minitorch.operators.mul">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">mul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x, y) = x * y\)</span></p>
+</dd></dl>
+
+<dl class="py function">
 <dt id="minitorch.operators.id">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.id" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) = x\)</span></p>
@@ -361,6 +367,32 @@ interest.</p>
 <p class="admonition-title">Todo</p>
 <p>Complete the functions in <cite>minitorch/module.py</cite> and pass tests marked as <cite>tasks0_4</cite>.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.Module.train">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Module.eval">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Module.named_parameters">
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">named_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.named_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Collect all the ancestor parameters of this module.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Each name (key) and <code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code> (value) under this module.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="task-0-5-visualization">
 <h2>Task 0.5: Visualization<a class="headerlink" href="#task-0-5-visualization" title="Permalink to this headline">¶</a></h2>

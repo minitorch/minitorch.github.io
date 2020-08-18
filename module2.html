@@ -224,6 +224,67 @@ first implement these core functions.</p>
 <p class="admonition-title">Todo</p>
 <p>Add calls in <cite>minitorch/tensor_data.py</cite> for each of the following, and pass tests marked as <cite>task2_1</cite>.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.index_to_position">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a multidimensional tensor <cite>index</cite> into a single-dimensional position in
+storage based on strides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>tuple</em>) -- index tuple of ints</p></li>
+<li><p><strong>strides</strong> (<em>tuple</em>) -- tensor strides</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>position in storage</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.count">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">count</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <cite>position</cite> to an index in the <cite>shape</cite>.
+Should ensure that enumerating position 0 ... size of a
+tensor produces every index exactly once. It
+may not be the inverse of <cite>index_to_position</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int</em>) -- current position</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) -- tensor shape</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>an index within shape</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorData.permute">
+<code class="sig-prename descclassname">minitorch.TensorData.</code><code class="sig-name descname">permute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorData.permute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permute the dimensions of the tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>order</strong> (<em>list</em>) -- a permutation of the dimensions</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a new TensorData with the same storage and a new dimension order.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">TensorData</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
 </div>
 <div class="section" id="tasks-2-2-tensor-operations">
 <h3>Tasks 2.2: Tensor Operations<a class="headerlink" href="#tasks-2-2-tensor-operations" title="Permalink to this headline">¶</a></h3>
@@ -290,7 +351,7 @@ Be sure to first carefully read the section on
 <a class="reference internal" href="tensor.html"><span class="doc">Tensor Variables</span></a>. You may also find it helpful to go back to
 Module 1 and review <cite>variables</cite> and <cite>functions</cite>.</p>
 </div>
-<p>Just as with <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code>, the <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Tensor</span></code>
+<p>Just as with <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a>, the <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Tensor</span></code>
 is a Variable that support automatic differentiation. In this task you
 will need to implement each of the backward functions and ensure that
 they pass the tests.</p>
@@ -348,6 +409,51 @@ identical.</p>
 <p class="admonition-title">Todo</p>
 <p>Add broadcasing functions to <cite>minitorch/tensor_data.py</cite> and <cite>minitorch/tensor_ops.py</cite> for each of the following, and pass tests marked as <cite>task2_4</cite>.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.shape_broadcast">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">shape_broadcast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape1</span></em>, <em class="sig-param"><span class="n">shape2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.shape_broadcast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast two shapes to create a new union shape.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>shape1</strong> (<em>tuple</em>) -- first shape</p></li>
+<li><p><strong>shape2</strong> (<em>tuple</em>) -- second shape</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>broadcasted shape</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.broadcast_index_to_position">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">strides</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an index into a position (see <cite>index_to_position</cite>),
+when the index is from a broadcasted shape. In this case
+it may be larger or with more dimensions then the <cite>shape</cite>
+given. Additional dimensions may need to be mapped to 0 or
+removeed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>tuple</em>) -- multidimensional index</p></li>
+<li><p><strong>strides</strong> (<em>tuple</em>) -- tensor strides</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) -- tensor shape</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>storage position after unbroadcasting and converting.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt id="minitorch.tensor_ops.get">
 <code class="sig-prename descclassname">minitorch.tensor_ops.</code><code class="sig-name descname">get</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">stride</span></em>, <em class="sig-param"><span class="n">shape</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_ops.get" title="Permalink to this definition">¶</a></dt>

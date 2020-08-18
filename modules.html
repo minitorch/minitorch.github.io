@@ -182,9 +182,119 @@ address.  There is nothing specific to machine learning about this
 setup, (and everything in MiniTorch could be done with modules), but they
 make life easier and code more organized.</p>
 <p>First let's define a Parameter. For now, we will just think of Parameter as a holder. It is just a special object that stores a value.</p>
+<dl class="py class">
+<dt id="minitorch.Parameter">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Parameter</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Parameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>A Parameter is a special container stored in a <a class="reference internal" href="#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a>.</p>
+<p>It is designed to hold a <a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>, but we all it to hold
+any value for testing.</p>
+</dd></dl>
+
 <p>Parameters become more interesting when they are grouped with
 <cite>Modules</cite>. Modules provide a way of storing and finding these
 parameters. Let's look at the <cite>Module</cite> class to see how this works.</p>
+<dl class="py class">
+<dt id="minitorch.Module">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Module</code><a class="headerlink" href="#minitorch.Module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modules are a recursive tree-shaped data-structure. Each module can
+store three things: 1) parameters, 2) non-parameter data, 3) other
+modules. Internally the user stores each of these directly on <cite>self</cite>,
+but the module spies under the hood to determine the type of each
+assignment.</p>
+<p>Here is an example of the simplest usage of a module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="c1"># Initialize the super-class (so it can spy.)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+          <span class="c1"># A parameter member (subclass of Parameter)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="c1"># Another member</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">25</span>
+
+        <span class="c1"># A module member (subclass of Module)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">arg</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>All subclasses must begin their initialization by calling</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This allows the module to capture any members of type <a class="reference internal" href="#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <a class="reference internal" href="#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a>
+and store them in a special dictionary.</p>
+</div>
+<p>Internally, parameters (type 1) are stored in <a class="reference internal" href="#minitorch.Module._parameters" title="minitorch.Module._parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">_parameters</span></code></a>, data (type 2)
+is stored on <cite>self</cite>, modules (type 3) are stored in <a class="reference internal" href="#minitorch.Module._modules" title="minitorch.Module._modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">_modules</span></code></a>.</p>
+<p>The main benefit of this infrastructure is that it allows us to <cite>flatten</cite> a module
+to get out all of its parameters using <a class="reference internal" href="module0.html#minitorch.Module.named_parameters" title="minitorch.Module.named_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">named_parameters()</span></code></a>.  Here is an example of
+how you can create a tree of modules and then extract the flattened parameters:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">Module2</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Module2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Module3</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Module4</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Module4</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p3</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+<span class="n">np</span> <span class="o">=</span> <span class="n">Module1</span><span class="p">()</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span>
+<span class="k">assert</span> <span class="n">np</span><span class="p">[</span><span class="s2">&quot;b.c.p3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">15</span>
+</pre></div>
+</div>
+<img alt="_images/module.png" src="_images/module.png" />
+<p>Additionally a module can have a <a class="reference internal" href="#minitorch.Module.mode" title="minitorch.Module.mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code></a> indicating how it is
+currently being used. The mode should propagate to all of its
+children. For simplicity, we only consider a train and eval mode.</p>
+<dl class="py attribute">
+<dt id="minitorch.Module._modules">
+<code class="sig-name descname">_modules</code><a class="headerlink" href="#minitorch.Module._modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage of the child modules</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of name x <a class="reference internal" href="#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="minitorch.Module._parameters">
+<code class="sig-name descname">_parameters</code><a class="headerlink" href="#minitorch.Module._parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage of the module's parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of name x <a class="reference internal" href="#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="minitorch.Module.mode">
+<code class="sig-name descname">mode</code><a class="headerlink" href="#minitorch.Module.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mode of operation, can be {&quot;train&quot;, &quot;eval&quot;}.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

@@ -2,11 +2,18 @@
 Module 4 - Inference
 ========================
 
+
 (In progress)
+
+* Inference (no grad)
+* GPU operators
+* ONNX export
+* JS model
+
 
 .. toctree::
    :maxdepth: 3
    :glob:
-   :caption: Contents
+   :caption: Guides
 
    assignment4

@@ -5,9 +5,15 @@ Module 3 - Efficiency
 
 (In progress)
 
+* Numba parallel
+* GPU operators (Numba)
+* Matrix multiply and fusion
+* Convolution
+
+
 .. toctree::
    :maxdepth: 3
    :glob:
-   :caption: Contents
+   :caption: Guides
 
    assignment3

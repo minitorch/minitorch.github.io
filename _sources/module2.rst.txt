@@ -12,7 +12,7 @@ a `for` loop over each of the terms in our network.
 This module introduces and implements a **tensor** object that will
 solve all of these problems. Tensors all of to group together many of
 these repeated operations to save python overhead and to pass off
-grouped operations to faster implementations. 
+grouped operations to faster implementations.
 
 
 All starter code is available in https://github.com/minitorch/module2 .
@@ -41,7 +41,7 @@ to your new repo.
 
 Tasks
 ********
-   
+
 
 
 Tasks 2.1: Tensor Data - Indexing
@@ -52,11 +52,11 @@ Tasks 2.1: Tensor Data - Indexing
    :doc:`tensordata`. You may also find it helpful to read
    the tutorials for using tensors/arrays in Torch or Numpy.
 
-The MiniTorch library implements the core multidimensional tensor backend as  
+The MiniTorch library implements the core multidimensional tensor backend as
 :class:`minitorch.TensorData`. This is class handles indexing, storage, transposition,
 and low-level details such as strides. Before turning to the user-facing class :class:`minitorch.Tensor`,
 first implement these core functions.
-   
+
 .. todo::
    Add calls in `minitorch/tensor_data.py` for each of the following, and pass tests marked as `task2_1`.
 
@@ -88,7 +88,7 @@ for tensors.
 
 .. automodule:: minitorch.tensor_ops
 
-.. todo:: 
+.. todo::
    Add functions in `minitorch/tensor_ops.py` and `minitorch/tensor.py` for each of the following, and pass tests marked as `task2_2`.
 
 
@@ -97,7 +97,7 @@ for tensors.
 .. autofunction:: minitorch.tensor_reduce
 
 
- 
+
 .. autofunction:: minitorch.tensor.Mul.forward
 .. autofunction:: minitorch.tensor.Sigmoid.forward
 .. autofunction:: minitorch.tensor.ReLU.forward
@@ -149,13 +149,21 @@ Tasks 2.4: Tensor Broadcasting
 .. todo::
    Add broadcasing functions to `minitorch/tensor_data.py` and `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_4`.
 
- 
+
 .. autofunction:: minitorch.shape_broadcast
 .. autofunction:: minitorch.broadcast_index_to_position
 .. autofunction:: minitorch.tensor_ops.get
 
 
 
+Task 2.5: Training
+========================
+
+If your code works you should now be able to run the tensor training script in `project/run_tensor.py`.
+
+
+.. todo::
+   Train a tensor model and add you results to the README.
 
 ..
    Tasks 2.5: Training

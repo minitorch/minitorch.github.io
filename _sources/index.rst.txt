@@ -59,13 +59,14 @@ Modules
            :align: center
 
 
-.. image:: figs/Ops/zip\ back.png
-           :align: center
-
-(Coming Soon)
 
 :doc:`module3`
 --------------
+
+.. image:: figs/gpu/threadid@3x.png
+           :align: center
+
+(Coming Soon)
 
 :doc:`module4`
 --------------
@@ -82,7 +83,7 @@ Modules
    module2
    module3
    module4
-
+   mlprimer
 
 
 Indices and tables

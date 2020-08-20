@@ -46,9 +46,6 @@ functions.  These functions are simple, but they will form the basis
 of MiniTorch. Be sure you are understand each of them  as
 some of the terminology might be new.
 
-(For now you can ignore the @jit symbol at the top of functions,
-it is a `no-op`. We will come back to its role in Module 3.)
-
 
 .. todo::
    Complete the following functions in `minitorch/operators.py` and pass tests marked as `task0_1`.

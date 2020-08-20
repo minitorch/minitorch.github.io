@@ -1,0 +1,49 @@
+Machine Learning Engineering
+=============================
+
+.. revealjs_slide::
+    :theme: white
+
+
+Slide 1
+----------
+
+
+* Here is a slide
+* Here is another slides
+
+.. code-block:: python
+   :emphasize-lines: 3,5
+    
+    def hello():
+       a = 10
+       b = 20
+       print("20")
+       c = 20
+
+Slide 2
+----------
+
+       
+.. image:: figs/Autograd/autograd1.svg
+
+Slide 2
+----------
+       
+
+.. autoclass:: minitorch.Context
+
+               
+.. math::
+   
+   x + 10
+               
+               
+
+Slide 2
+----------
+
+
+Slide 2
+----------
+

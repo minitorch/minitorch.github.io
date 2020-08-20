@@ -155,8 +155,13 @@ Tasks 2.4: Tensor Broadcasting
 
 
 .. autofunction:: minitorch.shape_broadcast
-.. autofunction:: minitorch.broadcast_index_to_position
-.. autofunction:: minitorch.tensor_ops.get
+.. autofunction:: minitorch.broadcast_index
+
+You will also need to revistit these functions to make sure that broadcast index is used. 
+                  
+.. autofunction:: minitorch.tensor_map
+.. autofunction:: minitorch.tensor_zip
+.. autofunction:: minitorch.tensor_reduce
 
 
 

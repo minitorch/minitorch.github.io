@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Matrix Multiplication &mdash; MiniTorch 0.1 documentation</title>
+  <title>Fusing Operations &mdash; MiniTorch 0.1 documentation</title>
   
 
   
@@ -91,23 +91,14 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Matrix Multiplication</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fusing Operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="cuda.html">The GPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment3.html">Assignment 3 - Speed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-1-matrix-mult">Task 3.1: Matrix Mult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-2-parallelization">Task 3.2: Parallelization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-4-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="compression.html">Compression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onnx.html">Export</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nn_in_js.html">Running Anywhere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Task 4.1: Model Size and Speed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-2-model-compression">Task 4.2: Model Compression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-3-shipping-a-model">Task 4.3: Shipping a Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-4-serving-a-model">Task 4.4: Serving a Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -156,7 +147,7 @@
         
           <li><a href="module3.html">Module 3 - Efficiency</a> &raquo;</li>
         
-      <li>Matrix Multiplication</li>
+      <li>Fusing Operations</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,9 +166,48 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="matrix-multiplication">
-<h1>Matrix Multiplication<a class="headerlink" href="#matrix-multiplication" title="Permalink to this headline">¶</a></h1>
-<p>(Work in progress)</p>
+  <div class="section" id="fusing-operations">
+<h1>Fusing Operations<a class="headerlink" href="#fusing-operations" title="Permalink to this headline">¶</a></h1>
+<p>Another approach we can use to help improve tensor computations is to
+specialize combinations of operators that are commonly used
+together. By combining operations we can eliminate unnecessary
+intermediate tensors. This is particularly helpful for saving memory.</p>
+<p>We will consider the specific example of applying a broadcasted <cite>zip</cite>
+and then a <cite>reduce</cite>. For example, consider between a tensor of size
+(3, 5, 1) and a vector of size (1, 5, 4), and then a sum over the
+middle dimension.</p>
+<img alt="_images/zip3d.png" class="align-center" src="_images/zip3d.png" />
+<img alt="_images/reduce3d.png" class="align-center" src="_images/reduce3d.png" />
+<p>Again this computation is correct, but it has two issues.
+First, it needs to create a tensor of size (3, 5, 4) in the
+intermediate step. Another more subtle problem is that the <cite>reduce</cite> operator
+may need to call <cite>save_values</cite> on this tensor, which means it stays in memory
+throughout.</p>
+<p>Ideally we could just skip computing the middle value and just
+immediately skip to the output. We can do this by writing a
+specialized Tensor function with a <cite>forward</cite> function that directly
+produces the output and a <cite>backward</cite> to produce the required gradient
+directly.</p>
+<img alt="_images/matmul.png" class="align-center" src="_images/matmul.png" />
+<p>There is a lot of ongoing work on how to do this operator fusion
+automatically in libraries like Torch and TensorFlow. However in
+for very common operators it is worth just writing these operators
+directly and speeding them up.</p>
+<p>The most common example of this is matrix multiplication (<cite>matmul</cite>).
+Matrix multiplication works exactly as above. Given a (broadcasted)
+matrices of size (3, 5, 1) and (1, 5, 4), matrix multiply zips them with
+<cite>mul</cite> and then reduces the middle dimension with sum.</p>
+<img alt="_images/matmul back.png" class="align-center" src="_images/matmul back.png" />
+<p>Writing a fast matrix multiplication operator can be used to compute the
+<cite>forward</cite> operator. Luckily to compute the <cite>backward</cite> operator we use exactly
+the same function. We can use the following
+identity from matrix calculus.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+f(M, N) &amp;=&amp;  M N \\
+f'_M(M, N) &amp;=&amp;  N grad_{out}\\
+f'_N(M, N) &amp;=&amp;  grad_{out} M
+\end{eqnarray*}\end{split}\]</div>
 </div>
 
 

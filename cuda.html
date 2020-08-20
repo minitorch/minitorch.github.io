@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>The GPU &mdash; MiniTorch 0.1 documentation</title>
+  <title>GPU Programming &mdash; MiniTorch 0.1 documentation</title>
   
 
   
@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Assignment 3 - Speed" href="assignment3.html" />
+    <link rel="next" title="Module 4 - Inference" href="module4.html" />
     <link rel="prev" title="Parallel Computation" href="parallel.html" /> 
 </head>
 
@@ -91,23 +91,18 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Matrix Multiplication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">The GPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="assignment3.html">Assignment 3 - Speed</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-1-matrix-mult">Task 3.1: Matrix Mult</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-2-parallelization">Task 3.2: Parallelization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
-<li class="toctree-l2"><a class="reference internal" href="module3.html#task-3-4-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">GPU Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started">Getting Started</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cuda">CUDA</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="compression.html">Compression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="onnx.html">Export</a></li>
-<li class="toctree-l1"><a class="reference internal" href="nn_in_js.html">Running Anywhere</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Task 4.1: Model Size and Speed</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-2-model-compression">Task 4.2: Model Compression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-3-shipping-a-model">Task 4.3: Shipping a Model</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html#task-4-4-serving-a-model">Task 4.4: Serving a Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -156,7 +151,7 @@
         
           <li><a href="module3.html">Module 3 - Efficiency</a> &raquo;</li>
         
-      <li>The GPU</li>
+      <li>GPU Programming</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -175,9 +170,130 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="the-gpu">
-<h1>The GPU<a class="headerlink" href="#the-gpu" title="Permalink to this headline">¶</a></h1>
-<p>(Work in progress)</p>
+  <div class="section" id="gpu-programming">
+<h1>GPU Programming<a class="headerlink" href="#gpu-programming" title="Permalink to this headline">¶</a></h1>
+<p>CPU parallelization and operator fusing is important, but when you
+really need efficiency and scale, specialized hardware is critical. It
+is really hard to exaggerate how important GPU computation is to deep
+learning, it makes it possible to run many models that would have been
+intractable even just several years ago.</p>
+<p>Writing code of GPUs requires a bit more work than our previous
+examples, and they have slightly different programming model than
+CPUs, which can take some time to fully understand. Luckily though
+there is a now a nice Numba library extension that lets us code for
+them directly in Python.</p>
+<div class="section" id="getting-started">
+<h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>For this assignment you will need to either work on an environment with a
+GPU or utilize Google Colab. Google Colab provides free GPUs in a python notebook
+setting. You can change the environment in the menu to request a GPU server</p>
+<p>We recommend working in your local setup but then cloning your environment
+on to this notebook</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; !git clone {GITHUB_PATH}
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; !pip install -r requirements.txt
+&gt;&gt;&gt; !pip install -e .
+</pre></div>
+</div>
+<p>You can then run your tests with the following command.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="p">{{</span><span class="n">PATH</span><span class="p">}};</span> <span class="n">git</span> <span class="n">pull</span> <span class="n">origin</span> <span class="n">master</span><span class="p">;</span> <span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pytest</span> <span class="o">-</span><span class="n">m</span> <span class="n">test3_3</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cuda">
+<h2>CUDA<a class="headerlink" href="#cuda" title="Permalink to this headline">¶</a></h2>
+<p>The programming model most commonly used for GPUs in deep learning is
+known as CUDA. CUDA is a proprietary extension to C++ for NVidia
+devices. Once you get over the terminology though, CUDA is a
+relatively straightforward extension to the mathematical code that we
+have been writing.</p>
+<p>The main mechnism is a <cite>thread</cite>. A thread can run code and store a
+small amount of state. We'll represent it as a little Robot.</p>
+<a class="reference internal image-reference" href="_images/thread&#64;3x.png"><img alt="_images/thread&#64;3x.png" class="align-center" src="_images/thread&#64;3x.png" style="width: 200px;" /></a>
+<p>Each thread has a tiny amount of fixed local memory it can manipulate.
+But is has to be basically constant size.</p>
+<a class="reference internal image-reference" href="_images/local mem&#64;3x.png"><img alt="_images/local mem&#64;3x.png" class="align-center" src="_images/local mem&#64;3x.png" style="width: 400px;" /></a>
+<p>Threads hang out togeher in <cite>blocks</cite>. Think of these like a little
+neighborhood. F
+You can determine the size of the blocks but there are a
+lot of restrictions. We'll assume there are less than 32 threads in a
+block.</p>
+<img alt="_images/block1d&#64;3x.png" class="align-center" src="_images/block1d&#64;3x.png" />
+<p>You can also have square or even cube blocks. Here is a square block
+where, the length and width of the neighborhood are the block size.</p>
+<a class="reference internal image-reference" href="_images/blockdim&#64;3x.png"><img alt="_images/blockdim&#64;3x.png" class="align-center" src="_images/blockdim&#64;3x.png" style="width: 400px;" /></a>
+<p>Each thread knows exactly where it is in the block. It gets this information
+in local variables telling it the <cite>thread index</cite>.</p>
+<img alt="_images/threadid&#64;3x.png" class="align-center" src="_images/threadid&#64;3x.png" />
+<p>Threads on the same block can also talk to each other through <cite>shared
+memory</cite>.  This is another constant chunk of memory that is associated
+with the block and can be accessed and written to by all of these threads.</p>
+<img alt="_images/sharedmem&#64;3x.png" src="_images/sharedmem&#64;3x.png" />
+<p>The blocks come together to form a <cite>grid</cite>. Each of the blocks is exactly the same size and shape
+and all have their own shared memory. Each thread also knows its position in the global grid.</p>
+<img alt="figs/gpu/blockid&#64;3x.png" src="figs/gpu/blockid&#64;3x.png" />
+<p>For instance, we can compute the global position for <cite>x, y</cite> as:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+<p>Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lock step running the same function.</p>
+<img alt="_images/map&#64;3x.png" src="_images/map&#64;3x.png" />
+<p>In NUMBA you can write the thread instructions as a single function .</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper function to call in CUDA</span>
+<span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">times</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+
+   <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+<span class="c1"># Main cuda launcher</span>
+<span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+    <span class="c1"># Create some local memory</span>
+    <span class="n">local</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Find my position.</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># Compute some information</span>
+    <span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="c1"># Compute some global value</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span><span class="p">(</span><span class="ow">in</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Note though that we cannot call this function directly. We need to <cite>launch</cite> with
+instructions for how to set up the blocks and grid. Here's how you do this with Numba</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threadsperblock</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">blockspergrid</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">my_func</span><span class="p">[</span><span class="n">blockspergrid</span><span class="p">,</span> <span class="n">threadsperblock</span><span class="p">](</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This sets up a block and grid structure similar to the map function above. the code in <cite>my_func</cite> is
+run simulaneously for all the threads in the structure. However, you have to be a bit careful as
+some of the the threads might want to compute values that are outside the memory of your data structures.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Main cuda launcher</span>
+<span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()</span>
+<span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
+    <span class="c1"># Create some local memory</span>
+    <span class="n">local</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+
+    <span class="c1"># Find my position.</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span>
+
+    <span class="c1"># Compute some information</span>
+    <span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
+
+    <span class="c1"># Guard some of the threads.</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+         <span class="c1"># Compute some global value</span>
+         <span class="n">out</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span><span class="p">(</span><span class="ow">in</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -188,7 +304,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="assignment3.html" class="btn btn-neutral float-right" title="Assignment 3 - Speed" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="module4.html" class="btn btn-neutral float-right" title="Module 4 - Inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="parallel.html" class="btn btn-neutral float-left" title="Parallel Computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

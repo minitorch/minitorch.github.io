@@ -106,6 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -202,8 +203,6 @@ and testing. We ask you to re-implement a series of basic mathematical
 functions.  These functions are simple, but they will form the basis
 of MiniTorch. Be sure you are understand each of them  as
 some of the terminology might be new.</p>
-<p>(For now you can ignore the &#64;jit symbol at the top of functions,
-it is a <cite>no-op</cite>. We will come back to its role in Module 3.)</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass tests marked as <cite>task0_1</cite>.</p>
@@ -241,14 +240,14 @@ it is a <cite>no-op</cite>. We will come back to its role in Module 3.)</p>
 <dl class="py function">
 <dt id="minitorch.operators.sigmoid">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sigmoid" title="Permalink to this definition">¶</a></dt>
-<dd><p><span class="math notranslate nohighlight">\(f(x) =  \frac{1.0}{(1.0 + e^{-a})}\)</span></p>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span></p>
 <p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Sigmoid_function">https://en.wikipedia.org/wiki/Sigmoid_function</a> .)</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.relu">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu" title="Permalink to this definition">¶</a></dt>
-<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater then y else 0</p>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater than 0, else 0</p>
 <p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks">https://en.wikipedia.org/wiki/Rectifier_(neural_networks</a>).)</p>
 </dd></dl>
 
@@ -311,7 +310,7 @@ to build up more complex mathematical operations that work on lists instead of s
 <dl class="py function">
 <dt id="minitorch.operators.negList">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use <a class="reference internal" href="#minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> negate each element in <cite>ls</cite></p>
+<dd><p>Use <a class="reference internal" href="parallel.html#module-minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> negate each element in <cite>ls</cite></p>
 </dd></dl>
 
 <dl class="py function">

@@ -2,8 +2,17 @@
 Module 3 - Efficiency
 ========================
 
+.. image:: figs/gpu/threadid@3x.png
+           :align: center
 
-(Work in progress)
+
+In addtion to helping simplify code, tensors provide a basis for
+speeding up computation. In fact, they are really the only way to
+efficiently write deep learning in a slow language like Python.
+However, nothing we have done so far really makes anything faster than
+:doc:`module0`. This module is focused on taking advantage of tensors
+to write fast code, first on standard CPUs and then using GPUs.
+
 
 All starter code is available in https://github.com/minitorch/module-3 .
 
@@ -23,49 +32,61 @@ Be sure to continue to follow the :doc:`contributing` guidelines.
 
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :glob:
    :caption: Guides
 
    matrixmult
    parallel
    cuda
-   assignment3
 
 
 Tasks
 ********
 
 
-
-Task 3.1: Matrix Mult
+Task 3.1: Matrix Multiplication
 ==================================
 
 .. note:: This task requires basic familiarity with matrix multiplication.
    Be sure to read the section on
-   :doc:`matrixmult`. 
+   :doc:`matrixmult`.
 
+Matrix multiplication is key to all of the models that we have trained so far.
+Last module, we compute matrix multiplication using broadcasting. 
+In this task we ask you to implement it directly as a function. Do your best to
+make the function efficient, but for now all that matters is that your correctly
+produce a multiply function that passes our tests. 
+
+        
 .. todo::
-   Complete the following function in `minitorch/scalar.py` and pass tests marked as `task3_1`.
+   Complete the following function in `minitorch/functions.py` and pass tests marked as `task3_1`.
 
-.. autofunction:: minitorch.functions.zipreduce
+.. autofunction:: minitorch.functions._matrix_multply
 
 Task 3.2: Parallelization
 ==================================
 
 .. note:: This task requires basic familiarity with Numba `prange`.
    Be sure to read the section on
-   :doc:`parallel` and review :doc:`module2`. 
+   :doc:`parallel` and review :doc:`module2`.
 
+
+The main backend for our codebase are the three functions `map`, `zip`, and `reduce`. If
+we can speed up these three, everything we built so far will get better. This exercise
+asks you to utilize number and the `njit` function to speed up these functions. In particular
+if you can utilize parallelization through `prange` you can get some big wins. Be careful though!
+parallelization can lead to funny bugs. 
+        
+        
 .. todo::
-   Revisit in `minitorch/tensorops.py` and pass speed tests marked as `task3_2`.
+   Complete the following in `minitorch/fast_ops.py` and pass speed tests marked as `task3_2`.
 
 
-.. autofunction:: minitorch.tensor_map
-.. autofunction:: minitorch.tensor_zip
-.. autofunction:: minitorch.tensor_reduce
+.. autofunction:: minitorch.fast_ops.tensor_map
+.. autofunction:: minitorch.fast_ops.tensor_zip
+.. autofunction:: minitorch.fast_ops.tensor_reduce
 
-                  
 
 Task 3.3: CUDA Operations
 ==================================
@@ -73,15 +94,20 @@ Task 3.3: CUDA Operations
 
 .. note:: This task requires basic familiarity with CUDA.
    Be sure to read the section on
-   :doc:`gpu` and the Numba CUDA guide. 
+   :doc:`gpu` and the Numba CUDA guide.
 
+We can do even better than parallelization if we have access to
+specialized hardware. This task ask you to build a GPU implementation
+of the backend operations. It will be hard to equal what PyTorch does, but
+if you are clever you can make these computations really fast. 
+        
 .. todo::
-   Revisit in `minitorch/cudaops.py` and pass speed tests marked as `task3_3`.
+   Revisit tensor ops and `minitorch/cuda_ops.py` and pass the tests marked as `task3_3`.
 
 
-.. autofunction:: minitorch.cuda_tensor_map
-.. autofunction:: minitorch.cuda_tensor_zip
-.. autofunction:: minitorch.cuda_tensor_reduce
+.. autofunction:: minitorch.cuda_ops.tensor_map
+.. autofunction:: minitorch.cuda_ops.tensor_zip
+.. autofunction:: minitorch.cuda_ops.tensor_reduce
 
 
 Task 3.4: CUDA Matrix Multiplication
@@ -89,10 +115,16 @@ Task 3.4: CUDA Matrix Multiplication
 
 .. note:: This task requires basic familiarity with CUDA.
    Be sure to read the section on
-   :doc:`gpu` and the Numba CUDA guide. 
+   :doc:`gpu` and the Numba CUDA guide.
 
+Finally we can combine both these approaches and implement CUDA
+`matmul`. This operation is probably the most important in all of deep
+learning and is central to making models fast. Again, we first strive for
+accuracy, but the faster you can make it the better. 
+
+        
 .. todo::
-   Revisit in `minitorch/cudaops.py` and pass speed tests marked as `task3_4`.
+   Implement  `minitorch/cuda_functions.py` and pass tests marked as `task3_4`.
 
 
-.. autofunction:: minitorch.zipreduce
+.. autofunction:: minitorch.cuda_functions.cuda_matmul

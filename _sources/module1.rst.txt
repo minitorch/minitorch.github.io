@@ -5,7 +5,7 @@
 Module 1 - Auto-Differentiation
 ================================
 
-.. image:: figs/Tensors/backprop4.png
+.. image:: figs/Autograd/backprop4.png
            :align: center
 
 

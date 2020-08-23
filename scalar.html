@@ -103,7 +103,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -174,11 +174,11 @@
             
   <div class="section" id="tracking-variables">
 <h1>Tracking Variables<a class="headerlink" href="#tracking-variables" title="Permalink to this headline">¶</a></h1>
-<p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> discussed two ways to compute derivatives.
+<p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> we discussed two ways to compute derivatives.
 <cite>Symbolic</cite> derivatives require access to the full symbolic function,
-whereas <cite>numerical</cite> derivatives requires only a black-box
+whereas <cite>numerical</cite> derivatives require only a black-box
 function. The first is precise but rigid, whereas the second is
-imprecise but more flexible. This modules implements  a third
+imprecise but more flexible. This module implements  a third
 approach known as <cite>autodifferentiation</cite> which is a tradeoff between
 these methods.</p>
 <p>We will see that autodifferentiation works by collecting information about the
@@ -199,16 +199,18 @@ for tracking computation.</p>
 <li><p>Replace all mathematical operators with proxy operators, known <a href="#id3"><span class="problematic" id="id4">`</span></a>Function`s.</p></li>
 <li><p>Augment Variables to remember what Function's were applied to them in the past.</p></li>
 </ol>
-<p>The goal will be for variables and functions to behave exactly like Python numbers such that the
-user cannot tell the difference. It's a bit hacky, but pretty neat under-the-hood. We
-literatlly just create a generic Variable class</p>
+<p>For notation, we will use capital letters in this section to refer to our new Functions and Variables to distringuish them from Python function and variables.</p>
+<p>The goal will be for these Variables and Functions to behave exactly
+like Python numbers such that the user cannot tell the
+difference. It's a bit hacky, but pretty neat under-the-hood. We
+literally just create a generic Variable class</p>
 <dl class="py class">
 <dt id="minitorch.Variable">
 <em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Variable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">history</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Variable" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py attribute">
 <dt id="minitorch.Variable.history">
 <code class="sig-name descname">history</code><a class="headerlink" href="#minitorch.Variable.history" title="Permalink to this definition">¶</a></dt>
-<dd><p>The sequence of function calls that led to this variable.</p>
+<dd><p>The function calls that created this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">History</span></code></p>
@@ -219,7 +221,7 @@ literatlly just create a generic Variable class</p>
 <dl class="py attribute">
 <dt id="minitorch.Variable.derivative">
 <code class="sig-name descname">derivative</code><a class="headerlink" href="#minitorch.Variable.derivative" title="Permalink to this definition">¶</a></dt>
-<dd><p>The derivative with respect to this variable.</p>
+<dd><p>The derivative with respect to this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>number</p>
@@ -230,7 +232,7 @@ literatlly just create a generic Variable class</p>
 <dl class="py attribute">
 <dt id="minitorch.Variable.name">
 <code class="sig-name descname">name</code><a class="headerlink" href="#minitorch.Variable.name" title="Permalink to this definition">¶</a></dt>
-<dd><p>an optional name for debugging.</p>
+<dd><p>an optional name for debugging</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
 <dd class="field-odd"><p>string</p>
@@ -249,22 +251,21 @@ produce a <a class="reference internal" href="#minitorch.Variable" title="minito
 <p>Call by <code class="xref py py-func docutils literal notranslate"><span class="pre">FunctionBase.apply()</span></code>.</p>
 </dd></dl>
 
-<p>If we have two variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we as a user <strong>cannot</strong> ever
+<p>If we have two Variables <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>, we as a user <strong>cannot</strong> ever
 change or manipulate their values directly. We <strong>must</strong> create a
 <cite>Function</cite> class that acts on them.</p>
-<p>It will be useful to think of these functions as little boxes. For
-instance a one-arg function would look like</p>
+<p>It will be useful to think of these Functions as little boxes. For
+instance a one-arg Function would look like</p>
 <img alt="_images/autograd1.png" class="align-center" src="_images/autograd1.png" />
-<p>Internally the box <cite>unwraps</cite> the content of the variable, manipulates it, and returns a new <cite>wrapped</cite>
-variable.</p>
-<p>And a two-arg function <cite>unwraps</cite> the content of both variables,
-manipulates them, and returns a new <cite>wrapped</cite> variable.</p>
+<p>Internally the box <cite>unwraps</cite> the content of the variable, manipulates it, and returns a new <cite>wrapped</cite> Variable.</p>
+<p>And a two-arg function <cite>unwraps</cite> the content of both Variables,
+manipulates them, and returns a new <cite>wrapped</cite> Variable.</p>
 <img alt="_images/autograd2.png" class="align-center" src="_images/autograd2.png" />
 </div>
 <div class="section" id="scalar-functions">
 <h2>Scalar Functions<a class="headerlink" href="#scalar-functions" title="Permalink to this headline">¶</a></h2>
 <p>To make this whole Variable/Function idea more tangible, let us focus
-on Scalar class, a sub-class of <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>. It wraps a
+on the Scalar class, a sub-class of <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>. It wraps a
 single scalar float (which is stored in the <cite>data</cite> attribute).</p>
 <dl class="py class">
 <dt id="minitorch.Scalar">
@@ -272,7 +273,7 @@ single scalar float (which is stored in the <cite>data</cite> attribute).</p>
 <dd><p>A reimplementation of scalar values for autodifferentiation
 tracking.  Scalar Variables behave as close as possible to standard
 Python numbers while also tracking the operations that led to the
-numbers creation. They can only be manipulated by
+number's creation. They can only be manipulated by
 <a class="reference internal" href="#minitorch.ScalarFunction" title="minitorch.ScalarFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarFunction</span></code></a>.</p>
 <dl class="py attribute">
 <dt id="minitorch.Scalar.data">
@@ -287,7 +288,7 @@ numbers creation. They can only be manipulated by
 
 </dd></dl>
 
-<p>This variable has a corresponding function class that
+<p>This Variable has a corresponding Function class that
 is a subclass of <code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionBase</span></code></p>
 <dl class="py class">
 <dt id="minitorch.ScalarFunction">
@@ -313,7 +314,7 @@ float-to-float.  We implement it as a class with a static method:
         <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>Or, say our function is <cite>Mul</cite>, <span class="math notranslate nohighlight">\(g(x, y) = x \times y\)</span> that multiplies x by y.</p>
+<p>Or, say the function is <cite>Mul</cite>, <span class="math notranslate nohighlight">\(g(x, y) = x \times y\)</span> that multiplies x by y.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mul</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -326,7 +327,7 @@ float-to-float.  We implement it as a class with a static method:
 <p>Within forward x and y are always numbers (not Variables). Forward is processing
 and returning the unwrapped values.</p>
 </div>
-<p>If we have a scalars <span class="math notranslate nohighlight">\(x, y\)</span>, applying these functions is done by</p>
+<p>If we have a scalars <span class="math notranslate nohighlight">\(x, y\)</span>, applying these Functions is done by</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="c1"># or</span>
@@ -334,11 +335,11 @@ and returning the unwrapped values.</p>
 </pre></div>
 </div>
 <p>Critically, we must not call <cite>forward</cite> but instead <cite>apply</cite>. This is because internally
-the apply function is converting variables to floats to call <cite>forward</cite>. It is also
+the apply method is converting variables to floats to call <cite>forward</cite>. It is also
 creating a trail of the history and creating a variable for the output. Here <cite>z</cite>, <cite>out</cite>,
-and <cite>out2</cite> are all variables.</p>
+and <cite>out2</cite> are all Variables.</p>
 <img alt="_images/chain1.png" class="align-center" src="_images/chain1.png" />
-<p>This history is representated by a chain of the previous boxes that we
+<p>This history is represented by a chain of the previous boxes that we
 led to the given point.</p>
 </div>
 <div class="section" id="syntactic-sugar">

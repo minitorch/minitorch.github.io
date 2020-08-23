@@ -97,7 +97,7 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -170,7 +170,7 @@
 <h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
 <p>Researchers often disagree on exactly what the term <cite>deep</cite> learning
 means, but one aspect that everyone agrees on is that deep
-models are quite big and complex!  Common models can include 100s of
+models are big and complex.  Common models can include 100s of
 millions of learned <cite>parameters</cite> that span over hundreds of informal
 <cite>module</cite> groups.  In order to work with such complex systems, it is
 important to have data structures that abstract away this complexity
@@ -193,10 +193,7 @@ any value for testing.</p>
 <p>Parameters become more interesting when they are grouped with
 <cite>Modules</cite>. Modules provide a way of storing and finding these
 parameters. Let's look at the <cite>Module</cite> class to see how this works.</p>
-<dl class="py class">
-<dt id="minitorch.Module">
-<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Module</code><a class="headerlink" href="#minitorch.Module" title="Permalink to this definition">¶</a></dt>
-<dd><p>Modules are a recursive tree-shaped data-structure. Each module can
+<p>Modules are a recursive tree-shaped data-structure. Each module can
 store three things: 1) parameters, 2) non-parameter data, 3) other
 modules. Internally the user stores each of these directly on <cite>self</cite>,
 but the module spies under the hood to determine the type of each
@@ -223,13 +220,13 @@ assignment.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>This allows the module to capture any members of type <a class="reference internal" href="#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code></a> or <a class="reference internal" href="#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code></a>
+<p>This allows the module to capture any members of type <code class="xref py py-class docutils literal notranslate"><span class="pre">Module</span></code> or <code class="xref py py-class docutils literal notranslate"><span class="pre">Parameter</span></code>
 and store them in a special dictionary.</p>
 </div>
-<p>Internally, parameters (type 1) are stored in <a class="reference internal" href="#minitorch.Module._parameters" title="minitorch.Module._parameters"><code class="xref py py-attr docutils literal notranslate"><span class="pre">_parameters</span></code></a>, data (type 2)
-is stored on <cite>self</cite>, modules (type 3) are stored in <a class="reference internal" href="#minitorch.Module._modules" title="minitorch.Module._modules"><code class="xref py py-attr docutils literal notranslate"><span class="pre">_modules</span></code></a>.</p>
+<p>Internally, parameters (type 1) are stored in <code class="xref py py-attr docutils literal notranslate"><span class="pre">_parameters</span></code>, data (type 2)
+is stored on <cite>self</cite>, modules (type 3) are stored in <code class="xref py py-attr docutils literal notranslate"><span class="pre">_modules</span></code>.</p>
 <p>The main benefit of this infrastructure is that it allows us to <cite>flatten</cite> a module
-to get out all of its parameters using <a class="reference internal" href="module0.html#minitorch.Module.named_parameters" title="minitorch.Module.named_parameters"><code class="xref py py-func docutils literal notranslate"><span class="pre">named_parameters()</span></code></a>.  Here is an example of
+to get out all of its parameters using <code class="xref py py-func docutils literal notranslate"><span class="pre">named_parameters()</span></code>.  Here is an example of
 how you can create a tree of modules and then extract the flattened parameters:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
@@ -257,10 +254,13 @@ how you can create a tree of modules and then extract the flattened parameters:<
 </pre></div>
 </div>
 <img alt="_images/module.png" src="_images/module.png" />
-<p>Additionally a module can have a <a class="reference internal" href="#minitorch.Module.mode" title="minitorch.Module.mode"><code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code></a> indicating how it is
+<p>Additionally a module can have a <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> indicating how it is
 currently being used. The mode should propagate to all of its
 children. For simplicity, we only consider a train and eval mode.</p>
-<dl class="py attribute">
+<dl class="py class">
+<dt id="minitorch.Module">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Module</code><a class="headerlink" href="#minitorch.Module" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py attribute">
 <dt id="minitorch.Module._modules">
 <code class="sig-name descname">_modules</code><a class="headerlink" href="#minitorch.Module._modules" title="Permalink to this definition">¶</a></dt>
 <dd><p>Storage of the child modules</p>

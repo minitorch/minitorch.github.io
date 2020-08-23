@@ -58,8 +58,8 @@ snippets of code that quickly can be run while developing.
 A clever middle ground is to use `randomized` property checking. This
 method was popularized by a library called QuickCheck
 (http://wikipedia.org/wiki/quickcheck). This approach randomly selects
-interesting inputs in order to test your codebases correctness. This
-gives you the speed of the first approach and some ofthe breadth of
+interesting inputs in order to test your codebase's correctness. This
+gives you the speed of the first approach and some of the breadth of
 the second. Another nice benefit of property checking is that it
 actually makes tests shorter and easier to write since it generates
 cases for you.

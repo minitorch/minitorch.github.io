@@ -11,7 +11,7 @@ analysis is also critical for gaining intuition.  When you are stuck,
 often the best thing to do is to just look at your data and
 outputs. Visualizing our system can't prove that it is correct, but it
 can often times lead us directly to figure out what is wrong.
-Throughout our development we will be using visualization to observe
+Throughout our development, we will be using visualization to observe
 intermediate states, training progress, outputs, and even final models.
 
 The main library we will use it called `Visdom`
@@ -22,14 +22,14 @@ what it looks like
 
 
 You can think of it as a pasteboard for sending images and graphs from
-you code to a centralized, organized place.  Nothing that magical, we
+your code to a centralized, organized place.  Nothing that magical, we
 could just output them to a directory, but we will see this as some
 nice benefits.
 
 
 To start Visdom, you need to run the following from a command-line in your virtual env (this will also work in online environment like Repl.it):
 
->>> visdom &
+>>> visdom 2> error.log &
 
 Next, open up a browser window and go to http://localhost:8097 (or whichever port it started on).
 

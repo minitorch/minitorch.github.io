@@ -102,7 +102,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -280,7 +280,7 @@ d_{out} &amp;=&amp; f'(y) \\
 f'_x(g(x)) &amp;=&amp;  g'(x) \times d_{out} \\
 \end{eqnarray*}\end{split}\]</div>
 <p>This function tells us that to compute the derivative of the first function,
-times the  derivative of the second functions with respect to the output the
+times the  derivative of the second function with respect to the output the
 first function.</p>
 <p>Here's where the perspective of the boxes comes in handy:</p>
 <img alt="_images/chain2.png" class="align-center" src="_images/chain2.png" />
@@ -300,7 +300,7 @@ d_{out} &amp;=&amp; f'(z) \\
 f'_x(g(x, y)) &amp;=&amp; d_{out} \times g_x'(x, y) \\
 f'_y(g(x, y)) &amp;=&amp; d_{out} \times g_y'(x, y)
 \end{eqnarray*}\end{split}\]</div>
-<p>This shows that the second box, does not care how many arguments the first
+<p>This shows that the second box does not care how many arguments the first
 box had, as long as it passes back <span class="math notranslate nohighlight">\(d_{out}\)</span> that is enough for the chain rule
 to work.</p>
 </div>

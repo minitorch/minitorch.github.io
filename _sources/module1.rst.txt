@@ -65,7 +65,7 @@ Task 1.1: Numerical Derivatives
 Task 1.2: Scalars
 ========================
 
-.. note:: This task requires familiarity with the :class:`minitorch.Scalar` class .
+.. note:: This task requires familiarity with the :class:`minitorch.Scalar` class.
    Be sure to first carefully read the section on
    :doc:`scalar` and to refresh your memory on `Python numerical overrides
    <https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/>`_.
@@ -77,6 +77,23 @@ Each of these requires wiring the internal python operator to the correct
 .. autofunction:: minitorch.scalar.ScalarFunction.forward
 
 
+We have built a debugging tool for you to observe the workings of your expressions to see
+how the graph is built. You can run it in `project/show_expression.py`. You can alter
+the expression at the top of the file and then run the code to create a graph in `Visdom`::
+
+
+  def expression():
+      x = minitorch.Scalar(10, name="x")
+      y = x + 10.
+      y.name = "y"
+      return y
+
+>>> python minitorch/show_expression.py
+
+.. image:: expgraph.png
+   :align: center   
+
+                  
 .. todo::
    Add calls in `minitorch/scalar.py` for each of the following and pass tests marked as `task1_2`.
 
@@ -114,8 +131,8 @@ Implement the `chain_rule` method on FunctionBase for functions of arbitrary arg
 
 
 
-Task 1.4: Backpropagate
-========================
+Task 1.4: Backpropagation
+==========================
 
 .. note::
    Be sure to first very carefully read the section on
@@ -139,8 +156,33 @@ Implement backpropagation.
 Task 1.5: Training
 ========================
 
-If your code works you should now be able to run the training script in `project/run_scalar.py`.
+If your code works you should now be able to run the training script.
+Study the code in `project/run_scalar.py` carefully to understand what
+the neural network is doing. You will also need your Module code from the
+previous assignment as well. You can modify the dataset and the module with
+the parameters at the top of the file. Start with this simple config. :: 
+
+  PTS = 50
+  DATASET = datasets.Simple(PTS, vis=True)
+  HIDDEN = 2
+  RATE = 0.5
+
+.. image:: complete.png
+
+You can then move up to something more complex, for instance. :: 
+
+  PTS = 50
+  DATASET = datasets.Xor(PTS, vis=True)
+  HIDDEN = 10
+  RATE = 0.5
+
+
+If your code is successful you should be able to fit the data like this. 
+
+
+.. image:: simple.png
+
 
 
 .. todo::
-   Train a scalar model and add you results to the README
+   Train a scalar model and add images like the ones above to your README file.

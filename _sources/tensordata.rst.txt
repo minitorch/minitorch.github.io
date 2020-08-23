@@ -15,8 +15,8 @@ paired with fast operators and autodifferentiation.
 Tensor Shapes
 **************
 
-So far we have focused on `scalars` which correspond to 0-dimension tensors.
-Next is a 1-dimensional tensors (`vector`).
+So far we have focused on `scalars`, which correspond to 0-dimension tensors.
+Next is a 1-dimensional tensor (`vector`).
 
 .. image:: figs/Tensors/vector.png
            :align: center
@@ -47,12 +47,12 @@ We access an element of the tensor by tensor index notation, `tensor[i]` for 1-d
 
 
 Typically we access tensors just like multi-dimensional arrays, but
-there are of special geometric properties that make them different.
+there are special geometric properties that make them different.
 
 First, tensors make it easy to change the order of the
 dimensions. For example, to `transpose` the dimensions of a matrix. For
-a general tensor we will refer to this operation as `permute`. Calling
-permute will arbitrarily reoder the original tensor. For example, `permute(1,0)`
+a general tensor, we will refer to this operation as `permute`. Calling
+permute will arbitrarily reorder the dimensions of the original tensor. For example, `permute(1,0)`
 
 .. image:: figs/Tensors/matrix1.png
 .. image:: figs/Tensors/matrix2.png
@@ -88,7 +88,7 @@ Tensor Strides
 Users of a Tensor library only have to be aware of the `shape` and
 `size` of a tensor. However there are important implementation details
 that we need to keep track of.  To make our code a bit cleaner, we
-will seperate out the internal `tensor data` from the user-facing
+will separate out the internal `tensor data` from the user-facing
 tensor.  In addition to the shape, :class:`minitorch.TensorData`
 manages tensor `storage` and `strides`.
 
@@ -111,7 +111,7 @@ mapping, since it is in the natural counting order (bigger strides left). The ma
            :align: center
            :width: 400px
 
-Here the strides are :math:`(5, 1)`. We read this as each column moves 1 steps in storage and each row
+Here the strides are :math:`(5, 1)`. We read this as each column moves 1 step in storage and each row
 moves 5 steps. We note though that we can have different strides for the same shape. If for instance,
 we were walking top-to-bottom, left-to-right, we would have the following stride map. 
 
@@ -131,7 +131,7 @@ started with a contiguous (5,2) matrix above and transposed it.
            :width: 400px
 
 This yields new strides and new shape, but notably *no change in the
-storage*. This is one of the super-pwers of tensors mentioned above,
+storage*. This is one of the super-powers of tensors mentioned above,
 we can often manipulate how we view the same underlying storage.
 
 
@@ -142,7 +142,7 @@ Strides naturally extend to higher-dimensional tensors.
 
 
 Finally strides can be used to implement indexing into the tensor.
-Assuming strides are :math:`(s_1, s_2)` and the user want to lookup
+Assuming strides are :math:`(s_1, s_2)` and the user wants to lookup
 `tensor[i, j]` we can directly use strides to find the storage
 position::
 

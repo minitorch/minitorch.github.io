@@ -5,9 +5,9 @@ Parallel Computation
 
 The major technique we will use to speed up computation is code
 parallelization. General parallel code can be difficult to write and
-get correct; however we can again take advantage of the fact that we
+get correct; however, we can again take advantage of the fact that we
 have structured our code around a set of core, general operations that
-are used throughout the code base.
+are used throughout the codebase.
 
 Let's start by going back to :doc:`module0` and our map operation.
 
@@ -26,16 +26,24 @@ we pass it an explict output list to map to. Here's a simple implementation, ::
 
 
 This method produces the correct result, but it's not very
-efficient. Ideally we could do something fast to take advantage of the
-fact that all the function calls are identical. Also we shouldn't have
+efficient. Ideally, we could do something fast to take advantage of the
+fact that all the function calls are identical. Also, we shouldn't have
 to loop over the list one value at a time. By definition `map` (and
 `zipWith`) can be fast and parallelized, since none of the decisions
 interact with each other.
 
-Python itself doesn't have great methods for fast math and parallelism built in, but luckily it has good libraries to help speed up numerical computation. We will utilize one of these
-libraries known as `Numba <http://numba.pydata.org/>`_
+Python itself doesn't have great methods for fast math and parallelism
+built-in, but luckily it has good libraries to help speed up numerical
+computation. We will utilize one of these libraries known as `Numba
+<http://numba.pydata.org/>`_
 
-Numba is a numberical JIT compiler for python. When a function is first created, it
+
+Numba JIT
+================================
+
+
+
+Numba is a numerical JIT compiler for python. When a function is first created, it
 converts raw Python code to faster numerical operations under the hood. We have seen an example of this library earlier when developing our mathematical operators. ::
 
   def neg(x):
@@ -62,7 +70,7 @@ this code within other code. For instance, if we want to improve our map code we
 
 Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.
 
-Furthermore if we know that the loop can be done in parallel we can speed it up further with one small change ::
+Furthermore, if we know that the loop can be done in parallel we can speed it up further with one small change ::
 
     from numba import njit, prange
     def map(fn):

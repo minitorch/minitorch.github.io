@@ -37,7 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Module 4 - Inference" href="module4.html" />
+    <link rel="next" title="Module 4 - Modules" href="module4.html" />
     <link rel="prev" title="Parallel Computation" href="parallel.html" /> 
 </head>
 
@@ -101,7 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -178,9 +178,9 @@ is really hard to exaggerate how important GPU computation is to deep
 learning, it makes it possible to run many models that would have been
 intractable even just several years ago.</p>
 <p>Writing code of GPUs requires a bit more work than our previous
-examples, and they have slightly different programming model than
+examples, and they have a slightly different programming model than
 CPUs, which can take some time to fully understand. Luckily though
-there is a now a nice Numba library extension that lets us code for
+there is now a nice Numba library extension that lets us code for
 them directly in Python.</p>
 <div class="section" id="getting-started">
 <h2>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
@@ -208,14 +208,14 @@ known as CUDA. CUDA is a proprietary extension to C++ for NVidia
 devices. Once you get over the terminology though, CUDA is a
 relatively straightforward extension to the mathematical code that we
 have been writing.</p>
-<p>The main mechnism is a <cite>thread</cite>. A thread can run code and store a
+<p>The main mechanism is a <cite>thread</cite>. A thread can run code and store a
 small amount of state. We'll represent it as a little Robot.</p>
 <a class="reference internal image-reference" href="_images/thread&#64;3x.png"><img alt="_images/thread&#64;3x.png" class="align-center" src="_images/thread&#64;3x.png" style="width: 200px;" /></a>
 <p>Each thread has a tiny amount of fixed local memory it can manipulate.
-But is has to be basically constant size.</p>
+But it has to be <em>constant</em> size.</p>
 <a class="reference internal image-reference" href="_images/local mem&#64;3x.png"><img alt="_images/local mem&#64;3x.png" class="align-center" src="_images/local mem&#64;3x.png" style="width: 400px;" /></a>
-<p>Threads hang out togeher in <cite>blocks</cite>. Think of these like a little
-neighborhood. F
+<p>Threads hang out together in <cite>blocks</cite>. Think of these like a little
+neighborhood.
 You can determine the size of the blocks but there are a
 lot of restrictions. We'll assume there are less than 32 threads in a
 block.</p>
@@ -232,13 +232,13 @@ with the block and can be accessed and written to by all of these threads.</p>
 <img alt="_images/sharedmem&#64;3x.png" src="_images/sharedmem&#64;3x.png" />
 <p>The blocks come together to form a <cite>grid</cite>. Each of the blocks is exactly the same size and shape
 and all have their own shared memory. Each thread also knows its position in the global grid.</p>
-<img alt="figs/gpu/blockid&#64;3x.png" src="figs/gpu/blockid&#64;3x.png" />
+<img alt="_images/blockid&#64;3x.png" src="_images/blockid&#64;3x.png" />
 <p>For instance, we can compute the global position for <cite>x, y</cite> as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">x</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockDim</span><span class="o">.</span><span class="n">y</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span>
 </pre></div>
 </div>
-<p>Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lock step running the same function.</p>
+<p>Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lockstep running the same function.</p>
 <img alt="_images/map&#64;3x.png" src="_images/map&#64;3x.png" />
 <p>In NUMBA you can write the thread instructions as a single function .</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Helper function to call in CUDA</span>
@@ -272,8 +272,8 @@ instructions for how to set up the blocks and grid. Here's how you do this with 
 </pre></div>
 </div>
 <p>This sets up a block and grid structure similar to the map function above. the code in <cite>my_func</cite> is
-run simulaneously for all the threads in the structure. However, you have to be a bit careful as
-some of the the threads might want to compute values that are outside the memory of your data structures.:</p>
+run simultaneously for all the threads in the structure. However, you have to be a bit careful as
+some of the threads might want to compute values that are outside the memory of your data structures.:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Main cuda launcher</span>
 <span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>
@@ -304,7 +304,7 @@ some of the the threads might want to compute values that are outside the memory
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="module4.html" class="btn btn-neutral float-right" title="Module 4 - Inference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="module4.html" class="btn btn-neutral float-right" title="Module 4 - Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="parallel.html" class="btn btn-neutral float-left" title="Parallel Computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

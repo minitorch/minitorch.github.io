@@ -102,7 +102,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -179,8 +179,8 @@ and efficient way to hold data, that becomes much more powerful when
 paired with fast operators and autodifferentiation.</p>
 <div class="section" id="tensor-shapes">
 <h2>Tensor Shapes<a class="headerlink" href="#tensor-shapes" title="Permalink to this headline">¶</a></h2>
-<p>So far we have focused on <cite>scalars</cite> which correspond to 0-dimension tensors.
-Next is a 1-dimensional tensors (<cite>vector</cite>).</p>
+<p>So far we have focused on <cite>scalars</cite>, which correspond to 0-dimension tensors.
+Next is a 1-dimensional tensor (<cite>vector</cite>).</p>
 <img alt="_images/vector.png" class="align-center" src="_images/vector.png" />
 <p>Then 2-dimensional tensors (<cite>matrix</cite>)</p>
 <img alt="_images/matrix.png" class="align-center" src="_images/matrix.png" />
@@ -194,11 +194,11 @@ The <cite>shape</cite> of the matrix is (2,5) and its size (number of squares) i
 <cite>tensor[1, 2, 0]</cite> would give this blue cube.</p>
 <img alt="_images/tensor2.png" class="align-center" src="_images/tensor2.png" />
 <p>Typically we access tensors just like multi-dimensional arrays, but
-there are of special geometric properties that make them different.</p>
+there are special geometric properties that make them different.</p>
 <p>First, tensors make it easy to change the order of the
 dimensions. For example, to <cite>transpose</cite> the dimensions of a matrix. For
-a general tensor we will refer to this operation as <cite>permute</cite>. Calling
-permute will arbitrarily reoder the original tensor. For example, <cite>permute(1,0)</cite></p>
+a general tensor, we will refer to this operation as <cite>permute</cite>. Calling
+permute will arbitrarily reorder the dimensions of the original tensor. For example, <cite>permute(1,0)</cite></p>
 <img alt="_images/matrix1.png" src="_images/matrix1.png" />
 <img alt="_images/matrix2.png" src="_images/matrix2.png" />
 <p>This makes the original matrix of size (2, 5) become (5, 2). Additionally element <cite>tensor[i, j]</cite>
@@ -223,7 +223,7 @@ data in any way, but only the external tensor wrapper.</p>
 <p>Users of a Tensor library only have to be aware of the <cite>shape</cite> and
 <cite>size</cite> of a tensor. However there are important implementation details
 that we need to keep track of.  To make our code a bit cleaner, we
-will seperate out the internal <cite>tensor data</cite> from the user-facing
+will separate out the internal <cite>tensor data</cite> from the user-facing
 tensor.  In addition to the shape, <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.TensorData</span></code>
 manages tensor <cite>storage</cite> and <cite>strides</cite>.</p>
 <ul class="simple">
@@ -239,7 +239,7 @@ to think about so it is easiest to see by example.</p></li>
 top-to-bottom to order this matrix to the storage. We call this the <cite>contiguous</cite>
 mapping, since it is in the natural counting order (bigger strides left). The mapping looks like this.</p>
 <a class="reference internal image-reference" href="_images/stride2.png"><img alt="_images/stride2.png" class="align-center" src="_images/stride2.png" style="width: 400px;" /></a>
-<p>Here the strides are <span class="math notranslate nohighlight">\((5, 1)\)</span>. We read this as each column moves 1 steps in storage and each row
+<p>Here the strides are <span class="math notranslate nohighlight">\((5, 1)\)</span>. We read this as each column moves 1 step in storage and each row
 moves 5 steps. We note though that we can have different strides for the same shape. If for instance,
 we were walking top-to-bottom, left-to-right, we would have the following stride map.</p>
 <a class="reference internal image-reference" href="_images/stride2.png"><img alt="_images/stride2.png" class="align-center" src="_images/stride2.png" style="width: 400px;" /></a>
@@ -248,12 +248,12 @@ can be quite useful as well.  The most common case would be if we
 started with a contiguous (5,2) matrix above and transposed it.</p>
 <a class="reference internal image-reference" href="_images/stride3.png"><img alt="_images/stride3.png" class="align-center" src="_images/stride3.png" style="width: 400px;" /></a>
 <p>This yields new strides and new shape, but notably <em>no change in the
-storage</em>. This is one of the super-pwers of tensors mentioned above,
+storage</em>. This is one of the super-powers of tensors mentioned above,
 we can often manipulate how we view the same underlying storage.</p>
 <p>Strides naturally extend to higher-dimensional tensors.</p>
 <img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
 <p>Finally strides can be used to implement indexing into the tensor.
-Assuming strides are <span class="math notranslate nohighlight">\((s_1, s_2)\)</span> and the user want to lookup
+Assuming strides are <span class="math notranslate nohighlight">\((s_1, s_2)\)</span> and the user wants to lookup
 <cite>tensor[i, j]</cite> we can directly use strides to find the storage
 position:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">storage</span><span class="p">[</span><span class="n">s1</span> <span class="o">*</span> <span class="n">i</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">*</span> <span class="n">j</span><span class="p">]</span>

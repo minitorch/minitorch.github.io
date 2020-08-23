@@ -10,9 +10,9 @@ learning, it makes it possible to run many models that would have been
 intractable even just several years ago.
 
 Writing code of GPUs requires a bit more work than our previous
-examples, and they have slightly different programming model than
+examples, and they have a slightly different programming model than
 CPUs, which can take some time to fully understand. Luckily though
-there is a now a nice Numba library extension that lets us code for
+there is now a nice Numba library extension that lets us code for
 them directly in Python.
 
 
@@ -48,7 +48,7 @@ devices. Once you get over the terminology though, CUDA is a
 relatively straightforward extension to the mathematical code that we
 have been writing.
 
-The main mechnism is a `thread`. A thread can run code and store a
+The main mechanism is a `thread`. A thread can run code and store a
 small amount of state. We'll represent it as a little Robot.
 
 .. image:: figs/gpu/thread@3x.png
@@ -56,15 +56,15 @@ small amount of state. We'll represent it as a little Robot.
            :width: 200px
 
 Each thread has a tiny amount of fixed local memory it can manipulate.
-But is has to be basically constant size.
+But it has to be *constant* size.
 
 .. image:: figs/gpu/local\ mem@3x.png
            :align: center
            :width: 400px
                    
                    
-Threads hang out togeher in `blocks`. Think of these like a little
-neighborhood. F
+Threads hang out together in `blocks`. Think of these like a little
+neighborhood. 
 You can determine the size of the blocks but there are a
 lot of restrictions. We'll assume there are less than 32 threads in a
 block.
@@ -108,7 +108,7 @@ For instance, we can compute the global position for `x, y` as::
   
            
 
-Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lock step running the same function.
+Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lockstep running the same function.
 
 
 .. image:: figs/gpu/map@3x.png
@@ -149,8 +149,8 @@ instructions for how to set up the blocks and grid. Here's how you do this with 
 
 
 This sets up a block and grid structure similar to the map function above. the code in `my_func` is
-run simulaneously for all the threads in the structure. However, you have to be a bit careful as
-some of the the threads might want to compute values that are outside the memory of your data structures.::
+run simultaneously for all the threads in the structure. However, you have to be a bit careful as
+some of the threads might want to compute values that are outside the memory of your data structures.::
 
 
     # Main cuda launcher

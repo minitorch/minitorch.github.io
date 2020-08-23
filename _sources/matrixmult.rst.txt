@@ -27,11 +27,10 @@ may need to call `save_values` on this tensor, which means it stays in memory
 throughout.
 
 
-Ideally we could just skip computing the middle value and just
+Ideally, we could just skip computing the middle value and just
 immediately skip to the output. We can do this by writing a
-specialized Tensor function with a `forward` function that directly
-produces the output and a `backward` to produce the required gradient
-directly.
+specialized tensor Function with a `forward` function that directly
+produces the output and a `backward` to produce the required gradient.
 
 
 .. image:: figs/Ops/matmul.png
@@ -39,9 +38,8 @@ directly.
 
 
 There is a lot of ongoing work on how to do this operator fusion
-automatically in libraries like Torch and TensorFlow. However in
-for very common operators it is worth just writing these operators
-directly and speeding them up.
+automatically. However, for very common operators it is worth just
+writing these operators directly and speeding them up.
 
 The most common example of this is matrix multiplication (`matmul`).
 Matrix multiplication works exactly as above. Given a (broadcasted)

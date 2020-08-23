@@ -87,7 +87,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Workspace Setup</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#online-ide">Online IDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#hacker-mode">Hacker Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#standard-setup">Standard Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -95,7 +95,8 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -169,13 +170,11 @@
 <p>MiniTorch can be run entirely on an online IDE for simplicity.
 Each assignment is configured to work directly with the Repl.it
 environment which you can setup through the Github page. You will
-need to signup for a <cite>Repl.it &lt;Repl.it&gt;</cite> account and create an environment repo through
-the link.</p>
-<p>For each module, you will need to rerun the following commands to get
-setup.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">txt</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">Ue</span> <span class="o">.</span>
+need to signup for a <a class="reference external" href="Repl.it">Repl.it</a> account and create an environment repo through
+the link. Dependencies and the environment should be setup automatically. Tests
+will run with the play button.</p>
+<p>For training and visualization, you may need to rerun the following commands.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p>Make sure that everything is installed by running <cite>python</cite> and then checking:</p>
@@ -183,9 +182,9 @@ setup.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="hacker-mode">
-<h2>Hacker Mode<a class="headerlink" href="#hacker-mode" title="Permalink to this headline">¶</a></h2>
-<p>Alternatively you can set things up in a standard Python environment.</p>
+<div class="section" id="standard-setup">
+<h2>Standard Setup<a class="headerlink" href="#standard-setup" title="Permalink to this headline">¶</a></h2>
+<p>Alternatively, you can set things up in a standard Python environment.</p>
 <p>MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your
 system. To check run either:</p>
@@ -199,7 +198,7 @@ for all modules.</p>
 </pre></div>
 </div>
 <p>Within this directory you need to setup a <cite>virtual
-environment</cite>. The virtual environment you can install packages that
+environment</cite>. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
 system. (See <a class="reference external" href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a> for further
 instructions on how this works.)</p>

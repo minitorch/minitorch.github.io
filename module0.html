@@ -105,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -181,7 +181,7 @@ modules. It also includes some basic mathematical foundations.
 Finally it will start to build up some of the
 infrastructure for MiniTorch itself.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-0">https://github.com/minitorch/Module-0</a> .
-Before beginning this assignment be to setup your directories following <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a> and
+Before beginning this assignment be sure to setup your directories following <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a> and
 read <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to understand how the code is organized.</p>
 <p>Each module has a set of <cite>Guides</cite> to help with the tasks. We recommend
 working through the assignment and utilizing the Guides suggested for
@@ -201,7 +201,7 @@ each task.</p>
 <p>This task is designed to help you get comfortable with style checking
 and testing. We ask you to re-implement a series of basic mathematical
 functions.  These functions are simple, but they will form the basis
-of MiniTorch. Be sure you are understand each of them  as
+of MiniTorch. Be sure you  understand each of them as
 some of the terminology might be new.</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
@@ -234,7 +234,7 @@ some of the terminology might be new.</p>
 <dl class="py function">
 <dt id="minitorch.operators.lt">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">lt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.lt" title="Permalink to this definition">¶</a></dt>
-<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> 1.0 if x is greater then y else 0.0</p>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> 1.0 if x is greater than y else 0.0</p>
 </dd></dl>
 
 <dl class="py function">
@@ -242,19 +242,22 @@ some of the terminology might be new.</p>
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span></p>
 <p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Sigmoid_function">https://en.wikipedia.org/wiki/Sigmoid_function</a> .)</p>
+<p>Calculate as</p>
+<p><span class="math notranslate nohighlight">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span> if x &gt;=0 else <span class="math notranslate nohighlight">\(\frac{e^x}{(1.0 + e^{x})}\)</span></p>
+<p>for stability.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.relu">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater than 0, else 0</p>
-<p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks">https://en.wikipedia.org/wiki/Rectifier_(neural_networks</a>).)</p>
+<p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">https://en.wikipedia.org/wiki/Rectifier_(neural_networks)</a> .)</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.relu_back">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu_back" title="Permalink to this definition">¶</a></dt>
-<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> y if x is greater then 0 else 0</p>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> y if x is greater than 0 else 0</p>
 </dd></dl>
 
 </div>
@@ -266,12 +269,12 @@ some of the terminology might be new.</p>
 tests. Be sure to first carefully read the guide on
 <a class="reference internal" href="property_testing.html"><span class="doc">Property Testing</span></a>, and consult the <a class="reference external" href="https://hypothesis.readthedocs.io/">Hypothesis</a> documentation.</p>
 </div>
-<p>Implement a property tests for your operators from Task 0.1. These
+<p>Implement property tests for your operators from Task 0.1. These
 tests should ensure that your functions not only work, but obey
 high-level mathematical properties for any input.</p>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
-<p>Complete the following functions in <cite>tests/test_operators.py</cite> and pass tests marked as <cite>task0_2</cite>.</p>
+<p>Complete the test functions in <cite>tests/test_operators.py</cite>  marked as <cite>task0_2</cite>.</p>
 </div>
 </div>
 <div class="section" id="task-0-3-functional-python">
@@ -293,7 +296,7 @@ to build up more complex mathematical operations that work on lists instead of s
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Higher-order map.</p>
 <img alt="_images/maplist.png" src="_images/maplist.png" />
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fn</strong> (<em>one-arg function</em>) -- process one value</p>
@@ -310,7 +313,7 @@ to build up more complex mathematical operations that work on lists instead of s
 <dl class="py function">
 <dt id="minitorch.operators.negList">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use <a class="reference internal" href="parallel.html#module-minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> negate each element in <cite>ls</cite></p>
+<dd><p>Use <a class="reference internal" href="#minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> to negate each element in <cite>ls</cite></p>
 </dd></dl>
 
 <dl class="py function">
@@ -318,19 +321,19 @@ to build up more complex mathematical operations that work on lists instead of s
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">zipWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.zipWith" title="Permalink to this definition">¶</a></dt>
 <dd><p>Higher-order zipwith (or map2).</p>
 <img alt="_images/ziplist.png" src="_images/ziplist.png" />
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>fn</strong> (<em>two-arg function</em>) -- combine two values</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>takes two equally sized lists <cite>ls1</cite> and <cite>ls2</cite>, produce a new list by</p>
+<dd class="field-even"><p>takes two equally sized lists <cite>ls1</cite> and <cite>ls2</cite>, produce a new list by
+applying fn(x, y) one each pair of elements.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>function</p>
 </dd>
 </dl>
-<p>applying fn(x, y) one each pair of elements.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -387,10 +390,10 @@ tutorial</a>.</p>
 </div>
 <p>This task is to implement the core structure of the <a class="reference internal" href="modules.html#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Module</span></code></a>
 class.  You will implement a tree-data structure that
-stores named <a class="reference internal" href="modules.html#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code></a> on each node. This datastructures  makes it
+stores named <a class="reference internal" href="modules.html#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code></a> on each node. This datastructure makes it
 easy for users to create trees that can be <cite>walked</cite> to find all of the parameters of
 interest.</p>
-<div class="admonition-todo admonition" id="id4">
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <p>Complete the functions in <cite>minitorch/module.py</cite> and pass tests marked as <cite>tasks0_4</cite>.</p>
 </div>
@@ -403,7 +406,7 @@ interest.</p>
 <dl class="py function">
 <dt id="minitorch.Module.eval">
 <code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.eval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
+<dd><p>Set the mode of this module and all descendent modules to <cite>eval</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -430,7 +433,7 @@ as the documentation for <a class="reference external" href="https://github.com/
 </div>
 <p>For the first few assignments we will be using a set of datasets
 that are implemented in <cite>project/datasets.py</cite>. These datasets are
-simple 2D point classification datasets (see <cite>TensorFlow Playground &lt;https://playground.tensorflow.org/</cite>
+simple 2D point classification datasets (see <a class="reference external" href="https://playground.tensorflow.org/">TensorFlow Playground</a>
 for similar examples.) Each of them can be added to the visualization using</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">project.datasets</span> <span class="kn">import</span> <span class="n">Simple</span><span class="p">,</span> <span class="n">Split</span><span class="p">,</span> <span class="n">Xor</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
@@ -445,10 +448,10 @@ for similar examples.) Each of them can be added to the visualization using</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">return</span> <span class="mf">0.0</span>
 
-<span class="n">Split</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="s2">&quot;initial&quot;</span><span class="p">)</span>
+<span class="n">Split</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="s2">&quot;initial&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">classify</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
 <p>Start a visdom server and print an image of the dataset. Hand-create classifiers that
 split each of the datasets into the correct colors. Display your images on the README file of the

@@ -98,7 +98,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -192,9 +192,9 @@ f'_y(x, y) &amp;=&amp; 2\\
 \end{eqnarray*}\end{split}\]</div>
 <p>We will refer to these as the <cite>symbolic</cite> derivatives of the
 function. When available symbolic derivatives are ideal.
-They tells us everything we need to know about the derivative of the
+They tell us everything we need to know about the derivative of the
 function.</p>
-<p>Visually, derivative functions correspond to tangeant lines. If we start
+<p>Visually, derivative functions correspond to tangent lines. If we start
 with a function of the form,</p>
 <div class="math notranslate nohighlight">
 \[f(x) = x^2\]</div>
@@ -205,7 +205,7 @@ with a function of the form,</p>
 <img alt="_images/tangent.png" class="align-center" src="_images/tangent.png" />
 <p>This visual representation informally motivates an alternative
 approach to compute a <cite>numerical</cite> derivative. Recall one definition of the
-derivative is this slope as we approach as tangent line.</p>
+derivative is this slope as we approach as a tangent line.</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
 \[f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x + \epsilon) - f(x)}{\epsilon}\]</div>
@@ -246,7 +246,7 @@ approximate the derivative for any black-box function.</p>
 </div>
 <p>We can then call central difference to immediately approximate the derivative of the function.</p>
 <p>We will see that this approach is not a great way to train machine learning models, but that
-it will provides a generic alternative approach to check that derivative functions are correct, in effect free <a class="reference internal" href="property_testing.html"><span class="doc">Property Testing</span></a>.</p>
+it will provide a generic alternative approach to check that derivative functions are correct, in effect free <a class="reference internal" href="property_testing.html"><span class="doc">Property Testing</span></a>.</p>
 </div>
 
 

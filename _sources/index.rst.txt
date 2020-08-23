@@ -19,7 +19,7 @@ developed for the course `Machine Learning Engineering` at Cornell
 Tech.
 
 
-MiniTorch is strictly *DIY*. It is a not a library, per se, but a
+MiniTorch is strictly *DIY*. It is not a library, per se, but a
 series of practically-oriented modules. These modules aim to provide
 the user with guidance on re-building the codebase themselves, through
 a series of incremental implementations. These implementations can be

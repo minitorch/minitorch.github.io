@@ -92,12 +92,15 @@
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Parallel Computation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parallel Computation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numba-jit">Numba JIT</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -170,13 +173,13 @@
 <h1>Parallel Computation<a class="headerlink" href="#parallel-computation" title="Permalink to this headline">¶</a></h1>
 <p>The major technique we will use to speed up computation is code
 parallelization. General parallel code can be difficult to write and
-get correct; however we can again take advantage of the fact that we
+get correct; however, we can again take advantage of the fact that we
 have structured our code around a set of core, general operations that
-are used throughout the code base.</p>
+are used throughout the codebase.</p>
 <p>Let's start by going back to <a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a> and our map operation.</p>
 <span class="target" id="module-minitorch.operators.map"></span><p>Higher-order map.</p>
 <img alt="_images/maplist.png" src="_images/maplist.png" />
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">param fn</dt>
 <dd class="field-odd"><p>process one value</p>
@@ -201,14 +204,17 @@ we pass it an explict output list to map to. Here's a simple implementation,</p>
 </pre></div>
 </div>
 <p>This method produces the correct result, but it's not very
-efficient. Ideally we could do something fast to take advantage of the
-fact that all the function calls are identical. Also we shouldn't have
+efficient. Ideally, we could do something fast to take advantage of the
+fact that all the function calls are identical. Also, we shouldn't have
 to loop over the list one value at a time. By definition <cite>map</cite> (and
 <cite>zipWith</cite>) can be fast and parallelized, since none of the decisions
 interact with each other.</p>
-<p>Python itself doesn't have great methods for fast math and parallelism built in, but luckily it has good libraries to help speed up numerical computation. We will utilize one of these
-libraries known as <a class="reference external" href="http://numba.pydata.org/">Numba</a></p>
-<p>Numba is a numberical JIT compiler for python. When a function is first created, it
+<p>Python itself doesn't have great methods for fast math and parallelism
+built-in, but luckily it has good libraries to help speed up numerical
+computation. We will utilize one of these libraries known as <a class="reference external" href="http://numba.pydata.org/">Numba</a></p>
+<div class="section" id="numba-jit">
+<h2>Numba JIT<a class="headerlink" href="#numba-jit" title="Permalink to this headline">¶</a></h2>
+<p>Numba is a numerical JIT compiler for python. When a function is first created, it
 converts raw Python code to faster numerical operations under the hood. We have seen an example of this library earlier when developing our mathematical operators.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
@@ -232,7 +238,7 @@ this code within other code. For instance, if we want to improve our map code we
 </pre></div>
 </div>
 <p>Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.</p>
-<p>Furthermore if we know that the loop can be done in parallel we can speed it up further with one small change</p>
+<p>Furthermore, if we know that the loop can be done in parallel we can speed it up further with one small change</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
 <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">njit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
@@ -254,6 +260,7 @@ For instance, when implementing <cite>reduce</cite> you have to be careful to mi
 non-parallel loops.</p>
 </div>
 <p>For full details on how Numba works see the <a class="reference external" href="https://numba.pydata.org/numba-doc/latest/user/parallel.html">Parallel tutorial</a>.</p>
+</div>
 </div>
 
 

@@ -98,7 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -173,7 +173,7 @@
 our mathematical operations on top of this framework.
 The goal is to make this feel
 simple and intuitive to users of the library. We can break
-these operations down in unary transfomations.</p>
+these operations down in unary transformations.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a) Return a new tensor with the same shape as `tensor_a` where</span>
 <span class="c1"># each position is the log/exp/negative of the position in `tensor_a`</span>
 <span class="n">tensor_a</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
@@ -182,7 +182,7 @@ these operations down in unary transfomations.</p>
 <span class="o">...</span>
 </pre></div>
 </div>
-<p>Binary transfomations</p>
+<p>Binary transformations</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># b) Return a new tensor where</span>
 <span class="c1"># each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`</span>
 <span class="n">tensor_a</span> <span class="o">+</span> <span class="n">tensor_b</span>
@@ -207,7 +207,7 @@ we implemented in <a class="reference internal" href="module0.html"><span class=
 <li><p>Operation a / map: These operations all just touch each of the
 positions of the tensor individually. They don't need to deal with
 other positions or know anything about the shape or size of the tensor.
-We can view these operations as applying the following transfomation.</p></li>
+We can view these operations as applying the following transformation.</p></li>
 </ul>
 <img alt="_images/map.png" class="align-center" src="_images/map.png" />
 <ul class="simple">

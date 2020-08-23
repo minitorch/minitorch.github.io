@@ -1,56 +1,53 @@
 ========================
-Module 4 - Inference
+Module 4 - Modules
 ========================
 
 
 (Work In progress)
 
-* Inference (no grad)
-* GPU operators
-* ONNX export
-* JS model
+* Pooling
+* Convolution
+* Training 
+
 
 .. toctree::
    :maxdepth: 3
    :glob:
    :caption: Guides
 
-   compression
-   onnx
-   nn_in_js
-   assignment4
+   pooling
+   convolution
+   training
 
 Tasks
 ********
 
-Task 4.1: Model Size and Speed
+Task 4.1: Pooling
 ==================================
-
-
-.. todo::
-   Complete the following function in `minitorch/compress.py` and pass tests marked as `task4_1`.
-
-Task 4.2: Model Compression
-==================================
-
-.. note:: This task requires basic familiarity with compression.
+.. note:: This task requires basic familiarity with convolution.
    Be sure to read the section on
-   :doc:`compression`.
+   :doc:`pooling`.
 
 .. todo::
-   Complete the following function in `minitorch/compress.py` and pass tests marked as `task4_2`.
+   Complete the following functions in `minitorch/nn.py` and pass tests marked as `task4_1`.
 
-
-
-Task 4.3: Shipping a Model
+Task 4.2: Convolution
 ==================================
 
-.. note:: This task requires basic familiarity with compression.
+.. note:: This task requires basic familiarity with convolution.
    Be sure to read the section on
-   :doc:`onnx`.
+   :doc:`convolution`.
 
 .. todo::
-   Complete the following function in `minitorch/export.py` and pass tests marked as `task4_3`.
+   Complete the following function in `minitorch/nn.py` and pass tests marked as `task4_2`.
+
+
+
+Task 4.3: Dropout
+==================================
+
+.. todo::
+   Complete the following function in `minitorch/nn.py` and pass tests marked as `task4_3`.
 
 
 

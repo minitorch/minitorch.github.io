@@ -97,7 +97,8 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -167,7 +168,7 @@
 <h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
 <p>Each MiniTorch assignment is structured to mimic the experience of
 contributing to a real open-source project. As such we will require
-specific contributer requirements. This doc lays out the expectations
+specific contributor requirements. This doc lays out the expectations
 of your code. For each assignment, there will be a script <cite>run_test.py</cite>
 that will check each of the necessary properties before submitting.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">run_tests</span><span class="o">.</span><span class="n">py</span>
@@ -183,7 +184,7 @@ that will check each of the necessary properties before submitting.</p>
 and clean to make it easier to debug, optimize, and document. To help
 with this process, we will utilize required formatting on all the
 assignments. Style checked in <cite>run_tests.py 0</cite> automatically.</p>
-<p>Fixing style bugs can be an annoying process. However there is a nice trick
+<p>Fixing style bugs can be an annoying process. However, there is a nice trick
 to fix most formatting issues automatically. We use <cite>black</cite> to automatically reformat
 all of your code to fit most of the requirements. (See <a class="reference external" href="https://github.com/psf/black">https://github.com/psf/black</a> for
 more details).</p>
@@ -240,7 +241,7 @@ Functions should have docstrings of the following form (known as Google docstyle
 <h2>Continuous Integration (CI)<a class="headerlink" href="#continuous-integration-ci" title="Permalink to this headline">¶</a></h2>
 <p>In addition to local testing, the project is setup such that on each code push,
 the tests are automatically run and checked on the server. You will be able to see
-how well you are doing on the assignment by commiting your code, pushing to the server,
+how well you are doing on the assignment by committing your code, pushing to the server,
 and then logging in to github. This process takes several minutes, but it is an easy way to
 keep track of your progress as you go.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">am</span> <span class="s2">&quot;First commit&quot;</span><span class="p">;</span> <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>

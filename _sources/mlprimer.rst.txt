@@ -6,41 +6,41 @@ ML Primer
 
 .. image:: figs/Graphs/data@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/sector1@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/sector2@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
                    
 .. image:: figs/Graphs/sector3@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
                    
 .. image:: figs/Graphs/sigmoid.png
            :align: center
-           :width: 400px
+           :width: 300px
 
 .. image:: figs/Graphs/sigmoid2.png
            :align: center
-           :width: 400px
+           :width: 300px
                    
 .. image:: figs/Graphs/model1.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/model2@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/incorrect@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/pt1@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/pt2@3x.png
            :align: center
-           :width: 400px
+           :width: 300px
 .. image:: figs/Graphs/pt3@3x.png
            :align: center
-           :width: 400px
+           :width: 300px

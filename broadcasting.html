@@ -98,7 +98,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -189,7 +189,7 @@ annoying, and more importantly inefficient.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><cite>Broadcasting</cite> is a protocol that lets us intrepret the top operation as implying
+<p><cite>Broadcasting</cite> is a protocol that lets us interpret the top operation as implying
 the bottom one automatically. That is inside <cite>zip</cite> we pretend that 10 is a vector of
 shape (3,) when it is zipped with a vector of size 3. Again, we never actually create this tensor. This is just an interpretation.</p>
 <p>This gives us our first rule of broadcasting:</p>
@@ -197,14 +197,14 @@ shape (3,) when it is zipped with a vector of size 3. Again, we never actually c
 <p class="admonition-title">Note</p>
 <p><strong>Rule 1</strong>: Any dimension of size 1, can be zipped with dimensions of size n &gt; 1 by assuming the dimension  is copied n times.</p>
 </div>
-<p>Now let's try apply this approach to a matrix of shape (4, 3).</p>
+<p>Now let's apply this approach to a matrix of shape (4, 3).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>Here we are trying to zip a matrix (2-D) of shape (4, 3) with a vector
 (1-D) of shape (1,). Here we are not just off on the shape, but also on
 the number of dimensions.</p>
-<p>However, recall that adding extra dimension of shape-1 doesn't change
+<p>However, recall that adding an extra dimension of shape-1 doesn't change
 the size of the tensor. Therefore we can allow our protocol to add
 these in.  Here if we add an empty dimension and then apply rule 1
 twice we can interpret this statement as an efficient version of</p>

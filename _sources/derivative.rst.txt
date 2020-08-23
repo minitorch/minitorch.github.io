@@ -23,8 +23,8 @@ We will use the Lagrange notation where the derivative of a one-argument functio
     f'(x) = 2 \times \cos(2 x)
 
 
-When working with two argument functions, for example, 
-    
+When working with two argument functions, for example,
+
 .. math ::
 
    f(x, y) = x + 2 y
@@ -38,14 +38,14 @@ We use subscripts to indicate which arguments a derivative applies to,
    f'_x(x, y) &=& 1\\
    f'_y(x, y) &=& 2\\
    \end{eqnarray*}
-    
+
 We will refer to these as the `symbolic` derivatives of the
 function. When available symbolic derivatives are ideal.
-They tells us everything we need to know about the derivative of the
+They tell us everything we need to know about the derivative of the
 function.
 
-Visually, derivative functions correspond to tangeant lines. If we start
-with a function of the form, 
+Visually, derivative functions correspond to tangent lines. If we start
+with a function of the form,
 
 .. math ::
 
@@ -54,7 +54,7 @@ with a function of the form,
 
 .. image:: figs/Grad/function.png
            :align: center
-   
+
 Then its derivative is the slope of the tangeant line.
 
 .. math ::
@@ -64,17 +64,17 @@ Then its derivative is the slope of the tangeant line.
 .. image:: figs/Grad/tangent.png
            :align: center
 
-   
+
 This visual representation informally motivates an alternative
 approach to compute a `numerical` derivative. Recall one definition of the
-derivative is this slope as we approach as tangent line.
+derivative is this slope as we approach as a tangent line.
 
     .. math ::
 
         f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x + \epsilon) - f(x)}{\epsilon}
 
 
-This means that if we set :math:`epsilon` to be very small constant, it 
+This means that if we set :math:`epsilon` to be very small constant, it
 gives  an approximation of the derivative.
 
     .. math ::
@@ -127,5 +127,4 @@ Assume we are just given an arbitrary python function ::
 We can then call central difference to immediately approximate the derivative of the function.
 
 We will see that this approach is not a great way to train machine learning models, but that
-it will provides a generic alternative approach to check that derivative functions are correct, in effect free :doc:`property_testing`.
-
+it will provide a generic alternative approach to check that derivative functions are correct, in effect free :doc:`property_testing`.

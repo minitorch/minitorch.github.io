@@ -97,7 +97,8 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -172,18 +173,18 @@ analysis is also critical for gaining intuition.  When you are stuck,
 often the best thing to do is to just look at your data and
 outputs. Visualizing our system can't prove that it is correct, but it
 can often times lead us directly to figure out what is wrong.
-Throughout our development we will be using visualization to observe
+Throughout our development, we will be using visualization to observe
 intermediate states, training progress, outputs, and even final models.</p>
 <p>The main library we will use it called <cite>Visdom</cite>
 (<a class="reference external" href="https://github.com/facebookresearch/visdom">https://github.com/facebookresearch/visdom</a>). Here's an example of
 what it looks like</p>
 <img alt="_images/visdom.png" src="_images/visdom.png" />
 <p>You can think of it as a pasteboard for sending images and graphs from
-you code to a centralized, organized place.  Nothing that magical, we
+your code to a centralized, organized place.  Nothing that magical, we
 could just output them to a directory, but we will see this as some
 nice benefits.</p>
 <p>To start Visdom, you need to run the following from a command-line in your virtual env (this will also work in online environment like Repl.it):</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visdom</span> <span class="o">&amp;</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visdom</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">error</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
 </pre></div>
 </div>
 <p>Next, open up a browser window and go to <a class="reference external" href="http://localhost:8097">http://localhost:8097</a> (or whichever port it started on).</p>

@@ -7,14 +7,13 @@ Module 2 - Tensors
 
 
 We now have a fully developed autodifferentiation system built around
-scalars. This system is correct, but it very inefficient. All numbers
-are wrap with an object, and each operation requires storing a graph of
-all the values that we had previously created. Training requires
+scalars. This system is correct, but you saw during training that it
+is inefficient. All scalar numbers require building an object, and each operation requires storing a graph of all the values that we had previously created. Training requires
 repeating these operations, and computing modules such as linear required
 a `for` loop over each of the terms in our network.
 
 This module introduces and implements a **tensor** object that will
-solve all of these problems. Tensors all of to group together many of
+solve these problems. Tensors group together many of
 these repeated operations to save python overhead and to pass off
 grouped operations to faster implementations.
 
@@ -81,7 +80,7 @@ Tasks 2.2: Tensor Operations
    Module 0 and make sure you understand higher-order functions and currying.
 
 
-The tensor operations will to apply high-level, higher-order
+The tensor operations will apply high-level, higher-order
 operations to all values in a tensor simultaneously. In particularly
 allowing you to map, zip, and reduce tensor data objects together. On
 top of this foundation we can build up a similar class to the Tensor functions
@@ -92,6 +91,31 @@ for tensors.
 
 .. automodule:: minitorch.tensor_ops
 
+
+We have built a debugging tool for you to observe the workings of your expressions to see
+how the graph is built. You can run it in `project/show_expression.py`. You can alter
+the expression at the top of the file and then run the code to create a graph in `Visdom`::
+
+
+  ## Run your tensor expression here
+  def expression():
+     x = minitorch.tensor([10, 12], (2,))
+     x.requires_grad_(True)
+     x.name = "x"
+   
+     z = minitorch.tensor([10, 12], (2,))
+     z.requires_grad_(True)
+     z.name = "z"
+
+     y = x * z + 10.0
+     y.name = "y"
+     return y
+
+>>> python minitorch/show_expression.py
+
+.. image:: expgraph2.png
+           :align: center
+                
 .. todo::
    Add functions in `minitorch/tensor_ops.py` and `minitorch/tensor.py` for each of the following, and pass tests marked as `task2_2`.
 
@@ -102,13 +126,13 @@ for tensors.
 
 
 
-.. autofunction:: minitorch.tensor.Mul.forward
-.. autofunction:: minitorch.tensor.Sigmoid.forward
-.. autofunction:: minitorch.tensor.ReLU.forward
-.. autofunction:: minitorch.tensor.Log.forward
-.. autofunction:: minitorch.tensor.Mean.forward
-.. autofunction:: minitorch.tensor.Copy.forward
-.. autofunction:: minitorch.tensor.LT.forward
+.. autofunction:: minitorch.TensorFunctions.Mul.forward
+.. autofunction:: minitorch.TensorFunctions.Sigmoid.forward
+.. autofunction:: minitorch.TensorFunctions.ReLU.forward
+.. autofunction:: minitorch.TensorFunctions.Log.forward
+.. autofunction:: minitorch.TensorFunctions.Mean.forward
+.. autofunction:: minitorch.TensorFunctions.Copy.forward
+.. autofunction:: minitorch.TensorFunctions.LT.forward
 
 
 Tasks 2.3: Gradients and Autograd
@@ -121,7 +145,7 @@ Tasks 2.3: Gradients and Autograd
 
 
 Just as with :class:`minitorch.Scalar`, the :class:`minitorch.Tensor`
-is a Variable that support automatic differentiation. In this task you
+is a Variable that supports automatic differentiation. In this task you
 will need to implement each of the backward functions and ensure that
 they pass the tests.
 
@@ -129,13 +153,13 @@ they pass the tests.
       Add backward functions `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_3`.
 
 
-.. autofunction:: minitorch.tensor.Mul.backward
-.. autofunction:: minitorch.tensor.Sigmoid.backward
-.. autofunction:: minitorch.tensor.ReLU.backward
-.. autofunction:: minitorch.tensor.Log.backward
-.. autofunction:: minitorch.tensor.Mean.backward
-.. autofunction:: minitorch.tensor.Copy.backward
-.. autofunction:: minitorch.tensor.LT.backward
+.. autofunction:: minitorch.TensorFunctions.Mul.backward
+.. autofunction:: minitorch.TensorFunctions.Sigmoid.backward
+.. autofunction:: minitorch.TensorFunctions.ReLU.backward
+.. autofunction:: minitorch.TensorFunctions.Log.backward
+.. autofunction:: minitorch.TensorFunctions.Mean.backward
+.. autofunction:: minitorch.TensorFunctions.Copy.backward
+.. autofunction:: minitorch.TensorFunctions.LT.backward
 
 
 
@@ -151,13 +175,13 @@ Tasks 2.4: Tensor Broadcasting
    identical.
 
 .. todo::
-   Add broadcasing functions to `minitorch/tensor_data.py` and `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_4`.
+   Add broadcasting functions to `minitorch/tensor_data.py` and `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_4`.
 
 
 .. autofunction:: minitorch.shape_broadcast
 .. autofunction:: minitorch.broadcast_index
 
-You will also need to revistit these functions to make sure that broadcast index is used. 
+You will also need to revist these functions to make sure that broadcast index is used. 
                   
 .. autofunction:: minitorch.tensor_map
 .. autofunction:: minitorch.tensor_zip
@@ -168,15 +192,19 @@ You will also need to revistit these functions to make sure that broadcast index
 Task 2.5: Training
 ========================
 
-If your code works you should now be able to run the tensor training script in `project/run_tensor.py`.
+If your code works you should now be able to move on to the tensor
+training script in `project/run_tensor.py`.  This code runs the same
+basic training setup as in :doc:`module1`, but now utilize your tensor
+code. We have left two of the functions blank for you to implement with
+your tensor code. 
 
 
 .. todo::
-   Train a tensor model and add you results to the README.
+   Implement the missing functions in `project/run_tensor.py`. These should
+   do exactly the same thing as the corresponding functions in `project/run_scalar.py`,
+   but now use the tensor code base.
 
-..
-   Tasks 2.5: Training
-   ==========================================
+   
+   Train a tensor model and add your results to the README. Also record the time per epoch
+   reported by the trainer. (It is okay if it is slow).
 
-
-   * Read project `tensor`

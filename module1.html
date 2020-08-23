@@ -97,7 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-1-1-numerical-derivatives">Task 1.1: Numerical Derivatives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-2-scalars">Task 1.2: Scalars</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-3-chain-rule">Task 1.3: Chain-Rule</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#task-1-4-backpropagate">Task 1.4: Backpropagate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-1-4-backpropagation">Task 1.4: Backpropagation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-5-training">Task 1.5: Training</a></li>
 </ul>
 </li>
@@ -105,7 +105,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -225,7 +225,7 @@ Then carefully read the section on
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>f</strong> -- arbitrary function from n-args to one value</p></li>
+<li><p><strong>f</strong> -- arbitrary function from n-scalar args to one value</p></li>
 <li><p><strong>*vals</strong> (<em>floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_1 \ldots x_n\)</span></p></li>
 <li><p><strong>arg</strong> (<em>int</em>) -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
 <li><p><strong>epsilon</strong> (<em>float</em>) -- a small constant</p></li>
@@ -245,7 +245,7 @@ Then carefully read the section on
 <h3>Task 1.2: Scalars<a class="headerlink" href="#task-1-2-scalars" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This task requires familiarity with the <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class .
+<p>This task requires familiarity with the <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class.
 Be sure to first carefully read the section on
 <a class="reference internal" href="scalar.html"><span class="doc">Tracking Variables</span></a> and to refresh your memory on <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/">Python numerical overrides</a>.</p>
 </div>
@@ -264,7 +264,7 @@ any information that may be needed for the call to backward.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The computation of the function f.</p>
+<dd class="field-even"><p>The computation of the function <span class="math notranslate nohighlight">\(f\)</span></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>number</p>
@@ -272,6 +272,20 @@ any information that may be needed for the call to backward.</p></li>
 </dl>
 </dd></dl>
 
+<p>We have built a debugging tool for you to observe the workings of your expressions to see
+how the graph is built. You can run it in <cite>project/show_expression.py</cite>. You can alter
+the expression at the top of the file and then run the code to create a graph in <cite>Visdom</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">expression</span><span class="p">():</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mf">10.</span>
+    <span class="n">y</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
+    <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">minitorch</span><span class="o">/</span><span class="n">show_expression</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<img alt="_images/expgraph.png" class="align-center" src="_images/expgraph.png" />
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>Add calls in <cite>minitorch/scalar.py</cite> for each of the following and pass tests marked as <cite>task1_2</cite>.</p>
@@ -329,16 +343,16 @@ Be sure to first very carefully read the section on
 <p>Implement the <cite>chain_rule</cite> method on FunctionBase for functions of arbitrary arguments.</p>
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.backward">
-<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
-<li><p><strong>d_output</strong> (<em>number</em>) -- </p></li>
+<li><p><strong>d_out</strong> (<em>number</em>) -- </p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The computation of the derive function f' for each inputs times <cite>d_output</cite>.</p>
+<dd class="field-even"><p>The computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>numbers</p>
@@ -357,7 +371,7 @@ Be sure to first very carefully read the section on
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cls</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionBase</span></code>) -- The function</p></li>
+<li><p><strong>cls</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionBase</span></code>) -- The Function</p></li>
 <li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- The context from running forward</p></li>
 <li><p><strong>inputs</strong> (<em>list of args</em>) -- The args that were passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">FunctionBase.apply()</span></code> (e.g. <span class="math notranslate nohighlight">\(x, y\)</span>)</p></li>
 <li><p><strong>d_output</strong> (<em>number</em>) -- The <cite>d_output</cite> value in the chain rule.</p></li>
@@ -374,8 +388,8 @@ for each <code class="xref py py-class docutils literal notranslate"><span class
 </dd></dl>
 
 </div>
-<div class="section" id="task-1-4-backpropagate">
-<h3>Task 1.4: Backpropagate<a class="headerlink" href="#task-1-4-backpropagate" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="task-1-4-backpropagation">
+<h3>Task 1.4: Backpropagation<a class="headerlink" href="#task-1-4-backpropagation" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Be sure to first very carefully read the section on
@@ -390,11 +404,11 @@ for each <code class="xref py py-class docutils literal notranslate"><span class
 <dt id="minitorch.backpropagate">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">final_variable_with_deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a breadth-first search on the computation graph in order to
-propagate derivative to the leaves.</p>
+backpropagate derivatives to the leaves.</p>
 <p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagate</span></a> for details on the algorithm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>final_variable_with_deriv</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code>) -- The final value
+<dd class="field-odd"><p><strong>final_variable_with_deriv</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code>) -- The final variable
 and its derivative that we want to propagate backward to the leaves.</p>
 </dd>
 </dl>
@@ -423,10 +437,30 @@ and its derivative that we want to propagate backward to the leaves.</p>
 </div>
 <div class="section" id="task-1-5-training">
 <h3>Task 1.5: Training<a class="headerlink" href="#task-1-5-training" title="Permalink to this headline">¶</a></h3>
-<p>If your code works you should now be able to run the training script in <cite>project/run_scalar.py</cite>.</p>
+<p>If your code works you should now be able to run the training script.
+Study the code in <cite>project/run_scalar.py</cite> carefully to understand what
+the neural network is doing. You will also need your Module code from the
+previous assignment as well. You can modify the dataset and the module with
+the parameters at the top of the file. Start with this simple config.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Simple</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<img alt="_images/complete.png" src="_images/complete.png" />
+<p>You can then move up to something more complex, for instance.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Xor</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
+</pre></div>
+</div>
+<p>If your code is successful you should be able to fit the data like this.</p>
+<img alt="_images/simple.png" src="_images/simple.png" />
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
-<p>Train a scalar model and add you results to the README</p>
+<p>Train a scalar model and add images like the ones above to your README file.</p>
 </div>
 </div>
 </div>

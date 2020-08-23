@@ -5,7 +5,7 @@ Contributing
 
 Each MiniTorch assignment is structured to mimic the experience of
 contributing to a real open-source project. As such we will require
-specific contributer requirements. This doc lays out the expectations
+specific contributor requirements. This doc lays out the expectations
 of your code. For each assignment, there will be a script `run_test.py`
 that will check each of the necessary properties before submitting.
 
@@ -24,7 +24,7 @@ and clean to make it easier to debug, optimize, and document. To help
 with this process, we will utilize required formatting on all the
 assignments. Style checked in `run_tests.py 0` automatically.
 
-Fixing style bugs can be an annoying process. However there is a nice trick
+Fixing style bugs can be an annoying process. However, there is a nice trick
 to fix most formatting issues automatically. We use `black` to automatically reformat
 all of your code to fit most of the requirements. (See https://github.com/psf/black for
 more details).
@@ -90,7 +90,7 @@ Continuous Integration (CI)
 
 In addition to local testing, the project is setup such that on each code push,
 the tests are automatically run and checked on the server. You will be able to see
-how well you are doing on the assignment by commiting your code, pushing to the server,
+how well you are doing on the assignment by committing your code, pushing to the server,
 and then logging in to github. This process takes several minutes, but it is an easy way to
 keep track of your progress as you go.
 

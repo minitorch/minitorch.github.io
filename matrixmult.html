@@ -97,7 +97,7 @@
 <li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -183,16 +183,14 @@ First, it needs to create a tensor of size (3, 5, 4) in the
 intermediate step. Another more subtle problem is that the <cite>reduce</cite> operator
 may need to call <cite>save_values</cite> on this tensor, which means it stays in memory
 throughout.</p>
-<p>Ideally we could just skip computing the middle value and just
+<p>Ideally, we could just skip computing the middle value and just
 immediately skip to the output. We can do this by writing a
-specialized Tensor function with a <cite>forward</cite> function that directly
-produces the output and a <cite>backward</cite> to produce the required gradient
-directly.</p>
+specialized tensor Function with a <cite>forward</cite> function that directly
+produces the output and a <cite>backward</cite> to produce the required gradient.</p>
 <img alt="_images/matmul.png" class="align-center" src="_images/matmul.png" />
 <p>There is a lot of ongoing work on how to do this operator fusion
-automatically in libraries like Torch and TensorFlow. However in
-for very common operators it is worth just writing these operators
-directly and speeding them up.</p>
+automatically. However, for very common operators it is worth just
+writing these operators directly and speeding them up.</p>
 <p>The most common example of this is matrix multiplication (<cite>matmul</cite>).
 Matrix multiplication works exactly as above. Given a (broadcasted)
 matrices of size (3, 5, 1) and (1, 5, 4), matrix multiply zips them with

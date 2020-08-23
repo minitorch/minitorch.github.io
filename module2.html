@@ -105,7 +105,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Inference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
@@ -176,13 +176,12 @@
 <h1>Module 2 - Tensors<a class="headerlink" href="#module-2-tensors" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
 <p>We now have a fully developed autodifferentiation system built around
-scalars. This system is correct, but it very inefficient. All numbers
-are wrap with an object, and each operation requires storing a graph of
-all the values that we had previously created. Training requires
+scalars. This system is correct, but you saw during training that it
+is inefficient. All scalar numbers require building an object, and each operation requires storing a graph of all the values that we had previously created. Training requires
 repeating these operations, and computing modules such as linear required
 a <cite>for</cite> loop over each of the terms in our network.</p>
 <p>This module introduces and implements a <strong>tensor</strong> object that will
-solve all of these problems. Tensors all of to group together many of
+solve these problems. Tensors group together many of
 these repeated operations to save python overhead and to pass off
 grouped operations to faster implementations.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-2">https://github.com/minitorch/Module-2</a> .</p>
@@ -227,14 +226,47 @@ first implement these core functions.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.index_to_position">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unmaterialized device function</p>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
+<dd><p>Converts a multidimensional tensor <cite>index</cite> into a single-dimensional position in
+storage based on strides.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>index</strong> (<em>array-like</em>) -- index tuple of ints</p></li>
+<li><p><strong>strides</strong> (<em>array-like</em>) -- tensor strides</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>position in storage</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>int</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.count">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.count" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unmaterialized device function</p>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">count</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">position</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.count" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a <cite>position</cite> to an index in the <cite>shape</cite>.
+Should ensure that enumerating position 0 ... size of a
+tensor produces every index exactly once. It
+may not be the inverse of <cite>index_to_position</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>position</strong> (<em>int</em>) -- current position</p></li>
+<li><p><strong>shape</strong> (<em>tuple</em>) -- tensor shape</p></li>
+<li><p><strong>out_index</strong> (<em>array</em>) -- the index corresponding to position</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Fills in <cite>index</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py function">
@@ -264,14 +296,36 @@ Be sure to first carefully read the section on
 <a class="reference internal" href="tensorops.html"><span class="doc">Operations</span></a>. You may also find it helpful to go back to
 Module 0 and make sure you understand higher-order functions and currying.</p>
 </div>
-<p>The tensor operations will to apply high-level, higher-order
+<p>The tensor operations will apply high-level, higher-order
 operations to all values in a tensor simultaneously. In particularly
 allowing you to map, zip, and reduce tensor data objects together. On
 top of this foundation we can build up a similar class to the Tensor functions
 just like we did for the scalar functions. In this task you should first implement
 the generic tensor ops and then use these to provide the <cite>forward</cite> functions
 for tensors.</p>
-<span class="target" id="module-minitorch.tensor_ops"></span><div class="admonition-todo admonition" id="id2">
+<span class="target" id="module-minitorch.tensor_ops"></span><p>We have built a debugging tool for you to observe the workings of your expressions to see
+how the graph is built. You can run it in <cite>project/show_expression.py</cite>. You can alter
+the expression at the top of the file and then run the code to create a graph in <cite>Visdom</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">## Run your tensor expression here</span>
+<span class="k">def</span> <span class="nf">expression</span><span class="p">():</span>
+   <span class="n">x</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+   <span class="n">x</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+   <span class="n">x</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;x&quot;</span>
+
+   <span class="n">z</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> <span class="p">(</span><span class="mi">2</span><span class="p">,))</span>
+   <span class="n">z</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+   <span class="n">z</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;z&quot;</span>
+
+   <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">10.0</span>
+   <span class="n">y</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;y&quot;</span>
+   <span class="k">return</span> <span class="n">y</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">minitorch</span><span class="o">/</span><span class="n">show_expression</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<img alt="_images/expgraph2.png" class="align-center" src="_images/expgraph2.png" />
+<div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>Add functions in <cite>minitorch/tensor_ops.py</cite> and <cite>minitorch/tensor.py</cite> for each of the following, and pass tests marked as <cite>task2_2</cite>.</p>
 </div>
@@ -325,7 +379,7 @@ for tensors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mapping two floats to float for combine.</p></li>
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float.</p></li>
 <li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
 <li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
 <li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
@@ -340,6 +394,41 @@ for tensors.</p>
 </dl>
 </dd></dl>
 
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Mul.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Sigmoid.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.ReLU.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Log.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Mean.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mean.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mean.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Copy.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Copy.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Copy.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.LT.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="tasks-2-3-gradients-and-autograd">
 <h3>Tasks 2.3: Gradients and Autograd<a class="headerlink" href="#tasks-2-3-gradients-and-autograd" title="Permalink to this headline">¶</a></h3>
@@ -351,13 +440,48 @@ Be sure to first carefully read the section on
 Module 1 and review <cite>variables</cite> and <cite>functions</cite>.</p>
 </div>
 <p>Just as with <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a>, the <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Tensor</span></code>
-is a Variable that support automatic differentiation. In this task you
+is a Variable that supports automatic differentiation. In this task you
 will need to implement each of the backward functions and ensure that
 they pass the tests.</p>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <p>Add backward functions <cite>minitorch/tensor_ops.py</cite> for each of the following, and pass tests marked as <cite>task2_3</cite>.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Mul.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Sigmoid.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.ReLU.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Log.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Mean.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mean.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mean.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.Copy.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Copy.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Copy.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.TensorFunctions.LT.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="tasks-2-4-tensor-broadcasting">
 <h3>Tasks 2.4: Tensor Broadcasting<a class="headerlink" href="#tasks-2-4-tensor-broadcasting" title="Permalink to this headline">¶</a></h3>
@@ -371,7 +495,7 @@ identical.</p>
 </div>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
-<p>Add broadcasing functions to <cite>minitorch/tensor_data.py</cite> and <cite>minitorch/tensor_ops.py</cite> for each of the following, and pass tests marked as <cite>task2_4</cite>.</p>
+<p>Add broadcasting functions to <cite>minitorch/tensor_data.py</cite> and <cite>minitorch/tensor_ops.py</cite> for each of the following, and pass tests marked as <cite>task2_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.shape_broadcast">
@@ -395,11 +519,25 @@ identical.</p>
 
 <dl class="py function">
 <dt id="minitorch.broadcast_index">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Unmaterialized device function</p>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">big_index</span></em>, <em class="sig-param"><span class="n">big_shape</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert an index into a position (see <cite>index_to_position</cite>),
+when the index is from a broadcasted shape. In this case
+it may be larger or with more dimensions than the <cite>shape</cite>
+given. Additional dimensions may need to be mapped to 0 or
+removed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>big_index</strong> (<em>array-like</em>) -- multidimensional index of bigger tensor</p></li>
+<li><p><strong>big_shape</strong> (<em>array-like</em>) -- tensor shape of bigger tensor</p></li>
+<li><p><strong>shape</strong> (<em>array-like</em>) -- tensor shape of smaller tensor</p></li>
+<li><p><strong>out_index</strong> (<em>array-like</em>) -- multidimensional index of smaller tensor</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
-<p>You will also need to revistit these functions to make sure that broadcast index is used.</p>
+<p>You will also need to revist these functions to make sure that broadcast index is used.</p>
 <dl class="py function">
 <dt id="id0">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
@@ -450,7 +588,7 @@ identical.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mapping two floats to float for combine.</p></li>
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float.</p></li>
 <li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
 <li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
 <li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
@@ -468,10 +606,18 @@ identical.</p>
 </div>
 <div class="section" id="task-2-5-training">
 <h3>Task 2.5: Training<a class="headerlink" href="#task-2-5-training" title="Permalink to this headline">¶</a></h3>
-<p>If your code works you should now be able to run the tensor training script in <cite>project/run_tensor.py</cite>.</p>
+<p>If your code works you should now be able to move on to the tensor
+training script in <cite>project/run_tensor.py</cite>.  This code runs the same
+basic training setup as in <a class="reference internal" href="module1.html"><span class="doc">Module 1 - Auto-Differentiation</span></a>, but now utilize your tensor
+code. We have left two of the functions blank for you to implement with
+your tensor code.</p>
 <div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
-<p>Train a tensor model and add you results to the README.</p>
+<p>Implement the missing functions in <cite>project/run_tensor.py</cite>. These should
+do exactly the same thing as the corresponding functions in <cite>project/run_scalar.py</cite>,
+but now use the tensor code base.</p>
+<p>Train a tensor model and add your results to the README. Also record the time per epoch
+reported by the trainer. (It is okay if it is slow).</p>
 </div>
 </div>
 </div>

@@ -93,7 +93,8 @@ Here each of the red arrows is represented by an object :class:`minitorch.Variab
     2. a. If the variable is a leaf then add its final derivative (`_add_deriv`) and loop to (1).
        b. If the variables is not a leaf call `.chain_rule` on the last function that created it with derivative as :math:`d_{out}`.
        c. Loop through all the variables+derivative produced by the chain rule.
-       d. If the variable is in the queue (check `.name`), add to its current derivative. Otherwise, add to the queue.
+       d. If the variable is in the queue (check `.name`), add to its current derivativ
+       e. Otherwise, add to the queue.
 
 Important note. Only leaf variables should ever have non-None
 .derivative value. All the intermediate variables should only keep

@@ -1,3 +1,26 @@
 ========================
-Pooling
+Max and Pooling
 ========================
+
+
+
+
+.. image:: figs/Conv/pool1.png
+           :align: center
+           :width: 500px
+                   
+.. image:: figs/Conv/pool2.png
+           :align: center
+           :width: 500px
+                   
+.. image:: figs/Conv/pool3.png
+           :align: center
+           :width: 500px
+                   
+.. image:: figs/Conv/pool4.png
+           :align: center
+           :width: 500px
+                   
+.. image:: figs/Conv/pool2d.png
+           :align: center
+           :width: 500px

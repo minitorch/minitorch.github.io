@@ -37,8 +37,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Training" href="training.html" />
-    <link rel="prev" title="Pooling" href="pooling.html" /> 
+    <link rel="prev" title="Max and Pooling" href="pooling.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,18 +86,18 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="module4.html">Module 4 - Modules</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module4.html">Module 4 - Networks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Convolution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="training.html">Training</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module4.html#tasks">Tasks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 </ul>
 
             
@@ -145,7 +144,7 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-          <li><a href="module4.html">Module 4 - Modules</a> &raquo;</li>
+          <li><a href="module4.html">Module 4 - Networks</a> &raquo;</li>
         
       <li>Convolution</li>
     
@@ -168,6 +167,20 @@
             
   <div class="section" id="convolution">
 <h1>Convolution<a class="headerlink" href="#convolution" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Convolutions are extensively covered by many excellent tutorials. You may want to
+check one of these out for more details on their use.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/">Tutorial 1</a></p></li>
+</ul>
+</div>
+<img alt="_images/conv.png" class="align-center" src="_images/conv.png" />
+<img alt="_images/conv2.png" class="align-center" src="_images/conv2.png" />
+<img alt="_images/im1.png" class="align-center" src="_images/im1.png" />
+<img alt="_images/im2.png" class="align-center" src="_images/im2.png" />
+<img alt="_images/backward.png" class="align-center" src="_images/backward.png" />
+<img alt="_images/networkcnn.png" class="align-center" src="_images/networkcnn.png" />
 </div>
 
 
@@ -178,10 +191,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="training.html" class="btn btn-neutral float-right" title="Training" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="pooling.html" class="btn btn-neutral float-left" title="Pooling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pooling.html" class="btn btn-neutral float-left" title="Max and Pooling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -27,7 +27,7 @@ To begin this module, remember to first activate your virtual environment.
 And then clone your assignment.
 
 >>> git clone {{STUDENT_ASSIGNMENT2_URL}}
->>> cd minitorch2
+>>> cd Module-2
 
 You will need the files from Assignment 0 so be sure to pull them over
 to your new repo.

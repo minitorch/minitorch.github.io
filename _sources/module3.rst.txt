@@ -23,7 +23,7 @@ To begin, remember to first activate your virtual environment.
 And then clone your assignment.
 
 >>> git clone {{STUDENT_ASSIGNMENT3_URL}}
->>> cd minitorch1
+>>> cd Module-3
 
 You will also need the files so be sure to pull them over
 to your new repo.

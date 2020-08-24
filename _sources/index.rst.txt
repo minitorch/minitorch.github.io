@@ -36,8 +36,6 @@ Enjoy!
 Sasha (`@srush_nlp <https://twitter.com/srush_nlp>`_)
 
 
-Modules
-========
 
 :doc:`module0`
 --------------
@@ -66,10 +64,26 @@ Modules
 .. image:: figs/gpu/threadid@3x.png
            :align: center
 
-(Coming Soon)
 
 :doc:`module4`
 --------------
+
+.. image:: figs/mnist/orig.png
+           :width: 400px
+           :align: center
+.. image:: figs/mnist/mnist2.png
+           :width: 400px
+           :align: center
+                   
+.. image:: figs/mnist/mnist5.png
+           :width: 400px
+           :align: center
+
+.. image:: figs/mnist/mnist4.png
+           :width: 400px
+           :align: center
+
+
 
 .. toctree::
    :maxdepth: 1
@@ -78,12 +92,13 @@ Modules
 
    setup
    contributing
+   mlprimer
    module0
    module1
    module2
    module3
    module4
-   mlprimer
+
 
 
 Indices and tables

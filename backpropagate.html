@@ -87,6 +87,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivatives</a></li>
@@ -102,8 +103,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
 </ul>
 
             
@@ -227,7 +227,8 @@ is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next st
 <li><p>If the variable is a leaf then add its final derivative (<cite>_add_deriv</cite>) and loop to (1).</p></li>
 <li><p>If the variables is not a leaf call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span>.</p></li>
 <li><p>Loop through all the variables+derivative produced by the chain rule.</p></li>
-<li><p>If the variable is in the queue (check <cite>.name</cite>), add to its current derivative. Otherwise, add to the queue.</p></li>
+<li><p>If the variable is in the queue (check <cite>.name</cite>), add to its current derivativ</p></li>
+<li><p>Otherwise, add to the queue.</p></li>
 </ol>
 </li>
 </ol>

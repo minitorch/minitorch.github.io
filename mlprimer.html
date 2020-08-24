@@ -37,7 +37,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Training" href="training.html" /> 
+    <link rel="next" title="Module 0 - Fundamentals" href="module0.html" />
+    <link rel="prev" title="Contributing" href="contributing.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,12 +87,20 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">ML Primer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dataset">Dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#model">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#loss">Loss</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fitting-parameters">Fitting Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#neural-networks">Neural Networks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Modules</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">ML Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
 </ul>
 
             
@@ -159,19 +168,201 @@
             
   <div class="section" id="ml-primer">
 <h1>ML Primer<a class="headerlink" href="#ml-primer" title="Permalink to this headline">¶</a></h1>
-<p>(Coming Soon)</p>
-<a class="reference internal image-reference" href="_images/data&#64;3x.png"><img alt="_images/data&#64;3x.png" class="align-center" src="_images/data&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/sector1&#64;3x.png"><img alt="_images/sector1&#64;3x.png" class="align-center" src="_images/sector1&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/sector2&#64;3x.png"><img alt="_images/sector2&#64;3x.png" class="align-center" src="_images/sector2&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/sector3&#64;3x.png"><img alt="_images/sector3&#64;3x.png" class="align-center" src="_images/sector3&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/sigmoid.png"><img alt="_images/sigmoid.png" class="align-center" src="_images/sigmoid.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/sigmoid2.png"><img alt="_images/sigmoid2.png" class="align-center" src="_images/sigmoid2.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/model1.png"><img alt="_images/model1.png" class="align-center" src="_images/model1.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/model2&#64;3x.png"><img alt="_images/model2&#64;3x.png" class="align-center" src="_images/model2&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/incorrect&#64;3x.png"><img alt="_images/incorrect&#64;3x.png" class="align-center" src="_images/incorrect&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/pt1&#64;3x.png"><img alt="_images/pt1&#64;3x.png" class="align-center" src="_images/pt1&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/pt2&#64;3x.png"><img alt="_images/pt2&#64;3x.png" class="align-center" src="_images/pt2&#64;3x.png" style="width: 300px;" /></a>
-<a class="reference internal image-reference" href="_images/pt3&#64;3x.png"><img alt="_images/pt3&#64;3x.png" class="align-center" src="_images/pt3&#64;3x.png" style="width: 300px;" /></a>
+<p>This guide is a primer on the very basics of machine learning that are
+necessary to complete the assignments and motivate the final
+system. Machine learning is a rich and well-developed field with many
+different models, goals, and learning settings. There are many great
+texts that cover  all the aspects of the area in detail. (I recommend this <a class="reference external" href="https://www.microsoft.com/en-us/research/people/cmbishop/prml-book/">textbook</a>.) This guide is not
+that.  Our goal is to explain the minimal details of <em>one</em> dataset
+with <em>one</em> class of model. Specifically, this is an introduction to
+<cite>supervised binary classification</cite> with neural networks. The goal of this section
+is to learn how a basic neural network works to classify simple points.</p>
+<a class="reference internal image-reference" href="_images/mlpgraph.png"><img alt="_images/mlpgraph.png" class="align-center" src="_images/mlpgraph.png" style="width: 300px;" /></a>
+<div class="section" id="dataset">
+<h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
+<p>Supervised learning problems begin with a labeled <cite>training</cite> dataset.
+We assume that we are given a set of labeled points. Each point has
+two coordinates <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, and has a label <span class="math notranslate nohighlight">\(y\)</span>
+corresponding to a O and X. For instance, here is one labeled point.</p>
+<a class="reference internal image-reference" href="_images/data1.png"><img alt="_images/data1.png" class="align-center" src="_images/data1.png" style="width: 250px;" /></a>
+<p>Here's another:</p>
+<a class="reference internal image-reference" href="_images/data2.png"><img alt="_images/data2.png" class="align-center" src="_images/data2.png" style="width: 250px;" /></a>
+<p>And here is an X labeled point.</p>
+<a class="reference internal image-reference" href="_images/data3.png"><img alt="_images/data3.png" class="align-center" src="_images/data3.png" style="width: 250px;" /></a>
+<p>It will often be convenient to plot all of the points together on one set of
+axes.</p>
+<a class="reference internal image-reference" href="_images/data&#64;3x.png"><img alt="_images/data&#64;3x.png" class="align-center" src="_images/data&#64;3x.png" style="width: 250px;" /></a>
+<p>Here we can see that all the O points are in the top-right and all the X points are on
+the bottom-left. Not all datasets will be this simple, here is another where points are
+split up a bit more.</p>
+<p>Later in the class we will consider datasets of different forms. For instance a dataset of
+handwritten numbers, where some are 8's and others are 2's:</p>
+<a class="reference internal image-reference" href="_images/im1.png"><img alt="_images/im1.png" class="align-center" src="_images/im1.png" style="width: 200px;" /></a>
+<a class="reference internal image-reference" href="_images/im2.png"><img alt="_images/im2.png" class="align-center" src="_images/im2.png" style="width: 200px;" /></a>
+<p>Here's an example of what this dataset looks like.</p>
+<a class="reference internal image-reference" href="_images/mnist.png"><img alt="_images/mnist.png" class="align-center" src="_images/mnist.png" style="width: 200px;" /></a>
+</div>
+<div class="section" id="model">
+<h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
+<p>In addition to a dataset, our ML system need to specify
+a model type that we want to <cite>fit</cite> to the data. A <cite>model</cite>
+is a function that assigns labels to datapoints. In 2D, we
+can view a model by the decisions it makes on the points.
+For instance, consider the following (Model A).</p>
+<a class="reference internal image-reference" href="_images/model1.png"><img alt="_images/model1.png" class="align-center" src="_images/model1.png" style="width: 250px;" /></a>
+<p>For most of the possible points it puts them in class X.
+Only for a little area on the top right would it decide
+to put things in class O.</p>
+<p>We can overlay the dataset over this model. This tells us roughly how
+well the model fits the first dataset we saw.</p>
+<a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 250px;" /></a>
+<p>Models can take many different forms Here is a model, which we will discuss more below,
+that splits the data up based on three regions (Model B).</p>
+<a class="reference internal image-reference" href="_images/model2.png"><img alt="_images/model2.png" class="align-center" src="_images/model2.png" style="width: 250px;" /></a>
+<p>Models may also have strange shapes and even disconnected regions. Any blue/red split will do, for instance (Model C).</p>
+<a class="reference internal image-reference" href="_images/model3.png"><img alt="_images/model3.png" class="align-center" src="_images/model3.png" style="width: 250px;" /></a>
+<p>A <cite>model class</cite> specifies the general shape of models that you want to explore. Given that we as programmers don't know what the dataset will look like, we try to give a class of functions for our system to explore. Machine learning is the process of finding the best model from that class.</p>
+<p>The first model class we consider is <cite>linear models</cite>. Linear models are allowed to separate the space with only a single straight line. For instance Model A is a linear model, but so is an intuitively &quot;better&quot; model like this.</p>
+<a class="reference internal image-reference" href="_images/sector2&#64;3x.png"><img alt="_images/sector2&#64;3x.png" class="align-center" src="_images/sector2&#64;3x.png" style="width: 250px;" /></a>
+<p>Note that while Model B also uses lines, it is not a linear model, since it uses multiple lines to split up the space.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Once we have decided on our model class, we need a way to move between models in that
+class. Ideally, we would have  internal knobs that alter the properties of the model.
+In the case of linear models, there are two main knobs we might use,</p>
+<ol class="loweralpha simple">
+<li><p>rotating the linear separator (&quot;slope&quot;)</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/weight.png"><img alt="_images/weight.png" class="align-center" src="_images/weight.png" style="width: 400px;" /></a>
+<ol class="loweralpha simple" start="2">
+<li><p>changing the separator cutoff (&quot;intercept&quot;)</p></li>
+</ol>
+<a class="reference internal image-reference" href="_images/bias.png"><img alt="_images/bias.png" class="align-center" src="_images/bias.png" style="width: 400px;" /></a>
+<p><cite>Parameters</cite> are the set of numerical values that fully define a models decisions.
+These values are critical for storing how a model acts, and necessary for producing
+its output on a given example.</p>
+<p>For the case of linear models and binary classification, we can write down the linear model as,</p>
+<div class="math notranslate nohighlight">
+\[m(x_1, x_2; w_1, w_2, b) = x_1 \times w_1 + x_2 \times w_2 + b\]</div>
+<p>Here <span class="math notranslate nohighlight">\(w_1, w_2, b\)</span> are parameters, <span class="math notranslate nohighlight">\(x_1, x_2\)</span> are the input point, and
+the model predicts X if <span class="math notranslate nohighlight">\(m\)</span> is greater than 1 and O otherwise. The semi-color
+notation indicates which arguments are for parameters and which are for data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference external" href="https://wikipedia.org/wiki/Linear_equation">https://wikipedia.org/wiki/Linear_equation</a> for a review of linear equations, and an explanation for why this corresponds to parameterizing the slope and intercept of a line.</p>
+</div>
+</div>
+<div class="section" id="loss">
+<h2>Loss<a class="headerlink" href="#loss" title="Permalink to this headline">¶</a></h2>
+<p>When we look at our data, we can clearly see that some models are good and make no classification errors.</p>
+<a class="reference internal image-reference" href="_images/sector2.png"><img alt="_images/sector2.png" class="align-center" src="_images/sector2.png" style="width: 250px;" /></a>
+<p>And some are bad and make multiple errors.</p>
+<a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 250px;" /></a>
+<p>In order to find a good model, we need to first define what good means. We do this through a
+<cite>loss</cite> function that scores how badly we are currently doing. A good model is the one that
+makes this loss as small as possible.</p>
+<p>Our loss function will be based on the distance and direction of the line from each point to the separator.  You can show that this distance is equivalent to the absolute value of the function <span class="math notranslate nohighlight">\(m()\)</span> above.</p>
+<a class="reference internal image-reference" href="_images/distance.png"><img alt="_images/distance.png" class="align-center" src="_images/distance.png" style="width: 250px;" /></a>
+<p>For simplicity, let us consider a single point with different models.</p>
+<p>This point might be classified the correct side and very far from this line (Point A, &quot;great&quot;).</p>
+<a class="reference internal image-reference" href="_images/pt3.png"><img alt="_images/pt3.png" class="align-center" src="_images/pt3.png" style="width: 250px;" /></a>
+<p>Or it might be on the correct side of the line, but close to the line (Point B, &quot;worrisome&quot;).</p>
+<a class="reference internal image-reference" href="_images/pt1.png"><img alt="_images/pt1.png" class="align-center" src="_images/pt1.png" style="width: 250px;" /></a>
+<p>Or this point might be classified on the wrong side of the line (Point C, &quot;bad&quot;):</p>
+<a class="reference internal image-reference" href="_images/pt2.png"><img alt="_images/pt2.png" class="align-center" src="_images/pt2.png" style="width: 250px;" /></a>
+<p>The loss is determined based on a function of this distance. The most
+common function and the one we will focus on is the sigmoid
+function. For strong negative values it goes to zero and for strong
+positive it goes to 1. In between it forms a smooth S-curve.</p>
+<a class="reference internal image-reference" href="_images/sigmoid.png"><img alt="_images/sigmoid.png" class="align-center" src="_images/sigmoid.png" style="width: 400px;" /></a>
+<p>The three values of X land on the following positions for the sigmoid curve.
+Almost zero for Point A, middle value for Point B, and nearly one for point C</p>
+<a class="reference internal image-reference" href="_images/sigmoid2.png"><img alt="_images/sigmoid2.png" class="align-center" src="_images/sigmoid2.png" style="width: 400px;" /></a>
+<p>The total loss for a model is the product of each of the individual losses.
+It's easy to see that the good model yields a lower loss than the bad one.</p>
+</div>
+<div class="section" id="fitting-parameters">
+<h2>Fitting Parameters<a class="headerlink" href="#fitting-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The model class tells us what models we can consider, the parameters
+tell us how to specify a given model, and the loss tells us how good
+our current model is. What we need is a method for finding a good model
+for the loss. We refer to this step as <em>parameter fitting</em>.</p>
+<p>Unfortunately, parameter fitting is quite difficult. For all but the
+simplest ML models, it is a challenging and computational demanding
+task. For our sample problem there are just 3 parameters, but some of the
+larger models now may have billions of parameters that need to be fit.</p>
+<p>This is the step where libraries like MiniTorch come in handy. The library
+aims to demonstrate how with careful coding, we can setup a framework to
+fit parameters for supervised classification, in an automatic and efficient manner.</p>
+<p>The library focuses on one form of parameter fitting <cite>gradient descent</cite>. Intuitively,
+gradient descent works in the following manner.</p>
+<ol class="arabic simple">
+<li><p>Compute the loss function, <span class="math notranslate nohighlight">\(L\)</span> for the data with the parameters.</p></li>
+<li><p>See how small changes to each of the parameters would change the loss.</p></li>
+<li><p>Update the parameters with a small change in the direction that locally most reduces the loss.</p></li>
+</ol>
+<p>Let us return to the incorrect model above.</p>
+<a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 250px;" /></a>
+<p>As we noted, this model has a high loss, and we want to consider ways to &quot;turn the knobs&quot; of the parameters to find a better model. Let us focus on the parameter controlling the intercept of the model.</p>
+<a class="reference internal image-reference" href="_images/bias.png"><img alt="_images/bias.png" class="align-center" src="_images/bias.png" style="width: 300px;" /></a>
+<p>We can consider how the loss changes with respect to just varying this parameter. It seems like the loss will go down if we lower the intercept a bit.</p>
+<a class="reference internal image-reference" href="_images/move.png"><img alt="_images/move.png" class="align-center" src="_images/move.png" style="width: 400px;" /></a>
+<p>Doing this then leads to a better model.</p>
+<a class="reference internal image-reference" href="_images/incorrect3.png"><img alt="_images/incorrect3.png" class="align-center" src="_images/incorrect3.png" style="width: 250px;" /></a>
+<p>We can repeat this process for the intercept as well as for all the other parameters in the model.</p>
+<p>But how did we know how the loss function changed if we changed the intercept? For a small problem, we can just move it a bit and see. But remember that machine learning models can have billions of parameters, so this would take a ton of time.</p>
+<p>A better approach is to utilize calculus and take the derivative of the loss function with respect to the parameter <span class="math notranslate nohighlight">\(L'_b\)</span>. If we can efficiently and automatically take this derivative, it tells us how to change the parameter to update its value to fit any loss. Even better, if we can efficiently take a set of derivatives (known as a <cite>gradient</cite>) for all the parameters, then we know which direction they all should move.</p>
+<p>The first 4 modules are MiniTorch are dedicated to implementing this fitting procedure efficiently.</p>
+</div>
+<div class="section" id="neural-networks">
+<h2>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
+<p>The linear model class can be used to find good fits to the data we have considered so far, but it fails for data that splits up into multiple segments. These datasets are not <em>linearly separable</em>.</p>
+<a class="reference internal image-reference" href="_images/splitfail.png"><img alt="_images/splitfail.png" class="align-center" src="_images/splitfail.png" style="width: 300px;" /></a>
+<p>An alternative model class for this style of data is a neural
+network. Neural networks can be used to specify a much wider range of
+separators.</p>
+<p>Intuitively, neural networks divide classification into two or more stages.
+Each stage uses a linear model to reshape the data into new points. The final
+stage is a linear classifier over the transformed point.</p>
+<p>Let's look at our dataset.</p>
+<a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 300px;" /></a>
+<p>A neural network might first produce a (yellow) separator to pull apart the top red points.</p>
+<a class="reference internal image-reference" href="_images/split1.png"><img alt="_images/split1.png" class="align-center" src="_images/split1.png" style="width: 300px;" /></a>
+<p>And then produce a (green) separator to pull apart the bottom red points.</p>
+<a class="reference internal image-reference" href="_images/split2.png"><img alt="_images/split2.png" class="align-center" src="_images/split2.png" style="width: 300px;" /></a>
+<p>The neural network is allowed to transform the points based on the
+distance from these separators (very similar to the loss function
+above). It can use whatever function it wants to do this
+transformation. Ideally, the function would make the points in yellow and green high, and the
+other points low. One function to do this is the ReLU function. (ReLU stands for Rectified Linear Unit, a very complicated way of saying &quot;delete values below 0&quot;.):</p>
+<a class="reference internal image-reference" href="_images/relu2.png"><img alt="_images/relu2.png" class="align-center" src="_images/relu2.png" style="width: 400px;" /></a>
+<p>For the yellow separator, the ReLU yields the following values.</p>
+<a class="reference internal image-reference" href="_images/relu.png"><img alt="_images/relu.png" class="align-center" src="_images/relu.png" style="width: 400px;" /></a>
+<p>Basically the top X's are positive and the bottom O's and X's are 0.
+Something very similar happens for the green separator.</p>
+<p>Finally yellow and green become our new <span class="math notranslate nohighlight">\(x_1, x_2\)</span>. Since all the O's are now at the origin
+it is very easy to separate out the space.</p>
+<a class="reference internal image-reference" href="_images/mlpmid.png"><img alt="_images/mlpmid.png" class="align-center" src="_images/mlpmid.png" style="width: 300px;" /></a>
+<p>Looking back at the original model, this process appears like it has produced two lines to pull apart the data.</p>
+<a class="reference internal image-reference" href="_images/mlpgraph.png"><img alt="_images/mlpgraph.png" class="align-center" src="_images/mlpgraph.png" style="width: 300px;" /></a>
+<p>Mathematically we can think of the transformed data a values <span class="math notranslate nohighlight">\(h_1, h_2\)</span> that we get from applying
+separators with different parameters to the original data. The final prediction then applies a separator
+to <span class="math notranslate nohighlight">\(h_1, h_2\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{eqnarray*}
+h_ 1 &amp;=&amp; ReLU(x_1 \times w^0_1 + x_2 \times w^0_2 + b^0) \\
+h_ 2 &amp;=&amp; ReLU(x_1 \times w^1_1 + x_2 \times w^1_2 + b^1)\\
+m(x_1, x_2) &amp;=&amp; h_1 \times w_1 + h_2 \times w_2 + b
+\end{eqnarray*}\end{split}\]</div>
+<p>Here <span class="math notranslate nohighlight">\(w_1, w_2, w^0_1, w^0_2, w^1_1, w^1_2, b, b^0, b^1\)</span> are all parameters. We have gained more flexible models,
+at the cost of now needing to fit many more parameters to the data.</p>
+<p>This neural network will be the main focus for the first couple
+models. It appears quite simple, but fitting it effectively will
+require building up systems infrastructure. Once we have this
+infrastructure, though, we will be able to easily support most modern
+neural network models.</p>
+</div>
 </div>
 
 
@@ -182,8 +373,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="module0.html" class="btn btn-neutral float-right" title="Module 0 - Fundamentals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="training.html" class="btn btn-neutral float-left" title="Training" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="contributing.html" class="btn btn-neutral float-left" title="Contributing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

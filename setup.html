@@ -168,12 +168,12 @@
 <div class="section" id="online-ide">
 <h2>Online IDE<a class="headerlink" href="#online-ide" title="Permalink to this headline">¶</a></h2>
 <p>MiniTorch can be run entirely on an online IDE for simplicity.
-Each assignment is configured to work directly with the Repl.it
+Each module is configured to work directly with the Repl.it
 environment which you can setup through the Github page. You will
-need to signup for a <a class="reference external" href="Repl.it">Repl.it</a> account and create an environment repo through
+need to signup for a <a class="reference external" href="https://repl.it">Repl.it</a> account and create an environment repo through
 the link. Dependencies and the environment should be setup automatically. Tests
 will run with the play button.</p>
-<p>For training and visualization, you may need to rerun the following commands.</p>
+<p>For training and visualization, you may need to run the following command.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
@@ -187,9 +187,9 @@ will run with the play button.</p>
 <p>Alternatively, you can set things up in a standard Python environment.</p>
 <p>MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your
-system. To check run either:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">v</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="o">-</span><span class="n">v</span>
+system. To check your version of Python, run either:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">--</span><span class="n">version</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">python3</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
 <p>We recommend creating a global MiniTorch workspace directory that you will use
@@ -197,7 +197,7 @@ for all modules.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">mkdir</span> <span class="n">workspace</span><span class="p">;</span> <span class="n">cd</span> <span class="n">workspace</span>
 </pre></div>
 </div>
-<p>Within this directory you need to setup a <cite>virtual
+<p>Within this directory you need to set up a <cite>virtual
 environment</cite>. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
 system. (See <a class="reference external" href="https://docs.python.org/3/library/venv.html">https://docs.python.org/3/library/venv.html</a> for further
@@ -206,22 +206,23 @@ instructions on how this works.)</p>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
 </pre></div>
 </div>
-<p>The first line you should run only once, whereas the second needs to
+<p>The first line should be run only once, whereas the second needs to
 be run whenever you open a new terminal to get started for the class.
-You can tell if the second line worked because your terminal will now have
-<cite>(venv)</cite> on the end.</p>
-<p>Each assignment is distributed through a Git repo. You first should
-fork the template of the assignment and edit yours in your forked
-repo. We will assume knowledge of git throughout the course, see
-<a class="reference external" href="https://guides.github.com">https://guides.github.com</a> for a tutorial about using git and github.</p>
-<p>Once you have forked the template code, you can clone your own version by running the command:</p>
+You can tell if the second line works by checking if your terminal starts
+with <cite>(venv)</cite>.</p>
+<p>Each assignment is distributed through a Git repo. We assume
+the knowledge of git throughout the course (see <a class="reference external" href="https://guides.github.com">https://guides.github.com</a>
+for a tutorial about using git and GitHub).</p>
+<p>You should fork the template of the assignment and then edit yours in
+your forked repo. Once you have forked the template code, you can
+clone your own version by running the following command:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT_URL</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT_NAME</span><span class="p">}}</span>
 </pre></div>
 </div>
-<p>The last step is to install packages.  There are several packages that we will
-use throughout these assignments, and you can install them now into
-your virtual env. You do this by running:</p>
+<p>The last step is to install packages.  There are several packages
+used throughout these assignments, and you can install them in
+your virtual enviroment by running:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">txt</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">Ue</span> <span class="o">.</span>

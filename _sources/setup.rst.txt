@@ -12,14 +12,14 @@ Online IDE
 -----------
 
 MiniTorch can be run entirely on an online IDE for simplicity.
-Each assignment is configured to work directly with the Repl.it
+Each module is configured to work directly with the Repl.it
 environment which you can setup through the Github page. You will
-need to signup for a `Repl.it <Repl.it>`_ account and create an environment repo through
+need to signup for a `Repl.it <https://repl.it>`_ account and create an environment repo through
 the link. Dependencies and the environment should be setup automatically. Tests
 will run with the play button. 
 
 
-For training and visualization, you may need to rerun the following commands.
+For training and visualization, you may need to run the following command.
 
 >>> pip install -U -r requirements.extra.txt
 
@@ -35,10 +35,10 @@ Alternatively, you can set things up in a standard Python environment.
 
 MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your
-system. To check run either:
-
->>> python -v
->>> python3 -v
+system. To check your version of Python, run either:
+ 
+>>> python --version
+>>> python3 --version
 
 
 We recommend creating a global MiniTorch workspace directory that you will use
@@ -46,7 +46,7 @@ for all modules.
 
 >>> mkdir workspace; cd workspace
 
-Within this directory you need to setup a `virtual
+Within this directory you need to set up a `virtual
 environment`. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
 system. (See https://docs.python.org/3/library/venv.html for further
@@ -55,26 +55,27 @@ instructions on how this works.)
 >>> python -m venv venv
 >>> source venv/bin/activate
 
-The first line you should run only once, whereas the second needs to
+The first line should be run only once, whereas the second needs to
 be run whenever you open a new terminal to get started for the class.
-You can tell if the second line worked because your terminal will now have
-`(venv)` on the end.
+You can tell if the second line works by checking if your terminal starts
+with `(venv)`.
 
 
-Each assignment is distributed through a Git repo. You first should
-fork the template of the assignment and edit yours in your forked
-repo. We will assume knowledge of git throughout the course, see
-https://guides.github.com for a tutorial about using git and github.
+Each assignment is distributed through a Git repo. We assume 
+the knowledge of git throughout the course (see https://guides.github.com 
+for a tutorial about using git and GitHub).
 
-Once you have forked the template code, you can clone your own version by running the command:
+You should fork the template of the assignment and then edit yours in 
+your forked repo. Once you have forked the template code, you can 
+clone your own version by running the following command:
 
 >>> git clone {{STUDENT_ASSIGNMENT_URL}}
 >>> cd {{STUDENT_ASSIGNMENT_NAME}}
 
 
-The last step is to install packages.  There are several packages that we will
-use throughout these assignments, and you can install them now into
-your virtual env. You do this by running:
+The last step is to install packages.  There are several packages
+used throughout these assignments, and you can install them in
+your virtual enviroment by running:
 
 
 >>> python -m pip install -r requirements.txt

@@ -21,7 +21,7 @@ Tech.
 
 MiniTorch is strictly *DIY*. It is not a library, per se, but a
 series of practically-oriented modules. These modules aim to provide
-the user with guidance on re-building the codebase themselves, through
+the user with guidance on re-building the codebase by themselves, through
 a series of incremental implementations. These implementations can be
 done with a course or by an interested learner.
 
@@ -29,7 +29,7 @@ To get started, first read :doc:`setup` and :doc:`contributing` to
 build your workspace.  Then follow through each of the modules to the
 right. Minimal computational resources are required.
 Module starting code is available on GitHub, and each proceeds
-incrementally from past assignments.
+incrementally from past modules.
 
 Enjoy!
 

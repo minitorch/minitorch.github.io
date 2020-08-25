@@ -4,14 +4,14 @@ Contributing
 
 
 Each MiniTorch assignment is structured to mimic the experience of
-contributing to a real open-source project. As such we will require
-specific contributor requirements. This doc lays out the expectations
-of your code. For each assignment, there will be a script `run_test.py`
-that will check each of the necessary properties before submitting.
+contributing to a real open-source project. Thus we have
+specific contributor requirements. This doc lays out our expectation
+of your code. For each assignment, there is a script `run_test.py`
+available for you to check each of the necessary properties before submitting:
 
 >>> python run_tests.py
 
-You can also run individual test groups.
+You can also run an individual test group:
 
 >>> python run_tests.py 2
 
@@ -19,30 +19,29 @@ You can also run individual test groups.
 Style
 ------
 
-It is a requirement of these assignments to keep your code organized
+It is required to keep your code organized
 and clean to make it easier to debug, optimize, and document. To help
-with this process, we will utilize required formatting on all the
-assignments. Style checked in `run_tests.py 0` automatically.
+with this process, we utilize required formatting on all
+assignments. Coding style is checked in `run_tests.py 0` automatically.
 
 Fixing style bugs can be an annoying process. However, there is a nice trick
 to fix most formatting issues automatically. We use `black` to automatically reformat
-all of your code to fit most of the requirements. (See https://github.com/psf/black for
-more details).
+all of your code to fit most of the requirements (see https://github.com/psf/black for
+more details):
 
 >>> black minitorch/ tests/ project/
 
 
-We also recommend setting up your editor or IDE to highlight other style issues. Many of them
- will do it automatically or ask for recommendations. 
+We recommend setting up your editor or IDE to highlight other style issues.
 
 
 Testing
 --------------
 
-Each assignment will have a series of tests that are required to pass.
+Each assignment has a series of tests that require your code to pass.
 These tests are in the `tests/` directory and are in the `pytest` format
 (https://docs.pytest.org/en/stable/). Any function in that directory
-with the word `test` in its name will be run as part of the test
+with the word `test` in its name is run as part of the test
 suite.
 
 In addition to `run_tests.py` which runs all of the tests, you can run
@@ -50,7 +49,7 @@ tests in a single file with:
 
 >>> python -m pytest tests/test_operators.py
 
-Or even a particular test with.
+Or even a particular test with:
 
 >>> python -m pytest tests/test_operators.py -k test_sum
 
@@ -60,10 +59,10 @@ Pytest will hide all print statements unless a test fails.
 Documentation
 --------------
 
-Throughout the codebase we will document all functions in a
+Throughout the codebase, we require to document all functions in a
 standardized style. Documentation is critical for our Python codebase, and
-we use it to convey the requirements on many functions.
-Functions should have docstrings of the following form (known as Google docstyle) ::
+we use it to convey requirements on many functions.
+Functions should have docstrings in the following form (known as Google docstyle): ::
 
 
   def index(ls, i):
@@ -80,7 +79,7 @@ Functions should have docstrings of the following form (known as Google docstyle
       ... 
 
 
-The full description of this docstyle is given here
+A full description of this docstyle is listed here
 https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html.
 
 
@@ -88,15 +87,17 @@ https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html.
 Continuous Integration (CI)
 -----------------------------
 
-In addition to local testing, the project is setup such that on each code push,
-the tests are automatically run and checked on the server. You will be able to see
+In addition to local testing, the project is set up such that on each code push,
+tests are automatically run and checked on the server. You are able to see
 how well you are doing on the assignment by committing your code, pushing to the server,
-and then logging in to github. This process takes several minutes, but it is an easy way to
+and then logging in to GitHub. This process takes several minutes, but it is an easy way to
 keep track of your progress as you go.
 
+Specifically, you can run:
 
->>> git commit -am "First commit"; git push origin master
+>>> git commit -am "First commit";
+>>> git push origin master
 
-Then go to github and click on "Pull Requests". Clicking on the
-request itself will give a link to see the current progress of your
+Then go to your GitHub and click on "Pull requests". Clicking on the
+request itself gives a link to show the current progress of your
 work.

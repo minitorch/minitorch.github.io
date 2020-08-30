@@ -303,18 +303,18 @@ gradient descent works in the following manner.</p>
 <li><p>See how small changes to each of the parameters would change the loss.</p></li>
 <li><p>Update the parameters with a small change in the direction that locally most reduces the loss.</p></li>
 </ol>
-<p>Let us return to the incorrect model above.</p>
+<p>Let's return to the incorrect model above.</p>
 <a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 250px;" /></a>
 <p>As we noted, this model has a high loss, and we want to consider ways to &quot;turn the knobs&quot; of the parameters to find a better model. Let us focus on the parameter controlling the intercept of the model.</p>
 <a class="reference internal image-reference" href="_images/bias.png"><img alt="_images/bias.png" class="align-center" src="_images/bias.png" style="width: 300px;" /></a>
 <p>We can consider how the loss changes with respect to just varying this parameter. It seems like the loss will go down if we lower the intercept a bit.</p>
 <a class="reference internal image-reference" href="_images/move.png"><img alt="_images/move.png" class="align-center" src="_images/move.png" style="width: 400px;" /></a>
-<p>Doing this then leads to a better model.</p>
+<p>Doing this leads to a better model.</p>
 <a class="reference internal image-reference" href="_images/incorrect3.png"><img alt="_images/incorrect3.png" class="align-center" src="_images/incorrect3.png" style="width: 250px;" /></a>
 <p>We can repeat this process for the intercept as well as for all the other parameters in the model.</p>
 <p>But how did we know how the loss function changed if we changed the intercept? For a small problem, we can just move it a bit and see. But remember that machine learning models can have billions of parameters, so this would take a ton of time.</p>
 <p>A better approach is to utilize calculus and take the derivative of the loss function with respect to the parameter <span class="math notranslate nohighlight">\(L'_b\)</span>. If we can efficiently and automatically take this derivative, it tells us how to change the parameter to update its value to fit any loss. Even better, if we can efficiently take a set of derivatives (known as a <cite>gradient</cite>) for all the parameters, then we know which direction they all should move.</p>
-<p>The first 4 modules are MiniTorch are dedicated to implementing this fitting procedure efficiently.</p>
+<p>The first 4 modules in MiniTorch are dedicated to implementing this fitting procedure efficiently.</p>
 </div>
 <div class="section" id="neural-networks">
 <h2>Neural Networks<a class="headerlink" href="#neural-networks" title="Permalink to this headline">¶</a></h2>
@@ -326,19 +326,19 @@ separators.</p>
 <p>Intuitively, neural networks divide classification into two or more stages.
 Each stage uses a linear model to reshape the data into new points. The final
 stage is a linear classifier over the transformed point.</p>
-<p>Let's look at our dataset.</p>
+<p>Let's look at our dataset:</p>
 <a class="reference internal image-reference" href="_images/incorrect.png"><img alt="_images/incorrect.png" class="align-center" src="_images/incorrect.png" style="width: 300px;" /></a>
-<p>A neural network might first produce a (yellow) separator to pull apart the top red points.</p>
+<p>A neural network might first produce a separator (yellow) to pull apart the top red points:</p>
 <a class="reference internal image-reference" href="_images/split1.png"><img alt="_images/split1.png" class="align-center" src="_images/split1.png" style="width: 300px;" /></a>
-<p>And then produce a (green) separator to pull apart the bottom red points.</p>
+<p>And then produce another separator (green) to pull apart the bottom red points:</p>
 <a class="reference internal image-reference" href="_images/split2.png"><img alt="_images/split2.png" class="align-center" src="_images/split2.png" style="width: 300px;" /></a>
 <p>The neural network is allowed to transform the points based on the
 distance from these separators (very similar to the loss function
 above). It can use whatever function it wants to do this
 transformation. Ideally, the function would make the points in yellow and green high, and the
-other points low. One function to do this is the ReLU function. (ReLU stands for Rectified Linear Unit, a very complicated way of saying &quot;delete values below 0&quot;.):</p>
+other points low. One function to do this is the ReLU function (ReLU stands for Rectified Linear Unit, a very complicated way of saying &quot;delete values below 0&quot;.):</p>
 <a class="reference internal image-reference" href="_images/relu2.png"><img alt="_images/relu2.png" class="align-center" src="_images/relu2.png" style="width: 400px;" /></a>
-<p>For the yellow separator, the ReLU yields the following values.</p>
+<p>For the yellow separator, the ReLU yields the following values:</p>
 <a class="reference internal image-reference" href="_images/relu.png"><img alt="_images/relu.png" class="align-center" src="_images/relu.png" style="width: 400px;" /></a>
 <p>Basically the top X's are positive and the bottom O's and X's are 0.
 Something very similar happens for the green separator.</p>
@@ -347,7 +347,7 @@ it is very easy to separate out the space.</p>
 <a class="reference internal image-reference" href="_images/mlpmid.png"><img alt="_images/mlpmid.png" class="align-center" src="_images/mlpmid.png" style="width: 300px;" /></a>
 <p>Looking back at the original model, this process appears like it has produced two lines to pull apart the data.</p>
 <a class="reference internal image-reference" href="_images/mlpgraph.png"><img alt="_images/mlpgraph.png" class="align-center" src="_images/mlpgraph.png" style="width: 300px;" /></a>
-<p>Mathematically we can think of the transformed data a values <span class="math notranslate nohighlight">\(h_1, h_2\)</span> that we get from applying
+<p>Mathematically we can think of the transformed data as values <span class="math notranslate nohighlight">\(h_1, h_2\)</span> which we get from applying
 separators with different parameters to the original data. The final prediction then applies a separator
 to <span class="math notranslate nohighlight">\(h_1, h_2\)</span>.</p>
 <div class="math notranslate nohighlight">

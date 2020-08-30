@@ -11,13 +11,13 @@ Module 0 - Fundamentals
 
 This introductory module is focused on introducing several core
 technologies used for testing and debugging in future
-modules. It also includes some basic mathematical foundations.
-Finally it will start to build up some of the
-infrastructure for MiniTorch itself.
+modules, and also includes some basic mathematical foundations.
+In this module, you will start to build up some of the
+infrastructure for MiniTorch.
 
 All starter code is available in https://github.com/minitorch/Module-0 .
-Before beginning this assignment be sure to setup your directories following :doc:`setup` and
-read :doc:`contributing` to understand how the code is organized.
+Before starting this assignment, make sure to set up your workspace following :doc:`setup`, and
+read :doc:`contributing` to understand how the code should be organized.
 
 
 Each module has a set of `Guides` to help with the tasks. We recommend
@@ -41,10 +41,10 @@ Task 0.1: Operators
 ========================
 
 This task is designed to help you get comfortable with style checking
-and testing. We ask you to re-implement a series of basic mathematical
-functions.  These functions are simple, but they will form the basis
-of MiniTorch. Be sure you  understand each of them as
-some of the terminology might be new.
+and testing. We ask you to implement a series of basic mathematical
+functions.  These functions are simple, but they form the basis
+of MiniTorch. Make sure that you understand each of them as
+some terminologies might be new.
 
 
 .. todo::
@@ -67,12 +67,12 @@ Task 0.2: Testing and Debugging
 .. note::
 
    This task requires familiarity with testing and property
-   tests. Be sure to first carefully read the guide on
+   tests. Make sure to first read the guide on
    :doc:`property_testing`, and consult the `Hypothesis <https://hypothesis.readthedocs.io/>`_ documentation.
 
 
-Implement property tests for your operators from Task 0.1. These
-tests should ensure that your functions not only work, but obey
+We ask you to implement property tests for your operators from Task 0.1. These
+tests should ensure that your functions not only work but also obey
 high-level mathematical properties for any input.
 
 
@@ -92,17 +92,17 @@ Task 0.3: Functional Python
 .. note::
 
    This task requires familiarity with basic functional programming concepts and notation.
-   This subject is outside the scope of these guides, but this `tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
+   This subject is outside the scope of guides provided here, but this `tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
 
 
 To practice the use of higher-order functions in Python, implement three basic
-functional concepts. Use these in combination with the operators described in Task 0.1
+functional concepts. Use them in combination with operators described in Task 0.1
 to build up more complex mathematical operations that work on lists instead of single values.
 
 
 
 .. todo::
-   Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`
+   Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`.
 
 .. autofunction:: minitorch.operators.map
 .. autofunction:: minitorch.operators.negList
@@ -118,15 +118,15 @@ Task 0.4: Modules
 
 .. note:: This task requires familiarity with neural network Modules.
           Please read :doc:`modules` to get started.
-          If you want more context for how modules are used
+          If you want more context for how modules are used,
           you may find it helpful to skip ahead and read the `torch module
           tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.
 
 
 
 This task is to implement the core structure of the :class:`minitorch.Module`
-class.  You will implement a tree-data structure that
-stores named :class:`minitorch.Parameter` on each node. This datastructure makes it
+class.  We ask you to implement a tree data structure that
+stores named :class:`minitorch.Parameter` on each node. Such a data structure makes it
 easy for users to create trees that can be `walked` to find all of the parameters of
 interest.
 
@@ -151,16 +151,15 @@ Task 0.5: Visualization
 
 
 
-For the first few assignments we will be using a set of datasets
-that are implemented in `project/datasets.py`. These datasets are
-simple 2D point classification datasets (see `TensorFlow Playground <https://playground.tensorflow.org/>`_
-for similar examples.) Each of them can be added to the visualization using ::
+For the first few assignments, we use a set of datasets implemented in `project/datasets.py`,
+which are 2D point classification datasets. (See `TensorFlow Playground <https://playground.tensorflow.org/>`_
+for similar examples.) Each of these dataset can be added to the visualization using::
 
   from project.datasets import Simple, Split, Xor
   N = 100
   Simple(N, vis=True).graph("initial")
 
-You can also provide a model that attempts to classify the points in the dataset.::
+You can also provide a model that attempts to perform the classfication::
 
   def classify(pt):
       "Classify based on x position"
@@ -174,7 +173,7 @@ You can also provide a model that attempts to classify the points in the dataset
 
 .. todo::
    Start a visdom server and print an image of the dataset. Hand-create classifiers that
-   split each of the datasets into the correct colors. Display your images on the README file of the
+   split each of the datasets into the correct colors. Display your images on the README file in your
    repo.
 
 Optional

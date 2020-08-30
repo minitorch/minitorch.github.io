@@ -10,37 +10,38 @@ While testing is nice for maintaining correctness, exploratory
 analysis is also critical for gaining intuition.  When you are stuck,
 often the best thing to do is to just look at your data and
 outputs. Visualizing our system can't prove that it is correct, but it
-can often times lead us directly to figure out what is wrong.
-Throughout our development, we will be using visualization to observe
+can often directly help us to figure out what goes wrong.
+Throughout our development, we will use visualization to observe
 intermediate states, training progress, outputs, and even final models.
 
-The main library we will use it called `Visdom`
-(https://github.com/facebookresearch/visdom). Here's an example of
-what it looks like
+The main library we will use is `Visdom`
+(https://github.com/facebookresearch/visdom). Here is an example of
+what it looks like:
 
 .. image:: visdom.png
 
 
-You can think of it as a pasteboard for sending images and graphs from
+You can think of it as sending images and graphs from
 your code to a centralized, organized place.  Nothing that magical, we
-could just output them to a directory, but we will see this as some
+could just output them to a directory, but we will see this has some
 nice benefits.
 
 
-To start Visdom, you need to run the following from a command-line in your virtual env (this will also work in online environment like Repl.it):
+To start Visdom, you need to run the following command in your
+virtual env (it also works in online environment like Repl.it):
 
 >>> visdom 2> error.log &
 
-Next, open up a browser window and go to http://localhost:8097 (or whichever port it started on).
+Next, open up a browser window and, go to http://localhost:8097 (or whichever port it starts on).
 
-You can then plot functions that go directly to this board. For instance if we want to plot a simple
-graph we can run the following code.::
+You can plot functions that go directly to this board. For instance, if you can plot a simple
+graph with the following code::
 
     import visdom
     import matplotlib.pyplot as plt
     vis = visdom.Visdom()
 
-    # Loss goes does!
+    # Loss goes down!
     plt.plot([2.0, 1.0, 0.0], c="blue")
     plt.title("Model Loss")
 
@@ -50,4 +51,4 @@ graph we can run the following code.::
 .. image:: visdom2.png
 
 
-There is a lot more you can do in this environment. Check out `Visdom <https://github.com/facebookresearch/visdom>`_ for a list of goodies.
+There is a lot more you can do with Visdom. Check out `Visdom <https://github.com/facebookresearch/visdom>`_ for a list of goodies.

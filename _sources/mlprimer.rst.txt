@@ -258,7 +258,7 @@ gradient descent works in the following manner.
 3. Update the parameters with a small change in the direction that locally most reduces the loss.  
  
 
-Let us return to the incorrect model above. 
+Let's return to the incorrect model above. 
    
 .. image:: figs/Graphs/incorrect.png
            :align: center
@@ -277,7 +277,7 @@ We can consider how the loss changes with respect to just varying this parameter
            :align: center
            :width: 400px
                    
-Doing this then leads to a better model. 
+Doing this leads to a better model. 
                    
 .. image:: figs/Graphs/incorrect3.png
            :align: center
@@ -290,7 +290,7 @@ But how did we know how the loss function changed if we changed the intercept? F
 
 A better approach is to utilize calculus and take the derivative of the loss function with respect to the parameter :math:`L'_b`. If we can efficiently and automatically take this derivative, it tells us how to change the parameter to update its value to fit any loss. Even better, if we can efficiently take a set of derivatives (known as a `gradient`) for all the parameters, then we know which direction they all should move.
 
-The first 4 modules are MiniTorch are dedicated to implementing this fitting procedure efficiently.
+The first 4 modules in MiniTorch are dedicated to implementing this fitting procedure efficiently.
 
                    
 Neural Networks
@@ -311,20 +311,20 @@ Intuitively, neural networks divide classification into two or more stages.
 Each stage uses a linear model to reshape the data into new points. The final
 stage is a linear classifier over the transformed point.
 
-Let's look at our dataset.
+Let's look at our dataset:
 
 .. image:: figs/Graphs/incorrect.png
            :align: center
            :width: 300px
 
-A neural network might first produce a (yellow) separator to pull apart the top red points.
+A neural network might first produce a separator (yellow) to pull apart the top red points:
 
 
 .. image:: figs/Graphs/split1.png
            :align: center
            :width: 300px
 
-And then produce a (green) separator to pull apart the bottom red points.                  
+And then produce another separator (green) to pull apart the bottom red points:                  
                   
 .. image:: figs/Graphs/split2.png
            :align: center
@@ -334,14 +334,14 @@ The neural network is allowed to transform the points based on the
 distance from these separators (very similar to the loss function
 above). It can use whatever function it wants to do this
 transformation. Ideally, the function would make the points in yellow and green high, and the
-other points low. One function to do this is the ReLU function. (ReLU stands for Rectified Linear Unit, a very complicated way of saying "delete values below 0".):
+other points low. One function to do this is the ReLU function (ReLU stands for Rectified Linear Unit, a very complicated way of saying "delete values below 0".):
 
 
 .. image:: figs/Graphs/relu2.png
            :align: center
            :width: 400px
 
-For the yellow separator, the ReLU yields the following values. 
+For the yellow separator, the ReLU yields the following values:
                    
 .. image:: figs/Graphs/relu.png
            :align: center
@@ -366,7 +366,7 @@ Looking back at the original model, this process appears like it has produced tw
            :width: 300px
 
 
-Mathematically we can think of the transformed data a values :math:`h_1, h_2` that we get from applying
+Mathematically we can think of the transformed data as values :math:`h_1, h_2` which we get from applying
 separators with different parameters to the original data. The final prediction then applies a separator
 to :math:`h_1, h_2`. 
                    

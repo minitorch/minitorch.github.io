@@ -7,21 +7,22 @@ Modules
 
 Researchers often disagree on exactly what the term `deep` learning
 means, but one aspect that everyone agrees on is that deep
-models are big and complex.  Common models can include 100s of
+models are big and complex.  Common models can include hundreds of
 millions of learned `parameters` that span over hundreds of informal
 `module` groups.  In order to work with such complex systems, it is
-important to have data structures that abstract away this complexity
-and make it easy to access and manipulate specific components, and
+important to have data structures which abstract away the complexity
+so that it is eaiser to access and manipulate specific components, and
 group together shared regions.
 
 
 On the programming side, `Modules` have become a popular paradigm to
 group parameters together to make them easy to manage, access, and
 address.  There is nothing specific to machine learning about this
-setup, (and everything in MiniTorch could be done with modules), but they
+setup (and everything in MiniTorch could be done with modules), but they
 make life easier and code more organized. 
 
-First let's define a Parameter. For now, we will just think of Parameter as a holder. It is just a special object that stores a value.
+First, let's define a Parameter. For now, we will just think of Parameter 
+as a holder. It is just a special object that stores a value.
 
 
 .. autoclass:: minitorch.Parameter
@@ -33,9 +34,9 @@ Parameters become more interesting when they are grouped with
 parameters. Let's look at the `Module` class to see how this works. 
 
 
-Modules are a recursive tree-shaped data-structure. Each module can
+Modules are a recursive tree-shaped data structure. Each module can
 store three things: 1) parameters, 2) non-parameter data, 3) other
-modules. Internally the user stores each of these directly on `self`,
+modules. Internally, the user stores each of these directly on `self`,
 but the module spies under the hood to determine the type of each
 assignment.
 
@@ -43,13 +44,13 @@ Here is an example of the simplest usage of a module::
       
       class MyModule(Module):
           def __init__(self, arg):
-              # Initialize the super-class (so it can spy.)
+              # Initialize the super-class (so it can spy)
               super().__init__()
 
-                # A parameter member (subclass of Parameter)
+              # A parameter member (subclass of Parameter)
               self.parameter1 = Parameter(15)
 
-              # Another member
+              # A non-parameter member
               self.data = 25
 
               # A module member (subclass of Module)
@@ -77,6 +78,7 @@ how you can create a tree of modules and then extract the flattened parameters::
               super().__init__()
               self.p1 = Parameter(5)
               self.a = Module2()
+              self.b = Module3()
 
       class Module2(Module):
           def __init__(self, arg):
@@ -86,7 +88,7 @@ how you can create a tree of modules and then extract the flattened parameters::
       class Module3(Module):
           def __init__(self, arg):
               super().__init__()
-              self.b = Module4()
+              self.c = Module4()
 
       class Module4(Module):
           def __init__(self, arg):
@@ -98,8 +100,8 @@ how you can create a tree of modules and then extract the flattened parameters::
 
 .. image:: figs/Module/module.png
 
-Additionally a module can have a :attr:`mode` indicating how it is
-currently being used. The mode should propagate to all of its
-children. For simplicity, we only consider a train and eval mode.
+Additionally, a module can have a :attr:`mode` indicating how it is
+currently operated. The mode should propagate to all of its
+child modules. For simplicity, we only consider the train and eval mode.
                
 .. autoclass:: minitorch.Module

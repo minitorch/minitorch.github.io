@@ -226,9 +226,16 @@ and store them in a special dictionary.</p>
 </div>
 <p>Internally, parameters (type 1) are stored in <code class="xref py py-attr docutils literal notranslate"><span class="pre">_parameters</span></code>, data (type 2)
 is stored on <cite>self</cite>, modules (type 3) are stored in <code class="xref py py-attr docutils literal notranslate"><span class="pre">_modules</span></code>.</p>
-<p>The main benefit of this infrastructure is that it allows us to <cite>flatten</cite> a module
-to get out all of its parameters using <code class="xref py py-func docutils literal notranslate"><span class="pre">named_parameters()</span></code>.  Here is an example of
-how you can create a tree of modules and then extract the flattened parameters:</p>
+<p>The main benefit of this infrastructure is that it allows us to
+<cite>flatten</cite> a module to get out all of its parameters using
+<code class="xref py py-func docutils literal notranslate"><span class="pre">named_parameters()</span></code>. This returns a dictionary of all of the
+parameters in the module and in all descendent sub-modules. The names
+here refer to the keys in the dictionary which give the path to each
+parameter in the tree (similar to python dot notation). Critically
+this function does not just return the current module's parameters, but recursively
+collects parameters from all the modules below as well.</p>
+<p>Here is an example of how you can create a tree of modules and then
+extract the flattened parameters:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>

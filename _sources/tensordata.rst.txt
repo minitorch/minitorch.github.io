@@ -116,7 +116,7 @@ moves 5 steps. We note though that we can have different strides for the same sh
 we were walking top-to-bottom, left-to-right, we would have the following stride map. 
 
 
-.. image:: figs/Tensors/stride2.png
+.. image:: figs/Tensors/stride1.png
            :align: center
            :width: 400px
 

@@ -167,7 +167,7 @@ the parameters at the top of the file. Start with this simple config. ::
   HIDDEN = 2
   RATE = 0.5
 
-.. image:: complete.png
+.. image:: simple.png
 
 You can then move up to something more complex, for instance. :: 
 
@@ -179,8 +179,8 @@ You can then move up to something more complex, for instance. ::
 
 If your code is successful you should be able to fit the data like this. 
 
+.. image:: complete.png
 
-.. image:: simple.png
 
 
 

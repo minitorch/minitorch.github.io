@@ -91,9 +91,11 @@ Here each of the red arrows is represented by an object :class:`minitorch.Variab
     0. Initialize a queue with the final variable+derivative.
     1. While the queue is not empty, pull a variable+derivative from the queue.
     2. a. If the variable is a leaf then add its final derivative (`_add_deriv`) and loop to (1).
-       b. If the variables is not a leaf call `.chain_rule` on the last function that created it with derivative as :math:`d_{out}`.
-       c. Otherwise, add to the queue.
-       d. Optional. If the variable is in the queue (check `.name`), add to its current derivativ
+       b. If the variables is not a leaf, run the chain rule the last function that created it. Pass in the with derivative of the variable as :math:`d_{out}`.
+       c. Iterate through each non-constant variable in the chain rule. 
+       d. Optional. If the variable is in the queue (check `.name`), add to its current derivative
+       e. Otherwise, add to the queue.
+    
 
 
 Important note. Only leaf variables should ever have non-None

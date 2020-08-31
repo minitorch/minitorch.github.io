@@ -225,9 +225,10 @@ is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next st
 <li><p>While the queue is not empty, pull a variable+derivative from the queue.</p></li>
 <li><ol class="loweralpha simple">
 <li><p>If the variable is a leaf then add its final derivative (<cite>_add_deriv</cite>) and loop to (1).</p></li>
-<li><p>If the variables is not a leaf call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span>.</p></li>
+<li><p>If the variables is not a leaf, run the chain rule the last function that created it. Pass in the with derivative of the variable as <span class="math notranslate nohighlight">\(d_{out}\)</span>.</p></li>
+<li><p>Iterate through each non-constant variable in the chain rule.</p></li>
+<li><p>Optional. If the variable is in the queue (check <cite>.name</cite>), add to its current derivative</p></li>
 <li><p>Otherwise, add to the queue.</p></li>
-<li><p>Optional. If the variable is in the queue (check <cite>.name</cite>), add to its current derivativ</p></li>
 </ol>
 </li>
 </ol>

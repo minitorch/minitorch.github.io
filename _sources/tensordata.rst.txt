@@ -111,8 +111,8 @@ mapping, since it is in the natural counting order (bigger strides left). The ma
            :align: center
            :width: 400px
 
-Here the strides are :math:`(5, 1)`. We read this as each column moves 1 step in storage and each row
-moves 5 steps. We note though that we can have different strides for the same shape. If for instance,
+Here the strides are :math:`(2, 1)`. We read this as each column moves 1 step in storage and each row
+moves 2 steps. We note though that we can have different strides for the same shape. If for instance,
 we were walking top-to-bottom, left-to-right, we would have the following stride map. 
 
 

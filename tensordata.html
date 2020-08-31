@@ -239,8 +239,8 @@ to think about so it is easiest to see by example.</p></li>
 top-to-bottom to order this matrix to the storage. We call this the <cite>contiguous</cite>
 mapping, since it is in the natural counting order (bigger strides left). The mapping looks like this.</p>
 <a class="reference internal image-reference" href="_images/stride2.png"><img alt="_images/stride2.png" class="align-center" src="_images/stride2.png" style="width: 400px;" /></a>
-<p>Here the strides are <span class="math notranslate nohighlight">\((5, 1)\)</span>. We read this as each column moves 1 step in storage and each row
-moves 5 steps. We note though that we can have different strides for the same shape. If for instance,
+<p>Here the strides are <span class="math notranslate nohighlight">\((2, 1)\)</span>. We read this as each column moves 1 step in storage and each row
+moves 2 steps. We note though that we can have different strides for the same shape. If for instance,
 we were walking top-to-bottom, left-to-right, we would have the following stride map.</p>
 <a class="reference internal image-reference" href="_images/stride1.png"><img alt="_images/stride1.png" class="align-center" src="_images/stride1.png" style="width: 400px;" /></a>
 <p>Contiguous strides are generally preferred, but non-contiguous strides

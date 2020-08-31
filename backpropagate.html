@@ -202,7 +202,7 @@ two new variables on the queue (which correspond to <span class="math notranslat
 <img alt="_images/backprop3.png" class="align-center" src="_images/backprop3.png" />
 <p>The next element on the queue is the top arrow. We pass its derivative as <span class="math notranslate nohighlight">\(d_out\)</span> to chain rule, which adds a new arrow (corresponding to <span class="math notranslate nohighlight">\(z\)</span>) to the queue.</p>
 <img alt="_images/backprop4.png" class="align-center" src="_images/backprop4.png" />
-<p>The next element on the queue is the top arrow. Here we have an interesting result. We have a new arrow, but it corresponds to the same variable which is already in the queue. We can apply an optimization, and simply add it derivative to the derivative computed at the last step. This means there is only one arrow to process.</p>
+<p>The next element on the queue is the top arrow. Here we have an interesting result. We have a new arrow, but it corresponds to the same variable which is already in the queue. It is okay to have the variable twice. Or alternatively we can apply an optimization, and simply add it derivative to the derivative computed at the last step. This means there is only one arrow to process.</p>
 <img alt="_images/backprop5.png" class="align-center" src="_images/backprop5.png" />
 <p>At this point, all that is left on the queue is our leaf variables.</p>
 <img alt="_images/backprop6.png" class="align-center" src="_images/backprop6.png" />
@@ -226,9 +226,8 @@ is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next st
 <li><ol class="loweralpha simple">
 <li><p>If the variable is a leaf then add its final derivative (<cite>_add_deriv</cite>) and loop to (1).</p></li>
 <li><p>If the variables is not a leaf call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span>.</p></li>
-<li><p>Loop through all the variables+derivative produced by the chain rule.</p></li>
-<li><p>If the variable is in the queue (check <cite>.name</cite>), add to its current derivativ</p></li>
 <li><p>Otherwise, add to the queue.</p></li>
+<li><p>Optional. If the variable is in the queue (check <cite>.name</cite>), add to its current derivativ</p></li>
 </ol>
 </li>
 </ol>

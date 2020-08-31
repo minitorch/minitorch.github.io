@@ -53,7 +53,7 @@ The next element on the queue is the top arrow. We pass its derivative as :math:
 .. image:: figs/Autograd/backprop4.png
            :align: center
 
-The next element on the queue is the top arrow. Here we have an interesting result. We have a new arrow, but it corresponds to the same variable which is already in the queue. We can apply an optimization, and simply add it derivative to the derivative computed at the last step. This means there is only one arrow to process.
+The next element on the queue is the top arrow. Here we have an interesting result. We have a new arrow, but it corresponds to the same variable which is already in the queue. It is okay to have the variable twice. Or alternatively we can apply an optimization, and simply add it derivative to the derivative computed at the last step. This means there is only one arrow to process.
 
 .. image:: figs/Autograd/backprop5.png
            :align: center
@@ -92,9 +92,9 @@ Here each of the red arrows is represented by an object :class:`minitorch.Variab
     1. While the queue is not empty, pull a variable+derivative from the queue.
     2. a. If the variable is a leaf then add its final derivative (`_add_deriv`) and loop to (1).
        b. If the variables is not a leaf call `.chain_rule` on the last function that created it with derivative as :math:`d_{out}`.
-       c. Loop through all the variables+derivative produced by the chain rule.
-       d. If the variable is in the queue (check `.name`), add to its current derivativ
-       e. Otherwise, add to the queue.
+       c. Otherwise, add to the queue.
+       d. Optional. If the variable is in the queue (check `.name`), add to its current derivativ
+
 
 Important note. Only leaf variables should ever have non-None
 .derivative value. All the intermediate variables should only keep

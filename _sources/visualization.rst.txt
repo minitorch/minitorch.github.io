@@ -34,7 +34,7 @@ virtual env (it also works in online environment like Repl.it):
 
 Next, open up a browser window and, go to http://localhost:8097 (or whichever port it starts on).
 
-You can plot functions that go directly to this board. For instance, if you can plot a simple
+You can plot functions that go directly to this board. For instance, you can plot a simple
 graph with the following code::
 
     import visdom

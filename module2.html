@@ -261,7 +261,7 @@ may not be the inverse of <cite>index_to_position</cite>.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Fills in <cite>index</cite>.</p>
+<dd class="field-even"><p>Fills in <cite>out_index</cite>.</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>None</p>
@@ -520,8 +520,8 @@ identical.</p>
 <dl class="py function">
 <dt id="minitorch.broadcast_index">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">big_index</span></em>, <em class="sig-param"><span class="n">big_shape</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
-<dd><p>Convert an index into a position (see <cite>index_to_position</cite>),
-when the index is from a broadcasted shape. In this case
+<dd><p>Convert a <cite>big_index</cite> into <cite>big_shape</cite> to a smaller <cite>out_index</cite>
+into <cite>shape</cite> following broadcasting rules. In this case
 it may be larger or with more dimensions than the <cite>shape</cite>
 given. Additional dimensions may need to be mapped to 0 or
 removed.</p>
@@ -533,6 +533,12 @@ removed.</p>
 <li><p><strong>shape</strong> (<em>array-like</em>) -- tensor shape of smaller tensor</p></li>
 <li><p><strong>out_index</strong> (<em>array-like</em>) -- multidimensional index of smaller tensor</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Fills in <cite>out_index</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>

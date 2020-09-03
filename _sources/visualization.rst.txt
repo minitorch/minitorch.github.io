@@ -52,3 +52,13 @@ graph with the following code::
 
 
 There is a lot more you can do with Visdom. Check out `Visdom <https://github.com/facebookresearch/visdom>`_ for a list of goodies.
+
+To kill a Visdom server running in the background, you can first check what jobs are running and choose the job (e.g. job 1) that you want to kill:
+
+>>> jobs
+>>> kill %1
+
+You can kill all Visdom servers by running:
+
+>>> killall visdom
+

@@ -9,26 +9,22 @@ Module 1 - Auto-Differentiation
            :align: center
 
 
-This module shows how to build a first version of MiniTorch
-(mini-MiniTorch?) using only Scalar values. This covers the key aspects
-of auto-differentiation the key technique in the system. You will then
+This module shows how to build the first version of MiniTorch
+(mini-MiniTorch?) using only Scalar values. This covers key aspects
+of auto-differentiation: the key technique in the system. Then you will
 use your code to train a preliminary model.
 
 All starter code is available in https://github.com/minitorch/Module-1 .
 
-To begin, remember to first activate your virtual environment.
-
->>> source venv/bin/activate
-
-And then clone your assignment.
+To begin, remember to activate your virtual environment first, and then clone your assignment:
 
 >>> git clone {{STUDENT_ASSIGNMENT1_URL}}
->>> cd Module-1
+>>> cd {{STUDENT_ASSIGNMENT_NAME}}
 
-You will also need the files from Assignment 0 so be sure to pull them over
+Module 1 is built upon the previous Module 0, so make sure to pull your files from Assignment 0
 to your new repo.
 
-Be sure to continue to follow the :doc:`contributing` guidelines.
+Please continue to follow the :doc:`contributing` guideline.
 
 
 .. toctree::

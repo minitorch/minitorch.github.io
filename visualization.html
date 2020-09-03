@@ -205,6 +205,15 @@ graph with the following code:</p>
 </div>
 <img alt="_images/visdom2.png" src="_images/visdom2.png" />
 <p>There is a lot more you can do with Visdom. Check out <a class="reference external" href="https://github.com/facebookresearch/visdom">Visdom</a> for a list of goodies.</p>
+<p>To kill a Visdom server running in the background, you can first check what jobs are running and choose the job (e.g. job 1) that you want to kill:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kill</span> <span class="o">%</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>You can kill all Visdom servers by running:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">killall</span> <span class="n">visdom</span>
+</pre></div>
+</div>
 </div>
 
 

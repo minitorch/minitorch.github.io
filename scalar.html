@@ -174,32 +174,33 @@
             
   <div class="section" id="tracking-variables">
 <h1>Tracking Variables<a class="headerlink" href="#tracking-variables" title="Permalink to this headline">¶</a></h1>
-<p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> we discussed two ways to compute derivatives.
+<p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a>, we discussed two ways to compute derivatives.
 <cite>Symbolic</cite> derivatives require access to the full symbolic function,
 whereas <cite>numerical</cite> derivatives require only a black-box
 function. The first is precise but rigid, whereas the second is
-imprecise but more flexible. This module implements  a third
+imprecise but more flexible. This module introduces a third
 approach known as <cite>autodifferentiation</cite> which is a tradeoff between
-these methods.</p>
+symbolic and numerical methods.</p>
 <p>We will see that autodifferentiation works by collecting information about the
-computation path used within the function. It then transforms this
+computation path used within the function, and then transforming this
 information into a procedure for computing derivatives. Unlike the
-black-box method, this information will allow us to more precisely
-compute each step.</p>
-<p>However, in order to collect this information, we need to track the
+black-box method, autodifferentiation will allow us to use this information to
+compute each step more precisely.</p>
+<p>However, in order to collect the information about the computation path, we need to track the
 internal computation of the function. This can be hard to do since
 Python does not expose how its inputs are used in the function
-directly; all we get is the output. This doc describes one method
+directly: all we get is the output only. This doc describes one method
 for tracking computation.</p>
 <div class="section" id="variables-and-functions">
 <h2>Variables and Functions<a class="headerlink" href="#variables-and-functions" title="Permalink to this headline">¶</a></h2>
-<p>The main trick for tracking computation is surprisingly simple and direct.</p>
+<p>The main trick for tracking computation is surprisingly simple and direct:</p>
 <ol class="arabic simple">
-<li><p>Replace all Python values with proxy classes, known as <a href="#id1"><span class="problematic" id="id2">`</span></a>Variable`s.</p></li>
-<li><p>Replace all mathematical operators with proxy operators, known <a href="#id3"><span class="problematic" id="id4">`</span></a>Function`s.</p></li>
-<li><p>Augment Variables to remember what Function's were applied to them in the past.</p></li>
+<li><p>replace all Python values with proxy classes, known as <a href="#id1"><span class="problematic" id="id2">`</span></a>Variable`s.</p></li>
+<li><p>replace all mathematical operators with proxy operators, known <a href="#id3"><span class="problematic" id="id4">`</span></a>Function`s.</p></li>
+<li><p>augment <a href="#id5"><span class="problematic" id="id6">`</span></a>Variable`s to remember what <a href="#id7"><span class="problematic" id="id8">`</span></a>Function`s were applied to them in the past.</p></li>
 </ol>
-<p>For notation, we will use capital letters in this section to refer to our new Functions and Variables to distringuish them from Python function and variables.</p>
+<p>For notation, we will use capital letters in this section to refer to our new
+Functions and Variables to distringuish them from Python functions and variables.</p>
 <p>The goal will be for these Variables and Functions to behave exactly
 like Python numbers such that the user cannot tell the
 difference. It's a bit hacky, but pretty neat under-the-hood. We

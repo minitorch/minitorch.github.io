@@ -2,24 +2,24 @@
 Tracking Variables
 ====================
 
-In :doc:`derivative` we discussed two ways to compute derivatives.
+In :doc:`derivative`, we discussed two ways to compute derivatives.
 `Symbolic` derivatives require access to the full symbolic function,
 whereas `numerical` derivatives require only a black-box
 function. The first is precise but rigid, whereas the second is
-imprecise but more flexible. This module implements  a third
+imprecise but more flexible. This module introduces a third
 approach known as `autodifferentiation` which is a tradeoff between
-these methods.
+symbolic and numerical methods.
 
 We will see that autodifferentiation works by collecting information about the
-computation path used within the function. It then transforms this
+computation path used within the function, and then transforming this
 information into a procedure for computing derivatives. Unlike the
-black-box method, this information will allow us to more precisely
-compute each step.
+black-box method, autodifferentiation will allow us to use this information to
+compute each step more precisely.
 
-However, in order to collect this information, we need to track the
+However, in order to collect the information about the computation path, we need to track the
 internal computation of the function. This can be hard to do since
 Python does not expose how its inputs are used in the function
-directly; all we get is the output. This doc describes one method
+directly: all we get is the output only. This doc describes one method
 for tracking computation.
 
 
@@ -27,13 +27,14 @@ for tracking computation.
 Variables and Functions
 ------------------------
 
-The main trick for tracking computation is surprisingly simple and direct.
+The main trick for tracking computation is surprisingly simple and direct:
 
-1. Replace all Python values with proxy classes, known as `Variable`s.
-2. Replace all mathematical operators with proxy operators, known `Function`s.
-3. Augment Variables to remember what Function's were applied to them in the past.
+1. replace all Python values with proxy classes, known as `Variable`s.
+2. replace all mathematical operators with proxy operators, known `Function`s.
+3. augment `Variable`s to remember what `Function`s were applied to them in the past.
 
-For notation, we will use capital letters in this section to refer to our new Functions and Variables to distringuish them from Python function and variables.
+For notation, we will use capital letters in this section to refer to our new 
+Functions and Variables to distringuish them from Python functions and variables.
 
 The goal will be for these Variables and Functions to behave exactly
 like Python numbers such that the user cannot tell the

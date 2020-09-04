@@ -300,10 +300,11 @@ to build up more complex mathematical operations that work on lists instead of s
 <p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>fn</strong> (<em>one-arg function</em>) -- process one value</p>
+<dd class="field-odd"><p><strong>fn</strong> (<em>one-arg function</em>) -- Function from one value to one value.</p>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>a function that takes a list and applies <cite>fn</cite> to each element</p>
+<dd class="field-even"><p>A function that takes a list, applies <cite>fn</cite> to each element, and returns a
+new list</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>function</p>
@@ -314,7 +315,7 @@ to build up more complex mathematical operations that work on lists instead of s
 <dl class="py function">
 <dt id="minitorch.operators.negList">
 <code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use <a class="reference internal" href="#minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> to negate each element in <cite>ls</cite></p>
+<dd><p>Use <a class="reference internal" href="parallel.html#module-minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> to negate each element in <cite>ls</cite></p>
 </dd></dl>
 
 <dl class="py function">

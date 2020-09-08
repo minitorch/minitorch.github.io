@@ -89,24 +89,24 @@ Here is an example of how you can create a tree of modules and then
 extract the flattened parameters::
 
       class Module1(Module):
-          def __init__(self, arg):
+          def __init__(self):
               super().__init__()
               self.p1 = Parameter(5)
               self.a = Module2()
               self.b = Module3()
 
       class Module2(Module):
-          def __init__(self, arg):
+          def __init__(self):
               super().__init__()
               self.p2 = Parameter(10)
 
       class Module3(Module):
-          def __init__(self, arg):
+          def __init__(self):
               super().__init__()
               self.c = Module4()
 
       class Module4(Module):
-          def __init__(self, arg):
+          def __init__(self):
               super().__init__()
               self.p3 = Parameter(15)
 

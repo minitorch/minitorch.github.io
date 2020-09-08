@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
   
   
@@ -30,6 +32,9 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script src="_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -199,8 +204,14 @@ store three things: 1) parameters, 2) non-parameter data, 3) other
 modules. Internally, the user stores each of these directly on <cite>self</cite>,
 but the module spies under the hood to determine the type of each
 assignment.</p>
-<p>Here is an example of the simplest usage of a module:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<p>Here is an example of the simplest usage of a module</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">minitorch</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">class</span> <span class="nc">OtherModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
         <span class="c1"># Initialize the super-class (so it can spy)</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -214,6 +225,10 @@ assignment.</p>
         <span class="c1"># A module member (subclass of Module)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">arg</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

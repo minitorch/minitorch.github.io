@@ -40,8 +40,14 @@ modules. Internally, the user stores each of these directly on `self`,
 but the module spies under the hood to determine the type of each
 assignment.
 
-Here is an example of the simplest usage of a module::
-      
+Here is an example of the simplest usage of a module
+
+.. jupyter-execute::
+   
+      from minitorch import *
+      class OtherModule(Module):
+          pass
+   
       class MyModule(Module):
           def __init__(self, arg):
               # Initialize the super-class (so it can spy)

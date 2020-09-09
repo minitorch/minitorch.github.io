@@ -178,23 +178,24 @@
             
   <div class="section" id="autodifferentiation">
 <h1>Autodifferentiation<a class="headerlink" href="#autodifferentiation" title="Permalink to this headline">¶</a></h1>
-<p>So far, we have seen that  <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarFunction</span></code>  can be used to
-implement functions on variables. We do this by calling <cite>apply</cite> on
-variables, which then calls the underlying <cite>forward</cite> method of
-the function.</p>
-<p>Now, we include additional information on the class that gives the
+<p>In <a class="reference internal" href="scalar.html"><span class="doc">Tracking Variables</span></a>, we have seen that <code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarFunction</span></code> can be used to
+implement Functions on Variables. We do this by calling <cite>apply</cite> function on
+Variables, which then calls the underlying <cite>forward</cite> function.</p>
+<p>(For notation, we still use capital letters to refer to our
+new Functions and Variables to distringuish them from Python functions and variables.
+We use functions to refer to mathmatical functions as well depending on the context.)</p>
+<p>Now, we include additional information on the class which gives the
 derivative of the individual function. The trick behind autodifferentiation
-is to use this  <cite>chain</cite> of function calls to compute a derivative.
-Just like forward calculates the function <cite>f(x)</cite>, we need a function backward
+is to use a <cite>chain</cite> of function calls to compute a derivative.
+Just like <cite>forward</cite> calculates the function <cite>f(x)</cite>, we need a <cite>backward</cite> method
 to provide this local derivative information.</p>
 <div class="section" id="backward">
 <h2>Backward<a class="headerlink" href="#backward" title="Permalink to this headline">¶</a></h2>
-<p>For every Function, we need to provide a backward method to compute its derivative
-information. Specifically backward will compute <span class="math notranslate nohighlight">\(f'(x) \times d_{out}\)</span> where
+<p>For every Function, we need to provide a <cite>backward</cite> method to compute its derivative
+information. Specifically, <cite>backward</cite> computes <span class="math notranslate nohighlight">\(f'(x) \times d_{out}\)</span> where
 <span class="math notranslate nohighlight">\(d_{out}\)</span> is an argument passed in (discussed below).</p>
 <p>For the simple function <span class="math notranslate nohighlight">\(f(x) = x \times 5\)</span>, we can consult our
-derivative rules and get that <span class="math notranslate nohighlight">\(f'(x) = 5\)</span>. Therefore the backward
-function is</p>
+derivative rules and get <span class="math notranslate nohighlight">\(f'(x) = 5\)</span>. Therefore the <cite>backward</cite> is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimesFive</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -207,25 +208,24 @@ function is</p>
 </pre></div>
 </div>
 <img alt="_images/autograd3.png" class="align-center" src="_images/autograd3.png" />
-<p>For functions that take multiple arguments, we return
-multiple backward arguments for each of the inputs. If the function computes
-<span class="math notranslate nohighlight">\(f(x, y)\)</span>, we need to return <span class="math notranslate nohighlight">\(f'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(f'_y(x, y)\)</span></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GFunction</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+<p>For functions that take multiple arguments, <cite>backward</cite> returns multiple deritatives
+with respect to each input argument. For example, if the function computes
+<span class="math notranslate nohighlight">\(f(x, y)\)</span>, we need to return <span class="math notranslate nohighlight">\(f'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(f'_y(x, y)\)</span>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mul</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="c1"># Compute f(x, y)</span>
         <span class="o">...</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
-        <span class="c1"># Compute f&#39;_x(x, y) * d, f&#39;_y(x, y) * d,</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d_out</span><span class="p">):</span>
+        <span class="c1"># Compute f&#39;_x(x, y) * d_out, f&#39;_y(x, y) * d_out</span>
         <span class="o">...</span>
 </pre></div>
 </div>
 <img alt="_images/autograd4.png" class="align-center" src="_images/autograd4.png" />
-<p>For example for <span class="math notranslate nohighlight">\(f(x, y) = x + 2 \times y\)</span>, we can consult our
-derivative rules and get that <span class="math notranslate nohighlight">\(f'_x(x, y) = 1\)</span> and <span class="math notranslate nohighlight">\(f'_y(x, y) = 2\)</span>. Therefore the backward
-function is</p>
+<p>For <span class="math notranslate nohighlight">\(f(x, y) = x + 2 \times y\)</span>, we can consult our
+derivative rules again and get <span class="math notranslate nohighlight">\(f'_x(x, y) = 1\)</span> and <span class="math notranslate nohighlight">\(f'_y(x, y) = 2\)</span>. Therefore the <cite>backward</cite> is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">AddTimes2</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -236,15 +236,15 @@ function is</p>
         <span class="k">return</span> <span class="n">d_out</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">d_out</span>
 </pre></div>
 </div>
-<p>Note though that <cite>backward</cite> works a bit different than the
+<p>Note that <cite>backward</cite> works a bit different than the
 mathematical notation. Sometimes the function for the derivative
 <span class="math notranslate nohighlight">\(f'(x)\)</span> depends directly on x; however, <cite>backward</cite> does not take
-<span class="math notranslate nohighlight">\(x\)</span> as an argument. This was not a problem for the functions
+<span class="math notranslate nohighlight">\(x\)</span> as an argument. This is not a problem for the example functions
 above, but things get a bit more interesting when the derivative also
 depends on <span class="math notranslate nohighlight">\(x\)</span> itself. This is where the context arguments <cite>ctx</cite>
 comes in.</p>
-<p>Consider a function <cite>Square</cite>, <span class="math notranslate nohighlight">\(f(x) = x^2\)</span> that squares x.
-Its derivative <span class="math notranslate nohighlight">\(f'(x) = 2x\)</span> which we write as</p>
+<p>Consider a function <cite>Square</cite>, <span class="math notranslate nohighlight">\(f(x) = x^2\)</span> that squares x
+and has derivative <span class="math notranslate nohighlight">\(f'(x) = 2 \times x\)</span>. We write it in code as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Square</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
@@ -258,40 +258,38 @@ Its derivative <span class="math notranslate nohighlight">\(f'(x) = 2x\)</span> 
         <span class="k">return</span> <span class="n">f_prime</span> <span class="o">*</span> <span class="n">d_out</span>
 </pre></div>
 </div>
-<p>This function style requires that we explicitly save anything that in
-the <cite>forward</cite> function we save anything we might need for the backward
-function explicitly. This is an optimization that limits the amount of
-storage this process requires.</p>
+<p>This type of function requires to explicitly save anything in <cite>forward</cite> that we might need in <cite>backward</cite>.
+This is a code optimization that limits the amount of storage required by the computation process.</p>
 </div>
 <div class="section" id="chain-rule">
 <h2>Chain Rule<a class="headerlink" href="#chain-rule" title="Permalink to this headline">¶</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This section discusses implementation of the chain rule for univariate differentiation.
-Before reading, review the mathematical definition of the <a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule#Statement">Chain Rule</a> .</p>
+Before reading, review the mathematical definition of <a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule#Statement">Chain Rule</a> .</p>
 </div>
-<p>The above section gives the formula for running backwards on one function.
-But we need to run backward on two functions in sequence.</p>
+<p>The above section gives the formula for running <cite>backward</cite> on one function, but what if
+we need to run <cite>backward</cite> on two functions in sequence?</p>
 <img alt="_images/chain1.png" class="align-center" src="_images/chain1.png" />
-<p>We can do this using the univariate chain rule, given by,</p>
+<p>We can do so using the univariate chain rule:</p>
 <div class="math notranslate nohighlight">
 \[f'_x(g(x)) = g'(x) \times f'_{g(x)}(g(x))\]</div>
-<p>Our notation gets a bit hard to follow here, it may be easier to
-understand if we name each part.</p>
+<p>If the notation gets a bit hard to follow here, naming each part may be easier to
+understand:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
 y &amp;=&amp; g(x) \\
 d_{out} &amp;=&amp; f'(y) \\
 f'_x(g(x)) &amp;=&amp;  g'(x) \times d_{out} \\
 \end{eqnarray*}\end{split}\]</div>
-<p>This function tells us that to compute the derivative of the first function,
-times the  derivative of the second function with respect to the output the
+<p>The above derivative function tells us to compute the derivative of the first function (<span class="math notranslate nohighlight">\(g\)</span>), and then
+times the derivative of the second function (<span class="math notranslate nohighlight">\(f\)</span>) with respect to the output the
 first function.</p>
-<p>Here's where the perspective of the boxes comes in handy:</p>
+<p>Here is where the perspective of thinking of functions as boxes comes in handy:</p>
 <img alt="_images/chain2.png" class="align-center" src="_images/chain2.png" />
-<p>This shows that the <span class="math notranslate nohighlight">\(d_{out}\)</span> multiplier passed to backwards of the
-first box, should be the value returned by backwards of the second box.</p>
-<p>A similar approach works for  functions two variables,</p>
+<p>It shows that the <span class="math notranslate nohighlight">\(d_{out}\)</span> multiplier passed to <cite>backward</cite> of the
+first box (left) should be the value returned by <cite>backward</cite> of the second box.</p>
+<p>A similar approach works for two-argument functions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{eqnarray*}
 f'_x(g(x, y)) &amp;=&amp; g_x'(x, y) \times f'_{g(x, y)}(g(x, y)) \\
@@ -302,11 +300,11 @@ f'_y(g(x, y)) &amp;=&amp; g_y'(x, y) \times f'_{g(x, y)}(g(x, y))
 \[\begin{split}\begin{eqnarray*}
 z &amp;=&amp; g(x, y) \\
 d_{out} &amp;=&amp; f'(z) \\
-f'_x(g(x, y)) &amp;=&amp; d_{out} \times g_x'(x, y) \\
-f'_y(g(x, y)) &amp;=&amp; d_{out} \times g_y'(x, y)
+f'_x(g(x, y)) &amp;=&amp; g_x'(x, y) \times d_{out} \\
+f'_y(g(x, y)) &amp;=&amp; g_y'(x, y) \times d_{out}
 \end{eqnarray*}\end{split}\]</div>
-<p>This shows that the second box does not care how many arguments the first
-box had, as long as it passes back <span class="math notranslate nohighlight">\(d_{out}\)</span> that is enough for the chain rule
+<p>This shows that the second box (<span class="math notranslate nohighlight">\(f\)</span>) does not care how many arguments the first
+box (<span class="math notranslate nohighlight">\(g\)</span>) has, as long as it passes back <span class="math notranslate nohighlight">\(d_{out}\)</span> which is enough for the chain rule
 to work.</p>
 </div>
 </div>

@@ -250,7 +250,9 @@ parameter in the tree (similar to python dot notation). Critically
 this function does not just return the current module's parameters, but recursively
 collects parameters from all the modules below as well.</p>
 <p>Here is an example of how you can create a tree of modules and then
-extract the flattened parameters:</p>
+extract the flattened parameters</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -276,6 +278,10 @@ extract the flattened parameters:</p>
 <span class="n">np</span> <span class="o">=</span> <span class="n">Module1</span><span class="p">()</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span>
 <span class="k">assert</span> <span class="n">np</span><span class="p">[</span><span class="s2">&quot;b.c.p3&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="mi">15</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
 </div>
 <img alt="_images/module.png" src="_images/module.png" />
 <p>Additionally, a module can have a <code class="xref py py-attr docutils literal notranslate"><span class="pre">mode</span></code> indicating how it is

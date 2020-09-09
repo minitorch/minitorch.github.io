@@ -28,6 +28,7 @@ And then clone your assignment.
 
 >>> git clone {{STUDENT_ASSIGNMENT2_URL}}
 >>> cd Module-2
+>>> pip install -Ue .
 
 You will need the files from Assignment 0 so be sure to pull them over
 to your new repo.

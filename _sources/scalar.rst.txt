@@ -27,43 +27,40 @@ for tracking computation.
 Variables and Functions
 ------------------------
 
-The main trick for tracking computation is surprisingly simple and direct:
+The main trick for tracking computation is surprisingly simple and straightforward:
 
-1. replace all Python values with proxy classes, known as `Variable`s.
-2. replace all mathematical operators with proxy operators, known `Function`s.
-3. augment `Variable`s to remember what `Function`s were applied to them in the past.
+1. replace all Python values with proxy classes, known as Variables.
+2. replace all mathematical operators with proxy operators, known as Functions.
+3. augment Variables to remember what Functions were applied to them in the past.
 
-For notation, we will use capital letters in this section to refer to our new 
-Functions and Variables to distringuish them from Python functions and variables.
+For notation, we captitalize our newly instroduced  
+Functions and Variables to distinguish them from Python functions and variables.
 
-The goal will be for these Variables and Functions to behave exactly
+Variables should behave exactly
 like Python numbers such that the user cannot tell the
-difference. It's a bit hacky, but pretty neat under-the-hood. We
-literally just create a generic Variable class
+difference. It's a bit hacky, but pretty neat under the hood. We
+literally just create a generic Variable class:
 
 .. autoclass:: minitorch.Variable
 
-As well as a generic Function class.
+We as a user **cannot** ever
+change or manipulate values of Variables directly. We **must** create a
+`Function` class that acts on Variables:
 
 .. autoclass:: minitorch.FunctionBase
 
 
-If we have two Variables :math:`x` and :math:`y`, we as a user **cannot** ever
-change or manipulate their values directly. We **must** create a
-`Function` class that acts on them.
-
-
-It will be useful to think of these Functions as little boxes. For
-instance a one-arg Function would look like
+It is useful to think of Functions as little boxes. For
+example, a one-argument Function :math:`f` would look like this:
 
 .. image:: figs/Autograd/autograd1.png
            :align: center
 
-Internally the box `unwraps` the content of the variable, manipulates it, and returns a new `wrapped` Variable.
+Internally, the box `unwraps` the content of the Variable :math:`x`, manipulates it, and returns a new `wrapped` Variable.
 
 
-And a two-arg function `unwraps` the content of both Variables,
-manipulates them, and returns a new `wrapped` Variable.
+Similarly, a two-argument Function `unwraps` the content of both Variables :math:`x` and :math:`y`,
+manipulates them, and returns a new `wrapped` Variable:
 
 .. image:: figs/Autograd/autograd2.png
            :align: center
@@ -71,34 +68,31 @@ manipulates them, and returns a new `wrapped` Variable.
 Scalar Functions
 -----------------
 
-To make this whole Variable/Function idea more tangible, let us focus
+To make this whole Variable/Function idea more tangible, let's focus
 on the Scalar class, a sub-class of :class:`minitorch.Variable`. It wraps a
 single scalar float (which is stored in the `data` attribute).
 
 .. autoclass:: minitorch.Scalar
 
 
-This Variable has a corresponding Function class that
-is a subclass of :class:`FunctionBase`
+This Variable :class:`minitorch.Variable` has a corresponding Function 
+class :class:`minitorch.ScalarFunction` which
+is a subclass of :class:`minitorch.FunctionBase`:
 
 .. autoclass:: minitorch.ScalarFunction
 
 
 
-Let's assume we want to implement a simple function :math:`f(x)` that is from
-float-to-float.  We implement it as a class with a static method:
-:func:`ScalarFunction.forward`. ::
+We can implement a simple function as a class with a static method:
+:func:`ScalarFunction.forward`::
 
-      class f(ScalarFunction):
+      class g(ScalarFunction):
           @staticmethod
           def forward(ctx, x):
               # Compute g(x) (ignore ctx for now)
               ...
 
-.. image:: figs/Autograd/autograd1.png
-           :align: center
-
-For example, say our function is `TimesFive`, :math:`f(x) = x \times 5` ::
+For example, say our function is `TimesFive`, :math:`g(x) = x \times 5`::
 
 
       class TimesFive(ScalarFunction):
@@ -106,7 +100,7 @@ For example, say our function is `TimesFive`, :math:`f(x) = x \times 5` ::
           def forward(ctx, x):
               return x * 5
 
-Or, say the function is `Mul`, :math:`g(x, y) = x \times y` that multiplies x by y. ::
+Or, say the function is `Mul`, :math:`f(x, y) = x \times y` that multiplies x by y::
 
 
       class Mul(ScalarFunction):
@@ -114,32 +108,27 @@ Or, say the function is `Mul`, :math:`g(x, y) = x \times y` that multiplies x by
           def forward(ctx, x, y):
               return x * y
 
-
-.. image:: figs/Autograd/autograd2.png
-           :align: center
-
 .. Note::
 
-   Within forward x and y are always numbers (not Variables). Forward is processing
-   and returning the unwrapped values.
+   Within forward function, x and y are always numbers (not Variables). Forward function processes
+   and returns unwrapped values.
 
-If we have a scalars :math:`x, y`, applying these Functions is done by  ::
+If we have scalar Variables :math:`x, y`, we can apply the above Functions by::
 
   z = TimesFive.apply(x)
   out = TimesFive.apply(z)
   # or
-  out2 = TimesFive.apply(x, y)
+  out2 = Mul.apply(z, y)
 
-Critically, we must not call `forward` but instead `apply`. This is because internally
-the apply method is converting variables to floats to call `forward`. It is also
-creating a trail of the history and creating a variable for the output. Here `z`, `out`,
-and `out2` are all Variables.
+Critically, we must not call `forward` directly but call `apply` instead. This is because
+'apply' internally converts Variable inputs to floats to call `forward`, creats a trail of the history,
+and wraps the output into a Variable. Here `z`, `out`,
+and `out2` are all Variables. This history is represented by a chain of previous Functions:
+
 
 .. image:: figs/Autograd/chain1.png
            :align: center
 
-This history is represented by a chain of the previous boxes that we
-led to the given point.
 
 
 
@@ -147,22 +136,22 @@ Syntactic Sugar
 -----------------
 
 
-There is still one minor issue. This is what our code looks like ::
+There is still one minor issue with our Function. This is what our code looks like to use `Mul`::
 
-    out2 = TimesFive.apply(x, y)
+    out2 = Mul.apply(x, y)
 
-It's annoying to write code this way and bug-prone. Also, we promised
-that we would have functions that look just like the functions we are
-used to writing.
+It is annoying and bug-prone to write code this way. Also, we promised
+that we would have Functions that look just like the Python functions we are
+used to write.
 
-To get around this issue we need to augment the :class:`Scalar` class
-to behave normally under standard mathematical operations.  Instead of
-calling regular +, Python will call our +.  Once this is done we have
-the ability to record and track all the ways that x was used in the
-function, while still being able to write ::
+To get around this issue, we need to augment the :class:`minitorch.Scalar` class
+so that it can behave normally under standard mathematical operations.  Instead of
+calling regular +, Python will call our +.  Once this is achieved, we will have the ability
+record and track how :math:`x` is used in the
+Function, while still being able to write::
 
     out2 = x * y
 
-To do this the class needs to provide syntax that makes it appear like
-a number in its use. To see how this is done be sure to read,
-https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types.
+To achieve this, the :class:`minitorch.Scalar` class needs to provide syntax that makes it appear like
+a number when in use. You can read [emulating numeric types](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types)
+to learn how this could be done.

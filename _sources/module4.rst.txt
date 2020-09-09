@@ -34,6 +34,7 @@ And then clone your assignment.
 
 >>> git clone {{STUDENT_ASSIGNMENT4_URL}}
 >>> cd Module-4
+>>> pip install -Ue .
 
 You will also need the files so be sure to pull them over
 to your new repo.

@@ -102,7 +102,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-1-numerical-derivatives">Task 1.1: Numerical Derivatives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-2-scalars">Task 1.2: Scalars</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#task-1-3-chain-rule">Task 1.3: Chain-Rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-1-3-chain-rule">Task 1.3: Chain Rule</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-4-backpropagation">Task 1.4: Backpropagation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-5-training">Task 1.5: Training</a></li>
 </ul>
@@ -188,6 +188,7 @@ use your code to train a preliminary model.</p>
 <p>To begin, remember to activate your virtual environment first, and then clone your assignment:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT1_URL</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT_NAME</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">Ue</span> <span class="o">.</span>
 </pre></div>
 </div>
 <p>Module 1 is built upon the previous Module 0, so make sure to pull your files from Assignment 0
@@ -211,7 +212,7 @@ to your new repo.</p>
 <p>This task requires basic familiarity with derivatives.
 Be sure to review <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiation_rules">differentiation rules</a>
 and the notation for derivatives.
-Then carefully read the section on
+Then carefully read the Guide on
 <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a>.</p>
 </div>
 <div class="admonition-todo admonition" id="id1">
@@ -227,13 +228,13 @@ Then carefully read the section on
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> -- arbitrary function from n-scalar args to one value</p></li>
-<li><p><strong>*vals</strong> (<em>floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_1 \ldots x_n\)</span></p></li>
+<li><p><strong>*vals</strong> (<em>floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span></p></li>
 <li><p><strong>arg</strong> (<em>int</em>) -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
 <li><p><strong>epsilon</strong> (<em>float</em>) -- a small constant</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>An approximation of <span class="math notranslate nohighlight">\(f'_i(x_1, \ldots, x_n)\)</span></p>
+<dd class="field-even"><p>An approximation of <span class="math notranslate nohighlight">\(f'_i(x_0, \ldots, x_{n-1})\)</span></p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>float</p>
@@ -247,11 +248,11 @@ Then carefully read the section on
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This task requires familiarity with the <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class.
-Be sure to first carefully read the section on
+Be sure to first carefully read the Guide on
 <a class="reference internal" href="scalar.html"><span class="doc">Tracking Variables</span></a> and to refresh your memory on <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/">Python numerical overrides</a>.</p>
 </div>
-<p>Implement the overridden mathematical functions required for the scalar class.
-Each of these requires wiring the internal python operator to the correct
+<p>Implement the overridden mathematical functions required for the <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class.
+Each of these requires wiring the internal Python operator to the correct
 <code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.forward()</span></code> call.</p>
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.forward">
@@ -273,8 +274,10 @@ any information that may be needed for the call to backward.</p></li>
 </dl>
 </dd></dl>
 
+<p>Read the example ScalarFunctions that we have implemented for guidelines. You may find it useful to reuse the operators from Module 0.</p>
 <p>We have built a debugging tool for you to observe the workings of your expressions to see
-how the graph is built. You can run it in <cite>project/show_expression.py</cite>. You can alter
+how the graph is built. You can run it in <cite>project/show_expression.py</cite>. You need to install
+pydot and networkx. You can alter
 the expression at the top of the file and then run the code to create a graph in <cite>Visdom</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">expression</span><span class="p">():</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
@@ -283,42 +286,62 @@ the expression at the top of the file and then run the code to create a graph in
     <span class="k">return</span> <span class="n">y</span>
 </pre></div>
 </div>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">minitorch</span><span class="o">/</span><span class="n">show_expression</span><span class="o">.</span><span class="n">py</span>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">python</span> <span class="n">project</span><span class="o">/</span><span class="n">show_expression</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <img alt="_images/expgraph.png" class="align-center" src="_images/expgraph.png" />
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
-<p>Add calls in <cite>minitorch/scalar.py</cite> for each of the following and pass tests marked as <cite>task1_2</cite>.</p>
+<p>Complete the following functions in <cite>minitorch/scalar.py</cite>.</p>
 </div>
-<dl class="py function">
-<dt id="minitorch.Scalar.__mul__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__mul__" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="py function">
 <dt id="minitorch.scalar.Mul.forward">
 <code class="sig-prename descclassname">minitorch.scalar.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Mul.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.Scalar.__add__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__add__" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar.Inv.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Inv.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Inv.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Add.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Add.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Add.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar.Neg.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt id="minitorch.scalar.Sigmoid.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.ReLU.forward">
+<code class="sig-prename descclassname">minitorch.scalar.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.Exp.forward">
+<code class="sig-prename descclassname">minitorch.scalar.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Exp.forward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/scalar.py</cite>, and pass tests marked as <cite>task1_2</cite>.
+See <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/">Python numerical overrides</a> for the interface of these methods. All of these functions should return <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> arguments.</p>
+</div>
 <dl class="py function">
 <dt id="minitorch.Scalar.__lt__">
 <code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__lt__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.LT.forward">
-<code class="sig-prename descclassname">minitorch.scalar.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Scalar.__gt__">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__gt__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.__sub__">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__sub__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -327,43 +350,50 @@ the expression at the top of the file and then run the code to create a graph in
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Neg.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Scalar.__mul__">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__mul__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__mul__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.__add__">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__add__" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.log">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.log" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.exp">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">exp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.exp" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.sigmoid">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.Scalar.relu">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.relu" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
 <div class="section" id="task-1-3-chain-rule">
-<h3>Task 1.3: Chain-Rule<a class="headerlink" href="#task-1-3-chain-rule" title="Permalink to this headline">¶</a></h3>
+<h3>Task 1.3: Chain Rule<a class="headerlink" href="#task-1-3-chain-rule" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This task is quite tricky, so be sure you
-understand the chain-rule, Variables, and Functions.
-Be sure to first very carefully read the section on
-<a class="reference internal" href="chainrule.html"><span class="doc">Autodifferentiation</span></a> and read the code for other ScalarFunctions.</p>
+understand the chain rule, Variables, and Functions.
+Be sure to first read the Guide on
+<a class="reference internal" href="chainrule.html"><span class="doc">Autodifferentiation</span></a> very carefully and read the code for other ScalarFunctions.</p>
 </div>
-<p>Implement the <cite>chain_rule</cite> method on FunctionBase for functions of arbitrary arguments.</p>
-<dl class="py function">
-<dt id="minitorch.scalar.ScalarFunction.backward">
-<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
-<li><p><strong>d_out</strong> (<em>number</em>) -- </p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>numbers</p>
-</dd>
-</dl>
-</dd></dl>
-
-<div class="admonition-todo admonition" id="id3">
+<p>Implement the <cite>chain_rule</cite> function on FunctionBase for functions of arbitrary arguments.
+This function should be able to backward process a function by passing it in a context and <span class="math notranslate nohighlight">\(d_{out}\)</span> and then collecting the local derivatives. It should then pair these with the right variables and return them. This function is also where we filter out constants that were used on the forward pass, but do not need derivatives.</p>
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
-<p>Add calls in <cite>minitorch.FunctionBase</cite> for each of the following, and pass tests marked as <cite>task1_3</cite>.</p>
+<p>Complete the following function in <cite>minitorch/autodiff.py</cite>, and pass tests marked as <cite>task1_3</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.FunctionBase.chain_rule">
@@ -393,13 +423,35 @@ Be sure to first very carefully read the section on
 <h3>Task 1.4: Backpropagation<a class="headerlink" href="#task-1-4-backpropagation" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Be sure to first very carefully read the section on
-<a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagate</span></a> and read the code for other ScalarFunctions.</p>
+<p>Be sure to first read the Guide on
+<a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagate</span></a> very carefully and read the code for other ScalarFunctions.</p>
 </div>
-<p>Implement backpropagation.</p>
-<div class="admonition-todo admonition" id="id4">
+<p>Implement backpropagation. Each of these requires wiring the internal Python operator to the correct
+<code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.backward()</span></code> call.</p>
+<dl class="py function">
+<dt id="minitorch.scalar.ScalarFunction.backward">
+<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
+<li><p><strong>d_out</strong> (<em>number</em>) -- </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numbers</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p>Read the example ScalarFunctions that we have implemented for guidelines. Feel free to also consult <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiation_rules">differentiation rules</a> if you forget how these identities work.</p>
+<div class="admonition-todo admonition" id="id7">
 <p class="admonition-title">Todo</p>
-<p>Add calls in <cite>minitorch/scalar.py</cite> and <cite>minitorch/autodiff.py</cite> for the following function, and pass tests marked as <cite>task1_4</cite>.</p>
+<p>Complete the following functions in <cite>minitorch/autodiff.py</cite> and <cite>minitorch/scalar.py</cite>,
+and pass tests marked as <cite>task1_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.backpropagate">
@@ -421,13 +473,8 @@ and its derivative that we want to propagate backward to the leaves.</p>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Add.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Add.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Add.backward" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="minitorch.scalar.LT.backward">
-<code class="sig-prename descclassname">minitorch.scalar.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.LT.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar.Inv.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Inv.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Inv.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
@@ -435,14 +482,29 @@ and its derivative that we want to propagate backward to the leaves.</p>
 <code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<dl class="py function">
+<dt id="minitorch.scalar.Sigmoid.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.ReLU.backward">
+<code class="sig-prename descclassname">minitorch.scalar.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.scalar.Exp.backward">
+<code class="sig-prename descclassname">minitorch.scalar.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Exp.backward" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 <div class="section" id="task-1-5-training">
 <h3>Task 1.5: Training<a class="headerlink" href="#task-1-5-training" title="Permalink to this headline">¶</a></h3>
-<p>If your code works you should now be able to run the training script.
+<p>If your code works, you should now be able to run the training script.
 Study the code in <cite>project/run_scalar.py</cite> carefully to understand what
 the neural network is doing. You will also need your Module code from the
 previous assignment as well. You can modify the dataset and the module with
-the parameters at the top of the file. Start with this simple config.</p>
+the parameters at the top of the file. Start with this simple config:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Simple</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">2</span>
@@ -450,18 +512,18 @@ the parameters at the top of the file. Start with this simple config.</p>
 </pre></div>
 </div>
 <img alt="_images/simple.png" src="_images/simple.png" />
-<p>You can then move up to something more complex, for instance.</p>
+<p>You can then move up to something more complex, for instance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Xor</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
-<p>If your code is successful you should be able to fit the data like this.</p>
+<p>If your code is successful, you should be able to fit the data like this:</p>
 <img alt="_images/complete.png" src="_images/complete.png" />
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Train a scalar model and add images like the ones above to your README file.</p>
+<p>Train a scalar model, and add images like the ones above to your README file.</p>
 </div>
 </div>
 </div>

@@ -102,7 +102,7 @@ The above is known as the `central difference`.  You could find a complete
 
 
 The key benefit of the `numerical` approach is that we do not need to
-know anything about the function: all we need is to compute its
+know everything about the function: all we need is to able to compute its
 value under a given input. From a programming sense, this means we can
 approximate the derivative for any black-box function.
 

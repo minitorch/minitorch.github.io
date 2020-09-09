@@ -86,7 +86,9 @@ collects parameters from all the modules below as well.
 
 
 Here is an example of how you can create a tree of modules and then
-extract the flattened parameters::
+extract the flattened parameters
+
+.. jupyter-execute::
 
       class Module1(Module):
           def __init__(self):

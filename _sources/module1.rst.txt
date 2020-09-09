@@ -209,4 +209,4 @@ If your code is successful, you should be able to fit the data like this:
 
 
 .. todo::
-   Train a scalar model, and add images like the ones above to your README file.
+   Train a scalar model, and add the output training logs and final images like the ones above to your README file.

@@ -1,5 +1,5 @@
 ======================
-Backpropagate
+Backpropagation
 ======================
 
 The `backward` function tells us how to compute the derivative of one

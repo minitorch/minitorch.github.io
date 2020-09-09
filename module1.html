@@ -98,7 +98,7 @@
 <li class="toctree-l2"><a class="reference internal" href="derivative.html">Derivatives</a></li>
 <li class="toctree-l2"><a class="reference internal" href="scalar.html">Tracking Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-1-numerical-derivatives">Task 1.1: Numerical Derivatives</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-1-2-scalars">Task 1.2: Scalars</a></li>
@@ -200,7 +200,7 @@ to your new repo.</p>
 <li class="toctree-l1"><a class="reference internal" href="derivative.html">Derivatives</a></li>
 <li class="toctree-l1"><a class="reference internal" href="scalar.html">Tracking Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="backpropagate.html">Backpropagate</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backpropagate.html">Backpropagation</a></li>
 </ul>
 </div>
 <div class="section" id="tasks">
@@ -424,7 +424,7 @@ This function should be able to backward process a function by passing it in a c
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Be sure to first read the Guide on
-<a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagate</span></a> very carefully and read the code for other ScalarFunctions.</p>
+<a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> very carefully and read the code for other ScalarFunctions.</p>
 </div>
 <p>Implement backpropagation. Each of these requires wiring the internal Python operator to the correct
 <code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.backward()</span></code> call.</p>
@@ -458,7 +458,7 @@ and pass tests marked as <cite>task1_4</cite>.</p>
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">final_variable_with_deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a breadth-first search on the computation graph in order to
 backpropagate derivatives to the leaves.</p>
-<p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagate</span></a> for details on the algorithm</p>
+<p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>final_variable_with_deriv</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code>) -- The final variable
@@ -523,7 +523,7 @@ the parameters at the top of the file. Start with this simple config:</p>
 <img alt="_images/complete.png" src="_images/complete.png" />
 <div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Train a scalar model, and add images like the ones above to your README file.</p>
+<p>Train a scalar model, and add the output training logs and final images like the ones above to your README file.</p>
 </div>
 </div>
 </div>

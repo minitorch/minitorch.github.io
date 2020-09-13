@@ -1,8 +1,8 @@
 .. jupyter-execute::
    :hide-code:
-   
+
    import sys
-   sys.path.append("../project/")   
+   sys.path.append("../project/")
    import datasets
    from datasets_plotly import animate, plot
    s = datasets.Simple(20)
@@ -20,7 +20,7 @@ texts that cover  all the aspects of the area in detail. (I recommend this `text
 that.  Our goal is to explain the minimal details of *one* dataset
 with *one* class of model. Specifically, this is an introduction to
 `supervised binary classification` with neural networks. The goal of this section
-is to learn how a basic neural network works to classify simple points.  
+is to learn how a basic neural network works to classify simple points.
 
 
 
@@ -28,10 +28,10 @@ is to learn how a basic neural network works to classify simple points.
            :align: center
            :width: 300px
 
-                  
 
-               
-                  
+
+
+
 Dataset
 -------------
 
@@ -58,15 +58,15 @@ And here is an X labeled point.
            :width: 250px
 
 It is often convenient to plot all of the points together on one set of
-axes. 
-                   
+axes.
+
 .. image:: figs/Graphs/data@3x.png
            :align: center
            :width: 250px
 
 Here we can see that all the O points are in the top-right and all the X points are on
 the bottom-left. Not all datasets is this simple, and here is another dataset where points are
-split up a bit more. 
+split up a bit more.
 
 .. image:: figs/Graphs/split.png
            :align: center
@@ -83,8 +83,8 @@ handwritten numbers, where some are 8's and others are 2's:
            :align: center
            :width: 200px
 
-Here is an example of what this dataset looks like. 
-                   
+Here is an example of what this dataset looks like.
+
 .. image:: figs/Conv/mnist.png
            :align: center
            :width: 200px
@@ -95,7 +95,7 @@ Model
 
 In addition to a dataset, our ML system need to specify
 a model type that we want to `fit` to the data. A `model`
-is a function that assigns labels to data points. In 2D, 
+is a function that assigns labels to data points. In 2D,
 we can visualize a model by its decision boundary.
 For instance, consider the following (Model A).
 
@@ -106,10 +106,10 @@ For instance, consider the following (Model A).
 
 For most of the data points, the model puts them in class X.
 Only for a little area on the top right would it decide
-to put those points in class O. 
+to put those points in class O.
 
 We can overlay the simple dataset described ealier over this model.
-This tells us roughly how well the model fits this dataset. 
+This tells us roughly how well the model fits this dataset.
 
 .. image:: figs/Graphs/incorrect.png
            :align: center
@@ -125,7 +125,7 @@ that splits the data points up based on three regions (Model B).
 
 
 Models may also have strange shapes and even disconnected regions. Any blue/red split will do, for instance (Model C):
-                   
+
 .. image:: figs/Graphs/model3.png
            :align: center
            :width: 250px
@@ -134,25 +134,25 @@ Models may also have strange shapes and even disconnected regions. Any blue/red 
 A `model class` specifies the general shape of models that you want to explore. Given that we as programmers don't know what the dataset looks like, we try to give a class of functions for our system to explore. Machine learning is the process of finding the best model from that class.
 
 The first model class we consider is `linear models`. Linear models separate the data space with only a single straight line. For instance, Model A is a linear model, but an intuitively "better" model looks like this:
-                   
+
 
 .. image:: figs/Graphs/sector2@3x.png
            :align: center
            :width: 250px
 
-Note that Model B also uses lines, but it is not a linear model: it uses multiple lines to split up the space. 
-                   
+Note that Model B also uses lines, but it is not a linear model: it uses multiple lines to split up the space.
+
 
 Let's look at an example of some models. Here is some randomly generated data.
 
 .. jupyter-execute::
    :hide-code:
-      
+
    plot(s)
 
 
 .. jupyter-execute::
-   
+
    def model1(x):
        if x[0] < 0.25:
            return 1
@@ -160,9 +160,9 @@ Let's look at an example of some models. Here is some randomly generated data.
            return 0
    plot(s, model1)
 
-   
+
 .. jupyter-execute::
-      
+
    def model2(x):
        if x[0] < 0.25:
            return 1
@@ -171,8 +171,9 @@ Let's look at an example of some models. Here is some randomly generated data.
        else:
            return 0
    plot(s, model2)
-   
-   
+
+
+
 
 Parameters
 -----------
@@ -183,7 +184,7 @@ class. Ideally, we would have internal knobs that alter the properties of the mo
 
 
 .. jupyter-execute::
-      
+
    def make_model(param):
        def model(x):
            if x[0] < param:
@@ -197,7 +198,7 @@ class. Ideally, we would have internal knobs that alter the properties of the mo
 
    plot(s, make_model(0.6))
 
-   
+
 In the case of the linear models, there are two main knobs we might use,
 
 a. rotating the linear separator ("slope")
@@ -206,16 +207,16 @@ a. rotating the linear separator ("slope")
 .. image:: figs/Graphs/weight.png
            :align: center
            :width: 400px
-                   
+
 b. changing the separator cutoff ("intercept")
-                   
+
 .. image:: figs/Graphs/bias.png
            :align: center
            :width: 400px
-             
+
 `Parameters` are the set of numerical values that fully define a model's decisions.
 Parameters are critical for storing how a model acts, and necessary for producing
-its decision on a given data point. 
+its decision on a given data point.
 
 In the case of linear models and binary classification, we can write down the linear model as:
 
@@ -227,7 +228,7 @@ the model predicts X if :math:`m` is greater than 1 and O otherwise. The semi-co
 notation indicates which arguments are for parameters and which are for data.
 
 .. jupyter-execute::
-      
+
    def make_linear(w1, w2, b):
        def model(x):
            return 1 if (x[0] * w1 + x[1] * w2 + b > 0.0) else 0
@@ -239,19 +240,19 @@ notation indicates which arguments are for parameters and which are for data.
 
 .. note::
    See https://wikipedia.org/wiki/Linear_equation for a review of linear equation, and an explanation for why this corresponds to parameterizing the slope and intercept of a line.
-                   
+
 
 Loss
 -------
 
-When we look at our data, we can clearly see that some models are good and make no classification errors: 
+When we look at our data, we can clearly see that some models are good and make no classification errors:
 
 .. image:: figs/Graphs/sector2.png
            :align: center
            :width: 250px
 
-And some are bad and make multiple errors: 
-                   
+And some are bad and make multiple errors:
+
 .. image:: figs/Graphs/incorrect.png
            :align: center
            :width: 250px
@@ -260,7 +261,7 @@ In order to find a good model, we need to first define what good means. We do th
 `loss` function that scores how badly we are currently doing. A good model is the one that
 makes this loss as small as possible.
 
-Our loss function will be based on the distance and direction of the line from each point to 
+Our loss function will be based on the distance and direction of the line from each point to
 the decision boundary.  You can show that this distance is equivalent to the absolute value of the function :math:`m()` above.
 
 .. image:: figs/Graphs/distance.png
@@ -270,18 +271,18 @@ the decision boundary.  You can show that this distance is equivalent to the abs
 For simplicity, let us consider a single point with different models.
 
 This point might be classified the correct side and very far from this line (Point A, "great"):
-                   
+
 .. image:: figs/Graphs/pt3.png
            :align: center
            :width: 250px
 
 
 Or it might be on the correct side of the line, but close to the line (Point B, "worrisome"):
-                   
+
 .. image:: figs/Graphs/pt1.png
            :align: center
            :width: 250px
-                   
+
 Or this point might be classified on the wrong side of the line (Point C, "bad"):
 
 .. image:: figs/Graphs/pt2.png
@@ -291,8 +292,8 @@ Or this point might be classified on the wrong side of the line (Point C, "bad")
 The loss is determined based on a function of this distance. The most
 commonly used function (and the one we will focus on) is the sigmoid
 function. For strong negative inputs, it goes to zero, and for strong
-positive, it goes to 1. In between, it forms a smooth S-curve.  
-                   
+positive, it goes to 1. In between, it forms a smooth S-curve.
+
 
 .. image:: figs/Graphs/sigmoid.png
            :align: center
@@ -300,13 +301,13 @@ positive, it goes to 1. In between, it forms a smooth S-curve.
 
 As shown below, the losses of three X points land on the following positions for the sigmoid curve.
 Almost zero for Point A, middle value for Point B, and nearly one for point C.
-                   
+
 .. image:: figs/Graphs/sigmoid2.png
            :align: center
            :width: 400px
 
 The total loss for a model is the product of each of the individual losses.
-It's easy to see that a good model yields a lower loss than a bad one.                    
+It's easy to see that a good model yields a lower loss than a bad one.
 
 
 Fitting Parameters
@@ -315,7 +316,7 @@ Fitting Parameters
 The model class tells us what models we can consider, the parameters
 tell us how to specify a given model, and the loss tells us how good
 our current model is. What we need is a method for finding a good model
-given a loss function. We refer this step as *parameter fitting*. 
+given a loss function. We refer this step as *parameter fitting*.
 
 Unfortunately, parameter fitting is quite difficult. For all but the
 simplest ML models, it is a challenging and computational demanding
@@ -331,31 +332,31 @@ gradient descent works in the following manner.
 
 1. Compute the loss function, :math:`L`, for the data with the parameters.
 2. See how small changes to each of the parameters would change the loss.
-3. Update the parameters with a small change in the direction that locally most reduces the loss.  
- 
+3. Update the parameters with a small change in the direction that locally most reduces the loss.
 
-Let's return to the incorrect model above. 
-   
+
+Let's return to the incorrect model above.
+
 .. image:: figs/Graphs/incorrect.png
            :align: center
            :width: 250px
 
 
-As we noted, this model has a high loss, and we want to consider ways to "turn the knobs" of the parameters to find a better model. Let us focus on the parameter controlling the intercept of the model. 
+As we noted, this model has a high loss, and we want to consider ways to "turn the knobs" of the parameters to find a better model. Let us focus on the parameter controlling the intercept of the model.
 
 .. image:: figs/Graphs/bias.png
            :align: center
            :width: 300px
 
 
-We can consider how the loss changes with respect to just varying this parameter. It seems like the loss will go down if we lower the intercept a bit. 
-                   
+We can consider how the loss changes with respect to just varying this parameter. It seems like the loss will go down if we lower the intercept a bit.
+
 .. image:: figs/Graphs/move.png
            :align: center
            :width: 400px
-                   
-Doing this leads to a better model. 
-                   
+
+Doing this leads to a better model.
+
 .. image:: figs/Graphs/incorrect3.png
            :align: center
            :width: 250px
@@ -369,7 +370,7 @@ A better approach is to utilize calculus and take the derivative of the loss fun
 
 The first 4 modules in MiniTorch are dedicated to implementing this fitting procedure efficiently.
 
-                   
+
 Neural Networks
 ------------------
 
@@ -381,7 +382,7 @@ The linear model class can be used to find good fits to the data we have conside
 
 An alternative model class for this style of data is a neural
 network. Neural networks can be used to specify a much wider range of
-separators. 
+separators.
 
 
 Intuitively, neural networks divide classification into two or more stages.
@@ -401,8 +402,8 @@ A neural network might first produce a separator (yellow) to pull apart the top 
            :align: center
            :width: 300px
 
-And then produce another separator (green) to pull apart the bottom red points:                  
-                  
+And then produce another separator (green) to pull apart the bottom red points:
+
 .. image:: figs/Graphs/split2.png
            :align: center
            :width: 300px
@@ -419,7 +420,7 @@ other points low. One function to do this is the ReLU function (ReLU stands for 
            :width: 400px
 
 For the yellow separator, the ReLU yields the following values:
-                   
+
 .. image:: figs/Graphs/relu.png
            :align: center
            :width: 400px
@@ -435,8 +436,8 @@ it is very easy to separate out the space.
            :align: center
            :width: 300px
 
-Looking back at the original model, this process appears like it has produced two lines to pull apart the data. 
-                   
+Looking back at the original model, this process appears like it has produced two lines to pull apart the data.
+
 
 .. image:: figs/Graphs/mlpgraph.png
            :align: center
@@ -445,10 +446,10 @@ Looking back at the original model, this process appears like it has produced tw
 
 Mathematically we can think of the transformed data as values :math:`h_1, h_2` which we get from applying
 separators with different parameters to the original data. The final prediction then applies a separator
-to :math:`h_1, h_2`. 
-                   
+to :math:`h_1, h_2`.
+
 .. math::
-   
+
    \begin{eqnarray*}
    h_ 1 &=& ReLU(x_1 \times w^0_1 + x_2 \times w^0_2 + b^0) \\
    h_ 2 &=& ReLU(x_1 \times w^1_1 + x_2 \times w^1_2 + b^1)\\
@@ -462,4 +463,4 @@ This neural network will be the main focus for the first couple
 models. It appears quite simple, but fitting it effectively will
 require building up systems infrastructure. Once we have this
 infrastructure, though, we will be able to easily support most modern
-neural network models. 
+neural network models.

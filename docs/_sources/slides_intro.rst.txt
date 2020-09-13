@@ -1,0 +1,104 @@
+.. |br| raw:: html
+
+    <br>
+
+================
+CS Mixer
+================
+
+
+
+.. revealjs_slide::
+    :theme: white
+
+
+Introduction
+-------------------------------
+
+
+.. image:: https://avatars0.githubusercontent.com/u/35882?s=460&v=4
+   :width: 200
+
+|br|
+
+* CS Program Director: Sasha Rush
+
+Intro: Academic
+-------------------------------
+
+.. revealjs_fragments::
+
+   * Area of Study: Natural Language Processing (NLP), Deep Learning
+   * Website: http://rush-nlp.com/
+   * Course: Machine Learning Engineering (CS 5781)
+
+
+Intro:  Hobbies
+-------------------------------
+
+.. revealjs_fragments::
+
+   * Biking (used to have a pretty commute)
+   * Spanish (real languages are hard...)
+   * Video Games (mainly Overwatch, but I'm bad.)
+
+
+.. |miniconf| image:: https://raw.githubusercontent.com/Mini-Conf/Mini-Conf/master/miniconf.gif
+   :width: 300
+
+
+Intro:  My Path
+-------------------------------
+
+.. revealjs_fragments::
+
+   * Software Engineer ->  Graduate Student -> Industrial Postdoc -> Professor.  
+   * Moved last year from Harvard to Cornell Tech.
+   * Engagement Interests: Building open-source software and community tools.  |br| |miniconf|
+
+.. |miniconf| image:: https://raw.githubusercontent.com/Mini-Conf/Mini-Conf/master/miniconf.gif
+   :width: 300
+
+
+
+           
+           
+PD Role
+-------------------------------
+
+.. revealjs_fragments::
+   
+   * Questions?: Courses, Requirements, General CS, etc.
+   * Discussion?: Job types, skill development, further learning.
+
+
+Get in Touch
+-------------------------------
+
+.. revealjs_fragments::
+   
+   * Office Hours: Monday 3pm (NYC)
+   * Personal Zoom: https://zoom.us/j/4348004565 password abc
+
+
+CS Program
+---------------
+
+.. revealjs_fragments::
+   *
+   * 
+
+Mixer
+--------
+
+* Share an accomplishment they are proud of having achieved before they turned 18.
+
+Links
+-------
+* https://tech.cornell.edu/coronavirus/
+
+
+Q&A
+---------
+
+* Open up the conversation for any questions students may have about your program.

@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Visualization &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module 1 - Auto-Differentiation" href="module1.html" />
+    <link rel="prev" title="Modules" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="property_testing.html">Property Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modules.html">Modules</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module0.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="module0.html">Module 0 - Fundamentals</a> &raquo;</li>
+        
+      <li>Visualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/visualization.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="visualization">
+<h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">¶</a></h1>
+<p>While testing is nice for maintaining correctness, exploratory
+analysis is also critical for gaining intuition.  When you are stuck,
+often the best thing to do is to just look at your data and
+outputs. Visualizing our system can't prove that it is correct, but it
+can often directly help us to figure out what goes wrong.
+Throughout our development, we will use visualization to observe
+intermediate states, training progress, outputs, and even final models.</p>
+<p>The main library we will use is <cite>Visdom</cite>
+(<a class="reference external" href="https://github.com/facebookresearch/visdom">https://github.com/facebookresearch/visdom</a>). Here is an example of
+what it looks like:</p>
+<img alt="_images/visdom.png" src="_images/visdom.png" />
+<p>You can think of it as sending images and graphs from
+your code to a centralized, organized place.  Nothing that magical, we
+could just output them to a directory, but we will see this has some
+nice benefits.</p>
+<p>To start Visdom, you need to run the following command in your
+virtual env (it also works in online environment like Repl.it):</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visdom</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">error</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
+</pre></div>
+</div>
+<p>Next, open up a browser window and, go to <a class="reference external" href="http://localhost:8097">http://localhost:8097</a> (or whichever port it starts on).</p>
+<p>You can plot functions that go directly to this board. For instance, you can plot a simple
+graph with the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visdom</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">visdom</span><span class="o">.</span><span class="n">Visdom</span><span class="p">()</span>
+
+<span class="c1"># Loss goes down!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model Loss&quot;</span><span class="p">)</span>
+
+<span class="c1"># Send to visdom</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">matplot</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/visdom2.png" src="_images/visdom2.png" />
+<p>There is a lot more you can do with Visdom. Check out <a class="reference external" href="https://github.com/facebookresearch/visdom">Visdom</a> for a list of goodies.</p>
+<p>To kill a Visdom server running in the background, you can first check what jobs are running and choose the job (e.g. job 1) that you want to kill:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jobs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">kill</span> <span class="o">%</span><span class="mi">1</span>
+</pre></div>
+</div>
+<p>You can kill all Visdom servers by running:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">killall</span> <span class="n">visdom</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="module1.html" class="btn btn-neutral float-right" title="Module 1 - Auto-Differentiation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="modules.html" class="btn btn-neutral float-left" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

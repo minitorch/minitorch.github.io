@@ -1,0 +1,61 @@
+=============
+Setup
+=============
+
+First things first, you will need to make sure you have Python 3.6 or greater installed.
+Please follow directions online to help get this set up as it will vary depending on your
+system. To check run
+
+>>> python -v
+
+or on some systems
+
+>>> python3 -v
+
+
+Throughout the course you should be sure to work within a single classroom folder.
+We recommend first creating a workspace directory that you will use.
+
+>>> mkdir workspace; cd workspace
+
+Within this directory you need to setup a python `virtual
+environment`. The virtual environment you can install packages that
+are only used for your assignments and do not impact the rest of the
+system. (See https://docs.python.org/3/library/venv.html for further
+instructions on how this works.)
+
+>>> python -m venv venv
+>>> source venv/bin/activate
+
+The first line you should run only once, whereas the second needs to
+be run whenever you open a new terminal to get started for the class.
+You can tell if the second line worked because your terminal will now have
+`(venv)` on the end.
+
+
+Each assignment is distributed through a `git` repo. You first should
+fork the template of the assignment and edit yours in your forked
+repo. We will assume knowledge of git throughout the course, see
+https://guides.github.com for a tutorial about using git and github.
+
+
+Once you have forked the template code, you can clone your own version by running the command:
+
+>>> git clone {{STUDENT_ASSIGNMENT0_URL}}
+>>> cd minitorch0
+
+
+Great! You now have the code and the virtual environment. The last
+step is to install packages.  There are several packages that we will
+use throughout these assignments, and you can install them now into
+your virtual env. You do this by running:
+
+
+>>> python -m pip install -r requirements.txt
+>>> python -m pip install -r requirements.extra.txt
+>>> python -m pip install -Ue .
+
+
+Make sure that everything is installed by running `python` and then checking:
+
+>>> import minitorch

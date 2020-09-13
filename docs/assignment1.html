@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assignment 1 - Auto-Derivatives &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/twemoji.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="_static/twemoji.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment 2 - Tensors" href="assignment2.html" />
+    <link rel="prev" title="Assignment 0 - Getting Started" href="assignment0.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment0.html">Assignment 0 - Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 1 - Auto-Derivatives</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-0-setup">Task 0: Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-2-scalars">Task 2: Scalars</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-auto-derivative">Task 3: Auto-Derivative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-4-training">Task 4: Training</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Assignment 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html">Machine Learning Engineering</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Assignment 1 - Auto-Derivatives</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/assignment1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="assignment-1-auto-derivatives">
+<h1>Assignment 1 - Auto-Derivatives<a class="headerlink" href="#assignment-1-auto-derivatives" title="Permalink to this headline">¶</a></h1>
+<p>Now that preliminaries are done we can really get started.  In this
+assignment you will implement a complete basic version of MiniTorch
+using scalar values. You will then use this system to train a
+mini-model and get your first real results.</p>
+<div class="section" id="task-0-setup">
+<h2>Task 0: Setup<a class="headerlink" href="#task-0-setup" title="Permalink to this headline">¶</a></h2>
+<p>To begin, remember to first activate your virtual environment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>And then clone your assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT1_URL</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">minitorch1</span>
+</pre></div>
+</div>
+<p>You will need the files from Assignment 0 so be sure to pull them over
+to your new repo.</p>
+<p>Let us begin by discussing derivatives in the setting of
+programming. If we are given a function,</p>
+<div class="math notranslate nohighlight">
+\[f(x) = sin(2 x)\]</div>
+<p>We can compute a function for its derivative applying rules from univariate calculus, i.e.</p>
+<div class="math notranslate nohighlight">
+\[f'(x) = 2 \times cos(2 x)\]</div>
+<p>We will refer to this as the symbolic derivative of the function. In
+some sense this is the ideal term to compute since it tells use
+everything we need to know about the derivative of the function.</p>
+<p>Practically, this means that there is another way to compute approximate derivative that works for black-box functions. You simply pick as value of epsilon, say 1e-6, and compute the above term. This leads to a <cite>higher-order function</cite> of the following form</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">approx_derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Implement this function.</p></li>
+<li></li>
+</ul>
+</div>
+<div class="section" id="task-2-scalars">
+<h2>Task 2: Scalars<a class="headerlink" href="#task-2-scalars" title="Permalink to this headline">¶</a></h2>
+<p>Symbolic derivatives require knowing the whole function, whereas our
+above approximation requires only a single black box. We hope to build
+something in between, <cite>autoderivatives</cite>. However to do this we need to
+collect more information about the function f(x) itself. This can be
+hard to do since Python does not expose how x is used in the function
+directly, all we get is the output.</p>
+<dl class="py class">
+<dt id="minitorch.Scalar">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Scalar</code><span class="sig-paren">(</span><em class="sig-param">v</em>, <em class="sig-param">back=&lt;minitorch.autodiff.History object&gt;</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scalar object. A reimplementation of numbers in python
+that allows for tracking of autodifferentiation information.</p>
+<p>The approach will be to replace x   with a surrogate value and override its set of mathematical
+operations. Instead of calling regular +, Python will call our +.
+Instead of calling <span class="math notranslate nohighlight">\(log\)</span>, Python will call our <span class="math notranslate nohighlight">\(log\)</span>.
+Once this is done we have the ability to record and track all the ways that
+x was used in the function. This will allow us a better method for computing the
+derivative of interest.</p>
+<p>Scalars aim behave as close as possible to standard Python
+numbers while also tracking the operations that led to the
+numbers creation.</p>
+<p>Tracking is done by the underlying <cite>Variable</cite>
+class. As long as all manipulation is done by <a href="#id1"><span class="problematic" id="id2">`</span></a>ScalarFunction`s
+everything will work fine.</p>
+<p>This class simply should mainly provide syntax that makes it
+appear like a number in its use. See <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types">https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types</a> for description of how this works.</p>
+<dl class="py attribute">
+<dt id="minitorch.Scalar.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#minitorch.Scalar.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>The underlying number wrapped by the scalar.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>number</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<ul class="simple">
+<li><dl class="simple">
+<dt>read python operator overloading. Add calls in scalar.py for</dt><dd><p>def __mul__(self, b):
+def __radd__(self, b):
+def __add__(self, b):
+def __rmul__(self, b):
+def __lt__(self, b):
+def __gt__(self, b):
+def __sub__(self, b):
+def __neg__(self):</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Once we have this overloading we need to define each of the functions that we use in a special
+way.</p>
+<ul class="simple">
+<li><p>Implement Scalar Functions for each of the terms.</p></li>
+<li><p>Pass the tests in <cite>test_scalar</cite>.</p></li>
+</ul>
+</div>
+<div class="section" id="task-3-auto-derivative">
+<h2>Task 3: Auto-Derivative<a class="headerlink" href="#task-3-auto-derivative" title="Permalink to this headline">¶</a></h2>
+<p>Now we have a cute way of grouping together function implementation
+and implmentations of their symbolic derivatives. We are making
+progress, but we still do not have a better method for taking
+derivatives of unseen functions. This is where <cite>autodifferentiation</cite>
+comes in. It provides a way to chain together individual scalar
+functions.</p>
+<p>We can also view this as a graph.</p>
+<ul class="simple">
+<li><p>Every <cite>Scalar</cite> stores what was the last function that computed it.</p></li>
+</ul>
+<dl class="py function">
+<dt id="minitorch.FunctionBase.chain_rule">
+<code class="sig-prename descclassname">minitorch.FunctionBase.</code><code class="sig-name descname">chain_rule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">inputs</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.FunctionBase.chain_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implements one step of the chain rule for derivatives
+<a class="reference external" href="https://en.wikipedia.org/wiki/Chain_rule#Statement">https://en.wikipedia.org/wiki/Chain_rule#Statement</a> .</p>
+<div class="math notranslate nohighlight">
+\[f'_x(g(x)) = g'(x)  imes f'_{g(x)}(g(x))\]</div>
+<p>It may be easier to visualize if we name each part.</p>
+<div class="math notranslate nohighlight">
+\[output = g(x)
+d_output = f'(output)
+f'_x(g(x)) = d_output * g'(x)\]</div>
+<p>For a function two variables, it
+.. math</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sa">f</span><span class="s1">&#39;_x(g(x, y)) = g_x&#39;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="n">imes</span> <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s1">(g(x, y))</span>
+<span class="sa">f</span><span class="s1">&#39;_y(g(x, y)) = g_y&#39;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>  <span class="n">imes</span> <span class="sa">f</span><span class="s1">&#39;_</span><span class="si">{</span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s1">(g(x, y))</span>
+</pre></div>
+</div>
+<p>Or</p>
+<div class="math notranslate nohighlight">
+\[output = g(x, y)
+d_output = f'(output)
+f'_x(g(x, y)) = d_output * g_x'(x, y)
+f'_y(g(x, y)) = d_output * g_y'(x, y)\]</div>
+<p>Given a function <cite>g</cite> and <cite>d_output</cite> this function implements the chain
+rule for each input.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>cls</strong> (class <cite>FunctionBase</cite>) -- A class representing the function <cite>g</cite></p></li>
+<li><p><strong>ctx</strong> (<cite>Context</cite>) -- The context context from running forward (to pass to cls.backward())</p></li>
+<li><p><strong>inputs</strong> (<em>list of args</em>) -- The args that were passed to cls.apply() (e.g. <span class="math notranslate nohighlight">\(x, y\)</span>)</p></li>
+<li><p><strong>d_output</strong> (<em>number</em>) -- The d_output value in the chain rule (i.e. <span class="math notranslate nohighlight">\(f'(output)\)</span>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>A list of <cite>Back</cite> pairs containing a value and its derivative
+<span class="math notranslate nohighlight">\((x, f'_x(g(x, y)))\)</span> and <span class="math notranslate nohighlight">\((y, f'_y(g(x, y)))\)</span> for each <cite>Variable</cite>
+object in input.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of <cite>Back</cite></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.backpropagate">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">final_variable_with_deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a breadth-first search on the computation graph in order to
+propagate derivative to the leaves. We do this with the following algorithm:</p>
+<ol class="arabic simple" start="0">
+<li><p>Initialize a queue with a the final variable and derivative.</p></li>
+</ol>
+<p>1) While the queue is not empty, pull a variable and derivative from the queue.
+2a) If the variable is a leaf (<cite>is_leaf</cite>) then add its derivative to .derivative (<cite>_add_deriv</cite>) and loop to (1).
+2b) If the variables is not a leat (<cite>is_non_leaf</cite>) call <cite>.chain_rule</cite> on its history to propagate its derivative.
+3) Loop through all the variables+derivative produced by chain rule.
+4a) If the variable is in the queue (check <cite>.name</cite>), add the new <cite>deriv</cite> to the previous <cite>deriv</cite>.
+4b) Otherwise add to the queue.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="task-4-training">
+<h2>Task 4: Training<a class="headerlink" href="#task-4-training" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="assignment2.html" class="btn btn-neutral float-right" title="Assignment 2 - Tensors" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="assignment0.html" class="btn btn-neutral float-left" title="Assignment 0 - Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

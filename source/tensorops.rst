@@ -1,0 +1,78 @@
+======================
+Operations
+======================
+
+
+Now that we have a tensor class, we would like to reimplement all
+our mathematical operations on top of this framework.
+The goal is to make this feel
+simple and intuitive to users of the library. We can break
+these operations down in unary transformations. ::
+
+
+
+  # a) Return a new tensor with the same shape as `tensor_a` where
+  # each position is the log/exp/negative of the position in `tensor_a`
+  tensor_a.log()
+  tensor_a.exp()
+  -tensor_a
+  ...
+
+
+Binary transformations ::
+  
+  # b) Return a new tensor where
+  # each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`
+  tensor_a + tensor_b
+  tensor_a * tensor_b
+  tensor_a - tensor_b
+  ...
+
+And reductions ::
+  
+  # c) Return a new tensor where dim-1 is size 1 and represents
+  # the sum/mean over dim-1 in `tensor_a`
+  tensor_a.sum(1)
+  tensor_a.mean(1)
+  ...
+
+  
+We could implement each of these operations individually, but we can
+also be a bit lazy and note the structural similarities. If we squint,
+these operations look very much like the higher-order functions that
+we implemented in :doc:`module0` :
+
+
+
+
+* Operation a / map: These operations all just touch each of the
+  positions of the tensor individually. They don't need to deal with
+  other positions or know anything about the shape or size of the tensor.
+  We can view these operations as applying the following transformation.
+
+.. image:: figs/Ops/map.png
+           :align: center
+
+* Operation b / zip: These operations need only to pair operations between
+  neighboring tensors. If we assume the tensors are the same size and shape,
+  then this application simply aligns the two tensors and applies an operator
+  between each pair
+
+
+.. image:: figs/Ops/zip.png
+           :align: center
+
+* Operation c / reduce: These operations need to group together cells within a single tensor.
+  We can think of there being an implied `reduce` shape that is eliminated in the process of the
+  output construction. For instance, in this picture, we start with shape (3, 2) and create shape
+  (1, 2). Implicitly we are reducing over a shape of (3, 1) for each output value.
+
+.. image:: figs/Ops/reduce.png
+           :align: center
+
+
+In the next module we will discuss efficient implementations of each of these operators.
+For now, we note that they can be implemented by enumerating over all indices of the tensors
+and applying one of the operators from :doc:`module0`. This approach can used to implement
+key tensor operations, without doing more than implementing these above higher-order methods. 
+

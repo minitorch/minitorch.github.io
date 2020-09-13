@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>});</title>
+    <link rel="stylesheet" href="../../revealjs/css/reveal.css" type="text/css" />
+    <link rel="stylesheet" href="../../pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../revealjs/css/theme/black.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../revealjs/lib/css/zenburn.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../documentation_options.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../underscore.js"></script>
+    <script src="../../doctools.js"></script>
+    <script src="../../language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( "link" );
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        if (window.location.search.match( /print-pdf/gi )) {
+            link.href = "../../revealjs/css/print/pdf.css";
+        } else {
+            link.href = "../../revealjs/css/print/paper.css";
+        }
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+
+  </head><body>
+    <div class="reveal">
+        <div class="slides">
+            <p># Broadcast #</p>
+<p>A plugin for Reveal.js allowing to broadcast audio and video for slide shows.</p>
+<p>[Check out the live demo](<a class="reference external" href="https://rajgoel.github.io/reveal.js-demos/broadcast-demo.html">https://rajgoel.github.io/reveal.js-demos/broadcast-demo.html</a>)</p>
+<p>## Installation</p>
+<p>Copy the files of the plugin next to your reveal.js presentation and add the dependencies as below.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+dependencies: [</p>
+<blockquote>
+<div><p>// ...
+{ src: '../reveal.js-plugins/broadcast/RTCMultiConnection/RTCMultiConnection.min.js'},
+{ src: '../reveal.js-plugins/broadcast/RTCMultiConnection/adapter.js'},
+{ src: '../reveal.js-plugins/broadcast/RTCMultiConnection/socket.io.js'},
+{ src: '../reveal.js-plugins/broadcast/bCrypt.js'},
+{ src: '../reveal.js-plugins/broadcast/broadcast.js'},
+// ...</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>## Configuration</p>
+<p>You can configure the <code class="docutils literal notranslate"><span class="pre">`broadcast.js`</span></code> plugin by providing a <code class="docutils literal notranslate"><span class="pre">`broadcast`</span></code> option in the reveal.js initialization options.</p>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+broadcast: {</p>
+<blockquote>
+<div><p>// Set master password to &quot;123456&quot;
+secret: '$2a$05$hhgakVn1DWBfgfSwMihABeYToIBEiQGJ.ONa.HWEiNGNI6mxFCy8S',
+// Configure RTCMultiConnection
+connection: {</p>
+<blockquote>
+<div><p>socketURL: '<a class="reference external" href="https://revealjs-broadcast.herokuapp.com:443/">https://revealjs-broadcast.herokuapp.com:443/</a>'</p>
+</div></blockquote>
+<p>},</p>
+</div></blockquote>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>The parameter <code class="docutils literal notranslate"><span class="pre">`secret`</span></code> is a hash for the password which has to be provided when starting a broadcast. You can generate this secret with [<code class="docutils literal notranslate"><span class="pre">`generatehash.html`</span></code>](<a class="reference external" href="https://rajgoel.github.io/reveal.js-plugins/broadcast/generatehash.html">https://rajgoel.github.io/reveal.js-plugins/broadcast/generatehash.html</a>). The parameter <code class="docutils literal notranslate"><span class="pre">`connection`</span></code> provides the configuration for RTCMultiConnection as described in the [API Reference](<a class="reference external" href="https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/api.md">https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/api.md</a>). The only required option is the parameter <code class="docutils literal notranslate"><span class="pre">`socketURL`</span></code>. For testing purposes you may use the server <code class="docutils literal notranslate"><span class="pre">`https://revealjs-broadcast.herokuapp.com/`</span></code>, but availability and stability are not guaranteed. For anything mission critical I recommend you run your own server. For example, you can deploy <a class="reference external" href="https://github.com/muaz-khan/RTCMultiConnection">https://github.com/muaz-khan/RTCMultiConnection</a> on [Heroku](<a class="reference external" href="https://www.heroku.com/">https://www.heroku.com/</a>) using this [Installation Guide](<a class="reference external" href="https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/installation-guide.md">https://github.com/muaz-khan/RTCMultiConnection/blob/master/docs/installation-guide.md</a>). Heroku allows you to directly use the GitHub repository without any changes.</p>
+<p>## Start broadcast</p>
+<p>To start a broadcast you can include a button in the slideshow which calls the function <code class="docutils literal notranslate"><span class="pre">`RevealBroadcast.start`</span></code> with the  broadcast id and the master password.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`html</span>
+<span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;</span> <span class="pre">id=&quot;broadcastid&quot;</span> <span class="pre">value=&quot;&quot;&gt;</span>
+<span class="pre">&lt;input</span> <span class="pre">type=&quot;password&quot;</span> <span class="pre">id=&quot;password&quot;</span> <span class="pre">value=&quot;&quot;&gt;</span>
+<span class="pre">&lt;a</span> <span class="pre">href=&quot;#&quot;</span> <span class="pre">onclick=&quot;RevealBroadcast.start(</span> <span class="pre">{</span> <span class="pre">id:</span> <span class="pre">document.getElementById('broadcastid').value,</span> <span class="pre">password:</span> <span class="pre">document.getElementById('password').value</span> <span class="pre">}</span> <span class="pre">);</span> <span class="pre">return</span> <span class="pre">false;&quot;&gt;Start</span> <span class="pre">broadcast&lt;/a&gt;</span>
+<span class="pre">`</span></code>
+After clicking the <code class="docutils literal notranslate"><span class="pre">`Start</span> <span class="pre">broadcast`</span></code> button, a draggable overlay for the video is shown. Initially, the video shows a snowy image. After connecting to the server and after the user has allowed acces to camera and microphone, the video captured by the camera is shown.</p>
+<p>## Join broadcast</p>
+<p>To join a broadcast you can include a button in the slideshow which calls the function <code class="docutils literal notranslate"><span class="pre">`RevealBroadcast.connect`</span></code> with the  broadcast id.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`html</span>
+<span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;</span> <span class="pre">id=&quot;broadcastid&quot;</span> <span class="pre">value=&quot;&quot;&gt;</span>
+<span class="pre">&lt;a</span> <span class="pre">href=&quot;#&quot;</span> <span class="pre">onclick=&quot;RevealBroadcast.connect(</span> <span class="pre">{</span> <span class="pre">id:</span> <span class="pre">document.getElementById('broadcastid').value</span> <span class="pre">}</span> <span class="pre">);</span> <span class="pre">return</span> <span class="pre">false;&quot;&gt;Join</span> <span class="pre">broadcast&lt;/a&gt;</span>
+<span class="pre">`</span></code>
+After clicking the <code class="docutils literal notranslate"><span class="pre">`Join</span> <span class="pre">broadcast`</span></code> button, a draggable overlay for the video is shown. Initially, the video shows a snowy image. After connecting to the server, the client receives audio and video of the master and the slides are updated whith every update by the master.</p>
+<p>## Custom events</p>
+<p>It is possible to send custom events to the clients by adding the following code to your presentation or plugin.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`javascript</span>
+<span class="pre">var</span> <span class="pre">message</span> <span class="pre">=</span> <span class="pre">new</span> <span class="pre">CustomEvent('send');</span>
+<span class="pre">message.content</span> <span class="pre">=</span> <span class="pre">{</span> <span class="pre">sender:</span> <span class="pre">'someplugin',</span> <span class="pre">type:</span> <span class="pre">'somecustomevent'</span> <span class="pre">};</span>
+<span class="pre">document.dispatchEvent(</span> <span class="pre">message</span> <span class="pre">);</span>
+<span class="pre">`</span></code>
+The broadcast plugin will forward this event to all connected clients who can listen to custom events using the following code.</p>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a>javascript
+document.addEventListener( 'received', function ( message ) {</p>
+<blockquote>
+<div><p>// only listen to events of the same sender
+if ( message.content &amp;&amp; message.content.sender == 'someplugin' ) {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>switch ( message.content.type ) {</dt><dd><dl class="simple">
+<dt>case 'somecustomevent':</dt><dd><p>// do something
+break;</p>
+</dd>
+<dt>default:</dt><dd><p>break;</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>Whenever a new client joins the broadcast the broadcast plugins sends a <code class="docutils literal notranslate"><span class="pre">`newclient`</span></code> event. You can react to the event, e.g., by broadcasting initialisation information to all clients.</p>
+<p><a href="#id16"><span class="problematic" id="id17">``</span></a><a href="#id18"><span class="problematic" id="id19">`</span></a>javascript
+document.addEventListener( 'newclient', function() {</p>
+<blockquote>
+<div><p>// (re-)send initialisation info as new client has joined
+var message = new CustomEvent('send');
+message.content = {</p>
+<blockquote>
+<div><dl class="simple">
+<dt>sender: 'someplugin',</dt><dd><p>type: 'init',
+\ ...</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>};
+document.dispatchEvent( message );</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>In the [demo](<a class="reference external" href="https://rajgoel.github.io/reveal.js-demos/broadcast-demo.html">https://rajgoel.github.io/reveal.js-demos/broadcast-demo.html</a>) all drawings created with the <code class="docutils literal notranslate"><span class="pre">`chalkboard.js`</span></code> plugin are broadcasted to the clients. Checkout the source code of <code class="docutils literal notranslate"><span class="pre">`chalkboard.js`</span></code> plugin for an example of the implementation.</p>
+<p>## Limitations</p>
+<p>Browser support may vary and usage on mobile OS may fail. It is recommended to use Chrome, Chromium, or Firefox on desktop.</p>
+<p>## Credits</p>
+<p>The plugin uses a [patched](<a class="reference external" href="https://github.com/muaz-khan/RTCMultiConnection/pull/816">https://github.com/muaz-khan/RTCMultiConnection/pull/816</a>) version of RTCMultiConnection by Muaz Khan (<a class="reference external" href="https://github.com/muaz-khan/RTCMultiConnection">https://github.com/muaz-khan/RTCMultiConnection</a>).</p>
+<p>## License</p>
+<p>MIT licensed</p>
+<p>Copyright (C) 2020 Asvin Goel</p>
+
+        </div>
+    </div>
+    
+    <script src="../../revealjs/js/reveal.js"></script>
+    
+    <script>
+        var revealjsConfig = {
+          dependencies: []
+        };
+        Object.assign(revealjsConfig, 
+{
+    controls: false,
+    transition: 'none',
+    keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	    88: function() { RevealChalkboard.colorNext() },	// cycle colors forward when 'x' is pressed
+	    89: function() { RevealChalkboard.colorPrev() },	// cycle colors backward when 'y' is pressed
+    }
+}
+);
+        
+        
+        
+          plugin_0 = {};
+          plugin_0.src = "_static/js/chalkboard.js";
+          revealjsConfig.dependencies.push(plugin_0);
+          plugin_1 = {async: true};
+          plugin_1.src = "_static/revealjs/plugin/notes/notes.js";
+          revealjsConfig.dependencies.push(plugin_1);
+          plugin_2 = {async: true, callback: function() { hljs.initHighlightingOnLoad(); }};
+          plugin_2.src = "_static/revealjs/plugin/highlight/highlight.js";
+          revealjsConfig.dependencies.push(plugin_2);
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(revealjsConfig);
+    </script>
+
+  </body>
+</html>

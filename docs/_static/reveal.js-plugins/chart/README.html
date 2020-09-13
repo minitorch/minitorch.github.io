@@ -1,0 +1,270 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>});</title>
+    <link rel="stylesheet" href="../../revealjs/css/reveal.css" type="text/css" />
+    <link rel="stylesheet" href="../../pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../revealjs/css/theme/black.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../revealjs/lib/css/zenburn.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../documentation_options.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../underscore.js"></script>
+    <script src="../../doctools.js"></script>
+    <script src="../../language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( "link" );
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        if (window.location.search.match( /print-pdf/gi )) {
+            link.href = "../../revealjs/css/print/pdf.css";
+        } else {
+            link.href = "../../revealjs/css/print/paper.css";
+        }
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+
+  </head><body>
+    <div class="reveal">
+        <div class="slides">
+            <p># Chart</p>
+<p>A plugin for [Reveal.js](<a class="reference external" href="https://github.com/hakimel/reveal.js">https://github.com/hakimel/reveal.js</a>) allowing to easily add charts using [Chart.js](<a class="reference external" href="http://www.chartjs.org/">http://www.chartjs.org/</a>).</p>
+<p>[Check out the live demo](<a class="reference external" href="https://rajgoel.github.io/reveal.js-demos/chart-demo.html">https://rajgoel.github.io/reveal.js-demos/chart-demo.html</a>)</p>
+<p>## Installation</p>
+<p>Copy the files <code class="docutils literal notranslate"><span class="pre">`Chart.min.js`</span></code> and <code class="docutils literal notranslate"><span class="pre">`csv2chart.js`</span></code> into the plugin folder of your reveal.js presentation, i.e. <code class="docutils literal notranslate"><span class="pre">`plugin/chart`</span></code>.</p>
+<p>Add the plugins to the dependencies in your presentation, as below.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+dependencies: [</p>
+<blockquote>
+<div><p>// ...
+{ src: 'plugin/chart/Chart.min.js' },
+{ src: 'plugin/chart/csv2chart.js' },
+// ...</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>## Configuration</p>
+<p>The plugin has several parameters that you can set for your presentation by providing an <code class="docutils literal notranslate"><span class="pre">`chart`</span></code> option in the reveal.js initialization options.
+Note that all configuration parameters are optional and the defaults of [Chart.js 2.7](<a class="reference external" href="http://nnnick.github.io/Chart.js/docs-v2/">http://nnnick.github.io/Chart.js/docs-v2/</a>) will be used for parameters that are not specified.</p>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+chart: {</p>
+<blockquote>
+<div><dl>
+<dt>defaults: {</dt><dd><dl>
+<dt>global: {</dt><dd><p>title: { fontColor: &quot;#FFF&quot; },
+legend: {</p>
+<blockquote>
+<div><p>labels: { fontColor: &quot;#FFF&quot; },</p>
+</div></blockquote>
+<p>},</p>
+</dd>
+</dl>
+<p>},
+scale: {</p>
+<blockquote>
+<div><p>scaleLabel: { fontColor: &quot;#FFF&quot; },
+gridLines: { color: &quot;#FFF&quot;, zeroLineColor: &quot;#FFF&quot; },
+ticks: { fontColor: &quot;#FFF&quot; },</p>
+</div></blockquote>
+<p>}</p>
+</dd>
+</dl>
+<p>},
+line: { borderColor: [ &quot;rgba(20,220,220,.8)&quot; , &quot;rgba(220,120,120,.8)&quot;, &quot;rgba(20,120,220,.8)&quot; ], &quot;borderDash&quot;: [ [5,10], [0,0] ]},
+bar: { backgroundColor: [ &quot;rgba(20,220,220,.8)&quot; , &quot;rgba(220,120,120,.8)&quot;, &quot;rgba(20,120,220,.8)&quot; ]},
+pie: { backgroundColor: [ [&quot;rgba(0,0,0,.8)&quot; , &quot;rgba(220,20,20,.8)&quot;, &quot;rgba(20,220,20,.8)&quot;, &quot;rgba(220,220,20,.8)&quot;, &quot;rgba(20,20,220,.8)&quot;] ]},
+radar: { borderColor: [ &quot;rgba(20,220,220,.8)&quot; , &quot;rgba(220,120,120,.8)&quot;, &quot;rgba(20,120,220,.8)&quot; ]},</p>
+</div></blockquote>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">`defaults`</span></code> parameter  will overwrite <code class="docutils literal notranslate"><span class="pre">`Chart.defaults`</span></code>. Furthermore, for any chart type, e.g. line, bar, etc., the parameters for the individual datasets can be specified. Where Chart.js allows to specify a single parameter for a particular dataset, the plugin allows to specify an array of values for this parameter, which will automatically be assigned to the different datasets. Note that if there are more datasets than elements in the array, the plugin will start again with the first value in the array.</p>
+<p>## Usage</p>
+<p>A chart can be included in a slide by adding a <code class="docutils literal notranslate"><span class="pre">`canvas`</span></code> element with the <code class="docutils literal notranslate"><span class="pre">`data-chart`</span></code> attribute set to the desired chart type.</p>
+<p>The chart can be configured within the canvas body by a JSON string embedded into an HTML comment.</p>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a>html
+&lt;canvas data-chart=&quot;line&quot;&gt;
+&lt;!--
+{</p>
+<blockquote>
+<div><dl>
+<dt>&quot;data&quot;: {</dt><dd><p>&quot;labels&quot;: [&quot;January&quot;,&quot; February&quot;,&quot; March&quot;,&quot; April&quot;,&quot; May&quot;,&quot; June&quot;,&quot; July&quot;],
+&quot;datasets&quot;: [</p>
+<blockquote>
+<div><dl class="simple">
+<dt>{</dt><dd><p>&quot;data&quot;:[65,59,80,81,56,55,40],
+&quot;label&quot;:&quot;My first dataset&quot;,&quot;backgroundColor&quot;:&quot;rgba(20,220,220,.8)&quot;</p>
+</dd>
+</dl>
+<p>},
+{</p>
+<blockquote>
+<div><p>&quot;data&quot;:[28,48,40,19,86,27,90],
+&quot;label&quot;:&quot;My second dataset&quot;,&quot;backgroundColor&quot;:&quot;rgba(220,120,120,.8)&quot;</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>},
+&quot;options&quot;: { &quot;responsive&quot;: &quot;true&quot; }</p>
+</div></blockquote>
+<p>}
+--&gt;
+&lt;/canvas&gt;
+<a href="#id15"><span class="problematic" id="id16">``</span></a>`
+It is possible to provide the chart data by comma separated values and use the JSON string within the HTML comment to configure the chart layout.</p>
+<p><a href="#id17"><span class="problematic" id="id18">``</span></a><a href="#id19"><span class="problematic" id="id20">`</span></a>html
+&lt;canvas class=&quot;stretch&quot; data-chart=&quot;line&quot;&gt;
+My first dataset, 65, 59, 80, 81, 56, 55, 40
+&lt;!-- This is a comment that will be ignored --&gt;
+My second dataset, 28, 48, 40, 19, 86, 27, 90
+&lt;!--
+{</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&quot;data&quot;<span class="classifier">{</span></dt><dd><p>&quot;labels&quot; : [&quot;Enero&quot;, &quot;Febrero&quot;, &quot;Marzo&quot;, &quot;Avril&quot;, &quot;Mayo&quot;, &quot;Junio&quot;, &quot;Julio&quot;],
+&quot;datasets&quot; : [{ &quot;borderColor&quot;: &quot;#0f0&quot;, &quot;borderDash&quot;: [&quot;5&quot;,&quot;10&quot;] }, { &quot;borderColor&quot;: &quot;#0ff&quot; } ]</p>
+</dd>
+</dl>
+<p>}</p>
+</div></blockquote>
+<p>}
+--&gt;
+&lt;/canvas&gt;
+<a href="#id21"><span class="problematic" id="id22">``</span></a><a href="#id23"><span class="problematic" id="id24">`</span></a></p>
+<p>The layout configuration provided in <code class="docutils literal notranslate"><span class="pre">`chart`</span></code> parameter (see Configuration) will be used by default and only those parameters that are specified in a JSON string are used to overwrite the default values. If no JSON string is provided to configure the chart layout the default configuration is used. Note, that if no labels for the data points are provided by a JSON string, the plugin expects that the first row provides table headers.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`html</span>
+<span class="pre">&lt;canvas</span> <span class="pre">data-chart=&quot;line&quot;&gt;</span>
+<span class="pre">Month,</span> <span class="pre">January,</span> <span class="pre">February,</span> <span class="pre">March,</span> <span class="pre">April,</span> <span class="pre">May,</span> <span class="pre">June,</span> <span class="pre">July</span>
+<span class="pre">My</span> <span class="pre">first</span> <span class="pre">dataset,</span> <span class="pre">65,</span> <span class="pre">59,</span> <span class="pre">80,</span> <span class="pre">81,</span> <span class="pre">56,</span> <span class="pre">55,</span> <span class="pre">40</span>
+<span class="pre">My</span> <span class="pre">second</span> <span class="pre">dataset,</span> <span class="pre">28,</span> <span class="pre">48,</span> <span class="pre">40,</span> <span class="pre">19,</span> <span class="pre">86,</span> <span class="pre">27,</span> <span class="pre">90</span>
+<span class="pre">&lt;/canvas&gt;</span>
+<span class="pre">`</span></code></p>
+<p>The chart data can also be provided in an external CSV file. To include external data, the filename must be specified using the <code class="docutils literal notranslate"><span class="pre">`data-chart-src`</span></code> attribute of the <code class="docutils literal notranslate"><span class="pre">`canvas`</span></code> element. The CSV file is expected to only contain data values, whereas options for drawing the chart can be given as described above.</p>
+<p><code class="docutils literal notranslate"><span class="pre">`html</span>
+<span class="pre">&lt;canvas</span> <span class="pre">data-chart=&quot;bar&quot;</span> <span class="pre">data-chart-src=&quot;data.csv&quot;&gt;</span>
+<span class="pre">&lt;!--</span>
+<span class="pre">{</span>
+<span class="pre">&quot;data&quot;</span> <span class="pre">:</span> <span class="pre">{</span>
+<span class="pre">&quot;datasets&quot;</span> <span class="pre">:</span> <span class="pre">[{</span> <span class="pre">&quot;backgroundColor&quot;:</span> <span class="pre">&quot;#0f0&quot;</span> <span class="pre">},</span> <span class="pre">{</span> <span class="pre">&quot;backgroundColor&quot;:</span> <span class="pre">&quot;#0ff&quot;</span> <span class="pre">}</span> <span class="pre">]</span>
+<span class="pre">},</span>
+<span class="pre">&quot;options&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;responsive&quot;:</span> <span class="pre">true,</span> <span class="pre">&quot;scales&quot;:</span> <span class="pre">{</span> <span class="pre">&quot;xAxes&quot;:</span> <span class="pre">[{</span> <span class="pre">&quot;stacked&quot;:</span> <span class="pre">true</span> <span class="pre">}],</span> <span class="pre">&quot;yAxes&quot;:</span> <span class="pre">[{</span> <span class="pre">&quot;stacked&quot;:</span> <span class="pre">true</span> <span class="pre">}]</span> <span class="pre">}</span> <span class="pre">}</span>
+<span class="pre">}</span>
+<span class="pre">--&gt;</span>
+<span class="pre">&lt;/canvas&gt;</span>
+<span class="pre">`</span></code></p>
+<p>## Animation</p>
+<p>The plugin recreates the charts on a slide change to show the Chart.js animations. These animation can be turned off globally in the configuration by</p>
+<p><a href="#id25"><span class="problematic" id="id26">``</span></a><a href="#id27"><span class="problematic" id="id28">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><blockquote>
+<div><p>// ...</p>
+</div></blockquote>
+<dl>
+<dt>chart: {</dt><dd><dl>
+<dt>defaults: {</dt><dd><dl class="simple">
+<dt>global: {</dt><dd><p>animation: null,
+// ...</p>
+</dd>
+</dl>
+<p>},
+// ...</p>
+</dd>
+</dl>
+<p>},</p>
+</dd>
+</dl>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>or within a chart, e.g. by</p>
+<p><a href="#id30"><span class="problematic" id="id31">``</span></a><a href="#id32"><span class="problematic" id="id33">`</span></a>html
+&lt;canvas class=&quot;stretch&quot; data-chart=&quot;line&quot;&gt;
+&lt;!--
+{</p>
+<blockquote>
+<div><dl class="simple">
+<dt>&quot;data&quot;: {</dt><dd><p>// ...</p>
+</dd>
+</dl>
+<p>},
+&quot;options&quot;: { &quot;responsive&quot;: &quot;true&quot;, &quot;animation&quot;: &quot;&quot; }</p>
+</div></blockquote>
+<p>}
+--&gt;
+&lt;/canvas&gt;
+<a href="#id34"><span class="problematic" id="id35">``</span></a><a href="#id36"><span class="problematic" id="id37">`</span></a></p>
+<p>## License</p>
+<p>MIT licensed</p>
+<p>Copyright (C) 2017 Asvin Goel</p>
+
+        </div>
+    </div>
+    
+    <script src="../../revealjs/js/reveal.js"></script>
+    
+    <script>
+        var revealjsConfig = {
+          dependencies: []
+        };
+        Object.assign(revealjsConfig, 
+{
+    controls: false,
+    transition: 'none',
+    keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	    88: function() { RevealChalkboard.colorNext() },	// cycle colors forward when 'x' is pressed
+	    89: function() { RevealChalkboard.colorPrev() },	// cycle colors backward when 'y' is pressed
+    }
+}
+);
+        
+        
+        
+          plugin_0 = {};
+          plugin_0.src = "_static/js/chalkboard.js";
+          revealjsConfig.dependencies.push(plugin_0);
+          plugin_1 = {async: true};
+          plugin_1.src = "_static/revealjs/plugin/notes/notes.js";
+          revealjsConfig.dependencies.push(plugin_1);
+          plugin_2 = {async: true, callback: function() { hljs.initHighlightingOnLoad(); }};
+          plugin_2.src = "_static/revealjs/plugin/highlight/highlight.js";
+          revealjsConfig.dependencies.push(plugin_2);
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(revealjsConfig);
+    </script>
+
+  </body>
+</html>

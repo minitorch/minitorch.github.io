@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Parallel Computation &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="GPU Programming" href="cuda.html" />
+    <link rel="prev" title="Fusing Operations" href="matrixmult.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Parallel Computation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#numba-jit">Numba JIT</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="module3.html">Module 3 - Efficiency</a> &raquo;</li>
+        
+      <li>Parallel Computation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/parallel.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="parallel-computation">
+<h1>Parallel Computation<a class="headerlink" href="#parallel-computation" title="Permalink to this headline">¶</a></h1>
+<p>The major technique we will use to speed up computation is code
+parallelization. General parallel code can be difficult to write and
+get correct; however, we can again take advantage of the fact that we
+have structured our code around a set of core, general operations that
+are used throughout the codebase.</p>
+<p>Let's start by going back to <a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a> and our map operation.</p>
+<span class="target" id="module-minitorch.operators.map"></span><p>Higher-order map.</p>
+<img alt="_images/maplist.png" src="_images/maplist.png" />
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">param fn</dt>
+<dd class="field-odd"><p>Function from one value to one value.</p>
+</dd>
+<dt class="field-even">type fn</dt>
+<dd class="field-even"><p>one-arg function</p>
+</dd>
+<dt class="field-odd">returns</dt>
+<dd class="field-odd"><p>A function that takes a list, applies <cite>fn</cite> to each element, and returns a
+new list</p>
+</dd>
+<dt class="field-even">rtype</dt>
+<dd class="field-even"><p>function</p>
+</dd>
+</dl>
+<p>There are many ways to implement this function. Let's consider a version where
+we pass it an explict output list to map to. Here's a simple implementation,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">_map</span>
+</pre></div>
+</div>
+<p>This method produces the correct result, but it's not very
+efficient. Ideally, we could do something fast to take advantage of the
+fact that all the function calls are identical. Also, we shouldn't have
+to loop over the list one value at a time. By definition <cite>map</cite> (and
+<cite>zipWith</cite>) can be fast and parallelized, since none of the decisions
+interact with each other.</p>
+<p>Python itself doesn't have great methods for fast math and parallelism
+built-in, but luckily it has good libraries to help speed up numerical
+computation. We will utilize one of these libraries known as <a class="reference external" href="http://numba.pydata.org/">Numba</a></p>
+<div class="section" id="numba-jit">
+<h2>Numba JIT<a class="headerlink" href="#numba-jit" title="Permalink to this headline">¶</a></h2>
+<p>Numba is a numerical JIT compiler for python. When a function is first created, it
+converts raw Python code to faster numerical operations under the hood. We have seen an example of this library earlier when developing our mathematical operators.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
+</pre></div>
+</div>
+<p>This JIT function alone does not make the code much faster, but it allows us to use
+this code within other code. For instance, if we want to improve our map code we can change it to look like this.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
+<span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="c1"># Change 1: Move function from python to jit version.</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">njit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+    <span class="c1"># Change 2: Internal _map must be jitted as well.</span>
+    <span class="k">return</span> <span class="n">njit</span><span class="p">()(</span><span class="n">_map</span><span class="p">)</span>
+
+<span class="c1"># Note that all JIT happens when outer map is first called.</span>
+<span class="n">neg_map</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">neg</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.</p>
+<p>Furthermore, if we know that the loop can be done in parallel we can speed it up further with one small change</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
+<span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="n">fn</span> <span class="o">=</span> <span class="n">njit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="nb">input</span><span class="p">):</span>
+        <span class="c1"># Change 3: Run the loop in parallel (prange)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">prange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">out</span><span class="p">)):</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="nb">input</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">njit</span><span class="p">(</span><span class="n">parallel</span><span class="o">=</span><span class="kc">True</span><span class="p">)(</span><span class="n">_map</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>What's neat about this is that the code is basically the same as the
+python code. You can basically switch back and forth between the two
+without much change.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You have to be a bit careful to ensure that the loop actually can be parallelized.
+In short, this means that steps cannot depend on each other or write to the same output.
+For instance, when implementing <cite>reduce</cite> you have to be careful to mix parallel and
+non-parallel loops.</p>
+</div>
+<p>For full details on how Numba works see the <a class="reference external" href="https://numba.pydata.org/numba-doc/latest/user/parallel.html">Parallel tutorial</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="cuda.html" class="btn btn-neutral float-right" title="GPU Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="matrixmult.html" class="btn btn-neutral float-left" title="Fusing Operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+
+
+
+Course Plan
+************
+
+
+
+Assignment 1:
+-------------
+
+Material: 
+
+* Functional style
+* Numerical systems
+* Basic gradients.
+
+Technical:
+
+* Git Usage
+* Unit test checking and evaluation
+* Virtual Environment
+* QuickCheck testing with Hypothesis
+* Documentation 
+* Visdom
+  
+Files:
+
+* ops.py
+* dataset.py
+* module.py
+
+Assignment 2:
+--------------
+
+Scalars
+
+Files:
+
+* scalar.py
+* autograd.py
+* scalar_modules.py
+* example/network.py
+
+
+Material:
+* 
+
+Assignment 3:
+--------------
+
+Tensors
+
+Files:
+
+* layout.py
+* tensor.py
+* tensor_ops.py
+* modules.py
+
+
+Assignment 4:
+--------------
+
+Speed
+
+Files:
+
+* tensor_ops.py
+* functions.py
+* modules.py
+* Conv
+
+* MNist
+
+Assignment 5
+-------------
+
+Portability / visualization
+
+Files: 
+* ONNX
+* onnx.js
+* Model compression
+* Sparsity
+
+
+Assignment 6 
+-------------
+
+Challenge datasets

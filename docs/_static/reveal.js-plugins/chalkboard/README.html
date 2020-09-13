@@ -1,0 +1,234 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>});</title>
+    <link rel="stylesheet" href="../../revealjs/css/reveal.css" type="text/css" />
+    <link rel="stylesheet" href="../../pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../revealjs/css/theme/black.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../revealjs/lib/css/zenburn.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../documentation_options.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../underscore.js"></script>
+    <script src="../../doctools.js"></script>
+    <script src="../../language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( "link" );
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        if (window.location.search.match( /print-pdf/gi )) {
+            link.href = "../../revealjs/css/print/pdf.css";
+        } else {
+            link.href = "../../revealjs/css/print/paper.css";
+        }
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+
+  </head><body>
+    <div class="reveal">
+        <div class="slides">
+            <p># Chalkboard</p>
+<p>With this plugin you can add a chalkboard to reveal.js. The plugin provides two possibilities to include handwritten notes to your presentation:</p>
+<ul class="simple">
+<li><p>you can make notes directly on the slides, e.g. to comment on certain aspects,</p></li>
+<li><p>you can open a chalkboard or whiteboard on which you can make notes.</p></li>
+</ul>
+<p>The main use case in mind when implementing the plugin is classroom usage in which you may want to explain some course content and quickly need to make some notes.</p>
+<p>The plugin records all drawings made so that they can be play backed using the <code class="docutils literal notranslate"><span class="pre">`autoSlide`</span></code> feature or the <code class="docutils literal notranslate"><span class="pre">`audio-slideshow`</span></code> plugin.</p>
+<p>[Check out the live demo](<a class="reference external" href="https://rajgoel.github.io/reveal.js-demos/chalkboard-demo.html">https://rajgoel.github.io/reveal.js-demos/chalkboard-demo.html</a>)</p>
+<p>The chalkboard effect is based on [Chalkboard](<a class="reference external" href="https://github.com/mmoustafa/Chalkboard">https://github.com/mmoustafa/Chalkboard</a>) by Mohamed Moustafa.</p>
+<p>Multi color support added by Kurt Rinnert [GitHub](<a class="reference external" href="https://github.com/rinnert">https://github.com/rinnert</a>).</p>
+<p>## Installation</p>
+<p>Copy the file <code class="docutils literal notranslate"><span class="pre">`chalkboard.js`</span></code> and the  <code class="docutils literal notranslate"><span class="pre">`img`</span></code> directory into the plugin folder of your reveal.js presentation, i.e. <code class="docutils literal notranslate"><span class="pre">`plugin/chalkboard`</span></code>.</p>
+<p>Add the plugins to the dependencies in your presentation as shown below.</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+chalkboard: {</p>
+<blockquote>
+<div><p>// optionally load pre-recorded chalkboard drawing from file
+src: &quot;chalkboard.json&quot;,</p>
+</div></blockquote>
+<p>},
+dependencies: [</p>
+<blockquote>
+<div><p>// ...
+{ src: 'plugin/chalkboard/chalkboard.js' },
+// ...</p>
+</div></blockquote>
+<p>],
+keyboard: {</p>
+<blockquote>
+<div><p>67: function() { RevealChalkboard.toggleNotesCanvas() },    // toggle notes canvas when 'c' is pressed
+66: function() { RevealChalkboard.toggleChalkboard() },     // toggle chalkboard when 'b' is pressed
+46: function() { RevealChalkboard.clear() },        // clear chalkboard when 'DEL' is pressed</p>
+<blockquote>
+<div><p>8: function() { RevealChalkboard.reset() },        // reset chalkboard data on current slide when 'BACKSPACE' is pressed</p>
+</div></blockquote>
+<p>68: function() { RevealChalkboard.download() },     // downlad recorded chalkboard drawing when 'd' is pressed
+88: function() { RevealChalkboard.colorNext() },    // cycle colors forward when 'x' is pressed
+89: function() { RevealChalkboard.colorPrev() },    // cycle colors backward when 'y' is pressed</p>
+</div></blockquote>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>In order to include buttons for opening and closing the notes canvas or the chalkboard you should make sure that <code class="docutils literal notranslate"><span class="pre">`font-awesome`</span></code> is available. The easiest way is to include
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css&quot;&gt;</span>
+<span class="pre">`</span></code>
+to the <code class="docutils literal notranslate"><span class="pre">`head`</span></code> section of you HTML-file.</p>
+<p>## Usage</p>
+<p>### Enable &amp; disable</p>
+<p>With above configuration the notes canvas is opened and closed when pressing 'c' and the chalkboard is opened and closed when pressing 'b'.</p>
+<p>### Mouse
+- Click the left mouse button and drag to write on notes canvas or chalkboard
+- Click the right mouse button and drag to wipe away previous drawings</p>
+<p>### Touch
+- Touch and move to write on notes canvas or chalkboard
+- Touch and hold for half a second, then move to wipe away previous drawings</p>
+<p>### Keyboard
+- Press the 'DEL' key to clear the chalkboard
+- Press the 'd' key to download chalkboard drawings
+- Press the 'BACKSPACE' key to delete all chalkboard drawings on the current slide
+- Press the 'x' key to cycle colors forward
+- Press the 'y' key to cycle colors backward</p>
+<p>## Playback</p>
+<p>If the <code class="docutils literal notranslate"><span class="pre">`autoSlide`</span></code> feature is set or if the <code class="docutils literal notranslate"><span class="pre">`audio-slideshow`</span></code> plugin is used, pre-recorded chalkboard drawings can be played. The slideshow plays back the user interaction with the chalkboard in the same way as it was conducted when recording the data.</p>
+<p>## PDF-Export</p>
+<p>If the slideshow is opened in [print mode](<a class="reference external" href="https://github.com/hakimel/reveal.js/#pdf-export">https://github.com/hakimel/reveal.js/#pdf-export</a>) the pre-recorded chalkboard drawings (which must be provided in a file, see <code class="docutils literal notranslate"><span class="pre">`src`</span></code> option) are included in the PDF-file. Each drawing on the chalkboard is added after the slide that was shown when opening the chalkboard. Drawings are also included if they had been cleared (using the 'DEL' key). Drawings on the notes canvas are not included in the PDF-file.</p>
+<p>## Configuration</p>
+<p>The plugin has several configuration options:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">`boardmarkerWidth`</span></code>: an integer, the drawing width of the boardmarker; larger values draw thicker lines.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`chalkWidth`</span></code>: an integer, the drawing width of the chalk; larger values draw thicker lines.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`chalkEffect`</span></code>: a float in the range <code class="docutils literal notranslate"><span class="pre">`[0.0,</span> <span class="pre">1.0]`</span></code>, the intesity of the chalk effect on the chalk board. Full effect (default) <code class="docutils literal notranslate"><span class="pre">`1.0`</span></code>, no effect <code class="docutils literal notranslate"><span class="pre">`0.0`</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`src`</span></code>: Optional filename for pre-recorded drawings.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`readOnly`</span></code>: Configuation option allowing to prevent changes to existing drawings. If set to <code class="docutils literal notranslate"><span class="pre">`true`</span></code> no changes can be made, if set to false <code class="docutils literal notranslate"><span class="pre">`false`</span></code> changes can be made, if unset or set to <code class="docutils literal notranslate"><span class="pre">`undefined`</span></code> no changes to the drawings can be made after returning to a slide or fragment for which drawings had been recorded before. In any case the recorded drawings for a slide or fragment can be cleared by pressing the 'DEL' key (i.e. by using the <code class="docutils literal notranslate"><span class="pre">`RevealChalkboard.clear()`</span></code> function).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`toggleNotesButton`</span></code>: If set to <code class="docutils literal notranslate"><span class="pre">`true`</span></code> a button for opening and closing the notes canvas is shown. Alternatively, the css position attributes can be provided if the default position is not appropriate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`toggleChalkboardButton`</span></code>: If set to <code class="docutils literal notranslate"><span class="pre">`true`</span></code> a button for opening and closing the chalkboard is shown. Alternatively, the css position attributes can be provided if the default position is not appropriate.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`transition`</span></code>: Gives the duration (in milliseconds) of the transition for a slide change, so that the notes canvas is drawn after the transition is completed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`theme`</span></code>: Can be set to either <code class="docutils literal notranslate"><span class="pre">`&quot;chalkboard&quot;`</span></code> or <code class="docutils literal notranslate"><span class="pre">`&quot;whiteboard&quot;`</span></code>.</p></li>
+</ul>
+<p>The following configuration options allow to change the appearance of the notes canvas and the chalkboard. All of these options require two values, the first gives the value for the notes canvas, the second for the chalkboard.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">`background`</span></code>: The first value expects a (semi-)transparent color which is used to provide visual feedback that the notes canvas is enabled, the second value expects a filename to a background image for the chalkboard.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`grid`</span></code>: By default whiteboard and chalkboard themes include a grid pattern on the background. This pattern can be modified by setting the color, the distance between lines, and the line width, e.g. <code class="docutils literal notranslate"><span class="pre">`{</span> <span class="pre">color:</span> <span class="pre">'rgb(127,127,255,0.1)',</span> <span class="pre">distance:</span> <span class="pre">40,</span> <span class="pre">width:</span> <span class="pre">2}`</span></code>. Alternatively, the grid can be removed by setting the value to <code class="docutils literal notranslate"><span class="pre">`false`</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`eraser`</span></code>: An image path and radius for the eraser.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`boardmarkers`</span></code>: A list of boardmarkers with given color and cursor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`chalks`</span></code>: A list of chalks with given color and cursor.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">`rememberColor`</span></code>: Whether to remember the last selected color for the slide canvas or the board.</p></li>
+</ul>
+<p>All of the configurations are optional and the default values shown below are used if the options are not provided.</p>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><blockquote>
+<div><p>// ...</p>
+</div></blockquote>
+<dl>
+<dt>chalkboard: {</dt><dd><p>boardmarkerWidth: 3,
+chalkWidth: 7,
+chalkEffect: 1.0,
+src: null,
+readOnly: undefined,
+toggleChalkboardButton: { left: &quot;30px&quot;, bottom: &quot;30px&quot;, top: &quot;auto&quot;, right: &quot;auto&quot; },
+toggleNotesButton: { left: &quot;30px&quot;, bottom: &quot;30px&quot;, top: &quot;auto&quot;, right: &quot;auto&quot; },
+transition: 800,
+theme: &quot;chalkboard&quot;,
+background: [ 'rgba(127,127,127,.1)' , path + 'img/blackboard.png' ],
+grid: { color: 'rgb(50,50,10,0.5)', distance: 80, width: 2},
+eraser: { src: path + 'img/sponge.png', radius: 20},
+boardmarkers : [</p>
+<blockquote>
+<div><p>{ color: 'rgba(100,100,100,1)', cursor: 'url(' + path + 'img/boardmarker-black.png), auto'},
+{ color: 'rgba(30,144,255, 1)', cursor: 'url(' + path + 'img/boardmarker-blue.png), auto'},
+{ color: 'rgba(220,20,60,1)', cursor: 'url(' + path + 'img/boardmarker-red.png), auto'},
+{ color: 'rgba(50,205,50,1)', cursor: 'url(' + path + 'img/boardmarker-green.png), auto'},
+{ color: 'rgba(255,140,0,1)', cursor: 'url(' + path + 'img/boardmarker-orange.png), auto'},
+{ color: 'rgba(150,0,20150,1)', cursor: 'url(' + path + 'img/boardmarker-purple.png), auto'},
+{ color: 'rgba(255,220,0,1)', cursor: 'url(' + path + 'img/boardmarker-yellow.png), auto'}</p>
+</div></blockquote>
+<p>],
+chalks: [</p>
+<blockquote>
+<div><p>{ color: 'rgba(255,255,255,0.5)', cursor: 'url(' + path + 'img/chalk-white.png), auto'},
+{ color: 'rgba(96, 154, 244, 0.5)', cursor: 'url(' + path + 'img/chalk-blue.png), auto'},
+{ color: 'rgba(237, 20, 28, 0.5)', cursor: 'url(' + path + 'img/chalk-red.png), auto'},
+{ color: 'rgba(20, 237, 28, 0.5)', cursor: 'url(' + path + 'img/chalk-green.png), auto'},
+{ color: 'rgba(220, 133, 41, 0.5)', cursor: 'url(' + path + 'img/chalk-orange.png), auto'},
+{ color: 'rgba(220,0,220,0.5)', cursor: 'url(' + path + 'img/chalk-purple.png), auto'},
+{ color: 'rgba(255,220,0,0.5)', cursor: 'url(' + path + 'img/chalk-yellow.png), auto'}</p>
+</div></blockquote>
+<p>]</p>
+</dd>
+</dl>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p><strong>Note:</strong> Customisation of pens and eraser has changed since version 0.8 of the plugin. This behaviour may break backwards compatibility for older pen configurations.</p>
+<p><strong>Note:</strong> Customisation of pens has changed since version 0.5 of the plugin, it is now possible to use standard cursors, e.g. by setting <code class="docutils literal notranslate"><span class="pre">`pen:</span>&#160; <span class="pre">[</span> <span class="pre">'crosshair',</span> <span class="pre">'pointer'</span> <span class="pre">]`</span></code>. Please update your parameters if migrating from an older version.</p>
+<p>## License</p>
+<p><strong>Note:</strong></p>
+<p>MIT licensed</p>
+<p>Copyright (C) 2016 Asvin Goel</p>
+
+        </div>
+    </div>
+    
+    <script src="../../revealjs/js/reveal.js"></script>
+    
+    <script>
+        var revealjsConfig = {
+          dependencies: []
+        };
+        Object.assign(revealjsConfig, 
+{
+    controls: false,
+    transition: 'none',
+    keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	    88: function() { RevealChalkboard.colorNext() },	// cycle colors forward when 'x' is pressed
+	    89: function() { RevealChalkboard.colorPrev() },	// cycle colors backward when 'y' is pressed
+    }
+}
+);
+        
+        
+        
+          plugin_0 = {};
+          plugin_0.src = "_static/js/chalkboard.js";
+          revealjsConfig.dependencies.push(plugin_0);
+          plugin_1 = {async: true};
+          plugin_1.src = "_static/revealjs/plugin/notes/notes.js";
+          revealjsConfig.dependencies.push(plugin_1);
+          plugin_2 = {async: true, callback: function() { hljs.initHighlightingOnLoad(); }};
+          plugin_2.src = "_static/revealjs/plugin/highlight/highlight.js";
+          revealjsConfig.dependencies.push(plugin_2);
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(revealjsConfig);
+    </script>
+
+  </body>
+</html>

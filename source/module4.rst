@@ -1,0 +1,104 @@
+========================
+Module 4 - Networks
+========================
+.. image:: figs/mnist/orig.png
+           :width: 400px
+           :align: center
+.. image:: figs/mnist/mnist2.png
+           :width: 400px
+           :align: center
+                   
+.. image:: figs/mnist/mnist5.png
+           :width: 400px
+           :align: center
+
+.. image:: figs/mnist/mnist4.png
+           :width: 400px
+           :align: center
+
+We now have a fully working deep learning library with most of the
+features of a real industrial system like Torch. To take advantage of
+this hard work this section is entirely based around using the
+software to build an image recognition system. In particular we will
+build the infrastructure for a version of LeNet on MNist a classic
+convolutional neural network for digit recognition.
+
+
+All starter code is available in https://github.com/minitorch/Module-4 .
+
+To begin, remember to first activate your virtual environment.
+
+>>> source venv/bin/activate
+
+And then clone your assignment.
+
+>>> git clone {{STUDENT_ASSIGNMENT4_URL}}
+>>> cd Module-4
+
+You will also need the files so be sure to pull them over
+to your new repo.
+
+Be sure to continue to follow the :doc:`contributing` guidelines.
+
+.. toctree::
+   :maxdepth: 3
+   :glob:
+   :caption: Guides
+
+   softmax
+   pooling
+   convolution
+
+Tasks
+********
+
+Task 4.1: Max, Argmax, Softmax
+===============================
+
+.. todo::
+   Return to  `minitorch/tensor.py` and add a max reduction function.
+   Add 2 property tests for the function and ensure that you understand its gradient computation.
+   Mark the tests as `task4_1`.
+
+.. autofunction:: minitorch.max   
+.. autofunction:: minitorch.argmax
+.. autofunction:: minitorch.softmax
+.. autofunction:: minitorch.logsoftmax
+
+   
+Task 4.2: Pooling
+==================================
+.. note:: This task requires basic familiarity with pooling as a concept.
+   Be sure to read the section on :doc:`pooling`.
+
+.. todo::
+   Complete the following functions in `minitorch/nn.py` and pass tests marked as `task4_2`.
+
+.. autofunction:: minitorch.tile   
+.. autofunction:: minitorch.avgpool2d
+.. autofunction:: minitorch.maxpool2d
+
+
+Task 4.3: Convolution
+==================================
+
+.. note:: This task requires basic familiarity with convolution.
+   Be sure to read the section on :doc:`convolution`.
+
+.. todo::
+   Complete the following function in `minitorch/nn.py` and pass tests marked as `task4_3`.
+
+.. autofunction:: minitorch.tensor_conv2d   
+                  
+Task 4.4: Modules
+==================================
+
+.. todo::
+   Complete the following function in `minitorch/nn.py` and pass tests marked as `task4_3`.
+
+.. autofunction:: minitorch.dropout
+
+
+
+Task 4.5: Training a Classifier
+==================================

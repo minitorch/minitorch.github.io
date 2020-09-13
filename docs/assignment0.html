@@ -1,0 +1,574 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assignment 0 - Getting Started &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/twemoji.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="_static/twemoji.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Assignment 1 - Auto-Derivatives" href="assignment1.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="links.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 0 - Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-1-operators">Task 1: Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-2-testing-and-debugging">Task 2: Testing and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-functional-python">Task 3: Functional Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-4-modules">Task 4: Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-5-visualization">Task 5: Visualization</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1 - Auto-Derivatives</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment2.html">Assignment 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html">Machine Learning Engineering</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Assignment 0 - Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/assignment0.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="assignment-0-getting-started">
+<h1>Assignment 0 - Getting Started<a class="headerlink" href="#assignment-0-getting-started" title="Permalink to this headline">¶</a></h1>
+<p>Welcome to the preliminary assignment for MiniTorch assignment. This
+assignment is focused on introducing the core technologies behind the
+library and to introduce the testing, dataset and visualization
+frameworks that we will use throughout the course. Additionally we
+will start building up some of the infrastructure for MiniTorch itself.</p>
+<p><em>Before starting any of this assignment</em>, Be sure to carefully read
+the <span class="xref std std-doc">setup.rst</span> and <span class="xref std std-doc">contributing.rst</span>.</p>
+<div class="section" id="task-1-operators">
+<h2>Task 1: Operators<a class="headerlink" href="#task-1-operators" title="Permalink to this headline">¶</a></h2>
+<p>To start out, let's begin with a straightforward exercise to get used
+to the style checks and automatic testing. In this exercise, you will
+implement a series of basic mathematical functions in python.  Each of
+these functions seem very simple, but it will turn out that they are
+basically everything we will use mathematically in the library.</p>
+<ul class="simple">
+<li><p>Implement the following functions in <cite>minitorch/operators.py</cite>.</p></li>
+</ul>
+<dl class="py function">
+<dt id="minitorch.operators.mul">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">mul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.mul" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x, y) = x * y\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.id">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.id" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) = x\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.neg">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">neg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.neg" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) = -x\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.add">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.add" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x, y) = x + y\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.lt">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">lt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.lt" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> 1.0 if x is greater then y else 0</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.sigmoid">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sigmoid" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =
+rac{1.0}{(1.0 + e^{-a})}\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.relu">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater then y else 0</p>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks">https://en.wikipedia.org/wiki/Rectifier_(neural_networks</a>).</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.relu_back">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu_back" title="Permalink to this definition">¶</a></dt>
+<dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> y if x is greater then 0 else 0</p>
+</dd></dl>
+
+<ul class="simple">
+<li><p>Confirm that Tests 1 and 2 pass.</p></li>
+</ul>
+</div>
+<div class="section" id="task-2-testing-and-debugging">
+<h2>Task 2: Testing and Debugging<a class="headerlink" href="#task-2-testing-and-debugging" title="Permalink to this headline">¶</a></h2>
+<p>Before doing this task, be sure to carefully read <span class="xref std std-doc">property_testing.rst</span> as
+well as the documentation for <cite>hypothesis</cite>.</p>
+<p>For this task you will implement some property tests to check the
+operators from Task 1.</p>
+<ul class="simple">
+<li><p>Modify <cite>test/test_operators.py</cite> to add three new property tests:
+<cite>test_symmetric</cite>, <cite>test_distribute</cite>, and <cite>test_other</cite>.</p></li>
+</ul>
+</div>
+<div class="section" id="task-3-functional-python">
+<h2>Task 3: Functional Python<a class="headerlink" href="#task-3-functional-python" title="Permalink to this headline">¶</a></h2>
+<p>Starting from the operators described in task1, we will
+build up more complex mathematical operations. To practice this
+process let's start by implemening some core <cite>functional</cite> ways of
+using the basic operations above.</p>
+<p>If you are not familar with functional / higher-order python style, check out this
+tutorial <a class="reference external" href="https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/">https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/</a>.</p>
+<p>Also check out the description of these three famous <cite>higher-order</cite> (function of functions) functions.</p>
+<ul class="simple">
+<li><p>Map - <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p></li>
+<li><p>ZipWith - <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p></li>
+<li><p>Reduce - <a class="reference external" href="https://en.wikipedia.org/wiki/Fold_(higher-order_function">https://en.wikipedia.org/wiki/Fold_(higher-order_function</a>)</p></li>
+<li><p>Implement the following functions in <cite>minitorch/operators.py</cite>.</p></li>
+</ul>
+<dl class="py function">
+<dt id="minitorch.operators.map">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order map.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>one-arg function</em>) -- process one value</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>a function that takes a list and applies <cite>fn</cite> to each element.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.negList">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Negate each element in ls</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.zipWith">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">zipWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.zipWith" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order zipwith.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>two-arg function</em>) -- combine two values</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>takes two equally sized lists <cite>ls1</cite> and <cite>ls2</cite>, produce a new list by</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+<p>applying fn(x, y) one each pair of elements.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.addLists">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">addLists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls1</span></em>, <em class="sig-param"><span class="n">ls2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.addLists" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the elements of ls1 and ls2.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.reduce">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em>, <em class="sig-param"><span class="n">start</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order reduce.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>fn</strong> (<em>two-arg function</em>) -- combine two values</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>function that takes a list <cite>ls</cite> of elements
+x_1, ... x_n and computes the reduction fn(x_3, fn(x_2,
+fn(x_1, start)))</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>function</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.sum">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sum" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sum up a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ls</strong> (<em>list</em>) -- list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>sum of list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.prod">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">prod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.prod" title="Permalink to this definition">¶</a></dt>
+<dd><p>Product of a list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ls</strong> (<em>list</em>) -- list</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>product of list</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<ul class="simple">
+<li><p>Finish and pass the task2 tests in <cite>testOperators</cite>.</p></li>
+</ul>
+</div>
+<div class="section" id="task-4-modules">
+<h2>Task 4: Modules<a class="headerlink" href="#task-4-modules" title="Permalink to this headline">¶</a></h2>
+<p>Modern deep learning systems can become quite large and complex.
+Commonly used models can include millions of learned
+<cite>parameters</cite>. While much of our class will focus on learning these
+parameters, this task will focus on simply managing them in a
+convenient way.</p>
+<p><cite>Modules</cite> are a common programming paradigm to group parameters
+together to make them easy to manage and access. This style of
+programming is often the main way that users of machine learning
+organize and manage code. (If you feel ready, you can read up more
+about how modules work in practice at
+<a class="reference external" href="https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py">https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py</a> ).</p>
+<p>This task will just implement the core structure of the Module
+class. In particular we will implement a tree-data structure that
+stores named <cite>Parameters</cite> on each node. None of this really has much
+to do with machine learning, it is just a datastructures problem to
+create the tree and then <cite>walk</cite> it to find all of the parameters of
+interest.  Be sure to read the tests in <cite>tests/test_module.py</cite> to get
+a better sense of how this works.</p>
+<ul class="simple">
+<li><p>Implement the necessary functions in the module class and make sure</p></li>
+</ul>
+<p>the corresponding tests pass.</p>
+<dl class="py class">
+<dt id="minitorch.Module">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Module</code><a class="headerlink" href="#minitorch.Module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Modules are a recursive tree-shaped data-structure. Each module can
+store three things: 1) parameters, 2) non-parameter data, 3) other
+modules. Internally the user stores each of these directly on <cite>self</cite>,
+but the module spies under the hood to determine the type of each
+assignment.</p>
+<p>Here is an example of the simplest usage of a module:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
+        <span class="c1"># Initialize the super-class (so it can spy.)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+          <span class="c1"># A parameter member (subclass of Parameter)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="c1"># Another member</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">25</span>
+
+        <span class="c1"># A module member (subclass of Module)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">arg</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Internally, parameters (type 1) are stored in <cite>self._parameters</cite>, data (type 2)
+is stored in on <cite>self</cite>, modules (type 3) are stored in <cite>self._modules</cite>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All subclasses should begin their initialization by calling</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>This allows <cite>Module</cite> to capture any members of type <cite>Module</cite> or <cite>Parameter</cite>
+and store them in a special dictionary.</p>
+</div>
+<dl class="py attribute">
+<dt id="minitorch.Module._modules">
+<code class="sig-name descname">_modules</code><a class="headerlink" href="#minitorch.Module._modules" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage of the child modules.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="minitorch.Module._parameters">
+<code class="sig-name descname">_parameters</code><a class="headerlink" href="#minitorch.Module._parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Storage of the module's parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="minitorch.Module.mode">
+<code class="sig-name descname">mode</code><a class="headerlink" href="#minitorch.Module.mode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mode of operation, can be &quot;train&quot; / &quot;eval&quot;.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="task-5-visualization">
+<h2>Task 5: Visualization<a class="headerlink" href="#task-5-visualization" title="Permalink to this headline">¶</a></h2>
+<p>While testing is nice when you are getting close to the answer,
+sometimes the best thing to do is to just look at your data and
+outputs. Visualizing our system can't prove that it is correct, but it
+can often times lead us directly to figure out what is wrong.</p>
+<p>Throughout our development we will be using visualization to observe
+intermediate states, training progress, outputs, and even final models.</p>
+<p>Technically the main library we will use it called <cite>Visdom</cite>
+(<a class="reference external" href="https://github.com/facebookresearch/visdom">https://github.com/facebookresearch/visdom</a>). Here's an example of what it looks like</p>
+<img alt="_images/visdom.png" src="_images/visdom.png" />
+<p>You can think of it as a pasteboard for sending images and graphs from
+you code to a centralized, organized place.  Nothing that magical, we
+could just output them to a directory, but we will see this as some
+nice benefits.</p>
+<p>To start Visdom, you need to run the following from a command-line in your virtual env:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visdom</span>
+</pre></div>
+</div>
+<p>Next, open up a browser window and go to <a class="reference external" href="http://localhost:8097">http://localhost:8097</a> (or whichever port it started on).</p>
+<p>Finally:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visdom</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">vis</span> <span class="o">=</span> <span class="n">visdom</span><span class="o">.</span><span class="n">Visdom</span><span class="p">()</span>
+
+<span class="c1"># Loss goes does!</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Model Loss&quot;</span><span class="p">)</span>
+
+<span class="c1"># Send to visdom</span>
+<span class="n">vis</span><span class="o">.</span><span class="n">matplot</span><span class="p">(</span><span class="n">plt</span><span class="p">,</span> <span class="n">win</span><span class="o">=</span><span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="_images/visdom2.png" src="_images/visdom2.png" />
+<ul class="simple">
+<li><p>For the first few assignments we will be using a set of datasets</p></li>
+</ul>
+<p>that are implemented in <cite>project/datasets.py</cite>. Read through the code
+in <cite>project/run_torch.py</cite> to see an implementation of a model for this
+code in torch. Make sure you are able to run this code and observe the
+progress of the model with the Visdom setup.</p>
+<ul class="simple">
+<li><p>Save the loss graph of this model and the final image it generates
+and commit them to your repo. Add the images to your README.</p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="assignment1.html" class="btn btn-neutral float-right" title="Assignment 1 - Auto-Derivatives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="links.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+===========================
+Property Testing
+===========================
+
+Testing and debugging are an important aspect of software engineering,
+and critical for framework code that may be used in unexpected ways.
+On the other hand, Machine learning code is notoriously hard to test
+and debug as we will see throughout the assignments. In addition to
+judging our code by how well it perform on ML tasks, we will use
+testing as a way to check and assess the internal code itself.
+
+
+But how do you even test mathematical code? For instance, let's say for example you have
+a function that is meant to add two numbers (this sounds really silly, but we will see it is not!)::
+
+    def add(a, b):
+        "Super-efficient specialized add function"
+         ...
+
+
+If you have done unit testing for non-math code you might be used to unit tests that look like something like this::
+
+    def test_add_basic():
+        # Check same as slow-system add
+        assert add(10, 5) == 10 + 5
+        # Check that order doesn't matter
+        assert add(10, 7) == add(7, 10)
+
+This is fine, and certainly can help catch easy bugs. But it is not
+very reassuring when your model code has been running for 20 hours and
+then it finds some case where your add function fails.
+
+An alternative idea is to test for `properties`. That is, key aspects of
+your models behavior that you want to check for as you run. For instance, you might
+imagine directly checking that these properties hold for every pair::
+
+    def test_add_naive():
+        for a in range(-10000, 10000):
+            for b in range(-10000, 10000)
+                 assert add(a, b) == a + b
+                 assert add(a, b) == add(b, a)
+
+
+However this also seems hopelessly inefficient. Unit-tests are
+supposed to be quick easy snippets of code that quickly can be run
+while developing.
+
+A clever middle ground is to use `randomized` property checking. This
+method was popularized by a library called QuickCheck
+(http://wikipedia.org/wiki/quickcheck). These library select
+interesting inputs in order to test your code bases correctness. This
+gives you the speed of the first approach and the breadth of the
+second. Another really neat benefit of property checking is that it
+actually makes tests easier to write (in programming, being incredibly
+lazy is considered a virtue).
+
+The best implementation of this concept in Python is `Hypothesis`
+(https://hypothesis.readthedocs.io/) which we will use throughout
+development. Hypothesis predefines a whole set of building block
+`strategies` that the user can pick from when writing tests. These let
+you generate integers, floats, lists, string, etc. In the next assignment
+we will even write our own strategies::
+
+    from hypothesis.strategies import integers
+    from hypothesis import given
+
+Now each test can be `decorated` with the values it operates on::
+
+    @given(integers(), integers())
+    def test_add(a, b):
+        # Check same as slow-system add
+        assert add(a, b) == a + b
+        # Check that order doesn't matter
+        assert add(a, b) == add(b, a)

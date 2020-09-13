@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module 3 - Efficiency &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fusing Operations" href="matrixmult.html" />
+    <link rel="prev" title="Broadcasting" href="broadcasting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 3 - Efficiency</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-1-matrix-multiplication">Task 3.1: Matrix Multiplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-2-parallelization">Task 3.2: Parallelization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-4-parallel-cuda-matrix-multiplication">Task 3.4: Parallel / CUDA Matrix Multiplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-3-5-training">Task 3.5: Training</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Module 3 - Efficiency</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/module3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-3-efficiency">
+<h1>Module 3 - Efficiency<a class="headerlink" href="#module-3-efficiency" title="Permalink to this headline">¶</a></h1>
+<img alt="_images/threadid&#64;3x.png" class="align-center" src="_images/threadid&#64;3x.png" />
+<p>In addition to helping simplify code, tensors provide a basis for
+speeding up computation. In fact, they are really the only way to
+efficiently write deep learning in a slow language like Python.
+However, nothing we have done so far really makes anything faster than
+<a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a>. This module is focused on taking advantage of tensors
+to write fast code, first on standard CPUs and then using GPUs.</p>
+<p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-3">https://github.com/minitorch/Module-3</a> .</p>
+<p>To begin, remember to first activate your virtual environment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>And then clone your assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT3_URL</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">Module</span><span class="o">-</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>You will also need the files so be sure to pull them over
+to your new repo.</p>
+<p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
+</ul>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-3-1-matrix-multiplication">
+<h3>Task 3.1: Matrix Multiplication<a class="headerlink" href="#task-3-1-matrix-multiplication" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with matrix multiplication.
+Be sure to read the section on
+<a class="reference internal" href="matrixmult.html"><span class="doc">Fusing Operations</span></a>.</p>
+</div>
+<p>Matrix multiplication is key to all of the models that we have trained so far.
+In the last module, we computed matrix multiplication using broadcasting.
+In this task we ask you to implement it directly as a function. Do your best to
+make the function efficient, but for now all that matters is that you correctly
+produce a multiply function that passes our tests.</p>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/functions.py</cite> and pass tests marked as <cite>task3_1</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.matrix_multiply">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.matrix_multiply" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="task-3-2-parallelization">
+<h3>Task 3.2: Parallelization<a class="headerlink" href="#task-3-2-parallelization" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with Numba <cite>prange</cite>.
+Be sure to read the section on
+<a class="reference internal" href="parallel.html"><span class="doc">Parallel Computation</span></a> and review <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>.</p>
+</div>
+<p>The main backend for our codebase are the three functions <cite>map</cite>, <cite>zip</cite>, and <cite>reduce</cite>. If
+we can speed up these three, everything we built so far will get better. This exercise
+asks you to utilize Numba and the <cite>njit</cite> function to speed up these functions. In particular
+if you can utilize parallelization through <cite>prange</cite> you can get some big wins. Be careful though!
+parallelization can lead to funny bugs.</p>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Complete the following in <cite>minitorch/fast_ops.py</cite> and pass speed tests marked as <cite>task3_2</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.fast_ops.tensor_map">
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor map function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- function mappings floats-to-floats to apply.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor.</p></li>
+<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor.</p></li>
+<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor.</p></li>
+<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.fast_ops.tensor_zip">
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor zipWith (or map2) function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- function mappings two floats to float to apply.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor.</p></li>
+<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor.</p></li>
+<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.fast_ops.tensor_reduce">
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor reduce function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>reduce_shape</strong> (<em>array</em>) -- shape of reduction (1 for dimension kept, shape value for dimensions summed out)</p></li>
+<li><p><strong>reduce_size</strong> (<em>int</em>) -- size of reduce shape</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-3-3-cuda-operations">
+<h3>Task 3.3: CUDA Operations<a class="headerlink" href="#task-3-3-cuda-operations" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with CUDA.
+Be sure to read the section on
+<a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
+</div>
+<p>We can do even better than parallelization if we have access to
+specialized hardware. This task asks you to build a GPU implementation
+of the backend operations. It will be hard to equal what PyTorch does, but
+if you are clever you can make these computations really fast.</p>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Revisit tensor ops and <cite>minitorch/cuda_ops.py</cite> and pass the tests marked as <cite>task3_3</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.cuda_ops.tensor_map">
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor map function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- function mappings floats-to-floats to apply.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor.</p></li>
+<li><p><strong>out_size</strong> (<em>int</em>) -- size of out</p></li>
+<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor.</p></li>
+<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor.</p></li>
+<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.cuda_ops.tensor_zip">
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor zipWith (or map2) function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- function mappings two floats to float to apply.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_size</strong> (<em>int</em>) -- size of <cite>out</cite>  tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor.</p></li>
+<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor.</p></li>
+<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.cuda_ops.tensor_reduce">
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Higher-order tensor reduce function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float.</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_size</strong> (<em>int</em>) -- size of <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>reduce_shape</strong> (<em>array</em>) -- shape of reduction (1 for dimension kept, shape value for dimensions summed out)</p></li>
+<li><p><strong>reduce_size</strong> (<em>int</em>) -- size of reduce shape</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-3-4-parallel-cuda-matrix-multiplication">
+<h3>Task 3.4: Parallel / CUDA Matrix Multiplication<a class="headerlink" href="#task-3-4-parallel-cuda-matrix-multiplication" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with CUDA.
+Be sure to read the section on
+<a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
+</div>
+<p>Finally we can combine both these approaches and implement Numba and CUDA
+<cite>matmul</cite>. This operation is probably the most important in all of deep
+learning and is central to making models fast. Again, we first strive for
+accuracy, but the faster you can make it the better.</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Implement  <cite>minitorch/function.py</cite> with Numba and  <cite>minitorch/cuda_functions.py</cite> with CUDA and pass tests marked as <cite>task3_4</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.matmul">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">matmul</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.matmul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.cuda_matmul">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">cuda_matmul</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_matmul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="task-3-5-training">
+<h3>Task 3.5: Training<a class="headerlink" href="#task-3-5-training" title="Permalink to this headline">¶</a></h3>
+<p>If your code works you should now be able to move on to the tensor
+training script in <cite>project/run_fast_tensor.py</cite>.  This code is the same
+basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your tensor
+code. We have left the <cite>matmul</cite> layer blank for you to implement with
+your tensor code.</p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<p>Implement the missing functions in <cite>project/run_fast_tensor.py</cite>. These should
+do exactly the same thing as the corresponding functions in <cite>project/run_tensor.py</cite>,
+but now use the faster backend</p>
+<p>Train a tensor model and add your results to the README. Also record the time per epoch
+reported by the trainer. (Our parallel implementation gave a 10x speedup).</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="matrixmult.html" class="btn btn-neutral float-right" title="Fusing Operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="broadcasting.html" class="btn btn-neutral float-left" title="Broadcasting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

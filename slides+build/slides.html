@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt;</title>
+    <link rel="stylesheet" href="_static/revealjs/css/reveal.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/revealjs/css/theme/black.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/revealjs/lib/css/zenburn.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/default.css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( "link" );
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        if (window.location.search.match( /print-pdf/gi )) {
+            link.href = "_static/revealjs/css/print/pdf.css";
+        } else {
+            link.href = "_static/revealjs/css/print/paper.css";
+        }
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+
+  </head><body>
+    <div class="reveal">
+        <div class="slides">
+            <div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html">Machine Learning Engineering</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#welcome">Welcome</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#class-context">Class Context</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#current-context-mle">Current Context: MLE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#future-context-self-driving">Future Context: Self-Driving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#future-context-multi-agent">Future Context: Multi-Agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#future-context-image-gen">Future Context: Image Gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#future-context-code-gen">Future Context: Code Gen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#future-challenges-ml-in-society">Future Challenges: ML in Society</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#question">Question</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#personal-introduction">Personal Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#hi">Hi!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#academic-work">Academic Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#academic-work-projects">Academic Work: Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#my-path">My Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#intro-engagement">Intro: Engagement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#ta">TA</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#class-introduction">Class Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#class-focus">Class Focus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#applied-machine-learning">Applied Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#id1">Machine Learning Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#machine-learning">Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#hidden-factor">Hidden Factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#skill-set-of-a-ml-engineer">Skill Set of a ML Engineer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#machine-learning-systems">Machine Learning Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#id2">Machine Learning Engineering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#deep-learning-frameworks">Deep Learning Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#popular-frameworks">Popular Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#id3">Deep Learning Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#id4">Deep Learning Frameworks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#ml-day-to-day">ML Day-to-Day</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#cs-5781-2020">CS 5781 - 2020</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#course-outline">Course Outline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#my-learning-philophy">My Learning Philophy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#learning-objectives">Learning Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#learning-non-objectives">Learning Non-Objectives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#course-style">Course Style</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#id5">Course Outline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#id6">PyTorch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#challenge">Challenge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#course-project">Course Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#module-0-foundations">Module 0 - Foundations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#module-1-autodifferentiation">Module 1 - Autodifferentiation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#module-2-tensors">Module 2 - Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#module-3-efficiency">Module 3 - Efficiency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#module-4-networks">Module 4 - Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#grading">Grading</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#course-structure">Course Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#caveats">Caveats</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#course-prerequisites">Course Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="slides1.html#next-lecture">Next Lecture</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html#q-a">Q &amp; A</a></li>
+</ul>
+</div>
+
+        </div>
+    </div>
+    
+    <script src="_static/revealjs/js/reveal.js"></script>
+    
+    <script>
+        var revealjsConfig = {
+          dependencies: []
+        };
+        Object.assign(revealjsConfig, 
+{
+    controls: false,
+    transition: 'none',
+  history: true,
+slideNumber: true,
+  width: 960,
+  height: 700,
+
+  // Factor of the display size that should remain empty around
+  // the content
+  margin: 0.04,
+  //fragments: false,
+
+  // Bounds for smallest/largest possible scale to apply to content
+  minScale: 0.2,
+  maxScale: 2.0,
+    center: false,
+    keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	    88: function() { RevealChalkboard.colorNext() },	// cycle colors forward when 'x' is pressed
+	    89: function() { RevealChalkboard.colorPrev() },	// cycle colors backward when 'y' is pressed
+    }
+}
+);
+        
+        
+        
+          plugin_0 = {};
+          plugin_0.src = "_static/js/chalkboard.js";
+          revealjsConfig.dependencies.push(plugin_0);
+          plugin_1 = {async: true};
+          plugin_1.src = "_static/revealjs/plugin/notes/notes.js";
+          revealjsConfig.dependencies.push(plugin_1);
+          plugin_2 = {async: true, callback: function() { hljs.initHighlightingOnLoad(); }};
+          plugin_2.src = "_static/revealjs/plugin/highlight/highlight.js";
+          revealjsConfig.dependencies.push(plugin_2);
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(revealjsConfig);
+    </script>
+
+  </body>
+</html>

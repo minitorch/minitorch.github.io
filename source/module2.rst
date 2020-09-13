@@ -1,0 +1,210 @@
+========================
+Module 2 - Tensors
+========================
+
+.. image:: figs/Tensors/stride4.png
+           :align: center
+
+
+We now have a fully developed autodifferentiation system built around
+scalars. This system is correct, but you saw during training that it
+is inefficient. All scalar numbers require building an object, and each operation requires storing a graph of all the values that we had previously created. Training requires
+repeating these operations, and computing modules such as linear required
+a `for` loop over each of the terms in our network.
+
+This module introduces and implements a **tensor** object that will
+solve these problems. Tensors group together many of
+these repeated operations to save python overhead and to pass off
+grouped operations to faster implementations.
+
+
+All starter code is available in https://github.com/minitorch/Module-2 .
+
+To begin this module, remember to first activate your virtual environment.
+
+>>> source venv/bin/activate
+
+And then clone your assignment.
+
+>>> git clone {{STUDENT_ASSIGNMENT2_URL}}
+>>> cd Module-2
+
+You will need the files from Assignment 0 so be sure to pull them over
+to your new repo.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+   :caption: Guides
+
+   tensordata
+   tensorops
+   tensor
+   broadcasting
+
+Tasks
+********
+
+
+
+Tasks 2.1: Tensor Data - Indexing
+==========================================
+
+.. note:: This task requires familiarity with tensor indexing.
+   Be sure to first carefully read the section on
+   :doc:`tensordata`. You may also find it helpful to read
+   the tutorials for using tensors/arrays in Torch or Numpy.
+
+The MiniTorch library implements the core multidimensional tensor backend as
+:class:`minitorch.TensorData`. This is class handles indexing, storage, transposition,
+and low-level details such as strides. Before turning to the user-facing class :class:`minitorch.Tensor`,
+first implement these core functions.
+
+.. todo::
+   Add calls in `minitorch/tensor_data.py` for each of the following, and pass tests marked as `task2_1`.
+
+
+.. autofunction:: minitorch.index_to_position
+.. autofunction:: minitorch.count
+.. autofunction:: minitorch.TensorData.permute
+
+
+
+
+Tasks 2.2: Tensor Operations
+==========================================
+
+.. note:: This task requires familiarity with higher-order tensor operations.
+   Be sure to first carefully read the section on
+   :doc:`tensorops`. You may also find it helpful to go back to
+   Module 0 and make sure you understand higher-order functions and currying.
+
+
+The tensor operations will apply high-level, higher-order
+operations to all values in a tensor simultaneously. In particularly
+allowing you to map, zip, and reduce tensor data objects together. On
+top of this foundation we can build up a similar class to the Tensor functions
+just like we did for the scalar functions. In this task you should first implement
+the generic tensor ops and then use these to provide the `forward` functions
+for tensors.
+
+
+.. automodule:: minitorch.tensor_ops
+
+
+We have built a debugging tool for you to observe the workings of your expressions to see
+how the graph is built. You can run it in `project/show_expression.py`. You can alter
+the expression at the top of the file and then run the code to create a graph in `Visdom`::
+
+
+  ## Run your tensor expression here
+  def expression():
+     x = minitorch.tensor([10, 12], (2,))
+     x.requires_grad_(True)
+     x.name = "x"
+   
+     z = minitorch.tensor([10, 12], (2,))
+     z.requires_grad_(True)
+     z.name = "z"
+
+     y = x * z + 10.0
+     y.name = "y"
+     return y
+
+>>> python minitorch/show_expression.py
+
+.. image:: expgraph2.png
+           :align: center
+                
+.. todo::
+   Add functions in `minitorch/tensor_ops.py` and `minitorch/tensor.py` for each of the following, and pass tests marked as `task2_2`.
+
+
+.. autofunction:: minitorch.tensor_map
+.. autofunction:: minitorch.tensor_zip
+.. autofunction:: minitorch.tensor_reduce
+
+
+
+.. autofunction:: minitorch.TensorFunctions.Mul.forward
+.. autofunction:: minitorch.TensorFunctions.Sigmoid.forward
+.. autofunction:: minitorch.TensorFunctions.ReLU.forward
+.. autofunction:: minitorch.TensorFunctions.Log.forward
+.. autofunction:: minitorch.TensorFunctions.Mean.forward
+.. autofunction:: minitorch.TensorFunctions.Copy.forward
+.. autofunction:: minitorch.TensorFunctions.LT.forward
+
+
+Tasks 2.3: Gradients and Autograd
+==========================================
+
+.. note:: This task requires familiarity with tensor backward operations.
+   Be sure to first carefully read the section on
+   :doc:`tensor`. You may also find it helpful to go back to
+   Module 1 and review `variables` and `functions`.
+
+
+Just as with :class:`minitorch.Scalar`, the :class:`minitorch.Tensor`
+is a Variable that supports automatic differentiation. In this task you
+will need to implement each of the backward functions and ensure that
+they pass the tests.
+
+.. todo::
+      Add backward functions `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_3`.
+
+
+.. autofunction:: minitorch.TensorFunctions.Mul.backward
+.. autofunction:: minitorch.TensorFunctions.Sigmoid.backward
+.. autofunction:: minitorch.TensorFunctions.ReLU.backward
+.. autofunction:: minitorch.TensorFunctions.Log.backward
+.. autofunction:: minitorch.TensorFunctions.Mean.backward
+.. autofunction:: minitorch.TensorFunctions.Copy.backward
+.. autofunction:: minitorch.TensorFunctions.LT.backward
+
+
+
+Tasks 2.4: Tensor Broadcasting
+==========================================
+
+.. note::
+
+   This task requires familiarity with tensor broadcasting.  Be
+   sure to first carefully read the section on
+   :doc:`broadcasting`. You may also find it helpful to go through
+   some of the tutorials of Torch or Numpy broadcasting as it is
+   identical.
+
+.. todo::
+   Add broadcasting functions to `minitorch/tensor_data.py` and `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_4`.
+
+
+.. autofunction:: minitorch.shape_broadcast
+.. autofunction:: minitorch.broadcast_index
+
+You will also need to revist these functions to make sure that broadcast index is used. 
+                  
+.. autofunction:: minitorch.tensor_map
+.. autofunction:: minitorch.tensor_zip
+.. autofunction:: minitorch.tensor_reduce
+
+
+
+Task 2.5: Training
+========================
+
+If your code works you should now be able to move on to the tensor
+training script in `project/run_tensor.py`.  This code runs the same
+basic training setup as in :doc:`module1`, but now utilize your tensor
+code. We have left two of the functions blank for you to implement with
+your tensor code. 
+
+
+.. todo::
+   Implement the missing functions in `project/run_tensor.py`. These should
+   do exactly the same thing as the corresponding functions in `project/run_scalar.py`,
+   but now use the tensor code base.
+
+   
+   Train a tensor model and add your results to the README. Also record the time per epoch
+   reported by the trainer. (It is okay if it is slow).
+

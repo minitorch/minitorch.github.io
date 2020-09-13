@@ -1,0 +1,471 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Assignment 2 - Tensors &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/twemoji.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js"></script>
+        <script src="_static/twemoji.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="References" href="references.html" />
+    <link rel="prev" title="Assignment 1 - Auto-Derivatives" href="assignment1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="operations.html">Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignments.html">Assignments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment0.html">Assignment 0 - Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assignment1.html">Assignment 1 - Auto-Derivatives</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Assignment 2 - Tensors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#task-0-setup">Task 0: Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-1-tensor-data-indexing">Tasks 1: Tensor Data - Indexing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-2-tensor-operations">Tasks 2: Tensor Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-3-gradients-and-autograd">Tasks 3: Gradients and Autograd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-4-tensor-broadcasting">Tasks 4: Tensor Broadcasting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks-5-training">Tasks 5: Training</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="references.html">References</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slides1.html">Machine Learning Engineering</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Assignment 2 - Tensors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/assignment2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="assignment-2-tensors">
+<h1>Assignment 2 - Tensors<a class="headerlink" href="#assignment-2-tensors" title="Permalink to this headline">¶</a></h1>
+<p>In the last section we developed a full autodifferentiation system
+using scalars. This system is fully correct, but as we saw, it is not
+very efficient. Each operation required storing a graph of all the
+values that we had previously created; training required repeating
+these operations; computing modules such as linear required a <cite>for</cite>
+loop over each of the terms in our network. In this homework we
+introduce and implement as  new <cite>tensor</cite> object that will allow us to
+do all of these operations in a single steps.</p>
+<p><em>Before starting any of this assignment</em>, Be sure to carefully read
+the <span class="xref std std-doc">tensor.rst</span> and <span class="xref std std-doc">contributing.rst</span>.</p>
+<div class="section" id="task-0-setup">
+<h2>Task 0: Setup<a class="headerlink" href="#task-0-setup" title="Permalink to this headline">¶</a></h2>
+<p>To begin, remember to first activate your virtual environment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>And then clone your assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT2_URL</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">minitorch2</span>
+</pre></div>
+</div>
+<p>You will need the files from Assignment 0 so be sure to pull them over
+to your new repo.</p>
+</div>
+<div class="section" id="tasks-1-tensor-data-indexing">
+<h2>Tasks 1: Tensor Data - Indexing<a class="headerlink" href="#tasks-1-tensor-data-indexing" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>implement <cite>count</cite></p></li>
+<li><p>implement <cite>size</cite></p></li>
+<li><p>implement <cite>index</cite></p></li>
+<li><p>implment <cite>enumerate</cite></p></li>
+</ul>
+</div>
+<div class="section" id="tasks-2-tensor-operations">
+<h2>Tasks 2: Tensor Operations<a class="headerlink" href="#tasks-2-tensor-operations" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a tensor class, our plan will be to reimplement all
+our mathematical operations on top of this framework. Instead of
+adding scalars we will add tensors. The goal is to make this feel
+simple and intuitive to users of the library.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># a) Return a new tensor with the same shape as `tensor_a` where</span>
+<span class="c1"># each position is the log/exp/negative of the position in `tensor_a`</span>
+<span class="n">tensor_a</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
+<span class="n">tensor_a</span><span class="o">.</span><span class="n">exp</span><span class="p">()</span>
+<span class="o">-</span><span class="n">tensor_a</span>
+<span class="o">...</span>
+
+<span class="c1"># b) Return a new tensor where</span>
+<span class="c1"># each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`</span>
+<span class="n">tensor_a</span> <span class="o">+</span> <span class="n">tensor_b</span>
+<span class="n">tensor_a</span> <span class="o">*</span> <span class="n">tensor_b</span>
+<span class="n">tensor_a</span> <span class="o">-</span> <span class="n">tensor_b</span>
+<span class="o">...</span>
+
+<span class="c1"># c) Return a new tensor where dim-1 is size 1 and represents</span>
+<span class="c1"># the sum/mean over dim-1 in `tensor_a`</span>
+<span class="n">tensor_a</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">tensor_a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>However, instead of directly implementing each of these operations
+individually, let's be a bit lazy and note the structural
+similarities. We can then implement helpers that do most of the work
+for us.</p>
+<p>Operation a / map: These operations all just touch each of the
+positions of the tensor individually. They don't need to deal with
+other positions or know anything about the shape or size of the tensor.</p>
+<img alt="bigger.png" src="bigger.png" />
+<p>Operation b / zip: These operations need to pair operations between
+neighboring tensors.</p>
+<img alt="bigger.png" src="bigger.png" />
+<p>Operation c / reduce: These operations need to group together cells within a single tensor.</p>
+<img alt="bigger.png" src="bigger.png" />
+<ul class="simple">
+<li><p>implement <cite>map</cite></p></li>
+<li><p>implement <cite>zip</cite></p></li>
+<li><p>implement <cite>reduce</cite></p></li>
+</ul>
+<p>The tensor operations from the last section allow you to map, zip, and
+reduce tensor data objects together. On top of this foundation we can
+build up a similar class to the Scalar class in
+assignment 1. We will call this object <cite>Tensor</cite> to distinguish it from
+the raw tensor data.</p>
+<ul class="simple">
+<li><p>read the implementatino for neg, add, mul</p></li>
+<li><p>implement the other forward operations for tensor. (pass tests)</p></li>
+</ul>
+</div>
+<div class="section" id="tasks-3-gradients-and-autograd">
+<h2>Tasks 3: Gradients and Autograd<a class="headerlink" href="#tasks-3-gradients-and-autograd" title="Permalink to this headline">¶</a></h2>
+<p>We have now moved from scalars and derivatives to vector, matrices and
+tensors.  In theory, this means <cite>multivariate calculus</cite> and somewhat
+scary terminology. However, most of what we actually need to do will
+not require complicated terminology or much technical math. This
+section will give a primer to the main ideas, building on assignment 1.</p>
+<p>The main new term you need to know is <cite>gradient</cite>. A tensor is a
+multidimensional array of scalars, a gradient is a multidimensional
+array of derivatives for these scalars.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assignment 1 notation</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+
+
+<span class="c1"># Assignment 2 notation</span>
+<span class="n">tensor1</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">tensor1</span><span class="p">)</span>
+<span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+<span class="c1"># shape (3,)</span>
+<span class="n">tensor1</span><span class="o">.</span><span class="n">grad</span>
+</pre></div>
+</div>
+<p>The gradient of <cite>tensor1</cite> is a tensor that holds the derivatives of
+each of its values.</p>
+<p>Now, if you look online, you will find lots of different notation for
+gradients and multivariate terminology. For this assignment, I ask
+that you ignore it and stick to everything you know about derivatives.
+It turns out that you can do must of machine learning without ever
+thinking in higher dimensions.</p>
+<p>How could this be true? Well lets look at the operations from the
+previous section.</p>
+<ol class="arabic simple">
+<li><p><cite>map</cite>. Given a tensor, map applies a fixed operation to each scalar
+position individually. For a scalar <span class="math notranslate nohighlight">\(x\)</span>, it computes
+<span class="math notranslate nohighlight">\(g(x)\)</span>.  Therefore, from assignment 1, we know that the
+derivative <span class="math notranslate nohighlight">\(f(g(x))\)</span> is equal to <span class="math notranslate nohighlight">\(g'(x) \times d\)</span>. This
+means to compute the gradient, we only need to compute the
+derivative for each position and map.</p></li>
+</ol>
+<img alt="bigger.png" src="bigger.png" />
+<ol class="arabic simple" start="2">
+<li><p><cite>zip</cite>. Given two tensors, zip applies a fixed operation to each
+scalar position individually. For two scalars <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span>, it computes <span class="math notranslate nohighlight">\(g(x, y)\)</span>.  Therefore, from assignment
+1, we know that the derivative <span class="math notranslate nohighlight">\(f(g(x, y))\)</span> is equal to
+<span class="math notranslate nohighlight">\(g_x'(x, y) \times d\)</span> and <span class="math notranslate nohighlight">\(g_y'(x, y) \times d\)</span>. This
+means to compute the gradient, we only need to compute the
+derivative for each position and map.</p></li>
+</ol>
+<img alt="bigger.png" src="bigger.png" />
+<ol class="arabic simple" start="3">
+<li><p><cite>reduce</cite>. Given a tensor, reduce applies a fixed aggregation
+operation to one dimension. For simplicity lets consider sum-based
+reductions.  For scalars <span class="math notranslate nohighlight">\(x_1\)</span> to <span class="math notranslate nohighlight">\(x_n\)</span>, it computes
+<span class="math notranslate nohighlight">\(x_1 + x_2 + \ldots\)</span>.  For any <span class="math notranslate nohighlight">\(x\)</span> value this
+yields 1. Therefore, the derivative for any position is simply the
+derivative passed backward <span class="math notranslate nohighlight">\(d\)</span>. This means to compute the
+gradient, we only need to expand the derivative for each
+position. For other reduce operations such as <cite>product</cite>, you get
+different expansions (but these can be calculated just by taking
+derivatives).</p></li>
+</ol>
+<img alt="bigger.png" src="bigger.png" />
+<ul class="simple">
+<li><p>read the implementatino for neg, add, mul</p></li>
+<li><p>implement the other forward operations for tensor. (pass tests)</p></li>
+</ul>
+</div>
+<div class="section" id="tasks-4-tensor-broadcasting">
+<h2>Tasks 4: Tensor Broadcasting<a class="headerlink" href="#tasks-4-tensor-broadcasting" title="Permalink to this headline">¶</a></h2>
+<p>So far all of our <cite>zip</cite> operations have assumed that we had two
+tensors of exactly the same size and shape. However there are many
+times when it is interesting to <cite>zip</cite> two tensors are different size.</p>
+<p>Perhaps the simplest case is when we have one vector (1-D tensor) and want to add a
+constant to every position</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>We would like for this operation to have the standard interpretation
+of adding 10 to each position.  We can view the constant as a tensor of
+size 1 and shape (1,) and assume <cite>vector1</cite> is of shape (3,).
+Because of this, simple <cite>zip</cite> will fail.</p>
+<p>A natural fix is to <cite>broadcast</cite> this dimension to automatically grow
+to the size of the vector. That is inside zip we &quot;pretend&quot; that 10 is a vector of
+size (3,) that repeats its value, i.e.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>(Note we never actually create this tensor. This is just an interpretation.)</p>
+<ul class="simple">
+<li><p>Rule 1: Any dimension of size 1, can be zipped with dimensions of size n &gt; 1 by assuming the dimension is copied n times.</p></li>
+</ul>
+<p>Now let's try apply this approach to a matrix of shape (4, 3).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Here we are trying to zip a matrix (2-D) of shape (4, 3) with a vector
+(1-D) of shape (1,).  It seems like this should fail, but remember we
+are always allowed to add &quot;empty&quot; (shape-1) dimensions. If we add an
+empty dimension and then apply rule 1 twice we can zip the two together.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">]</span> <span class="o">*</span> <span class="mi">12</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>(Note we never actually create this tensor. This is just an interpretation.)</p>
+<ul class="simple">
+<li><p>Rule 2: Any extra dimensions of size 1 can be added to a tensor to ensure that the sizes are the same.</p></li>
+</ul>
+<p>Finally there is a question of where to add the empty dimensions. This
+is not an issue in the above case but becomes an issue in more
+complicated cases.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># These two lines are equivalent</span>
+<span class="n">matrix1</span> <span class="o">+</span> <span class="n">vector1</span>
+<span class="n">matrix1</span> <span class="o">+</span> <span class="n">vector1</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Rule 3: Any extra dimensions of size 1 are always added on the left-side of the shape.</p></li>
+</ul>
+<p>This rule has the impact of making the process easy to follow and replicate. You always know what the shape of the final
+output will be. For instance,</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will fail!</span>
+<span class="n">matrix1</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">vector1</span>
+</pre></div>
+</div>
+<p>What's happenining here? The issue is that after the <cite>permute</cite> the shape (3, 4) and we are adding a vector of size
+(3,). It seems like this should be okay, but the remember rule 3, we can only add new dimensions to the left. If we want to add
+right dimensions we need to do it manually.:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will work!</span>
+<span class="n">matrix1</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">vector1</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally we note that we can use the broadcasting rules and many times as we want in a given setting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will return shape (7, 2, 3, 5)</span>
+<span class="n">tensor1</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">tensor2</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>implement <cite>get</cite></p></li>
+<li><p>implement <cite>shape_broadcast</cite></p></li>
+</ul>
+</div>
+<div class="section" id="tasks-5-training">
+<h2>Tasks 5: Training<a class="headerlink" href="#tasks-5-training" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Read project <cite>tensor</cite></p></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="references.html" class="btn btn-neutral float-right" title="References" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="assignment1.html" class="btn btn-neutral float-left" title="Assignment 1 - Auto-Derivatives" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

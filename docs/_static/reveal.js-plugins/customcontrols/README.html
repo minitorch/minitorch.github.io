@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+
+<html lang="english">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>});</title>
+    <link rel="stylesheet" href="../../revealjs/css/reveal.css" type="text/css" />
+    <link rel="stylesheet" href="../../pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../revealjs/css/theme/black.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../revealjs/lib/css/zenburn.css" />
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../documentation_options.js"></script>
+    <script src="../../jquery.js"></script>
+    <script src="../../underscore.js"></script>
+    <script src="../../doctools.js"></script>
+    <script src="../../language_data.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement( "link" );
+        link.rel = "stylesheet";
+        link.type = "text/css";
+        if (window.location.search.match( /print-pdf/gi )) {
+            link.href = "../../revealjs/css/print/pdf.css";
+        } else {
+            link.href = "../../revealjs/css/print/paper.css";
+        }
+        document.getElementsByTagName( "head" )[0].appendChild( link );
+    </script>
+
+  </head><body>
+    <div class="reveal">
+        <div class="slides">
+            <p># Custom controls</p>
+<p>One of the core features of <code class="docutils literal notranslate"><span class="pre">`reveal.js`</span></code> is that slides are organised in two dimensions and the standard controls perfectly allow to advance the presentation horizontally and vertically.
+Sometimes, however, there is a need to customize the controls, e.g., if the slideshow is intended for users who mainly want to linearly advance through it.
+With this plugin you can add custom controls to reveal.js which allow arbitrary positioning, layout, and behaviour of the controls.</p>
+<p>[Check out the live demo](<a class="reference external" href="https://rajgoel.github.io/reveal.js-demos/customcontrols-demo.html">https://rajgoel.github.io/reveal.js-demos/customcontrols-demo.html</a>)</p>
+<p>## Installation</p>
+<p>Copy the file <code class="docutils literal notranslate"><span class="pre">`customcontrols.js`</span></code> into the plugin folder of your reveal.js presentation, i.e. <code class="docutils literal notranslate"><span class="pre">`plugin/customcontrols`</span></code>.</p>
+<p>Add the plugin to the dependencies in your presentation and turn off the default controls as shown below:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>controls: false,
+// ...
+dependencies: [</p>
+<blockquote>
+<div><p>// ...
+{ src: 'plugin/customcontrols/customcontrols.js' },
+// ...</p>
+</div></blockquote>
+<p>],
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>Note, without configuration you need to add</p>
+<p><code class="docutils literal notranslate"><span class="pre">`javascript</span>
+<span class="pre">&lt;link</span> <span class="pre">rel=&quot;stylesheet&quot;</span> <span class="pre">href=&quot;https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css&quot;&gt;</span>
+<span class="pre">`</span></code></p>
+<p>between <code class="docutils literal notranslate"><span class="pre">`&lt;head&gt;`</span></code> and <code class="docutils literal notranslate"><span class="pre">`&lt;/head&gt;`</span></code> of your HTML file because the defaults use [Font Awesome](<a class="reference external" href="http://fontawesome.io/">http://fontawesome.io/</a>).</p>
+<p>## Configuration</p>
+<p>The plugin can be configured by adding custom controls and changing the layout of the slide number, e.g., by:</p>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a>javascript
+Reveal.initialize({</p>
+<blockquote>
+<div><p>// ...
+customcontrols: {</p>
+<blockquote>
+<div><p>slideNumberCSS : 'position: fixed; display: block; right: 90px; top: auto; left: auto; width: 50px; bottom: 30px; z-index: 31; font-family: Helvetica, sans-serif; font-size:  12px; line-height: 1; padding: 5px; text-align: center; border-radius: 10px; background-color: rgba(128,128,128,.5)',
+controls: [</p>
+<blockquote>
+<div><dl class="simple">
+<dt>{ icon: '&lt;i class=&quot;fa fa-caret-left&quot;&gt;&lt;/i&gt;',</dt><dd><p>css: 'position: fixed; right: 60px; bottom: 30px; z-index: 30; font-size: 24px;',
+action: 'Reveal.prev(); return false;'</p>
+</dd>
+</dl>
+<p>},
+{ icon: '&lt;i class=&quot;fa fa-caret-right&quot;&gt;&lt;/i&gt;',</p>
+<blockquote>
+<div><p>css: 'position: fixed; right: 30px; bottom: 30px; z-index: 30; font-size: 24px;',
+action: 'Reveal.next(); return false;'</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>]</p>
+</div></blockquote>
+<p>},
+// ...</p>
+</div></blockquote>
+<section>
+<h1>});</h1>
+<p>The configuration should be self explaining and any number of controls can be added.</p>
+<p>## License</p>
+<p>MIT licensed</p>
+<p>Copyright (C) 2017 Asvin Goel</p>
+
+        </div>
+    </div>
+    
+    <script src="../../revealjs/js/reveal.js"></script>
+    
+    <script>
+        var revealjsConfig = {
+          dependencies: []
+        };
+        Object.assign(revealjsConfig, 
+{
+    controls: false,
+    transition: 'none',
+    keyboard: {
+	    67: function() { RevealChalkboard.toggleNotesCanvas() },	// toggle notes canvas when 'c' is pressed
+	    66: function() { RevealChalkboard.toggleChalkboard() },	// toggle chalkboard when 'b' is pressed
+	    46: function() { RevealChalkboard.clear() },	// clear chalkboard when 'DEL' is pressed
+	     8: function() { RevealChalkboard.reset() },	// reset chalkboard data on current slide when 'BACKSPACE' is pressed
+	    68: function() { RevealChalkboard.download() },	// downlad recorded chalkboard drawing when 'd' is pressed
+	    88: function() { RevealChalkboard.colorNext() },	// cycle colors forward when 'x' is pressed
+	    89: function() { RevealChalkboard.colorPrev() },	// cycle colors backward when 'y' is pressed
+    }
+}
+);
+        
+        
+        
+          plugin_0 = {};
+          plugin_0.src = "_static/js/chalkboard.js";
+          revealjsConfig.dependencies.push(plugin_0);
+          plugin_1 = {async: true};
+          plugin_1.src = "_static/revealjs/plugin/notes/notes.js";
+          revealjsConfig.dependencies.push(plugin_1);
+          plugin_2 = {async: true, callback: function() { hljs.initHighlightingOnLoad(); }};
+          plugin_2.src = "_static/revealjs/plugin/highlight/highlight.js";
+          revealjsConfig.dependencies.push(plugin_2);
+        // More info https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize(revealjsConfig);
+    </script>
+
+  </body>
+</html>

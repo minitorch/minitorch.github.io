@@ -1,0 +1,485 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="english" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module 4 - Networks &mdash; MiniTorch 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Softmax" href="softmax.html" />
+    <link rel="prev" title="GPU Programming" href="cuda.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module 4 - Networks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-1-max-argmax-softmax">Task 4.1: Max, Argmax, Softmax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-2-pooling">Task 4.2: Pooling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-3-convolution">Task 4.3: Convolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-4-modules">Task 4.4: Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-5-training-a-classifier">Task 4.5: Training a Classifier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MiniTorch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Module 4 - Networks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/module4.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-4-networks">
+<h1>Module 4 - Networks<a class="headerlink" href="#module-4-networks" title="Permalink to this headline">¶</a></h1>
+<a class="reference internal image-reference" href="_images/orig.png"><img alt="_images/orig.png" class="align-center" src="_images/orig.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/mnist2.png"><img alt="_images/mnist2.png" class="align-center" src="_images/mnist2.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>
+<a class="reference internal image-reference" href="_images/mnist4.png"><img alt="_images/mnist4.png" class="align-center" src="_images/mnist4.png" style="width: 400px;" /></a>
+<p>We now have a fully working deep learning library with most of the
+features of a real industrial system like Torch. To take advantage of
+this hard work this section is entirely based around using the
+software to build an image recognition system. In particular we will
+build the infrastructure for a version of LeNet on MNist a classic
+convolutional neural network for digit recognition.</p>
+<p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-4">https://github.com/minitorch/Module-4</a> .</p>
+<p>To begin, remember to first activate your virtual environment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+</pre></div>
+</div>
+<p>And then clone your assignment.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT4_URL</span><span class="p">}}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">Module</span><span class="o">-</span><span class="mi">4</span>
+</pre></div>
+</div>
+<p>You will also need the files so be sure to pull them over
+to your new repo.</p>
+<p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="softmax.html">Softmax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
+</ul>
+</div>
+<div class="section" id="tasks">
+<h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="task-4-1-max-argmax-softmax">
+<h3>Task 4.1: Max, Argmax, Softmax<a class="headerlink" href="#task-4-1-max-argmax-softmax" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Todo</p>
+<p>Return to  <cite>minitorch/tensor.py</cite> and add a max reduction function.
+Add 2 property tests for the function and ensure that you understand its gradient computation.
+Mark the tests as <cite>task4_1</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.max">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.argmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.argmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the argmax as a 1-hot tensor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor with 1 on highest cell in dim, 0 otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.softmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the softmax as a tensor.</p>
+<div class="math notranslate nohighlight">
+\[z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>softmax tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.logsoftmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log of the softmax as a tensor.</p>
+<div class="math notranslate nohighlight">
+\[z_i = x_i - \log \sum_i e^{x_i}\]</div>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>log of softmax tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-4-2-pooling">
+<h3>Task 4.2: Pooling<a class="headerlink" href="#task-4-2-pooling" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with pooling as a concept.
+Be sure to read the section on <a class="reference internal" href="pooling.html"><span class="doc">Max and Pooling</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Todo</p>
+<p>Complete the following functions in <cite>minitorch/nn.py</cite> and pass tests marked as <cite>task4_2</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.tile">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reshape an image tensor for 2D pooling</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) -- height x width of pooling</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Tensor of size batch x channel x new_height x new_width x kernel_height x kernel_width as well as the new_height and new_width value.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>, int, int)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.avgpool2d">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">avgpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.avgpool2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tiled average pooling 2D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) -- height x width of pooling</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pooled tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.maxpool2d">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">maxpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.maxpool2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tiled max pooling 2D</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> (<em>(</em><em>int</em><em>, </em><em>int</em><em>)</em>) -- height x width of pooling</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>pooled tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-4-3-convolution">
+<h3>Task 4.3: Convolution<a class="headerlink" href="#task-4-3-convolution" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with convolution.
+Be sure to read the section on <a class="reference internal" href="convolution.html"><span class="doc">Convolution</span></a>.</p>
+</div>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/nn.py</cite> and pass tests marked as <cite>task4_3</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.tensor_conv2d">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output</span></em>, <em class="sig-param"><span class="n">output_shape</span></em>, <em class="sig-param"><span class="n">output_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
+<dd><p>2D Convolution implementation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
+<li><p><strong>out_size</strong> (<em>int</em>) -- size of the <cite>out</cite> tensor.</p></li>
+<li><p><strong>input</strong> (<em>array</em>) -- storage for <cite>input</cite> tensor.</p></li>
+<li><p><strong>input_shape</strong> (<em>array</em>) -- shape for <cite>input</cite> tensor.</p></li>
+<li><p><strong>input_strides</strong> (<em>array</em>) -- strides for <cite>input</cite> tensor.</p></li>
+<li><p><strong>weight</strong> (<em>array</em>) -- storage for <cite>input</cite> tensor.</p></li>
+<li><p><strong>weight_shape</strong> (<em>array</em>) -- shape for <cite>input</cite> tensor.</p></li>
+<li><p><strong>weight_strides</strong> (<em>array</em>) -- strides for <cite>input</cite> tensor.</p></li>
+<li><p><strong>reverse</strong> (<em>bool</em>) -- Compute forward (False) or backward conv</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-4-4-modules">
+<h3>Task 4.4: Modules<a class="headerlink" href="#task-4-4-modules" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <cite>minitorch/nn.py</cite> and pass tests marked as <cite>task4_3</cite>.</p>
+</div>
+<dl class="py function">
+<dt id="minitorch.dropout">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">dropout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">rate</span></em>, <em class="sig-param"><span class="n">ignore</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.dropout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Dropout dimensions based on random noise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>rate</strong> (<em>float</em>) -- probability of dropping out each dimension</p></li>
+<li><p><strong>ignore</strong> (<em>bool</em>) -- skip</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor with dropout dimensions</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="task-4-5-training-a-classifier">
+<h3>Task 4.5: Training a Classifier<a class="headerlink" href="#task-4-5-training-a-classifier" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="softmax.html" class="btn btn-neutral float-right" title="Softmax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="cuda.html" class="btn btn-neutral float-left" title="GPU Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Sasha Rush
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

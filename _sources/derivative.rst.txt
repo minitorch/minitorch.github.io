@@ -123,3 +123,68 @@ we can call central_difference(f,x) to immediately approximate the derivative of
 
 We will see that this approach is not a great way to train machine learning models, but
 it provides a generic alternative approach to check if your derivative functions are correct, e.g. free :doc:`property_testing`.
+
+
+Here are some examples of Module-0 functions with central difference applied. 
+
+.. jupyter-execute::
+   :hide-code:
+
+   import sys
+   sys.path.append("../project/")   
+   import minitorch
+   from datasets_plotly import plot_function
+
+.. jupyter-execute::
+  
+   plot_function("sigmoid", minitorch.operators.sigmoid)
+
+.. jupyter-execute::
+
+   def d_sigmoid(x):
+       return minitorch.central_difference(minitorch.operators.sigmoid, x)
+ 
+   plot_function("Derivative of sigmoid", d_sigmoid)
+
+
+   
+.. jupyter-execute::
+  
+   plot_function("exp", minitorch.operators.exp)
+
+.. jupyter-execute::
+
+   def d_exp(x):
+       return minitorch.central_difference(minitorch.operators.exp, x)
+ 
+   plot_function("Derivative of exp", d_exp)
+
+   
+ 
+.. jupyter-execute::
+  
+   plot_function("ReLU", minitorch.operators.relu)
+
+.. jupyter-execute::
+
+   def d_relu(x):
+       return minitorch.central_difference(minitorch.operators.relu, x)
+ 
+   plot_function("Derivative of ReLU", d_relu)
+
+
+.. jupyter-execute::
+
+   def times_5(x):
+       return minitorch.operators.mul(x, 5)
+ 
+   plot_function("Mul by 5", times_5)
+
+   
+
+.. jupyter-execute::
+
+   def d_times_5(x):
+       return minitorch.central_difference(minitorch.operators.mul, x, 5, arg=0)
+ 
+   plot_function("Derivative of mul by 5", d_times_5)

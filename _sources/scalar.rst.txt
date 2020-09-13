@@ -2,6 +2,16 @@
 Tracking Variables
 ====================
 
+.. jupyter-execute::
+   :hide-code:
+
+      import minitorch
+      from minitorch import ScalarFunction
+      import sys
+      sys.path.append("../project/")
+      from show_expression import make_graph
+      from IPython.display import SVG, display
+
 In :doc:`derivative`, we discussed two ways to compute derivatives.
 `Symbolic` derivatives require access to the full symbolic function,
 whereas `numerical` derivatives require only a black-box
@@ -33,7 +43,7 @@ The main trick for tracking computation is surprisingly simple and straightforwa
 2. replace all mathematical operators with proxy operators, known as Functions.
 3. augment Variables to remember what Functions were applied to them in the past.
 
-For notation, we captitalize our newly instroduced  
+For notation, we captitalize our newly instroduced
 Functions and Variables to distinguish them from Python functions and variables.
 
 Variables should behave exactly
@@ -75,7 +85,7 @@ single scalar float (which is stored in the `data` attribute).
 .. autoclass:: minitorch.Scalar
 
 
-This Variable :class:`minitorch.Variable` has a corresponding Function 
+This Variable :class:`minitorch.Variable` has a corresponding Function
 class :class:`minitorch.ScalarFunction` which
 is a subclass of :class:`minitorch.FunctionBase`:
 
@@ -84,24 +94,29 @@ is a subclass of :class:`minitorch.FunctionBase`:
 
 
 We can implement a simple function as a class with a static method:
-:func:`ScalarFunction.forward`::
+:func:`ScalarFunction.forward`
+
+.. jupyter-execute::
 
       class g(ScalarFunction):
           @staticmethod
           def forward(ctx, x):
               # Compute g(x) (ignore ctx for now)
-              ...
+              pass
 
-For example, say our function is `TimesFive`, :math:`g(x) = x \times 5`::
+For example, say our function is `TimesFive`, :math:`g(x) = x \times 5`
 
+.. jupyter-execute::
 
       class TimesFive(ScalarFunction):
+
           @staticmethod
           def forward(ctx, x):
               return x * 5
 
-Or, say the function is `Mul`, :math:`f(x, y) = x \times y` that multiplies x by y::
+Or, say the function is `Mul`, :math:`f(x, y) = x \times y` that multiplies x by y
 
+.. jupyter-execute::
 
       class Mul(ScalarFunction):
           @staticmethod
@@ -113,12 +128,16 @@ Or, say the function is `Mul`, :math:`f(x, y) = x \times y` that multiplies x by
    Within forward function, x and y are always numbers (not Variables). Forward function processes
    and returns unwrapped values.
 
-If we have scalar Variables :math:`x, y`, we can apply the above Functions by::
+If we have scalar Variables :math:`x, y`, we can apply the above Functions by
 
-  z = TimesFive.apply(x)
-  out = TimesFive.apply(z)
-  # or
-  out2 = Mul.apply(z, y)
+.. jupyter-execute::
+
+   x = minitorch.Scalar(10., name="x")
+   y = minitorch.Scalar(5., name="y")
+   z = TimesFive.apply(x)
+   out = TimesFive.apply(z)
+   # or
+   out2 = Mul.apply(z, y)
 
 Critically, we must not call `forward` directly but call `apply` instead. This is because
 'apply' internally converts Variable inputs to floats to call `forward`, creats a trail of the history,
@@ -129,14 +148,28 @@ and `out2` are all Variables. This history is represented by a chain of previous
 .. image:: figs/Autograd/chain1.png
            :align: center
 
+We additionally include a library to allow you to draw these box diagrams for functions.
 
+
+.. jupyter-execute::
+
+   out.name = "out"
+   SVG(make_graph(out))
+
+
+.. jupyter-execute::
+
+   out2.name = "out"
+   SVG(make_graph(out2))
 
 
 Syntactic Sugar
 -----------------
 
 
-There is still one minor issue with our Function. This is what our code looks like to use `Mul`::
+There is still one minor issue with our Function. This is what our code looks like to use `Mul`
+
+.. jupyter-execute::
 
     out2 = Mul.apply(x, y)
 
@@ -148,10 +181,12 @@ To get around this issue, we need to augment the :class:`minitorch.Scalar` class
 so that it can behave normally under standard mathematical operations.  Instead of
 calling regular +, Python will call our +.  Once this is achieved, we will have the ability
 record and track how :math:`x` is used in the
-Function, while still being able to write::
+Function, while still being able to write
+
+.. jupyter-execute::
 
     out2 = x * y
 
 To achieve this, the :class:`minitorch.Scalar` class needs to provide syntax that makes it appear like
-a number when in use. You can read [emulating numeric types](https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types)
+a number when in use. You can read `emulating numeric types <https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types>`_
 to learn how this could be done.

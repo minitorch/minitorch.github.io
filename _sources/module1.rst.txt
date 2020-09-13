@@ -114,7 +114,6 @@ the expression at the top of the file and then run the code to create a graph in
 .. autofunction:: minitorch.Scalar.__gt__
 .. autofunction:: minitorch.Scalar.__sub__                  
 .. autofunction:: minitorch.Scalar.__neg__
-.. autofunction:: minitorch.Scalar.__mul__
 .. autofunction:: minitorch.Scalar.__add__
                   
 .. autofunction:: minitorch.Scalar.log

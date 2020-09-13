@@ -103,7 +103,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="chainrule.html">Autodifferentiation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backpropagate.html">Backpropagation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module1.html#tasks">Tasks</a></li>
 </ul>
 </li>
@@ -179,6 +179,10 @@
             
   <div class="section" id="tracking-variables">
 <h1>Tracking Variables<a class="headerlink" href="#tracking-variables" title="Permalink to this headline">¶</a></h1>
+<div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+</div>
+</div>
 <p>In <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a>, we discussed two ways to compute derivatives.
 <cite>Symbolic</cite> derivatives require access to the full symbolic function,
 whereas <cite>numerical</cite> derivatives require only a black-box
@@ -303,51 +307,105 @@ is a subclass of <a class="reference internal" href="#minitorch.FunctionBase" ti
 </dd></dl>
 
 <p>We can implement a simple function as a class with a static method:
-<code class="xref py py-func docutils literal notranslate"><span class="pre">ScalarFunction.forward()</span></code>:</p>
+<code class="xref py py-func docutils literal notranslate"><span class="pre">ScalarFunction.forward()</span></code></p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">g</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="c1"># Compute g(x) (ignore ctx for now)</span>
-        <span class="o">...</span>
+        <span class="k">pass</span>
 </pre></div>
 </div>
-<p>For example, say our function is <cite>TimesFive</cite>, <span class="math notranslate nohighlight">\(g(x) = x \times 5\)</span>:</p>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>For example, say our function is <cite>TimesFive</cite>, <span class="math notranslate nohighlight">\(g(x) = x \times 5\)</span></p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimesFive</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">5</span>
 </pre></div>
 </div>
-<p>Or, say the function is <cite>Mul</cite>, <span class="math notranslate nohighlight">\(f(x, y) = x \times y\)</span> that multiplies x by y:</p>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+<p>Or, say the function is <cite>Mul</cite>, <span class="math notranslate nohighlight">\(f(x, y) = x \times y\)</span> that multiplies x by y</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Mul</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Within forward function, x and y are always numbers (not Variables). Forward function processes
 and returns unwrapped values.</p>
 </div>
-<p>If we have scalar Variables <span class="math notranslate nohighlight">\(x, y\)</span>, we can apply the above Functions by:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<p>If we have scalar Variables <span class="math notranslate nohighlight">\(x, y\)</span>, we can apply the above Functions by</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">Scalar</span><span class="p">(</span><span class="mf">5.</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">TimesFive</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 <span class="c1"># or</span>
 <span class="n">out2</span> <span class="o">=</span> <span class="n">Mul</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
 </div>
 <p>Critically, we must not call <cite>forward</cite> directly but call <cite>apply</cite> instead. This is because
 'apply' internally converts Variable inputs to floats to call <cite>forward</cite>, creats a trail of the history,
 and wraps the output into a Variable. Here <cite>z</cite>, <cite>out</cite>,
 and <cite>out2</cite> are all Variables. This history is represented by a chain of previous Functions:</p>
 <img alt="_images/chain1.png" class="align-center" src="_images/chain1.png" />
+<p>We additionally include a library to allow you to draw these box diagrams for functions.</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;out&quot;</span>
+<span class="n">SVG</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">out</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/scalar_5_0.svg" src="_images/scalar_5_0.svg" /></div>
+</div>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out2</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;out&quot;</span>
+<span class="n">SVG</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">out2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/scalar_6_0.svg" src="_images/scalar_6_0.svg" /></div>
+</div>
 </div>
 <div class="section" id="syntactic-sugar">
 <h2>Syntactic Sugar<a class="headerlink" href="#syntactic-sugar" title="Permalink to this headline">¶</a></h2>
-<p>There is still one minor issue with our Function. This is what our code looks like to use <cite>Mul</cite>:</p>
+<p>There is still one minor issue with our Function. This is what our code looks like to use <cite>Mul</cite></p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out2</span> <span class="o">=</span> <span class="n">Mul</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
 </div>
 <p>It is annoying and bug-prone to write code this way. Also, we promised
 that we would have Functions that look just like the Python functions we are
@@ -356,12 +414,18 @@ used to write.</p>
 so that it can behave normally under standard mathematical operations.  Instead of
 calling regular +, Python will call our +.  Once this is achieved, we will have the ability
 record and track how <span class="math notranslate nohighlight">\(x\)</span> is used in the
-Function, while still being able to write:</p>
+Function, while still being able to write</p>
+<div class="jupyter_cell jupyter_container docutils container">
+<div class="cell_input code_cell docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
 <p>To achieve this, the <a class="reference internal" href="#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class needs to provide syntax that makes it appear like
-a number when in use. You can read [emulating numeric types](<a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types">https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types</a>)
+a number when in use. You can read <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types">emulating numeric types</a>
 to learn how this could be done.</p>
 </div>
 </div>

@@ -1,3 +1,13 @@
+.. jupyter-execute::
+   :hide-code:
+   
+   import sys
+   sys.path.append("../project/")   
+   import datasets
+   from datasets_plotly import animate, plot
+   s = datasets.Simple(20)
+
+
 ==================
 ML Primer
 ==================
@@ -13,13 +23,15 @@ with *one* class of model. Specifically, this is an introduction to
 is to learn how a basic neural network works to classify simple points.  
 
 
+
 .. image:: figs/Graphs/mlpgraph.png
            :align: center
            :width: 300px
 
+                  
 
-
-
+               
+                  
 Dataset
 -------------
 
@@ -55,6 +67,11 @@ axes.
 Here we can see that all the O points are in the top-right and all the X points are on
 the bottom-left. Not all datasets is this simple, and here is another dataset where points are
 split up a bit more. 
+
+.. image:: figs/Graphs/split.png
+           :align: center
+           :width: 250px
+
 
 Later in the class, we will consider datasets of different forms, e.g. a dataset of
 handwritten numbers, where some are 8's and others are 2's:
@@ -125,15 +142,63 @@ The first model class we consider is `linear models`. Linear models separate the
 
 Note that Model B also uses lines, but it is not a linear model: it uses multiple lines to split up the space. 
                    
-               
 
+Let's look at an example of some models. Here is some randomly generated data.
+
+.. jupyter-execute::
+   :hide-code:
+      
+   plot(s)
+
+
+.. jupyter-execute::
+   
+   def model1(x):
+       if x[0] < 0.25:
+           return 1
+       else:
+           return 0
+   plot(s, model1)
+
+   
+.. jupyter-execute::
+      
+   def model2(x):
+       if x[0] < 0.25:
+           return 1
+       if x[0] > 0.5 and x[1] > 0.6:
+           return 1
+       else:
+           return 0
+   plot(s, model2)
+   
+   
 
 Parameters
 -----------
 
 Once we have decided on our model class, we need a way to move between models in that
 class. Ideally, we would have internal knobs that alter the properties of the model.
-In the case of linear models, there are two main knobs we might use,
+
+
+
+.. jupyter-execute::
+      
+   def make_model(param):
+       def model(x):
+           if x[0] < param:
+               return 1
+           else:
+               return 0
+       return model
+   plot(s, make_model(0.4))
+
+.. jupyter-execute::
+
+   plot(s, make_model(0.6))
+
+   
+In the case of the linear models, there are two main knobs we might use,
 
 a. rotating the linear separator ("slope")
 
@@ -160,6 +225,17 @@ In the case of linear models and binary classification, we can write down the li
 Here :math:`w_1, w_2, b` are parameters, :math:`x_1, x_2` are the input point, and
 the model predicts X if :math:`m` is greater than 1 and O otherwise. The semi-color
 notation indicates which arguments are for parameters and which are for data.
+
+.. jupyter-execute::
+      
+   def make_linear(w1, w2, b):
+       def model(x):
+           return 1 if (x[0] * w1 + x[1] * w2 + b > 0.0) else 0
+       return model
+
+   biases = [-0.098 + (i / 100.0) for i in range(25)]
+   animate(s, [make_linear(0.1, -0.2, b) for b in biases], biases)
+
 
 .. note::
    See https://wikipedia.org/wiki/Linear_equation for a review of linear equation, and an explanation for why this corresponds to parameterizing the slope and intercept of a line.
@@ -263,6 +339,7 @@ Let's return to the incorrect model above.
 .. image:: figs/Graphs/incorrect.png
            :align: center
            :width: 250px
+
 
 As we noted, this model has a high loss, and we want to consider ways to "turn the knobs" of the parameters to find a better model. Let us focus on the parameter controlling the intercept of the model. 
 

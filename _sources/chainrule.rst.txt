@@ -2,12 +2,21 @@
 Autodifferentiation
 ====================
 
+.. jupyter-execute::
+   :hide-code:
+
+      import minitorch
+      from minitorch import ScalarFunction
+      import sys
+      sys.path.append("../project/")
+      from datasets_plotly import plot_function
+
 In :doc:`scalar`, we have seen that :class:`ScalarFunction` can be used to
 implement Functions on Variables. We do this by calling `apply` function on
 Variables, which then calls the underlying `forward` function.
 
-(For notation, we still use capital letters to refer to our 
-new Functions and Variables to distringuish them from Python functions and variables. 
+(For notation, we still use capital letters to refer to our
+new Functions and Variables to distringuish them from Python functions and variables.
 We use functions to refer to mathmatical functions as well depending on the context.)
 
 Now, we include additional information on the class which gives the
@@ -26,8 +35,9 @@ information. Specifically, `backward` computes :math:`f'(x) \times d_{out}` wher
 :math:`d_{out}` is an argument passed in (discussed below).
 
 For the simple function :math:`f(x) = x \times 5`, we can consult our
-derivative rules and get :math:`f'(x) = 5`. Therefore the `backward` is::
+derivative rules and get :math:`f'(x) = 5`. Therefore the `backward` is
 
+.. jupyter-execute::
 
       class TimesFive(ScalarFunction):
           @staticmethod
@@ -46,24 +56,29 @@ derivative rules and get :math:`f'(x) = 5`. Therefore the `backward` is::
 
 For functions that take multiple arguments, `backward` returns multiple deritatives
 with respect to each input argument. For example, if the function computes
-:math:`f(x, y)`, we need to return :math:`f'_x(x, y)` and :math:`f'_y(x, y)`::
+:math:`f(x, y)`, we need to return :math:`f'_x(x, y)` and :math:`f'_y(x, y)`
+
+.. jupyter-execute::
+
 
       class Mul(ScalarFunction):
           @staticmethod
           def forward(ctx, x, y):
               # Compute f(x, y)
-              ...
+              pass
 
           @staticmethod
           def backward(ctx, d_out):
               # Compute f'_x(x, y) * d_out, f'_y(x, y) * d_out
-              ...
+              pass
 
 .. image:: figs/Autograd/autograd4.png
            :align: center
 
 For :math:`f(x, y) = x + 2 \times y`, we can consult our
-derivative rules again and get :math:`f'_x(x, y) = 1` and :math:`f'_y(x, y) = 2`. Therefore the `backward` is::
+derivative rules again and get :math:`f'_x(x, y) = 1` and :math:`f'_y(x, y) = 2`. Therefore the `backward` is
+
+.. jupyter-execute::
 
 
       class AddTimes2(ScalarFunction):
@@ -75,6 +90,21 @@ derivative rules again and get :math:`f'_x(x, y) = 1` and :math:`f'_y(x, y) = 2`
           def backward(ctx, d_out):
               return d_out, 2 * d_out
 
+.. jupyter-execute::
+
+   def call(y):
+        return AddTimes2.forward(None, 10, y)
+
+   plot_function("Add Times 2: x=10", call)
+
+
+.. jupyter-execute::
+
+   def d_call(y):
+        return AddTimes2.backward(None, 1)[1]
+
+   plot_function("d Add Times 2: x=10", d_call)
+
 
 Note that `backward` works a bit different than the
 mathematical notation. Sometimes the function for the derivative
@@ -84,8 +114,11 @@ above, but things get a bit more interesting when the derivative also
 depends on :math:`x` itself. This is where the context arguments `ctx`
 comes in.
 
-Consider a function `Square`, :math:`f(x) = x^2` that squares x 
-and has derivative :math:`f'(x) = 2 \times x`. We write it in code as::
+Consider a function `Square`, :math:`f(x) = x^2` that squares x
+and has derivative :math:`f'(x) = 2 \times x`. We write it in code as
+
+.. jupyter-execute::
+
 
       class Square(ScalarFunction):
           @staticmethod
@@ -98,6 +131,28 @@ and has derivative :math:`f'(x) = 2 \times x`. We write it in code as::
               x = ctx.saved_values
               f_prime = 2 * x
               return f_prime * d_out
+
+
+.. jupyter-execute::
+
+   def call(x):
+        # You don't need to do this manually
+        # It gets called automatically in `apply`
+        ctx = minitorch.Context()
+        return Square.forward(ctx, x)
+
+   plot_function("Square", call)
+
+
+.. jupyter-execute::
+
+   def d_call(x):
+        ctx = minitorch.Context()
+        Square.forward(ctx, x)
+        return Square.backward(ctx, 1)
+
+   plot_function("d Square", d_call)
+
 
 This type of function requires to explicitly save anything in `forward` that we might need in `backward`.
 This is a code optimization that limits the amount of storage required by the computation process.

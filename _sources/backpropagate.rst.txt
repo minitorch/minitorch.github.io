@@ -96,7 +96,7 @@ Starting from the rightmost arrow, which is passed in as an argument, backpropag
     0. Initialize a queue with the final Variable+derivative
     1. While the queue is not empty, pull a Variable+derivative from the queue:
        a. if the Variable is a leaf, add its final derivative (`_add_deriv`) and loop to (1)
-       b. if the variables is not a leaf, 
+       b. if the Variable is not a leaf, 
           1) call `.chain_rule` on the last function that created it with derivative as :math:`d_{out}`
           2) loop through all the Variables+derivative produced by the chain rule (removing constants)
           3) optional, if the Variable is in the queue (check `.name`), add to its current derivativ; 

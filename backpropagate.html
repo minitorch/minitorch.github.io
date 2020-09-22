@@ -236,7 +236,7 @@ Starting from the rightmost arrow, which is passed in as an argument, backpropag
 <li><p>Initialize a queue with the final Variable+derivative</p></li>
 <li><p>While the queue is not empty, pull a Variable+derivative from the queue:
 a. if the Variable is a leaf, add its final derivative (<cite>_add_deriv</cite>) and loop to (1)
-b. if the variables is not a leaf,</p>
+b. if the Variable is not a leaf,</p>
 <blockquote>
 <div><ol class="arabic simple">
 <li><p>call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span></p></li>

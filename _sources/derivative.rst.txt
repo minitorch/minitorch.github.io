@@ -7,6 +7,15 @@ Let's begin by discussing derivatives in the setting of
 programming. We assume that you have not seen derivatives in a while,
 so we will start slow and develop some notations first.
 
+.. jupyter-execute::
+   :hide-code:
+
+   import sys
+   sys.path.append("../project/")
+   import minitorch
+   from datasets_plotly import plot_function
+   import math
+
 
 Assume we are given a function,
 
@@ -14,14 +23,28 @@ Assume we are given a function,
 
    f(x) = \sin(2 x)
 
+.. jupyter-execute::
+
+   def f(x):
+      return math.sin(2 * x)
+
+   plot_function("sin", f)
+
+
 we can compute a function for its derivative by applying rules from univariate calculus.
-We will use the Lagrange notation where the derivative of a one-argument function :math:`f'` 
+We will use the Lagrange notation where the derivative of a one-argument function :math:`f'`
 as is denoted :math:`f'` i.e.
 
 .. math ::
 
     f'(x) = 2 \times \cos(2 x)
 
+.. jupyter-execute::
+
+   def d_f(x):
+      return 2 * math.cos(2 * x)
+
+   plot_function("d_sin", d_f)
 
 When working with two-argument functions,
 we use subscripts to indicate which argument the derivative applies to. For example,
@@ -40,7 +63,7 @@ function. When available symbolic derivatives are ideal,
 they tell us everything we need to know about the derivative of the
 function.
 
-Visually, derivative functions correspond to slopes of tangent lines in 2D. Let's 
+Visually, derivative functions correspond to slopes of tangent lines in 2D. Let's
 start with this simple function:
 
 .. math ::
@@ -84,7 +107,7 @@ Alternatively, you could imagine approaching x from the other side, which would 
         f'(x) = \lim_{\epsilon \rightarrow 0} \frac{f(x) - f(x- \epsilon)}{\epsilon}
 
 
-You can show that doing both simultaneously yields the best approximation (you probably proved this in high school!): 
+You can show that doing both simultaneously yields the best approximation (you probably proved this in high school!):
 
 
     .. math ::
@@ -125,51 +148,43 @@ We will see that this approach is not a great way to train machine learning mode
 it provides a generic alternative approach to check if your derivative functions are correct, e.g. free :doc:`property_testing`.
 
 
-Here are some examples of Module-0 functions with central difference applied. 
+Here are some examples of Module-0 functions with central difference applied.
 
 .. jupyter-execute::
-   :hide-code:
 
-   import sys
-   sys.path.append("../project/")   
-   import minitorch
-   from datasets_plotly import plot_function
-
-.. jupyter-execute::
-  
    plot_function("sigmoid", minitorch.operators.sigmoid)
 
 .. jupyter-execute::
 
    def d_sigmoid(x):
        return minitorch.central_difference(minitorch.operators.sigmoid, x)
- 
+
    plot_function("Derivative of sigmoid", d_sigmoid)
 
 
-   
+
 .. jupyter-execute::
-  
+
    plot_function("exp", minitorch.operators.exp)
 
 .. jupyter-execute::
 
    def d_exp(x):
        return minitorch.central_difference(minitorch.operators.exp, x)
- 
+
    plot_function("Derivative of exp", d_exp)
 
-   
- 
+
+
 .. jupyter-execute::
-  
+
    plot_function("ReLU", minitorch.operators.relu)
 
 .. jupyter-execute::
 
    def d_relu(x):
        return minitorch.central_difference(minitorch.operators.relu, x)
- 
+
    plot_function("Derivative of ReLU", d_relu)
 
 
@@ -177,14 +192,14 @@ Here are some examples of Module-0 functions with central difference applied.
 
    def times_5(x):
        return minitorch.operators.mul(x, 5)
- 
+
    plot_function("Mul by 5", times_5)
 
-   
+
 
 .. jupyter-execute::
 
    def d_times_5(x):
        return minitorch.central_difference(minitorch.operators.mul, x, 5, arg=0)
- 
+
    plot_function("Derivative of mul by 5", d_times_5)

@@ -33,6 +33,8 @@ And then clone your assignment.
 You will need the files from Assignment 0 so be sure to pull them over
 to your new repo.
 
+
+
 .. toctree::
    :maxdepth: 1
    :glob:
@@ -46,6 +48,16 @@ to your new repo.
 Tasks
 ********
 
+For this module we have implemented the skeleton `tensor.py` file for
+you.  This is a subclass of Variable that is very similar to
+`scalar.py` from the last assignment. Before starting, it is worth
+reading through this file to have a sense of what a Tensor Variable
+does. Each of the following tasks ask you to implement the methods this
+file relies on:
+
+* `tensor_data.py` : Indexing, strides, and storage
+* `tensor_ops.py` : Higher-order tensor operations
+* `tensor_functions.py` : Autodifferentiation-ready functions
 
 
 Tasks 2.1: Tensor Data - Indexing
@@ -100,25 +112,23 @@ the expression at the top of the file and then run the code to create a graph in
 
   ## Run your tensor expression here
   def expression():
-     x = minitorch.tensor([10, 12], (2,))
-     x.requires_grad_(True)
+     x = minitorch.tensor([10, 12], (2,), requires_grad=True)
      x.name = "x"
-   
-     z = minitorch.tensor([10, 12], (2,))
-     z.requires_grad_(True)
+
+     z = minitorch.tensor([10, 12], (2,), requires_grad=True)
      z.name = "z"
 
      y = x * z + 10.0
      y.name = "y"
      return y
 
->>> python minitorch/show_expression.py
+>>> python project/show_expression.py
 
 .. image:: expgraph2.png
            :align: center
-                
+
 .. todo::
-   Add functions in `minitorch/tensor_ops.py` and `minitorch/tensor.py` for each of the following, and pass tests marked as `task2_2`.
+   Add functions in `minitorch/tensor_ops.py` and `minitorch/tensor_functions.py` for each of the following, and pass tests marked as `task2_2`.
 
 
 .. autofunction:: minitorch.tensor_map
@@ -131,9 +141,12 @@ the expression at the top of the file and then run the code to create a graph in
 .. autofunction:: minitorch.TensorFunctions.Sigmoid.forward
 .. autofunction:: minitorch.TensorFunctions.ReLU.forward
 .. autofunction:: minitorch.TensorFunctions.Log.forward
+.. autofunction:: minitorch.TensorFunctions.Exp.forward
 .. autofunction:: minitorch.TensorFunctions.Mean.forward
 .. autofunction:: minitorch.TensorFunctions.Copy.forward
 .. autofunction:: minitorch.TensorFunctions.LT.forward
+.. autofunction:: minitorch.TensorFunctions.EQ.forward
+.. autofunction:: minitorch.TensorFunctions.Permute.forward
 
 
 Tasks 2.3: Gradients and Autograd
@@ -153,15 +166,16 @@ they pass the tests.
 .. todo::
       Add backward functions `minitorch/tensor_ops.py` for each of the following, and pass tests marked as `task2_3`.
 
-
 .. autofunction:: minitorch.TensorFunctions.Mul.backward
 .. autofunction:: minitorch.TensorFunctions.Sigmoid.backward
 .. autofunction:: minitorch.TensorFunctions.ReLU.backward
 .. autofunction:: minitorch.TensorFunctions.Log.backward
+.. autofunction:: minitorch.TensorFunctions.Exp.backward
 .. autofunction:: minitorch.TensorFunctions.Mean.backward
 .. autofunction:: minitorch.TensorFunctions.Copy.backward
 .. autofunction:: minitorch.TensorFunctions.LT.backward
-
+.. autofunction:: minitorch.TensorFunctions.EQ.backward
+.. autofunction:: minitorch.TensorFunctions.Permute.backward
 
 
 Tasks 2.4: Tensor Broadcasting
@@ -182,8 +196,8 @@ Tasks 2.4: Tensor Broadcasting
 .. autofunction:: minitorch.shape_broadcast
 .. autofunction:: minitorch.broadcast_index
 
-You will also need to revist these functions to make sure that broadcast index is used. 
-                  
+You will also need to revist these functions to make sure that broadcast index is used.
+
 .. autofunction:: minitorch.tensor_map
 .. autofunction:: minitorch.tensor_zip
 .. autofunction:: minitorch.tensor_reduce
@@ -197,7 +211,7 @@ If your code works you should now be able to move on to the tensor
 training script in `project/run_tensor.py`.  This code runs the same
 basic training setup as in :doc:`module1`, but now utilize your tensor
 code. We have left two of the functions blank for you to implement with
-your tensor code. 
+your tensor code.
 
 
 .. todo::
@@ -205,7 +219,9 @@ your tensor code.
    do exactly the same thing as the corresponding functions in `project/run_scalar.py`,
    but now use the tensor code base.
 
-   
-   Train a tensor model and add your results to the README. Also record the time per epoch
-   reported by the trainer. (It is okay if it is slow).
 
+   * Train a tensor model and add your results for all datasets to the
+   README.
+
+   * Record the time per epoch reported by the trainer. (It
+   is okay if it is slow).

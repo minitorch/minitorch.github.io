@@ -228,7 +228,7 @@ Then carefully read the Guide on
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> -- arbitrary function from n-scalar args to one value</p></li>
-<li><p><strong>*vals</strong> (<em>floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span></p></li>
+<li><p><strong>*vals</strong> (<em>list of floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span></p></li>
 <li><p><strong>arg</strong> (<em>int</em>) -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
 <li><p><strong>epsilon</strong> (<em>float</em>) -- a small constant</p></li>
 </ul>
@@ -257,21 +257,17 @@ Each of these requires wiring the internal Python operator to the correct
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.forward">
 <code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.forward" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Forward call, compute f(<cite>inputs</cite>)</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- A special container object to save
 any information that may be needed for the call to backward.</p></li>
-<li><p><strong>*inputs</strong> (<em>list of numbers</em>) -- Numerical arguments.</p></li>
+<li><p><strong>*inputs</strong> (<em>list of floats</em>) -- Numerical arguments.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The computation of the function <span class="math notranslate nohighlight">\(f\)</span></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>number</p>
-</dd>
 </dl>
+<p>Should return float the computation of the function <span class="math notranslate nohighlight">\(f\)</span></p>
 </dd></dl>
 
 <p>Read the example ScalarFunctions that we have implemented for guidelines. You may find it useful to reuse the operators from Module 0.</p>
@@ -397,7 +393,6 @@ This function should be able to backward process a function by passing it in a c
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>cls</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">FunctionBase</span></code>) -- The Function</p></li>
 <li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- The context from running forward</p></li>
 <li><p><strong>inputs</strong> (<em>list of args</em>) -- The args that were passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">FunctionBase.apply()</span></code> (e.g. <span class="math notranslate nohighlight">\(x, y\)</span>)</p></li>
 <li><p><strong>d_output</strong> (<em>number</em>) -- The <cite>d_output</cite> value in the chain rule.</p></li>
@@ -426,20 +421,16 @@ This function should be able to backward process a function by passing it in a c
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.backward">
 <code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
+<dd><p>Backward call, compute f'_{x_i}(<cite>inputs</cite>) * d_out</p>
+<dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
-<li><p><strong>d_out</strong> (<em>number</em>) -- </p></li>
+<li><p><strong>d_out</strong> (<em>float</em>) -- <span class="math notranslate nohighlight">\(d_out\)</span> term in chain rule.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>numbers</p>
-</dd>
 </dl>
+<p>Should return the computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
 </dd></dl>
 
 <p>Read the example ScalarFunctions that we have implemented for guidelines. Feel free to also consult <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiation_rules">differentiation rules</a> if you forget how these identities work.</p>
@@ -453,13 +444,14 @@ and pass tests marked as <cite>task1_4</cite>.</p>
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">final_variable_with_deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a breadth-first search on the computation graph in order to
 backpropagate derivatives to the leaves.</p>
-<p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm</p>
+<p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>final_variable_with_deriv</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code>) -- The final variable
 and its derivative that we want to propagate backward to the leaves.</p>
 </dd>
 </dl>
+<p>No return. Should write to its results to the derivative values of each leaf.</p>
 </dd></dl>
 
 <dl class="py function">

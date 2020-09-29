@@ -221,7 +221,7 @@ your tensor code.
 
 
    * Train a tensor model and add your results for all datasets to the
-   README.
+     README.
 
    * Record the time per epoch reported by the trainer. (It
-   is okay if it is slow).
+     is okay if it is slow).

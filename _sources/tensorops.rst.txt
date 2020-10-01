@@ -3,11 +3,11 @@ Operations
 ======================
 
 
-Now that we have a tensor class, we would like to reimplement all
-our mathematical operations on top of this framework.
+Now we would like to reimplement all
+our mathematical operations on tensors.
 The goal is to make this feel
 simple and intuitive to users of the library. We can break
-these operations down in unary transformations. ::
+these operations down as unary transformations::
 
 
 
@@ -19,7 +19,7 @@ these operations down in unary transformations. ::
   ...
 
 
-Binary transformations ::
+Binary transformations::
   
   # b) Return a new tensor where
   # each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`
@@ -28,7 +28,7 @@ Binary transformations ::
   tensor_a - tensor_b
   ...
 
-And reductions ::
+And reductions::
   
   # c) Return a new tensor where dim-1 is size 1 and represents
   # the sum/mean over dim-1 in `tensor_a`
@@ -40,23 +40,23 @@ And reductions ::
 We could implement each of these operations individually, but we can
 also be a bit lazy and note the structural similarities. If we squint,
 these operations look very much like the higher-order functions that
-we implemented in :doc:`module0` :
+we implemented in :doc:`module0`:
 
 
 
 
-* Operation a / map: These operations all just touch each of the
-  positions of the tensor individually. They don't need to deal with
+* Operation a / map: These operations just touch each of the
+  positions in the tensor individually. They don't need to deal with
   other positions or know anything about the shape or size of the tensor.
-  We can view these operations as applying the following transformation.
+  We can view these operations as applying the following transformation:
 
 .. image:: figs/Ops/map.png
            :align: center
 
-* Operation b / zip: These operations need only to pair operations between
-  neighboring tensors. If we assume the tensors are the same size and shape,
-  then this application simply aligns the two tensors and applies an operator
-  between each pair
+* Operation b / zip: These operations only need to pair operations between
+  input tensors. If we assume the tensors have the same size and shape,
+  this type of operation simply aligns these two tensors and applies an operator
+  to each pair of elements:
 
 
 .. image:: figs/Ops/zip.png
@@ -64,15 +64,15 @@ we implemented in :doc:`module0` :
 
 * Operation c / reduce: These operations need to group together cells within a single tensor.
   We can think of there being an implied `reduce` shape that is eliminated in the process of the
-  output construction. For instance, in this picture, we start with shape (3, 2) and create shape
-  (1, 2). Implicitly we are reducing over a shape of (3, 1) for each output value.
+  output construction. For instance, in the example below, we start with an input of shape (3, 2) and create 
+  an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape (3, 1) for each element in the output.
 
 .. image:: figs/Ops/reduce.png
            :align: center
 
 
-In the next module we will discuss efficient implementations of each of these operators.
-For now, we note that they can be implemented by enumerating over all indices of the tensors
-and applying one of the operators from :doc:`module0`. This approach can used to implement
-key tensor operations, without doing more than implementing these above higher-order methods. 
+In the next module, we will discuss efficient implementation of the above operations.
+For now, they can be implemented by enumerating all elements in the input tensors
+and applying one of the operators from :doc:`module0`. This approach can be used to implement
+key tensor operations, without doing more than implementing the above higher-order functions. 
 

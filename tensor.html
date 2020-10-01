@@ -174,85 +174,85 @@
             
   <div class="section" id="tensor-variables">
 <h1>Tensor Variables<a class="headerlink" href="#tensor-variables" title="Permalink to this headline">¶</a></h1>
-<p>Next we consider autodifferentiation in the tensor framework. We have
-now moved from scalars and derivatives to vector, matrices, and
-tensors.  This means <cite>multivariate calculus</cite> and can bring into play
-somewhat scary terminology. However, most of what we actually need to
-do will not require complicated terminology or much technical math. In
-fact, excepting some name changes, we have already built almost
+<p>Next, we consider autodifferentiation in the tensor framework. We have
+now moved from scalars and derivatives to vectors, matrices, and
+tensors.  This means <cite>multivariate calculus</cite> can bring into play
+somewhat scary terminology. However, most of what we actually does not
+require complicated terminology or much technical math. In
+fact, except some name changes, we have already built almost
 everything we need in <a class="reference internal" href="module1.html"><span class="doc">Module 1 - Auto-Differentiation</span></a>.</p>
-<p>The key idea is that just as we had <cite>Scalar</cite> and <cite>ScalarFunction</cite>, we need to
-construct a <cite>Tensor</cite> and <cite>TensorFunction</cite> (which we just call <cite>Function</cite>).
+<p>The key idea is, just as we had <cite>Scalar</cite> and <cite>ScalarFunction</cite>, we need to
+construct <cite>Tensor</cite> and <cite>TensorFunction</cite> (which we just call <cite>Function</cite>).
 These new objects behave very similar to their counterparts:</p>
 <ol class="loweralpha simple">
 <li><p>Tensors cannot be operated on directly, but need to be transformed through a Function.</p></li>
-<li><p>Functions must implement both a forward method and also a backward method.</p></li>
-<li><p>These transformations are tracked, which allow backpropagation through the chain-rule.</p></li>
+<li><p>Functions must implement both <cite>forward</cite> and <cite>backward</cite>.</p></li>
+<li><p>These transformations are tracked, which allow backpropagation through the chain rule.</p></li>
 </ol>
 <p>All of this machinery should work out of the box.</p>
 <p>The main new terminology to know is <cite>gradient</cite>. Just as a tensor is a
 multidimensional array of scalars, a gradient is a multidimensional
-array of derivatives for these scalars.</p>
+array of derivatives for these scalars. Consider the following code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assignment 1 notation</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-<span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">derivative</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">c</span><span class="o">.</span><span class="n">derivative</span>
 
 
 <span class="c1"># Assignment 2 notation</span>
 <span class="n">tensor1</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">g</span><span class="p">(</span><span class="n">tensor1</span><span class="p">)</span>
 <span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
-
 <span class="c1"># shape (3,)</span>
 <span class="n">tensor1</span><span class="o">.</span><span class="n">grad</span>
 </pre></div>
 </div>
 <p>The gradient of <cite>tensor1</cite> is a tensor that holds the derivatives of
-each of its values. The other place that gradients come into play is
-that backward no longer takes <span class="math notranslate nohighlight">\(d_{out}\)</span> as an argument, but now
-takes <span class="math notranslate nohighlight">\(grad_{out}\)</span>. Again, this is just a tensor of all the
-<span class="math notranslate nohighlight">\(d_{out}\)</span> corresponding to the output tensor.</p>
+each of its elements. Another place that gradients come into play is
+that <cite>backward</cite> no longer takes <span class="math notranslate nohighlight">\(d_{out}\)</span> as an argument, but now
+takes <span class="math notranslate nohighlight">\(grad_{out}\)</span> which is just a tensor consisting of all the
+<span class="math notranslate nohighlight">\(d_{out}\)</span>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>(You will find lots of different notation for
-gradients and multivariate terminology. For this assignment, I ask
-that you ignore it and stick to everything you know about derivatives.
+<p>You will find lots of different notation for
+gradients and multivariate terminology. For this Module, you are
+supposed to ignore it and stick to everything you know about derivatives.
 It turns out that you can do most of machine learning without ever
-thinking in higher dimensions.)</p>
+thinking in higher dimensions.</p>
 </div>
-<p>If you think about a gradient and <span class="math notranslate nohighlight">\(grad_{out}\)</span> in this way (tensor of derivatives <span class="math notranslate nohighlight">\(d_{out}\)</span>),
-you can then see how we can easily compute the gradient of each tensor
-operations be using univariate rules.</p>
+<p>If you think about gradient and <span class="math notranslate nohighlight">\(grad_{out}\)</span> in this way
+(i.e. tensors of derivatives and <span class="math notranslate nohighlight">\(d_{out}\)</span>),
+then you can see how we can easily compute the gradient for tensor
+operations using univariate rules.</p>
 <ol class="arabic simple">
-<li><p><strong>map</strong>. Given a tensor, map applies a univariate operation to each scalar
-position individually. For a scalar <span class="math notranslate nohighlight">\(x\)</span>, it computes
-<span class="math notranslate nohighlight">\(g(x)\)</span>.  Therefore, from assignment 1, we know that the
-derivative <span class="math notranslate nohighlight">\(f(g(x))\)</span> is equal to <span class="math notranslate nohighlight">\(g'(x) \times d_{out}\)</span>. This
-means to compute the backward gradient, we only need to compute the
-derivative for each position and apply a <cite>mul</cite> map.</p></li>
+<li><p><strong>map</strong>. Given a tensor, <cite>map</cite> applies a univariate operation to each scalar
+position individually. For a scalar <span class="math notranslate nohighlight">\(x\)</span>, consider computing
+<span class="math notranslate nohighlight">\(g(x)\)</span>.  From Module 1, we know that the
+derivative of <span class="math notranslate nohighlight">\(f(g(x))\)</span> is equal to <span class="math notranslate nohighlight">\(g'(x) \times d_{out}\)</span>.
+To compute the gradient in <cite>backward</cite>, we only need to compute the
+derivative for each scalar position and then apply a <cite>mul</cite> map.</p></li>
 </ol>
 <img alt="_images/map back.png" class="align-center" src="_images/map back.png" />
 <ol class="arabic simple" start="2">
-<li><p><strong>zip</strong>. Given two tensors, zip applies a fixed operation to each
-scalar position as a pair. For two scalars <span class="math notranslate nohighlight">\(x\)</span> and
-<span class="math notranslate nohighlight">\(y\)</span>, it computes <span class="math notranslate nohighlight">\(g(x, y)\)</span>.  Therefore, from assignment
-1, we know that the derivative <span class="math notranslate nohighlight">\(f(g(x, y))\)</span> is equal to
-<span class="math notranslate nohighlight">\(g_x'(x, y) \times d_{out}\)</span> and <span class="math notranslate nohighlight">\(g_y'(x, y) \times d_{out}\)</span>. This
-means to compute the gradient, we only need to compute the
-derivative for each position and <cite>mul</cite> map.</p></li>
+<li><p><strong>zip</strong>. Given two tensors, <cite>zip</cite> applies a binary operation to each
+pair of scalars. For two scalars <span class="math notranslate nohighlight">\(x\)</span> and
+<span class="math notranslate nohighlight">\(y\)</span>, consider computing <span class="math notranslate nohighlight">\(g(x, y)\)</span>.  From Module
+1, we know that the derivative of <span class="math notranslate nohighlight">\(f(g(x, y))\)</span> is equal to
+<span class="math notranslate nohighlight">\(g_x'(x, y) \times d_{out}\)</span> and <span class="math notranslate nohighlight">\(g_y'(x, y) \times d_{out}\)</span>.
+Thus to compute the gradient, we only need to compute the
+derivative for each scalar position and apply a <cite>mul</cite> map.</p></li>
 </ol>
 <img alt="_images/zip back.png" class="align-center" src="_images/zip back.png" />
 <ol class="arabic simple" start="3">
-<li><p><strong>reduce</strong>. Given a tensor, reduce applies a fixed aggregation
+<li><p><strong>reduce</strong>. Given a tensor, <cite>reduce</cite> applies an aggregation
 operation to one dimension. For simplicity, let's consider sum-based
-reductions.  For scalars <span class="math notranslate nohighlight">\(x_1\)</span> to <span class="math notranslate nohighlight">\(x_n\)</span>, it computes
-<span class="math notranslate nohighlight">\(x_1 + x_2 + \ldots\)</span>.  For any <span class="math notranslate nohighlight">\(x\)</span> value this
-yields 1. Therefore, the derivative for any position is simply the
-derivative passed backward <span class="math notranslate nohighlight">\(d_{out}\)</span>. This means to compute the
-gradient, we only need to send the derivative to each
+reductions.  For scalars <span class="math notranslate nohighlight">\(x_1\)</span> to <span class="math notranslate nohighlight">\(x_n\)</span>, consider computing
+<span class="math notranslate nohighlight">\(x_1 + x_2 + \ldots + x_n\)</span>.  For any <span class="math notranslate nohighlight">\(x_i\)</span> value, the derivative is 1.
+Therefore, the derivative for any position computed in <cite>backward</cite> is simply
+<span class="math notranslate nohighlight">\(d_{out}\)</span>. This means to compute the
+gradient, we only need to send <span class="math notranslate nohighlight">\(d_{out}\)</span> to each
 position. (For other reduce operations such as <cite>product</cite>, you get
-different expansions, but these can be calculated just by taking
+different expansions, which can be calculated just by taking
 derivatives).</p></li>
 </ol>
 <img alt="_images/reduce back.png" class="align-center" src="_images/reduce back.png" />

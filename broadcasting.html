@@ -99,7 +99,10 @@
 <li class="toctree-l2"><a class="reference internal" href="tensordata.html">Tensors</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tensorops.html">Operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor Variables</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Broadcasting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Broadcasting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="module2.html#tasks">Tasks</a></li>
 </ul>
 </li>
@@ -257,6 +260,25 @@ output will be. For example:</p>
 <li><p>Broadcasting is <strong>only</strong> about shapes. It does not take strides into account in any way. It is purely a high-level protocol.</p></li>
 <li><p>Broadcasting has some impact on the <a href="#id1"><span class="problematic" id="id2">`</span></a>backward <a href="#id3"><span class="problematic" id="id4">`</span></a>pass. We will discuss some in the code base, but it is not required for any of the tasks.</p></li>
 </ol>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Tensor-Scalar operations can be easily written using broadcasting for tensors of any dimension.</p></li>
+</ul>
+<img alt="_images/scalar.png" class="align-center" src="_images/scalar.png" />
+<ul class="simple">
+<li><p>Matrix-vector operations can be written using broadcasting, but you need to be careful to make sure that the vector is shaped such the the dimensions align. This can be done with <cite>view</cite> calls.</p></li>
+</ul>
+<img alt="_images/vector1.png" class="align-center" src="_images/vector1.png" />
+<ul class="simple">
+<li><p>Matrix-matrix operations can be written using broadcasting even when the dimensions don't align. Here is an example of that process.</p></li>
+</ul>
+<img alt="_images/threed.png" class="align-center" src="_images/threed.png" />
+<ul class="simple">
+<li><p>Matrix multiplication can be written in this style. (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.</p></li>
+</ul>
+<img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
+</div>
 </div>
 
 

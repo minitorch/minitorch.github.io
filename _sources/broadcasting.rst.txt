@@ -16,7 +16,7 @@ scalar constant to every position::
 
 Intuitively, we would like to interpret this expression as the standard vector+scalar:
 adding 10 to each position.
-However, the above operation will fail because of shape mistach: we are 
+However, the above operation will fail because of shape mistach: we are
 adding a tensor of shape(1,) to `vector1` which has shape (3,).
 
 We could ask users to create a tensor of the same shape instead, but it is both
@@ -27,7 +27,7 @@ annoying and, more importantly, inefficient::
 
 `Broadcasting` is a protocol that allows us to automatically interpret the frist expression as implying
 the second one. Inside `zip`, we pretend that 10 is a vector of
-shape (3,) when zipping it with a vector of shape (3,). 
+shape (3,) when zipping it with a vector of shape (3,).
 Again, this is just an interpretation: we never actually create this vector.
 
 
@@ -57,7 +57,8 @@ twice, we can interpret the above expression as an efficient version of::
 
 
 .. note::
-   **Rule 2**: Extra dimensions of shape 1 can be added to a tensor to 
+
+   **Rule 2**: Extra dimensions of shape 1 can be added to a tensor to
    ensure the same number of dimensions with another tensor.
 
 
@@ -66,7 +67,9 @@ is not an issue in the above example but could become an issue in more
 complicated cases. Thus we introduce another rule::
 
 .. note::
+
    **Rule 3**: Any extra dimension of size 1 can only be implicitly added on the left side of the shape.
+
 
 This rule has the impact of making the process easy to follow and replicate. You always know what the shape of the final
 output will be. For example::
@@ -83,9 +86,9 @@ We can apply broadcasting as many times as we want::
   # The result has shape (3, 2)
   tensor1.view(1, 2) + tensor2.view(3, 1)
 
-  
+
 .. image:: figs/Ops/zip\ broad.png
-           
+
 .. image:: figs/Ops/zip\ broad\ back.png
 
 Here is a more complicated example::
@@ -100,5 +103,29 @@ We end this guide with two important notes:
 
 2) Broadcasting has some impact on the `backward `pass. We will discuss some in the code base, but it is not required for any of the tasks.
 
-  
 
+
+Examples
+---------
+
+
+* Tensor-Scalar operations can be easily written using broadcasting for tensors of any dimension.
+
+.. image:: figs/Broadcast/scalar.png
+           :align: center
+
+* Matrix-vector operations can be written using broadcasting, but you need to be careful to make sure that the vector is shaped such the the dimensions align. This can be done with `view` calls.
+
+
+.. image:: figs/Broadcast/vector.png
+           :align: center
+
+* Matrix-matrix operations can be written using broadcasting even when the dimensions don't align. Here is an example of that process.
+
+.. image:: figs/Broadcast/threed.png
+           :align: center
+
+* Matrix multiplication can be written in this style. (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.
+
+.. image:: figs/Broadcast/matmul.png
+           :align: center

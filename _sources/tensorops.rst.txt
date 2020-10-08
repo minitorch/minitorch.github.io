@@ -20,7 +20,7 @@ these operations down as unary transformations::
 
 
 Binary transformations::
-  
+
   # b) Return a new tensor where
   # each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`
   tensor_a + tensor_b
@@ -29,14 +29,17 @@ Binary transformations::
   ...
 
 And reductions::
-  
+
   # c) Return a new tensor where dim-1 is size 1 and represents
   # the sum/mean over dim-1 in `tensor_a`
   tensor_a.sum(1)
   tensor_a.mean(1)
   ...
 
-  
+Core Operations
+---------------
+
+
 We could implement each of these operations individually, but we can
 also be a bit lazy and note the structural similarities. If we squint,
 these operations look very much like the higher-order functions that
@@ -52,7 +55,6 @@ we implemented in :doc:`module0`:
 
 .. image:: figs/Ops/map.png
            :align: center
-
 * Operation b / zip: These operations only need to pair operations between
   input tensors. If we assume the tensors have the same size and shape,
   this type of operation simply aligns these two tensors and applies an operator
@@ -64,15 +66,51 @@ we implemented in :doc:`module0`:
 
 * Operation c / reduce: These operations need to group together cells within a single tensor.
   We can think of there being an implied `reduce` shape that is eliminated in the process of the
-  output construction. For instance, in the example below, we start with an input of shape (3, 2) and create 
+  output construction. For instance, in the example below, we start with an input of shape (3, 2) and create
   an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape (3, 1) for each element in the output.
 
 .. image:: figs/Ops/reduce.png
            :align: center
 
+Reductions
+---------------
 
-In the next module, we will discuss efficient implementation of the above operations.
-For now, they can be implemented by enumerating all elements in the input tensors
-and applying one of the operators from :doc:`module0`. This approach can be used to implement
-key tensor operations, without doing more than implementing the above higher-order functions. 
 
+Reduction is a bit more complex than the others, so lets discuss how it is implemented.
+
+Reductions can specify an dimension (or axis) that tells us which elements to reduce. The
+reduction is then applied along that dimension. For example if we `reduce` dimension 0 we get the
+following reduction.
+
+.. image:: figs/Reduce/sum0.png
+           :align: center
+
+This reduction changes our shape from (3, 2) to (1, 2), i.e. `reducing` the size of 0-dim. Another way you can view this is as 2 parallel operations, both of which apply a Module-0 style reduce along the 0-dim. We can look at the reduction shape of this procedure (3, 1).
+
+Applying a reduction along dim 1 creates a different reduction shape which is applied 3 times. Here is what that looks like,
+
+.. image:: figs/Reduce/sum1.png
+           :align: center
+
+
+The same approach can be applied in higher dimensions. If we want to sum over one of the dimensions we just create the reduction shape and apply it,
+
+.. image:: figs/Reduce/sum2.png
+           :align: center
+
+When you implement, think about enumerating over positions in the final tensor, and then applying the reduction shape to get the indices over the original tensor,
+
+.. image:: figs/Reduce/implement.png
+           :align: center
+
+Finally, there is a special case reduction where we reduce over the entire tensor. You can think of this as creating a reduction shape over the full tensor and then viewing the result as a scalar.
+
+
+.. image:: figs/Reduce/sum.png
+           :align: center
+
+In the next module, we will discuss efficient implementation of the
+above operations.  For now, they can be implemented by slow but
+correct loops over all elements in the input tensors. This approach
+can be used to implement key tensor operations, without doing more
+than implementing the above higher-order functions.

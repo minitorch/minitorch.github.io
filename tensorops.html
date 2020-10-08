@@ -97,7 +97,11 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module2.html">Module 2 - Tensors</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tensordata.html">Tensors</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Operations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-operations">Core Operations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reductions">Reductions</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tensor.html">Tensor Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="broadcasting.html">Broadcasting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module2.html#tasks">Tasks</a></li>
@@ -204,6 +208,8 @@ these operations down as unary transformations:</p>
 <span class="o">...</span>
 </pre></div>
 </div>
+<div class="section" id="core-operations">
+<h2>Core Operations<a class="headerlink" href="#core-operations" title="Permalink to this headline">¶</a></h2>
 <p>We could implement each of these operations individually, but we can
 also be a bit lazy and note the structural similarities. If we squint,
 these operations look very much like the higher-order functions that
@@ -229,10 +235,29 @@ output construction. For instance, in the example below, we start with an input 
 an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape (3, 1) for each element in the output.</p></li>
 </ul>
 <img alt="_images/reduce.png" class="align-center" src="_images/reduce.png" />
-<p>In the next module, we will discuss efficient implementation of the above operations.
-For now, they can be implemented by enumerating all elements in the input tensors
-and applying one of the operators from <a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a>. This approach can be used to implement
-key tensor operations, without doing more than implementing the above higher-order functions.</p>
+</div>
+<div class="section" id="reductions">
+<h2>Reductions<a class="headerlink" href="#reductions" title="Permalink to this headline">¶</a></h2>
+<p>Reduction is a bit more complex than the others, so lets discuss how it is implemented.</p>
+<p>Reductions can specify an dimension (or axis) that tells us which elements to reduce. The
+reduction is then applied along that dimension. For example if we <cite>reduce</cite> dimension 0 we get the
+following reduction.</p>
+<img alt="_images/sum0.png" class="align-center" src="_images/sum0.png" />
+<p>This reduction changes our shape from (3, 2) to (1, 2), i.e. <cite>reducing</cite> the size of 0-dim. Another way you can view this is as 2 parallel operations, both of which apply a Module-0 style reduce along the 0-dim. We can look at the reduction shape of this procedure (3, 1).</p>
+<p>Applying a reduction along dim 1 creates a different reduction shape which is applied 3 times. Here is what that looks like,</p>
+<img alt="_images/sum1.png" class="align-center" src="_images/sum1.png" />
+<p>The same approach can be applied in higher dimensions. If we want to sum over one of the dimensions we just create the reduction shape and apply it,</p>
+<img alt="_images/sum2.png" class="align-center" src="_images/sum2.png" />
+<p>When you implement, think about enumerating over positions in the final tensor, and then applying the reduction shape to get the indices over the original tensor,</p>
+<img alt="_images/implement.png" class="align-center" src="_images/implement.png" />
+<p>Finally, there is a special case reduction where we reduce over the entire tensor. You can think of this as creating a reduction shape over the full tensor and then viewing the result as a scalar.</p>
+<img alt="_images/sum.png" class="align-center" src="_images/sum.png" />
+<p>In the next module, we will discuss efficient implementation of the
+above operations.  For now, they can be implemented by slow but
+correct loops over all elements in the input tensors. This approach
+can be used to implement key tensor operations, without doing more
+than implementing the above higher-order functions.</p>
+</div>
 </div>
 
 

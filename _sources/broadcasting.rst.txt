@@ -125,7 +125,7 @@ Examples
 .. image:: figs/Broadcast/threed.png
            :align: center
 
-* Matrix multiplication can be written in this style. (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.
+* Matrix multiplication can be written in this style, here is :math:`(B x A^T)` where A is 3 x 2 and B is 2 x 2 . . (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.
 
 .. image:: figs/Broadcast/matmul.png
            :align: center

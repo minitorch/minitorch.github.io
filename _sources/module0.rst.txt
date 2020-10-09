@@ -73,7 +73,7 @@ Task 0.2: Testing and Debugging
 
 We ask you to implement property tests for your operators from Task 0.1. These
 tests should ensure that your functions not only work but also obey
-high-level mathematical properties for any input. 
+high-level mathematical properties for any input.
 Note that you need to change arguments for those test functions.
 
 

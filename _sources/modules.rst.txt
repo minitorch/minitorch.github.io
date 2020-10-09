@@ -19,9 +19,9 @@ On the programming side, `Modules` have become a popular paradigm to
 group parameters together to make them easy to manage, access, and
 address.  There is nothing specific to machine learning about this
 setup (and everything in MiniTorch could be done without modules), but they
-make life easier and code more organized. 
+make life easier and code more organized.
 
-First, let's define a Parameter. For now, we will just think of Parameter 
+First, let's define a Parameter. For now, we will just think of Parameter
 as a holder. It is just a special object that stores a value.
 
 
@@ -31,7 +31,7 @@ as a holder. It is just a special object that stores a value.
 
 Parameters become more interesting when they are grouped with
 `Modules`. Modules provide a way of storing and finding these
-parameters. Let's look at the `Module` class to see how this works. 
+parameters. Let's look at the `Module` class to see how this works.
 
 
 Modules are a recursive tree-shaped data structure. Each module can
@@ -43,11 +43,11 @@ assignment.
 Here is an example of the simplest usage of a module
 
 .. jupyter-execute::
-   
+
       from minitorch import *
       class OtherModule(Module):
           pass
-   
+
       class MyModule(Module):
           def __init__(self, arg):
               # Initialize the super-class (so it can spy)
@@ -120,5 +120,5 @@ extract the flattened parameters
 Additionally, a module can have a :attr:`mode` indicating how it is
 currently operated. The mode should propagate to all of its
 child modules. For simplicity, we only consider the train and eval mode.
-               
+
 .. autoclass:: minitorch.Module

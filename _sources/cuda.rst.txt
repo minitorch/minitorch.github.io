@@ -34,7 +34,7 @@ on to this notebook
 
 You can then run your tests with the following command.
 
->>> cd {{PATH}}; git pull origin master; python -m pytest -m test3_3 
+>>> cd {{PATH}}; git pull origin master; python -m pytest -m test3_3
 
 
 
@@ -61,10 +61,10 @@ But it has to be *constant* size.
 .. image:: figs/gpu/local\ mem@3x.png
            :align: center
            :width: 400px
-                   
-                   
+
+
 Threads hang out together in `blocks`. Think of these like a little
-neighborhood. 
+neighborhood.
 You can determine the size of the blocks but there are a
 lot of restrictions. We'll assume there are less than 32 threads in a
 block.
@@ -81,11 +81,11 @@ where, the length and width of the neighborhood are the block size.
 
 
 Each thread knows exactly where it is in the block. It gets this information
-in local variables telling it the `thread index`. 
-                   
+in local variables telling it the `thread index`.
+
 .. image:: figs/gpu/threadid@3x.png
            :align: center
-                   
+
 
 Threads on the same block can also talk to each other through `shared
 memory`.  This is another constant chunk of memory that is associated
@@ -95,7 +95,7 @@ with the block and can be accessed and written to by all of these threads.
 
 
 The blocks come together to form a `grid`. Each of the blocks is exactly the same size and shape
-and all have their own shared memory. Each thread also knows its position in the global grid. 
+and all have their own shared memory. Each thread also knows its position in the global grid.
 
 
 .. image:: figs/gpu/blockid@3x.png
@@ -103,10 +103,10 @@ and all have their own shared memory. Each thread also knows its position in the
 For instance, we can compute the global position for `x, y` as::
 
   x = cuda.blockIdx.x * cuda.blockDim.x + cuda.threadIdx.x
-  y = cuda.blockIdx.y * cuda.blockDim.y + cuda.threadIdx.y 
+  y = cuda.blockIdx.y * cuda.blockDim.y + cuda.threadIdx.y
 
-  
-           
+
+
 
 Now here is the interesting part. When you write code for CUDA, you have to code all of the threads with the same code at the same time. Each thread behaves in lockstep running the same function.
 
@@ -119,13 +119,13 @@ In NUMBA you can write the thread instructions as a single function . ::
     # Helper function to call in CUDA
     @cuda.jit(device=True)
     def times(a, b):
-      
+
        return a * b
-  
+
     # Main cuda launcher
     @cuda.jit()
     def my_func(in, out):
-        # Create some local memory  
+        # Create some local memory
         local = cuda.local.array(5)
 
         # Find my position.
@@ -135,7 +135,7 @@ In NUMBA you can write the thread instructions as a single function . ::
         # Compute some information
         local[1] = 10
 
-        # Compute some global value  
+        # Compute some global value
         out[x, y] = times(in[x, y], local[1])
 
 
@@ -156,7 +156,7 @@ some of the threads might want to compute values that are outside the memory of 
     # Main cuda launcher
     @cuda.jit()
     def my_func(in, out):
-        # Create some local memory  
+        # Create some local memory
         local = cuda.local.array(5)
 
         # Find my position.
@@ -172,4 +172,4 @@ some of the threads might want to compute values that are outside the memory of 
              out[x, y] = times(in[x, y], local[1])
 
 
-           
+

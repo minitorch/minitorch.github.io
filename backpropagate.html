@@ -182,75 +182,107 @@
 operation.  The chain rule tells us how to compute the derivative of two
 sequential operations.  In this section, we show how to use these to
 compute the derivative for an arbitrary series of operations.</p>
-<p>The underlying approach we will use is a breadth-first search over the computation
-graph constructed by Variables and Functions. Before going over the algorithm,
-let's work through a specific example step by step.</p>
+<p>The underlying approach we will use is a breadth-first search over the
+computation graph constructed by Variables and Functions. Before going
+over the algorithm, let's work through a specific example step by
+step.</p>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Assume we have Variables <span class="math notranslate nohighlight">\(x,y\)</span> and a Function <span class="math notranslate nohighlight">\(h(x,y)\)</span>. We want to compute
-the derivatives <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>.</p>
+<p>Assume we have Variables <span class="math notranslate nohighlight">\(x,y\)</span> and a Function <span class="math notranslate nohighlight">\(h(x,y)\)</span>. We
+want to compute the derivatives <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span> and <span class="math notranslate nohighlight">\(h'_y(x,
+y)\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
 z &amp;=&amp; x \times y \\
 h(x, y) &amp;=&amp; \log(z) + \exp(z)
 \end{eqnarray*}\end{split}\]</div>
-<p>We assume x, +, log, and exp are all implemented as ScalarFunctions which can store
-their history. This means that the final output Variable has constructed a graph of its history
-that looks like this:</p>
+<p>We assume x, +, log, and exp are all implemented as ScalarFunctions
+which can store their history. This means that the final output
+Variable has constructed a graph of its history that looks like this:</p>
 <img alt="_images/backprop1.png" class="align-center" src="_images/backprop1.png" />
-<p>Here, starting from the left, the arrows represent Variables <span class="math notranslate nohighlight">\(x,y\)</span>, then <span class="math notranslate nohighlight">\(z, z\)</span>, then <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span>, and finally <span class="math notranslate nohighlight">\(h(x, y)\)</span>. Forward computation proceeds left-to-right.</p>
-<p>The chain rule tells us how to compute the derivatives. We need to apply the <cite>backward</cite> functions right-to-left until we reach the input Variables <span class="math notranslate nohighlight">\(x,y\)</span>, which we call <cite>leaf</cite> Variables. We do this by maintaining a queue of active Variables to process. At each step, we pull a Variable from the queue, apply the chain rule to the last Function that acted on it, and then put its input Variables into the queue.</p>
-<p>We start with only the last Variable <span class="math notranslate nohighlight">\(h(x,y)\)</span> in the queue (red arrow in the graph below). By default, its derivative is 1.</p>
+<p>Here, starting from the left, the arrows represent Variables
+<span class="math notranslate nohighlight">\(x,y\)</span>, then <span class="math notranslate nohighlight">\(z, z\)</span>, then <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span>, and
+finally <span class="math notranslate nohighlight">\(h(x, y)\)</span>. Forward computation proceeds left-to-right.</p>
+<p>The chain rule tells us how to compute the derivatives. We need to
+apply the <cite>backward</cite> functions right-to-left until we reach the input
+Variables <span class="math notranslate nohighlight">\(x,y\)</span>, which we call <cite>leaf</cite> Variables. We do this by
+maintaining a queue of active Variables to process. At each step, we
+pull a Variable from the queue, apply the chain rule to the last
+Function that acted on it, and then put its input Variables into the
+queue.</p>
+<p>We start with only the last Variable <span class="math notranslate nohighlight">\(h(x,y)\)</span> in the queue (red
+arrow in the graph below). By default, its derivative is 1.</p>
 <img alt="_images/backprop2.png" class="align-center" src="_images/backprop2.png" />
-<p>We then process it with the chain rule. This calls the <cite>backward</cite> function of +, and adds
-two Variables to the queue (which correspond to <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span> from the <cite>forward</cite> pass).</p>
+<p>We then process it with the chain rule. This calls the <cite>backward</cite>
+function of +, and adds two Variables to the queue (which correspond
+to <span class="math notranslate nohighlight">\(\log(z), \exp(z)\)</span> from the <cite>forward</cite> pass).</p>
 <img alt="_images/backprop3.png" class="align-center" src="_images/backprop3.png" />
-<p>The next Variable in the queue is the top red arrow in the above graph. We pass its derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span> in the chain rule,
-which adds a Variable (corresponding to <span class="math notranslate nohighlight">\(z\)</span>: left red arrow below) to the queue.</p>
+<p>The next Variable in the queue is the top red arrow in the above
+graph. We pass its derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span> in the chain rule,
+which adds a Variable (corresponding to <span class="math notranslate nohighlight">\(z\)</span>: left red arrow
+below) to the queue.</p>
 <img alt="_images/backprop4.png" class="align-center" src="_images/backprop4.png" />
-<p>The next Variable in the queue is the bottown red arrow in the above graph. Here we have an interesting result. We have a new arrow, but it corresponds to the same Variable which is already in the queue.
-It is fine to have the Variable twice.
-Alternatively we can apply a code optimization: simply add its derivative computed at this step to its derivative computed last time.
-This means we only need to process one Variable in the queue.</p>
+<p>The next Variable in the queue is the bottown red arrow in the above
+graph. Here we have an interesting result. We have a new arrow, but it
+corresponds to the same Variable which is already in the queue.  It is
+fine to have the Variable twice.  Alternatively we can apply a code
+optimization: simply add its derivative computed at this step to its
+derivative computed last time.  This means we only need to process one
+Variable in the queue.</p>
 <img alt="_images/backprop5.png" class="align-center" src="_images/backprop5.png" />
-<p>After working on this Varaible, at this point, all that is left in the queue is our leaf Variables.</p>
+<p>After working on this Varaible, at this point, all that is left in the
+queue is our leaf Variables.</p>
 <img alt="_images/backprop6.png" class="align-center" src="_images/backprop6.png" />
-<p>We then pull a Variable from the queue that represents an orginal leaf node, <span class="math notranslate nohighlight">\(x\)</span>.
-Since each step of this process is an application of the chain rule, we can show that this final value
-is <span class="math notranslate nohighlight">\(h'_x(x, y)\)</span>. The next and last step is to compute <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>.</p>
+<p>We then pull a Variable from the queue that represents an orginal leaf
+node, <span class="math notranslate nohighlight">\(x\)</span>.  Since each step of this process is an application of
+the chain rule, we can show that this final value is <span class="math notranslate nohighlight">\(h'_x(x,
+y)\)</span>. The next and last step is to compute <span class="math notranslate nohighlight">\(h'_y(x, y)\)</span>.</p>
 <img alt="_images/backprop7.png" class="align-center" src="_images/backprop7.png" />
-<p>By convention, if <span class="math notranslate nohighlight">\(x, y\)</span> are instances of  <a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>, their derivatives are stored as:</p>
+<p>By convention, if <span class="math notranslate nohighlight">\(x, y\)</span> are instances of
+<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>, their derivatives are stored as:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">derivative</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">derivative</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="algorithm">
 <h2>Algorithm<a class="headerlink" href="#algorithm" title="Permalink to this headline">¶</a></h2>
-<p>This algorithm is an instance of a classic graph algorithm: <a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a>.</p>
-<p>As illustrated in the graph for the above example,  each of the red arrows represents
-an object <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.VariableWithDeriv</span></code>, which stores the Variable and its current derivative
-(which gets passed to <span class="math notranslate nohighlight">\(d_{out}\)</span> in the chain rule).
-Starting from the rightmost arrow, which is passed in as an argument, backpropagate should run the following algorithm:</p>
+<p>This algorithm is an instance of a classic graph algorithm:
+<a class="reference external" href="https://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a>.</p>
+<p>As illustrated in the graph for the above example, each of the red
+arrows represents an object <code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.VariableWithDeriv</span></code>,
+which stores the Variable and its current derivative (which gets
+passed to <span class="math notranslate nohighlight">\(d_{out}\)</span> in the chain rule).  Starting from the
+rightmost arrow, which is passed in as an argument, backpropagate
+should run the following algorithm:</p>
 <blockquote>
 <div><ol class="arabic" start="0">
 <li><p>Initialize a queue with the final Variable+derivative</p></li>
 <li><p>While the queue is not empty, pull a Variable+derivative from the queue:
-a. if the Variable is a leaf, add its final derivative (<cite>_add_deriv</cite>) and loop to (1)
-b. if the Variable is not a leaf,</p>
+a. if the Variable is a leaf, add its final derivative</p>
 <blockquote>
-<div><ol class="arabic simple">
-<li><p>call <cite>.chain_rule</cite> on the last function that created it with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span></p></li>
-<li><p>loop through all the Variables+derivative produced by the chain rule (removing constants)</p></li>
-<li><p>optional, if the Variable is in the queue (check <cite>.name</cite>), add to its current derivativ;</p></li>
+<div><p>(<cite>_add_deriv</cite>) and loop to (1)</p>
+</div></blockquote>
+<ol class="loweralpha" start="2">
+<li><p>if the Variable is not a leaf,
+1) call <cite>.chain_rule</cite> on the last function that created it</p>
+<blockquote>
+<div><p>with derivative as <span class="math notranslate nohighlight">\(d_{out}\)</span></p>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>loop through all the Variables+derivative produced by the
+chain rule (removing constants)</p></li>
+<li><p>optional, if the Variable is in the queue (check
+<cite>.name</cite>), add to its current derivativ;</p></li>
 <li><p>otherwise, add to the queue.</p></li>
 </ol>
-</div></blockquote>
+</li>
+</ol>
 </li>
 </ol>
 </div></blockquote>
 <p>Important note: only leaf Variables should ever have non-None
-<cite>.derivative</cite> value. All intermediate Variables should only keep
-their current derivative values in the queue.</p>
+<cite>.derivative</cite> value. All intermediate Variables should only keep their
+current derivative values in the queue.</p>
 </div>
 </div>
 

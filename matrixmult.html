@@ -192,7 +192,7 @@ throughout.</p>
 immediately skip to the output. We can do this by writing a
 specialized tensor Function with a <cite>forward</cite> function that directly
 produces the output and a <cite>backward</cite> to produce the required gradient.</p>
-<img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
+<img alt="_images/matmul.png" class="align-center" src="_images/matmul.png" />
 <p>There is a lot of ongoing work on how to do this operator fusion
 automatically. However, for very common operators it is worth just
 writing these operators directly and speeding them up.</p>

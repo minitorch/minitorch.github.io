@@ -74,7 +74,7 @@ Each of these requires wiring the internal Python operator to the correct
 .. autofunction:: minitorch.scalar.ScalarFunction.forward
 
 Read the example ScalarFunctions that we have implemented for guidelines. You may find it useful to reuse the operators from Module 0.
-                  
+
 
 We have built a debugging tool for you to observe the workings of your expressions to see
 how the graph is built. You can run it in `project/show_expression.py`. You need to install
@@ -91,9 +91,9 @@ the expression at the top of the file and then run the code to create a graph in
 >>> python project/show_expression.py
 
 .. image:: expgraph.png
-   :align: center   
+   :align: center
 
-                  
+
 .. todo::
    Complete the following functions in `minitorch/scalar.py`.
 
@@ -105,17 +105,17 @@ the expression at the top of the file and then run the code to create a graph in
 .. autofunction:: minitorch.scalar.Exp.forward
 
 
-.. todo:: Complete the following function in `minitorch/scalar.py`, and pass tests marked as `task1_2`. 
+.. todo:: Complete the following function in `minitorch/scalar.py`, and pass tests marked as `task1_2`.
    See `Python numerical overrides
    <https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/>`_ for the interface of these methods. All of these functions should return :class:`minitorch.Scalar` arguments.
-      
-                  
+
+
 .. autofunction:: minitorch.Scalar.__lt__
 .. autofunction:: minitorch.Scalar.__gt__
-.. autofunction:: minitorch.Scalar.__sub__                  
+.. autofunction:: minitorch.Scalar.__sub__
 .. autofunction:: minitorch.Scalar.__neg__
 .. autofunction:: minitorch.Scalar.__add__
-                  
+
 .. autofunction:: minitorch.Scalar.log
 .. autofunction:: minitorch.Scalar.exp
 .. autofunction:: minitorch.Scalar.sigmoid
@@ -183,7 +183,7 @@ If your code works, you should now be able to run the training script.
 Study the code in `project/run_scalar.py` carefully to understand what
 the neural network is doing. You will also need your Module code from the
 previous assignment as well. You can modify the dataset and the module with
-the parameters at the top of the file. Start with this simple config:: 
+the parameters at the top of the file. Start with this simple config::
 
   PTS = 50
   DATASET = datasets.Simple(PTS, vis=True)
@@ -192,7 +192,7 @@ the parameters at the top of the file. Start with this simple config::
 
 .. image:: simple.png
 
-You can then move up to something more complex, for instance:: 
+You can then move up to something more complex, for instance::
 
   PTS = 50
   DATASET = datasets.Xor(PTS, vis=True)

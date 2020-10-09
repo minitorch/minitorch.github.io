@@ -16,7 +16,7 @@ Each module is configured to work directly with the Repl.it
 environment which you can setup through the Github page. You will
 need to signup for a `Repl.it <https://repl.it>`_ account and create an environment repo through
 the link. Dependencies and the environment should be setup automatically. Tests
-will run with the play button. 
+will run with the play button.
 
 
 For training and visualization, you may need to run the following command.
@@ -36,7 +36,7 @@ Alternatively, you can set things up in a standard Python environment.
 MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your
 system. To check your version of Python, run either:
- 
+
 >>> python --version
 >>> python3 --version
 
@@ -49,7 +49,7 @@ for all modules.
 We also highly recommand seting up a `virtual
 environment`. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
-system. We suggest venv or anaconda. 
+system. We suggest venv or anaconda.
 
 For example, if you choose venv, run the following command:
 
@@ -63,12 +63,12 @@ with `(venv)`. (See https://docs.python.org/3/library/venv.html for further
 instructions on how this works.)
 
 
-Each assignment is distributed through a Git repo. We assume 
-the knowledge of git throughout the course. (See https://guides.github.com 
+Each assignment is distributed through a Git repo. We assume
+the knowledge of git throughout the course. (See https://guides.github.com
 for a tutorial about using git and GitHub.)
 
-You should fork the template of the assignment and then edit yours in 
-your forked repo. Once you have forked the template code, you can 
+You should fork the template of the assignment and then edit yours in
+your forked repo. Once you have forked the template code, you can
 clone your own version by running the following command:
 
 >>> git clone {{STUDENT_ASSIGNMENT_URL}}

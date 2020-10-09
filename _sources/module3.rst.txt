@@ -54,12 +54,12 @@ Task 3.1: Matrix Multiplication
    :doc:`matrixmult`.
 
 Matrix multiplication is key to all of the models that we have trained so far.
-In the last module, we computed matrix multiplication using broadcasting. 
+In the last module, we computed matrix multiplication using broadcasting.
 In this task we ask you to implement it directly as a function. Do your best to
 make the function efficient, but for now all that matters is that you correctly
-produce a multiply function that passes our tests. 
+produce a multiply function that passes our tests.
 
-        
+
 .. todo::
    Complete the following function in `minitorch/functions.py` and pass tests marked as `task3_1`.
 
@@ -77,9 +77,9 @@ The main backend for our codebase are the three functions `map`, `zip`, and `red
 we can speed up these three, everything we built so far will get better. This exercise
 asks you to utilize Numba and the `njit` function to speed up these functions. In particular
 if you can utilize parallelization through `prange` you can get some big wins. Be careful though!
-parallelization can lead to funny bugs. 
-        
-        
+parallelization can lead to funny bugs.
+
+
 .. todo::
    Complete the following in `minitorch/fast_ops.py` and pass speed tests marked as `task3_2`.
 
@@ -100,8 +100,8 @@ Task 3.3: CUDA Operations
 We can do even better than parallelization if we have access to
 specialized hardware. This task asks you to build a GPU implementation
 of the backend operations. It will be hard to equal what PyTorch does, but
-if you are clever you can make these computations really fast. 
-        
+if you are clever you can make these computations really fast.
+
 .. todo::
    Revisit tensor ops and `minitorch/cuda_ops.py` and pass the tests marked as `task3_3`.
 
@@ -121,9 +121,9 @@ Task 3.4: Parallel / CUDA Matrix Multiplication
 Finally we can combine both these approaches and implement Numba and CUDA
 `matmul`. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
-accuracy, but the faster you can make it the better. 
+accuracy, but the faster you can make it the better.
 
-        
+
 .. todo::
    Implement  `minitorch/function.py` with Numba and  `minitorch/cuda_functions.py` with CUDA and pass tests marked as `task3_4`.
 
@@ -138,7 +138,7 @@ If your code works you should now be able to move on to the tensor
 training script in `project/run_fast_tensor.py`.  This code is the same
 basic training setup as  :doc:`module2`, but now utilizes your tensor
 code. We have left the `matmul` layer blank for you to implement with
-your tensor code. 
+your tensor code.
 
 
 .. todo::
@@ -146,7 +146,7 @@ your tensor code.
    do exactly the same thing as the corresponding functions in `project/run_tensor.py`,
    but now use the faster backend
 
-   
+
    Train a tensor model and add your results to the README. Also record the time per epoch
    reported by the trainer. (Our parallel implementation gave a 10x speedup).
 

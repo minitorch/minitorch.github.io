@@ -13,13 +13,13 @@ Convolution
 
 .. image:: figs/Conv/conv.png
            :align: center
-
+                   
 .. image:: figs/Conv/conv2.png
            :align: center
 
 .. image:: figs/Conv/im1.png
            :align: center
-
+                   
 .. image:: figs/Conv/im2.png
            :align: center
 
@@ -27,4 +27,4 @@ Convolution
            :align: center
 .. image:: figs/Conv/networkcnn.png
            :align: center
-
+                   

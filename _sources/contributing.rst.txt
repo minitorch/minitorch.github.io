@@ -53,9 +53,9 @@ Or even a particular test with:
 
 >>> python -m pytest tests/test_operators.py -k test_sum
 
-Pytest will hide all print statements unless a test fails.
+Pytest will hide all print statements unless a test fails. 
 
-
+ 
 Documentation
 --------------
 
@@ -68,7 +68,7 @@ Functions should have docstrings in the following form (known as Google docstyle
   def index(ls, i):
       """
       List indexing.
-
+      
       Args:
           ls (list): A list of any type.
           i (int): An index into the list
@@ -76,7 +76,7 @@ Functions should have docstrings in the following form (known as Google docstyle
       Returns:
           Value at ls[i].
       """
-      ...
+      ... 
 
 
 A full description of this docstyle is listed here

@@ -68,9 +68,9 @@ In MiniTorch, we will use a fantastic property checking library in
 Python called `Hypothesis`
 (https://hypothesis.readthedocs.io/). Hypothesis predefines a whole
 set of building block `strategies` that the user can pick from when
-writing tests. (You can also write your strategies, which you will
+writing tests. (You can also write your strategies, which you will 
 do in the next assignment.)
-You can generate integers, floats, lists, strings, etc.
+You can generate integers, floats, lists, strings, etc. 
 Each test can be `decorated` with values that it operates on::
 
     from hypothesis.strategies import integers

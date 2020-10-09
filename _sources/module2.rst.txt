@@ -8,14 +8,14 @@ Module 2 - Tensors
 
 We now have a fully developed autodifferentiation system built around
 scalars. This system is correct, but you saw during training that it
-is inefficient. Every scalar number requires building an object, and
-each operation requires storing a graph of all the values that we
+is inefficient. Every scalar number requires building an object, and 
+each operation requires storing a graph of all the values that we 
 have previously created. Training requires
 repeating the above operations, and running models, such as a linear model, requires
 a `for` loop over each of the terms in the network.
 
 This module introduces and implements a **tensor** object that will
-solve these problems. Tensors group together many repeated operations
+solve these problems. Tensors group together many repeated operations 
 to save Python overhead and to pass off
 grouped operations to faster implementations.
 
@@ -63,12 +63,12 @@ Tasks 2.1: Tensor Data - Indexing
 
 .. note:: This task requires familiarity with tensor indexing.
    Be sure to first carefully read the Guide on
-   :doc:`tensordata`. You may also find it helpful to read tutorials
+   :doc:`tensordata`. You may also find it helpful to read tutorials 
    on using tensors/arrays in Torch or NumPy.
 
 The MiniTorch library implements the core tensor backend as
 :class:`minitorch.TensorData`. This class handles indexing, storage, transposition,
-and low-level details such as strides. You will first implement these core functions
+and low-level details such as strides. You will first implement these core functions 
 before turning to the user-facing class :class:`minitorch.Tensor`.
 
 .. todo::
@@ -94,9 +94,9 @@ Tasks 2.2: Tensor Operations
 Tensor operations apply high-level, higher-order
 operations to all elements  in a tensor simultaneously. In particularly, you can
  map, zip, and reduce tensor data objects together. On
-top of this foundation, we can build up a `Function` class for Tensor,
+top of this foundation, we can build up a `Function` class for Tensor, 
 similar to what we did for the ScalarFunction. In this task, you will first implement
- generic tensor operations and then use them to implement `forward` for specific operations.
+ generic tensor operations and then use them to implement `forward` for specific operations. 
 
 
 We have built a debugging tool for you to observe the workings of your expressions to see
@@ -188,8 +188,8 @@ Tasks 2.4: Tensor Broadcasting
 .. autofunction:: minitorch.broadcast_index
 
 
-You need to revist the following functions implemented in task 2.2 to make sure that `broadcast_index` is used.
-
+You need to revist the following functions implemented in task 2.2 to make sure that `broadcast_index` is used. 
+                  
 .. autofunction:: minitorch.tensor_map
 .. autofunction:: minitorch.tensor_zip
 .. autofunction:: minitorch.tensor_reduce
@@ -203,7 +203,7 @@ Task 2.5: Training
 If your code works you should now be able to move on to the tensor
 training script in `project/run_tensor.py`.  This code runs the same
 basic training setup as in :doc:`module1`, but now utilize your tensor
-code.
+code. 
 
 .. todo::
    Implement the missing `forward` functions in `project/run_tensor.py`. They should

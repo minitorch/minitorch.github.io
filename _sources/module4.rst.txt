@@ -7,7 +7,7 @@ Module 4 - Networks
 .. image:: figs/mnist/mnist2.png
            :width: 400px
            :align: center
-
+                   
 .. image:: figs/mnist/mnist5.png
            :width: 400px
            :align: center
@@ -61,12 +61,12 @@ Task 4.1: Max, Argmax, Softmax
    Add 2 property tests for the function and ensure that you understand its gradient computation.
    Mark the tests as `task4_1`.
 
-.. autofunction:: minitorch.max
+.. autofunction:: minitorch.max   
 .. autofunction:: minitorch.argmax
 .. autofunction:: minitorch.softmax
 .. autofunction:: minitorch.logsoftmax
 
-
+   
 Task 4.2: Pooling
 ==================================
 .. note:: This task requires basic familiarity with pooling as a concept.
@@ -75,7 +75,7 @@ Task 4.2: Pooling
 .. todo::
    Complete the following functions in `minitorch/nn.py` and pass tests marked as `task4_2`.
 
-.. autofunction:: minitorch.tile
+.. autofunction:: minitorch.tile   
 .. autofunction:: minitorch.avgpool2d
 .. autofunction:: minitorch.maxpool2d
 
@@ -89,8 +89,8 @@ Task 4.3: Convolution
 .. todo::
    Complete the following function in `minitorch/nn.py` and pass tests marked as `task4_3`.
 
-.. autofunction:: minitorch.tensor_conv2d
-
+.. autofunction:: minitorch.tensor_conv2d   
+                  
 Task 4.4: Modules
 ==================================
 

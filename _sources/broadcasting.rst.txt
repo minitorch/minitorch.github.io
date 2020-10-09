@@ -57,16 +57,19 @@ twice, we can interpret the above expression as an efficient version of::
 
 
 .. note::
+
    **Rule 2**: Extra dimensions of shape 1 can be added to a tensor to
    ensure the same number of dimensions with another tensor.
 
 
 Finally, there is a question of where to add the empty dimension. This
 is not an issue in the above example but could become an issue in more
-complicated cases. Thus we introduce another rule::
+complicated cases. Thus we introduce another rule:
 
 .. note::
+
    **Rule 3**: Any extra dimension of size 1 can only be implicitly added on the left side of the shape.
+
 
 This rule has the impact of making the process easy to follow and replicate. You always know what the shape of the final
 output will be. For example::
@@ -99,3 +102,30 @@ We end this guide with two important notes:
 1) Broadcasting is **only** about shapes. It does not take strides into account in any way. It is purely a high-level protocol.
 
 2) Broadcasting has some impact on the `backward `pass. We will discuss some in the code base, but it is not required for any of the tasks.
+
+
+
+Examples
+---------
+
+
+* Tensor-Scalar operations can be easily written using broadcasting for tensors of any dimension.
+
+.. image:: figs/Broadcast/scalar.png
+           :align: center
+
+* Matrix-vector operations can be written using broadcasting, but you need to be careful to make sure that the vector is shaped such the the dimensions align. This can be done with `view` calls.
+
+
+.. image:: figs/Broadcast/vector.png
+           :align: center
+
+* Matrix-matrix operations can be written using broadcasting even when the dimensions don't align. Here is an example of that process.
+
+.. image:: figs/Broadcast/threed.png
+           :align: center
+
+* Matrix multiplication can be written in this style. (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.
+
+.. image:: figs/Broadcast/matmul.png
+           :align: center

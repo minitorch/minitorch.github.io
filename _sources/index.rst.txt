@@ -74,7 +74,7 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) and Ge Gao
 .. image:: figs/mnist/mnist2.png
            :width: 400px
            :align: center
-
+                   
 .. image:: figs/mnist/mnist5.png
            :width: 400px
            :align: center

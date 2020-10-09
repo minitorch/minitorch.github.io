@@ -13,7 +13,7 @@ Let's start by going back to :doc:`module0` and our map operation.
 
 .. automodule:: minitorch.operators.map
 
-
+               
 There are many ways to implement this function. Let's consider a version where
 we pass it an explict output list to map to. Here's a simple implementation, ::
 
@@ -66,7 +66,7 @@ this code within other code. For instance, if we want to improve our map code we
     # Note that all JIT happens when outer map is first called.
     neg_map = map(neg)
 
-
+    
 
 Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.
 

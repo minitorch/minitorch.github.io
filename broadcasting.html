@@ -188,7 +188,8 @@ scalar constant to every position:</p>
 <span class="n">vector1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Intuitively, we would like to interpret this expression as the standard vector+scalar:
+<p>Intuitively, we would like to interpret this expression as the standard
+vector+scalar:
 adding 10 to each position.
 However, the above operation will fail because of shape mistach: we are
 adding a tensor of shape(1,) to <cite>vector1</cite> which has shape (3,).</p>
@@ -197,14 +198,16 @@ annoying and, more importantly, inefficient:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vector1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
-<p><cite>Broadcasting</cite> is a protocol that allows us to automatically interpret the frist expression as implying
+<p><cite>Broadcasting</cite> is a protocol that allows us to automatically interpret the
+frist expression as implying
 the second one. Inside <cite>zip</cite>, we pretend that 10 is a vector of
 shape (3,) when zipping it with a vector of shape (3,).
 Again, this is just an interpretation: we never actually create this vector.</p>
 <p>This gives us the first rule of broadcasting:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Rule 1</strong>: Any dimension of size 1 can be zipped with dimensions of size n &gt; 1 by assuming the dimension  is copied n times.</p>
+<p><strong>Rule 1</strong>: Any dimension of size 1 can be zipped with dimensions of size
+n &gt; 1 by assuming the dimension  is copied n times.</p>
 </div>
 <p>Now let's apply this approach to a matrix of shape (4, 3):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">matrix1</span> <span class="o">+</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
@@ -230,9 +233,11 @@ is not an issue in the above example but could become an issue in more
 complicated cases. Thus we introduce another rule:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>Rule 3</strong>: Any extra dimension of size 1 can only be implicitly added on the left side of the shape.</p>
+<p><strong>Rule 3</strong>: Any extra dimension of size 1 can only be implicitly added
+on the left side of the shape.</p>
 </div>
-<p>This rule has the impact of making the process easy to follow and replicate. You always know what the shape of the final
+<p>This rule has the impact of making the process easy to follow and
+replicate. You always know what the shape of the final
 output will be. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This will fail: mismatch of (4, 3) and (4,)</span>
 <span class="n">matrix1</span> <span class="o">+</span> <span class="n">vector2</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
@@ -255,27 +260,36 @@ output will be. For example:</p>
 </div>
 <p>We end this guide with two important notes:</p>
 <ol class="arabic simple">
-<li><p>Broadcasting is <strong>only</strong> about shapes. It does not take strides into account in any way. It is purely a high-level protocol.</p></li>
-<li><p>Broadcasting has some impact on the <a href="#id1"><span class="problematic" id="id2">`</span></a>backward <a href="#id3"><span class="problematic" id="id4">`</span></a>pass. We will discuss some in the code base, but it is not required for any of the tasks.</p></li>
+<li><p>Broadcasting is <strong>only</strong> about shapes. It does not take strides into
+account in any way. It is purely a high-level protocol.</p></li>
+<li><p>Broadcasting has some impact on the <cite>backward</cite> pass. We will discuss some
+in the code base, but it is not required for any of the tasks.</p></li>
 </ol>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p>Tensor-Scalar operations can be easily written using broadcasting for tensors of any dimension.</p></li>
+<li><p>Tensor-Scalar operations can be easily written using broadcasting for
+tensors of any dimension.</p></li>
 </ul>
 <img alt="_images/scalar.png" class="align-center" src="_images/scalar.png" />
 <ul class="simple">
-<li><p>Matrix-vector operations can be written using broadcasting, but you need to be careful to make sure that the vector is shaped such the the dimensions align. This can be done with <cite>view</cite> calls.</p></li>
+<li><p>Matrix-vector operations can be written using broadcasting, but you need
+to be careful to make sure that the vector is shaped such the the dimensions
+align. This can be done with <cite>view</cite> calls.</p></li>
 </ul>
-<img alt="_images/vector1.png" class="align-center" src="_images/vector1.png" />
+<img alt="_images/vector.png" class="align-center" src="_images/vector.png" />
 <ul class="simple">
-<li><p>Matrix-matrix operations can be written using broadcasting even when the dimensions don't align. Here is an example of that process.</p></li>
+<li><p>Matrix-matrix operations can be written using broadcasting even when the
+dimensions don't align. Here is an example of that process.</p></li>
 </ul>
 <img alt="_images/threed.png" class="align-center" src="_images/threed.png" />
 <ul class="simple">
-<li><p>Matrix multiplication can be written in this style, here is <span class="math notranslate nohighlight">\((B x A^T)\)</span> where A is 3 x 2 and B is 2 x 2 . . (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.</p></li>
+<li><p>Matrix multiplication can be written in this style, here is <span class="math notranslate nohighlight">\((B x
+A^T)\)</span> where A is 3 x 2 and B is 2 x 2 . . (And you will need to use this for
+the assignment). However, note this is a memory inefficient way to do matrix
+multiplication, as it needs to create an intermediate tensor in the process.</p></li>
 </ul>
-<img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
+<img alt="_images/matmul.png" class="align-center" src="_images/matmul.png" />
 </div>
 </div>
 

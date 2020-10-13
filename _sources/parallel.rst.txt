@@ -13,7 +13,7 @@ Let's start by going back to :doc:`module0` and our map operation.
 
 .. automodule:: minitorch.operators.map
 
-               
+
 There are many ways to implement this function. Let's consider a version where
 we pass it an explict output list to map to. Here's a simple implementation, ::
 
@@ -43,14 +43,19 @@ Numba JIT
 
 
 
-Numba is a numerical JIT compiler for python. When a function is first created, it
-converts raw Python code to faster numerical operations under the hood. We have seen an example of this library earlier when developing our mathematical operators. ::
+Numba is a numerical JIT compiler for python. When a function is first
+created, it
+converts raw Python code to faster numerical operations under the hood. We
+have seen an example of this library earlier when developing our mathematical
+operators. ::
 
   def neg(x):
       return -x
 
-This JIT function alone does not make the code much faster, but it allows us to use
-this code within other code. For instance, if we want to improve our map code we can change it to look like this. ::
+This JIT function alone does not make the code much faster, but it allows
+us to use
+this code within other code. For instance, if we want to improve our map
+code we can change it to look like this. ::
 
     from numba import njit
     def map(fn):
@@ -66,11 +71,14 @@ this code within other code. For instance, if we want to improve our map code we
     # Note that all JIT happens when outer map is first called.
     neg_map = map(neg)
 
-    
 
-Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.
 
-Furthermore, if we know that the loop can be done in parallel we can speed it up further with one small change ::
+Now when this function is called instead of running slow python code, it will
+run fast low-level code that takes advantage of the structure. This approach
+requires a bit of overhead on startup, but can make things much faster.
+
+Furthermore, if we know that the loop can be done in parallel we can speed
+it up further with one small change ::
 
     from numba import njit, prange
     def map(fn):
@@ -86,10 +94,14 @@ python code. You can basically switch back and forth between the two
 without much change.
 
 .. warning::
-   You have to be a bit careful to ensure that the loop actually can be parallelized.
-   In short, this means that steps cannot depend on each other or write to the same output.
-   For instance, when implementing `reduce` you have to be careful to mix parallel and
+   You have to be a bit careful to ensure that the loop actually can be
+   parallelized.
+   In short, this means that steps cannot depend on each other or write to
+   the same output.
+   For instance, when implementing `reduce` you have to be careful to mix
+   parallel and
    non-parallel loops.
 
 
-For full details on how Numba works see the `Parallel tutorial <https://numba.pydata.org/numba-doc/latest/user/parallel.html>`_.
+For full details on how Numba works see the `Parallel tutorial
+<https://numba.pydata.org/numba-doc/latest/user/parallel.html>`_.

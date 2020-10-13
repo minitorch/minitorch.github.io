@@ -184,11 +184,11 @@ everything we need in <a class="reference internal" href="module1.html"><span cl
 <p>The key idea is, just as we had <cite>Scalar</cite> and <cite>ScalarFunction</cite>, we need to
 construct <cite>Tensor</cite> and <cite>TensorFunction</cite> (which we just call <cite>Function</cite>).
 These new objects behave very similar to their counterparts:</p>
-<ol class="loweralpha simple">
-<li><p>Tensors cannot be operated on directly, but need to be transformed through a Function.</p></li>
-<li><p>Functions must implement both <cite>forward</cite> and <cite>backward</cite>.</p></li>
-<li><p>These transformations are tracked, which allow backpropagation through the chain rule.</p></li>
-</ol>
+<p>a) Tensors cannot be operated on directly, but need to be transformed through
+a Function.
+b) Functions must implement both <cite>forward</cite> and <cite>backward</cite>.
+c) These transformations are tracked, which allow backpropagation through
+the chain rule.</p>
 <p>All of this machinery should work out of the box.</p>
 <p>The main new terminology to know is <cite>gradient</cite>. Just as a tensor is a
 multidimensional array of scalars, a gradient is a multidimensional
@@ -247,7 +247,8 @@ derivative for each scalar position and apply a <cite>mul</cite> map.</p></li>
 <li><p><strong>reduce</strong>. Given a tensor, <cite>reduce</cite> applies an aggregation
 operation to one dimension. For simplicity, let's consider sum-based
 reductions.  For scalars <span class="math notranslate nohighlight">\(x_1\)</span> to <span class="math notranslate nohighlight">\(x_n\)</span>, consider computing
-<span class="math notranslate nohighlight">\(x_1 + x_2 + \ldots + x_n\)</span>.  For any <span class="math notranslate nohighlight">\(x_i\)</span> value, the derivative is 1.
+<span class="math notranslate nohighlight">\(x_1 + x_2 + \ldots + x_n\)</span>.  For any <span class="math notranslate nohighlight">\(x_i\)</span> value, the derivative
+is 1.
 Therefore, the derivative for any position computed in <cite>backward</cite> is simply
 <span class="math notranslate nohighlight">\(d_{out}\)</span>. This means to compute the
 gradient, we only need to send <span class="math notranslate nohighlight">\(d_{out}\)</span> to each

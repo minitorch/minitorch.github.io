@@ -186,7 +186,8 @@ modules, and also includes some basic mathematical foundations.
 In this module, you will start to build up some of the
 infrastructure for MiniTorch.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-0">https://github.com/minitorch/Module-0</a> .
-Before starting this assignment, make sure to set up your workspace following <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a>, and
+Before starting this assignment, make sure to set up your workspace following
+<a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a>, and
 read <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to understand how the code should be organized.</p>
 <p>Each module has a set of <cite>Guides</cite> to help with the tasks. We recommend
 working through the assignment and utilizing the Guides suggested for
@@ -210,7 +211,8 @@ of MiniTorch. Make sure that you understand each of them as
 some terminologies might be new.</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass tests marked as <cite>task0_1</cite>.</p>
+<p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass
+tests marked as <cite>task0_1</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.operators.mul">
@@ -302,22 +304,29 @@ high-level mathematical properties for any input.
 Note that you need to change arguments for those test functions.</p>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
-<p>Complete the test functions in <cite>tests/test_operators.py</cite>  marked as <cite>task0_2</cite>.</p>
+<p>Complete the test functions in <cite>tests/test_operators.py</cite>  marked as
+<cite>task0_2</cite>.</p>
 </div>
 </div>
 <div class="section" id="task-0-3-functional-python">
 <h3>Task 0.3: Functional Python<a class="headerlink" href="#task-0-3-functional-python" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This task requires familiarity with basic functional programming concepts and notation.
-This subject is outside the scope of guides provided here, but this <a class="reference external" href="https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/">tutorial</a> is a good starting place.</p>
+<p>This task requires familiarity with basic functional programming concepts
+and notation.
+This subject is outside the scope
+of guides provided here, but this <a class="reference external" href="https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/">tutorial</a>
+is a good starting place.</p>
 </div>
 <p>To practice the use of higher-order functions in Python, implement three basic
-functional concepts. Use them in combination with operators described in Task 0.1
-to build up more complex mathematical operations that work on lists instead of single values.</p>
+functional concepts. Use them in combination with operators described in
+Task 0.1
+to build up more complex mathematical operations that work on lists instead
+of single values.</p>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
-<p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass tests marked as <cite>tasks0_3</cite>.</p>
+<p>Complete the following functions in <cite>minitorch/operators.py</cite> and pass
+tests marked as <cite>tasks0_3</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.operators.map">
@@ -419,12 +428,15 @@ tutorial</a>.</p>
 </div>
 <p>This task is to implement the core structure of the <a class="reference internal" href="modules.html#minitorch.Module" title="minitorch.Module"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Module</span></code></a>
 class.  We ask you to implement a tree data structure that
-stores named <a class="reference internal" href="modules.html#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code></a> on each node. Such a data structure makes it
-easy for users to create trees that can be <cite>walked</cite> to find all of the parameters of
+stores named <a class="reference internal" href="modules.html#minitorch.Parameter" title="minitorch.Parameter"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Parameter</span></code></a> on each node. Such a data structure
+makes it
+easy for users to create trees that can be <cite>walked</cite> to find all of the
+parameters of
 interest.</p>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
-<p>Complete the functions in <cite>minitorch/module.py</cite> and pass tests marked as <cite>tasks0_4</cite>.</p>
+<p>Complete the functions in <cite>minitorch/module.py</cite> and pass tests marked as
+<cite>tasks0_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.Module.train">
@@ -457,12 +469,15 @@ interest.</p>
 <h3>Task 0.5: Visualization<a class="headerlink" href="#task-0-5-visualization" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This task requires familiarity with visualization tools described in <a class="reference internal" href="visualization.html"><span class="doc">Visualization</span></a> as well
+<p>This task requires familiarity with visualization tools described in
+<a class="reference internal" href="visualization.html"><span class="doc">Visualization</span></a> as well
 as the documentation for <a class="reference external" href="https://github.com/facebookresearch/visdom">Visdom</a>.</p>
 </div>
-<p>For the first few assignments, we use a set of datasets implemented in <cite>project/datasets.py</cite>,
+<p>For the first few assignments, we use a set of datasets implemented in
+<cite>project/datasets.py</cite>,
 which are 2D point classification datasets. (See <a class="reference external" href="https://playground.tensorflow.org/">TensorFlow Playground</a>
-for similar examples.) Each of these dataset can be added to the visualization using:</p>
+for similar examples.) Each of these dataset can be added to the visualization
+using:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">project.datasets</span> <span class="kn">import</span> <span class="n">Simple</span><span class="p">,</span> <span class="n">Split</span><span class="p">,</span> <span class="n">Xor</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">Simple</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">graph</span><span class="p">(</span><span class="s2">&quot;initial&quot;</span><span class="p">)</span>
@@ -481,8 +496,10 @@ for similar examples.) Each of these dataset can be added to the visualization u
 </div>
 <div class="admonition-todo admonition" id="id6">
 <p class="admonition-title">Todo</p>
-<p>Start a visdom server and print an image of the dataset. Hand-create classifiers that
-split each of the datasets into the correct colors. Display your images on the README file in your
+<p>Start a visdom server and print an image of the dataset. Hand-create
+classifiers that
+split each of the datasets into the correct colors. Display your images
+on the README file in your
 repo.</p>
 </div>
 </div>

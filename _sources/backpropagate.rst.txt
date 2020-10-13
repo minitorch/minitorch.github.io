@@ -7,7 +7,8 @@ operation.  The chain rule tells us how to compute the derivative of two
 sequential operations.  In this section, we show how to use these to
 compute the derivative for an arbitrary series of operations.
 
-The underlying approach we will use is a breadth-first search over the computation
+The underlying approach we will use is a breadth-first search over the
+computation
 graph constructed by Variables and Functions. Before going over the algorithm,
 let's work through a specific example step by step.
 
@@ -15,7 +16,8 @@ Example
 ----------
 
 
-Assume we have Variables :math:`x,y` and a Function :math:`h(x,y)`. We want to compute
+Assume we have Variables :math:`x,y` and a Function :math:`h(x,y)`. We want
+to compute
 the derivatives :math:`h'_x(x, y)` and :math:`h'_y(x, y)`.
 
 .. math::
@@ -25,57 +27,78 @@ the derivatives :math:`h'_x(x, y)` and :math:`h'_y(x, y)`.
    h(x, y) &=& \log(z) + \exp(z)
    \end{eqnarray*}
 
-We assume x, +, log, and exp are all implemented as ScalarFunctions which can store
-their history. This means that the final output Variable has constructed a graph of its history
+We assume x, +, log, and exp are all implemented as ScalarFunctions which
+can store
+their history. This means that the final output Variable has constructed a
+graph of its history
 that looks like this:
 
 .. image:: figs/Autograd/backprop1.png
            :align: center
 
-Here, starting from the left, the arrows represent Variables :math:`x,y`, then :math:`z, z`, then :math:`\log(z), \exp(z)`, and finally :math:`h(x, y)`. Forward computation proceeds left-to-right.
+Here, starting from the left, the arrows represent Variables :math:`x,y`,
+then :math:`z, z`, then :math:`\log(z), \exp(z)`, and finally :math:`h(x,
+y)`. Forward computation proceeds left-to-right.
 
 
-The chain rule tells us how to compute the derivatives. We need to apply the `backward` functions right-to-left until we reach the input Variables :math:`x,y`, which we call `leaf` Variables. We do this by maintaining a queue of active Variables to process. At each step, we pull a Variable from the queue, apply the chain rule to the last Function that acted on it, and then put its input Variables into the queue.
+The chain rule tells us how to compute the derivatives. We need to apply
+the `backward` functions right-to-left until we reach the input Variables
+:math:`x,y`, which we call `leaf` Variables. We do this by maintaining
+a queue of active Variables to process. At each step, we pull a Variable
+from the queue, apply the chain rule to the last Function that acted on it,
+and then put its input Variables into the queue.
 
-We start with only the last Variable :math:`h(x,y)` in the queue (red arrow in the graph below). By default, its derivative is 1.
+We start with only the last Variable :math:`h(x,y)` in the queue (red arrow
+in the graph below). By default, its derivative is 1.
 
 .. image:: figs/Autograd/backprop2.png
            :align: center
 
-We then process it with the chain rule. This calls the `backward` function of +, and adds
-two Variables to the queue (which correspond to :math:`\log(z), \exp(z)` from the `forward` pass).
+We then process it with the chain rule. This calls the `backward` function
+of +, and adds
+two Variables to the queue (which correspond to :math:`\log(z), \exp(z)`
+from the `forward` pass).
 
 .. image:: figs/Autograd/backprop3.png
            :align: center
 
-The next Variable in the queue is the top red arrow in the above graph. We pass its derivative as :math:`d_{out}` in the chain rule, 
-which adds a Variable (corresponding to :math:`z`: left red arrow below) to the queue.
+The next Variable in the queue is the top red arrow in the above graph. We
+pass its derivative as :math:`d_{out}` in the chain rule,
+which adds a Variable (corresponding to :math:`z`: left red arrow below)
+to the queue.
 
 .. image:: figs/Autograd/backprop4.png
            :align: center
 
-The next Variable in the queue is the bottown red arrow in the above graph. Here we have an interesting result. We have a new arrow, but it corresponds to the same Variable which is already in the queue. 
-It is fine to have the Variable twice. 
-Alternatively we can apply a code optimization: simply add its derivative computed at this step to its derivative computed last time.
+The next Variable in the queue is the bottown red arrow in the above
+graph. Here we have an interesting result. We have a new arrow, but it
+corresponds to the same Variable which is already in the queue.
+It is fine to have the Variable twice.
+Alternatively we can apply a code optimization: simply add its derivative
+computed at this step to its derivative computed last time.
 This means we only need to process one Variable in the queue.
 
 .. image:: figs/Autograd/backprop5.png
            :align: center
 
 
-After working on this Varaible, at this point, all that is left in the queue is our leaf Variables. 
-                   
+After working on this Varaible, at this point, all that is left in the queue
+is our leaf Variables.
+
 .. image:: figs/Autograd/backprop6.png
            :align: center
-                   
-We then pull a Variable from the queue that represents an orginal leaf node, :math:`x`.
-Since each step of this process is an application of the chain rule, we can show that this final value
-is :math:`h'_x(x, y)`. The next and last step is to compute :math:`h'_y(x, y)`. 
+
+We then pull a Variable from the queue that represents an orginal leaf node,
+:math:`x`.
+Since each step of this process is an application of the chain rule, we can
+show that this final value
+is :math:`h'_x(x, y)`. The next and last step is to compute :math:`h'_y(x, y)`.
 
 .. image:: figs/Autograd/backprop7.png
            :align: center
 
-By convention, if :math:`x, y` are instances of  :class:`minitorch.Variable`, their derivatives are stored as::
+By convention, if :math:`x, y` are instances of  :class:`minitorch.Variable`,
+their derivatives are stored as::
 
   x.derivative, y.derivative
 
@@ -85,25 +108,34 @@ By convention, if :math:`x, y` are instances of  :class:`minitorch.Variable`, th
 Algorithm
 ----------
 
-This algorithm is an instance of a classic graph algorithm: `breadth-first search <https://en.wikipedia.org/wiki/Breadth-first_search>`_.  
+This algorithm is an instance of a classic graph algorithm: `breadth-first
+search <https://en.wikipedia.org/wiki/Breadth-first_search>`_.
 
-As illustrated in the graph for the above example,  each of the red arrows represents
-an object :class:`minitorch.VariableWithDeriv`, which stores the Variable and its current derivative 
-(which gets passed to :math:`d_{out}` in the chain rule). 
-Starting from the rightmost arrow, which is passed in as an argument, backpropagate should run the following algorithm:
+As illustrated in the graph for the above example,  each of the red arrows
+represents
+an object :class:`minitorch.VariableWithDeriv`, which stores the Variable
+and its current derivative
+(which gets passed to :math:`d_{out}` in the chain rule).
+Starting from the rightmost arrow, which is passed in as an argument,
+backpropagate should run the following algorithm:
 
 
-    0. Initialize a queue with the final Variable+derivative
-    1. While the queue is not empty, pull a Variable+derivative from the queue:
-       a. if the Variable is a leaf, add its final derivative (`_add_deriv`) and loop to (1)
-       b. if the Variable is not a leaf, 
-          1) call `.chain_rule` on the last function that created it with derivative as :math:`d_{out}`
-          2) loop through all the Variables+derivative produced by the chain rule (removing constants)
-          3) optional, if the Variable is in the queue (check `.name`), add to its current derivativ; 
-          4) otherwise, add to the queue.
+0. Initialize a queue with the final Variable+derivative
+1. While the queue is not empty, pull a Variable+derivative from the queue:
+
+   a. if the Variable is a leaf, add its final derivative (`_add_deriv`)
+      and loop to (1)
+   b. if the Variable is not a leaf,
+
+      1) call `.chain_rule` on the last function that created it with
+         derivative as :math:`d_{out}`
+      2) loop through all the Variables+derivative produced by the chain
+         rule (removing constants)
+      3) optional, if the Variable is in the queue (check `.name`),
+         add to its current derivativ;
+      4) otherwise, add to the queue.
 
 
 Important note: only leaf Variables should ever have non-None
 `.derivative` value. All intermediate Variables should only keep
 their current derivative values in the queue.
-

@@ -6,6 +6,17 @@
 Tensors
 ==============================
 
+.. jupyter-execute::
+   :hide-code:
+
+      import minitorch
+      import sys
+      sys.path.append("../project/")
+      from show_tensor import *
+
+
+
+
 Tensor is a fancy name for a simple concept. A tensor is a
 `multi-dimensional array` of arbitrary dimensions. It is a convenient
 and efficient way to hold data, which becomes much more powerful when
@@ -18,34 +29,48 @@ Tensor Shapes
 So far we have focused on `scalars`, which correspond to 0-dimensional tensors.
 Next, we consider a 1-dimensional tensor (`vector`):
 
-.. image:: figs/Tensors/vector.png
-           :align: center
+.. jupyter-execute::
+   :hide-code:
+
+        plot_matrix(
+          np.array([1, 1, 1, 1, 1]), np.array([1, 2, 3, 4, 5]), "vector",
+          bg="#fcfcfc"
+        )
 
 Then a 2-dimensional tensor (`matrix`):
 
-.. image:: figs/Tensors/matrix.png
-           :align: center
+.. jupyter-execute::
+   :hide-code:
 
-In addition to its dimension (`dims`), other critical aspects of a tensor are its
-`shape` and `size`. The shape of the above vector is (5,) and its size
+      mat = np.vstack([np.hstack([1,2,3,4,5]*2),
+                       np.hstack([np.ones(5),np.ones(5)*2])])
+      x,y = mat
+      plot_matrix(x,y,"matrix", w=480,h=310, bg = "#fcfcfc")
+
+In addition to its dimension (`dims`), other critical aspects of a tensor
+are its
+`shape` and `size`. The shape of the above vector is (5,)) and its size
 (i.e. number of squares in the graph) is 5.
 The shape of the above matrix is (2,5) and its size is 10.
 
 A 3-dimensional tensor with shape (2, 3, 3) and size 18 looks like this:
 
-.. image:: figs/Tensors/tensor.png
-           :align: center
+.. jupyter-execute::
+   :hide-code:
 
+      tensor_figure(2,3,3,None,title=None, slider=False,
+                    axisTitles =['','',''])
 
-We access an element of the tensor by tensor index notation: `tensor[i]` for 1-dimension,
-`tensor[i, j]` for 2-dimension, `tensor[i, j, k]` for 3-dimension, and so forth. For example,
+We access an element of the tensor by tensor index notation: `tensor[i]`
+for 1-dimension,
+`tensor[i, j]` for 2-dimension, `tensor[i, j, k]` for 3-dimension, and so
+forth. For example,
 `tensor[0, 1, 2]` would give this blue cube:
 
+.. jupyter-execute::
+    :hide-code:
 
-.. image:: figs/Tensors/tensor2.png
-           :align: center
-
-
+      tensor_figure(2,3,3,5,title="Tensor Index: (0, 1, 2)")
 
 Typically, we access tensors just like multi-dimensional arrays, but
 there are some special geometric properties that make tensors different.
@@ -56,10 +81,11 @@ a general tensor, we refer to this operation as `permute`. Calling
 `permute` arbitrarily reorders the dimensions of the input tensor.
 For example, as shown below, calling `permute(1,0)` on a matrix of shape (2, 5)
 gives a matrix of shape (5, 2). For indexing into the permuted matrix,
-we access elements using `tensor[j, i]` instead of `tensor[j, i]`.
+we access elements using `tensor[j, i]` instead of `tensor[i, j]`.
 
 .. image:: figs/Tensors/matrix1.png
 .. image:: figs/Tensors/matrix2.png
+
 
 
 Second, tensors make it really easy to add or remove additional
@@ -67,18 +93,20 @@ dimensions. Note that a matrix of shape (5, 2) can store the
 same amount of data as a matrix of shape (1, 5, 2), so they have the same size
 as shown below:
 
-
 .. image:: figs/Tensors/matrix2.png
 .. image:: figs/Tensors/broad.png
 
+
 We would like to easily increase or decrease the dimension of a tensor
 without changing the data. We will do this with a `view` function: use
-`view(1, 5, 2)` for the above example. Element `tensor[i, j]` in the (5,2) matrix
+`view(1, 5, 2)` for the above example. Element `tensor[i, j]` in the (5,2)
+matrix
 is now `tensor[0, i, j]` in the 3-dimensional tensor.
 
 
 Critically, neither of these operations changes anything about the
-input tensor itself. Both `view` and `permute` are `tensor tricks`, i.e. operations
+input tensor itself. Both `view` and `permute` are `tensor tricks`,
+i.e. operations
 that only modify how we look at the tensor, but not any of its
 data. Another way to say this is that they do not move or copy the
 data in any way, but only the external tensor wrapper.
@@ -105,20 +133,23 @@ manages tensor `storage` and `strides`:
 
 
 `Strides` can get a bit confusing to think about, so let's go over an example.
-Consider a matrix of shape (5, 2). The standard mapping is to walk left-to-right,
+Consider a matrix of shape (5, 2). The standard mapping is to walk
+left-to-right,
 top-to-bottom to order this matrix to the 1-D `storage`:
-
 
 .. image:: figs/Tensors/stride2.png
            :align: center
            :width: 400px
 
+
 We call it `contiguous`
 mapping, since it is in the natural counting order (bigger strides left).
-Here the strides are :math:`(2, 1)`. We read this as each column moves 1 step in storage and each row
-moves 2 steps. We can have different strides for the same shape. For instance, if
-we were walking top-to-bottom, left-to-right, we would have the following stride map:
-
+Here the strides are :math:`(2, 1)`. We read this as each column moves 1
+step in storage and each row
+moves 2 steps. We can have different strides for the same shape. For
+instance, if
+we were walking top-to-bottom, left-to-right, we would have the following
+stride map:
 
 .. image:: figs/Tensors/stride1.png
            :align: center
@@ -126,8 +157,8 @@ we were walking top-to-bottom, left-to-right, we would have the following stride
 
 
 Contiguous strides are generally preferred, but non-contiguous strides
-can be quite useful as well. Consider transposing the above matrix and using strides (1,2):
-
+can be quite useful as well. Consider transposing the above matrix and using
+strides (1,2):
 
 .. image:: figs/Tensors/stride3.png
            :align: center
@@ -138,16 +169,16 @@ stride map on the (5,2) matrix. But notably no change in the
 `storage`. This is one of the super powers of tensors mentioned above:
 we can easily manipulate how we view the same underlying `storage`.
 
-
 Strides naturally extend to higher-dimensional tensors.
+
 
 .. image:: figs/Tensors/stride4.png
            :align: center
 
-
 Finally, strides can be used to implement indexing into the tensor.
 Assuming strides are :math:`(s_1, s_2)` and we want to look up
-`tensor[i, j]`, we can directly use strides to find its postion in the `storage`::
+`tensor[i, j]`, we can directly use strides to find its postion in the
+`storage`::
 
   storage[s1 * i + s2 * j]
 

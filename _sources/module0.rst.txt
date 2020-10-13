@@ -16,7 +16,8 @@ In this module, you will start to build up some of the
 infrastructure for MiniTorch.
 
 All starter code is available in https://github.com/minitorch/Module-0 .
-Before starting this assignment, make sure to set up your workspace following :doc:`setup`, and
+Before starting this assignment, make sure to set up your workspace following
+:doc:`setup`, and
 read :doc:`contributing` to understand how the code should be organized.
 
 
@@ -48,7 +49,8 @@ some terminologies might be new.
 
 
 .. todo::
-   Complete the following functions in `minitorch/operators.py` and pass tests marked as `task0_1`.
+   Complete the following functions in `minitorch/operators.py` and pass
+   tests marked as `task0_1`.
 
 .. autofunction:: minitorch.operators.mul
 .. autofunction:: minitorch.operators.id
@@ -68,19 +70,21 @@ Task 0.2: Testing and Debugging
 
    This task requires familiarity with testing and property
    tests. Make sure to first read the guide on
-   :doc:`property_testing`, and consult the `Hypothesis <https://hypothesis.readthedocs.io/>`_ documentation.
+   :doc:`property_testing`, and consult the `Hypothesis
+   <https://hypothesis.readthedocs.io/>`_ documentation.
 
 
 We ask you to implement property tests for your operators from Task 0.1. These
 tests should ensure that your functions not only work but also obey
-high-level mathematical properties for any input. 
+high-level mathematical properties for any input.
 Note that you need to change arguments for those test functions.
 
 
 
 
 .. todo::
-   Complete the test functions in `tests/test_operators.py`  marked as `task0_2`.
+   Complete the test functions in `tests/test_operators.py`  marked as
+   `task0_2`.
 
 
 
@@ -92,18 +96,25 @@ Task 0.3: Functional Python
 
 .. note::
 
-   This task requires familiarity with basic functional programming concepts and notation.
-   This subject is outside the scope of guides provided here, but this `tutorial <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_ is a good starting place.
+   This task requires familiarity with basic functional programming concepts
+   and notation.
+   This subject is outside the scope
+   of guides provided here, but this `tutorial
+   <https://www.hackerearth.com/practice/python/functional-programming/functional-programming-1/tutorial/>`_
+   is a good starting place.
 
 
 To practice the use of higher-order functions in Python, implement three basic
-functional concepts. Use them in combination with operators described in Task 0.1
-to build up more complex mathematical operations that work on lists instead of single values.
+functional concepts. Use them in combination with operators described in
+Task 0.1
+to build up more complex mathematical operations that work on lists instead
+of single values.
 
 
 
 .. todo::
-   Complete the following functions in `minitorch/operators.py` and pass tests marked as `tasks0_3`.
+   Complete the following functions in `minitorch/operators.py` and pass
+   tests marked as `tasks0_3`.
 
 .. autofunction:: minitorch.operators.map
 .. autofunction:: minitorch.operators.negList
@@ -121,19 +132,23 @@ Task 0.4: Modules
           Please read :doc:`modules` to get started.
           If you want more context for how modules are used,
           you may find it helpful to skip ahead and read the `torch module
-          tutorial <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.
+          tutorial
+          <https://pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html#sphx-glr-beginner-blitz-cifar10-tutorial-py>`_.
 
 
 
 This task is to implement the core structure of the :class:`minitorch.Module`
 class.  We ask you to implement a tree data structure that
-stores named :class:`minitorch.Parameter` on each node. Such a data structure makes it
-easy for users to create trees that can be `walked` to find all of the parameters of
+stores named :class:`minitorch.Parameter` on each node. Such a data structure
+makes it
+easy for users to create trees that can be `walked` to find all of the
+parameters of
 interest.
 
 
 .. todo::
-   Complete the functions in `minitorch/module.py` and pass tests marked as `tasks0_4`.
+   Complete the functions in `minitorch/module.py` and pass tests marked as
+   `tasks0_4`.
 
 
 .. autofunction:: minitorch.Module.train
@@ -147,14 +162,19 @@ Task 0.5: Visualization
 
 .. note::
 
-   This task requires familiarity with visualization tools described in :doc:`visualization` as well
-   as the documentation for `Visdom <https://github.com/facebookresearch/visdom>`_.
+   This task requires familiarity with visualization tools described in
+   :doc:`visualization` as well
+   as the documentation for `Visdom
+   <https://github.com/facebookresearch/visdom>`_.
 
 
 
-For the first few assignments, we use a set of datasets implemented in `project/datasets.py`,
-which are 2D point classification datasets. (See `TensorFlow Playground <https://playground.tensorflow.org/>`_
-for similar examples.) Each of these dataset can be added to the visualization using::
+For the first few assignments, we use a set of datasets implemented in
+`project/datasets.py`,
+which are 2D point classification datasets. (See `TensorFlow Playground
+<https://playground.tensorflow.org/>`_
+for similar examples.) Each of these dataset can be added to the visualization
+using::
 
   from project.datasets import Simple, Split, Xor
   N = 100
@@ -173,8 +193,10 @@ You can also provide a model that attempts to perform the classfication::
 
 
 .. todo::
-   Start a visdom server and print an image of the dataset. Hand-create classifiers that
-   split each of the datasets into the correct colors. Display your images on the README file in your
+   Start a visdom server and print an image of the dataset. Hand-create
+   classifiers that
+   split each of the datasets into the correct colors. Display your images
+   on the README file in your
    repo.
 
 Optional

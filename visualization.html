@@ -193,8 +193,10 @@ virtual env (it also works in online environment like Repl.it):</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">visdom</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="n">error</span><span class="o">.</span><span class="n">log</span> <span class="o">&amp;</span>
 </pre></div>
 </div>
-<p>Next, open up a browser window and, go to <a class="reference external" href="http://localhost:8097">http://localhost:8097</a> (or whichever port it starts on).</p>
-<p>You can plot functions that go directly to this board. For instance, you can plot a simple
+<p>Next, open up a browser window and, go to <a class="reference external" href="http://localhost:8097">http://localhost:8097</a> (or whichever
+port it starts on).</p>
+<p>You can plot functions that go directly to this board. For instance, you
+can plot a simple
 graph with the following code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">visdom</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -210,7 +212,8 @@ graph with the following code:</p>
 </div>
 <img alt="_images/visdom2.png" src="_images/visdom2.png" />
 <p>There is a lot more you can do with Visdom. Check out <a class="reference external" href="https://github.com/facebookresearch/visdom">Visdom</a> for a list of goodies.</p>
-<p>To kill a Visdom server running in the background, you can first check what jobs are running and choose the job (e.g. job 1) that you want to kill:</p>
+<p>To kill a Visdom server running in the background, you can first check what
+jobs are running and choose the job (e.g. job 1) that you want to kill:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">jobs</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">kill</span> <span class="o">%</span><span class="mi">1</span>
 </pre></div>

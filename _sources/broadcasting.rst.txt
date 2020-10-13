@@ -14,7 +14,8 @@ scalar constant to every position::
   # In math notation, vector1 + 10
   vector1 + tensor([10])
 
-Intuitively, we would like to interpret this expression as the standard vector+scalar:
+Intuitively, we would like to interpret this expression as the standard
+vector+scalar:
 adding 10 to each position.
 However, the above operation will fail because of shape mistach: we are
 adding a tensor of shape(1,) to `vector1` which has shape (3,).
@@ -25,7 +26,8 @@ annoying and, more importantly, inefficient::
   vector1 + tensor([10, 10, 10])
 
 
-`Broadcasting` is a protocol that allows us to automatically interpret the frist expression as implying
+`Broadcasting` is a protocol that allows us to automatically interpret the
+frist expression as implying
 the second one. Inside `zip`, we pretend that 10 is a vector of
 shape (3,) when zipping it with a vector of shape (3,).
 Again, this is just an interpretation: we never actually create this vector.
@@ -35,7 +37,8 @@ This gives us the first rule of broadcasting:
 
 .. note::
 
-   **Rule 1**: Any dimension of size 1 can be zipped with dimensions of size n > 1 by assuming the dimension  is copied n times.
+   **Rule 1**: Any dimension of size 1 can be zipped with dimensions of size
+   n > 1 by assuming the dimension  is copied n times.
 
 
 Now let's apply this approach to a matrix of shape (4, 3)::
@@ -68,10 +71,12 @@ complicated cases. Thus we introduce another rule:
 
 .. note::
 
-   **Rule 3**: Any extra dimension of size 1 can only be implicitly added on the left side of the shape.
+   **Rule 3**: Any extra dimension of size 1 can only be implicitly added
+   on the left side of the shape.
 
 
-This rule has the impact of making the process easy to follow and replicate. You always know what the shape of the final
+This rule has the impact of making the process easy to follow and
+replicate. You always know what the shape of the final
 output will be. For example::
 
   # This will fail: mismatch of (4, 3) and (4,)
@@ -99,9 +104,10 @@ Here is a more complicated example::
 
 We end this guide with two important notes:
 
-1) Broadcasting is **only** about shapes. It does not take strides into account in any way. It is purely a high-level protocol.
-
-2) Broadcasting has some impact on the `backward `pass. We will discuss some in the code base, but it is not required for any of the tasks.
+1) Broadcasting is **only** about shapes. It does not take strides into
+   account in any way. It is purely a high-level protocol.
+2) Broadcasting has some impact on the `backward` pass. We will discuss some
+   in the code base, but it is not required for any of the tasks.
 
 
 
@@ -109,23 +115,29 @@ Examples
 ---------
 
 
-* Tensor-Scalar operations can be easily written using broadcasting for tensors of any dimension.
+* Tensor-Scalar operations can be easily written using broadcasting for
+  tensors of any dimension.
 
 .. image:: figs/Broadcast/scalar.png
            :align: center
 
-* Matrix-vector operations can be written using broadcasting, but you need to be careful to make sure that the vector is shaped such the the dimensions align. This can be done with `view` calls.
-
+* Matrix-vector operations can be written using broadcasting, but you need
+  to be careful to make sure that the vector is shaped such the the dimensions
+  align. This can be done with `view` calls.
 
 .. image:: figs/Broadcast/vector.png
            :align: center
 
-* Matrix-matrix operations can be written using broadcasting even when the dimensions don't align. Here is an example of that process.
+* Matrix-matrix operations can be written using broadcasting even when the
+  dimensions don't align. Here is an example of that process.
 
 .. image:: figs/Broadcast/threed.png
            :align: center
 
-* Matrix multiplication can be written in this style, here is :math:`(B x A^T)` where A is 3 x 2 and B is 2 x 2 . . (And you will need to use this for the assignment). However, note this is a memory inefficient way to do matrix multiplication, as it needs to create an intermediate tensor in the process.
+* Matrix multiplication can be written in this style, here is :math:`(B x
+  A^T)` where A is 3 x 2 and B is 2 x 2 . . (And you will need to use this for
+  the assignment). However, note this is a memory inefficient way to do matrix
+  multiplication, as it needs to create an intermediate tensor in the process.
 
 .. image:: figs/Broadcast/matmul.png
            :align: center

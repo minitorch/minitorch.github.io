@@ -220,14 +220,19 @@ built-in, but luckily it has good libraries to help speed up numerical
 computation. We will utilize one of these libraries known as <a class="reference external" href="http://numba.pydata.org/">Numba</a></p>
 <div class="section" id="numba-jit">
 <h2>Numba JIT<a class="headerlink" href="#numba-jit" title="Permalink to this headline">¶</a></h2>
-<p>Numba is a numerical JIT compiler for python. When a function is first created, it
-converts raw Python code to faster numerical operations under the hood. We have seen an example of this library earlier when developing our mathematical operators.</p>
+<p>Numba is a numerical JIT compiler for python. When a function is first
+created, it
+converts raw Python code to faster numerical operations under the hood. We
+have seen an example of this library earlier when developing our mathematical
+operators.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">neg</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="o">-</span><span class="n">x</span>
 </pre></div>
 </div>
-<p>This JIT function alone does not make the code much faster, but it allows us to use
-this code within other code. For instance, if we want to improve our map code we can change it to look like this.</p>
+<p>This JIT function alone does not make the code much faster, but it allows
+us to use
+this code within other code. For instance, if we want to improve our map
+code we can change it to look like this.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span>
 <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="c1"># Change 1: Move function from python to jit version.</span>
@@ -243,8 +248,11 @@ this code within other code. For instance, if we want to improve our map code we
 <span class="n">neg_map</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="n">neg</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Now when this function is called instead of running slow python code, it will run fast low-level code that takes advantage of the structure. This approach requires a bit of overhead on startup, but can make things much faster.</p>
-<p>Furthermore, if we know that the loop can be done in parallel we can speed it up further with one small change</p>
+<p>Now when this function is called instead of running slow python code, it will
+run fast low-level code that takes advantage of the structure. This approach
+requires a bit of overhead on startup, but can make things much faster.</p>
+<p>Furthermore, if we know that the loop can be done in parallel we can speed
+it up further with one small change</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">njit</span><span class="p">,</span> <span class="n">prange</span>
 <span class="k">def</span> <span class="nf">map</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="n">fn</span> <span class="o">=</span> <span class="n">njit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
@@ -260,9 +268,12 @@ python code. You can basically switch back and forth between the two
 without much change.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>You have to be a bit careful to ensure that the loop actually can be parallelized.
-In short, this means that steps cannot depend on each other or write to the same output.
-For instance, when implementing <cite>reduce</cite> you have to be careful to mix parallel and
+<p>You have to be a bit careful to ensure that the loop actually can be
+parallelized.
+In short, this means that steps cannot depend on each other or write to
+the same output.
+For instance, when implementing <cite>reduce</cite> you have to be careful to mix
+parallel and
 non-parallel loops.</p>
 </div>
 <p>For full details on how Numba works see the <a class="reference external" href="https://numba.pydata.org/numba-doc/latest/user/parallel.html">Parallel tutorial</a>.</p>

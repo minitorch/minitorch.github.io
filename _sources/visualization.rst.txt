@@ -32,9 +32,11 @@ virtual env (it also works in online environment like Repl.it):
 
 >>> visdom 2> error.log &
 
-Next, open up a browser window and, go to http://localhost:8097 (or whichever port it starts on).
+Next, open up a browser window and, go to http://localhost:8097 (or whichever
+port it starts on).
 
-You can plot functions that go directly to this board. For instance, you can plot a simple
+You can plot functions that go directly to this board. For instance, you
+can plot a simple
 graph with the following code::
 
     import visdom
@@ -51,9 +53,11 @@ graph with the following code::
 .. image:: visdom2.png
 
 
-There is a lot more you can do with Visdom. Check out `Visdom <https://github.com/facebookresearch/visdom>`_ for a list of goodies.
+There is a lot more you can do with Visdom. Check out `Visdom
+<https://github.com/facebookresearch/visdom>`_ for a list of goodies.
 
-To kill a Visdom server running in the background, you can first check what jobs are running and choose the job (e.g. job 1) that you want to kill:
+To kill a Visdom server running in the background, you can first check what
+jobs are running and choose the job (e.g. job 1) that you want to kill:
 
 >>> jobs
 >>> kill %1

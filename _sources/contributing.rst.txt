@@ -25,8 +25,10 @@ with this process, we utilize required formatting on all
 assignments. Coding style is checked in `run_tests.py 0` automatically.
 
 Fixing style bugs can be an annoying process. However, there is a nice trick
-to fix most formatting issues automatically. We use `black` to automatically reformat
-all of your code to fit most of the requirements (see https://github.com/psf/black for
+to fix most formatting issues automatically. We use `black` to automatically
+reformat
+all of your code to fit most of the requirements (see
+https://github.com/psf/black for
 more details):
 
 >>> black minitorch/ tests/ project/
@@ -53,22 +55,23 @@ Or even a particular test with:
 
 >>> python -m pytest tests/test_operators.py -k test_sum
 
-Pytest will hide all print statements unless a test fails. 
+Pytest will hide all print statements unless a test fails.
 
- 
+
 Documentation
 --------------
 
 Throughout the codebase, we require to document all functions in a
 standardized style. Documentation is critical for our Python codebase, and
 we use it to convey requirements on many functions.
-Functions should have docstrings in the following form (known as Google docstyle): ::
+Functions should have docstrings in the following form (known as Google
+docstyle): ::
 
 
   def index(ls, i):
       """
       List indexing.
-      
+
       Args:
           ls (list): A list of any type.
           i (int): An index into the list
@@ -76,7 +79,7 @@ Functions should have docstrings in the following form (known as Google docstyle
       Returns:
           Value at ls[i].
       """
-      ... 
+      ...
 
 
 A full description of this docstyle is listed here
@@ -87,10 +90,13 @@ https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html.
 Continuous Integration (CI)
 -----------------------------
 
-In addition to local testing, the project is set up such that on each code push,
+In addition to local testing, the project is set up such that on each
+code push,
 tests are automatically run and checked on the server. You are able to see
-how well you are doing on the assignment by committing your code, pushing to the server,
-and then logging in to GitHub. This process takes several minutes, but it is an easy way to
+how well you are doing on the assignment by committing your code, pushing
+to the server,
+and then logging in to GitHub. This process takes several minutes, but it
+is an easy way to
 keep track of your progress as you go.
 
 Specifically, you can run:

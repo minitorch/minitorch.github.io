@@ -178,6 +178,10 @@
             
   <div class="section" id="operations">
 <h1>Operations<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h1>
+<div class="jupyter_cell docutils container">
+<div class="cell_output docutils container">
+</div>
+</div>
 <p>Now we would like to reimplement all
 our mathematical operations on tensors.
 The goal is to make this feel
@@ -192,8 +196,9 @@ these operations down as unary transformations:</p>
 </pre></div>
 </div>
 <p>Binary transformations:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># b) Return a new tensor where</span>
-<span class="c1"># each position is the sum/mul/sub of the position in `tensor_a` and `tensor_b`</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># b) Return a new tensor where each position</span>
+<span class="c1"># is the sum/mul/sub of the position in `tensor_a` and</span>
+<span class="c1"># `tensor_b`</span>
 <span class="n">tensor_a</span> <span class="o">+</span> <span class="n">tensor_b</span>
 <span class="n">tensor_a</span> <span class="o">*</span> <span class="n">tensor_b</span>
 <span class="n">tensor_a</span> <span class="o">-</span> <span class="n">tensor_b</span>
@@ -224,33 +229,50 @@ We can view these operations as applying the following transformation:</p></li>
 <ul class="simple">
 <li><p>Operation b / zip: These operations only need to pair operations between
 input tensors. If we assume the tensors have the same size and shape,
-this type of operation simply aligns these two tensors and applies an operator
+this type of operation simply aligns these two tensors and applies an
+operator
 to each pair of elements:</p></li>
 </ul>
 <img alt="_images/zip.png" class="align-center" src="_images/zip.png" />
 <ul class="simple">
-<li><p>Operation c / reduce: These operations need to group together cells within a single tensor.
-We can think of there being an implied <cite>reduce</cite> shape that is eliminated in the process of the
-output construction. For instance, in the example below, we start with an input of shape (3, 2) and create
-an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape (3, 1) for each element in the output.</p></li>
+<li><p>Operation c / reduce: These operations need to group together cells within
+a single tensor.
+We can think of there being an implied <cite>reduce</cite> shape that is eliminated
+in the process of the
+output construction. For instance, in the example below, we start with an
+input of shape (3, 2) and create
+an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape
+(3, 1) for each element in the output.</p></li>
 </ul>
 <img alt="_images/reduce.png" class="align-center" src="_images/reduce.png" />
 </div>
 <div class="section" id="reductions">
 <h2>Reductions<a class="headerlink" href="#reductions" title="Permalink to this headline">¶</a></h2>
-<p>Reduction is a bit more complex than the others, so lets discuss how it is implemented.</p>
-<p>Reductions can specify an dimension (or axis) that tells us which elements to reduce. The
-reduction is then applied along that dimension. For example if we <cite>reduce</cite> dimension 0 we get the
+<p>Reduction is a bit more complex than the others, so lets discuss how it
+is implemented.</p>
+<p>Reductions can specify an dimension (or axis) that tells us which elements
+to reduce. The
+reduction is then applied along that dimension. For example if we <cite>reduce</cite>
+dimension 0 we get the
 following reduction.</p>
 <img alt="_images/sum0.png" class="align-center" src="_images/sum0.png" />
-<p>This reduction changes our shape from (3, 2) to (1, 2), i.e. <cite>reducing</cite> the size of 0-dim. Another way you can view this is as 2 parallel operations, both of which apply a Module-0 style reduce along the 0-dim. We can look at the reduction shape of this procedure (3, 1).</p>
-<p>Applying a reduction along dim 1 creates a different reduction shape which is applied 3 times. Here is what that looks like,</p>
+<p>This reduction changes our shape from (3, 2) to (1, 2), i.e. <cite>reducing</cite> the
+size of 0-dim. Another way you can view this is as 2 parallel operations,
+both of which apply a Module-0 style reduce along the 0-dim. We can look at
+the reduction shape of this procedure (3, 1).</p>
+<p>Applying a reduction along dim 1 creates a different reduction shape which
+is applied 3 times. Here is what that looks like,</p>
 <img alt="_images/sum1.png" class="align-center" src="_images/sum1.png" />
-<p>The same approach can be applied in higher dimensions. If we want to sum over one of the dimensions we just create the reduction shape and apply it,</p>
+<p>The same approach can be applied in higher dimensions. If we want to sum
+over one of the dimensions we just create the reduction shape and apply it,</p>
 <img alt="_images/sum2.png" class="align-center" src="_images/sum2.png" />
-<p>When you implement, think about enumerating over positions in the final tensor, and then applying the reduction shape to get the indices over the original tensor,</p>
+<p>When you implement, think about enumerating over positions in the final
+tensor, and then applying the reduction shape to get the indices over the
+original tensor,</p>
 <img alt="_images/implement.png" class="align-center" src="_images/implement.png" />
-<p>Finally, there is a special case reduction where we reduce over the entire tensor. You can think of this as creating a reduction shape over the full tensor and then viewing the result as a scalar.</p>
+<p>Finally, there is a special case reduction where we reduce over the entire
+tensor. You can think of this as creating a reduction shape over the full
+tensor and then viewing the result as a scalar.</p>
 <img alt="_images/sum.png" class="align-center" src="_images/sum.png" />
 <p>In the next module, we will discuss efficient implementation of the
 above operations.  For now, they can be implemented by slow but

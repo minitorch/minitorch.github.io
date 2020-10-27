@@ -182,22 +182,19 @@
 <img alt="_images/threadid&#64;3x.png" class="align-center" src="_images/threadid&#64;3x.png" />
 <p>In addition to helping simplify code, tensors provide a basis for
 speeding up computation. In fact, they are really the only way to
-efficiently write deep learning in a slow language like Python.
+efficiently write deep learning code in a slow language like Python.
 However, nothing we have done so far really makes anything faster than
 <a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a>. This module is focused on taking advantage of tensors
 to write fast code, first on standard CPUs and then using GPUs.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-3">https://github.com/minitorch/Module-3</a> .</p>
-<p>To begin, remember to first activate your virtual environment.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-</pre></div>
-</div>
-<p>And then clone your assignment.</p>
+<p>To begin, remember to activate your virtual environment first, and then
+clone your assignment:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">git</span> <span class="n">clone</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT3_URL</span><span class="p">}}</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">Module</span><span class="o">-</span><span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="p">{{</span><span class="n">STUDENT_ASSIGNMENT_NAME</span><span class="p">}}</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">Ue</span> <span class="o">.</span>
 </pre></div>
 </div>
-<p>You will also need the files so be sure to pull them over
+<p>You need the files from previous assignments, so maker sure to pull them over
 to your new repo.</p>
 <p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
 <div class="toctree-wrapper compound">
@@ -336,12 +333,12 @@ least one parallelized loop.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This task requires basic familiarity with matrix multiplication.
-Be sure to read the section on
+Be sure to read the Guide on
 <a class="reference internal" href="matrixmult.html"><span class="doc">Fusing Operations</span></a>.</p>
 </div>
 <p>Matrix multiplication is key to all of the models that we have trained so far.
 In the last module, we computed matrix multiplication using broadcasting.
-In this task we ask you to implement it directly as a function. Do your best to
+In this task, we ask you to implement it directly as a function. Do your best to
 make the function efficient, but for now all that matters is that you correctly
 produce a multiply function that passes our tests and has some parallelism.</p>
 <p>In order to use this function, you will also need to add a new <cite>MatMul</cite>
@@ -398,7 +395,7 @@ Pass tests marked as <cite>task3_2</cite>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This task requires basic familiarity with CUDA.
-Be sure to read the section on
+Be sure to read the Guide on
 <a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
 </div>
 <p>We can do even better than parallelization if we have access to
@@ -408,7 +405,7 @@ if you are clever you can make these computations really fast (aim for 2x
 of task 3.1).</p>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
-<p>Revisit tensor ops and <cite>minitorch/cuda_ops.py</cite> and pass the tests marked as
+<p>Complete the following functions in <cite>minitorch/cuda_ops.py</cite>, and pass the tests marked as
 <cite>task3_3</cite>.</p>
 </div>
 <dl class="py function">
@@ -508,13 +505,13 @@ of task 3.1).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This task requires basic familiarity with CUDA.
-Be sure to read the section on
+Be sure to read the Guide on
 <a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
 </div>
 <p>Finally we can combine both these approaches and implement CUDA
 <cite>matmul</cite>. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
-accuracy, but the faster you can make it the better.</p>
+accuracy, but, the faster you can make it, the better.</p>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <p>Optimize  <cite>minitorch/fast_ops.py</cite> with Numba and
@@ -565,11 +562,11 @@ created using the <code class="xref py py-func docutils literal notranslate"><sp
 </div>
 <div class="section" id="task-3-4b-extra-credit">
 <h3>Task 3.4b: Extra Credit<a class="headerlink" href="#task-3-4b-extra-credit" title="Permalink to this headline">¶</a></h3>
-<p>Implementing Matrix Multiplication and reductions efficiently is
+<p>Implementing matrix multiplication and reduction efficiently is
 hugely important for many deep learning tasks. We have seen one method
-for implementing these functions but there are many more optimizations
+for implementing these functions, but there are many more optimizations
 that you could apply.</p>
-<p>For extra credit, first read these two tutorials,</p>
+<p>For extra credit, first read these two tutorials:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://numba.pydata.org/numba-doc/latest/cuda/reduction.html">https://numba.pydata.org/numba-doc/latest/cuda/reduction.html</a></p></li>
 <li><p><a class="reference external" href="https://nyu-cds.github.io/python-numba/05-cuda/">https://nyu-cds.github.io/python-numba/05-cuda/</a></p></li>
@@ -578,15 +575,15 @@ that you could apply.</p>
 <cite>tensor_matrix_multiply</cite> that take advantage of other aspects of the
 GPU.</p>
 <p>To get full credit, you should document your code to show us that you
-understand each line. Prove to us that these lead to speeds up on
+understand each line. Prove to us that these lead to speed-ups on
 large matrix operations by making a graph comparing them to naive
 operations.</p>
 </div>
 <div class="section" id="task-3-5-training">
 <h3>Task 3.5: Training<a class="headerlink" href="#task-3-5-training" title="Permalink to this headline">¶</a></h3>
-<p>If your code works you should now be able to move on to the tensor
+<p>If your code works, you should now be able to move on to the tensor
 training script in <cite>project/run_fast_tensor.py</cite>.  This code is the same
-basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your tensor
+basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your fast tensor
 code. We have left the <cite>matmul</cite> layer blank for you to implement with
 your tensor code.</p>
 <div class="admonition-todo admonition" id="id5">

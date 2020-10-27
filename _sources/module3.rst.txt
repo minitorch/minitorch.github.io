@@ -8,7 +8,7 @@ Module 3 - Efficiency
 
 In addition to helping simplify code, tensors provide a basis for
 speeding up computation. In fact, they are really the only way to
-efficiently write deep learning in a slow language like Python.
+efficiently write deep learning code in a slow language like Python.
 However, nothing we have done so far really makes anything faster than
 :doc:`module0`. This module is focused on taking advantage of tensors
 to write fast code, first on standard CPUs and then using GPUs.
@@ -16,17 +16,14 @@ to write fast code, first on standard CPUs and then using GPUs.
 
 All starter code is available in https://github.com/minitorch/Module-3 .
 
-To begin, remember to first activate your virtual environment.
-
->>> source venv/bin/activate
-
-And then clone your assignment.
+To begin, remember to activate your virtual environment first, and then
+clone your assignment:
 
 >>> git clone {{STUDENT_ASSIGNMENT3_URL}}
->>> cd Module-3
+>>> cd {{STUDENT_ASSIGNMENT_NAME}}
 >>> pip install -Ue .
 
-You will also need the files so be sure to pull them over
+You need the files from previous assignments, so maker sure to pull them over
 to your new repo.
 
 Be sure to continue to follow the :doc:`contributing` guidelines.
@@ -89,12 +86,12 @@ Task 3.2: Matrix Multiplication
 ==================================
 
 .. note:: This task requires basic familiarity with matrix multiplication.
-   Be sure to read the section on
+   Be sure to read the Guide on
    :doc:`matrixmult`.
 
 Matrix multiplication is key to all of the models that we have trained so far.
 In the last module, we computed matrix multiplication using broadcasting.
-In this task we ask you to implement it directly as a function. Do your best to
+In this task, we ask you to implement it directly as a function. Do your best to
 make the function efficient, but for now all that matters is that you correctly
 produce a multiply function that passes our tests and has some parallelism.
 
@@ -120,11 +117,12 @@ on the real task under speed conditions.
 
 .. autofunction:: minitorch.fast_ops.tensor_matrix_multiply
 
+
 Task 3.3: CUDA Operations
 ==================================
 
 .. note:: This task requires basic familiarity with CUDA.
-   Be sure to read the section on
+   Be sure to read the Guide on
    :doc:`cuda` and the Numba CUDA guide.
 
 We can do even better than parallelization if we have access to
@@ -134,7 +132,7 @@ if you are clever you can make these computations really fast (aim for 2x
 of task 3.1).
 
 .. todo::
-   Revisit tensor ops and `minitorch/cuda_ops.py` and pass the tests marked as
+   Complete the following functions in `minitorch/cuda_ops.py`, and pass the tests marked as
    `task3_3`.
 
 
@@ -147,13 +145,14 @@ Task 3.4: CUDA Matrix Multiplication
 =================================================
 
 .. note:: This task requires basic familiarity with CUDA.
-   Be sure to read the section on
+   Be sure to read the Guide on
    :doc:`cuda` and the Numba CUDA guide.
+
 
 Finally we can combine both these approaches and implement CUDA
 `matmul`. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
-accuracy, but the faster you can make it the better.
+accuracy, but, the faster you can make it, the better.
 
 .. todo::
    Optimize  `minitorch/fast_ops.py` with Numba and
@@ -166,12 +165,12 @@ accuracy, but the faster you can make it the better.
 Task 3.4b: Extra Credit
 =======================
 
-Implementing Matrix Multiplication and reductions efficiently is
+Implementing matrix multiplication and reduction efficiently is
 hugely important for many deep learning tasks. We have seen one method
-for implementing these functions but there are many more optimizations
+for implementing these functions, but there are many more optimizations
 that you could apply.
 
-For extra credit, first read these two tutorials,
+For extra credit, first read these two tutorials:
 
 * https://numba.pydata.org/numba-doc/latest/cuda/reduction.html
 * https://nyu-cds.github.io/python-numba/05-cuda/
@@ -181,7 +180,7 @@ Then implement a version of CUDA `tensor_reduce` or
 GPU.
 
 To get full credit, you should document your code to show us that you
-understand each line. Prove to us that these lead to speeds up on
+understand each line. Prove to us that these lead to speed-ups on
 large matrix operations by making a graph comparing them to naive
 operations.
 
@@ -189,9 +188,9 @@ operations.
 Task 3.5: Training
 ========================
 
-If your code works you should now be able to move on to the tensor
+If your code works, you should now be able to move on to the tensor
 training script in `project/run_fast_tensor.py`.  This code is the same
-basic training setup as  :doc:`module2`, but now utilizes your tensor
+basic training setup as  :doc:`module2`, but now utilizes your fast tensor
 code. We have left the `matmul` layer blank for you to implement with
 your tensor code.
 
@@ -215,6 +214,7 @@ your tensor code.
 
       python run_fast_tensor.py --BACKEND gpu --HIDDEN 100 --DATASET split --RATE 0.05
       python run_fast_tensor.py --BACKEND cpu --HIDDEN 100 --DATASET split --RATE 0.05
+
 
      On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
      GPU to be below 1 second per epoch. (With some cleverness you can do much better.)

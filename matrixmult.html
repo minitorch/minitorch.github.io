@@ -42,8 +42,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Parallel Computation" href="parallel.html" />
-    <link rel="prev" title="Module 3 - Efficiency" href="module3.html" /> 
+    <link rel="next" title="GPU Programming" href="cuda.html" />
+    <link rel="prev" title="Parallel Computation" href="parallel.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -97,8 +97,11 @@
 <li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Fusing Operations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Fusing Operations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-matrix-multiplication">Example: Matrix Multiplication</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="cuda.html">GPU Programming</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module3.html#tasks">Tasks</a></li>
 </ul>
@@ -174,43 +177,66 @@
   <div class="section" id="fusing-operations">
 <h1>Fusing Operations<a class="headerlink" href="#fusing-operations" title="Permalink to this headline">¶</a></h1>
 <p>Another approach we can use to help improve tensor computations is to
-specialize combinations of operators that are commonly used
-together. By combining operations we can eliminate unnecessary
+specialize commonly used combinations of operators. Combining operations
+can eliminate unnecessary
 intermediate tensors. This is particularly helpful for saving memory.</p>
-<p>We will consider the specific example of applying a broadcasted <cite>zip</cite>
-and then a <cite>reduce</cite>. For example, consider between a tensor of size
-(3, 5, 1) and a vector of size (1, 5, 4), and then a sum over the
-middle dimension.</p>
-<img alt="_images/zip3d.png" class="align-center" src="_images/zip3d.png" />
-<img alt="_images/reduce3d.png" class="align-center" src="_images/reduce3d.png" />
-<p>Again this computation is correct, but it has two issues.
-First, it needs to create a tensor of size (3, 5, 4) in the
-intermediate step. Another more subtle problem is that the <cite>reduce</cite> operator
-may need to call <cite>save_values</cite> on this tensor, which means it stays in memory
-throughout.</p>
-<p>Ideally, we could just skip computing the middle value and just
-immediately skip to the output. We can do this by writing a
-specialized tensor Function with a <cite>forward</cite> function that directly
-produces the output and a <cite>backward</cite> to produce the required gradient.</p>
-<img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
 <p>There is a lot of ongoing work on how to do this operator fusion
-automatically. However, for very common operators it is worth just
+automatically. However, for very common operators. it is worth just
 writing these operators directly and speeding them up.</p>
-<p>The most common example of this is matrix multiplication (<cite>matmul</cite>).
-Matrix multiplication works exactly as above. Given a (broadcasted)
-matrices of size (3, 5, 1) and (1, 5, 4), matrix multiply zips them with
-<cite>mul</cite> and then reduces the middle dimension with sum.</p>
+<p>In minitorch we will do this fusion by customizing special operations. If we
+find it useful, we will add these operations in Numba.</p>
+<div class="section" id="example-matrix-multiplication">
+<h2>Example: Matrix Multiplication<a class="headerlink" href="#example-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
+<p>Let's consider a matrix multiplication example.
+In past modules we have done matrix multiplication by applying a broadcasted <cite>zip</cite>
+and then a <cite>reduce</cite>. For example, consider a tensor of size
+(2, 3, 1) and a tensor of size (3, 2). We first zip these together with broadcasting
+to produce a tensor of size (2, 3, 2):</p>
+<img alt="_images/matmul3d1.png" class="align-center" src="_images/matmul3d1.png" />
+<p>And then reduce it to a tensor of size (2, 1, 2), which we can view as (2, 2):</p>
+<img alt="_images/matmul3d2.png" class="align-center" src="_images/matmul3d2.png" />
+<p>This computation is correct, but it has two issues.  First, it needs
+to create a tensor of size (2, 3, 2) in the intermediate step. These
+tensor can be an order of magnitude larger than either of the tensors
+that were passed in. Another more subtle problem is that the <cite>reduce</cite>
+operator may need to call <cite>save_for_backwards</cite> on this tensor, which
+means it stays in memory throughout all of our forward computations.</p>
+<p>An alternative option is to fuse together these two operations. We
+will create a single matmul operations using python <cite>&#64;</cite> operator. We
+can then skip computing the intermediate value and directly compute
+the output. We can do this by writing a specialized tensor <cite>Function</cite>
+with a <cite>forward</cite> function that directly produces the output and a
+<cite>backward</cite> that produces the required gradient.</p>
+<img alt="_images/matmulsimple.png" class="align-center" src="_images/matmulsimple.png" />
+<p>This allows us to specialize our implementation of matrix
+multiplication. We do this by 1) walking over the output indices,
+2) seeing which indices are reduced, and 3) then seeing which were</p>
+<blockquote>
+<div><p>part of the zip. Here's what that looks like in our diagram.</p>
+</div></blockquote>
+<img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
+<p>Given how important this operator is, it is worth spending the time to
+think about how to make each of these steps fast. Once we know the
+output index we can very efficiently walk through the input indices
+and accumulate their sums.</p>
+<p>A fast matrix multiplication operator can be used to compute the
+<cite>forward</cite>.  To compute backward we need to reverse the operations that
+we computed. In particular this requires zipping grad out with the
+alternative input matrix. We can see the <cite>backward</cite> step by tracing
+the forward arrows:</p>
 <img alt="_images/matmul back.png" class="align-center" src="_images/matmul back.png" />
-<p>Writing a fast matrix multiplication operator can be used to compute the
-<cite>forward</cite> operator. Luckily to compute the <cite>backward</cite> operator we use exactly
-the same function. We can use the following
-identity from matrix calculus.</p>
+<p>It would be a bit annoying to optimize this code as well,
+but again luckily, to compute the <cite>backward</cite> step , we can  reuse
+our forward optimization.  In fact we can simply use the following
+identity from matrix calculus that tells use backward can be computed as a transpose
+and another matrix multiply.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
 f(M, N) &amp;=&amp;  M N \\
-f'_M(M, N) &amp;=&amp;  N grad_{out}\\
-f'_N(M, N) &amp;=&amp;  grad_{out} M
+g'_M(f(M, N)) &amp;=&amp;  grad_{out} N^T \\
+g'_N(f(M, N)) &amp;=&amp;  M^T grad_{out}
 \end{eqnarray*}\end{split}\]</div>
+</div>
 </div>
 
 
@@ -221,10 +247,10 @@ f'_N(M, N) &amp;=&amp;  grad_{out} M
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel Computation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="cuda.html" class="btn btn-neutral float-right" title="GPU Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="module3.html" class="btn btn-neutral float-left" title="Module 3 - Efficiency" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="parallel.html" class="btn btn-neutral float-left" title="Parallel Computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

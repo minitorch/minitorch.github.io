@@ -96,7 +96,9 @@ make the function efficient, but for now all that matters is that you correctly
 produce a multiply function that passes our tests and has some parallelism.
 
 In order to use this function, you will also need to add a new `MatMul`
-Function to `tensor_functions.py`. You might also find it useful to add a slow
+Function to `tensor_functions.py`. We have added a version in the starter code
+you can copy.
+You might also find it useful to add a slow
 broadcasted `matrix_multiply` to `tensor_ops.py` for debugging.
 
 In order to help debug this code, we have created a parallel analytics
@@ -111,7 +113,7 @@ After you finish this task, you may want to skip to 3.5 and experiment with trai
 on the real task under speed conditions.
 
 .. todo::
-   Complete the following function in `minitorch/fast_ops.py` and add a new `MatMul`
+   Complete the following function in `minitorch/fast_ops.py` and copy the `MatMul`
    Function to `tensor_functions.py`.
    Pass tests marked as `task3_2`.
 
@@ -193,8 +195,6 @@ training script in `project/run_fast_tensor.py`.  This code is the same
 basic training setup as  :doc:`module2`, but now utilizes your fast tensor
 code. We have left the `matmul` layer blank for you to implement with
 your tensor code.
-
-
 
 
 

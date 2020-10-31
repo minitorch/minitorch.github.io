@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Softmax" href="softmax.html" />
+    <link rel="next" title="Convolution" href="convolution.html" />
     <link rel="prev" title="GPU Programming" href="cuda.html" /> 
 </head>
 
@@ -98,13 +98,13 @@
 <li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Module 4 - Networks</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#tasks">Tasks</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#task-4-1-max-argmax-softmax">Task 4.1: Max, Argmax, Softmax</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-1-convolution">Task 4.1: Convolution</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-4-2-pooling">Task 4.2: Pooling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#task-4-3-convolution">Task 4.3: Convolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task-4-3-max-argmax-softmax">Task 4.3: Max, Argmax, Softmax</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-4-4-modules">Task 4.4: Modules</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-4-5-training-a-classifier">Task 4.5: Training a Classifier</a></li>
 </ul>
@@ -202,95 +202,29 @@ convolutional neural network for digit recognition.</p>
 <p>You will also need the files so be sure to pull them over
 to your new repo.</p>
 <p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
+<img alt="_images/networkcnn.png" class="align-center" src="_images/networkcnn.png" />
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="softmax.html">Softmax</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="softmax.html">Softmax</a></li>
 </ul>
 </div>
 <div class="section" id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="task-4-1-max-argmax-softmax">
-<h3>Task 4.1: Max, Argmax, Softmax<a class="headerlink" href="#task-4-1-max-argmax-softmax" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="task-4-1-convolution">
+<h3>Task 4.1: Convolution<a class="headerlink" href="#task-4-1-convolution" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with convolution.
+Be sure to read the section on <a class="reference internal" href="convolution.html"><span class="doc">Convolution</span></a>.</p>
+</div>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
-<p>Return to  <cite>minitorch/tensor.py</cite> and add a max reduction function.
-Add 2 property tests for the function and ensure that you understand its
-gradient computation.
-Mark the tests as <cite>task4_1</cite>.</p>
+<p>Complete the following function in <cite>minitorch/nn.py</cite> and pass tests marked
+as <cite>task4_1</cite>.</p>
 </div>
-<dl class="py function">
-<dt id="minitorch.max">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py function">
-<dt id="minitorch.argmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.argmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the argmax as a 1-hot tensor.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tensor with 1 on highest cell in dim, 0 otherwise</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="minitorch.softmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the softmax as a tensor.</p>
-<div class="math notranslate nohighlight">
-\[z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\]</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>softmax tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="minitorch.logsoftmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
-<dd><p>Compute the log of the softmax as a tensor.</p>
-<div class="math notranslate nohighlight">
-\[z_i = x_i - \log \sum_i e^{x_i}\]</div>
-<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations</a></p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>log of softmax tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 <div class="section" id="task-4-2-pooling">
 <h3>Task 4.2: Pooling<a class="headerlink" href="#task-4-2-pooling" title="Permalink to this headline">¶</a></h3>
@@ -365,37 +299,81 @@ marked as <cite>task4_2</cite>.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="task-4-3-convolution">
-<h3>Task 4.3: Convolution<a class="headerlink" href="#task-4-3-convolution" title="Permalink to this headline">¶</a></h3>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>This task requires basic familiarity with convolution.
-Be sure to read the section on <a class="reference internal" href="convolution.html"><span class="doc">Convolution</span></a>.</p>
-</div>
+<div class="section" id="task-4-3-max-argmax-softmax">
+<h3>Task 4.3: Max, Argmax, Softmax<a class="headerlink" href="#task-4-3-max-argmax-softmax" title="Permalink to this headline">¶</a></h3>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
-<p>Complete the following function in <cite>minitorch/nn.py</cite> and pass tests marked
-as <cite>task4_3</cite>.</p>
+<p>Return to  <cite>minitorch/tensor.py</cite> and add a max reduction function.
+Add 2 property tests for the function and ensure that you understand its
+gradient computation.
+Mark the tests as <cite>task4_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.tensor_conv2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">output</span></em>, <em class="sig-param"><span class="n">output_shape</span></em>, <em class="sig-param"><span class="n">output_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
-<dd><p>2D Convolution implementation.</p>
+<dt id="minitorch.max">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.argmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">argmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.argmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the argmax as a 1-hot tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>int</em>) -- size of the <cite>out</cite> tensor.</p></li>
-<li><p><strong>input</strong> (<em>array</em>) -- storage for <cite>input</cite> tensor.</p></li>
-<li><p><strong>input_shape</strong> (<em>array</em>) -- shape for <cite>input</cite> tensor.</p></li>
-<li><p><strong>input_strides</strong> (<em>array</em>) -- strides for <cite>input</cite> tensor.</p></li>
-<li><p><strong>weight</strong> (<em>array</em>) -- storage for <cite>input</cite> tensor.</p></li>
-<li><p><strong>weight_shape</strong> (<em>array</em>) -- shape for <cite>input</cite> tensor.</p></li>
-<li><p><strong>weight_strides</strong> (<em>array</em>) -- strides for <cite>input</cite> tensor.</p></li>
-<li><p><strong>reverse</strong> (<em>bool</em>) -- Compute forward (False) or backward conv</p></li>
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
 </ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>tensor with 1 on highest cell in dim, 0 otherwise</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.softmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the softmax as a tensor.</p>
+<div class="math notranslate nohighlight">
+\[z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>softmax tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.logsoftmax">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute the log of the softmax as a tensor.</p>
+<div class="math notranslate nohighlight">
+\[z_i = x_i - \log \sum_i e^{x_i}\]</div>
+<p>See <a class="reference external" href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations</a></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
+<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply argmax</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>log of softmax tensor</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -406,7 +384,7 @@ as <cite>task4_3</cite>.</p>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <p>Complete the following function in <cite>minitorch/nn.py</cite> and pass tests marked
-as <cite>task4_3</cite>.</p>
+as <cite>task4_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.dropout">
@@ -432,6 +410,31 @@ as <cite>task4_3</cite>.</p>
 </div>
 <div class="section" id="task-4-5-training-a-classifier">
 <h3>Task 4.5: Training a Classifier<a class="headerlink" href="#task-4-5-training-a-classifier" title="Permalink to this headline">¶</a></h3>
+<p>If your code works, you should now be able to move on to the tensor
+training script in <cite>project/run_fast_tensor.py</cite>.  This code is the same
+basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your fast tensor
+code. We have left the <cite>matmul</cite> layer blank for you to implement with
+your tensor code.</p>
+<div class="admonition-todo admonition" id="id5">
+<p class="admonition-title">Todo</p>
+<ul>
+<li><p>Implement the missing functions in <cite>project/run_fast_tensor.py</cite>. These
+should
+do exactly the same thing as the corresponding functions in
+<cite>project/run_tensor.py</cite>,
+but now use the faster backend</p></li>
+<li><p>Train a tensor model and add your results for all dataset
+to the README.</p></li>
+<li><p>Run a bigger model and record the time per epoch reported by the
+trainer. Here is the command</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">run_mnist_multiclass</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+</div>
+<p>On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 </div>
@@ -444,7 +447,7 @@ as <cite>task4_3</cite>.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="softmax.html" class="btn btn-neutral float-right" title="Softmax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="convolution.html" class="btn btn-neutral float-right" title="Convolution" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="cuda.html" class="btn btn-neutral float-left" title="GPU Programming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

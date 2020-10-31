@@ -41,35 +41,37 @@ to your new repo.
 
 Be sure to continue to follow the :doc:`contributing` guidelines.
 
+.. image:: figs/Conv/networkcnn.png
+           :align: center
+
+
 .. toctree::
    :maxdepth: 3
    :glob:
    :caption: Guides
 
-   softmax
-   pooling
    convolution
+   pooling
+   softmax
 
 Tasks
 ********
 
-Task 4.1: Max, Argmax, Softmax
-===============================
+Task 4.1: Convolution
+==================================
+
+.. note:: This task requires basic familiarity with convolution.
+   Be sure to read the section on :doc:`convolution`.
 
 .. todo::
-   Return to  `minitorch/tensor.py` and add a max reduction function.
-   Add 2 property tests for the function and ensure that you understand its
-   gradient computation.
-   Mark the tests as `task4_1`.
+   Complete the following function in `minitorch/nn.py` and pass tests marked
+   as `task4_1`.
 
-.. autofunction:: minitorch.max
-.. autofunction:: minitorch.argmax
-.. autofunction:: minitorch.softmax
-.. autofunction:: minitorch.logsoftmax
 
 
 Task 4.2: Pooling
 ==================================
+
 .. note:: This task requires basic familiarity with pooling as a concept.
    Be sure to read the section on :doc:`pooling`.
 
@@ -81,25 +83,27 @@ Task 4.2: Pooling
 .. autofunction:: minitorch.avgpool2d
 .. autofunction:: minitorch.maxpool2d
 
-
-Task 4.3: Convolution
-==================================
-
-.. note:: This task requires basic familiarity with convolution.
-   Be sure to read the section on :doc:`convolution`.
+Task 4.3: Max, Argmax, Softmax
+===============================
 
 .. todo::
-   Complete the following function in `minitorch/nn.py` and pass tests marked
-   as `task4_3`.
+   Return to  `minitorch/tensor.py` and add a max reduction function.
+   Add 2 property tests for the function and ensure that you understand its
+   gradient computation.
+   Mark the tests as `task4_3`.
 
-.. autofunction:: minitorch.tensor_conv2d
+.. autofunction:: minitorch.max
+.. autofunction:: minitorch.argmax
+.. autofunction:: minitorch.softmax
+.. autofunction:: minitorch.logsoftmax
+
 
 Task 4.4: Modules
 ==================================
 
 .. todo::
    Complete the following function in `minitorch/nn.py` and pass tests marked
-   as `task4_3`.
+   as `task4_4`.
 
 .. autofunction:: minitorch.dropout
 
@@ -107,3 +111,32 @@ Task 4.4: Modules
 
 Task 4.5: Training a Classifier
 ==================================
+
+
+
+If your code works, you should now be able to move on to the tensor
+training script in `project/run_fast_tensor.py`.  This code is the same
+basic training setup as  :doc:`module2`, but now utilizes your fast tensor
+code. We have left the `matmul` layer blank for you to implement with
+your tensor code.
+
+
+
+.. todo::
+   * Implement the missing functions in `project/run_fast_tensor.py`. These
+     should
+     do exactly the same thing as the corresponding functions in
+     `project/run_tensor.py`,
+     but now use the faster backend
+
+
+   * Train a tensor model and add your results for all dataset
+     to the README.
+
+   * Run a bigger model and record the time per epoch reported by the
+     trainer. Here is the command ::
+
+      python run_mnist_multiclass.py
+
+     On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+     GPU to be below 1 second per epoch. (With some cleverness you can do much better.)

@@ -5,9 +5,9 @@ Convolution
 
 .. note::
 
-   Convolutions are extensively covered by many excellent tutorials. You
-   may want to
-   check one of these out for more details on their use.
+   Convolutions are extensively covered by many excellent
+   tutorials. You may want to check one of these out for more details on
+   their use.
 
 
 
@@ -24,6 +24,4 @@ Convolution
            :align: center
 
 .. image:: figs/Conv/backward.png
-           :align: center
-.. image:: figs/Conv/networkcnn.png
            :align: center

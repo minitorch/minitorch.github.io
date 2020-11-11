@@ -9,13 +9,200 @@ Convolution
    tutorials. You may want to check one of these out for more details on
    their use.
 
+The main tool that we have used so far for classification is first the
+`Linear` layer which applies many different linear seperators to the
+input and then secondly a transform with the ReLU function into a new
+hidden representation.
+
+One major problem with this function is that it is based on the
+`absolute` position of the original features. This prevents us from
+using the same learned parameters on many parts of the input. Instead
+we would like to have a sliding window that uses the same model on local
+regions of the input.
+
+Graphically, the main idea is represented by this figure:
+
+.. image:: figs/Conv/conv.png
+           :align: center
+
+Instead of directly transforming the input image, this convolutional model
+is applied at each part of the image to produce a new representation. It is
+`sliding` in the sense that it slides across the whole image to produce the
+output.
+
+We will primarily use this convolution on images to learn these
+locally applied parameters, but to first get a sense of how this
+works, we will begin with sequences.
+
+
+1-D Convolution
+---------------
+
+Our simple 1-D Convolution takes in an input vector of length T, a
+weight vector of length K, and a produces an output of length T.
+It computes the output by sliding a the weight along the input,
+zipping it, reducing, and then saving the value in output:
+
+.. image:: figs/Conv/conv1d.png
+           :align: center
+
+In order to make things simpler, if the weight goes over the edge we just
+assume the input value was 0.
+
+
+An alternative way to think about a convolution is as `unrolling` the input.
+
+  input = minitorch.tensor([1, 2, 3, 4, 5, 6])
+  weight = minitorch.tensor([5, 2, 3])
+
+
+Now imagine we have a function `unroll` that could take a tensor and
+produce a new tensor ::
+
+
+  input = unroll(input, K)
+  print(input)
+
+  [[1, 2, 3],
+   [2, 3, 4],
+   [3, 4, 5],
+   [4, 5, 6],
+   [5, 6, 0],
+   [6, 0, 0],
+   ]
+
+We then apply matrix multiplication to take the dot-product ::
+
+  output = (input @ weight.view(K, 1)).view(T)
+  print(output)
+
+  [18, ... ]
+
+We can view this as two separate operations (note though that we do
+not implement it this way!):
+
+.. image:: figs/Conv/convvec.png
+           :align: center
+
+
+A neural network convolution is the fusion of these two
+operations. Given a tensor input and weight, it efficiently unrolls A
+and takes the matrix multiplication.  This technique is really useful
+because it allows you to `hover` over a region of the source
+sentence. You can think of the weight matrix as applying a pattern (or
+many different patterns) that you trying to find in the original data
+input.
+
+
+As with every other operation we need to be able to compute the
+backward operations of this 1D convolution. Also as with matrix
+multiplication we can reason through the flow of each cell. In
+particular we not that the third cell in the input `input[2]` was
+utilized only to compute three different cells in the output,
+`output[0]`, `output[1]` and `output[2]` ::
+
+  output[0] = weight[0] * input[0] + weight[1] * input[1]  + weight[2] * input[2]
+  output[1] = weight[0] * input[1] + weight[1] * input[2]  + weight[2] * input[3]
+  output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]
+
+Therefore when calculating gradients we can see that:
+
+  grad_input[2] = weight[0] * grad_output[0] + weight[1] * grad_output[1]  + weight[2] * grad_output[2]
+
+
+Visually this implies that the backward of the convolution is a convolution anchored in the reverse direction:
+
+.. image:: figs/Conv/conv1dback.png
+           :align: center
+
+
+Similar updates can be derived for the gradient of the weight.
+
+
+.. image:: figs/Conv/conv1dback2.png
+           :align: center
+
+
+This implies, as with matrix multiplication, that implementing a fast convolution can be used for both forward and backward passes.
+
+Finally, this whole approach can be scaled up to allow for handling
+multiple inputs and multiple weights simultaneously through
+channels. Analogously to matrix multiplication, we take an input
+matrix of in_channels x T, a weight matrix of out_channels x
+in_channels x K and produce an output of out_channels x T. Here is
+what that looks like with in_channels = 2 and out_channels = 3.
+
+.. image:: figs/Conv/channels.png
+           :align: center
+
+
+Codewise this is what the function computes. (It is a bit order to
+read so I recommend just sticking with the diagram) ::
+
+    input = minitorch.rand(in_channels, T)
+    weight = minitorch.rand(out_channels, in_channels, K)
+    input = unroll(input, K).permute(1, 2, 0) # Shape  in_channels x K x T
+    output = (weight.view(out_channels, in_channels * K) @ input.view(in_channels * K, T))
+
+The 1D convolution has all sorts of neat applications. It can be
+applied in NLP as a way of applying a model to multiple neighboring
+words. It can be used in speech recognition as a way of recognizing
+important sounds. It can be used in anomoly detection to find patterns
+that trigger an alert. Anywhere you can imagine that a mini-neural
+network might be useful to apply to subset of a sequence, try out a 1D
+conv.
+
+
+2-D Convolution
+---------------
+
+While 1D Convolutions detect patterns along a sequence, 2D
+convolutions detect patterns within a grid.
 
 
 .. image:: figs/Conv/conv.png
            :align: center
 
+The underlying math for the simple 2D is very similar to the 1D case.
+Our simple 2-D Convolution takes in an input vector of shape H x W
+(height and width), a weight vector of shape KH x KW, and a produces
+an output of length H x W. The operation is nearly identical, we walk
+through each possible unrolled rectangle in the input matrix and apply
+the weight as a dot-product. Assuming we had an analogous unroll
+function for matrices, this would be equivalent to computing ::
+
+  output = (unrolled_input.view(H, W, KH * KW) @ weight.view(KH * KW, 1)).view(H, W)
+
+Another way to think about this is just applying weight as a Linear
+layer to each one of the rectangles in the input image.
+
+Critically, just as the 1D convolution was anchored at the left
+position. the 2D convolution will be anchorsed at the top-left
+position. To compute the backward computation, we compute a
+bottom-right reverse convolution:
+
+.. image:: figs/Conv/backward.png
+           :align: center
+
+Finally, we can again complicate things by applying many weights to
+many inputs simultaneously. This extension gives us the standard 2D
+convolution that is used in Torch.  We take an input matrix of
+in_channels x H x W, a weight matrix of out_channels x in_channels x
+KW x KH and produce an output of out_channels x H x W.
+
 .. image:: figs/Conv/conv2.png
            :align: center
+
+Very roughly, this gives an output that takes the form ::
+
+  output = (unrolled_input.view(H, W, in_channels * KH * KW) \
+           @ weight.view(in_channels * KH * KW, out_channels)).view(H, W)
+
+
+
+The 2D Convolution is the main operator for image recognition
+systems. It allows us to process images into local feature
+representations:
 
 .. image:: figs/Conv/im1.png
            :align: center
@@ -23,5 +210,10 @@ Convolution
 .. image:: figs/Conv/im2.png
            :align: center
 
-.. image:: figs/Conv/backward.png
+
+It is also the key step in the convolutional neural network
+pipeline. It transforms the input image into hidden features which get
+propagated through each stage of the network:
+
+.. image:: figs/Conv/networkcnn.png
            :align: center

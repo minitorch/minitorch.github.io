@@ -142,10 +142,9 @@ In Numba, you can write the thread instructions as a single function::
         out[x, y] = times(in[x, y], local[1])
 
 
-Note that we cannot call the above function directly: we need to `launch`it
-with
-instructions for how to set up the blocks and grid. Here is how you do this
-with Numba::
+Note that we cannot call the above function directly: we need to
+`launch`it with instructions for how to set up the blocks and
+grid. Here is how you do this with Numba::
 
   threadsperblock = (4, 3)
   blockspergrid = (1, 3)
@@ -153,12 +152,11 @@ with Numba::
 
 
 
-This sets up a block and grid structure similar to the `map` function mentioned earlier. The
-code in `my_func` is
-run simultaneously for all the threads in the structure. However, you have
-to be a bit careful as
-some threads might compute values that are outside the memory
-of your structure::
+This sets up a block and grid structure similar to the `map` function
+mentioned earlier. The code in `my_func` is run simultaneously for all
+the threads in the structure. However, you have to be a bit careful as
+some threads might compute values that are outside the memory of your
+structure::
 
 
     # Main cuda launcher
@@ -178,6 +176,3 @@ of your structure::
         if x < out.shape[0] and y < out.shape[1]:
              # Compute some global value
              out[x, y] = times(in[x, y], local[1])
-
-
-

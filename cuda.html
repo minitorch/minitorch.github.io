@@ -271,21 +271,19 @@ behaves in lockstep running the same function:</p>
     <span class="n">out</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="n">times</span><span class="p">(</span><span class="ow">in</span><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="n">local</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>Note that we cannot call the above function directly: we need to <a href="#id1"><span class="problematic" id="id2">`</span></a>launch`it
-with
-instructions for how to set up the blocks and grid. Here is how you do this
-with Numba:</p>
+<p>Note that we cannot call the above function directly: we need to
+<a href="#id1"><span class="problematic" id="id2">`</span></a>launch`it with instructions for how to set up the blocks and
+grid. Here is how you do this with Numba:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">threadsperblock</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">blockspergrid</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">my_func</span><span class="p">[</span><span class="n">blockspergrid</span><span class="p">,</span> <span class="n">threadsperblock</span><span class="p">](</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>This sets up a block and grid structure similar to the <cite>map</cite> function mentioned earlier. The
-code in <cite>my_func</cite> is
-run simultaneously for all the threads in the structure. However, you have
-to be a bit careful as
-some threads might compute values that are outside the memory
-of your structure:</p>
+<p>This sets up a block and grid structure similar to the <cite>map</cite> function
+mentioned earlier. The code in <cite>my_func</cite> is run simultaneously for all
+the threads in the structure. However, you have to be a bit careful as
+some threads might compute values that are outside the memory of your
+structure:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Main cuda launcher</span>
 <span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">my_func</span><span class="p">(</span><span class="ow">in</span><span class="p">,</span> <span class="n">out</span><span class="p">):</span>

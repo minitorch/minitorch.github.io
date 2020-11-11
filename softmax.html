@@ -42,7 +42,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Max and Pooling" href="pooling.html" /> 
+    <link rel="prev" title="Pooling" href="pooling.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,8 +98,12 @@
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module4.html">Module 4 - Networks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolution</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pooling.html">Max and Pooling</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Softmax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Softmax</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sigmoid">Sigmoid</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multiclass">Multiclass</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="module4.html#tasks">Tasks</a></li>
 </ul>
 </li>
@@ -172,10 +176,125 @@
             
   <div class="section" id="softmax">
 <h1>Softmax<a class="headerlink" href="#softmax" title="Permalink to this headline">¶</a></h1>
-<img alt="_images/argmax.png" src="_images/argmax.png" />
-<img alt="_images/max.png" src="_images/max.png" />
-<img alt="_images/softmax.png" src="_images/softmax.png" />
+<div class="section" id="sigmoid">
+<h2>Sigmoid<a class="headerlink" href="#sigmoid" title="Permalink to this headline">¶</a></h2>
+<p>The key function that we have relied on for calculating loss so far is
+the sigmoid function. For strong negative inputs, it goes to zero, and
+for strong positive, it goes to 1. In between, it forms a smooth
+S-curve.</p>
+<a class="reference internal image-reference" href="_images/sigmoid.png"><img alt="_images/sigmoid.png" class="align-center" src="_images/sigmoid.png" style="width: 400px;" /></a>
+<p>The sigmoid function can be thought of as a smooth version of the step
+function <span class="math notranslate nohighlight">\(x &gt; 0\)</span>. This function signals whether <span class="math notranslate nohighlight">\(x\)</span> is
+greater than zero by returning a binary value. Another way to write this is as
+<span class="math notranslate nohighlight">\(step(x) = \arg\max\{0, x\}\)</span>, i.e. the step function returns which argument is bigger, 0 or
+1. As we saw in Module-1, the benefit of sigmoid approach is that it
+makes it easier to aply auto-differentiation for training our
+models. Whereas step is binary choice, sigmoid is a &quot;softer&quot;
+differentiable choice.</p>
+<p>We make one more connection to another function that we have used
+throughout the class, the ReLU function that we use for
+activations. Recall that this function is defined as <span class="math notranslate nohighlight">\(ReLU(x) =
+max\{ 0, x\}\)</span>.  Furthermore we have seen that the derivative is:</p>
+<a class="reference internal image-reference" href="_images/relu2.png"><img alt="_images/relu2.png" class="align-center" src="_images/relu2.png" style="width: 400px;" /></a>
+<div class="math notranslate nohighlight">
+\[\begin{split}\text{ReLU'}(x) = \begin{cases} 0 &amp; \text{if } x \leq 0 \\ 1 &amp; \text{ow}  \end{cases} = x &gt; 0\end{split}\]</div>
+<p>Connecting these together we can see that,</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 77%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Fun</p></th>
+<th class="head"><p>Comparision (x with 0)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ReLU</p></td>
+<td><p>Max</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step</p></td>
+<td><p>Argmax</p></td>
+</tr>
+<tr class="row-even"><td><p>Sigmoid</p></td>
+<td><p>&quot;Soft&quot; Max</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="multiclass">
+<h2>Multiclass<a class="headerlink" href="#multiclass" title="Permalink to this headline">¶</a></h2>
+<p>The sigmoid function works great when our machine learning problem is
+to classify between two possible choices. However, for many problems
+we may want to do <cite>multiclass</cite> classification, where we have <span class="math notranslate nohighlight">\(K\)</span>
+possible output classes to select from. For these problems, we will
+assume that the less layer of our network should output a size <span class="math notranslate nohighlight">\(K\)</span>
+vector giving a score for each of the K possible classes.</p>
 <img alt="_images/value.png" src="_images/value.png" />
+<p>The natural choice for selecting the value to classify is to pick the
+argmax element from this vector. The <span class="math notranslate nohighlight">\(argmax\)</span> function takes in
+a vector and returns a one-hot vector with a 1 value in the dimension with the
+highest value, and 0 in all the other positions.</p>
+<img alt="_images/argmax.png" src="_images/argmax.png" />
+<p>While it seems a bit different at first glance, we can view this
+function as a generalization of the <span class="math notranslate nohighlight">\(x &gt; 0\)</span> function above. Like
+that function every position is always 0 or 1. We can also see that
+the derivative will be zero almost every where as a small perturbation
+to the input scores will not change the output value.</p>
+<p>In order to fix this issue, we want a soft version of this argmax
+function, that like sigmoid smooths over the change. The
+generalization of sigmoid is appropriately known as the <cite>softmax</cite>
+function:</p>
+<img alt="_images/softmax.png" src="_images/softmax.png" />
+<p>Like with sigmoid a small change to any of the input scores will
+result in a change to all of the outputs of this function. Also like
+sigmoid every value is between 0 and 1.</p>
+<p>The math for this function is computed in the following way:</p>
+<div class="math notranslate nohighlight">
+\[\text{softmax}(\textbf{x}) = \frac{\exp \textbf{x}}{\sum_i \exp x_i}\]</div>
+<p>As this function requires exponentiating the score values, it can be
+numerically unstable in practice. Therefore it is common to use a
+numerical trick to instead compute the log of the softmax function
+(this is common for sigmoid as well, but we ignored it in earlier modules)</p>
+<div class="math notranslate nohighlight">
+\[\text{logsoftmax}(\textbf{x}) = \textbf{x} - \log \sum_i \exp x_i
+                              = \textbf{x} - \log(\sum_i \exp (x_i - m)) + m\]</div>
+<p>Where <span class="math notranslate nohighlight">\(m\)</span> is the max element of textbf{x}. This trick is common
+enough that you can get a nice derivation on
+<a class="reference external" href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">wikipedia</a>.</p>
+<p>Speaking of max, we can also add a max operator to our code base.  We can
+compute max of a vector (or tensor) as a reduction.  This returns a
+single value of the highest scoring element.</p>
+<img alt="_images/max.png" src="_images/max.png" />
+<p>Working again intuitively, we can think about how changes to the input
+impact this value. Ignoring ties, only the element that had the
+highest scoring value will have any derivative, and its derivative
+will be 1.  Thereforce the gradient of the max reduction will be a
+one-hot vector of the highest-scoring element, i.e. the argmax
+function.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 37%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Binary</p></th>
+<th class="head"><p>Multiclass</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>ReLU</p></td>
+<td><p>Max</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step</p></td>
+<td><p>Argmax</p></td>
+</tr>
+<tr class="row-even"><td><p>Sigmoid</p></td>
+<td><p>Softmax</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
@@ -187,7 +306,7 @@
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="pooling.html" class="btn btn-neutral float-left" title="Max and Pooling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pooling.html" class="btn btn-neutral float-left" title="Pooling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Max and Pooling &mdash; MiniTorch 0.1 documentation</title>
+  <title>Pooling &mdash; MiniTorch 0.1 documentation</title>
   
 
   
@@ -99,7 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module4.html">Module 4 - Networks</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="convolution.html">Convolution</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Max and Pooling</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pooling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="softmax.html">Softmax</a></li>
 <li class="toctree-l2"><a class="reference internal" href="module4.html#tasks">Tasks</a></li>
 </ul>
@@ -152,7 +152,7 @@
         
           <li><a href="module4.html">Module 4 - Networks</a> &raquo;</li>
         
-      <li>Max and Pooling</li>
+      <li>Pooling</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -171,13 +171,46 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="max-and-pooling">
-<h1>Max and Pooling<a class="headerlink" href="#max-and-pooling" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pooling">
+<h1>Pooling<a class="headerlink" href="#pooling" title="Permalink to this headline">¶</a></h1>
+<p>In past assignments we have found it useful to reduce over dimensions
+to reduce the shape of tensors. For example, in the NLP example, we
+sum over the length of the sentence in order to classify based on the
+word representations. Critically this does not remove the importance
+of words, (they still all receive gradient information), but it does
+allow us to make a single classification decision based on a fixed sized
+representation.</p>
+<p>This style of network goes by the informal name <cite>pooling</cite> in the
+neural network literature. When we reduce part of our input to work
+with a smaller size, we say we have pooled together the
+representations. Using reduction over length or other dimensions
+is one form of pooling, in the case of a sequences, we might call this
+X-over-time pooling (where X might be a sum / mean / max / etc.) :</p>
 <a class="reference internal image-reference" href="_images/pool1.png"><img alt="_images/pool1.png" class="align-center" src="_images/pool1.png" style="width: 500px;" /></a>
+<p>Another common form of pooling is to only pool locally within a
+dimension. For instance we might pool together neighboring position to
+reduce the total length by a factor of 2. This is common in domains
+like speech recognition with the input sequences are very long.</p>
 <a class="reference internal image-reference" href="_images/pool2.png"><img alt="_images/pool2.png" class="align-center" src="_images/pool2.png" style="width: 500px;" /></a>
+<p>To avoid implementing this as a loop, we can manipulate the shape and
+strides of a tensor to pool it directly. Assuming we have a contiguous
+starting tensor, we can simply view the tensor to add an extra dimension.
+For instance instead of (8,) we view this as a (4, 2) tensor.</p>
 <a class="reference internal image-reference" href="_images/pool3.png"><img alt="_images/pool3.png" class="align-center" src="_images/pool3.png" style="width: 500px;" /></a>
+<p>Once we have it in this form we can reduce over the second dimension
+to create a (4,1) tensor, which can be viewed as a (4,). As long as we
+ensure that our dimensions are divisible by our pooling constant this
+will produce the correct result. If not we can just pad our starting
+tensors, or add padding along the way. Here is the full process.</p>
 <a class="reference internal image-reference" href="_images/pool4.png"><img alt="_images/pool4.png" class="align-center" src="_images/pool4.png" style="width: 500px;" /></a>
+<p>For the homework, we will have you implement as version of this
+pooling in two-dimensions for images. These functions will require you
+to generalize the idea in 1D pooling to create a shape with two extra
+dimesions to reduce over.</p>
 <a class="reference internal image-reference" href="_images/pool2d.png"><img alt="_images/pool2d.png" class="align-center" src="_images/pool2d.png" style="width: 500px;" /></a>
+<p>The benefit of this approach is that applying a small convolution over the output
+covers a larger area of the original image. Parameters in these later layers will
+represent higher-level properties of the image.</p>
 </div>
 
 

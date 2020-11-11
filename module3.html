@@ -105,6 +105,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-3-2-matrix-multiplication">Task 3.2: Matrix Multiplication</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-4-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-4b-extra-credit">Task 3.4b: Extra Credit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-5-training">Task 3.5: Training</a></li>
 </ul>
@@ -510,15 +511,19 @@ of task 3.1).</p>
 Be sure to read the Guide on
 <a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
 </div>
-<p>Finally we can combine both these approaches and implement CUDA
+</div>
+<div class="section" id="head">
+<h3>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<a class="headerlink" href="#head" title="Permalink to this headline">¶</a></h3>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; aadb315a041e86dfd65e2e57435346108905b4bf
+Finally we can combine both these approaches and implement CUDA
 <cite>matmul</cite>. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
 accuracy, but, the faster you can make it, the better.</p>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Todo</p>
-<p>Optimize  <cite>minitorch/fast_ops.py</cite> with Numba and
-<cite>minitorch/cuda_ops.py</cite> with CUDA and pass tests marked as <cite>task3_4</cite>.</p>
-</div>
+<dl class="simple">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt><dd><p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>.</p>
+</dd>
+</dl>
+<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; aadb315a041e86dfd65e2e57435346108905b4bf</p>
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_matrix_multiply">
 <code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
@@ -528,37 +533,6 @@ for the given arguments (if no suitable specialized version already exists)
 context.</p>
 <p>Kernel objects are not to be constructed by the user, but instead are
 created using the <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.cuda.jit()</span></code> decorator.</p>
-</dd></dl>
-
-<dl class="py function">
-<dt id="id0">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">a_storage</span></em>, <em class="sig-param"><span class="n">a_shape</span></em>, <em class="sig-param"><span class="n">a_strides</span></em>, <em class="sig-param"><span class="n">b_storage</span></em>, <em class="sig-param"><span class="n">b_shape</span></em>, <em class="sig-param"><span class="n">b_strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA tensor matrix multiply function.</p>
-<p>Should work for any tensor shapes that broadcast as long as</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">a_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
-</pre></div>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
-<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor</p></li>
-<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor</p></li>
-<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Fills in <cite>out</cite></p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
-</dd>
-</dl>
 </dd></dl>
 
 </div>
@@ -588,7 +562,7 @@ training script in <cite>project/run_fast_tensor.py</cite>.  This code is the sa
 basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your fast tensor
 code. We have left the <cite>matmul</cite> layer blank for you to implement with
 your tensor code.</p>
-<div class="admonition-todo admonition" id="id5">
+<div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
 <ul>
 <li><p>Implement the missing functions in <cite>project/run_fast_tensor.py</cite>. These
@@ -604,10 +578,15 @@ trainer. Here is the command</p>
 <span class="n">python</span> <span class="n">run_fast_tensor</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span><span class="n">BACKEND</span> <span class="n">cpu</span> <span class="o">--</span><span class="n">HIDDEN</span> <span class="mi">100</span> <span class="o">--</span><span class="n">DATASET</span> <span class="n">split</span> <span class="o">--</span><span class="n">RATE</span> <span class="mf">0.05</span>
 </pre></div>
 </div>
-<p>On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
-GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
 </li>
 </ul>
+<p>Train a tensor model and add your results for all three dataset
+to the README. Also record the time per epoch reported by the
+trainer. (As a reference, our parallel implementation gave a 10x speedup).</p>
+<blockquote>
+<div><p>On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
+</div></blockquote>
 </div>
 </div>
 </div>

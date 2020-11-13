@@ -105,7 +105,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#task-3-2-matrix-multiplication">Task 3.2: Matrix Multiplication</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-3-cuda-operations">Task 3.3: CUDA Operations</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-4-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#head">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-4b-extra-credit">Task 3.4b: Extra Credit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#task-3-5-training">Task 3.5: Training</a></li>
 </ul>
@@ -511,19 +510,14 @@ of task 3.1).</p>
 Be sure to read the Guide on
 <a class="reference internal" href="cuda.html"><span class="doc">GPU Programming</span></a> and the Numba CUDA guide.</p>
 </div>
-</div>
-<div class="section" id="head">
-<h3>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<a class="headerlink" href="#head" title="Permalink to this headline">¶</a></h3>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; aadb315a041e86dfd65e2e57435346108905b4bf
-Finally we can combine both these approaches and implement CUDA
+<p>Finally we can combine both these approaches and implement CUDA
 <cite>matmul</cite>. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
 accuracy, but, the faster you can make it, the better.</p>
-<dl class="simple">
-<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</dt><dd><p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>.</p>
-</dd>
-</dl>
-<p>&gt;&gt;&gt;&gt;&gt;&gt;&gt; aadb315a041e86dfd65e2e57435346108905b4bf</p>
+<div class="admonition-todo admonition" id="id4">
+<p class="admonition-title">Todo</p>
+<p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>.</p>
+</div>
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_matrix_multiply">
 <code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
@@ -562,7 +556,7 @@ training script in <cite>project/run_fast_tensor.py</cite>.  This code is the sa
 basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your fast tensor
 code. We have left the <cite>matmul</cite> layer blank for you to implement with
 your tensor code.</p>
-<div class="admonition-todo admonition" id="id4">
+<div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <ul>
 <li><p>Implement the missing functions in <cite>project/run_fast_tensor.py</cite>. These

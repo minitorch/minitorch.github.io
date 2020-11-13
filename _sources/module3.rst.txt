@@ -150,22 +150,13 @@ Task 3.4: CUDA Matrix Multiplication
    Be sure to read the Guide on
    :doc:`cuda` and the Numba CUDA guide.
 
-<<<<<<< HEAD
-=======
-
->>>>>>> aadb315a041e86dfd65e2e57435346108905b4bf
 Finally we can combine both these approaches and implement CUDA
 `matmul`. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
 accuracy, but, the faster you can make it, the better.
 
 .. todo::
-<<<<<<< HEAD
    Implement  `minitorch/cuda_ops.py` with CUDA, and pass tests marked as `task3_4`.
-=======
-   Optimize  `minitorch/fast_ops.py` with Numba and
-   `minitorch/cuda_ops.py` with CUDA and pass tests marked as `task3_4`.
->>>>>>> aadb315a041e86dfd65e2e57435346108905b4bf
 
 .. autofunction:: minitorch.cuda_ops.tensor_matrix_multiply
 

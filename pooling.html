@@ -173,44 +173,49 @@
             
   <div class="section" id="pooling">
 <h1>Pooling<a class="headerlink" href="#pooling" title="Permalink to this headline">¶</a></h1>
-<p>In past assignments we have found it useful to reduce over dimensions
-to reduce the shape of tensors. For example, in the NLP example, we
-sum over the length of the sentence in order to classify based on the
-word representations. Critically this does not remove the importance
-of words, (they still all receive gradient information), but it does
-allow us to make a single classification decision based on a fixed sized
-representation.</p>
+<p>In previous modules, we have found it useful to reduce over certain
+dimensions to reduce the shape of tensors. For example, in the NLP
+example, we sum over the length of the sentence in order to classify
+based on the summed word representations. Critically, this operation
+does not remove the importance of words (i.e. they still receive
+gradient information), but it does allow us to make a single
+classification decision based on a fixed-sized representation.</p>
 <p>This style of network goes by the informal name <cite>pooling</cite> in the
-neural network literature. When we reduce part of our input to work
-with a smaller size, we say we have pooled together the
-representations. Using reduction over length or other dimensions
-is one form of pooling, in the case of a sequences, we might call this
-X-over-time pooling (where X might be a sum / mean / max / etc.) :</p>
+neural network literature. When we reduce part of the input in order
+to work with a smaller size, we say we have pooled together the input
+representations.</p>
+<p>Applying reduction over length or other dimensions
+is one form of pooling. For sequential cases, we might call it
+X-over-time pooling (where X might be a sum, mean, max etc.):</p>
 <a class="reference internal image-reference" href="_images/pool1.png"><img alt="_images/pool1.png" class="align-center" src="_images/pool1.png" style="width: 500px;" /></a>
 <p>Another common form of pooling is to only pool locally within a
-dimension. For instance we might pool together neighboring position to
-reduce the total length by a factor of 2. This is common in domains
-like speech recognition with the input sequences are very long.</p>
+dimension. For instance, we might pool together neighboring elements
+to reduce thel length for that dimension, as visualized below. This is
+common in domains like speech recognition where the input sequences
+are very long.</p>
 <a class="reference internal image-reference" href="_images/pool2.png"><img alt="_images/pool2.png" class="align-center" src="_images/pool2.png" style="width: 500px;" /></a>
-<p>To avoid implementing this as a loop, we can manipulate the shape and
-strides of a tensor to pool it directly. Assuming we have a contiguous
-starting tensor, we can simply view the tensor to add an extra dimension.
-For instance instead of (8,) we view this as a (4, 2) tensor.</p>
+<p>In practice, to avoid implementing the pooling operation as a loop,
+we can manipulate the shape and
+strides of the input tensor in order to pool it directly. Assuming the
+input tensor is contiguous, we can simply add an extra dimension by applying <cite>view</cite>.
+For instance, we can <cite>view</cite> a (8,) input as (4, 2):</p>
 <a class="reference internal image-reference" href="_images/pool3.png"><img alt="_images/pool3.png" class="align-center" src="_images/pool3.png" style="width: 500px;" /></a>
-<p>Once we have it in this form we can reduce over the second dimension
-to create a (4,1) tensor, which can be viewed as a (4,). As long as we
-ensure that our dimensions are divisible by our pooling constant this
-will produce the correct result. If not we can just pad our starting
-tensors, or add padding along the way. Here is the full process.</p>
+<p>Once we have the input in this form, we can reduce over the second
+dimension to get a (4,1) tensor, which can be viewed as a (4,). As
+long as the dimensions for pooling are divisible by the pooling
+constant (i.e. the input size for each individual pooling operation),
+this procedure will produce the correct pooled result, as visualized
+below.  If not divisible, we can pad our input tensors, or add padding
+along the way.</p>
 <a class="reference internal image-reference" href="_images/pool4.png"><img alt="_images/pool4.png" class="align-center" src="_images/pool4.png" style="width: 500px;" /></a>
-<p>For the homework, we will have you implement as version of this
-pooling in two-dimensions for images. These functions will require you
-to generalize the idea in 1D pooling to create a shape with two extra
-dimesions to reduce over.</p>
+<p>You will implement as version of this type of pooling in two
+dimensions for images. You need to generalize the above idea in 1D
+pooling to create a shape with two extra dimesions to reduce over:</p>
 <a class="reference internal image-reference" href="_images/pool2d.png"><img alt="_images/pool2d.png" class="align-center" src="_images/pool2d.png" style="width: 500px;" /></a>
-<p>The benefit of this approach is that applying a small convolution over the output
-covers a larger area of the original image. Parameters in these later layers will
-represent higher-level properties of the image.</p>
+<p>The benefit of pooling is that applying a small convolution over the
+pooled results covers a larger region in the original input
+image. These later layers ideally can learn higher-level properties of
+the input image.</p>
 </div>
 
 

@@ -99,8 +99,8 @@
 <li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="module4.html">Module 4 - Networks</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Convolution</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#d-convolution">1-D Convolution</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2-D Convolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#d-convolution">1D Convolution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2D Convolution</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pooling.html">Pooling</a></li>
@@ -180,44 +180,44 @@
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Convolutions are extensively covered by many excellent
-tutorials. You may want to check one of these out for more details on
-their use.</p>
+tutorials. In addition to this Guide, we recommend you
+to check other tutorials on convolution for more details.</p>
 </div>
-<p>The main tool that we have used so far for classification is first the
+<p>So far, our main approach to classification problems is to first feed the input to a
 <cite>Linear</cite> layer which applies many different linear seperators to the
-input and then secondly a transform with the ReLU function into a new
+input, and then apply the ReLU function in order to transform it into a new
 hidden representation.</p>
-<p>One major problem with this function is that it is based on the
-<cite>absolute</cite> position of the original features. This prevents us from
-using the same learned parameters on many parts of the input. Instead
-we would like to have a sliding window that uses the same model on local
-regions of the input.</p>
-<p>Graphically, the main idea is represented by this figure:</p>
+<p>One major problem with the above approach is that it is based on the
+<cite>absolute</cite> position of the original input features, which prevents us
+from using the same learned parameters on different parts of the
+input. Instead, we could have a sliding window (i.e. convolution) that
+uses the same set of learned parameters on different local regions of
+the input, as shown below:</p>
 <img alt="_images/conv.png" class="align-center" src="_images/conv.png" />
-<p>Instead of directly transforming the input image, this convolutional model
-is applied at each part of the image to produce a new representation. It is
-<cite>sliding</cite> in the sense that it slides across the whole image to produce the
-output.</p>
-<p>We will primarily use this convolution on images to learn these
-locally applied parameters, but to first get a sense of how this
-works, we will begin with sequences.</p>
+<p>Instead of directly transforming the entire input image, the same
+convolution is applied at each part of the image to produce a new
+representation. It is <cite>sliding</cite> in the sense that, concenptually, the
+window over what region to process slides across the entire image to
+produce the output.</p>
+<p>We will primarily use the convolution on images to understand how to
+learn these locally applied parameters, but to get an intuitivie sense
+of how convolution works, we will begin with input sequences in 1D.</p>
 <div class="section" id="d-convolution">
-<h2>1-D Convolution<a class="headerlink" href="#d-convolution" title="Permalink to this headline">¶</a></h2>
-<p>Our simple 1-D Convolution takes in an input vector of length T, a
-weight vector of length K, and a produces an output of length T.
-It computes the output by sliding a the weight along the input,
-zipping it, reducing, and then saving the value in output:</p>
+<h2>1D Convolution<a class="headerlink" href="#d-convolution" title="Permalink to this headline">¶</a></h2>
+<p>Our simple 1D convolution takes an input vector of length T and a
+weight (or kernel) vector of length K to produce an output vector of
+length T.  It computes the output by sliding the weight along the
+input, zipping the weight with part of the input, reducing the zipped
+result to one value, and then saving this value in the output:</p>
 <img alt="_images/conv1d.png" class="align-center" src="_images/conv1d.png" />
-<p>In order to make things simpler, if the weight goes over the edge we just
-assume the input value was 0.</p>
-<p>An alternative way to think about a convolution is as <cite>unrolling</cite> the input.</p>
-<blockquote>
-<div><p>input = minitorch.tensor([1, 2, 3, 4, 5, 6])
-weight = minitorch.tensor([5, 2, 3])</p>
-</div></blockquote>
-<p>Now imagine we have a function <cite>unroll</cite> that could take a tensor and
-produce a new tensor</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<p>If the sliding window goes over the edge of the input, to make things
+simpler, we just assume the out-of-edge input values are 0.</p>
+<p>An alternative way to think about a convolution is <cite>unrolling</cite> the input.
+Now imagine we have a function named <cite>unroll</cite> which could take an input tensor and
+produce a new output tensor:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 
 <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
@@ -225,111 +225,105 @@ produce a new tensor</p>
  <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span>
  <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
- <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
- <span class="p">]</span>
+ <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
 </pre></div>
 </div>
-<p>We then apply matrix multiplication to take the dot-product</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="nb">input</span> <span class="o">@</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<p>We then apply matrix multiplication to take the dot-product:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">weight</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="nb">input</span> <span class="o">@</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
 
-<span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="o">...</span> <span class="p">]</span>
+<span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We can view this as two separate operations (note though that we do
-not implement it this way!):</p>
+<p>We can treat convolution as a fusion of the following two separate operations (note that we do
+not implement it this way in practice!):</p>
 <img alt="_images/convvec.png" class="align-center" src="_images/convvec.png" />
-<p>A neural network convolution is the fusion of these two
-operations. Given a tensor input and weight, it efficiently unrolls A
-and takes the matrix multiplication.  This technique is really useful
-because it allows you to <cite>hover</cite> over a region of the source
-sentence. You can think of the weight matrix as applying a pattern (or
-many different patterns) that you trying to find in the original data
-input.</p>
-<p>As with every other operation we need to be able to compute the
-backward operations of this 1D convolution. Also as with matrix
-multiplication we can reason through the flow of each cell. In
-particular we not that the third cell in the input <cite>input[2]</cite> was
-utilized only to compute three different cells in the output,
-<cite>output[0]</cite>, <cite>output[1]</cite> and <cite>output[2]</cite></p>
+<p>Given an input and weight, it efficiently unrolls the input and takes
+matrix multiplication with weight. This technique is very useful
+because it allows you to <cite>hover</cite> over a local segment of the input
+sentence. You can think of the weight as capturing a pattern (or many
+different patterns) in the original input.</p>
+<p>Same as every other operation in the model, we need to be able to
+compute the <cite>backward</cite> operation of this 1D convolution. Note that we
+can reason through the flow of each cell with matrix
+multiplication. Going back to the previous example, the third cell in
+the original input (i.e. input[2]) is only utilized to compute three
+different cells in the ouput: output[0], output[1] and output[2]:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
 <span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Therefore when calculating gradients we can see that:</p>
-<blockquote>
-<div><p>grad_input[2] = weight[0] * grad_output[0] + weight[1] * grad_output[1]  + weight[2] * grad_output[2]</p>
-</div></blockquote>
-<p>Visually this implies that the backward of the convolution is a convolution anchored in the reverse direction:</p>
-<img alt="_images/conv1dback.png" class="align-center" src="_images/conv1dback.png" />
-<p>Similar updates can be derived for the gradient of the weight.</p>
-<img alt="_images/conv1dback2.png" class="align-center" src="_images/conv1dback2.png" />
-<p>This implies, as with matrix multiplication, that implementing a fast convolution can be used for both forward and backward passes.</p>
-<p>Finally, this whole approach can be scaled up to allow for handling
-multiple inputs and multiple weights simultaneously through
-channels. Analogously to matrix multiplication, we take an input
-matrix of in_channels x T, a weight matrix of out_channels x
-in_channels x K and produce an output of out_channels x T. Here is
-what that looks like with in_channels = 2 and out_channels = 3.</p>
-<img alt="_images/channels.png" class="align-center" src="_images/channels.png" />
-<p>Codewise this is what the function computes. (It is a bit order to
-read so I recommend just sticking with the diagram)</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-<span class="nb">input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># Shape  in_channels x K x T</span>
-<span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">in_channels</span> <span class="o">*</span> <span class="n">K</span><span class="p">)</span> <span class="o">@</span> <span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">in_channels</span> <span class="o">*</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<p>Therefore, the gradient calculation is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grad_input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>The 1D convolution has all sorts of neat applications. It can be
-applied in NLP as a way of applying a model to multiple neighboring
-words. It can be used in speech recognition as a way of recognizing
-important sounds. It can be used in anomoly detection to find patterns
-that trigger an alert. Anywhere you can imagine that a mini-neural
-network might be useful to apply to subset of a sequence, try out a 1D
-conv.</p>
+<p>Visually, it implies that the <cite>backward</cite> of convolution is a
+convolution anchored in the opposite side:</p>
+<img alt="_images/conv1dback.png" class="align-center" src="_images/conv1dback.png" />
+<p>Similar gradient calculation can be derived for the weight:</p>
+<img alt="_images/conv1dback2.png" class="align-center" src="_images/conv1dback2.png" />
+<p>The above implies that, same as matrix multiplication, implementing
+a fast convolution can be used for both <cite>forward</cite> and <cite>backward</cite>.</p>
+<p>Finally, the above approach can be scaled up to handle multiple input
+features and multiple weights simultaneously through
+<cite>channels</cite>. Analogously to matrix multiplication, we take an
+(in_channels, T) input and an (out_channels, in_channels, K) weight to
+produce an (out_channels, T). Below is an example with in_channels =
+2, out_channels = 3, K = 3 and T = 8.</p>
+<img alt="_images/channels.png" class="align-center" src="_images/channels.png" />
+<p>Codewise (might be a bit harder to
+read so we recommend just sticking with the above diagram):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">in_channels</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="c1"># Shape: in_channels x K x T</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">in_channels</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">out_channels</span><span class="p">,</span> <span class="n">in_channels</span> <span class="o">*</span> <span class="n">K</span><span class="p">)</span> <span class="o">@</span> <span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">in_channels</span> <span class="o">*</span> <span class="n">K</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>1D convolution has all sorts of neat applications: it can be applied
+in NLP as a way of applying a model to multiple neighboring words; it
+can be used in speech recognition as a way of recognizing important
+sounds; it can be used in anomoly detection to find patterns that
+trigger an alertl; anywhere you can imagine that a mini-neural network
+applying to subset of a sequence can be useful.</p>
 </div>
 <div class="section" id="id1">
-<h2>2-D Convolution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>While 1D Convolutions detect patterns along a sequence, 2D
-convolutions detect patterns within a grid.</p>
-<img alt="_images/conv.png" class="align-center" src="_images/conv.png" />
-<p>The underlying math for the simple 2D is very similar to the 1D case.
-Our simple 2-D Convolution takes in an input vector of shape H x W
-(height and width), a weight vector of shape KH x KW, and a produces
-an output of length H x W. The operation is nearly identical, we walk
-through each possible unrolled rectangle in the input matrix and apply
-the weight as a dot-product. Assuming we had an analogous unroll
-function for matrices, this would be equivalent to computing</p>
+<h2>2D Convolution<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>While 1D convolutions detect patterns along a sequence, 2D
+convolutions detect patterns within a grid. The underlying math for
+the simple 2D is very similar to the 1D case.  Our simple 2D
+convolution takes in an (H, W) input (i.e. height and width) and a
+(KH, KW) weight to produce an (H, W) output. The operation is nearly
+identical: we walk through each possible unrolled rectangle in the
+input matrix, and multiply with the weight. Assuming we had an
+analogous unroll function for matrices, this would be equivalent to
+computing:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">unrolled_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">)</span> <span class="o">@</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Another way to think about this is just applying weight as a Linear
+<p>Another way to think about it is just applying weight as a <cite>Linear</cite>
 layer to each one of the rectangles in the input image.</p>
-<p>Critically, just as the 1D convolution was anchored at the left
-position. the 2D convolution will be anchorsed at the top-left
-position. To compute the backward computation, we compute a
-bottom-right reverse convolution:</p>
+<p>Critically, just as the 1D convolution is anchored at the left,
+the 2D convolution is anchored at the top left.
+To compute its <cite>backward</cite>, we compute a bottom-right reverse convolution:</p>
 <img alt="_images/backward.png" class="align-center" src="_images/backward.png" />
 <p>Finally, we can again complicate things by applying many weights to
-many inputs simultaneously. This extension gives us the standard 2D
-convolution that is used in Torch.  We take an input matrix of
-in_channels x H x W, a weight matrix of out_channels x in_channels x
-KW x KH and produce an output of out_channels x H x W.</p>
+many input features simultaneously, which gives us the standard 2D
+convolution used in Torch.  We take an (in_channels, H, W) input, and
+an (out_channels, in_channels, KW, KH) weight matrix to produce an
+(out_channels, H, W) output:</p>
 <img alt="_images/conv2.png" class="align-center" src="_images/conv2.png" />
-<p>Very roughly, this gives an output that takes the form</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="n">unrolled_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">in_channels</span> <span class="o">*</span> <span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">)</span> \
-         <span class="o">@</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">in_channels</span> <span class="o">*</span> <span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">))</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+<p>Very roughly, the output takes this form:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span> <span class="o">=</span> <span class="n">unrolled_input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">H</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">in_channels</span> <span class="o">*</span> <span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">)</span> \
+         <span class="o">@</span> <span class="n">weight</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">in_channels</span> <span class="o">*</span> <span class="n">KH</span> <span class="o">*</span> <span class="n">KW</span><span class="p">,</span> <span class="n">out_channels</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The 2D Convolution is the main operator for image recognition
-systems. It allows us to process images into local feature
-representations:</p>
-<img alt="_images/im1.png" class="align-center" src="_images/im1.png" />
-<img alt="_images/im2.png" class="align-center" src="_images/im2.png" />
-<p>It is also the key step in the convolutional neural network
-pipeline. It transforms the input image into hidden features which get
-propagated through each stage of the network:</p>
+<p>2D convolution is the main operator for image recognition systems. It
+allows us to process images into local feature representations. It is
+also the key step in the convolutional neural network pipeline. It
+transforms the input image into hidden features which get propagated
+through each stage of the network:</p>
 <img alt="_images/networkcnn.png" class="align-center" src="_images/networkcnn.png" />
 </div>
 </div>

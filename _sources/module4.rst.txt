@@ -19,36 +19,40 @@ Module 4 - Networks
 
 We now have a fully working deep learning library with most of the
 features of a real industrial system like Torch. To take advantage of
-this hard work, this section is entirely based around using the
-software framework. In particular we are going to build an image
+this hard work, this module is entirely based on using the
+software framework. In particular, we are going to build an image
 recognition system. We will do this by build the infrastructure for a
-version of LeNet on MNist a classic convolutional neural network (CNN)
+version of LeNet on MNIST: a classic convolutional neural network (CNN)
 for digit recognition.
+
+
+.. image:: figs/Conv/networkcnn.png
+           :align: center
 
 
 All starter code is available in https://github.com/minitorch/Module-4 .
 
-To begin, remember to first activate your virtual environment.
-
->>> source venv/bin/activate
-
-And then clone your assignment.
+To begin, remember to activate your virtual environment first, and
+then clone your assignment:
 
 >>> git clone {{STUDENT_ASSIGNMENT4_URL}}
->>> cd Module-4
+>>> cd {{STUDENT_ASSIGNMENT_NAME}}
 >>> pip install -Ue .
 
-You will also need the files so be sure to pull them over
-to your new repo.
+You need the files from previous assignments, so maker sure to pull
+them over to your new repo.  We recommend you to get familiar with
+tensor.py, since you might find some of those functions useful for
+implementing this Module.
 
-
-Additionally you will need to install and download an MNist library.
+Additionally, you need to install and download an MNIST library:
 
 >>> pip install python-mnist
 >>> mnist_get_data.sh
 
-This should add a `data/` directory in your module. To test this out
-try the following code ::
+(Mac OS users may need to install wget in order to run the .sh file.)
+
+It will add a `data/` directory in your module.  You can try the
+following code to test the installation::
 
   from mnist import MNIST
   import numpy as np
@@ -61,8 +65,6 @@ try the following code ::
 
 Be sure to continue to follow the :doc:`contributing` guidelines.
 
-.. image:: figs/Conv/networkcnn.png
-           :align: center
 
 
 .. toctree::
@@ -81,36 +83,32 @@ Task 4.1: 1D Convolution
 ==================================
 
 .. note:: This task requires basic familiarity with convolution.
-   Be sure to read the section on :doc:`convolution`.
+   Be sure to read the Guide on :doc:`convolution`.
 
 
-Implement the 1D convolution in Numba. This function gets used by the
-`forward` and `backward` pass of conv1d
+You will implement the 1D convolution in Numba. This function gets used by the
+`forward` and `backward` pass of conv1d.
 
 .. image:: figs/Conv/channels.png
            :align: center
            :width: 300px
 
 
-
-
 .. todo::
-   Complete the following function in `minitorch/fast_conv.py` and pass tests marked
+   Complete the following function in `minitorch/fast_conv.py`, and pass tests marked
    as `task4_1`.
 
-
-.. autofunction:: minitorch.conv1d
 .. autofunction:: minitorch.tensor_conv1d
 
 Task 4.2: 2D Convolution
 ==================================
 
 .. note:: This task requires basic familiarity with convolution.
-   Be sure to read the section on :doc:`convolution`.
+   Be sure to read the Guide on :doc:`convolution`.
 
 
-Implement the 2D convolution in Numba. This function gets used by the
-`forward` and `backward` pass of conv2d
+You will implement the 2D convolution in Numba. This function gets used by the
+`forward` and `backward` pass of conv2d.
 
 .. image:: figs/Conv/conv2.png
            :align: center
@@ -118,41 +116,40 @@ Implement the 2D convolution in Numba. This function gets used by the
 
 
 
-
 .. todo::
-   Complete the following function in `minitorch/fast_conv.py` and pass tests marked
+   Complete the following function in `minitorch/fast_conv.py`, and pass tests marked
    as `task4_2`.
 
 
-.. autofunction:: minitorch.conv2d
 .. autofunction:: minitorch.tensor_conv2d
 
 Task 4.3: Pooling
 ==================================
 
-.. note:: This task requires basic familiarity with pooling as a concept.
-   Be sure to read the section on :doc:`pooling`.
+.. note:: This task requires basic familiarity with pooling.
+   Be sure to read the Guide on :doc:`pooling`.
 
-
-For this assignment you will implement 2D pooling on tensors.
+You will implement 2D pooling on tensors with an average operation.
 
 .. image:: figs/Conv/pool2d.png
    :align: center
    :width: 500px
 
 .. todo::
-   Complete the following functions in `minitorch/nn.py` and pass tests
+   Complete the following functions in `minitorch/nn.py`, and pass tests
    marked as `task4_3`.
 
 .. autofunction:: minitorch.tile
 .. autofunction:: minitorch.avgpool2d
 
 
-Task 4.4: Max, Argmax, Softmax
+Task 4.4: Softmax and Dropout
 ===============================
 
-.. note:: This task requires basic familiarity with max reductions as a concept.
-   Be sure to read the section on :doc:`softmax`.
+.. note:: This task requires basic familiarity with max reductions.
+   Be sure to read the Guide on :doc:`softmax`.
+
+You will implement max, softmax, and log softmax on tensors as well as the dropout and max-pooling operations.
 
 .. image:: figs/Conv/value.png
            :align: center
@@ -163,39 +160,38 @@ Task 4.4: Max, Argmax, Softmax
            :width: 400px
 
 .. todo::
-   Return to  `minitorch/tensor.py` and add a max reduction function.
-   Add 2 property tests for the function and ensure that you understand its
-   gradient computation.
-   Mark the tests as `task4_4`.
+   * Complete the following functions in `minitorch/nn.py`, and pass
+     tests marked as `task4_4`.
+
+   * Return to `minitorch/tensor.py` and add a max reduction
+     function. Add a property tests for the function and ensure that
+     you understand its gradient computation.“
 
 .. autofunction:: minitorch.max
-.. autofunction:: minitorch.argmax
 .. autofunction:: minitorch.softmax
 .. autofunction:: minitorch.logsoftmax
-.. autofunction:: minitorch.dropout
 .. autofunction:: minitorch.maxpool2d
+.. autofunction:: minitorch.dropout
 
 
 Task 4.4b: Extra Credit
 ===============================
 
-Implementing pooling and convolution efficientlyq is critical for
-larger scale image recognition. However both are a bit harder than
+Implementing convolution and pooling efficiently is critical for
+large-scale image recognition. However, both are a bit harder than
 some of the basic CUDA functions we have written so far. For this
-task, add an extra file `cuda_conv.py` that implements `avgpool2d` or
-`conv2d` on CUDA.
+task, add an extra file `cuda_conv.py` that implements
+`conv2d` or `avgpool2d`  on CUDA.
 
 
 Task 4.5: Training an Image Classifier
 ======================================
 
-
-
-If your code works, you should now be able to move on to the MNist
-training script in `project/run_mnist_multiclass.py`.  This code is the
+If your code works, you should now be able to move on to the MINIST
+training script in `project/run_mnist_multiclass.py`.  This script has the
 same basic training setup as :doc:`module3`, but now adapted to image
-classification. We have left the `Conv` layer blank for you to
-implement with your tensor code.
+classification. You need to implement `Conv2D` and `Network`. The Visdom
+visualization will show some hidden states of your model, like the following:
 
 
 .. image:: figs/mnist/mnist5.png
@@ -209,8 +205,8 @@ implement with your tensor code.
 
 .. todo::
 
-   * Train a tensor model and add your results for all dataset
-     to the README.
+   * Train a model on MNIST, and add your training printout logs (i.e. training loss,
+     performance on validation set) to the README.
 
-   * Record the batch visualizations that are output to visdom
-     at the end of your model.
+   * Report the Visdom visualizations of your final model's
+     hidden states at the end of training.

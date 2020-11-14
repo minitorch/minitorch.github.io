@@ -356,7 +356,7 @@ marked as <cite>task2_2</cite>.</p>
 <dl class="py function">
 <dt id="minitorch.tensor_map">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor map function.</p>
+<dd><p>Higher-order tensor map function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
 </pre></div>
@@ -364,14 +364,13 @@ marked as <cite>task2_2</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings floats-to-floats to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for out tensor.</p></li>
-<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor.</p></li>
-<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor.</p></li>
-<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor.</p></li>
+<li><p><strong>fn</strong> -- function from float-to-float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor</p></li>
+<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor</p></li>
+<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor</p></li>
+<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -386,7 +385,7 @@ marked as <cite>task2_2</cite>.</p>
 <dl class="py function">
 <dt id="minitorch.tensor_zip">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
+<dd><p>Higher-order tensor zipWith (or map2) function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -394,17 +393,16 @@ marked as <cite>task2_2</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings two floats to float to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
-<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- function mapping two floats to float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
+<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -419,18 +417,21 @@ marked as <cite>task2_2</cite>.</p>
 <dl class="py function">
 <dt id="minitorch.tensor_reduce">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor reduce function.</p>
+<dd><p>Higher-order tensor reduce function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_reduce</span> <span class="o">=</span> <span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fn_reduce</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- reduction function maps two floats to float.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
 <li><p><strong>reduce_shape</strong> (<em>array</em>) -- shape of reduction (1 for dimension kept, shape value for dimensions summed out)</p></li>
 <li><p><strong>reduce_size</strong> (<em>int</em>) -- size of reduce shape</p></li>
 </ul>
@@ -625,7 +626,7 @@ be broadcasted to the larger shape.</p>
 <dl class="py function">
 <dt id="id0">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor map function.</p>
+<dd><p>Higher-order tensor map function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
 </pre></div>
@@ -633,14 +634,13 @@ be broadcasted to the larger shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings floats-to-floats to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for out tensor.</p></li>
-<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor.</p></li>
-<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor.</p></li>
-<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor.</p></li>
+<li><p><strong>fn</strong> -- function from float-to-float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor</p></li>
+<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor</p></li>
+<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor</p></li>
+<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -655,7 +655,7 @@ be broadcasted to the larger shape.</p>
 <dl class="py function">
 <dt id="id5">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id5" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
+<dd><p>Higher-order tensor zipWith (or map2) function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
@@ -663,17 +663,16 @@ be broadcasted to the larger shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings two floats to float to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
-<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- function mapping two floats to float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
+<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -688,18 +687,21 @@ be broadcasted to the larger shape.</p>
 <dl class="py function">
 <dt id="id6">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#id6" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor reduce function.</p>
+<dd><p>Higher-order tensor reduce function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_reduce</span> <span class="o">=</span> <span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">fn_reduce</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- reduction function maps two floats to float.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
 <li><p><strong>reduce_shape</strong> (<em>array</em>) -- shape of reduction (1 for dimension kept, shape value for dimensions summed out)</p></li>
 <li><p><strong>reduce_size</strong> (<em>int</em>) -- size of reduce shape</p></li>
 </ul>

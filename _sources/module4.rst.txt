@@ -163,9 +163,9 @@ You will implement max, softmax, and log softmax on tensors as well as the dropo
    * Complete the following functions in `minitorch/nn.py`, and pass
      tests marked as `task4_4`.
 
-   * Return to `minitorch/tensor.py` and add a max reduction
-     function. Add a property tests for the function and ensure that
-     you understand its gradient computation.“
+   * Add a property tests for the function in
+     `test/test_nn.py` and ensure that you understand its gradient
+     computation.
 
 .. autofunction:: minitorch.max
 .. autofunction:: minitorch.softmax

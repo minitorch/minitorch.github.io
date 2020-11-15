@@ -106,7 +106,7 @@ Therefore, the gradient calculation is: ::
 
 
 Visually, it implies that the `backward` of convolution is a
-convolution anchored in the opposite side:
+convolution anchored in the opposite side with the reversed weights:
 
 .. image:: figs/Conv/conv1dback.png
            :align: center

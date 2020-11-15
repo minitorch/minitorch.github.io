@@ -131,6 +131,7 @@ produce an (out_channels, T). Below is an example with in_channels =
 
 .. image:: figs/Conv/channels.png
            :align: center
+           :width: 300px
 
 
 Codewise (might be a bit harder to

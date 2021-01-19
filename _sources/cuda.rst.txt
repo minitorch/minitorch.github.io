@@ -20,9 +20,9 @@ Getting Started
 ----------------
 
 For Module 3, you will need to either work in an environment with a
-GPU available or utilize Google Colab. Google Colab provides free GPUs in a Python
-notebook
-setting. You can change the environment in the menu to request a GPU server.
+GPU available or utilize Google Colab. Google Colab provides free GPUs
+in a Python notebook setting. You can change the environment in the
+menu to request a GPU server.
 
 We recommend working in your local setup and then cloning your environment
 on to a notebook:
@@ -143,7 +143,7 @@ In Numba, you can write the thread instructions as a single function::
 
 
 Note that we cannot call the above function directly: we need to
-`launch`it with instructions for how to set up the blocks and
+`launch` it with instructions for how to set up the blocks and
 grid. Here is how you do this with Numba::
 
   threadsperblock = (4, 3)

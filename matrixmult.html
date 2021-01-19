@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="english" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Fusing Operations &mdash; MiniTorch 0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,10 +34,9 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -57,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+            <a href="index.html" class="icon icon-home"> MiniTorch
           
 
           
@@ -147,6 +149,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -160,7 +164,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/matrixmult.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -187,10 +191,10 @@ writing these operators directly and speeding them up.</p>
 find it useful, we will add these operations in Numba.</p>
 <div class="section" id="example-matrix-multiplication">
 <h2>Example: Matrix Multiplication<a class="headerlink" href="#example-matrix-multiplication" title="Permalink to this headline">¶</a></h2>
-<p>Let's consider a matrix multiplication example.
-In past modules we have done matrix multiplication by applying a broadcasted <cite>zip</cite>
-and then a <cite>reduce</cite>. For example, consider a tensor of size
-(2, 3, 1) and a tensor of size (3, 2). We first zip these together with broadcasting
+<p>Let's consider a matrix multiplication example.  In past modules we
+have done matrix multiplication by applying a broadcasted <cite>zip</cite> and
+then a <cite>reduce</cite>. For example, consider a tensor of size (2, 3, 1) and
+a tensor of size (3, 2). We first zip these together with broadcasting
 to produce a tensor of size (2, 3, 2):</p>
 <img alt="_images/matmul3d1.png" class="align-center" src="_images/matmul3d1.png" />
 <p>And then reduce it to a tensor of size (2, 1, 2), which we can view as (2, 2):</p>
@@ -209,11 +213,9 @@ with a <cite>forward</cite> function that directly produces the output and a
 <cite>backward</cite> that produces the required gradient.</p>
 <img alt="_images/matmulsimple.png" class="align-center" src="_images/matmulsimple.png" />
 <p>This allows us to specialize our implementation of matrix
-multiplication. We do this by 1) walking over the output indices,
-2) seeing which indices are reduced, and 3) then seeing which were</p>
-<blockquote>
-<div><p>part of the zip. Here's what that looks like in our diagram.</p>
-</div></blockquote>
+multiplication. We do this by 1) walking over the output indices, 2)
+seeing which indices are reduced, and 3) then seeing which were part
+of the zip. Here's what that looks like in our diagram.</p>
 <img alt="_images/matmul1.png" class="align-center" src="_images/matmul1.png" />
 <p>Given how important this operator is, it is worth spending the time to
 think about how to make each of these steps fast. Once we know the
@@ -225,10 +227,10 @@ we computed. In particular this requires zipping grad out with the
 alternative input matrix. We can see the <cite>backward</cite> step by tracing
 the forward arrows:</p>
 <img alt="_images/matmul back.png" class="align-center" src="_images/matmul back.png" />
-<p>It would be a bit annoying to optimize this code as well,
-but again luckily, to compute the <cite>backward</cite> step , we can  reuse
-our forward optimization.  In fact we can simply use the following
-identity from matrix calculus that tells use backward can be computed as a transpose
+<p>It would be a bit annoying to optimize this code as well, but again
+luckily, to compute the <cite>backward</cite> step , we can reuse our forward
+optimization.  In fact we can simply use the following identity from
+matrix calculus that tells use backward can be computed as a transpose
 and another matrix multiply.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{eqnarray*}
@@ -244,37 +246,29 @@ g'_N(f(M, N)) &amp;=&amp;  M^T grad_{out}
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="cuda.html" class="btn btn-neutral float-right" title="GPU Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="parallel.html" class="btn btn-neutral float-left" title="Parallel Computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="cuda.html" class="btn btn-neutral float-right" title="GPU Programming" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="parallel.html" class="btn btn-neutral float-left" title="Parallel Computation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Sasha Rush
+        &#169; Copyright 2020, Sasha Rush.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

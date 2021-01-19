@@ -37,11 +37,11 @@ are very long.
            :width: 500px
 
 
-In practice, to avoid implementing the pooling operation as a loop,
-we can manipulate the shape and
-strides of the input tensor in order to pool it directly. Assuming the
-input tensor is contiguous, we can simply add an extra dimension by applying `view`.
-For instance, we can `view` a (8,) input as (4, 2):
+In practice, to avoid implementing the pooling operation as a loop, we
+can manipulate the shape and strides of the input tensor in order to
+pool it directly. Assuming the input tensor is contiguous, we can
+simply add an extra dimension by applying `view`.  For instance, we
+can `view` a (8,) input as (4, 2):
 
 .. image:: figs/Conv/pool3.png
            :align: center

@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="english" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Pooling &mdash; MiniTorch 0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,10 +34,9 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -57,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+            <a href="index.html" class="icon icon-home"> MiniTorch
           
 
           
@@ -144,6 +146,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -157,7 +161,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/pooling.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -194,11 +198,11 @@ to reduce thel length for that dimension, as visualized below. This is
 common in domains like speech recognition where the input sequences
 are very long.</p>
 <a class="reference internal image-reference" href="_images/pool2.png"><img alt="_images/pool2.png" class="align-center" src="_images/pool2.png" style="width: 500px;" /></a>
-<p>In practice, to avoid implementing the pooling operation as a loop,
-we can manipulate the shape and
-strides of the input tensor in order to pool it directly. Assuming the
-input tensor is contiguous, we can simply add an extra dimension by applying <cite>view</cite>.
-For instance, we can <cite>view</cite> a (8,) input as (4, 2):</p>
+<p>In practice, to avoid implementing the pooling operation as a loop, we
+can manipulate the shape and strides of the input tensor in order to
+pool it directly. Assuming the input tensor is contiguous, we can
+simply add an extra dimension by applying <cite>view</cite>.  For instance, we
+can <cite>view</cite> a (8,) input as (4, 2):</p>
 <a class="reference internal image-reference" href="_images/pool3.png"><img alt="_images/pool3.png" class="align-center" src="_images/pool3.png" style="width: 500px;" /></a>
 <p>Once we have the input in this form, we can reduce over the second
 dimension to get a (4,1) tensor, which can be viewed as a (4,). As
@@ -223,37 +227,29 @@ the input image.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="softmax.html" class="btn btn-neutral float-right" title="Softmax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="convolution.html" class="btn btn-neutral float-left" title="Convolution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="softmax.html" class="btn btn-neutral float-right" title="Softmax" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="convolution.html" class="btn btn-neutral float-left" title="Convolution" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Sasha Rush
+        &#169; Copyright 2020, Sasha Rush.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

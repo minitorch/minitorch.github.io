@@ -6,8 +6,8 @@ Parallel Computation
 The major technique we will use to speed up computation is
 parallelization. General parallel code can be difficult to write and
 get correct. However, we can again take advantage of the fact that we
-have structured our infrastructure around a set of core, general operations that
-are used throughout the codebase.
+have structured our infrastructure around a set of core, general
+operations that are used throughout the codebase.
 
 Let's start by going back to :doc:`module0` and our `map` operation:
 
@@ -26,11 +26,11 @@ we pass it an explict output list to fill in. Here's a simple implementation::
 
 
 This function produces the correct result, but it's not very
-efficient. Ideally, we could do something fast to take advantage of the
-fact that all the function calls are identical. Also, we shouldn't have
-to loop over the list one value at a time. By definition, `map` (and
-`zipWith`) can be fast and parallelized, since none of the individual computations
-interact with each other.
+efficient. Ideally, we could do something fast to take advantage of
+the fact that all the function calls are identical. Also, we shouldn't
+have to loop over the list one value at a time. By definition, `map`
+(and `zipWith`) can be fast and parallelized, since none of the
+individual computations interact with each other.
 
 Python itself doesn't have great fuctions for fast math and parallelism
 built-in, but luckily it has good libraries to help speed up numerical
@@ -89,9 +89,9 @@ it up further with one small change::
                 out[i] = fn(input[i])
         return njit(parallel=True)(_map)
 
-What's neat about this is that the above code is basically the same as the
-Python code without parralization. You can switch back and forth between the two
-without much change.
+What's neat about this is that the above code is basically the same as
+the Python code without paralelization. You can switch back and forth
+between the two without much change.
 
 .. warning::
    You have to be a bit careful to ensure that the loop actually can be

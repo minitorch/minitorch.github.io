@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="english" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Module 3 - Efficiency &mdash; MiniTorch 0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,10 +34,9 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -57,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+            <a href="index.html" class="icon icon-home"> MiniTorch
           
 
           
@@ -152,6 +154,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -163,7 +167,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/module3.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -242,11 +246,7 @@ least one parallelized loop.</p>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_map">
 <code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA higher-order tensor map function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
-</pre></div>
-</div>
+<dd><p>NUMBA low_level tensor map function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -271,11 +271,16 @@ least one parallelized loop.</p>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_zip">
 <code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA higher-order tensor zipWith (or map2) function</p>
+<dd><p>NUMBA higher-order tensor zip function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
 </pre></div>
 </div>
+<ul class="simple">
+<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
+value of <cite>a_storage</cite> and <cite>b_storage</cite> assuming <cite>a_shape</cite>
+and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -336,24 +341,24 @@ least one parallelized loop.</p>
 Be sure to read the Guide on
 <a class="reference internal" href="matrixmult.html"><span class="doc">Fusing Operations</span></a>.</p>
 </div>
-<p>Matrix multiplication is key to all of the models that we have trained so far.
-In the last module, we computed matrix multiplication using broadcasting.
-In this task, we ask you to implement it directly as a function. Do your best to
-make the function efficient, but for now all that matters is that you correctly
-produce a multiply function that passes our tests and has some parallelism.</p>
-<p>In order to use this function, you will also need to add a new <cite>MatMul</cite>
-Function to <cite>tensor_functions.py</cite>. We have added a version in the starter code
-you can copy.
-You might also find it useful to add a slow
-broadcasted <cite>matrix_multiply</cite> to <cite>tensor_ops.py</cite> for debugging.</p>
+<p>Matrix multiplication is key to all of the models that we have trained
+so far.  In the last module, we computed matrix multiplication using
+broadcasting.  In this task, we ask you to implement it directly as a
+function. Do your best to make the function efficient, but for now all
+that matters is that you correctly produce a multiply function that
+passes our tests and has some parallelism.</p>
+<p>In order to use this function, you will also need to add a new
+<cite>MatMul</cite> Function to <cite>tensor_functions.py</cite>. We have added a version in
+the starter code you can copy.  You might also find it useful to add a
+slow broadcasted <cite>matrix_multiply</cite> to <cite>tensor_ops.py</cite> for debugging.</p>
 <p>In order to help debug this code, we have created a parallel analytics
 script for you</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="n">project</span><span class="o">/</span><span class="n">parallel_test</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
 <p>Running this script will run NUMBA diagnostics on your functions.</p>
-<p>After you finish this task, you may want to skip to 3.5 and experiment with training
-on the real task under speed conditions.</p>
+<p>After you finish this task, you may want to skip to 3.5 and experiment
+with training on the real task under speed conditions.</p>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>Complete the following function in <cite>minitorch/fast_ops.py</cite> and copy the <cite>MatMul</cite>
@@ -591,37 +596,29 @@ GPU to be below 1 second per epoch. (With some cleverness you can do much better
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel Computation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="broadcasting.html" class="btn btn-neutral float-left" title="Broadcasting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel Computation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="broadcasting.html" class="btn btn-neutral float-left" title="Broadcasting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Sasha Rush
+        &#169; Copyright 2020, Sasha Rush.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

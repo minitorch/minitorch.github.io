@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="english" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Module 1 - Auto-Differentiation &mdash; MiniTorch 0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,10 +34,9 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -57,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+            <a href="index.html" class="icon icon-home"> MiniTorch
           
 
           
@@ -152,6 +154,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -163,7 +167,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/module1.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -261,17 +265,18 @@ Each of these requires wiring the internal Python operator to the correct
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.forward">
 <code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forward call, compute f(<cite>inputs</cite>)</p>
+<dd><p>Forward call, compute <span class="math notranslate nohighlight">\(f(x_0 \ldots x_{n-1})\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- A special container object to save
-any information that may be needed for the call to backward.</p></li>
-<li><p><strong>*inputs</strong> (<em>list of floats</em>) -- Numerical arguments.</p></li>
+<li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- A container object to save
+any information that may be needed
+for the call to backward.</p></li>
+<li><p><strong>*inputs</strong> (<em>list of floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span>.</p></li>
 </ul>
 </dd>
 </dl>
-<p>Should return float the computation of the function <span class="math notranslate nohighlight">\(f\)</span></p>
+<p>Should return float the computation of the function <span class="math notranslate nohighlight">\(f\)</span>.</p>
 </dd></dl>
 
 <p>Read the example ScalarFunctions that we have implemented for guidelines. You
@@ -416,11 +421,8 @@ tests marked as <cite>task1_3</cite>.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of non-constant variables with their derivatives
+<dd class="field-even"><p>list of (<cite>Variable</cite>, number) A list of non-constant variables with their derivatives
 (see <cite>is_constant</cite> to remove unneeded variables)</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list of <code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -440,16 +442,17 @@ operator to the correct
 <dl class="py function">
 <dt id="minitorch.scalar.ScalarFunction.backward">
 <code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Backward call, compute f'_{x_i}(<cite>inputs</cite>) * d_out</p>
+<dd><p>Backward call, computes <span class="math notranslate nohighlight">\(f'_{x_i}(x_0 \ldots x_{n-1}) \times d_{out}\)</span>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<em>Context</em>) -- A special container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
-<li><p><strong>d_out</strong> (<em>float</em>) -- <span class="math notranslate nohighlight">\(d_out\)</span> term in chain rule.</p></li>
+<li><p><strong>ctx</strong> (<em>Context</em>) -- A container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
+<li><p><strong>d_out</strong> (<em>float</em>) -- <span class="math notranslate nohighlight">\(d_out\)</span> term in the chain rule.</p></li>
 </ul>
 </dd>
 </dl>
-<p>Should return the computation of the derivative function <span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
+<p>Should return the computation of the derivative function
+<span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
 </dd></dl>
 
 <p>Read the example ScalarFunctions that we have implemented for
@@ -463,14 +466,16 @@ and pass tests marked as <cite>task1_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.backpropagate">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">final_variable_with_deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs a breadth-first search on the computation graph in order to
 backpropagate derivatives to the leaves.</p>
 <p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>final_variable_with_deriv</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">VariableWithDeriv</span></code>) -- The final variable
-and its derivative that we want to propagate backward to the leaves.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The final variable</p></li>
+<li><p><strong>deriv</strong> (<em>number</em>) -- Its derivative that we want to propagate backward to the leaves.</p></li>
+</ul>
 </dd>
 </dl>
 <p>No return. Should write to its results to the derivative values of each leaf.</p>
@@ -544,37 +549,29 @@ like the ones above to your README file.</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="derivative.html" class="btn btn-neutral float-right" title="Derivatives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="visualization.html" class="btn btn-neutral float-left" title="Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="derivative.html" class="btn btn-neutral float-right" title="Derivatives" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="visualization.html" class="btn btn-neutral float-left" title="Visualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Sasha Rush
+        &#169; Copyright 2020, Sasha Rush.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

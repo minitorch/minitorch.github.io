@@ -7,11 +7,11 @@ Softmax
 Sigmoid
 --------
 
-So far, the key function that we have relied on for calculating loss is
-the `sigmoid <https://en.wikipedia.org/wiki/Sigmoid_function>`_function.
-As visualized below, it goes to zero for large negative inputs, and
-goes to 1 for large positive inputs. In between, it forms a smooth
-S-curve.
+So far, the key function that we have relied on for calculating loss
+is the `sigmoid <https://en.wikipedia.org/wiki/Sigmoid_function>`_
+function.  As visualized below, it goes to zero for large negative
+inputs, and goes to 1 for large positive inputs. In between, it forms
+a smooth S-curve.
 
 
 .. image:: figs/Graphs/sigmoid.png
@@ -106,10 +106,11 @@ numerical trick to compute the log of the softmax function instead:
    \text{logsoftmax}(\textbf{x}) = \textbf{x} - \log \sum_i \exp x_i
                                  = \textbf{x} - \log(\sum_i \exp (x_i - m)) - m
 
-where :math:`m` is the max element of :math:`\textbf{x}`. This trick is common
-enough that there is a nice derivation on
-`wikipedia <https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations>`_.
-(This is a pratical trick for sigmoid function as well, which we ignored in earlier modules.)
+where :math:`m` is the max element of :math:`\textbf{x}`. This trick
+is common enough that there is a nice derivation on `wikipedia
+<https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations>`_.
+(This is a pratical trick for sigmoid function as well, which we
+ignored in earlier modules.)
 
 Speaking of max, we can add a max operator to our code base.  We can
 compute the max of a vector (or tensor in general) as a reduction,

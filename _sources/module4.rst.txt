@@ -149,7 +149,8 @@ Task 4.4: Softmax and Dropout
 .. note:: This task requires basic familiarity with max reductions.
    Be sure to read the Guide on :doc:`softmax`.
 
-You will implement max, softmax, and log softmax on tensors as well as the dropout and max-pooling operations.
+You will implement max, softmax, and log softmax on tensors as well as
+the dropout and max-pooling operations.
 
 .. image:: figs/Conv/value.png
            :align: center

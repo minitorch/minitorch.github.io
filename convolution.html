@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="english" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Convolution &mdash; MiniTorch 0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,10 +34,9 @@
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
@@ -57,7 +59,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home" alt="Documentation Home"> MiniTorch
+            <a href="index.html" class="icon icon-home"> MiniTorch
           
 
           
@@ -148,6 +150,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -161,7 +165,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="_sources/convolution.rst.txt" rel="nofollow"> View page source</a>
           
         
@@ -183,10 +187,10 @@
 tutorials. In addition to this Guide, we recommend you
 to check other tutorials on convolution for more details.</p>
 </div>
-<p>So far, our main approach to classification problems is to first feed the input to a
-<cite>Linear</cite> layer which applies many different linear seperators to the
-input, and then apply the ReLU function in order to transform it into a new
-hidden representation.</p>
+<p>So far, our main approach to classification problems is to first feed
+the input to a <cite>Linear</cite> layer which applies many different linear
+seperators to the input, and then apply the ReLU function in order to
+transform it into a new hidden representation.</p>
 <p>One major problem with the above approach is that it is based on the
 <cite>absolute</cite> position of the original input features, which prevents us
 from using the same learned parameters on different parts of the
@@ -212,9 +216,9 @@ result to one value, and then saving this value in the output:</p>
 <img alt="_images/conv1d.png" class="align-center" src="_images/conv1d.png" />
 <p>If the sliding window goes over the edge of the input, to make things
 simpler, we just assume the out-of-edge input values are 0.</p>
-<p>An alternative way to think about a convolution is <cite>unrolling</cite> the input.
-Now imagine we have a function named <cite>unroll</cite> which could take an input tensor and
-produce a new output tensor:</p>
+<p>An alternative way to think about a convolution is <cite>unrolling</cite> the
+input.  Now imagine we have a function named <cite>unroll</cite> which could take
+an input tensor and produce a new output tensor:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
@@ -236,8 +240,8 @@ produce a new output tensor:</p>
 <span class="p">[</span><span class="mi">18</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We can treat convolution as a fusion of the following two separate operations (note that we do
-not implement it this way in practice!):</p>
+<p>We can treat convolution as a fusion of the following two separate
+operations (note that we do not implement it this way in practice!):</p>
 <img alt="_images/convvec.png" class="align-center" src="_images/convvec.png" />
 <p>Given an input and weight, it efficiently unrolls the input and takes
 matrix multiplication with weight. This technique is very useful
@@ -249,13 +253,16 @@ compute the <cite>backward</cite> operation of this 1D convolution. Note that we
 can reason through the flow of each cell with matrix
 multiplication. Going back to the previous example, the third cell in
 the original input (i.e. input[2]) is only utilized to compute three
-different cells in the ouput: output[0], output[1] and output[2]:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
-<span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+different cells in the ouput: output[0], output[1] and output[2]</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> \
+            <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> \
+            <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> \
+            <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="nb">input</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Therefore, the gradient calculation is:</p>
+<p>Therefore, the gradient calculation is</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grad_input</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">weight</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="o">+</span> <span class="n">weight</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">grad_output</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -333,37 +340,29 @@ through each stage of the network:</p>
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="pooling.html" class="btn btn-neutral float-right" title="Pooling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="module4.html" class="btn btn-neutral float-left" title="Module 4 - Networks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="pooling.html" class="btn btn-neutral float-right" title="Pooling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="module4.html" class="btn btn-neutral float-left" title="Module 4 - Networks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Sasha Rush
+        &#169; Copyright 2020, Sasha Rush.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

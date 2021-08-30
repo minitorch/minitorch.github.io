@@ -13,8 +13,6 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -33,14 +31,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -93,7 +91,7 @@
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -226,11 +224,11 @@ like Python numbers such that the user cannot tell the
 difference. It's a bit hacky, but pretty neat under the hood. We
 literally just create a generic Variable class:</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minitorch.Variable">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">Variable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">history</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Variable" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Variable">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Variable</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">history</span></em>, <em class="sig-param"><span class="n">name</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Variable" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="py attribute">
-<dt class="sig sig-object py" id="minitorch.Variable.history">
-<span class="sig-name descname"><span class="pre">history</span></span><a class="headerlink" href="#minitorch.Variable.history" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Variable.history">
+<code class="sig-name descname">history</code><a class="headerlink" href="#minitorch.Variable.history" title="Permalink to this definition">¶</a></dt>
 <dd><p>the Function calls that created this variable or None if constant</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -240,8 +238,8 @@ literally just create a generic Variable class:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minitorch.Variable.derivative">
-<span class="sig-name descname"><span class="pre">derivative</span></span><a class="headerlink" href="#minitorch.Variable.derivative" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Variable.derivative">
+<code class="sig-name descname">derivative</code><a class="headerlink" href="#minitorch.Variable.derivative" title="Permalink to this definition">¶</a></dt>
 <dd><p>the derivative with respect to this variable</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -251,8 +249,8 @@ literally just create a generic Variable class:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minitorch.Variable.grad">
-<span class="sig-name descname"><span class="pre">grad</span></span><a class="headerlink" href="#minitorch.Variable.grad" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Variable.grad">
+<code class="sig-name descname">grad</code><a class="headerlink" href="#minitorch.Variable.grad" title="Permalink to this definition">¶</a></dt>
 <dd><p>alias for derivative (PyTorch name)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -262,8 +260,8 @@ literally just create a generic Variable class:</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minitorch.Variable.name">
-<span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#minitorch.Variable.name" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Variable.name">
+<code class="sig-name descname">name</code><a class="headerlink" href="#minitorch.Variable.name" title="Permalink to this definition">¶</a></dt>
 <dd><p>an optional name for debugging</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -278,8 +276,8 @@ literally just create a generic Variable class:</p>
 change or manipulate values of Variables directly. We <strong>must</strong> create a
 <cite>Function</cite> class that acts on Variables:</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minitorch.FunctionBase">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">FunctionBase</span></span><a class="headerlink" href="#minitorch.FunctionBase" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.FunctionBase">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">FunctionBase</code><a class="headerlink" href="#minitorch.FunctionBase" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function that can act on <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> arguments to
 produce a <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a> output, while tracking the internal history.</p>
 <p>Call by <code class="xref py py-func docutils literal notranslate"><span class="pre">FunctionBase.apply()</span></code>.</p>
@@ -301,16 +299,16 @@ manipulates them, and returns a new <cite>wrapped</cite> Variable:</p>
 on the Scalar class, a sub-class of <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>. It wraps a
 single scalar float (which is stored in the <cite>data</cite> attribute).</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minitorch.Scalar">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">Scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">v</span></em>, <em class="sig-param"><span class="pre">back=&lt;minitorch.autodiff.History</span> <span class="pre">object&gt;</span></em>, <em class="sig-param"><span class="pre">name=None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Scalar">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">Scalar</code><span class="sig-paren">(</span><em class="sig-param">v</em>, <em class="sig-param">back=&lt;minitorch.autodiff.History object&gt;</em>, <em class="sig-param">name=None</em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar" title="Permalink to this definition">¶</a></dt>
 <dd><p>A reimplementation of scalar values for autodifferentiation
 tracking.  Scalar Variables behave as close as possible to standard
 Python numbers while also tracking the operations that led to the
 number's creation. They can only be manipulated by
 <a class="reference internal" href="#minitorch.ScalarFunction" title="minitorch.ScalarFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">ScalarFunction</span></code></a>.</p>
 <dl class="py attribute">
-<dt class="sig sig-object py" id="minitorch.Scalar.data">
-<span class="sig-name descname"><span class="pre">data</span></span><a class="headerlink" href="#minitorch.Scalar.data" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.Scalar.data">
+<code class="sig-name descname">data</code><a class="headerlink" href="#minitorch.Scalar.data" title="Permalink to this definition">¶</a></dt>
 <dd><p>The wrapped scalar value.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -325,8 +323,8 @@ number's creation. They can only be manipulated by
 class <a class="reference internal" href="#minitorch.ScalarFunction" title="minitorch.ScalarFunction"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.ScalarFunction</span></code></a> which
 is a subclass of <a class="reference internal" href="#minitorch.FunctionBase" title="minitorch.FunctionBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.FunctionBase</span></code></a>:</p>
 <dl class="py class">
-<dt class="sig sig-object py" id="minitorch.ScalarFunction">
-<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">ScalarFunction</span></span><a class="headerlink" href="#minitorch.ScalarFunction" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.ScalarFunction">
+<em class="property">class </em><code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">ScalarFunction</code><a class="headerlink" href="#minitorch.ScalarFunction" title="Permalink to this definition">¶</a></dt>
 <dd><p>A wrapper for a mathematical function that processes and produces
 Scalar variables.</p>
 <p>This is a static class and is never instantiated. We use <cite>class</cite>

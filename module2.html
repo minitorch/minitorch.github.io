@@ -13,8 +13,6 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -33,13 +31,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -92,7 +91,7 @@
               
             
             
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -209,7 +208,7 @@ clone your assignment:</p>
 <p>You need the files from previous assignments, so maker sure to pull them over
 to your new repo.</p>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
+<p class="caption"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tensordata.html">Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="broadcasting.html">Broadcasting</a></li>
@@ -251,8 +250,8 @@ before turning to the user-facing class <code class="xref py py-class docutils l
 tests marked as <cite>task2_1</cite>.</p>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.index_to_position">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">index_to_position</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">strides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.index_to_position">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a multidimensional tensor <cite>index</cite> into a single-dimensional position in
 storage based on strides.</p>
 <dl class="field-list simple">
@@ -272,8 +271,8 @@ storage based on strides.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.to_index">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">to_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ordinal</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.to_index" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.to_index">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">to_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordinal</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.to_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an <cite>ordinal</cite> to an index in the <cite>shape</cite>.
 Should ensure that enumerating position 0 ... size of a
 tensor produces every index exactly once. It
@@ -296,8 +295,8 @@ may not be the inverse of <cite>index_to_position</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorData.permute">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorData.</span></span><span class="sig-name descname"><span class="pre">permute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">self</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorData.permute" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorData.permute">
+<code class="sig-prename descclassname">minitorch.TensorData.</code><code class="sig-name descname">permute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorData.permute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute the dimensions of the tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -329,8 +328,8 @@ identical.</p>
 and pass tests marked as <cite>task2_2</cite>.</p>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.shape_broadcast">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">shape_broadcast</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shape1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape2</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.shape_broadcast" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.shape_broadcast">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">shape_broadcast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape1</span></em>, <em class="sig-param"><span class="n">shape2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.shape_broadcast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Broadcast two shapes to create a new union shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -352,8 +351,8 @@ and pass tests marked as <cite>task2_2</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.broadcast_index">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">broadcast_index</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">big_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">big_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_index</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.broadcast_index">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">big_index</span></em>, <em class="sig-param"><span class="n">big_shape</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a <cite>big_index</cite> into <cite>big_shape</cite> to a smaller <cite>out_index</cite>
 into <cite>shape</cite> following broadcasting rules. In this case
 it may be larger or with more dimensions than the <cite>shape</cite>
@@ -425,8 +424,8 @@ graph in <cite>Streamlit</cite>:</p>
 marked as <cite>task2_2</cite>.</p>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.tensor_map">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tensor_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_map">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor map function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
@@ -455,8 +454,8 @@ marked as <cite>task2_2</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.tensor_zip">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tensor_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_zip">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -488,8 +487,8 @@ marked as <cite>task2_2</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.tensor_reduce">
-<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tensor_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_reduce">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor reduce function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -515,43 +514,43 @@ marked as <cite>task2_2</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Mul.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Mul.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Mul.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Sigmoid.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Sigmoid.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Sigmoid.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.ReLU.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.ReLU.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.ReLU.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Log.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Log.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Log.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Exp.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Exp.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Exp.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.LT.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.LT.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.LT.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.EQ.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.EQ.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.EQ.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.EQ.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Permute.forward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Permute.</span></span><span class="sig-name descname"><span class="pre">forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">order</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Permute.forward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -573,43 +572,43 @@ will implement <cite>backward</cite> functions for tensor operations.</p>
 tests marked as <cite>task2_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Mul.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Mul.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Mul.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Sigmoid.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Sigmoid.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Sigmoid.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.ReLU.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.ReLU.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.ReLU.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Log.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Log.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Log.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Exp.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Exp.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Exp.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.LT.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.LT.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.LT.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.EQ.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.EQ.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.EQ.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.EQ.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="minitorch.TensorFunctions.Permute.backward">
-<span class="sig-prename descclassname"><span class="pre">minitorch.TensorFunctions.Permute.</span></span><span class="sig-name descname"><span class="pre">backward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ctx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grad_output</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.TensorFunctions.Permute.backward">
+<code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>

@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -31,13 +33,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -45,7 +47,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Parallel Computation" href="parallel.html" />
-    <link rel="prev" title="Broadcasting" href="broadcasting.html" /> 
+    <link rel="prev" title="Tensor Variables" href="tensor.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,7 +92,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -202,7 +204,7 @@ clone your assignment:</p>
 to your new repo.</p>
 <p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="parallel.html">Parallel Computation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="matrixmult.html">Fusing Operations</a></li>
@@ -244,8 +246,8 @@ from the above script in your README. Your code should have at
 least one parallelized loop.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.fast_ops.tensor_map">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.fast_ops.tensor_map">
+<span class="sig-prename descclassname"><span class="pre">minitorch.fast_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA low_level tensor map function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -269,8 +271,8 @@ least one parallelized loop.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.fast_ops.tensor_zip">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.fast_ops.tensor_zip">
+<span class="sig-prename descclassname"><span class="pre">minitorch.fast_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA higher-order tensor zip function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -306,8 +308,8 @@ and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.fast_ops.tensor_reduce">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.fast_ops.tensor_reduce">
+<span class="sig-prename descclassname"><span class="pre">minitorch.fast_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA higher-order tensor reduce function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -366,8 +368,8 @@ Function to <cite>tensor_functions.py</cite>.
 Pass tests marked as <cite>task3_2</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.fast_ops.tensor_matrix_multiply">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">a_storage</span></em>, <em class="sig-param"><span class="n">a_shape</span></em>, <em class="sig-param"><span class="n">a_strides</span></em>, <em class="sig-param"><span class="n">b_storage</span></em>, <em class="sig-param"><span class="n">b_shape</span></em>, <em class="sig-param"><span class="n">b_strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.fast_ops.tensor_matrix_multiply">
+<span class="sig-prename descclassname"><span class="pre">minitorch.fast_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_matrix_multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_storage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">a_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_storage</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">b_strides</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA tensor matrix multiply function.</p>
 <p>Should work for any tensor shapes that broadcast as long as</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">a_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
@@ -416,8 +418,8 @@ of task 3.1).</p>
 <cite>task3_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.cuda_ops.tensor_map">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.cuda_ops.tensor_map">
+<span class="sig-prename descclassname"><span class="pre">minitorch.cuda_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_map</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor map function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
@@ -446,8 +448,8 @@ of task 3.1).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.cuda_ops.tensor_zip">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.cuda_ops.tensor_zip">
+<span class="sig-prename descclassname"><span class="pre">minitorch.cuda_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -479,8 +481,8 @@ of task 3.1).</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.cuda_ops.tensor_reduce">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.cuda_ops.tensor_reduce">
+<span class="sig-prename descclassname"><span class="pre">minitorch.cuda_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_reduce</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fn</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor reduce function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -523,8 +525,8 @@ accuracy, but, the faster you can make it, the better.</p>
 <p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.cuda_ops.tensor_matrix_multiply">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.cuda_ops.tensor_matrix_multiply">
+<span class="sig-prename descclassname"><span class="pre">minitorch.cuda_ops.</span></span><span class="sig-name descname"><span class="pre">tensor_matrix_multiply</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA Kernel object. When called, the kernel object will specialize itself
 for the given arguments (if no suitable specialized version already exists)
 &amp; compute capability, and launch on the device associated with the current
@@ -580,11 +582,9 @@ trainer. Here is the command</p>
 </ul>
 <p>Train a tensor model and add your results for all three dataset
 to the README. Also record the time per epoch reported by the
-trainer. (As a reference, our parallel implementation gave a 10x speedup).</p>
-<blockquote>
-<div><p>On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+trainer. (As a reference, our parallel implementation gave a 10x speedup).
+On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
 GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
-</div></blockquote>
 </div>
 </div>
 </div>
@@ -597,7 +597,7 @@ GPU to be below 1 second per epoch. (With some cleverness you can do much better
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="parallel.html" class="btn btn-neutral float-right" title="Parallel Computation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="broadcasting.html" class="btn btn-neutral float-left" title="Broadcasting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tensor.html" class="btn btn-neutral float-left" title="Tensor Variables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

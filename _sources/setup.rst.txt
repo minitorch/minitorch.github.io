@@ -5,34 +5,7 @@
 Workspace Setup
 ================
 
-We suggest two options for setting up the course workspace.
-
-
-Online IDE
------------
-
-MiniTorch can be run entirely on an online IDE for simplicity.
-Each module is configured to work directly with the Repl.it
-environment which you can setup through the Github page. You will
-need to signup for a `Repl.it <https://repl.it>`_ account and create an
-environment repo through
-the link. Dependencies and the environment should be setup automatically. Tests
-will run with the play button.
-
-
-For training and visualization, you may need to run the following command.
-
->>> pip install -U -r requirements.extra.txt
-
-Make sure that everything is installed by running `python` and then checking:
-
->>> import minitorch
-
-
-Standard Setup
----------------
-
-Alternatively, you can set things up in a standard Python environment.
+You can set things up in a standard Python environment.
 
 MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your

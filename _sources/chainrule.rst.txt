@@ -5,11 +5,12 @@ Autodifferentiation
 .. jupyter-execute::
    :hide-code:
 
+      import sys
+      sys.path.append("../")
       import minitorch
       from minitorch import ScalarFunction
-      import sys
-      sys.path.append("../project/")
-      from datasets_plotly import plot_function
+      sys.path.append("../project/interface/")
+      from plots import plot_function
 
 In :doc:`scalar`, we have seen that :class:`ScalarFunction` can be used to
 implement Functions on Variables. We do this by calling `apply` function on

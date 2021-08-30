@@ -5,10 +5,12 @@ Tracking Variables
 .. jupyter-execute::
    :hide-code:
 
+
+      import sys
+      sys.path.append("../")
+      sys.path.append("../project/")
       import minitorch
       from minitorch import ScalarFunction
-      import sys
-      sys.path.append("../project/")
       from show_expression import make_graph
       from IPython.display import SVG, display
 

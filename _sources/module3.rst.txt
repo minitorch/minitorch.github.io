@@ -215,5 +215,5 @@ your tensor code.
    Train a tensor model and add your results for all three dataset
    to the README. Also record the time per epoch reported by the
    trainer. (As a reference, our parallel implementation gave a 10x speedup).
-     On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
-     GPU to be below 1 second per epoch. (With some cleverness you can do much better.)
+   On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+   GPU to be below 1 second per epoch. (With some cleverness you can do much better.)

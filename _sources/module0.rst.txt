@@ -15,10 +15,10 @@ modules, and also includes some basic mathematical foundations.
 In this module, you will start to build up some of the
 infrastructure for MiniTorch.
 
-All starter code is available in https://github.com/minitorch/Module-0 .
-Before starting this assignment, make sure to set up your workspace following
-:doc:`setup`, and
-read :doc:`contributing` to understand how the code should be organized.
+All starter code is available in https://github.com/minitorch/Module-0
+.  Before starting this assignment, make sure to set up your workspace
+following :doc:`setup`, and read :doc:`contributing` to understand how
+the code should be organized.
 
 
 Each module has a set of `Guides` to help with the tasks. We recommend
@@ -54,12 +54,17 @@ some terminologies might be new.
 
 .. autofunction:: minitorch.operators.mul
 .. autofunction:: minitorch.operators.id
+.. autofunction:: minitorch.operators.eq
 .. autofunction:: minitorch.operators.neg
 .. autofunction:: minitorch.operators.add
+.. autofunction:: minitorch.operators.max
 .. autofunction:: minitorch.operators.lt
 .. autofunction:: minitorch.operators.sigmoid
 .. autofunction:: minitorch.operators.relu
+.. autofunction:: minitorch.operators.inv
+.. autofunction:: minitorch.operators.inv_back
 .. autofunction:: minitorch.operators.relu_back
+.. autofunction:: minitorch.operators.log_back
 
 
 
@@ -146,6 +151,11 @@ parameters of
 interest.
 
 
+To experiment with the system use the `Module Sandbox`:
+
+>>> streamlit run project/app.py -- 0
+
+
 .. todo::
    Complete the functions in `minitorch/module.py` and pass tests marked as
    `tasks0_4`.
@@ -154,6 +164,7 @@ interest.
 .. autofunction:: minitorch.Module.train
 .. autofunction:: minitorch.Module.eval
 .. autofunction:: minitorch.Module.named_parameters
+.. autofunction:: minitorch.Module.parameters
 
 
 
@@ -163,39 +174,27 @@ Task 0.5: Visualization
 .. note::
 
    This task requires familiarity with visualization tools described in
-   :doc:`visualization` as well
-   as the documentation for `Visdom
-   <https://github.com/facebookresearch/visdom>`_.
-
+   :doc:`visualization`.
 
 
 For the first few assignments, we use a set of datasets implemented in
-`project/datasets.py`,
+`minitorch/datasets.py`,
 which are 2D point classification datasets. (See `TensorFlow Playground
 <https://playground.tensorflow.org/>`_
-for similar examples.) Each of these dataset can be added to the visualization
-using::
+for similar examples.) Each of these dataset can be added to the visualization.
 
-  from project.datasets import Simple, Split, Xor
-  N = 100
-  Simple(N, vis=True).graph("initial")
+To experiment with the system use:
 
-You can also provide a model that attempts to perform the classfication::
+>>> streamlit run project/app.py -- 0
 
-  def classify(pt):
-      "Classify based on x position"
-      if pt[0] > 0.5:
-          return 1.0
-      else:
-          return 0.0
-
-  Split(N, vis=True).graph("initial", model=classify)
+You can also provide a model that attempts to perform the
+classfication by manipulating the parameters.
 
 
 .. todo::
-   Start a visdom server and print an image of the dataset. Hand-create
+   Start a streamlit server and print an image of the dataset. Hand-create
    classifiers that
-   split each of the datasets into the correct colors. Display your images
+   split the linear dataset  into the correct colors. Display your images
    on the README file in your
    repo.
 

@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -31,13 +33,14 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -90,7 +93,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -227,7 +230,7 @@ following code to test the installation:</p>
 </div>
 <p>Be sure to continue to follow the <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> guidelines.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Guides</span></p>
+<p class="caption" role="heading"><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="convolution.html">Convolution</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pooling.html">Pooling</a></li>
@@ -252,8 +255,8 @@ Be sure to read the Guide on <a class="reference internal" href="convolution.htm
 as <cite>task4_1</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.tensor_conv1d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv1d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.tensor_conv1d">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tensor_conv1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>1D Convolution implementation.</p>
 <p>Given input tensor of</p>
 <blockquote>
@@ -305,8 +308,8 @@ Be sure to read the Guide on <a class="reference internal" href="convolution.htm
 as <cite>task4_2</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.tensor_conv2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.tensor_conv2d">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tensor_conv2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">input_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_shape</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weight_strides</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reverse</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>2D Convolution implementation.</p>
 <p>Given input tensor of</p>
 <blockquote>
@@ -357,8 +360,8 @@ Be sure to read the Guide on <a class="reference internal" href="pooling.html"><
 marked as <cite>task4_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.tile">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tile" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.tile">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">tile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reshape an image tensor for 2D pooling</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -377,8 +380,8 @@ marked as <cite>task4_3</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.avgpool2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">avgpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.avgpool2d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.avgpool2d">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">avgpool2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.avgpool2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tiled average pooling 2D</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -419,13 +422,13 @@ computation.</p></li>
 </ul>
 </div>
 <dl class="py function">
-<dt id="minitorch.max">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.max">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">max</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">vals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.softmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.softmax">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">softmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the softmax as a tensor.</p>
 <div class="math notranslate nohighlight">
 \[z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\]</div>
@@ -446,8 +449,8 @@ computation.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.logsoftmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.logsoftmax">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">logsoftmax</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the log of the softmax as a tensor.</p>
 <div class="math notranslate nohighlight">
 \[z_i = x_i - \log \sum_i e^{x_i}\]</div>
@@ -469,8 +472,8 @@ computation.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.maxpool2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">maxpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.maxpool2d" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.maxpool2d">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">maxpool2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">kernel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.maxpool2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tiled max pooling 2D</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -489,8 +492,8 @@ computation.</p></li>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.dropout">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">dropout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">rate</span></em>, <em class="sig-param"><span class="n">ignore</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.dropout" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="minitorch.dropout">
+<span class="sig-prename descclassname"><span class="pre">minitorch.</span></span><span class="sig-name descname"><span class="pre">dropout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ignore</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.dropout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dropout positions based on random noise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -501,7 +504,7 @@ computation.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>tensor with random positions dropped out</p>
+<dd class="field-even"><p>tensor with randoom positions dropped out</p>
 </dd>
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>

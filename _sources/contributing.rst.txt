@@ -4,25 +4,16 @@ Contributing
 
 
 Each MiniTorch assignment is structured to mimic the experience of
-contributing to a real open-source project. Thus we have
-specific contributor requirements. This doc lays out our expectation
-of your code. For each assignment, there is a script `run_test.py`
-available for you to check each of the necessary properties before submitting:
-
->>> python run_tests.py
-
-You can also run an individual test group:
-
->>> python run_tests.py 2
-
+contributing to a real open-source project. Thus we have specific
+contributor requirements. This doc lays out our expectation of your
+code.
 
 Style
 ------
 
-It is required to keep your code organized
-and clean to make it easier to debug, optimize, and document. To help
-with this process, we utilize required formatting on all
-assignments. Coding style is checked in `run_tests.py 0` automatically.
+It is required to keep your code organized and clean to make it easier
+to debug, optimize, and document. To help with this process, we
+utilize required formatting on all assignments.
 
 Fixing style bugs can be an annoying process. However, there is a nice trick
 to fix most formatting issues automatically. We use `black` to automatically
@@ -31,29 +22,40 @@ all of your code to fit most of the requirements (see
 https://github.com/psf/black for
 more details):
 
->>> black minitorch/ tests/ project/
+>>> black .
+
+Coding style will need to be checked as part of the continuous
+integration of the project.  You can do so by running the `flake8`
+linter in your home directory:
+
+>>> flake8
 
 
-We recommend setting up your editor or IDE to highlight other style issues.
+We also recommend setting up your editor or IDE to highlight other
+style issues.
+
 
 
 Testing
 --------------
 
 Each assignment has a series of tests that require your code to pass.
-These tests are in the `tests/` directory and are in the `pytest` format
-(https://docs.pytest.org/en/stable/). Any function in that directory
-with the word `test` in its name is run as part of the test
-suite.
+These tests are in the `tests/` directory and are in the `pytest`
+format (https://docs.pytest.org/en/stable/). Any function in that
+directory with the word `test` in its name is run as part of the test
+suite. Each assignment has 4 task groups that you will need to pass.
 
-In addition to `run_tests.py` which runs all of the tests, you can run
+>>> pytest -m task0_0
+
+
+In addition to running a full task which runs all of the tests, you can run
 tests in a single file with:
 
->>> python -m pytest tests/test_operators.py
+>>> pytest tests/test_operators.py
 
 Or even a particular test with:
 
->>> python -m pytest tests/test_operators.py -k test_sum
+>>> pytest tests/test_operators.py -k test_sum
 
 Pytest will hide all print statements unless a test fails.
 
@@ -85,6 +87,10 @@ docstyle): ::
 A full description of this docstyle is listed here
 https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html.
 
+The project also requires that you keep documentation up-to-standard
+throughout.  Lint errors will be thrown if your documentation is in
+the incorrect format.
+
 
 
 Continuous Integration (CI)
@@ -101,7 +107,7 @@ keep track of your progress as you go.
 
 Specifically, you can run:
 
->>> git commit -am "First commit";
+>>> git commit -am "First commit"
 >>> git push origin master
 
 Then go to your GitHub and click on "Pull requests". Clicking on the

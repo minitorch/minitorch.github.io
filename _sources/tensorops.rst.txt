@@ -5,8 +5,9 @@ Operations
 .. jupyter-execute::
    :hide-code:
 
-      import minitorch
       import sys
+      sys.path.append("../")
+      import minitorch
       sys.path.append("../project/")
       from show_tensor import *
 

@@ -1,11 +1,14 @@
 .. jupyter-execute::
    :hide-code:
 
+
    import sys
+   sys.path.append("../")
    sys.path.append("../project/")
-   import datasets
-   from datasets_plotly import animate, plot
-   s = datasets.Simple(20)
+   import minitorch
+   sys.path.append("../project/interface/")
+   from plots import animate, plot
+   s = minitorch.datasets["Simple"](20)
 
 
 ==================
@@ -169,7 +172,7 @@ Let's look at an example of some models. Here is some randomly generated data.
 .. jupyter-execute::
 
    def model1(x):
-       if x[0] < 0.25:
+       if x[0][0] < 0.25:
            return 1
        else:
            return 0
@@ -179,7 +182,7 @@ Let's look at an example of some models. Here is some randomly generated data.
 .. jupyter-execute::
 
    def model2(x):
-       if x[0] < 0.25:
+       if x[0][0] < 0.25:
            return 1
        if x[0] > 0.5 and x[1] > 0.6:
            return 1
@@ -204,7 +207,7 @@ the model.
 
    def make_model(param):
        def model(x):
-           if x[0] < param:
+           if x[0][0] < param:
                return 1
            else:
                return 0
@@ -253,7 +256,7 @@ notation indicates which arguments are for parameters and which are for data.
 
    def make_linear(w1, w2, b):
        def model(x):
-           return 1 if (x[0] * w1 + x[1] * w2 + b > 0.0) else 0
+           return 1 if (x[0][0] * w1 + x[0][1] * w2 + b > 0.0) else 0
        return model
 
    biases = [-0.098 + (i / 100.0) for i in range(25)]

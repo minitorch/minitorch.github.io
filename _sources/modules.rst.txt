@@ -5,6 +5,12 @@
 Modules
 ========
 
+.. jupyter-execute::
+   :hide-code:
+
+      import sys
+      sys.path.append("../")
+
 Researchers often disagree on exactly what the term `deep` learning
 means, but one aspect that everyone agrees on is that deep
 models are big and complex.  Common models can include hundreds of
@@ -115,7 +121,7 @@ extract the flattened parameters
               super().__init__()
               self.p3 = Parameter(15)
 
-      np = Module1().named_parameters()
+      np = dict(Module1().named_parameters())
       assert np["b.c.p3"].value == 15
 
 .. image:: figs/Module/module.png

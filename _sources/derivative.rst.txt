@@ -11,9 +11,10 @@ so we will start slow and develop some notations first.
    :hide-code:
 
    import sys
-   sys.path.append("../project/")
+   sys.path.append("../")
    import minitorch
-   from datasets_plotly import plot_function
+   sys.path.append("../project/interface/")
+   from plots import plot_function
    import math
 
 

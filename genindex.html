@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -31,13 +33,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -88,7 +90,7 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
@@ -297,10 +299,12 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="module0.html#minitorch.Module.eval">eval() (in module minitorch.Module)</a>
+      <li><a href="module0.html#minitorch.operators.eq">eq() (in module minitorch.operators)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="module0.html#minitorch.Module.eval">eval() (in module minitorch.Module)</a>
+</li>
       <li><a href="module1.html#minitorch.Scalar.exp">exp() (in module minitorch.Scalar)</a>
 </li>
   </ul></td>
@@ -309,10 +313,14 @@
 <h2 id="F">F</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="module1.html#minitorch.scalar.Exp.forward">forward() (in module minitorch.scalar.Exp)</a>
+      <li><a href="module1.html#minitorch.scalar.EQ.forward">forward() (in module minitorch.scalar.EQ)</a>
 
       <ul>
+        <li><a href="module1.html#minitorch.scalar.Exp.forward">(in module minitorch.scalar.Exp)</a>
+</li>
         <li><a href="module1.html#minitorch.scalar.Inv.forward">(in module minitorch.scalar.Inv)</a>
+</li>
+        <li><a href="module1.html#minitorch.scalar.LT.forward">(in module minitorch.scalar.LT)</a>
 </li>
         <li><a href="module1.html#minitorch.scalar.Mul.forward">(in module minitorch.scalar.Mul)</a>
 </li>
@@ -369,9 +377,13 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="module0.html#minitorch.operators.id">id() (in module minitorch.operators)</a>
 </li>
+      <li><a href="module2.html#minitorch.index_to_position">index_to_position() (in module minitorch)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="module2.html#minitorch.index_to_position">index_to_position() (in module minitorch)</a>
+      <li><a href="module0.html#minitorch.operators.inv">inv() (in module minitorch.operators)</a>
+</li>
+      <li><a href="module0.html#minitorch.operators.inv_back">inv_back() (in module minitorch.operators)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -380,6 +392,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="module1.html#minitorch.Scalar.log">log() (in module minitorch.Scalar)</a>
+</li>
+      <li><a href="module0.html#minitorch.operators.log_back">log_back() (in module minitorch.operators)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -396,7 +410,11 @@
       <li><a href="module0.html#minitorch.operators.map">map() (in module minitorch.operators)</a>
 </li>
       <li><a href="module4.html#minitorch.max">max() (in module minitorch)</a>
+
+      <ul>
+        <li><a href="module0.html#minitorch.operators.max">(in module minitorch.operators)</a>
 </li>
+      </ul></li>
       <li><a href="module4.html#minitorch.maxpool2d">maxpool2d() (in module minitorch)</a>
 </li>
       <li>
@@ -442,6 +460,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="modules.html#minitorch.Parameter">Parameter (class in minitorch)</a>
+</li>
+      <li><a href="module0.html#minitorch.Module.parameters">parameters() (in module minitorch.Module)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
@@ -501,7 +521,7 @@
 </li>
       <li><a href="module4.html#minitorch.tensor_conv2d">tensor_conv2d() (in module minitorch)</a>
 </li>
-      <li><a href="module2.html#id0">tensor_map() (in module minitorch)</a>, <a href="module2.html#minitorch.tensor_map">[1]</a>
+      <li><a href="module2.html#minitorch.tensor_map">tensor_map() (in module minitorch)</a>
 
       <ul>
         <li><a href="module3.html#minitorch.cuda_ops.tensor_map">(in module minitorch.cuda_ops)</a>
@@ -515,7 +535,7 @@
         <li><a href="module3.html#minitorch.fast_ops.tensor_matrix_multiply">(in module minitorch.fast_ops)</a>
 </li>
       </ul></li>
-      <li><a href="module2.html#id6">tensor_reduce() (in module minitorch)</a>, <a href="module2.html#minitorch.tensor_reduce">[1]</a>
+      <li><a href="module2.html#minitorch.tensor_reduce">tensor_reduce() (in module minitorch)</a>
 
       <ul>
         <li><a href="module3.html#minitorch.cuda_ops.tensor_reduce">(in module minitorch.cuda_ops)</a>
@@ -525,7 +545,7 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="module2.html#id5">tensor_zip() (in module minitorch)</a>, <a href="module2.html#minitorch.tensor_zip">[1]</a>
+      <li><a href="module2.html#minitorch.tensor_zip">tensor_zip() (in module minitorch)</a>
 
       <ul>
         <li><a href="module3.html#minitorch.cuda_ops.tensor_zip">(in module minitorch.cuda_ops)</a>
@@ -534,6 +554,8 @@
 </li>
       </ul></li>
       <li><a href="module4.html#minitorch.tile">tile() (in module minitorch)</a>
+</li>
+      <li><a href="module2.html#minitorch.to_index">to_index() (in module minitorch)</a>
 </li>
       <li><a href="module0.html#minitorch.Module.train">train() (in module minitorch.Module)</a>
 </li>

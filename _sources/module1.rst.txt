@@ -85,21 +85,11 @@ may find it useful to reuse the operators from Module 0.
 
 
 We have built a debugging tool for you to observe the workings of your
-expressions to see
-how the graph is built. You can run it in `project/show_expression.py`. You
-need to install
-pydot and networkx. You can alter
-the expression at the top of the file and then run the code to create a
-graph in `Visdom`::
+expressions to see how the graph is built. You can run it in the
+`Autodiff Sandbox`.  You can alter the expression at the top of the
+file and then run the code to create a graph in `Streamlit`::
 
-
-  def expression():
-      x = minitorch.Scalar(10, name="x")
-      y = x + 10.
-      y.name = "y"
-      return y
-
->>> python project/show_expression.py
+>>> streamlit run app.py -- 1
 
 .. image:: expgraph.png
    :align: center
@@ -108,13 +98,15 @@ graph in `Visdom`::
 .. todo::
    Complete the following functions in `minitorch/scalar.py`.
 
+
 .. autofunction:: minitorch.scalar.Mul.forward
 .. autofunction:: minitorch.scalar.Inv.forward
 .. autofunction:: minitorch.scalar.Neg.forward
 .. autofunction:: minitorch.scalar.Sigmoid.forward
 .. autofunction:: minitorch.scalar.ReLU.forward
 .. autofunction:: minitorch.scalar.Exp.forward
-
+.. autofunction:: minitorch.scalar.LT.forward
+.. autofunction:: minitorch.scalar.EQ.forward
 
 .. todo:: Complete the following function in `minitorch/scalar.py`, and pass
    tests marked as `task1_2`.

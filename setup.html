@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
@@ -31,13 +33,13 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -90,13 +92,9 @@
               
             
             
-              <p class="caption"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Workspace Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#online-ide">Online IDE</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#standard-setup">Standard Setup</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workspace Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
@@ -173,28 +171,7 @@
             
   <div class="section" id="workspace-setup">
 <h1>Workspace Setup<a class="headerlink" href="#workspace-setup" title="Permalink to this headline">¶</a></h1>
-<p>We suggest two options for setting up the course workspace.</p>
-<div class="section" id="online-ide">
-<h2>Online IDE<a class="headerlink" href="#online-ide" title="Permalink to this headline">¶</a></h2>
-<p>MiniTorch can be run entirely on an online IDE for simplicity.
-Each module is configured to work directly with the Repl.it
-environment which you can setup through the Github page. You will
-need to signup for a <a class="reference external" href="https://repl.it">Repl.it</a> account and create an
-environment repo through
-the link. Dependencies and the environment should be setup automatically. Tests
-will run with the play button.</p>
-<p>For training and visualization, you may need to run the following command.</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">extra</span><span class="o">.</span><span class="n">txt</span>
-</pre></div>
-</div>
-<p>Make sure that everything is installed by running <cite>python</cite> and then checking:</p>
-<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">minitorch</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="standard-setup">
-<h2>Standard Setup<a class="headerlink" href="#standard-setup" title="Permalink to this headline">¶</a></h2>
-<p>Alternatively, you can set things up in a standard Python environment.</p>
+<p>You can set things up in a standard Python environment.</p>
 <p>MiniTorch requires Python 3.6 or higher.  Please follow directions
 online to help get this set up, as it will vary depending on your
 system. To check your version of Python, run either:</p>
@@ -248,7 +225,6 @@ requirements.txt.</p>
 <p>Make sure that everything is installed by running <cite>python</cite> and then checking:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">minitorch</span>
 </pre></div>
-</div>
 </div>
 </div>
 

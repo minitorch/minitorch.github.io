@@ -7,23 +7,14 @@
            :width: 40pt
 
 
-Welcome to MiniTorch! (https://github.com/minitorch/minitorch.github.io)
-
-MiniTorch is a *teaching library* for machine learning engineers who
-wish to learn about the internal concepts underlying deep learning
-systems.  Specifically, it is a pure Python re-implementation of the
-`Torch <http://www.pytorch.org>`_ API designed to be simple,
-easy-to-read, tested, and incremental. The final library can run Torch
-code with minimal changes (at some efficiency cost). The project was
-developed for the course `Machine Learning Engineering` at Cornell
-Tech.
-
-
-MiniTorch is strictly *DIY*. It is not a library, per se, but a
-series of practically-oriented modules. These modules aim to provide
-the user with guidance on re-building the codebase by themselves, through
-a series of incremental implementations. These implementations can be
-done with a course or by an interested learner.
+MiniTorch (https://github.com/minitorch/) is a *diy teaching library*
+for machine learning engineers who wish to learn about the internal
+concepts underlying deep learning systems.  It is a pure
+Python re-implementation of the `Torch <http://www.pytorch.org>`_ API
+designed to be simple, easy-to-read, tested, and incremental. The
+final library can run Torch code with minimal changes (at some
+efficiency cost!). The project was developed for the course `Machine
+Learning Engineering` at Cornell Tech.
 
 To get started, first read :doc:`setup` and :doc:`contributing` to
 build your workspace.  Then follow through each of the modules to the
@@ -33,7 +24,7 @@ incrementally from past modules.
 
 Enjoy!
 
-Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) and Ge Gao
+Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton Abilov
 
 
 

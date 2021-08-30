@@ -41,9 +41,10 @@ to your new repo.
    :caption: Guides
 
    tensordata
+   broadcasting
    tensorops
    tensor
-   broadcasting
+
 
 Tasks
 ********
@@ -81,13 +82,33 @@ before turning to the user-facing class :class:`minitorch.Tensor`.
 
 
 .. autofunction:: minitorch.index_to_position
-.. autofunction:: minitorch.count
+.. autofunction:: minitorch.to_index
 .. autofunction:: minitorch.TensorData.permute
 
 
+Tasks 2.2: Tensor Broadcasting
+==========================================
+
+.. note::
+
+   This task requires familiarity with tensor broadcasting.  Be
+   sure to first carefully read the Guide on
+   :doc:`broadcasting`. You may also find it helpful to go through
+   some broadcasting tutorials on Torch or NumPy as it is
+   identical.
 
 
-Tasks 2.2: Tensor Operations
+.. todo::
+   Complete following functions in `minitorch/tensor_data.py`
+   and pass tests marked as `task2_2`.
+
+
+.. autofunction:: minitorch.shape_broadcast
+.. autofunction:: minitorch.broadcast_index
+
+
+
+Tasks 2.3: Tensor Operations
 ==========================================
 
 .. note:: This task requires familiarity with higher-order tensor operations.
@@ -111,7 +132,7 @@ expressions to see
 how the graph is built. You can run it in `project/show_expression.py`. You
 can alter
 the expression at the top of the file and then run the code to create a
-graph in `Visdom`::
+graph in `Streamlit`::
 
 
   ## Run your tensor expression here
@@ -148,13 +169,12 @@ graph in `Visdom`::
 .. autofunction:: minitorch.TensorFunctions.ReLU.forward
 .. autofunction:: minitorch.TensorFunctions.Log.forward
 .. autofunction:: minitorch.TensorFunctions.Exp.forward
-.. autofunction:: minitorch.TensorFunctions.Mean.forward
 .. autofunction:: minitorch.TensorFunctions.LT.forward
 .. autofunction:: minitorch.TensorFunctions.EQ.forward
 .. autofunction:: minitorch.TensorFunctions.Permute.forward
 
 
-Tasks 2.3: Gradients and Autograd
+Tasks 2.4: Gradients and Autograd
 ==========================================
 
 .. note:: This task requires familiarity with tensor `backward` operations.
@@ -176,48 +196,9 @@ will implement `backward` functions for tensor operations.
 .. autofunction:: minitorch.TensorFunctions.ReLU.backward
 .. autofunction:: minitorch.TensorFunctions.Log.backward
 .. autofunction:: minitorch.TensorFunctions.Exp.backward
-.. autofunction:: minitorch.TensorFunctions.Mean.backward
 .. autofunction:: minitorch.TensorFunctions.LT.backward
 .. autofunction:: minitorch.TensorFunctions.EQ.backward
 .. autofunction:: minitorch.TensorFunctions.Permute.backward
-
-
-Tasks 2.4: Tensor Broadcasting
-==========================================
-
-.. note::
-
-   This task requires familiarity with tensor broadcasting.  Be
-   sure to first carefully read the Guide on
-   :doc:`broadcasting`. You may also find it helpful to go through s
-   ome broadcasting tutorials on Torch or NumPy as it is
-   identical.
-
-
-
-
-
-
-.. todo::
-   Complete following functions in `minitorch/tensor_data.py` and
-   `minitorch/tensor_ops.py`, and pass tests marked as `task2_4`.
-
-
-.. autofunction:: minitorch.shape_broadcast
-.. autofunction:: minitorch.broadcast_index
-
-
-You need to revist the following functions implemented in task 2.2 to make
-sure that `broadcast_index` is used.
-
-
-Also note that in our implementation of Function, `backward` is allowed to
-return a tensor of shape that is smaller then the input. It will automatically
-be broadcasted to the larger shape.
-
-.. autofunction:: minitorch.tensor_map
-.. autofunction:: minitorch.tensor_zip
-.. autofunction:: minitorch.tensor_reduce
 
 
 

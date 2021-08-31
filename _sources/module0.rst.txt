@@ -153,7 +153,7 @@ interest.
 
 To experiment with the system use the `Module Sandbox`:
 
->>> streamlit run project/app.py -- 0
+>>> streamlit run app.py -- 0
 
 
 .. todo::
@@ -171,6 +171,7 @@ To experiment with the system use the `Module Sandbox`:
 Task 0.5: Visualization
 ========================
 
+
 .. note::
 
    This task requires familiarity with visualization tools described in
@@ -185,21 +186,24 @@ for similar examples.) Each of these dataset can be added to the visualization.
 
 To experiment with the system use:
 
->>> streamlit run project/app.py -- 0
+>>> streamlit run app.py -- 0
+
+Read through the code in `project/run_torch.py` to get a sneak peek of
+an implementation of a model for these datasets using Torch.
 
 You can also provide a model that attempts to perform the
 classfication by manipulating the parameters.
+
+.. image::
+   streamlitmanual.png
 
 
 .. todo::
    Start a streamlit server and print an image of the dataset. Hand-create
    classifiers that
-   split the linear dataset  into the correct colors. Display your images
-   on the README file in your
-   repo.
+   split the linear dataset into the correct colors.
 
-Optional
-===========
+   Add the image in the README file in your
+   repo along with the parameters that your used.
 
-Read through the code in `project/run_torch.py` to get a sneak peek of
-an implementation of a model for these datasets using Torch.
+

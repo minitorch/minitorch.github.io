@@ -498,7 +498,27 @@ computation.</p></li>
 <dl class="py function">
 <dt id="minitorch.max">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Apply is called by the user to run the Function.
+Internally it does three things:</p>
+<ol class="loweralpha simple">
+<li><p>Creates a Context for the function call.</p></li>
+<li><p>Calls forward to run the function.</p></li>
+<li><p>Attaches the Context to the History of the new variable.</p></li>
+</ol>
+<p>There is a bit of internal complexity in our implementation
+to handle both scalars and tensors.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>vals</strong> (<em>list of Variables</em><em> or </em><em>constants</em>) -- The arguments to forward</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The new variable produced</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><cite>Variable</cite></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.softmax">

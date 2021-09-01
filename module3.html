@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module 3 - Efficiency &#8212; MiniTorch 0.1 documentation</title>
+    <title>Efficiency &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -56,9 +57,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -75,13 +78,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -93,31 +90,31 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module0.html">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module1.html">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module2.html">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module4.html">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -131,6 +128,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -249,14 +258,14 @@
               
               <div>
                 
-  <div class="section" id="module-3-efficiency">
-<h1>Module 3 - Efficiency<a class="headerlink" href="#module-3-efficiency" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="efficiency">
+<h1>Efficiency<a class="headerlink" href="#efficiency" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/threadid&#64;3x.png" class="align-center" src="_images/threadid&#64;3x.png" />
 <p>In addition to helping simplify code, tensors provide a basis for
 speeding up computation. In fact, they are really the only way to
 efficiently write deep learning code in a slow language like Python.
 However, nothing we have done so far really makes anything faster than
-<a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a>. This module is focused on taking advantage of tensors
+<a class="reference internal" href="module0.html"><span class="doc">Fundamentals</span></a>. This module is focused on taking advantage of tensors
 to write fast code, first on standard CPUs and then using GPUs.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-3">https://github.com/minitorch/Module-3</a> .</p>
 <p>To begin, remember to activate your virtual environment first, and then
@@ -290,7 +299,7 @@ Follow these instructions for
 Be sure to very carefully read the section on
 <a class="reference internal" href="parallel.html"><span class="doc">Parallel Computation</span></a>,
 <a class="reference external" href="https://numba.pydata.org/numba-doc/latest/user/parallel.html">Numba</a>
-and review <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>.</p>
+and review <a class="reference internal" href="module2.html"><span class="doc">Tensors</span></a>.</p>
 </div>
 <p>The main backend for our codebase are the three functions <cite>map</cite>,
 <cite>zip</cite>, and <cite>reduce</cite>. If we can speed up these three, everything we
@@ -625,7 +634,7 @@ operations.</p>
 <h3>Task 3.5: Training<a class="headerlink" href="#task-3-5-training" title="Permalink to this headline">¶</a></h3>
 <p>If your code works, you should now be able to move on to the tensor
 training script in <cite>project/run_fast_tensor.py</cite>.  This code is the same
-basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a>, but now utilizes your fast tensor
+basic training setup as  <a class="reference internal" href="module2.html"><span class="doc">Tensors</span></a>, but now utilizes your fast tensor
 code. We have left the <cite>matmul</cite> layer blank for you to implement with
 your tensor code.</p>
 <div class="admonition-todo admonition" id="id5">

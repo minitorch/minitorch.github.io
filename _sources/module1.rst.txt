@@ -2,7 +2,7 @@
   done
 
 ================================
-Module 1 - Auto-Differentiation
+Autodiff
 ================================
 
 .. image:: figs/Autograd/backprop4.png
@@ -90,9 +90,6 @@ expressions to see how the graph is built. You can run it in the
 file and then run the code to create a graph in `Streamlit`::
 
 >>> streamlit run app.py -- 1
-
-.. image:: expgraph.png
-   :align: center
 
 
 .. todo::
@@ -183,6 +180,7 @@ these identities work.
    `minitorch/scalar.py`,
    and pass tests marked as `task1_4`.
 
+.. autofunction:: minitorch.topological_sort
 .. autofunction:: minitorch.backpropagate
 
 .. autofunction:: minitorch.scalar.Mul.backward
@@ -201,30 +199,29 @@ If your code works, you should now be able to run the training script.
 Study the code in `project/run_scalar.py` carefully to understand what
 the neural network is doing. You will also need your Module code from the
 previous assignment as well. You can modify the dataset and the module with
-the parameters at the top of the file. Start with this simple config::
+the parameters at the bottom of the file. Start with this simple config::
 
   PTS = 50
-  DATASET = datasets.Simple(PTS, vis=True)
+  DATASET = minitorch.datasets.simple(PTS)
   HIDDEN = 2
   RATE = 0.5
 
-.. image:: simple.png
 
 You can then move up to something more complex, for instance::
 
   PTS = 50
-  DATASET = datasets.Xor(PTS, vis=True)
+  DATASET = minitorch.datasets.xor(PTS)
   HIDDEN = 10
   RATE = 0.5
 
 
-If your code is successful, you should be able to fit the data like this:
+If your code is successful, you should be able to run the full visualization:
 
-.. image:: complete.png
-
+>>> streamlit run app.py -- 1
 
 
 
 .. todo::
-   Train a scalar model, and add the output training logs and final images
-   like the ones above to your README file.
+   Train a scalar model for each of the 4 main datasets.
+
+   Add the output training logs and final images to your README file.

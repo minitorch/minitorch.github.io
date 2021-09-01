@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module 0 - Fundamentals &#8212; MiniTorch 0.1 documentation</title>
+    <title>Fundamentals &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -56,9 +57,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -75,13 +78,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -93,31 +90,31 @@
 
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module1.html">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module2.html">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module3.html">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module4.html">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -131,6 +128,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -244,8 +253,8 @@
               
               <div>
                 
-  <div class="section" id="module-0-fundamentals">
-<h1>Module 0 - Fundamentals<a class="headerlink" href="#module-0-fundamentals" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="fundamentals">
+<h1>Fundamentals<a class="headerlink" href="#fundamentals" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/module.png" class="align-center" src="_images/module.png" />
 <p>This introductory module is focused on introducing several core
 technologies used for testing and debugging in future
@@ -254,7 +263,7 @@ In this module, you will start to build up some of the
 infrastructure for MiniTorch.</p>
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-0">https://github.com/minitorch/Module-0</a>
 .  Before starting this assignment, make sure to set up your workspace
-following <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a>, and read <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to understand how
+following <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a>, and read <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to understand how
 the code should be organized.</p>
 <p>Each module has a set of <cite>Guides</cite> to help with the tasks. We recommend
 working through the assignment and utilizing the Guides suggested for

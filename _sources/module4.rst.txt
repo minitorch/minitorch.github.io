@@ -1,5 +1,5 @@
 ========================
-Module 4 - Networks
+Networks
 ========================
 
 .. image:: figs/mnist/orig.png

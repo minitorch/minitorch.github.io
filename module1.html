@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module 1 - Auto-Differentiation &#8212; MiniTorch 0.1 documentation</title>
+    <title>Autodiff &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -56,9 +57,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -75,13 +78,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -93,31 +90,31 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module0.html">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module2.html">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module3.html">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module4.html">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -131,6 +128,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -249,8 +258,8 @@
               
               <div>
                 
-  <div class="section" id="module-1-auto-differentiation">
-<h1>Module 1 - Auto-Differentiation<a class="headerlink" href="#module-1-auto-differentiation" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="autodiff">
+<h1>Autodiff<a class="headerlink" href="#autodiff" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/backprop4.png" class="align-center" src="_images/backprop4.png" />
 <p>This module shows how to build the first version of MiniTorch
 (mini-MiniTorch?) using only Scalar values. This covers key aspects
@@ -356,7 +365,6 @@ file and then run the code to create a graph in <cite>Streamlit</cite>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<img alt="_images/expgraph.png" class="align-center" src="_images/expgraph.png" />
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
 <p>Complete the following functions in <cite>minitorch/scalar.py</cite>.</p>
@@ -489,8 +497,11 @@ tests marked as <cite>task1_3</cite>.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>list of (<cite>Variable</cite>, number) A list of non-constant variables with their derivatives
+<dd class="field-even"><p>A list of non-constant variables with their derivatives
 (see <cite>is_constant</cite> to remove unneeded variables)</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of (<cite>Variable</cite>, number)</p>
 </dd>
 </dl>
 </dd></dl>
@@ -533,20 +544,41 @@ these identities work.</p>
 and pass tests marked as <cite>task1_4</cite>.</p>
 </div>
 <dl class="py function">
+<dt id="minitorch.topological_sort">
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">topological_sort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.topological_sort" title="Permalink to this definition">¶</a></dt>
+<dd><p>Computes the topological order of the computation graph.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The right-most variable</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Variables in topological order</dt><dd><p>starting from the right.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>list of Variables</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="minitorch.backpropagate">
 <code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs a breadth-first search on the computation graph in order to
-backpropagate derivatives to the leaves.</p>
+<dd><p>Runs backpropagation on the computation graph in order to
+compute derivatives for the leave nodes.</p>
 <p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The final variable</p></li>
+<li><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The right-most variable</p></li>
 <li><p><strong>deriv</strong> (<em>number</em>) -- Its derivative that we want to propagate backward to the leaves.</p></li>
 </ul>
 </dd>
 </dl>
-<p>No return. Should write to its results to the derivative values of each leaf.</p>
+<p>No return. Should write to its results to the derivative values of each leaf through <cite>accumulate_derivative</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -586,27 +618,28 @@ backpropagate derivatives to the leaves.</p>
 Study the code in <cite>project/run_scalar.py</cite> carefully to understand what
 the neural network is doing. You will also need your Module code from the
 previous assignment as well. You can modify the dataset and the module with
-the parameters at the top of the file. Start with this simple config:</p>
+the parameters at the bottom of the file. Start with this simple config:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Simple</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">simple</span><span class="p">(</span><span class="n">PTS</span><span class="p">)</span>
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
-<img alt="_images/simple.png" src="_images/simple.png" />
 <p>You can then move up to something more complex, for instance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">DATASET</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">Xor</span><span class="p">(</span><span class="n">PTS</span><span class="p">,</span> <span class="n">vis</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">xor</span><span class="p">(</span><span class="n">PTS</span><span class="p">)</span>
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
-<p>If your code is successful, you should be able to fit the data like this:</p>
-<img alt="_images/complete.png" src="_images/complete.png" />
+<p>If your code is successful, you should be able to run the full visualization:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">streamlit</span> <span class="n">run</span> <span class="n">app</span><span class="o">.</span><span class="n">py</span> <span class="o">--</span> <span class="mi">1</span>
+</pre></div>
+</div>
 <div class="admonition-todo admonition" id="id8">
 <p class="admonition-title">Todo</p>
-<p>Train a scalar model, and add the output training logs and final images
-like the ones above to your README file.</p>
+<p>Train a scalar model for each of the 4 main datasets.</p>
+<p>Add the output training logs and final images to your README file.</p>
 </div>
 </div>
 </div>

@@ -1,5 +1,5 @@
 ========================
-Module 3 - Efficiency
+Efficiency
 ========================
 
 .. image:: figs/gpu/threadid@3x.png

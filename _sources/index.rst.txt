@@ -1,20 +1,18 @@
 
-==================
- MiniTorch |logo|
-==================
 
-.. |logo| image:: match.png
-           :width: 40pt
+.. image:: minitorch.svg
+   :align: center
+   :width: 400px
 
+|
 
 MiniTorch (https://github.com/minitorch/) is a *diy teaching library*
 for machine learning engineers who wish to learn about the internal
-concepts underlying deep learning systems.  It is a pure
-Python re-implementation of the `Torch <http://www.pytorch.org>`_ API
+concepts underlying deep learning systems.  It is a pure Python
+re-implementation of the `Torch <http://www.pytorch.org>`_ API
 designed to be simple, easy-to-read, tested, and incremental. The
-final library can run Torch code with minimal changes (at some
-efficiency cost!). The project was developed for the course `Machine
-Learning Engineering` at Cornell Tech.
+final library can run Torch code. The project was developed for the
+course `Machine Learning Engineering` at Cornell Tech.
 
 To get started, first read :doc:`setup` and :doc:`contributing` to
 build your workspace.  Then follow through each of the modules to the
@@ -82,7 +80,6 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton
    :caption: Contents
 
    setup
-   contributing
    mlprimer
    module0
    module1

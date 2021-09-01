@@ -7,24 +7,26 @@ operation.  The chain rule tells us how to compute the derivative of two
 sequential operations.  In this section, we show how to use these to
 compute the derivative for an arbitrary series of operations.
 
-The underlying approach we will use is a breadth-first search over the
-computation
-graph constructed by Variables and Functions. Before going over the algorithm,
-let's work through a specific example step by step.
+Practically this looks like re-running our graph in reverse order from
+right-to-left. However, we need to ensure that we do this in the
+correct order. The key implementation challenge of backpropagation is
+to make sure that we process each node in the correct order, i.e.
+we have first processed every node that uses a Variable before that
+varible itself.
 
-Example
-----------
+
+Running Example
+---------------
 
 
 Assume we have Variables :math:`x,y` and a Function :math:`h(x,y)`. We want
-to compute
-the derivatives :math:`h'_x(x, y)` and :math:`h'_y(x, y)`.
+to compute the derivatives :math:`h'_x(x, y)` and :math:`h'_y(x, y)`.
 
 .. math::
 
    \begin{eqnarray*}
-   z &=& x \times y \\
-   h(x, y) &=& \log(z) + \exp(z)
+   h(x, y) &=& \log(z) + \exp(z) \\
+      \text{where} && z = x \times y \\
    \end{eqnarray*}
 
 We assume x, +, log, and exp are all implemented as ScalarFunctions which
@@ -36,60 +38,90 @@ that looks like this:
 .. image:: figs/Autograd/backprop1.png
            :align: center
 
-Here, starting from the left, the arrows represent Variables :math:`x,y`,
-then :math:`z, z`, then :math:`\log(z), \exp(z)`, and finally :math:`h(x,
-y)`. Forward computation proceeds left-to-right.
+Here, starting from the left, the first arrows represent inputs
+:math:`x,y`, the left node outputs :math:`z`, the top node
+:math:`\log(z)`, the bottom node :math:`\exp(z)` and the final right
+node :math:`h(x, y)`. Forward computation proceeds left-to-right.
 
 
-The chain rule tells us how to compute the derivatives. We need to apply
-the `backward` functions right-to-left until we reach the input Variables
-:math:`x,y`, which we call `leaf` Variables. We do this by maintaining
-a queue of active Variables to process. At each step, we pull a Variable
-from the queue, apply the chain rule to the last Function that acted on it,
-and then put its input Variables into the queue.
+The chain rule tells us the rule for propagating the derivatives. We
+need to apply the `backward` functions right-to-left until we reach
+the initial Variables :math:`x,y`, i.e. the `leaf` Variables.
 
-We start with only the last Variable :math:`h(x,y)` in the queue (red arrow
-in the graph below). By default, its derivative is 1.
+We could just apply this rule randomly and process each nodes as they
+come aggregating the resulted values. However this can be quite  inefficient.
+For instance, consider an order of: right, top, left, bottom. While this
+processes each node, some derivatives do not reach their original Variables. To
+make this work we would need an order of: right, top, left, bottom, left.
+
+
+Topological Sort
+-----------------
+
+To handle this issue, we will process the nodes in `topological
+order`.  We first note that our graph is directed and that acyclic.
+Directionality comes from the `backward` function, and the lack of
+cycles is a consequence of the choice that every Function must create a
+new variable.
+
+The topological ordering of a directed acyclic graph is an ordering
+that ensures no node comes before after its ancestor, e.g. in our
+example that the left node cannot be processed before the top or
+bottom node. The ordering may not be unique, and it does not tell us
+whether to process the top or bottom node first.
+
+There are several easy-to-implement algorithms for topological sorting.
+As graph algorithms are beyond the scope of this document, we recommend
+using the depth-first search algorithm described in pseudocode section of
+`Topological Sorting <http://wikipedia.org/wiki/Topological_sorting>`_.
+
+.. autofunction:: minitorch.topological_sort
+
+Backprop
+----------
+
+Once we have the order defined, we process each node one at a time.
+We start the right node (:math:`h(x,y)`) with red arrow
+in the graph below. The starting derivative is an argument given to us.
 
 .. image:: figs/Autograd/backprop2.png
            :align: center
 
-We then process it with the chain rule. This calls the `backward` function
-of +, and adds
-two Variables to the queue (which correspond to :math:`\log(z), \exp(z)`
-from the `forward` pass).
+We then process the Function with the chain rule. This calls
+`backward` of +, and gives the derivative for the two red Variables
+(which correspond to :math:`\log(z), \exp(z)` from the `forward`
+pass). You need to track these intermediate red derivative values in a
+dictionary.
 
 .. image:: figs/Autograd/backprop3.png
            :align: center
 
-The next Variable in the queue is the top red arrow in the above graph. We
-pass its derivative as :math:`d_{out}` in the chain rule,
-which adds a Variable (corresponding to :math:`z`: left red arrow below)
-to the queue.
+Let us assume the next Variable in the order is the top node. We have
+just computed and stored the necessary derivative :math:`d_{out}`, so
+we can apply the chain rule. This produces a new derivative (corresponding to
+:math:`z`: left red arrow below) for us to store.
 
 .. image:: figs/Autograd/backprop4.png
            :align: center
 
-The next Variable in the queue is the bottown red arrow in the above
-graph. Here we have an interesting result. We have a new arrow, but it
-corresponds to the same Variable which is already in the queue.
-It is fine to have the Variable twice.
-Alternatively we can apply a code optimization: simply add its derivative
-computed at this step to its derivative computed last time.
-This means we only need to process one Variable in the queue.
+The next Variable in the order is the bottom node. Here we have an
+interesting result. We have a new arrow, but it corresponds to the
+same Variable (:math:`z`) that we just computed. It is is a useful
+exercise to show that as a consequence of the two argument chain rule
+that the derivative for this Variable is the sum of each of these
+derivatives. Practically this means just adding it to your dictionary.
 
 .. image:: figs/Autograd/backprop5.png
            :align: center
 
-
-After working on this Varaible, at this point, all that is left in the queue
-is our leaf Variables.
+After working on this Variable, at this point, all that is left in the
+is our input leaf Variables.
 
 .. image:: figs/Autograd/backprop6.png
            :align: center
 
-We then pull a Variable from the queue that represents an orginal leaf node,
-:math:`x`.
+When we reach the leaf Variables in our order, for example
+:math:`x`, we store the derivative with that Variable.
 Since each step of this process is an application of the chain rule, we can
 show that this final value
 is :math:`h'_x(x, y)`. The next and last step is to compute :math:`h'_y(x, y)`.
@@ -108,34 +140,29 @@ their derivatives are stored as::
 Algorithm
 ----------
 
-This algorithm is an instance of a classic graph algorithm: `breadth-first
-search <https://en.wikipedia.org/wiki/Breadth-first_search>`_.
-
-As illustrated in the graph for the above example,  each of the red arrows
-represents
-an object :class:`minitorch.VariableWithDeriv`, which stores the Variable
-and its current derivative
-(which gets passed to :math:`d_{out}` in the chain rule).
-Starting from the rightmost arrow, which is passed in as an argument,
-backpropagate should run the following algorithm:
+As illustrated in the graph for the above example, each of the red
+arrows represents a constructed derivative which eventually passed to
+:math:`d_{out}` in the chain rule.  Starting from the rightmost arrow,
+which is passed in as an argument, backpropagate should run the
+following algorithm:
 
 
-0. Initialize a queue with the final Variable+derivative
-1. While the queue is not empty, pull a Variable+derivative from the queue:
+0. Call topological sort to get an order
+1. For each node in order, pull a completed Variable and
+   derivative from the queue:
 
-   a. if the Variable is a leaf, add its final derivative (`_add_deriv`)
+   a. if the Variable is a leaf, add its final derivative (`accumulate_derivative`)
       and loop to (1)
    b. if the Variable is not a leaf,
 
-      1) call `.chain_rule` on the last function that created it with
+      1) call `.backprop_step` on the last function that created it with
          derivative as :math:`d_{out}`
       2) loop through all the Variables+derivative produced by the chain
-         rule (removing constants)
-      3) optional, if the Variable is in the queue (check `.name`),
-         add to its current derivativ;
-      4) otherwise, add to the queue.
+         rule
+      3) update the accumulated derivative for the Variable (check `.name`)
 
 
-Important note: only leaf Variables should ever have non-None
+Final note: only leaf Variables should ever have non-None
 `.derivative` value. All intermediate Variables should only keep
-their current derivative values in the queue.
+their current derivative values in the dictionary. This is a
+bit annoying, but it follows the behavior of PyTorch.

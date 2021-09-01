@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MiniTorch &#8212; MiniTorch 0.1 documentation</title>
+    <title>module0 &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -40,7 +41,7 @@
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Workspace Setup" href="setup.html" />
+    <link rel="next" title="Setup" href="setup.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -55,9 +56,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="#">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -74,13 +77,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -92,31 +89,31 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module0.html">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module1.html">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module2.html">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module3.html">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module4.html">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -130,6 +127,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -168,42 +177,42 @@
 
 <nav id="bd-toc-nav">
     <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#module0">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
    <span class="xref std std-doc">
     module0
    </span>
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#module1">
    <span class="xref std std-doc">
     module1
    </span>
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#module2">
    <span class="xref std std-doc">
     module2
    </span>
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#module3">
    <span class="xref std std-doc">
     module3
    </span>
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#module4">
    <span class="xref std std-doc">
     module4
    </span>
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#indices-and-tables">
      Indices and tables
     </a>
@@ -231,17 +240,18 @@
               
               <div>
                 
-  <div class="section" id="minitorch-logo">
-<h1>MiniTorch <a class="reference internal" href="_images/match.png"><img alt="logo" src="_images/match.png" style="width: 40pt;" /></a><a class="headerlink" href="#minitorch-logo" title="Permalink to this headline">¶</a></h1>
+  <a class="reference internal image-reference" href="_images/minitorch.svg"><img alt="_images/minitorch.svg" class="align-center" src="_images/minitorch.svg" width="400px" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
 <p>MiniTorch (<a class="reference external" href="https://github.com/minitorch/">https://github.com/minitorch/</a>) is a <em>diy teaching library</em>
 for machine learning engineers who wish to learn about the internal
-concepts underlying deep learning systems.  It is a pure
-Python re-implementation of the <a class="reference external" href="http://www.pytorch.org">Torch</a> API
+concepts underlying deep learning systems.  It is a pure Python
+re-implementation of the <a class="reference external" href="http://www.pytorch.org">Torch</a> API
 designed to be simple, easy-to-read, tested, and incremental. The
-final library can run Torch code with minimal changes (at some
-efficiency cost!). The project was developed for the course <cite>Machine
-Learning Engineering</cite> at Cornell Tech.</p>
-<p>To get started, first read <a class="reference internal" href="setup.html"><span class="doc">Workspace Setup</span></a> and <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to
+final library can run Torch code. The project was developed for the
+course <cite>Machine Learning Engineering</cite> at Cornell Tech.</p>
+<p>To get started, first read <a class="reference internal" href="setup.html"><span class="doc">Setup</span></a> and <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a> to
 build your workspace.  Then follow through each of the modules to the
 right. Minimal computational resources are required.
 Module starting code is available on GitHub, and each proceeds
@@ -249,23 +259,23 @@ incrementally from past modules.</p>
 <p>Enjoy!</p>
 <p>Sasha Rush (<a class="reference external" href="https://twitter.com/srush_nlp">&#64;srush_nlp</a>) with Ge Gao and Anton Abilov</p>
 <div class="section" id="module0">
-<h2><a class="reference internal" href="module0.html"><span class="doc">Module 0 - Fundamentals</span></a><a class="headerlink" href="#module0" title="Permalink to this headline">¶</a></h2>
+<h1><a class="reference internal" href="module0.html"><span class="doc">Fundamentals</span></a><a class="headerlink" href="#module0" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/module.png" class="align-center" src="_images/module.png" />
 </div>
 <div class="section" id="module1">
-<h2><a class="reference internal" href="module1.html"><span class="doc">Module 1 - Auto-Differentiation</span></a><a class="headerlink" href="#module1" title="Permalink to this headline">¶</a></h2>
+<h1><a class="reference internal" href="module1.html"><span class="doc">Autodiff</span></a><a class="headerlink" href="#module1" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/backprop4.png" class="align-center" src="_images/backprop4.png" />
 </div>
 <div class="section" id="module2">
-<h2><a class="reference internal" href="module2.html"><span class="doc">Module 2 - Tensors</span></a><a class="headerlink" href="#module2" title="Permalink to this headline">¶</a></h2>
+<h1><a class="reference internal" href="module2.html"><span class="doc">Tensors</span></a><a class="headerlink" href="#module2" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
 </div>
 <div class="section" id="module3">
-<h2><a class="reference internal" href="module3.html"><span class="doc">Module 3 - Efficiency</span></a><a class="headerlink" href="#module3" title="Permalink to this headline">¶</a></h2>
+<h1><a class="reference internal" href="module3.html"><span class="doc">Efficiency</span></a><a class="headerlink" href="#module3" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/threadid&#64;3x.png" class="align-center" src="_images/threadid&#64;3x.png" />
 </div>
 <div class="section" id="module4">
-<h2><a class="reference internal" href="module4.html"><span class="doc">Module 4 - Networks</span></a><a class="headerlink" href="#module4" title="Permalink to this headline">¶</a></h2>
+<h1><a class="reference internal" href="module4.html"><span class="doc">Networks</span></a><a class="headerlink" href="#module4" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/orig.png"><img alt="_images/orig.png" class="align-center" src="_images/orig.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist2.png"><img alt="_images/mnist2.png" class="align-center" src="_images/mnist2.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>
@@ -273,24 +283,22 @@ incrementally from past modules.</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="setup.html">Workspace Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup.html">Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mlprimer.html">ML Primer</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module0.html">Module 0 - Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module1.html">Module 1 - Auto-Differentiation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module2.html">Module 2 - Tensors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module3.html">Module 3 - Efficiency</a></li>
-<li class="toctree-l1"><a class="reference internal" href="module4.html">Module 4 - Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module0.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1.html">Autodiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2.html">Tensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3.html">Efficiency</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4.html">Networks</a></li>
 </ul>
 </div>
 <div class="section" id="indices-and-tables">
-<h3>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h3>
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
 <li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
 </ul>
-</div>
 </div>
 </div>
 
@@ -300,7 +308,7 @@ incrementally from past modules.</p>
               
               <div class='prev-next-bottom'>
                 
-    <a class='right-next' id="next-link" href="setup.html" title="next page">Workspace Setup</a>
+    <a class='right-next' id="next-link" href="setup.html" title="next page">Setup</a>
 
               </div>
               

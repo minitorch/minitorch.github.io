@@ -2,7 +2,7 @@
   Done
 
 ============================
-Module 0 - Fundamentals
+Fundamentals
 ============================
 
 .. image:: figs/Module/module.png

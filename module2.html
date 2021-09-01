@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module 2 - Tensors &#8212; MiniTorch 0.1 documentation</title>
+    <title>Tensors &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -56,9 +57,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -75,13 +78,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -93,31 +90,31 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module0.html">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module1.html">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module3.html">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module4.html">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -131,6 +128,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -249,8 +258,8 @@
               
               <div>
                 
-  <div class="section" id="module-2-tensors">
-<h1>Module 2 - Tensors<a class="headerlink" href="#module-2-tensors" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="tensors">
+<h1>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
 <p>We now have a fully developed autodifferentiation system built around
 scalars. This system is correct, but you saw during training that it
@@ -683,7 +692,7 @@ tests marked as <cite>task2_3</cite>.</p>
 <h3>Task 2.5: Training<a class="headerlink" href="#task-2-5-training" title="Permalink to this headline">¶</a></h3>
 <p>If your code works you should now be able to move on to the tensor
 training script in <cite>project/run_tensor.py</cite>.  This code runs the same
-basic training setup as in <a class="reference internal" href="module1.html"><span class="doc">Module 1 - Auto-Differentiation</span></a>, but now utilize your tensor
+basic training setup as in <a class="reference internal" href="module1.html"><span class="doc">Autodiff</span></a>, but now utilize your tensor
 code.</p>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>

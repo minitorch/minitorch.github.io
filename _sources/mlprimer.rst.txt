@@ -17,7 +17,7 @@ ML Primer
 
 This guide is a primer on the very basics of machine learning that are
 necessary to complete the assignments and motivate the final
-system. Machine learning (ML) is a rich and well-developed field with many
+system. Machine learning is a rich and well-developed field with many
 different models, goals, and learning settings. There are many great
 texts that cover  all the aspects of
 the area in detail. (I recommend this `textbook
@@ -514,8 +514,8 @@ to :math:`h_1, h_2`.
 .. math::
 
    \begin{eqnarray*}
-   h_ 1 &=& ReLU(x_1 \times w^0_1 + x_2 \times w^0_2 + b^0) \\
-   h_ 2 &=& ReLU(x_1 \times w^1_1 + x_2 \times w^1_2 + b^1)\\
+   h_ 1 &=& \text{ReLU}(x_1 \times w^0_1 + x_2 \times w^0_2 + b^0) \\
+   h_ 2 &=& \text{ReLU}(x_1 \times w^1_1 + x_2 \times w^1_2 + b^1)\\
    m(x_1, x_2) &=& h_1 \times w_1 + h_2 \times w_2 + b
    \end{eqnarray*}
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module 4 - Networks &#8212; MiniTorch 0.1 documentation</title>
+    <title>Networks &#8212; MiniTorch 0.1 documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
   <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
@@ -56,9 +57,11 @@
   <div id="navbar-start">
     
     
+
 <a class="navbar-brand" href="index.html">
-<p class="title">MiniTorch</p>
+  <img src="_static/minitorch.svg" class="logo" alt="logo">
 </a>
+
 
     
   </div>
@@ -75,13 +78,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="setup.html">
-  Workspace Setup
- </a>
-</li>
-
-<li class="toctree-l1 nav-item">
- <a class="reference internal nav-link" href="contributing.html">
-  Contributing
+  Setup
  </a>
 </li>
 
@@ -93,31 +90,31 @@
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module0.html">
-  Module 0 - Fundamentals
+  Fundamentals
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module1.html">
-  Module 1 - Auto-Differentiation
+  Autodiff
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module2.html">
-  Module 2 - Tensors
+  Tensors
  </a>
 </li>
 
 <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="module3.html">
-  Module 3 - Efficiency
+  Efficiency
  </a>
 </li>
 
 <li class="toctree-l1 current active nav-item">
  <a class="current reference internal nav-link" href="#">
-  Module 4 - Networks
+  Networks
  </a>
 </li>
 
@@ -131,6 +128,18 @@
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/minitorch/" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://twitter.com/srush_nlp" rel="noopener" target="_blank" title="Twitter">
+            <span><i class="fab fa-twitter-square"></i></span>
+            <label class="sr-only">Twitter</label>
+          </a>
+        </li>
       </ul>
       </div>
       
@@ -249,8 +258,8 @@
               
               <div>
                 
-  <div class="section" id="module-4-networks">
-<h1>Module 4 - Networks<a class="headerlink" href="#module-4-networks" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="networks">
+<h1>Networks<a class="headerlink" href="#networks" title="Permalink to this headline">¶</a></h1>
 <a class="reference internal image-reference" href="_images/orig.png"><img alt="_images/orig.png" class="align-center" src="_images/orig.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist2.png"><img alt="_images/mnist2.png" class="align-center" src="_images/mnist2.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>
@@ -590,7 +599,7 @@ task, add an extra file <cite>cuda_conv.py</cite> that implements
 <h3>Task 4.5: Training an Image Classifier<a class="headerlink" href="#task-4-5-training-an-image-classifier" title="Permalink to this headline">¶</a></h3>
 <p>If your code works, you should now be able to move on to the MINIST
 training script in <cite>project/run_mnist_multiclass.py</cite>.  This script has the
-same basic training setup as <a class="reference internal" href="module3.html"><span class="doc">Module 3 - Efficiency</span></a>, but now adapted to image
+same basic training setup as <a class="reference internal" href="module3.html"><span class="doc">Efficiency</span></a>, but now adapted to image
 classification. You need to implement <cite>Conv2D</cite> and <cite>Network</cite>. The Visdom
 visualization will show some hidden states of your model, like the following:</p>
 <a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>

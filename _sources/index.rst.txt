@@ -87,7 +87,9 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton
    module3
    module4
 
-
+.. image:: match.png
+   :align: center
+   :width: 10px
 
 Indices and tables
 ==================

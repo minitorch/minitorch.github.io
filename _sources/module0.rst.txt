@@ -192,7 +192,7 @@ Read through the code in `project/run_torch.py` to get a sneak peek of
 an implementation of a model for these datasets using Torch.
 
 You can also provide a model that attempts to perform the
-classfication by manipulating the parameters.
+classification by manipulating the parameters.
 
 .. image::
    streamlitmanual.png

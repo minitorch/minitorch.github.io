@@ -17,7 +17,7 @@ models are big and complex.  Common models can include hundreds of
 millions of learned `parameters` that span over hundreds of informal
 `module` groups.  In order to work with such complex systems, it is
 important to have data structures which abstract away the complexity
-so that it is easier to access and manipulate specific components, and
+so that it is eaiser to access and manipulate specific components, and
 group together shared regions.
 
 

@@ -159,7 +159,7 @@ following algorithm:
          derivative as :math:`d_{out}`
       2) loop through all the Variables+derivative produced by the chain
          rule
-      3) update the accumulated derivative for the Variable (check `.name`)
+      3) accumulate derivative for the Variable (check `.unique_id`)
 
 
 Final note: only leaf Variables should ever have non-None

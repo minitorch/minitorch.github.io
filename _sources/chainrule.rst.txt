@@ -199,8 +199,8 @@ understand:
 .. math::
 
    \begin{eqnarray*}
-   y &=& g(x) \\
-   d_{out} &=& f'(y) \\
+   z &=& g(x) \\
+   d_{out} &=& f'(z) \\
    f'_x(g(x)) &=&  g'(x) \times d_{out} \\
    \end{eqnarray*}
 
@@ -216,9 +216,10 @@ Here is where the perspective of thinking of functions as boxes comes in handy:
 .. image:: figs/Autograd/chain2.png
            :align: center
 
-It shows that the :math:`d_{out}` multiplier passed to `backward` of the
-first box (left) should be the value returned by `backward` of the second box.
-
+It shows that the :math:`d_{out}` multiplier passed to `backward` of
+the first box (left) should be the value returned by `backward` of the
+second box.  The 1 at the end is to start off the chain rule process
+with a value for :math:`d_{out}`.
 
 A similar approach works for two-argument functions:
 

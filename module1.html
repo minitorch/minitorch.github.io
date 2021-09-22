@@ -616,18 +616,21 @@ compute derivatives for the leave nodes.</p>
 <h3>Task 1.5: Training<a class="headerlink" href="#task-1-5-training" title="Permalink to this headline">¶</a></h3>
 <p>If your code works, you should now be able to run the training script.
 Study the code in <cite>project/run_scalar.py</cite> carefully to understand what
-the neural network is doing. You will also need your Module code from the
-previous assignment as well. You can modify the dataset and the module with
+the neural network is doing.</p>
+<p>You will also need Module code to implement the parameters <cite>Network</cite>
+and for <cite>Linear</cite>.
+You can modify the dataset and the module with
 the parameters at the bottom of the file. Start with this simple config:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">simple</span><span class="p">(</span><span class="n">PTS</span><span class="p">)</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;Simple&quot;</span><span class="p">](</span><span class="n">PTS</span><span class="p">)</span>
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>
 </div>
 <p>You can then move up to something more complex, for instance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">PTS</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">xor</span><span class="p">(</span><span class="n">PTS</span><span class="p">)</span>
+<span class="n">DATASET</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">datasets</span><span class="p">[</span><span class="s2">&quot;Xor&quot;</span><span class="p">](</span><span class="n">PTS</span><span class="p">)</span>
+
 <span class="n">HIDDEN</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">RATE</span> <span class="o">=</span> <span class="mf">0.5</span>
 </pre></div>

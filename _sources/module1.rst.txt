@@ -197,12 +197,15 @@ Task 1.5: Training
 
 If your code works, you should now be able to run the training script.
 Study the code in `project/run_scalar.py` carefully to understand what
-the neural network is doing. You will also need your Module code from the
-previous assignment as well. You can modify the dataset and the module with
+the neural network is doing.
+
+You will also need Module code to implement the parameters `Network`
+and for `Linear`.
+You can modify the dataset and the module with
 the parameters at the bottom of the file. Start with this simple config::
 
   PTS = 50
-  DATASET = minitorch.datasets.simple(PTS)
+  DATASET = minitorch.datasets["Simple"](PTS)
   HIDDEN = 2
   RATE = 0.5
 
@@ -210,7 +213,8 @@ the parameters at the bottom of the file. Start with this simple config::
 You can then move up to something more complex, for instance::
 
   PTS = 50
-  DATASET = minitorch.datasets.xor(PTS)
+  DATASET = minitorch.datasets["Xor"](PTS)
+
   HIDDEN = 10
   RATE = 0.5
 

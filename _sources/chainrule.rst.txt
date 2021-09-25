@@ -19,7 +19,7 @@ Variables, which then calls the underlying `forward` function.
 (For notation, we still use capital letters to refer to our
 new Functions and Variables to distringuish them from Python functions
 and variables.
-We use functions to refer to mathmatical functions as well depending on
+We use functions to refer to mathematical functions as well depending on
 the context.)
 
 Now, we include additional information on the class which gives the

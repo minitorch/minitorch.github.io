@@ -60,7 +60,7 @@ derivative rules and get :math:`f'(x) = 5`. Therefore the `backward` is
 
 
 For functions that take multiple arguments, `backward` returns multiple
-deritatives
+derivatives
 with respect to each input argument. For example, if the function computes
 :math:`f(x, y)`, we need to return :math:`f'_x(x, y)` and :math:`f'_y(x, y)`
 

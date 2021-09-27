@@ -147,8 +147,9 @@ which is passed in as an argument, backpropagate should run the
 following algorithm:
 
 
-0. Call topological sort to get an order
-1. For each node in order, pull a completed Variable and
+0. Call topological sort to get an ordered queue
+1. Create a dictionary of Variables and current derivatives
+2. For each node in backward order, pull a completed Variable and
    derivative from the queue:
 
    a. if the Variable is a leaf, add its final derivative (`accumulate_derivative`)
@@ -159,7 +160,8 @@ following algorithm:
          derivative as :math:`d_{out}`
       2) loop through all the Variables+derivative produced by the chain
          rule
-      3) accumulate derivative for the Variable (check `.unique_id`)
+      3) accumulate derivatives for the Variable in a dictionary
+         (check `.unique_id`)
 
 
 Final note: only leaf Variables should ever have non-None

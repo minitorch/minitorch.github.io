@@ -71,7 +71,8 @@ forth. For example,
 .. jupyter-execute::
     :hide-code:
 
-      tensor_figure(2,3,3,5,title="Tensor Index: (0, 1, 2)")
+      tensor_figure(2,3,3,0, slider=False, title="Tensor Index: (0, 0, 0)")
+
 
 Typically, we access tensors just like multi-dimensional arrays, but
 there are some special geometric properties that make tensors different.
@@ -173,7 +174,7 @@ we can easily manipulate how we view the same underlying `storage`.
 Strides naturally extend to higher-dimensional tensors.
 
 
-.. image:: figs/Tensors/stride4.png
+.. image:: figs/Tensors/stride5.png
            :align: center
 
 Finally, strides can be used to implement indexing into the tensor.

@@ -4,11 +4,12 @@
 <html lang="english">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tensors &#8212; MiniTorch 0.1 documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,13 +23,13 @@
       
 
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/blank.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -44,7 +45,10 @@
     <link rel="next" title="Tensors" href="tensordata.html" />
     <link rel="prev" title="Backpropagation" href="backpropagate.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="english">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -159,7 +163,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <p class="caption">
+    <p>
  <span class="caption-text">
   Guides
  </span>
@@ -258,7 +262,7 @@
               
               <div>
                 
-  <div class="section" id="tensors">
+  <section id="tensors">
 <h1>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h1>
 <img alt="_images/stride4.png" class="align-center" src="_images/stride4.png" />
 <p>We now have a fully developed autodifferentiation system built around
@@ -284,7 +288,7 @@ clone your assignment:</p>
 <p>You need the files from previous assignments, so maker sure to pull them over
 to your new repo.</p>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Guides</span></p>
+<p><span class="caption-text">Guides</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tensordata.html">Tensors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="broadcasting.html">Broadcasting</a></li>
@@ -292,7 +296,7 @@ to your new repo.</p>
 <li class="toctree-l1"><a class="reference internal" href="tensor.html">Tensor Variables</a></li>
 </ul>
 </div>
-<div class="section" id="tasks">
+<section id="tasks">
 <h2>Tasks<a class="headerlink" href="#tasks" title="Permalink to this headline">¶</a></h2>
 <p>For this module we have implemented the skeleton <cite>tensor.py</cite> file for
 you.  This is a subclass of Variable that is very similar to
@@ -305,7 +309,7 @@ file relies on:</p>
 <li><p><cite>tensor_ops.py</cite> : Higher-order tensor operations</p></li>
 <li><p><cite>tensor_functions.py</cite> : Autodifferentiation-ready functions</p></li>
 </ul>
-<div class="section" id="tasks-2-1-tensor-data-indexing">
+<section id="tasks-2-1-tensor-data-indexing">
 <h3>Tasks 2.1: Tensor Data - Indexing<a class="headerlink" href="#tasks-2-1-tensor-data-indexing" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -387,8 +391,8 @@ may not be the inverse of <cite>index_to_position</cite>.</p>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="tasks-2-2-tensor-broadcasting">
+</section>
+<section id="tasks-2-2-tensor-broadcasting">
 <h3>Tasks 2.2: Tensor Broadcasting<a class="headerlink" href="#tasks-2-2-tensor-broadcasting" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -452,8 +456,8 @@ removed.</p>
 </dl>
 </dd></dl>
 
-</div>
-<div class="section" id="tasks-2-3-tensor-operations">
+</section>
+<section id="tasks-2-3-tensor-operations">
 <h3>Tasks 2.3: Tensor Operations<a class="headerlink" href="#tasks-2-3-tensor-operations" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -629,8 +633,8 @@ marked as <cite>task2_2</cite>.</p>
 <code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="tasks-2-4-gradients-and-autograd">
+</section>
+<section id="tasks-2-4-gradients-and-autograd">
 <h3>Tasks 2.4: Gradients and Autograd<a class="headerlink" href="#tasks-2-4-gradients-and-autograd" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -687,8 +691,8 @@ tests marked as <cite>task2_3</cite>.</p>
 <code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-</div>
-<div class="section" id="task-2-5-training">
+</section>
+<section id="task-2-5-training">
 <h3>Task 2.5: Training<a class="headerlink" href="#task-2-5-training" title="Permalink to this headline">¶</a></h3>
 <p>If your code works you should now be able to move on to the tensor
 training script in <cite>project/run_tensor.py</cite>.  This code runs the same
@@ -708,20 +712,31 @@ README.</p></li>
 is okay if it is slow).</p></li>
 </ul>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="backpropagate.html" title="previous page">Backpropagation</a>
-    <a class='right-next' id="next-link" href="tensordata.html" title="next page">Tensors</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="backpropagate.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Backpropagation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="tensordata.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tensors</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -729,20 +744,19 @@ is okay if it is slow).</p></li>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Sasha Rush.<br/>
+    &copy; Copyright 2020, Sasha Rush.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.0.<br>
 </p>
     </div>
     

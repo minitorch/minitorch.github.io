@@ -4,11 +4,12 @@
 <html lang="english">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Tracking Variables &#8212; MiniTorch 0.1 documentation</title>
     
-  <link href="_static/css/theme.css" rel="stylesheet" />
-  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -22,13 +23,13 @@
       
 
     
-    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/css/blank.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/jupyter-sphinx.css" />
     <link rel="stylesheet" type="text/css" href="_static/thebelab.css" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -44,7 +45,10 @@
     <link rel="next" title="Autodifferentiation" href="chainrule.html" />
     <link rel="prev" title="Derivatives" href="derivative.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="english">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -159,7 +163,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
   <div class="bd-toc-item active">
-    <p class="caption">
+    <p>
  <span class="caption-text">
   Guides
  </span>
@@ -241,7 +245,7 @@
               
               <div>
                 
-  <div class="section" id="tracking-variables">
+  <section id="tracking-variables">
 <h1>Tracking Variables<a class="headerlink" href="#tracking-variables" title="Permalink to this headline">¶</a></h1>
 <div class="jupyter_cell docutils container">
 <div class="cell_output docutils container">
@@ -265,7 +269,7 @@ internal computation of the function. This can be hard to do since
 Python does not expose how its inputs are used in the function
 directly: all we get is the output only. This doc describes one method
 for tracking computation.</p>
-<div class="section" id="variables-and-functions">
+<section id="variables-and-functions">
 <h2>Variables and Functions<a class="headerlink" href="#variables-and-functions" title="Permalink to this headline">¶</a></h2>
 <p>The main trick for tracking computation is surprisingly simple and
 straightforward:</p>
@@ -351,8 +355,8 @@ manipulates it, and returns a new <cite>wrapped</cite> Variable.</p>
 <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>,
 manipulates them, and returns a new <cite>wrapped</cite> Variable:</p>
 <img alt="_images/autograd2.png" class="align-center" src="_images/autograd2.png" />
-</div>
-<div class="section" id="scalar-functions">
+</section>
+<section id="scalar-functions">
 <h2>Scalar Functions<a class="headerlink" href="#scalar-functions" title="Permalink to this headline">¶</a></h2>
 <p>To make this whole Variable/Function idea more tangible, let's focus
 on the Scalar class, a sub-class of <a class="reference internal" href="#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Variable</span></code></a>. It wraps a
@@ -484,8 +488,8 @@ for functions.</p>
 <div class="cell_output docutils container">
 <img alt="_images/scalar_6_0.svg" src="_images/scalar_6_0.svg" /></div>
 </div>
-</div>
-<div class="section" id="syntactic-sugar">
+</section>
+<section id="syntactic-sugar">
 <h2>Syntactic Sugar<a class="headerlink" href="#syntactic-sugar" title="Permalink to this headline">¶</a></h2>
 <p>There is still one minor issue with our Function. This is what our code
 looks like to use <cite>Mul</cite></p>
@@ -522,19 +526,30 @@ Function, while still being able to write</p>
 that makes it appear like
 a number when in use. You can read <a class="reference external" href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types">emulating numeric types</a>
 to learn how this could be done.</p>
-</div>
-</div>
+</section>
+</section>
 
 
               </div>
               
               
-              <div class='prev-next-bottom'>
-                
-    <a class='left-prev' id="prev-link" href="derivative.html" title="previous page">Derivatives</a>
-    <a class='right-next' id="next-link" href="chainrule.html" title="next page">Autodifferentiation</a>
-
-              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="derivative.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Derivatives</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="chainrule.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Autodifferentiation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
               
           </main>
           
@@ -542,20 +557,19 @@ to learn how this could be done.</p>
       </div>
     </div>
   
-  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
-
-  <footer class="footer mt-5 mt-md-0">
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
   <div class="container">
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Sasha Rush.<br/>
+    &copy; Copyright 2020, Sasha Rush.<br>
 </p>
     </div>
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.0.<br/>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 3.2.0.<br>
 </p>
     </div>
     

@@ -48,7 +48,7 @@ straightforward:
 3. augment Variables to remember what Functions were applied to them in
    the past.
 
-For notation, we captitalize our newly instroduced
+For notation, we captitalize our newly introduced
 Functions and Variables to distinguish them from Python functions and
 variables.
 

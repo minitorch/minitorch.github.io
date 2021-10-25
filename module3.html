@@ -230,11 +230,6 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#task-3-4b-extra-credit">
-     Task 3.4b: Extra Credit
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#task-3-5-training">
      Task 3.5: Training
     </a>
@@ -320,14 +315,25 @@ script for you</p>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Complete the following in <cite>minitorch/fast_ops.py</cite> and pass tests
-marked as <cite>task3_1</cite>. Furthermore include the diagnostics output
-from the above script in your README. Your code should have at
-least one parallelized loop.</p>
+marked as <cite>task3_1</cite>.</p>
+<ul class="simple">
+<li><p>Include the diagnostics output from the above script in your README.</p></li>
+<li><p>Be sure that the code implements the optimizations specified in the
+docstrings. We will check for this explicitly.</p></li>
+</ul>
 </div>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_map">
 <code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA low_level tensor map function.</p>
+<dd><p>NUMBA low_level tensor_map function. See <cite>tensor_ops.py</cite> for description.</p>
+<p>Optimizations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Main loop in parallel</p></li>
+<li><p>All indices use numpy buffers</p></li>
+<li><p>When <cite>out</cite> and <cite>in</cite> are stride-aligned, avoid indexing</p></li>
+</ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -352,16 +358,15 @@ least one parallelized loop.</p>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_zip">
 <code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA higher-order tensor zip function</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
-value of <cite>a_storage</cite> and <cite>b_storage</cite> assuming <cite>a_shape</cite>
-and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
+<dd><p>NUMBA higher-order tensor zip function. See <cite>tensor_ops.py</cite> for description.</p>
+<p>Optimizations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Main loop in parallel</p></li>
+<li><p>All indices use numpy buffers</p></li>
+<li><p>When <cite>out</cite>, <cite>a</cite>, <cite>b</cite> are stride-aligned, avoid indexing</p></li>
 </ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -389,7 +394,15 @@ and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_reduce">
 <code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>NUMBA higher-order tensor reduce function.</p>
+<dd><p>NUMBA higher-order tensor reduce function. See <cite>tensor_ops.py</cite> for description.</p>
+<p>Optimizations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Main loop in parallel</p></li>
+<li><p>All indices use numpy buffers</p></li>
+<li><p>Inner-loop should not call any functions or write non-local variables</p></li>
+</ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -400,8 +413,7 @@ and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
 <li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
 <li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
 <li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
-<li><p><strong>reduce_shape</strong> (<em>array</em>) -- shape of reduction (1 for dimension kept, shape value for dimensions summed out)</p></li>
-<li><p><strong>reduce_size</strong> (<em>int</em>) -- size of reduce shape</p></li>
+<li><p><strong>reduce_dim</strong> (<em>int</em>) -- dimension to reduce out</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -442,9 +454,13 @@ script for you</p>
 with training on the real task under speed conditions.</p>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
-<p>Complete the following function in <cite>minitorch/fast_ops.py</cite> and copy the <cite>MatMul</cite>
-Function to <cite>tensor_functions.py</cite>.
+<p>Complete the following function in <cite>minitorch/fast_ops.py</cite>.
 Pass tests marked as <cite>task3_2</cite>.</p>
+<ul class="simple">
+<li><p>Include the diagnostics output from the above script in your README.</p></li>
+<li><p>Be sure that the code implements the optimizations specified in the
+docstrings. We will check for this explicitly.</p></li>
+</ul>
 </div>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_matrix_multiply">
@@ -454,6 +470,14 @@ Pass tests marked as <cite>task3_2</cite>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">a_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>Optimizations:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Outer loop in parallel</p></li>
+<li><p>No index buffers or function calls</p></li>
+<li><p>Inner loop should have no global writes, 1 multiply.</p></li>
+</ul>
+</div></blockquote>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -491,6 +515,8 @@ specialized hardware. This task asks you to build a GPU implementation
 of the backend operations. It will be hard to equal what PyTorch does, but
 if you are clever you can make these computations really fast (aim for 2x
 of task 3.1).</p>
+<p>Reduce is a particularly challenging function. We provide guides and a simple
+practice function to help you get started.</p>
 <div class="admonition-todo admonition" id="id3">
 <p class="admonition-title">Todo</p>
 <p>Complete the following functions in <cite>minitorch/cuda_ops.py</cite>, and pass the tests marked as
@@ -560,6 +586,29 @@ of task 3.1).</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="minitorch.cuda_ops._sum_practice">
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_sum_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops._sum_practice" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a practice sum kernel to prepare for reduce.</p>
+<p>Given an array of length <span class="math notranslate nohighlight">\(n\)</span> and out of size <span class="math notranslate nohighlight">\(n // blockDIM\)</span>
+it should sum up each blockDim values into an out cell.</p>
+<p>[a_1, a_2, ..., a_100]</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>[a_1 +...+ a_32, a_32 + ... + a_64, ... ,]</p>
+<p>Note: Each block must do the sum using shared memory!</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>a</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- length of a.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_reduce">
 <code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor reduce function.</p>
@@ -599,10 +648,56 @@ Be sure to read the Guide on
 <cite>matmul</cite>. This operation is probably the most important in all of deep
 learning and is central to making models fast. Again, we first strive for
 accuracy, but, the faster you can make it, the better.</p>
+<p>Implementing matrix multiplication and reduction efficiently is
+hugely important for many deep learning tasks. Follow the guides provided
+in class for implementing these functions.</p>
+<p>You should document your code to show us that you
+understand each line. Prove to us that these lead to speed-ups on
+large matrix operations by making a graph comparing them to naive
+operations.</p>
 <div class="admonition-todo admonition" id="id4">
 <p class="admonition-title">Todo</p>
-<p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>.</p>
+<p>Implement  <cite>minitorch/cuda_ops.py</cite> with CUDA, and pass tests marked as <cite>task3_4</cite>. Follow the requirements
+specified in the docs.</p>
 </div>
+<dl class="py function">
+<dt id="minitorch.cuda_ops._mm_practice">
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_mm_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops._mm_practice" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a practice square MM kernel to prepare for matmul.</p>
+<p>Given a storage <cite>out</cite> and two storage <cite>a</cite> and <cite>b</cite>. Where we know
+both are shape [size, size] with strides [size, 1].</p>
+<p>Size is always &lt; 32.</p>
+<p>Requirements:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>All data must be first moved to shared memory.</p></li>
+<li><p>Only read each cell in <cite>a</cite> and <cite>b</cite> once.</p></li>
+<li><p>Only write to global memory once per kernel.</p></li>
+</ul>
+</div></blockquote>
+<p>Compute</p>
+<dl class="simple">
+<dt>for i:</dt><dd><dl class="simple">
+<dt>for j:</dt><dd><dl class="simple">
+<dt>for k:</dt><dd><p>out[i, j] += a[i, k] * b[k, j]</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
+<li><p><strong>a</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>b</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
+<li><p><strong>size</strong> (<em>int</em>) -- size of the square</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_matrix_multiply">
 <code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
@@ -614,25 +709,6 @@ context.</p>
 created using the <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.cuda.jit()</span></code> decorator.</p>
 </dd></dl>
 
-</section>
-<section id="task-3-4b-extra-credit">
-<h3>Task 3.4b: Extra Credit<a class="headerlink" href="#task-3-4b-extra-credit" title="Permalink to this headline">¶</a></h3>
-<p>Implementing matrix multiplication and reduction efficiently is
-hugely important for many deep learning tasks. We have seen one method
-for implementing these functions, but there are many more optimizations
-that you could apply.</p>
-<p>For extra credit, first read these two tutorials:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://numba.pydata.org/numba-doc/latest/cuda/reduction.html">https://numba.pydata.org/numba-doc/latest/cuda/reduction.html</a></p></li>
-<li><p><a class="reference external" href="https://nyu-cds.github.io/python-numba/05-cuda/">https://nyu-cds.github.io/python-numba/05-cuda/</a></p></li>
-</ul>
-<p>Then implement a version of CUDA <cite>tensor_reduce</cite> or
-<cite>tensor_matrix_multiply</cite> that take advantage of other aspects of the
-GPU.</p>
-<p>To get full credit, you should document your code to show us that you
-understand each line. Prove to us that these lead to speed-ups on
-large matrix operations by making a graph comparing them to naive
-operations.</p>
 </section>
 <section id="task-3-5-training">
 <h3>Task 3.5: Training<a class="headerlink" href="#task-3-5-training" title="Permalink to this headline">¶</a></h3>
@@ -703,7 +779,7 @@ GPU to be below 1 second per epoch. (With some cleverness you can do much better
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2020, Sasha Rush.<br>
+    &copy; Copyright 2021, Sasha Rush.<br>
 </p>
     </div>
     

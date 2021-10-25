@@ -73,9 +73,11 @@ Running this script will run NUMBA diagnostics on your functions.
 
 .. todo::
    Complete the following in `minitorch/fast_ops.py` and pass tests
-   marked as `task3_1`. Furthermore include the diagnostics output
-   from the above script in your README. Your code should have at
-   least one parallelized loop.
+   marked as `task3_1`.
+
+   * Include the diagnostics output from the above script in your README.
+   * Be sure that the code implements the optimizations specified in the
+     docstrings. We will check for this explicitly.
 
 .. autofunction:: minitorch.fast_ops.tensor_map
 .. autofunction:: minitorch.fast_ops.tensor_zip
@@ -113,9 +115,13 @@ After you finish this task, you may want to skip to 3.5 and experiment
 with training on the real task under speed conditions.
 
 .. todo::
-   Complete the following function in `minitorch/fast_ops.py` and copy the `MatMul`
-   Function to `tensor_functions.py`.
+   Complete the following function in `minitorch/fast_ops.py`.
    Pass tests marked as `task3_2`.
+
+   * Include the diagnostics output from the above script in your README.
+   * Be sure that the code implements the optimizations specified in the
+     docstrings. We will check for this explicitly.
+
 
 .. autofunction:: minitorch.fast_ops.tensor_matrix_multiply
 
@@ -133,6 +139,9 @@ of the backend operations. It will be hard to equal what PyTorch does, but
 if you are clever you can make these computations really fast (aim for 2x
 of task 3.1).
 
+Reduce is a particularly challenging function. We provide guides and a simple
+practice function to help you get started.
+
 .. todo::
    Complete the following functions in `minitorch/cuda_ops.py`, and pass the tests marked as
    `task3_3`.
@@ -140,6 +149,7 @@ of task 3.1).
 
 .. autofunction:: minitorch.cuda_ops.tensor_map
 .. autofunction:: minitorch.cuda_ops.tensor_zip
+.. autofunction:: minitorch.cuda_ops._sum_practice
 .. autofunction:: minitorch.cuda_ops.tensor_reduce
 
 
@@ -155,33 +165,25 @@ Finally we can combine both these approaches and implement CUDA
 learning and is central to making models fast. Again, we first strive for
 accuracy, but, the faster you can make it, the better.
 
-.. todo::
-   Implement  `minitorch/cuda_ops.py` with CUDA, and pass tests marked as `task3_4`.
-
-.. autofunction:: minitorch.cuda_ops.tensor_matrix_multiply
-
-
-Task 3.4b: Extra Credit
-=======================
-
 Implementing matrix multiplication and reduction efficiently is
-hugely important for many deep learning tasks. We have seen one method
-for implementing these functions, but there are many more optimizations
-that you could apply.
+hugely important for many deep learning tasks. Follow the guides provided
+in class for implementing these functions.
 
-For extra credit, first read these two tutorials:
-
-* https://numba.pydata.org/numba-doc/latest/cuda/reduction.html
-* https://nyu-cds.github.io/python-numba/05-cuda/
-
-Then implement a version of CUDA `tensor_reduce` or
-`tensor_matrix_multiply` that take advantage of other aspects of the
-GPU.
-
-To get full credit, you should document your code to show us that you
+You should document your code to show us that you
 understand each line. Prove to us that these lead to speed-ups on
 large matrix operations by making a graph comparing them to naive
 operations.
+
+
+.. todo::
+   Implement  `minitorch/cuda_ops.py` with CUDA, and pass tests marked as `task3_4`. Follow the requirements
+   specified in the docs.
+
+.. autofunction:: minitorch.cuda_ops._mm_practice
+.. autofunction:: minitorch.cuda_ops.tensor_matrix_multiply
+
+
+
 
 
 Task 3.5: Training
@@ -192,7 +194,6 @@ training script in `project/run_fast_tensor.py`.  This code is the same
 basic training setup as  :doc:`module2`, but now utilizes your fast tensor
 code. We have left the `matmul` layer blank for you to implement with
 your tensor code.
-
 
 
 .. todo::

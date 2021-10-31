@@ -174,7 +174,7 @@ we can easily manipulate how we view the same underlying `storage`.
 Strides naturally extend to higher-dimensional tensors.
 
 
-.. image:: figs/Tensors/stride5.png
+.. image:: figs/Tensors/stride4.png
            :align: center
 
 Finally, strides can be used to implement indexing into the tensor.

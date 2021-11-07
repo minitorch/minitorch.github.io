@@ -15,7 +15,7 @@ our development, we will use visualization to observe intermediate
 states, training progress, outputs, and even final models.
 
 The main library we will use is `streamlit`
-(https://github.com/streamlim/streamlit).
+(https://github.com/streamlit/streamlit).
 
 
 You can think of it as sending images and graphs from

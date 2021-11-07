@@ -34,7 +34,7 @@ on to a notebook:
 
 You can run your tests with the following command:
 
->>> python -m pytest -m test3_3
+>>> python -m pytest -m task3_3
 
 
 

@@ -274,7 +274,7 @@ this hard work, this module is entirely based on using the
 software framework. In particular, we are going to build an image
 recognition system. We will do this by build the infrastructure for a
 version of LeNet on MNIST: a classic convolutional neural network (CNN)
-for digit recognition.</p>
+for digit recognition, and for a 1D conv for NLP sentiment classification.</p>
 <img alt="_images/networkcnn.png" class="align-center" src="_images/networkcnn.png" />
 <p>All starter code is available in <a class="reference external" href="https://github.com/minitorch/Module-4">https://github.com/minitorch/Module-4</a> .</p>
 <p>To begin, remember to activate your virtual environment first, and
@@ -290,7 +290,7 @@ tensor.py, since you might find some of those functions useful for
 implementing this Module.</p>
 <p>Additionally, you need to install and download an MNIST library:</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">pip</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">mnist</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">mnist_get_data</span><span class="o">.</span><span class="n">sh</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cd</span> <span class="n">project</span><span class="o">/</span> <span class="p">;</span> <span class="n">mnist_get_data</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>(Mac OS users may need to install wget in order to run the .sh file.)</p>
@@ -617,24 +617,30 @@ to handle both scalars and tensors.</p>
 large-scale image recognition. However, both are a bit harder than
 some of the basic CUDA functions we have written so far. For this
 task, add an extra file <cite>cuda_conv.py</cite> that implements
-<cite>conv2d</cite> or <cite>avgpool2d</cite>  on CUDA.</p>
+<cite>conv1d</cite> and <cite>conv2d</cite>  on CUDA. Show the output on colab.</p>
 </section>
 <section id="task-4-5-training-an-image-classifier">
 <h3>Task 4.5: Training an Image Classifier<a class="headerlink" href="#task-4-5-training-an-image-classifier" title="Permalink to this headline">¶</a></h3>
-<p>If your code works, you should now be able to move on to the MINIST
-training script in <cite>project/run_mnist_multiclass.py</cite>.  This script has the
-same basic training setup as <a class="reference internal" href="module3.html"><span class="doc">Efficiency</span></a>, but now adapted to image
-classification. You need to implement <cite>Conv2D</cite> and <cite>Network</cite>. The Visdom
-visualization will show some hidden states of your model, like the following:</p>
+<p>If your code works, you should now be able to move on to the NLP and
+CV training scripts in <cite>project/run_sentiment.py</cite> and
+<cite>project/run_mnist_multiclass.py</cite>.  This script has the same basic
+training setup as <a class="reference internal" href="module3.html"><span class="doc">Efficiency</span></a>, but now adapted to sentiment and
+image classification. You need to implement <cite>Conv1D</cite>, <cite>Conv2D</cite>, and
+<cite>Network</cite> for both files. The Streamlit visualization will show some
+hidden states of your model, like the following:</p>
 <a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist4.png"><img alt="_images/mnist4.png" class="align-center" src="_images/mnist4.png" style="width: 400px;" /></a>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
 <ul class="simple">
-<li><p>Train a model on MNIST, and add your training printout logs (i.e. training loss,
-performance on validation set) to the README.</p></li>
-<li><p>Report the Visdom visualizations of your final model's
-hidden states at the end of training.</p></li>
+<li><p>Train a model on Sentiment (SST2), and add your training printout
+logs (i.e. training loss, performance on validation set) to the
+README. (The model should get to 75% validation accuracy.)</p></li>
+<li><p>Train a model on Digit classification (MNIST), and add your
+training printout logs (i.e. training loss, performance on
+validation set) to the README.</p></li>
+<li><p>Report the Streamlit visualizations of your final model's hidden
+states at the end of training.</p></li>
 </ul>
 </div>
 </section>

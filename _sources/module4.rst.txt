@@ -23,7 +23,7 @@ this hard work, this module is entirely based on using the
 software framework. In particular, we are going to build an image
 recognition system. We will do this by build the infrastructure for a
 version of LeNet on MNIST: a classic convolutional neural network (CNN)
-for digit recognition.
+for digit recognition, and for a 1D conv for NLP sentiment classification.
 
 
 .. image:: figs/Conv/networkcnn.png
@@ -47,7 +47,7 @@ implementing this Module.
 Additionally, you need to install and download an MNIST library:
 
 >>> pip install python-mnist
->>> mnist_get_data.sh
+>>> cd project/ ; mnist_get_data.sh
 
 (Mac OS users may need to install wget in order to run the .sh file.)
 
@@ -182,17 +182,19 @@ Implementing convolution and pooling efficiently is critical for
 large-scale image recognition. However, both are a bit harder than
 some of the basic CUDA functions we have written so far. For this
 task, add an extra file `cuda_conv.py` that implements
-`conv2d` or `avgpool2d`  on CUDA.
+`conv1d` and `conv2d`  on CUDA. Show the output on colab.
 
 
 Task 4.5: Training an Image Classifier
 ======================================
 
-If your code works, you should now be able to move on to the MINIST
-training script in `project/run_mnist_multiclass.py`.  This script has the
-same basic training setup as :doc:`module3`, but now adapted to image
-classification. You need to implement `Conv2D` and `Network`. The Visdom
-visualization will show some hidden states of your model, like the following:
+If your code works, you should now be able to move on to the NLP and
+CV training scripts in `project/run_sentiment.py` and
+`project/run_mnist_multiclass.py`.  This script has the same basic
+training setup as :doc:`module3`, but now adapted to sentiment and
+image classification. You need to implement `Conv1D`, `Conv2D`, and
+`Network` for both files. The Streamlit visualization will show some
+hidden states of your model, like the following:
 
 
 .. image:: figs/mnist/mnist5.png
@@ -206,8 +208,13 @@ visualization will show some hidden states of your model, like the following:
 
 .. todo::
 
-   * Train a model on MNIST, and add your training printout logs (i.e. training loss,
-     performance on validation set) to the README.
+   * Train a model on Sentiment (SST2), and add your training printout
+     logs (i.e. training loss, performance on validation set) to the
+     README. (The model should get to 75% validation accuracy.)
 
-   * Report the Visdom visualizations of your final model's
-     hidden states at the end of training.
+   * Train a model on Digit classification (MNIST), and add your
+     training printout logs (i.e. training loss, performance on
+     validation set) to the README.
+
+   * Report the Streamlit visualizations of your final model's hidden
+     states at the end of training.

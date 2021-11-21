@@ -155,7 +155,7 @@ graph in `Streamlit`::
 .. todo::
    Add functions in `minitorch/tensor_ops.py` and
    `minitorch/tensor_functions.py` for each of the following, and pass tests
-   marked as `task2_2`.
+   marked as `task2_3`.
 
 
 .. autofunction:: minitorch.tensor_map
@@ -189,7 +189,7 @@ will implement `backward` functions for tensor operations.
 
 .. todo::
       Complete following functions in `minitorch/tensor_ops.py`, and pass
-      tests marked as `task2_3`.
+      tests marked as `task2_4`.
 
 .. autofunction:: minitorch.TensorFunctions.Mul.backward
 .. autofunction:: minitorch.TensorFunctions.Sigmoid.backward

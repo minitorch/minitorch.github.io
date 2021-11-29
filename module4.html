@@ -326,7 +326,7 @@ Be sure to read the Guide on <a class="reference internal" href="convolution.htm
 </div>
 <p>You will implement the 1D convolution in Numba. This function gets used by the
 <cite>forward</cite> and <cite>backward</cite> pass of conv1d.</p>
-<a class="reference internal image-reference" href="_images/channels.png"><img alt="_images/channels.png" class="align-center" src="_images/channels.png" style="width: 300px;" /></a>
+<a class="reference internal image-reference" href="_images/convchan.png"><img alt="_images/convchan.png" class="align-center" src="_images/convchan.png" style="width: 300px;" /></a>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Todo</p>
 <p>Complete the following function in <cite>minitorch/fast_conv.py</cite>, and pass tests marked
@@ -626,7 +626,9 @@ CV training scripts in <cite>project/run_sentiment.py</cite> and
 <cite>project/run_mnist_multiclass.py</cite>.  This script has the same basic
 training setup as <a class="reference internal" href="module3.html"><span class="doc">Efficiency</span></a>, but now adapted to sentiment and
 image classification. You need to implement <cite>Conv1D</cite>, <cite>Conv2D</cite>, and
-<cite>Network</cite> for both files. The Streamlit visualization will show some
+<cite>Network</cite> for both files.</p>
+<p>We recommend running on the command line when testing.
+But you can also use the Streamlit visualization to view
 hidden states of your model, like the following:</p>
 <a class="reference internal image-reference" href="_images/mnist5.png"><img alt="_images/mnist5.png" class="align-center" src="_images/mnist5.png" style="width: 400px;" /></a>
 <a class="reference internal image-reference" href="_images/mnist4.png"><img alt="_images/mnist4.png" class="align-center" src="_images/mnist4.png" style="width: 400px;" /></a>
@@ -635,7 +637,7 @@ hidden states of your model, like the following:</p>
 <ul class="simple">
 <li><p>Train a model on Sentiment (SST2), and add your training printout
 logs (i.e. training loss, performance on validation set) to the
-README. (The model should get to 75% validation accuracy.)</p></li>
+README. (The model should get to 75% best validation accuracy.)</p></li>
 <li><p>Train a model on Digit classification (MNIST), and add your
 training printout logs (i.e. training loss, performance on
 validation set) to the README.</p></li>

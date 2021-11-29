@@ -89,7 +89,7 @@ Task 4.1: 1D Convolution
 You will implement the 1D convolution in Numba. This function gets used by the
 `forward` and `backward` pass of conv1d.
 
-.. image:: figs/Conv/channels.png
+.. image:: figs/Conv/convchan.png
            :align: center
            :width: 300px
 
@@ -193,7 +193,10 @@ CV training scripts in `project/run_sentiment.py` and
 `project/run_mnist_multiclass.py`.  This script has the same basic
 training setup as :doc:`module3`, but now adapted to sentiment and
 image classification. You need to implement `Conv1D`, `Conv2D`, and
-`Network` for both files. The Streamlit visualization will show some
+`Network` for both files. 
+
+We recommend running on the command line when testing. 
+But you can also use the Streamlit visualization to view
 hidden states of your model, like the following:
 
 
@@ -210,7 +213,7 @@ hidden states of your model, like the following:
 
    * Train a model on Sentiment (SST2), and add your training printout
      logs (i.e. training loss, performance on validation set) to the
-     README. (The model should get to 75% validation accuracy.)
+     README. (The model should get to 75% best validation accuracy.)
 
    * Train a model on Digit classification (MNIST), and add your
      training printout logs (i.e. training loss, performance on

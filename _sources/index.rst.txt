@@ -75,7 +75,7 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton
 Slides
 -------
 
-Slides are available `here <https://minitorch.github.io/slides>`.
+Slides are available `here <https://minitorch.github.io/slides>`_.
 
 
 .. toctree::

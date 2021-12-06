@@ -72,6 +72,10 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton
            :width: 400px
            :align: center
 
+Slides
+-------
+
+Slides are available `here <https://minitorch.github.io/slides>`.
 
 
 .. toctree::
@@ -86,6 +90,7 @@ Sasha Rush (`@srush_nlp <https://twitter.com/srush_nlp>`_) with Ge Gao and Anton
    module2
    module3
    module4
+   
 
 .. image:: match.png
    :align: center

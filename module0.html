@@ -374,6 +374,24 @@ tests marked as <cite>task0_1</cite>.</p>
 </dd>
 </dl>
 </dd></dl>
+  
+<dl class="py function">
+<dt id="minitorch.operators.log">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.log" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <span class="math notranslate nohighlight">\(f(x) = log(x)\)</span></p>
+</dd></dl>
+
+<dl class="py function">
+<dt id="minitorch.operators.exp">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.log_back" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <span class="math notranslate nohighlight">\(f(x) = e^{x}\)</span></p>
+</dd></dl>  
+  
+<dl class="py function">
+<dt id="minitorch.operators.log_back">
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.log_back" title="Permalink to this definition">¶</a></dt>
+<dd><p>If <span class="math notranslate nohighlight">\(f(x) = log(x))</span> as above, compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
+</dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.inv">
@@ -393,11 +411,7 @@ tests marked as <cite>task0_1</cite>.</p>
 <dd><p>If <span class="math notranslate nohighlight">\(f = relu\)</span> compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
 </dd></dl>
 
-<dl class="py function">
-<dt id="minitorch.operators.log_back">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.log_back" title="Permalink to this definition">¶</a></dt>
-<dd><p>If <span class="math notranslate nohighlight">\(f = log\)</span> as above, compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
-</dd></dl>
+
 
 </section>
 <section id="task-0-2-testing-and-debugging">

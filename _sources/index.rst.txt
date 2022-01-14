@@ -90,7 +90,6 @@ Slides are available `here <https://minitorch.github.io/slides>`_.
    module2
    module3
    module4
-   
 
 .. image:: match.png
    :align: center

@@ -193,9 +193,9 @@ CV training scripts in `project/run_sentiment.py` and
 `project/run_mnist_multiclass.py`.  This script has the same basic
 training setup as :doc:`module3`, but now adapted to sentiment and
 image classification. You need to implement `Conv1D`, `Conv2D`, and
-`Network` for both files. 
+`Network` for both files.
 
-We recommend running on the command line when testing. 
+We recommend running on the command line when testing.
 But you can also use the Streamlit visualization to view
 hidden states of your model, like the following:
 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Tensors &#8212; MiniTorch 0.1 documentation</title>
+    <title>Tensors &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -331,14 +331,14 @@ tests marked as <cite>task2_1</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.index_to_position">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span></em>, <em class="sig-param"><span class="n">strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">index_to_position</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">index</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#minitorch.index_to_position" title="Permalink to this definition">¶</a></dt>
 <dd><p>Converts a multidimensional tensor <cite>index</cite> into a single-dimensional position in
 storage based on strides.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>index</strong> (<em>array-like</em>) -- index tuple of ints</p></li>
-<li><p><strong>strides</strong> (<em>array-like</em>) -- tensor strides</p></li>
+<li><p><strong>index</strong> -- index tuple of ints</p></li>
+<li><p><strong>strides</strong> -- tensor strides</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -352,7 +352,7 @@ storage based on strides.</p>
 
 <dl class="py function">
 <dt id="minitorch.to_index">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">to_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordinal</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.to_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">to_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ordinal</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_index</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.to_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert an <cite>ordinal</cite> to an index in the <cite>shape</cite>.
 Should ensure that enumerating position 0 ... size of a
 tensor produces every index exactly once. It
@@ -360,23 +360,17 @@ may not be the inverse of <cite>index_to_position</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>ordinal</strong> (<em>int</em>) -- ordinal position to convert.</p></li>
-<li><p><strong>shape</strong> (<em>tuple</em>) -- tensor shape.</p></li>
-<li><p><strong>out_index</strong> (<em>array</em>) -- the index corresponding to position.</p></li>
+<li><p><strong>ordinal</strong> -- ordinal position to convert.</p></li>
+<li><p><strong>shape</strong> -- tensor shape.</p></li>
+<li><p><strong>out_index</strong> -- return index corresponding to position.</p></li>
 </ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Fills in <cite>out_index</cite>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.TensorData.permute">
-<code class="sig-prename descclassname">minitorch.TensorData.</code><code class="sig-name descname">permute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorData.permute" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.TensorData.</code><code class="sig-name descname">permute</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">order</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor_data.TensorData<a class="headerlink" href="#minitorch.TensorData.permute" title="Permalink to this definition">¶</a></dt>
 <dd><p>Permute the dimensions of the tensor.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -409,30 +403,27 @@ and pass tests marked as <cite>task2_2</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.shape_broadcast">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">shape_broadcast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape1</span></em>, <em class="sig-param"><span class="n">shape2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.shape_broadcast" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">shape_broadcast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">shape1</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>int<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">shape2</span><span class="p">:</span> <span class="n">Sequence<span class="p">[</span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Sequence<span class="p">[</span>int<span class="p">]</span><a class="headerlink" href="#minitorch.shape_broadcast" title="Permalink to this definition">¶</a></dt>
 <dd><p>Broadcast two shapes to create a new union shape.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>shape1</strong> (<em>tuple</em>) -- first shape</p></li>
-<li><p><strong>shape2</strong> (<em>tuple</em>) -- second shape</p></li>
+<li><p><strong>shape1</strong> -- first shape</p></li>
+<li><p><strong>shape2</strong> -- second shape</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>broadcasted shape</p>
 </dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>tuple</p>
-</dd>
-<dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>IndexingError</strong> -- if cannot broadcast</p>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><strong>IndexingError</strong> -- if cannot broadcast</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.broadcast_index">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">big_index</span></em>, <em class="sig-param"><span class="n">big_shape</span></em>, <em class="sig-param"><span class="n">shape</span></em>, <em class="sig-param"><span class="n">out_index</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">broadcast_index</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">big_index</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">big_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_index</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.broadcast_index" title="Permalink to this definition">¶</a></dt>
 <dd><p>Convert a <cite>big_index</cite> into <cite>big_shape</cite> to a smaller <cite>out_index</cite>
 into <cite>shape</cite> following broadcasting rules. In this case
 it may be larger or with more dimensions than the <cite>shape</cite>
@@ -441,17 +432,14 @@ removed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>big_index</strong> (<em>array-like</em>) -- multidimensional index of bigger tensor</p></li>
-<li><p><strong>big_shape</strong> (<em>array-like</em>) -- tensor shape of bigger tensor</p></li>
-<li><p><strong>shape</strong> (<em>array-like</em>) -- tensor shape of smaller tensor</p></li>
-<li><p><strong>out_index</strong> (<em>array-like</em>) -- multidimensional index of smaller tensor</p></li>
+<li><p><strong>big_index</strong> -- multidimensional index of bigger tensor</p></li>
+<li><p><strong>big_shape</strong> -- tensor shape of bigger tensor</p></li>
+<li><p><strong>shape</strong> -- tensor shape of smaller tensor</p></li>
+<li><p><strong>out_index</strong> -- multidimensional index of smaller tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>Fills in <cite>out_index</cite>.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>None</p>
+<dd class="field-even"><p>None</p>
 </dd>
 </dl>
 </dd></dl>
@@ -504,24 +492,32 @@ graph in <cite>Streamlit</cite>:</p>
 marked as <cite>task2_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.tensor_map">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor map function.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
-</pre></div>
-</div>
+<dt id="minitorch.tensor_ops.tensor_map">
+<code class="sig-prename descclassname">minitorch.tensor_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.tensor_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>Low-level implementation of tensor map between
+tensors with <em>possibly different strides</em>.</p>
+<p>Simple version:</p>
+<ul class="simple">
+<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
+value of <cite>in_storage</cite> assuming <cite>out_shape</cite> and <cite>in_shape</cite>
+are the same size.</p></li>
+</ul>
+<p>Broadcasted version:</p>
+<ul class="simple">
+<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
+value of <cite>in_storage</cite> assuming <cite>out_shape</cite> and <cite>in_shape</cite>
+broadcast. (<cite>in_shape</cite> must be smaller than <cite>out_shape</cite>).</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings floats-to-floats to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for out tensor.</p></li>
-<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor.</p></li>
-<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor.</p></li>
-<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor.</p></li>
+<li><p><strong>fn</strong> -- function from float-to-float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for out tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for out tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for out tensor</p></li>
+<li><p><strong>in_storage</strong> (<em>array</em>) -- storage for in tensor</p></li>
+<li><p><strong>in_shape</strong> (<em>array</em>) -- shape for in tensor</p></li>
+<li><p><strong>in_strides</strong> (<em>array</em>) -- strides for in tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -534,27 +530,35 @@ marked as <cite>task2_3</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.tensor_zip">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_zip" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</pre></div>
-</div>
+<dt id="minitorch.tensor_ops.tensor_zip">
+<code class="sig-prename descclassname">minitorch.tensor_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.tensor_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Low-level implementation of tensor zip between
+tensors with <em>possibly different strides</em>.</p>
+<p>Simple version:</p>
+<ul class="simple">
+<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
+value of <cite>a_storage</cite> and <cite>b_storage</cite> assuming <cite>out_shape</cite>
+and <cite>a_shape</cite> are the same size.</p></li>
+</ul>
+<p>Broadcasted version:</p>
+<ul class="simple">
+<li><p>Fill in the <cite>out</cite> array by applying <cite>fn</cite> to each
+value of <cite>a_storage</cite> and <cite>b_storage</cite> assuming <cite>a_shape</cite>
+and <cite>b_shape</cite> broadcast to <cite>out_shape</cite>.</p></li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- function mappings two floats to float to apply.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
-<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor.</p></li>
-<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- function mapping two floats to float to apply</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
+<li><p><strong>b_storage</strong> (<em>array</em>) -- storage for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_shape</strong> (<em>array</em>) -- shape for <cite>b</cite> tensor</p></li>
+<li><p><strong>b_strides</strong> (<em>array</em>) -- strides for <cite>b</cite> tensor</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -567,20 +571,26 @@ marked as <cite>task2_3</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.tensor_reduce">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_reduce" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA higher-order tensor reduce function.</p>
+<dt id="minitorch.tensor_ops.tensor_reduce">
+<code class="sig-prename descclassname">minitorch.tensor_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.tensor_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<dd><p>Low-level implementation of tensor reduce.</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>out_shape</cite> will be the same as <cite>a_shape</cite></dt><dd><p>except with <cite>reduce_dim</cite> turned to size <cite>1</cite></p>
+</dd>
+</dl>
+</li>
+</ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>fn</strong> -- reduction function maps two floats to float.</p></li>
-<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor.</p></li>
-<li><p><strong>out_size</strong> (<em>array</em>) -- size for <cite>out</cite> tensor.</p></li>
-<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor.</p></li>
-<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor.</p></li>
+<li><p><strong>fn</strong> -- reduction function mapping two floats to float</p></li>
+<li><p><strong>out</strong> (<em>array</em>) -- storage for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_shape</strong> (<em>array</em>) -- shape for <cite>out</cite> tensor</p></li>
+<li><p><strong>out_strides</strong> (<em>array</em>) -- strides for <cite>out</cite> tensor</p></li>
+<li><p><strong>a_storage</strong> (<em>array</em>) -- storage for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_shape</strong> (<em>array</em>) -- shape for <cite>a</cite> tensor</p></li>
+<li><p><strong>a_strides</strong> (<em>array</em>) -- strides for <cite>a</cite> tensor</p></li>
 <li><p><strong>reduce_dim</strong> (<em>int</em>) -- dimension to reduce out</p></li>
 </ul>
 </dd>
@@ -594,43 +604,43 @@ marked as <cite>task2_3</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Mul.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Mul.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Mul.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Sigmoid.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Sigmoid.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.ReLU.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.ReLU.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Log.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Log.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Log.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Log.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Exp.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Exp.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Exp.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.LT.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.LT.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.LT.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.EQ.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.EQ.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.EQ.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.EQ.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.EQ.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Permute.forward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">order</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Permute.forward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Permute.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span></em>, <em class="sig-param"><span class="n">order</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Permute.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -652,43 +662,43 @@ will implement <cite>backward</cite> functions for tensor operations.</p>
 tests marked as <cite>task2_4</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Mul.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Mul.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Mul.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Tensor<span class="p">, </span>Tensor<span class="p">]</span><a class="headerlink" href="#minitorch.tensor_functions.Mul.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Sigmoid.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Sigmoid.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.ReLU.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.ReLU.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Log.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Log.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Log.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Log.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Log.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Log.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Exp.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Exp.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Exp.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.tensor_functions.Exp.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.LT.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.LT.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.LT.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.LT.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Tensor<span class="p">, </span>Tensor<span class="p">]</span><a class="headerlink" href="#minitorch.tensor_functions.LT.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.EQ.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.EQ.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.EQ.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.EQ.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.EQ.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Tensor<span class="p">, </span>Tensor<span class="p">]</span><a class="headerlink" href="#minitorch.tensor_functions.EQ.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.TensorFunctions.Permute.backward">
-<code class="sig-prename descclassname">minitorch.TensorFunctions.Permute.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">grad_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.TensorFunctions.Permute.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.tensor_functions.Permute.backward">
+<code class="sig-prename descclassname">minitorch.tensor_functions.Permute.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>Tensor<span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#minitorch.tensor_functions.Permute.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -750,7 +760,7 @@ is okay if it is slow).</p></li>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

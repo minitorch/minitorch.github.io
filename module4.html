@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Networks &#8212; MiniTorch 0.1 documentation</title>
+    <title>Networks &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -334,7 +334,7 @@ as <cite>task4_1</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.tensor_conv1d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv1d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv1d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">out_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_size</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">input_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">input_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">weight_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">reverse</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.tensor_conv1d" title="Permalink to this definition">¶</a></dt>
 <dd><p>1D Convolution implementation.</p>
 <p>Given input tensor of</p>
 <blockquote>
@@ -387,7 +387,7 @@ as <cite>task4_2</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.tensor_conv2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">out_size</span></em>, <em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">input_shape</span></em>, <em class="sig-param"><span class="n">input_strides</span></em>, <em class="sig-param"><span class="n">weight</span></em>, <em class="sig-param"><span class="n">weight_shape</span></em>, <em class="sig-param"><span class="n">weight_strides</span></em>, <em class="sig-param"><span class="n">reverse</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tensor_conv2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">out_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">out_size</span><span class="p">:</span> <span class="n">int</span></em>, <em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">input_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">input_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">weight_shape</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">weight_strides</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.int32<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">reverse</span><span class="p">:</span> <span class="n">bool</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.tensor_conv2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>2D Convolution implementation.</p>
 <p>Given input tensor of</p>
 <blockquote>
@@ -439,40 +439,34 @@ marked as <cite>task4_3</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.tile">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.tile" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">tile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>minitorch.tensor.Tensor<span class="p">, </span>int<span class="p">, </span>int<span class="p">]</span><a class="headerlink" href="#minitorch.tile" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reshape an image tensor for 2D pooling</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
-<li><p><strong>kernel</strong> (<em>pair of ints</em>) -- height x width of pooling</p></li>
+<li><p><strong>input</strong> -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> -- height x width of pooling</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>Tensor of size batch x channel x new_height x new_width x (kernel_height * kernel_width) as well as the new_height and new_width value.</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>(<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>, int, int)</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.avgpool2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">avgpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.avgpool2d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">avgpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor.Tensor<a class="headerlink" href="#minitorch.avgpool2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tiled average pooling 2D</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
-<li><p><strong>kernel</strong> (<em>pair of ints</em>) -- height x width of pooling</p></li>
+<li><p><strong>input</strong> -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> -- height x width of pooling</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p>pooled tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
+<dd class="field-even"><p>Pooled tensor</p>
 </dd>
 </dl>
 </dd></dl>
@@ -501,54 +495,31 @@ computation.</p></li>
 </div>
 <dl class="py function">
 <dt id="minitorch.max">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
-<dd><p>Apply is called by the user to run the Function.
-Internally it does three things:</p>
-<ol class="loweralpha simple">
-<li><p>Creates a Context for the function call.</p></li>
-<li><p>Calls forward to run the function.</p></li>
-<li><p>Attaches the Context to the History of the new variable.</p></li>
-</ol>
-<p>There is a bit of internal complexity in our implementation
-to handle both scalars and tensors.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>vals</strong> (<em>list of Variables</em><em> or </em><em>constants</em>) -- The arguments to forward</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>The new variable produced</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><cite>Variable</cite></p>
-</dd>
-</dl>
-</dd></dl>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">vals</span><span class="p">:</span> <span class="n">Tensor</span></em><span class="sig-paren">)</span> &#x2192; Tensor<a class="headerlink" href="#minitorch.max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.softmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">softmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor.Tensor<a class="headerlink" href="#minitorch.softmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the softmax as a tensor.</p>
 <div class="math notranslate nohighlight">
 \[z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\]</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply softmax</p></li>
+<li><p><strong>input</strong> -- input tensor</p></li>
+<li><p><strong>dim</strong> -- dimension to apply softmax</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>softmax tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.logsoftmax">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">dim</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">logsoftmax</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">dim</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor.Tensor<a class="headerlink" href="#minitorch.logsoftmax" title="Permalink to this definition">¶</a></dt>
 <dd><p>Compute the log of the softmax as a tensor.</p>
 <div class="math notranslate nohighlight">
 \[z_i = x_i - \log \sum_i e^{x_i}\]</div>
@@ -556,28 +527,25 @@ to handle both scalars and tensors.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>dim</strong> (<em>int</em>) -- dimension to apply log-softmax</p></li>
+<li><p><strong>input</strong> -- input tensor</p></li>
+<li><p><strong>dim</strong> -- dimension to apply log-softmax</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>log of softmax tensor</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.maxpool2d">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">maxpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">kernel</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.maxpool2d" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">maxpool2d</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor.Tensor<a class="headerlink" href="#minitorch.maxpool2d" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tiled max pooling 2D</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- batch x channel x height x width</p></li>
-<li><p><strong>kernel</strong> (<em>pair of ints</em>) -- height x width of pooling</p></li>
+<li><p><strong>input</strong> -- batch x channel x height x width</p></li>
+<li><p><strong>kernel</strong> -- height x width of pooling</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -591,21 +559,18 @@ to handle both scalars and tensors.</p>
 
 <dl class="py function">
 <dt id="minitorch.dropout">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">dropout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span></em>, <em class="sig-param"><span class="n">rate</span></em>, <em class="sig-param"><span class="n">ignore</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.dropout" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">dropout</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input</span><span class="p">:</span> <span class="n">minitorch.tensor.Tensor</span></em>, <em class="sig-param"><span class="n">rate</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">ignore</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; minitorch.tensor.Tensor<a class="headerlink" href="#minitorch.dropout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Dropout positions based on random noise.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>input</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code>) -- input tensor</p></li>
-<li><p><strong>rate</strong> (<em>float</em>) -- probability [0, 1) of dropping out each position</p></li>
-<li><p><strong>ignore</strong> (<em>bool</em>) -- skip dropout, i.e. do nothing at all</p></li>
+<li><p><strong>input</strong> -- input tensor</p></li>
+<li><p><strong>rate</strong> -- probability [0, 1) of dropping out each position</p></li>
+<li><p><strong>ignore</strong> -- skip dropout, i.e. do nothing at all</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>tensor with randoom positions dropped out</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Tensor</span></code></p>
 </dd>
 </dl>
 </dd></dl>
@@ -683,7 +648,7 @@ states at the end of training.</p></li>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

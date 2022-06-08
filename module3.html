@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Efficiency &#8212; MiniTorch 0.1 documentation</title>
+    <title>Efficiency &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -324,7 +324,7 @@ docstrings. We will check for this explicitly.</p></li>
 </div>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_map">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.fast_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA low_level tensor_map function. See <cite>tensor_ops.py</cite> for description.</p>
 <p>Optimizations:</p>
 <blockquote>
@@ -357,7 +357,7 @@ docstrings. We will check for this explicitly.</p></li>
 
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_zip">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.fast_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA higher-order tensor zip function. See <cite>tensor_ops.py</cite> for description.</p>
 <p>Optimizations:</p>
 <blockquote>
@@ -393,7 +393,7 @@ docstrings. We will check for this explicitly.</p></li>
 
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_reduce">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.fast_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA higher-order tensor reduce function. See <cite>tensor_ops.py</cite> for description.</p>
 <p>Optimizations:</p>
 <blockquote>
@@ -464,7 +464,7 @@ docstrings. We will check for this explicitly.</p></li>
 </div>
 <dl class="py function">
 <dt id="minitorch.fast_ops.tensor_matrix_multiply">
-<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">out_shape</span></em>, <em class="sig-param"><span class="n">out_strides</span></em>, <em class="sig-param"><span class="n">a_storage</span></em>, <em class="sig-param"><span class="n">a_shape</span></em>, <em class="sig-param"><span class="n">a_strides</span></em>, <em class="sig-param"><span class="n">b_storage</span></em>, <em class="sig-param"><span class="n">b_shape</span></em>, <em class="sig-param"><span class="n">b_strides</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.fast_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.fast_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span><span class="p">:</span> <span class="n">Storage</span></em>, <em class="sig-param"><span class="n">out_shape</span><span class="p">:</span> <span class="n">Shape</span></em>, <em class="sig-param"><span class="n">out_strides</span><span class="p">:</span> <span class="n">Strides</span></em>, <em class="sig-param"><span class="n">a_storage</span><span class="p">:</span> <span class="n">Storage</span></em>, <em class="sig-param"><span class="n">a_shape</span><span class="p">:</span> <span class="n">Shape</span></em>, <em class="sig-param"><span class="n">a_strides</span><span class="p">:</span> <span class="n">Strides</span></em>, <em class="sig-param"><span class="n">b_storage</span><span class="p">:</span> <span class="n">Storage</span></em>, <em class="sig-param"><span class="n">b_shape</span><span class="p">:</span> <span class="n">Shape</span></em>, <em class="sig-param"><span class="n">b_strides</span><span class="p">:</span> <span class="n">Strides</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.fast_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
 <dd><p>NUMBA tensor matrix multiply function.</p>
 <p>Should work for any tensor shapes that broadcast as long as</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">a_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
@@ -524,7 +524,7 @@ practice function to help you get started.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_map">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.cuda_ops.tensor_map" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor map function.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_map</span> <span class="o">=</span> <span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_map</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span> <span class="p">)</span>
@@ -554,7 +554,7 @@ practice function to help you get started.</p>
 
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_zip">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_zip</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.cuda_ops.tensor_zip" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor zipWith (or map2) function</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fn_zip</span> <span class="o">=</span> <span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
 <span class="n">fn_zip</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
@@ -587,7 +587,7 @@ practice function to help you get started.</p>
 
 <dl class="py function">
 <dt id="minitorch.cuda_ops._sum_practice">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_sum_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops._sum_practice" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_sum_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.float64<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.float64<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.cuda_ops._sum_practice" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a practice sum kernel to prepare for reduce.</p>
 <p>Given an array of length <span class="math notranslate nohighlight">\(n\)</span> and out of size <span class="math notranslate nohighlight">\(n // blockDIM\)</span>
 it should sum up each blockDim values into an out cell.</p>
@@ -610,7 +610,7 @@ it should sum up each blockDim values into an out cell.</p>
 
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_reduce">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.cuda_ops.tensor_reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>CUDA higher-order tensor reduce function.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -662,7 +662,7 @@ specified in the docs.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.cuda_ops._mm_practice">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_mm_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em>, <em class="sig-param"><span class="n">size</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops._mm_practice" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">_mm_practice</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">out</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.float64<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.float64<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">numpy.ndarray<span class="p">[</span>Any<span class="p">, </span>numpy.dtype<span class="p">[</span>numpy.float64<span class="p">]</span><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">size</span><span class="p">:</span> <span class="n">int</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.cuda_ops._mm_practice" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is a practice square MM kernel to prepare for matmul.</p>
 <p>Given a storage <cite>out</cite> and two storage <cite>a</cite> and <cite>b</cite>. Where we know
 both are shape [size, size] with strides [size, 1].</p>
@@ -676,16 +676,12 @@ both are shape [size, size] with strides [size, 1].</p>
 </ul>
 </div></blockquote>
 <p>Compute</p>
-<dl class="simple">
-<dt>for i:</dt><dd><dl class="simple">
-<dt>for j:</dt><dd><dl class="simple">
-<dt>for k:</dt><dd><p>out[i, j] += a[i, k] * b[k, j]</p>
-</dd>
-</dl>
-</dd>
-</dl>
-</dd>
-</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">:</span>
+         <span class="k">for</span> <span class="n">k</span><span class="p">:</span>
+             <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span>
+</pre></div>
+</div>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
@@ -700,12 +696,12 @@ both are shape [size, size] with strides [size, 1].</p>
 
 <dl class="py function">
 <dt id="minitorch.cuda_ops.tensor_matrix_multiply">
-<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
-<dd><p>CUDA Kernel object. When called, the kernel object will specialize itself
-for the given arguments (if no suitable specialized version already exists)
-&amp; compute capability, and launch on the device associated with the current
-context.</p>
-<p>Kernel objects are not to be constructed by the user, but instead are
+<code class="sig-prename descclassname">minitorch.cuda_ops.</code><code class="sig-name descname">tensor_matrix_multiply</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.cuda_ops.tensor_matrix_multiply" title="Permalink to this definition">¶</a></dt>
+<dd><p>CUDA Dispatcher object. When configured and called, the dispatcher will
+specialize itself for the given arguments (if no suitable specialized
+version already exists) &amp; compute capability, and launch on the device
+associated with the current context.</p>
+<p>Dispatcher objects are not to be constructed by the user, but instead are
 created using the <code class="xref py py-func docutils literal notranslate"><span class="pre">numba.cuda.jit()</span></code> decorator.</p>
 </dd></dl>
 
@@ -779,7 +775,7 @@ GPU to be below 1 second per epoch. (With some cleverness you can do much better
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

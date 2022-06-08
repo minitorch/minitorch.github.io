@@ -158,20 +158,20 @@ graph in `Streamlit`::
    marked as `task2_3`.
 
 
-.. autofunction:: minitorch.tensor_map
-.. autofunction:: minitorch.tensor_zip
-.. autofunction:: minitorch.tensor_reduce
+.. autofunction:: minitorch.tensor_ops.tensor_map
+.. autofunction:: minitorch.tensor_ops.tensor_zip
+.. autofunction:: minitorch.tensor_ops.tensor_reduce
 
 
 
-.. autofunction:: minitorch.TensorFunctions.Mul.forward
-.. autofunction:: minitorch.TensorFunctions.Sigmoid.forward
-.. autofunction:: minitorch.TensorFunctions.ReLU.forward
-.. autofunction:: minitorch.TensorFunctions.Log.forward
-.. autofunction:: minitorch.TensorFunctions.Exp.forward
-.. autofunction:: minitorch.TensorFunctions.LT.forward
-.. autofunction:: minitorch.TensorFunctions.EQ.forward
-.. autofunction:: minitorch.TensorFunctions.Permute.forward
+.. autofunction:: minitorch.tensor_functions.Mul.forward
+.. autofunction:: minitorch.tensor_functions.Sigmoid.forward
+.. autofunction:: minitorch.tensor_functions.ReLU.forward
+.. autofunction:: minitorch.tensor_functions.Log.forward
+.. autofunction:: minitorch.tensor_functions.Exp.forward
+.. autofunction:: minitorch.tensor_functions.LT.forward
+.. autofunction:: minitorch.tensor_functions.EQ.forward
+.. autofunction:: minitorch.tensor_functions.Permute.forward
 
 
 Tasks 2.4: Gradients and Autograd
@@ -191,14 +191,14 @@ will implement `backward` functions for tensor operations.
       Complete following functions in `minitorch/tensor_ops.py`, and pass
       tests marked as `task2_4`.
 
-.. autofunction:: minitorch.TensorFunctions.Mul.backward
-.. autofunction:: minitorch.TensorFunctions.Sigmoid.backward
-.. autofunction:: minitorch.TensorFunctions.ReLU.backward
-.. autofunction:: minitorch.TensorFunctions.Log.backward
-.. autofunction:: minitorch.TensorFunctions.Exp.backward
-.. autofunction:: minitorch.TensorFunctions.LT.backward
-.. autofunction:: minitorch.TensorFunctions.EQ.backward
-.. autofunction:: minitorch.TensorFunctions.Permute.backward
+.. autofunction:: minitorch.tensor_functions.Mul.backward
+.. autofunction:: minitorch.tensor_functions.Sigmoid.backward
+.. autofunction:: minitorch.tensor_functions.ReLU.backward
+.. autofunction:: minitorch.tensor_functions.Log.backward
+.. autofunction:: minitorch.tensor_functions.Exp.backward
+.. autofunction:: minitorch.tensor_functions.LT.backward
+.. autofunction:: minitorch.tensor_functions.EQ.backward
+.. autofunction:: minitorch.tensor_functions.Permute.backward
 
 
 

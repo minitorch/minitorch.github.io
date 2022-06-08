@@ -12,7 +12,7 @@ operations that are used throughout the codebase.
 Let's start by going back to :doc:`module0` and our `map` operation:
 
 .. automodule:: minitorch.operators.map
-
+   :noindex:
 
 There are many ways to implement this function. Let's consider a version where
 we pass it an explict output list to fill in. Here's a simple implementation::

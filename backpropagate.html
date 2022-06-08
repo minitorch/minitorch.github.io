@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Backpropagation &#8212; MiniTorch 0.1 documentation</title>
+    <title>Backpropagation &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -307,12 +307,12 @@ As graph algorithms are beyond the scope of this document, we recommend
 using the depth-first search algorithm described in pseudocode section of
 <a class="reference external" href="http://wikipedia.org/wiki/Topological_sorting">Topological Sorting</a>.</p>
 <dl class="py function">
-<dt id="minitorch.topological_sort">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">topological_sort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.topological_sort" title="Permalink to this definition">¶</a></dt>
+<dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">topological_sort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">minitorch.autodiff.Variable</span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>minitorch.autodiff.Variable<span class="p">]</span></dt>
 <dd><p>Computes the topological order of the computation graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The right-most variable</p>
+<dd class="field-odd"><p><strong>variable</strong> -- The right-most variable</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
@@ -436,7 +436,7 @@ bit annoying, but it follows the behavior of PyTorch.</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

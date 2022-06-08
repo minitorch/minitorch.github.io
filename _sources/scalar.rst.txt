@@ -63,7 +63,7 @@ We as a user **cannot** ever
 change or manipulate values of Variables directly. We **must** create a
 `Function` class that acts on Variables:
 
-.. autoclass:: minitorch.FunctionBase
+.. autoclass:: minitorch.scalar_functions.ScalarFunction
 
 
 It is useful to think of Functions as little boxes. For
@@ -94,8 +94,7 @@ single scalar float (which is stored in the `data` attribute).
 
 
 This Variable :class:`minitorch.Variable` has a corresponding Function
-class :class:`minitorch.ScalarFunction` which
-is a subclass of :class:`minitorch.FunctionBase`:
+class :class:`minitorch.ScalarFunction`.`:
 
 .. autoclass:: minitorch.ScalarFunction
 

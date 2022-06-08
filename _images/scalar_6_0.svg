@@ -1,48 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="205pt" height="492pt" viewBox="0.00 0.00 204.50 492.00">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="177pt" height="492pt" viewBox="0.00 0.00 176.50 492.00">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 488)">
 <title>%3</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-488 200.5,-488 200.5,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-488 172.5,-488 172.5,4 -4,4"/>
 <!-- out -->
 <g id="node1" class="node">
 <title>out</title>
-<ellipse fill="none" stroke="black" cx="119.5" cy="-18" rx="27" ry="18"/>
-<text text-anchor="middle" x="119.5" y="-14.3" font-family="Times,serif" font-size="14.00">out</text>
+<ellipse fill="none" stroke="black" cx="105.5" cy="-18" rx="27" ry="18"/>
+<text text-anchor="middle" x="105.5" y="-14.3" font-family="Times,serif" font-size="14.00">out</text>
 </g>
 <!-- Mul (Op 0) -->
 <g id="node2" class="node">
 <title>Mul (Op 0)</title>
-<polygon fill="none" stroke="black" stroke-width="3" points="166,-165 73,-165 73,-72 166,-72 166,-165"/>
-<text text-anchor="middle" x="119.5" y="-114.8" font-family="Times,serif" font-size="14.00">Mul (Op 0)</text>
+<polygon fill="none" stroke="black" stroke-width="3" points="152,-165 59,-165 59,-72 152,-72 152,-165"/>
+<text text-anchor="middle" x="105.5" y="-114.8" font-family="Times,serif" font-size="14.00">Mul (Op 0)</text>
 </g>
 <!-- Mul (Op 0)&#45;&gt;out -->
 <g id="edge1" class="edge">
 <title>Mul (Op 0)-&gt;out</title>
-<path fill="none" stroke="black" d="M119.5,-72C119.5,-63.27 119.5,-54.37 119.5,-46.43"/>
-<polygon fill="black" stroke="black" points="123,-46.29 119.5,-36.29 116,-46.29 123,-46.29"/>
+<path fill="none" stroke="black" d="M105.5,-72C105.5,-63.27 105.5,-54.37 105.5,-46.43"/>
+<polygon fill="black" stroke="black" points="109,-46.29 105.5,-36.29 102,-46.29 109,-46.29"/>
 </g>
-<!-- Variable4 -->
+<!-- 3 -->
 <g id="node3" class="node">
-<title>Variable4</title>
-<ellipse fill="none" stroke="black" cx="69.5" cy="-219" rx="54.69" ry="18"/>
-<text text-anchor="middle" x="69.5" y="-215.3" font-family="Times,serif" font-size="14.00">Variable4</text>
+<title>3</title>
+<ellipse fill="none" stroke="black" cx="69.5" cy="-219" rx="27" ry="18"/>
+<text text-anchor="middle" x="69.5" y="-215.3" font-family="Times,serif" font-size="14.00">3</text>
 </g>
-<!-- Variable4&#45;&gt;Mul (Op 0) -->
+<!-- 3&#45;&gt;Mul (Op 0) -->
 <g id="edge2" class="edge">
-<title>Variable4-&gt;Mul (Op 0)</title>
-<path fill="none" stroke="black" d="M78.21,-200.84C82.07,-193.25 86.84,-183.85 91.75,-174.16"/>
-<polygon fill="black" stroke="black" points="94.88,-175.74 96.28,-165.24 88.64,-172.57 94.88,-175.74"/>
+<title>3-&gt;Mul (Op 0)</title>
+<path fill="none" stroke="black" d="M75.61,-201.29C78.35,-193.8 81.75,-184.49 85.27,-174.86"/>
+<polygon fill="black" stroke="black" points="88.66,-175.78 88.8,-165.18 82.08,-173.37 88.66,-175.78"/>
 </g>
 <!-- y -->
 <g id="node4" class="node">
 <title>y</title>
-<ellipse fill="none" stroke="black" cx="169.5" cy="-219" rx="27" ry="18"/>
-<text text-anchor="middle" x="169.5" y="-215.3" font-family="Times,serif" font-size="14.00">y</text>
+<ellipse fill="none" stroke="black" cx="141.5" cy="-219" rx="27" ry="18"/>
+<text text-anchor="middle" x="141.5" y="-215.3" font-family="Times,serif" font-size="14.00">y</text>
 </g>
 <!-- y&#45;&gt;Mul (Op 0) -->
 <g id="edge3" class="edge">
 <title>y-&gt;Mul (Op 0)</title>
-<path fill="none" stroke="black" d="M161.24,-201.73C157.34,-194.04 152.42,-184.35 147.34,-174.35"/>
-<polygon fill="black" stroke="black" points="150.31,-172.46 142.66,-165.13 144.07,-175.63 150.31,-172.46"/>
+<path fill="none" stroke="black" d="M135.39,-201.29C132.65,-193.8 129.25,-184.49 125.73,-174.86"/>
+<polygon fill="black" stroke="black" points="128.92,-173.37 122.2,-165.18 122.34,-175.78 128.92,-173.37"/>
 </g>
 <!-- TimesFive (Op 1) -->
 <g id="node5" class="node">
@@ -50,9 +50,9 @@
 <polygon fill="none" stroke="black" stroke-width="3" points="139,-412 0,-412 0,-273 139,-273 139,-412"/>
 <text text-anchor="middle" x="69.5" y="-338.8" font-family="Times,serif" font-size="14.00">TimesFive (Op 1)</text>
 </g>
-<!-- TimesFive (Op 1)&#45;&gt;Variable4 -->
+<!-- TimesFive (Op 1)&#45;&gt;3 -->
 <g id="edge4" class="edge">
-<title>TimesFive (Op 1)-&gt;Variable4</title>
+<title>TimesFive (Op 1)-&gt;3</title>
 <path fill="none" stroke="black" d="M69.5,-272.94C69.5,-263.86 69.5,-255.03 69.5,-247.26"/>
 <polygon fill="black" stroke="black" points="73,-247.06 69.5,-237.06 66,-247.06 73,-247.06"/>
 </g>

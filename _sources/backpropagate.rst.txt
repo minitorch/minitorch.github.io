@@ -76,6 +76,7 @@ using the depth-first search algorithm described in pseudocode section of
 `Topological Sorting <http://wikipedia.org/wiki/Topological_sorting>`_.
 
 .. autofunction:: minitorch.topological_sort
+   :noindex:
 
 Backprop
 ----------

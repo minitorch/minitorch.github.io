@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Fundamentals &#8212; MiniTorch 0.1 documentation</title>
+    <title>Fundamentals &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -296,49 +296,49 @@ tests marked as <cite>task0_1</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.operators.mul">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">mul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.mul" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">mul</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.mul" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x, y) = x * y\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.id">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.id" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">id</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.id" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) = x\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.eq">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">eq</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.eq" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">eq</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.eq" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> 1.0 if x is equal to y else 0.0</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.neg">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">neg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.neg" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">neg</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.neg" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) = -x\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.add">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.add" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">add</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.add" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x, y) = x + y\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.max">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.max" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">max</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.max" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater than y else y</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.lt">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">lt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">y</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.lt" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">lt</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">y</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.lt" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> 1.0 if x is less than y else 0.0</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.sigmoid">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sigmoid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.sigmoid" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span></p>
 <p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Sigmoid_function">https://en.wikipedia.org/wiki/Sigmoid_function</a> .)</p>
 <p>Calculate as</p>
@@ -359,7 +359,7 @@ tests marked as <cite>task0_1</cite>.</p>
 
 <dl class="py function">
 <dt id="minitorch.operators.relu">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.relu" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) =\)</span> x if x is greater than 0, else 0</p>
 <p>(See <a class="reference external" href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks)">https://en.wikipedia.org/wiki/Rectifier_(neural_networks)</a> .)</p>
 <dl class="field-list simple">
@@ -377,25 +377,25 @@ tests marked as <cite>task0_1</cite>.</p>
 
 <dl class="py function">
 <dt id="minitorch.operators.inv">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">inv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.inv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">inv</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.inv" title="Permalink to this definition">¶</a></dt>
 <dd><p><span class="math notranslate nohighlight">\(f(x) = 1/x\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.inv_back">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">inv_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.inv_back" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">inv_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">d</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.inv_back" title="Permalink to this definition">¶</a></dt>
 <dd><p>If <span class="math notranslate nohighlight">\(f(x) = 1/x\)</span> compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.relu_back">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.relu_back" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">relu_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">d</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.relu_back" title="Permalink to this definition">¶</a></dt>
 <dd><p>If <span class="math notranslate nohighlight">\(f = relu\)</span> compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.log_back">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span></em>, <em class="sig-param"><span class="n">d</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.log_back" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">log_back</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">x</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">d</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.log_back" title="Permalink to this definition">¶</a></dt>
 <dd><p>If <span class="math notranslate nohighlight">\(f = log\)</span> as above, compute <span class="math notranslate nohighlight">\(d \times f'(x)\)</span></p>
 </dd></dl>
 
@@ -440,7 +440,7 @@ tests marked as <cite>tasks0_3</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.operators.map">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.map" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">map</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Callable<span class="p">[</span><span class="p">[</span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><span class="p">, </span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#minitorch.operators.map" title="Permalink to this definition">¶</a></dt>
 <dd><p>Higher-order map.</p>
 <img alt="_images/maplist.png" src="_images/maplist.png" />
 <p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
@@ -460,13 +460,13 @@ new list</p>
 
 <dl class="py function">
 <dt id="minitorch.operators.negList">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
-<dd><p>Use <a class="reference internal" href="parallel.html#module-minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> to negate each element in <cite>ls</cite></p>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">negList</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#minitorch.operators.negList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use <a class="reference internal" href="#minitorch.operators.map" title="minitorch.operators.map"><code class="xref py py-func docutils literal notranslate"><span class="pre">map()</span></code></a> and <a class="reference internal" href="#minitorch.operators.neg" title="minitorch.operators.neg"><code class="xref py py-func docutils literal notranslate"><span class="pre">neg()</span></code></a> to negate each element in <cite>ls</cite></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.zipWith">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">zipWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.zipWith" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">zipWith</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Callable<span class="p">[</span><span class="p">[</span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">, </span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><span class="p">, </span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#minitorch.operators.zipWith" title="Permalink to this definition">¶</a></dt>
 <dd><p>Higher-order zipwith (or map2).</p>
 <img alt="_images/ziplist.png" src="_images/ziplist.png" />
 <p>See <a class="reference external" href="https://en.wikipedia.org/wiki/Map_(higher-order_function)">https://en.wikipedia.org/wiki/Map_(higher-order_function)</a></p>
@@ -486,13 +486,13 @@ applying fn(x, y) on each pair of elements.</p>
 
 <dl class="py function">
 <dt id="minitorch.operators.addLists">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">addLists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls1</span></em>, <em class="sig-param"><span class="n">ls2</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.addLists" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">addLists</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls1</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">ls2</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>float<span class="p">]</span><a class="headerlink" href="#minitorch.operators.addLists" title="Permalink to this definition">¶</a></dt>
 <dd><p>Add the elements of <cite>ls1</cite> and <cite>ls2</cite> using <a class="reference internal" href="#minitorch.operators.zipWith" title="minitorch.operators.zipWith"><code class="xref py py-func docutils literal notranslate"><span class="pre">zipWith()</span></code></a> and <a class="reference internal" href="#minitorch.operators.add" title="minitorch.operators.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">add()</span></code></a></p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.reduce">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span></em>, <em class="sig-param"><span class="n">start</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.reduce" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">reduce</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">fn</span><span class="p">:</span> <span class="n">Callable<span class="p">[</span><span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><span class="p">, </span>float<span class="p">]</span></span></em>, <em class="sig-param"><span class="n">start</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; Callable<span class="p">[</span><span class="p">[</span>Iterable<span class="p">[</span>float<span class="p">]</span><span class="p">]</span><span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#minitorch.operators.reduce" title="Permalink to this definition">¶</a></dt>
 <dd><p>Higher-order reduce.</p>
 <img alt="_images/reducelist.png" src="_images/reducelist.png" />
 <dl class="field-list simple">
@@ -515,13 +515,13 @@ fn(x_1, x_0)))\)</span></p>
 
 <dl class="py function">
 <dt id="minitorch.operators.sum">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.sum" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">sum</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.sum" title="Permalink to this definition">¶</a></dt>
 <dd><p>Sum up a list using <a class="reference internal" href="#minitorch.operators.reduce" title="minitorch.operators.reduce"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce()</span></code></a> and <a class="reference internal" href="#minitorch.operators.add" title="minitorch.operators.add"><code class="xref py py-func docutils literal notranslate"><span class="pre">add()</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.operators.prod">
-<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">prod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.operators.prod" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.operators.</code><code class="sig-name descname">prod</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable<span class="p">[</span>float<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.operators.prod" title="Permalink to this definition">¶</a></dt>
 <dd><p>Product of a list using <a class="reference internal" href="#minitorch.operators.reduce" title="minitorch.operators.reduce"><code class="xref py py-func docutils literal notranslate"><span class="pre">reduce()</span></code></a> and <a class="reference internal" href="#minitorch.operators.mul" title="minitorch.operators.mul"><code class="xref py py-func docutils literal notranslate"><span class="pre">mul()</span></code></a>.</p>
 </dd></dl>
 
@@ -554,19 +554,19 @@ interest.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.Module.train">
-<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.train" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">train</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.Module.train" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of this module and all descendent modules to <cite>train</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Module.eval">
-<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.eval" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">eval</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.Module.eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Set the mode of this module and all descendent modules to <cite>eval</cite>.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Module.named_parameters">
-<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">named_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.named_parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">named_parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>Tuple<span class="p">[</span>str<span class="p">, </span>Parameter<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#minitorch.Module.named_parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Collect all the parameters of this module and its descendents.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
@@ -580,7 +580,7 @@ interest.</p>
 
 <dl class="py function">
 <dt id="minitorch.Module.parameters">
-<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Module.parameters" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Module.</code><code class="sig-name descname">parameters</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>Parameter<span class="p">]</span><a class="headerlink" href="#minitorch.Module.parameters" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enumerate over all the parameters of this module and its descendents.</p>
 </dd></dl>
 
@@ -651,7 +651,7 @@ repo along with the parameters that your used.</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

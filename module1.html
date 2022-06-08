@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Autodiff &#8212; MiniTorch 0.1 documentation</title>
+    <title>Autodiff &#8212; MiniTorch 0.3 documentation</title>
     
     <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 <link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -38,7 +38,7 @@
     <script src="_static/language_data.js"></script>
     <script src="_static/thebelab-helper.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -309,23 +309,23 @@ marked as <cite>task1_1</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.scalar.central_difference">
-<code class="sig-prename descclassname">minitorch.scalar.</code><code class="sig-name descname">central_difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">vals</span></em>, <em class="sig-param"><span class="n">arg</span><span class="o">=</span><span class="default_value">0</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="o">=</span><span class="default_value">1e-06</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.central_difference" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.scalar.</code><code class="sig-name descname">central_difference</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">f</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">vals</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">arg</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">epsilon</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">1e-06</span></em><span class="sig-paren">)</span> &#x2192; Any<a class="headerlink" href="#minitorch.scalar.central_difference" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes an approximation to the derivative of <cite>f</cite> with respect to one arg.</p>
 <p>See <a class="reference internal" href="derivative.html"><span class="doc">Derivatives</span></a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">https://en.wikipedia.org/wiki/Finite_difference</a> for more details.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>f</strong> -- arbitrary function from n-scalar args to one value</p></li>
-<li><p><strong>*vals</strong> (<em>list of floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span></p></li>
-<li><p><strong>arg</strong> (<em>int</em>) -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
-<li><p><strong>epsilon</strong> (<em>float</em>) -- a small constant</p></li>
+<li><p><strong>*vals</strong> -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span></p></li>
+<li><p><strong>arg</strong> -- the number <span class="math notranslate nohighlight">\(i\)</span> of the arg to compute the derivative</p></li>
+<li><p><strong>epsilon</strong> -- a small constant</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>An approximation of <span class="math notranslate nohighlight">\(f'_i(x_0, \ldots, x_{n-1})\)</span></p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>float</p>
+<dd class="field-odd"><p>Any</p>
 </dd>
 </dl>
 </dd></dl>
@@ -343,23 +343,6 @@ Be sure to first carefully read the Guide on
 <a class="reference internal" href="scalar.html#minitorch.Scalar" title="minitorch.Scalar"><code class="xref py py-class docutils literal notranslate"><span class="pre">minitorch.Scalar</span></code></a> class.
 Each of these requires wiring the internal Python operator to the correct
 <code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.forward()</span></code> call.</p>
-<dl class="py function">
-<dt id="minitorch.scalar.ScalarFunction.forward">
-<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">inputs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.forward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Forward call, compute <span class="math notranslate nohighlight">\(f(x_0 \ldots x_{n-1})\)</span>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- A container object to save
-any information that may be needed
-for the call to backward.</p></li>
-<li><p><strong>*inputs</strong> (<em>list of floats</em>) -- n-float values <span class="math notranslate nohighlight">\(x_0 \ldots x_{n-1}\)</span>.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Should return float the computation of the function <span class="math notranslate nohighlight">\(f\)</span>.</p>
-</dd></dl>
-
 <p>Read the example ScalarFunctions that we have implemented for guidelines. You
 may find it useful to reuse the operators from Module 0.</p>
 <p>We have built a debugging tool for you to observe the workings of your
@@ -371,46 +354,46 @@ file and then run the code to create a graph in <cite>Streamlit</cite>:</p>
 </div>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Todo</p>
-<p>Complete the following functions in <cite>minitorch/scalar.py</cite>.</p>
+<p>Complete the following functions in <cite>minitorch/scalar_functions.py</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.scalar.Mul.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Mul.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Mul.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Mul.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Mul.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Inv.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Inv.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Inv.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Inv.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Inv.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Inv.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Neg.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Neg.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Neg.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Neg.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Sigmoid.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Sigmoid.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Sigmoid.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Sigmoid.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.ReLU.forward">
-<code class="sig-prename descclassname">minitorch.scalar.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ReLU.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.ReLU.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.ReLU.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.ReLU.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Exp.forward">
-<code class="sig-prename descclassname">minitorch.scalar.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Exp.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Exp.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Exp.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Exp.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.LT.forward">
-<code class="sig-prename descclassname">minitorch.scalar.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.LT.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.LT.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.LT.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.LT.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.EQ.forward">
-<code class="sig-prename descclassname">minitorch.scalar.EQ.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">a</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.EQ.forward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.EQ.forward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.EQ.</code><code class="sig-name descname">forward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">a</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.EQ.forward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <div class="admonition-todo admonition" id="id4">
@@ -423,47 +406,47 @@ for the interface of these methods. All of these functions should return
 </div>
 <dl class="py function">
 <dt id="minitorch.Scalar.__lt__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__lt__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__lt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">, </span>Scalar<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.__lt__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.__gt__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__gt__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__gt__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">, </span>Scalar<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.__gt__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.__sub__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__sub__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__sub__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">, </span>Scalar<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.__sub__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.__neg__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__neg__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__neg__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.__neg__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.__add__">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.__add__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">__add__</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">b</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">, </span>Scalar<span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.__add__" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.log">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.log" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">log</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.log" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.exp">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">exp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.exp" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">exp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.exp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.sigmoid">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.sigmoid" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">sigmoid</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.sigmoid" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
 <dt id="minitorch.Scalar.relu">
-<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.Scalar.relu" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">relu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em><span class="sig-paren">)</span> &#x2192; Scalar<a class="headerlink" href="#minitorch.Scalar.relu" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -476,7 +459,7 @@ understand the chain rule, Variables, and Functions.
 Be sure to first read the Guide on
 <a class="reference internal" href="chainrule.html"><span class="doc">Autodifferentiation</span></a> very carefully and read the code for other ScalarFunctions.</p>
 </div>
-<p>Implement the <cite>chain_rule</cite> function on FunctionBase for functions of arbitrary
+<p>Implement the <cite>chain_rule</cite> function in Scalar for functions of arbitrary
 arguments.
 This function should be able to backward process a function by passing it in
 a context and <span class="math notranslate nohighlight">\(d_{out}\)</span> and then collecting the local derivatives. It
@@ -485,30 +468,13 @@ is also where we filter out constants that were used on the forward pass,
 but do not need derivatives.</p>
 <div class="admonition-todo admonition" id="id5">
 <p class="admonition-title">Todo</p>
-<p>Complete the following function in <cite>minitorch/autodiff.py</cite>, and pass
+<p>Complete the following function in <cite>minitorch/scalar.py</cite>, and pass
 tests marked as <cite>task1_3</cite>.</p>
 </div>
 <dl class="py function">
-<dt id="minitorch.FunctionBase.chain_rule">
-<code class="sig-prename descclassname">minitorch.FunctionBase.</code><code class="sig-name descname">chain_rule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">inputs</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.FunctionBase.chain_rule" title="Permalink to this definition">¶</a></dt>
-<dd><p>Implement the derivative chain-rule.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Context</span></code>) -- The context from running forward</p></li>
-<li><p><strong>inputs</strong> (<em>list of args</em>) -- The args that were passed to <code class="xref py py-func docutils literal notranslate"><span class="pre">FunctionBase.apply()</span></code> (e.g. <span class="math notranslate nohighlight">\(x, y\)</span>)</p></li>
-<li><p><strong>d_output</strong> (<em>number</em>) -- The <cite>d_output</cite> value in the chain rule.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>A list of non-constant variables with their derivatives
-(see <cite>is_constant</cite> to remove unneeded variables)</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>list of (<cite>Variable</cite>, number)</p>
-</dd>
-</dl>
-</dd></dl>
+<dt id="minitorch.Scalar.chain_rule">
+<code class="sig-prename descclassname">minitorch.Scalar.</code><code class="sig-name descname">chain_rule</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">self</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>Tuple<span class="p">[</span>minitorch.autodiff.Variable<span class="p">, </span>Any<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#minitorch.Scalar.chain_rule" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </section>
 <section id="task-1-4-backpropagation">
@@ -522,22 +488,6 @@ ScalarFunctions.</p>
 <p>Implement backpropagation. Each of these requires wiring the internal Python
 operator to the correct
 <code class="xref py py-func docutils literal notranslate"><span class="pre">minitorch.Function.backward()</span></code> call.</p>
-<dl class="py function">
-<dt id="minitorch.scalar.ScalarFunction.backward">
-<code class="sig-prename descclassname">minitorch.scalar.ScalarFunction.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_out</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ScalarFunction.backward" title="Permalink to this definition">¶</a></dt>
-<dd><p>Backward call, computes <span class="math notranslate nohighlight">\(f'_{x_i}(x_0 \ldots x_{n-1}) \times d_{out}\)</span>.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ctx</strong> (<em>Context</em>) -- A container object holding any information saved during in the corresponding <cite>forward</cite> call.</p></li>
-<li><p><strong>d_out</strong> (<em>float</em>) -- <span class="math notranslate nohighlight">\(d_out\)</span> term in the chain rule.</p></li>
-</ul>
-</dd>
-</dl>
-<p>Should return the computation of the derivative function
-<span class="math notranslate nohighlight">\(f'_{x_i}\)</span> for each input <span class="math notranslate nohighlight">\(x_i\)</span> times <cite>d_out</cite>.</p>
-</dd></dl>
-
 <p>Read the example ScalarFunctions that we have implemented for
 guidelines. Feel free to also consult <a class="reference external" href="https://en.wikipedia.org/wiki/Differentiation_rules">differentiation rules</a> if you forget how
 these identities work.</p>
@@ -549,11 +499,11 @@ and pass tests marked as <cite>task1_4</cite>.</p>
 </div>
 <dl class="py function">
 <dt id="minitorch.topological_sort">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">topological_sort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.topological_sort" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">topological_sort</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">minitorch.autodiff.Variable</span></em><span class="sig-paren">)</span> &#x2192; Iterable<span class="p">[</span>minitorch.autodiff.Variable<span class="p">]</span><a class="headerlink" href="#minitorch.topological_sort" title="Permalink to this definition">¶</a></dt>
 <dd><p>Computes the topological order of the computation graph.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The right-most variable</p>
+<dd class="field-odd"><p><strong>variable</strong> -- The right-most variable</p>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p><dl class="simple">
@@ -570,15 +520,15 @@ and pass tests marked as <cite>task1_4</cite>.</p>
 
 <dl class="py function">
 <dt id="minitorch.backpropagate">
-<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span></em>, <em class="sig-param"><span class="n">deriv</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">minitorch.</code><code class="sig-name descname">backpropagate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">variable</span><span class="p">:</span> <span class="n">minitorch.autodiff.Variable</span></em>, <em class="sig-param"><span class="n">deriv</span><span class="p">:</span> <span class="n">Any</span></em><span class="sig-paren">)</span> &#x2192; None<a class="headerlink" href="#minitorch.backpropagate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Runs backpropagation on the computation graph in order to
 compute derivatives for the leave nodes.</p>
 <p>See <a class="reference internal" href="backpropagate.html"><span class="doc">Backpropagation</span></a> for details on the algorithm.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>variable</strong> (<a class="reference internal" href="scalar.html#minitorch.Variable" title="minitorch.Variable"><code class="xref py py-class docutils literal notranslate"><span class="pre">Variable</span></code></a>) -- The right-most variable</p></li>
-<li><p><strong>deriv</strong> (<em>number</em>) -- Its derivative that we want to propagate backward to the leaves.</p></li>
+<li><p><strong>variable</strong> -- The right-most variable</p></li>
+<li><p><strong>deriv</strong> -- Its derivative that we want to propagate backward to the leaves.</p></li>
 </ul>
 </dd>
 </dl>
@@ -586,33 +536,33 @@ compute derivatives for the leave nodes.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Mul.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Mul.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Mul.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Mul.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span>float<span class="p">, </span>float<span class="p">]</span><a class="headerlink" href="#minitorch.scalar_functions.Mul.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Inv.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Inv.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Inv.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Inv.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Inv.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Inv.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Neg.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Neg.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Neg.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Neg.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Neg.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Neg.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Sigmoid.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Sigmoid.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Sigmoid.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Sigmoid.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.ReLU.backward">
-<code class="sig-prename descclassname">minitorch.scalar.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.ReLU.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.ReLU.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.ReLU.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.ReLU.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="minitorch.scalar.Exp.backward">
-<code class="sig-prename descclassname">minitorch.scalar.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span></em>, <em class="sig-param"><span class="n">d_output</span></em><span class="sig-paren">)</span><a class="headerlink" href="#minitorch.scalar.Exp.backward" title="Permalink to this definition">¶</a></dt>
+<dt id="minitorch.scalar_functions.Exp.backward">
+<code class="sig-prename descclassname">minitorch.scalar_functions.Exp.</code><code class="sig-name descname">backward</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ctx</span><span class="p">:</span> <span class="n">minitorch.autodiff.Context</span></em>, <em class="sig-param"><span class="n">d_output</span><span class="p">:</span> <span class="n">float</span></em><span class="sig-paren">)</span> &#x2192; float<a class="headerlink" href="#minitorch.scalar_functions.Exp.backward" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </section>
@@ -686,7 +636,7 @@ the parameters at the bottom of the file. Start with this simple config:</p>
     
     <div class="footer-item">
       <p class="copyright">
-    &copy; Copyright 2021, Sasha Rush.<br>
+    &copy; Copyright 2022, Sasha Rush.<br>
 </p>
     </div>
     

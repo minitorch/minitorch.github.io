@@ -2632,7 +2632,7 @@ We can think of there being an implied <code>reduce</code> shape that is elimina
 in the process of the
 output construction. For instance, in the example below, we start with an
 input of shape (3, 2) and create
-an output of shape (1, 2). Implicitly, we reduce over a ternsor of shape
+an output of shape (1, 2). Implicitly, we reduce over a tensor of shape
 (3, 1) for each element in the output.</li>
 </ul>
 
@@ -2710,14 +2710,14 @@ d.connect(("a", 2, 0), ("a", 0, 0)).connect(("a", 2, 1), ("a", 0, 1))</div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Reduction is a bit more complex than the others, so lets discuss how it
+<p>Reduction is a bit more complex than the others, so let's discuss how it
 is implemented.</p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Reductions can specify an dimension (or axis) that tells us which elements
+<p>Reductions can specify a dimension (or axis) that tells us which elements
 to reduce. The
 reduction is then applied along that dimension. For example if we <code>reduce</code>
 dimension 0 we get the

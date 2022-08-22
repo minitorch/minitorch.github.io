@@ -1797,8 +1797,8 @@ not)</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
-    <span class="s2">&quot;Cool add function&quot;</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="s2">&quot;A customized integer addition function.&quot;</span>
     <span class="n">out</span> <span class="o">=</span> <span class="n">a</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="n">b</span><span class="p">):</span>
         <span class="n">out</span> <span class="o">-=</span> <span class="mi">1</span>
@@ -1806,8 +1806,8 @@ not)</p>
         <span class="n">out</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">out</span>
 </pre></div>
-<div id="cell-1" class="clipboard-copy-txt">def cool_add(a: int, b: int) -> int:
-    "Cool add function"
+<div id="cell-1" class="clipboard-copy-txt">def my_add(a: int, b: int) -> int:
+    "A customized integer addition function."
     out = a
     for _ in range(-b):
         out -= 1
@@ -1849,16 +1849,16 @@ not)</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">test_add_basic</span><span class="p">():</span>
     <span class="c1"># Check same as slow system add</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">7</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">7</span>
     <span class="c1"># Check that order doesn&#39;t matter</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">cool_add</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span> <span class="o">==</span> <span class="n">my_add</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">test_add_basic</span><span class="p">()</span>
 </pre></div>
 <div id="cell-2" class="clipboard-copy-txt">def test_add_basic():
     # Check same as slow system add
-    assert cool_add(10, 7) == 10 + 7
+    assert my_add(10, 7) == 10 + 7
     # Check that order doesn't matter
-    assert cool_add(10, 7) == cool_add(7, 10)
+    assert my_add(10, 7) == my_add(7, 10)
 test_add_basic()</div>
     
         </div>
@@ -1908,14 +1908,14 @@ hold for every pair of integers:</p>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">test_add_naive</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
-            <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-            <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+            <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+            <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">my_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 <div id="cell-3" class="clipboard-copy-txt">def test_add_naive():
     for a in range(-100, 100):
         for b in range(-100, 100):
-            assert cool_add(a, b) == a + b
-            assert cool_add(a, b) == cool_add(b, a)</div>
+            assert my_add(a, b) == a + b
+            assert my_add(a, b) == my_add(b, a)</div>
     
         </div>
     </div>
@@ -1951,7 +1951,7 @@ cases for you.</p>
 <p>In MiniTorch, we will use a property checking library in
 Python called <code>Hypothesis</code>
 (<a href="https://hypothesis.readthedocs.io/">https://hypothesis.readthedocs.io/</a>). Hypothesis predefines a whole
-set of building block <code>strategies</code> that the user can pick from when
+set of building block <em>strategies</em> that the user can pick from when
 writing tests. (You can also write your strategies, which you will
 do in the next assignment.)
 You can generate integers, floats, lists, strings, etc.
@@ -2012,16 +2012,16 @@ from hypothesis.strategies import integers</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="nd">@given</span><span class="p">(</span><span class="n">integers</span><span class="p">(),</span> <span class="n">integers</span><span class="p">())</span>
 <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># Check same as slow system add</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="c1"># Check that order doesn&#39;t matter</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">my_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 <div id="cell-5" class="clipboard-copy-txt">@given(integers(), integers())
 def test_add(a, b):
     # Check same as slow system add
-    assert cool_add(a, b) == a + b
+    assert my_add(a, b) == a + b
     # Check that order doesn't matter
-    assert cool_add(a, b) == cool_add(b, a)</div>
+    assert my_add(a, b) == my_add(b, a)</div>
     
         </div>
     </div>
@@ -2082,7 +2082,7 @@ When debugging we can force it to give us some values.</p>
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>5</pre>
+<pre>2</pre>
 </div>
 
 </div>
@@ -2123,17 +2123,17 @@ create easy to debug test cases.</p>
 <span class="nd">@example</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">test_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
     <span class="c1"># Check same as slow system add</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
     <span class="c1"># Check that order doesn&#39;t matter</span>
-    <span class="k">assert</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">cool_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">my_add</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="n">my_add</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 </pre></div>
 <div id="cell-7" class="clipboard-copy-txt">@given(integers(), integers())
 @example(5, 7)
 def test_add(a, b):
     # Check same as slow system add
-    assert cool_add(a, b) == a + b
+    assert my_add(a, b) == a + b
     # Check that order doesn't matter
-    assert cool_add(a, b) == cool_add(b, a)</div>
+    assert my_add(a, b) == my_add(b, a)</div>
     
         </div>
     </div>

@@ -40,12 +40,19 @@ p.tensor_out {
     font-size: 1em;
 }
 
+.reveal img {
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
 
 .reveal section p {
     font-size: 1.7em !important;
 }
 .reveal section h2 {
-    font-size: 4em !important;
+    font-size: 3em !important;
+    margin-bottom: 1em;
 }
 
 .reveal section li {

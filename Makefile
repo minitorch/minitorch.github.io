@@ -16,7 +16,7 @@ checks: $(CHECKS)
 	jupytext --execute --run-path .. --to notebook $<
 
 %.slides.html : %.ipynb
-	jupyter nbconvert  $< --to slides --SlidesExporter.reveal_transition="none" --template slides/talk
+	jupyter nbconvert  $< --to slides --SlidesExporter.reveal_transition="none" --template slides/talk/
 
 
 %.html : %.ipynb

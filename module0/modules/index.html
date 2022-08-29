@@ -1781,9 +1781,11 @@ Licensed under the Apache License, Version 2.0.
             </clipboard-copy>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)</span>
 </pre></div>
 <div id="cell-1" class="clipboard-copy-txt">import sys
+
 sys.path.append("../")</div>
     
         </div>
@@ -1839,10 +1841,12 @@ three types.</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">minitorch</span> <span class="kn">import</span> <span class="n">Parameter</span><span class="p">,</span> <span class="n">Module</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">minitorch</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span>
+
 
 <span class="k">class</span> <span class="nc">OtherModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">pass</span>
+
 
 <span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1858,10 +1862,12 @@ three types.</p>
         <span class="c1"># Type 3. another Module</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">()</span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt">from minitorch import Parameter, Module
+<div id="cell-2" class="clipboard-copy-txt">from minitorch import Module, Parameter
+
 
 class OtherModule(Module):
     pass
+
 
 class MyModule(Module):
     def __init__(self):
@@ -1994,25 +2000,25 @@ extract the flattened parameters</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">Module2</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Module3</span><span class="p">()</span>
 
-        
+
 <span class="k">class</span> <span class="nc">Module2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 
-        
+
 <span class="k">class</span> <span class="nc">Module3</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">Module4</span><span class="p">()</span>
 
-        
+
 <span class="k">class</span> <span class="nc">Module4</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p3</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
 
-        
+
 <span class="n">Module1</span><span class="p">()</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span>
 </pre></div>
 <div id="cell-4" class="clipboard-copy-txt">class Module1(Module):
@@ -2022,25 +2028,25 @@ extract the flattened parameters</p>
         self.a = Module2()
         self.b = Module3()
 
-        
+
 class Module2(Module):
     def __init__(self):
         super().__init__()
         self.p2 = Parameter(10)
 
-        
+
 class Module3(Module):
     def __init__(self):
         super().__init__()
         self.c = Module4()
 
-        
+
 class Module4(Module):
     def __init__(self):
         super().__init__()
         self.p3 = Parameter(15)
 
-        
+
 Module1().named_parameters()</div>
     
         </div>
@@ -2076,7 +2082,7 @@ Module1().named_parameters()</div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="../../figs/Module/module.png" alt=""></p>
+<p><img src="../../figs/Module/module.png" alt="" /></p>
 
 </div>
 </div>

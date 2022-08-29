@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="chrome=1" />
@@ -10,7 +10,7 @@
 <title>module0.3 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/reveal.css">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -14627,9 +14627,11 @@ div.jp-OutputPrompt {
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><!-- Reveal Theme -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/theme/simple.css" id="theme">
 
 </head>
+
+  <link rel="stylesheet" href="custom.css">
 
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
@@ -14637,786 +14639,311 @@ div.jp-OutputPrompt {
 <div class="slides"><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Machine-Learning-Engineering">Machine Learning Engineering<a class="anchor-link" href="#Machine-Learning-Engineering">&#182;</a></h1>
+<h2 id="Module-1.0---Mini-ML">Module 1.0 - Mini-ML<a class="anchor-link" href="#Module-1.0---Mini-ML">&#182;</a></h2>
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-1.0">Module 1.0<a class="anchor-link" href="#Module-1.0">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Mini-ML</p>
+<h2 id="Lecture-Quiz">Lecture Quiz<a class="anchor-link" href="#Lecture-Quiz">&#182;</a></h2><p>Quiz</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Lecture">Lecture<a class="anchor-link" href="#Lecture">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Lecture-Quiz">Lecture Quiz<a class="anchor-link" href="#Lecture-Quiz">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><code>Quiz &lt;&gt;</code>_</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Model</li>
+<h2 id="Outline">Outline<a class="anchor-link" href="#Outline">&#182;</a></h2><ul>
+<li><p>Model</p>
+</li>
+<li><p>Parameters</p>
+</li>
+<li><p>Loss</p>
+</li>
 </ul>
 
 </div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Parameters</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Loss</li>
-</ul>
-
-</div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Datasets">Datasets<a class="anchor-link" href="#Datasets">&#182;</a></h1>
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Convention :math:<code>x</code></li>
+<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2><ul>
+<li>Convention $x$</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data1.png
            :align: center
            :width: 250px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Convention :math:<code>x</code></li>
+<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2><ul>
+<li>Convention $x$</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data2.png
            :align: center
            :width: 250px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Convention :math:<code>x</code></li>
+<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2><ul>
+<li>Convention $x$</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data3.png
            :align: center
            :width: 250px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Data-Labels">Data Labels<a class="anchor-link" href="#Data-Labels">&#182;</a></h2><ul>
 <li>Convention :math:<code>y=0</code> and :math:<code>y=1</code></li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data2.png
            :align: center
            :width: 250px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data3.png
            :align: center
            :width: 250px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Training-Data">Training Data<a class="anchor-link" href="#Training-Data">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Training-Data">Training Data<a class="anchor-link" href="#Training-Data">&#182;</a></h2><ul>
 <li>Set of datapoints, each :math:<code>(x,y)</code></li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Graphs/data@3x.png
            :align: center
            :width: 250px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2><ul>
 <li>Convention :math:<code>x</code></li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Conv/im1.png
            :align: center
            :width: 200px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Data-Points">Data Points<a class="anchor-link" href="#Data-Points">&#182;</a></h2><ul>
 <li>Convention :math:<code>x</code></li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Conv/im2.png
            :align: center</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Set">Data Set<a class="anchor-link" href="#Data-Set">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Conv/mnist.png
+<h2 id="Data-Set">Data Set<a class="anchor-link" href="#Data-Set">&#182;</a></h2><p>.. image:: figs/Conv/mnist.png
            :align: center</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Network">Network<a class="anchor-link" href="#Network">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Conv/networkcnn.png
+<h2 id="Network">Network<a class="anchor-link" href="#Network">&#182;</a></h2><p>.. image:: figs/Conv/networkcnn.png
            :align: center</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Labels">Data Labels<a class="anchor-link" href="#Data-Labels">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Data-Labels">Data Labels<a class="anchor-link" href="#Data-Labels">&#182;</a></h2><ul>
 <li>Convention :math:<code>y</code></li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Conv/im1.png
            :align: center
            :width: 200px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. image:: figs/Conv/im2.png
            :align: center
            :width: 200px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h1>
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Models">Models<a class="anchor-link" href="#Models">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Models">Models<a class="anchor-link" href="#Models">&#182;</a></h2><ul>
 <li>Functions from data points to labels</li>
 <li>Functions :math:<code>m(x)</code></li>
 <li>Any shaped function is a model</li>
 </ul>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example-Model">Example Model<a class="anchor-link" href="#Example-Model">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Example of a simple model ::</li>
+<h2 id="Example-Model">Example Model<a class="anchor-link" href="#Example-Model">&#182;</a></h2><ul>
+<li><p>Example of a simple model ::</p>
+<p>x = (0.5, 0.2)</p>
+<p>def model(x):
+     return 0 if x[0] &lt; 0.5 else 1</p>
+<p>model(x)</p>
+</li>
 </ul>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>x = (0.5, 0.2)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>def model(x):
-       return 0 if x[0] &lt; 0.5 else 1</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>model(x)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-1">Model 1<a class="anchor-link" href="#Model-1">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/model1.png
+<h2 id="Model-1">Model 1<a class="anchor-link" href="#Model-1">&#182;</a></h2><p>.. image:: figs/Graphs/model1.png
            :align: center
            :width: 350px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>Linear Model</li>
 </ul>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-2">Model 2<a class="anchor-link" href="#Model-2">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/model2.png
+<h2 id="Model-2">Model 2<a class="anchor-link" href="#Model-2">&#182;</a></h2><p>.. image:: figs/Graphs/model2.png
            :align: center
            :width: 350px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-3">Model 3<a class="anchor-link" href="#Model-3">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/model3.png
+<h2 id="Model-3">Model 3<a class="anchor-link" href="#Model-3">&#182;</a></h2><p>.. image:: figs/Graphs/model3.png
            :align: center
            :width: 350px</p>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h1>
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h2><ul>
 <li>Knobs that control the model</li>
 <li>Any information that controls the model shape</li>
 </ul>
 
 </div>
-</div>
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
-<li>Example with higher-order functions ::</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h2><ul>
+<li><p>Example with higher-order functions ::</p>
 <p>def make_model(parameter):
-       def model(x):
-           return 0 if x[0] &lt; parameter else 1
-       return model</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+     def model(x):
+         return 0 if x[0] &lt; parameter else 1
+     return model</p>
 <p>model = make_model(0.4)
-   x = (0.5, 0.2)
-   model(x)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Linear-Parameters">Linear Parameters<a class="anchor-link" href="#Linear-Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>a. rotating the linear separator ("slope")</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+ x = (0.5, 0.2)
+ model(x)</p>
+</li>
+</ul>
+<h2 id="Linear-Parameters">Linear Parameters<a class="anchor-link" href="#Linear-Parameters">&#182;</a></h2><p>a. rotating the linear separator (&quot;slope&quot;)</p>
 <p>.. image:: figs/Graphs/weight.png
            :align: center
            :width: 500px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Linear-Parameters">Linear Parameters<a class="anchor-link" href="#Linear-Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>b. changing the separator cutoff ("intercept")</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Linear-Parameters">Linear Parameters<a class="anchor-link" href="#Linear-Parameters">&#182;</a></h2><p>b. changing the separator cutoff (&quot;intercept&quot;)</p>
 <p>.. image:: figs/Graphs/bias.png
            :align: center
            :width: 500px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Math">Math<a class="anchor-link" href="#Math">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<ul>
+<h2 id="Math">Math<a class="anchor-link" href="#Math">&#182;</a></h2><ul>
 <li>Linear Model</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. math::
    m(x; w, b) = x_1 \times w_1 + x_2 \times w_2 + b</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. code::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>def make_linear_model(w, b):
        def model(x):
-           return 1 if (x[0] <em> w[0] + x[1] </em> w[1] + b &gt; 0.0) else 0
+           return 1 if (x[0] * w[0] + x[1] * w[1] + b &gt; 0.0) else 0
        return model
    linear_model = make_linear_model([0.1, -0.2], 0.0)
    linear_model(x)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Coding-with-Parameters">Coding with Parameters<a class="anchor-link" href="#Coding-with-Parameters">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Managing-Parameters">Managing Parameters<a class="anchor-link" href="#Managing-Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Coding-with-Parameters">Coding with Parameters<a class="anchor-link" href="#Coding-with-Parameters">&#182;</a></h1><h2 id="Managing-Parameters">Managing Parameters<a class="anchor-link" href="#Managing-Parameters">&#182;</a></h2><p>.. revealjs_fragments::</p>
 <ul>
 <li>Last lecture: Real-world models have many modules</li>
 <li>Management challenge, group parameters with code</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-Style">Module Style<a class="anchor-link" href="#Module-Style">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. code::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Module-Style">Module Style<a class="anchor-link" href="#Module-Style">&#182;</a></h2><p>.. code::</p>
 <p>def make_linear_model(w, b):
        def model(x):
-           return 1 if (x[0] <em> w[0] + x[1] </em> w[1] + b &gt; 0.0) else 0
+           return 1 if (x[0] * w[0] + x[1] * w[1] + b &gt; 0.0) else 0
        return model</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>vs ::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>class MyLinearModel(Module):
        def <strong>init</strong>(self):
-           self.w = [self.add_parameter("w1"),
-                     self.add_parameter("w2")]
-           self.b = self.add_parameter("b")</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
+           self.w = [self.add_parameter(&quot;w1&quot;),
+                     self.add_parameter(&quot;w2&quot;)]
+           self.b = self.add_parameter(&quot;b&quot;)</p>
 <pre><code>   def forward(self, x):
-       return 1 if (x[0] * self.w[0] + x[1] * self.w[1] + self.b &gt; 0.0) else 0</code></pre>
+       return 1 if (x[0] * self.w[0] + x[1] * self.w[1] + self.b &gt; 0.0) else 0
 
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-Style">Module Style<a class="anchor-link" href="#Module-Style">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. code::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+</code></pre>
+<h2 id="Module-Style">Module Style<a class="anchor-link" href="#Module-Style">&#182;</a></h2><p>.. code::</p>
 <p>linear_model = make_linear_model([0.1, -0.2], 0.0)
    linear_model(x)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>vs ::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>linear_model = MyLinearModel()
    parameters = linear_model.named_parameters()
-   parameters["w1"].update(0.1)
-   parameters["w2"].update(-0.2)
-   parameters["b"].update(0.0)
+   parameters[&quot;w1&quot;].update(0.1)
+   parameters[&quot;w2&quot;].update(-0.2)
+   parameters[&quot;b&quot;].update(0.0)
    linear_model(x)</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Trade-offs">Trade-offs<a class="anchor-link" href="#Trade-offs">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Trade-offs">Trade-offs<a class="anchor-link" href="#Trade-offs">&#182;</a></h2><p>.. revealjs_fragments::</p>
 <ul>
 <li>Modules are more verbose, but self-documenting</li>
 <li>Avoid currying and inner functions</li>
 <li>Functional style simpler, closer to math</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Loss">Loss<a class="anchor-link" href="#Loss">&#182;</a></h1>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-on-Data">Model on Data<a class="anchor-link" href="#Model-on-Data">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/sector2.png
+<h1 id="Loss">Loss<a class="anchor-link" href="#Loss">&#182;</a></h1><h2 id="Model-on-Data">Model on Data<a class="anchor-link" href="#Model-on-Data">&#182;</a></h2><p>.. image:: figs/Graphs/sector2.png
            :align: center
            :width: 350px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-on-Data">Model on Data<a class="anchor-link" href="#Model-on-Data">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/incorrect.png
+<h2 id="Model-on-Data">Model on Data<a class="anchor-link" href="#Model-on-Data">&#182;</a></h2><p>.. image:: figs/Graphs/incorrect.png
            :align: center
            :width: 350px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Distance">Distance<a class="anchor-link" href="#Distance">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/distance.png
+<h2 id="Distance">Distance<a class="anchor-link" href="#Distance">&#182;</a></h2><p>.. image:: figs/Graphs/distance.png
            :align: center
            :width: 350px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>:math:<code>|m(x)|</code> correct or incorrect</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Point-1">Point 1<a class="anchor-link" href="#Point-1">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/pt3.png
+<h2 id="Point-1">Point 1<a class="anchor-link" href="#Point-1">&#182;</a></h2><p>.. image:: figs/Graphs/pt3.png
            :align: center
            :width: 450px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Point-2">Point 2<a class="anchor-link" href="#Point-2">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/pt1.png
+<h2 id="Point-2">Point 2<a class="anchor-link" href="#Point-2">&#182;</a></h2><p>.. image:: figs/Graphs/pt1.png
            :align: center
            :width: 450px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Point-3">Point 3<a class="anchor-link" href="#Point-3">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/pt2.png
+<h2 id="Point-3">Point 3<a class="anchor-link" href="#Point-3">&#182;</a></h2><p>.. image:: figs/Graphs/pt2.png
            :align: center
            :width: 450px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Loss">Loss<a class="anchor-link" href="#Loss">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Loss">Loss<a class="anchor-link" href="#Loss">&#182;</a></h2><p>.. revealjs_fragments::</p>
 <ul>
-<li>Loss weights our incorrect points</li>
-<li>Function of distance from boundary</li>
+<li><p>Loss weights our incorrect points</p>
+</li>
+<li><p>Function of distance from boundary</p>
+<p>:math:<code>L(w_1, w_2, b)</code> is loss, function of parameters.</p>
+</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-
-<pre><code> :math:`L(w_1, w_2, b)` is loss, function of parameters.</code></pre>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Sigmoid-Loss">Sigmoid Loss<a class="anchor-link" href="#Sigmoid-Loss">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/sigmoid.png
+<h2 id="Sigmoid-Loss">Sigmoid Loss<a class="anchor-link" href="#Sigmoid-Loss">&#182;</a></h2><p>.. image:: figs/Graphs/sigmoid.png
            :align: center
            :width: 600px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>.. revealjs_fragments::</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <ul>
 <li>Weight distance by sigmoid</li>
 <li>Combines loss of all points</li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Loss-as-function-of-Parameters">Loss as function of Parameters<a class="anchor-link" href="#Loss-as-function-of-Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/pt3.png
+<h2 id="Loss-as-function-of-Parameters">Loss as function of Parameters<a class="anchor-link" href="#Loss-as-function-of-Parameters">&#182;</a></h2><p>.. image:: figs/Graphs/pt3.png
            :align: center
            :width: 200px
 .. image:: figs/Graphs/pt1.png
@@ -15425,35 +14952,10 @@ div.jp-OutputPrompt {
 .. image:: figs/Graphs/pt2.png
            :align: center
            :width: 200px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Loss-as-function-of-Parameters">Loss as function of Parameters<a class="anchor-link" href="#Loss-as-function-of-Parameters">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>.. image:: figs/Graphs/sigmoid2.png
+<h2 id="Loss-as-function-of-Parameters">Loss as function of Parameters<a class="anchor-link" href="#Loss-as-function-of-Parameters">&#182;</a></h2><p>.. image:: figs/Graphs/sigmoid2.png
            :align: center
            :width: 600px</p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Playground">Playground<a class="anchor-link" href="#Playground">&#182;</a></h2>
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.91939&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false&amp;learningRate_hide=true&amp;regularizationRate_hide=true&amp;batchSize_hide=true&amp;noise_hide=true&amp;discretize_hide=true&amp;regularization_hide=true&amp;activation_hide=true&gt;">Playground</a></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Playground">Playground<a class="anchor-link" href="#Playground">&#182;</a></h2><p><a href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss%C2%AEDataset=reg-plane&amp;learningRate=0.03%C2%AEularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.91939&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false&amp;learningRate_hide=true%C2%AEularizationRate_hide=true&amp;batchSize_hide=true&amp;noise_hide=true&amp;discretize_hide=true%C2%AEularization_hide=true&amp;activation_hide=true%3E">Playground</a></p>
 <h2 id="Q&amp;A">Q&amp;A<a class="anchor-link" href="#Q&amp;A">&#182;</a></h2>
 </div>
 </div></section></section></section></section>
@@ -15475,11 +14977,12 @@ require(
       waitSeconds: 15
     },
     [
-      "https://unpkg.com/reveal.js@4.0.2/dist/reveal.js",
-      "https://unpkg.com/reveal.js@4.0.2/plugin/notes/notes.js"
+      "https://unpkg.com/reveal.js@4.3.1/dist/reveal.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/notes/notes.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/math/math.js"
     ],
 
-    function(Reveal, RevealNotes){
+    function(Reveal, RevealNotes, RevealMath){
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
             controls: false,
@@ -15487,14 +14990,9 @@ require(
             progress: true,
             history: true,
             transition: "none",
-            plugins: [RevealNotes]
-        });
+            plugins: [RevealNotes  ],
+       });         
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
 
         Reveal.addEventListener('slidechanged', update);
 

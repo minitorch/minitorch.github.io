@@ -37,7 +37,7 @@ p.tensor_out {
 .reveal pre {
     margin: 0px;
     width: auto;
-    font-size: 1em;
+    font-size: 15pt;
 }
 
 .reveal img {
@@ -47,16 +47,23 @@ p.tensor_out {
 
 }
 
+.reveal section li {
+    font-size: 25pt;
+}
+
 .reveal section p {
-    font-size: 1.7em !important;
+    font-size: 25pt;
 }
 .reveal section h2 {
-    font-size: 3em !important;
-    margin-bottom: 1em;
+    font-size: 35pt;
+    padding-bottom: 1em;
+}
+.reveal section h1 {
+    font-size: 40pt;
+    padding-bottom: 1em;
 }
 
 .reveal section li {
-    font-size: 1.7em !important;
     margin-bottom: 25px;
 }
 
@@ -64,3 +71,7 @@ p.tensor_out {
     font-size: 0.6em !important;
 }
 
+
+/* .MathJax_CHTML { */
+/*     font-size: 50% !important; */
+/* } */

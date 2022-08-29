@@ -4,7 +4,7 @@ OUTPUTS = $(patsubst %.py,%.ipynb,$(INPUTS))
 CHECKS = $(patsubst %.py,%.check.html,$(INPUTS))
 
 SLIDES_IN = $(wildcard */*/*.py)
-SLIDES =  $(patsubst %.py,%.slides.html,$(SLIDES_IN)) 
+SLIDES =  $(patsubst %.py,%.slides.html,$(SLIDES_IN))
 
 
 
@@ -16,7 +16,7 @@ checks: $(CHECKS)
 	jupytext --execute --run-path .. --to notebook $<
 
 %.slides.html : %.ipynb
-	jupyter nbconvert  $< --to slides --SlidesExporter.reveal_transition="none" --template slides/talk/
+	jupyter nbconvert  $< --to slides --SlidesExporter.reveal_transition="none" --template slides/talk/ --SlidesExporter.reveal_url_prefix="https://unpkg.com/reveal.js@4.3.1"
 
 
 %.html : %.ipynb

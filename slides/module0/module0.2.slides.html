@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="chrome=1" />
@@ -10,7 +10,7 @@
 <title>module0.2 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/reveal.css">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -14627,9 +14627,11 @@ div.jp-OutputPrompt {
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><!-- Reveal Theme -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/theme/simple.css" id="theme">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/theme/simple.css" id="theme">
 
 </head>
+
+  <link rel="stylesheet" href="custom.css">
 
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 
@@ -14650,10 +14652,167 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Class-Note">Class Note<a class="anchor-link" href="#Class-Note">&#182;</a></h2><ul>
 <li>You need to link your GitHub account</li>
-<li>Still 9 students with unlinked accounts</li>
-<li><code>Link &lt;https://classroom.github.com/classrooms/68973473-mle-2021/assignments/mle-module-0&gt;</code>_</li>
+<li>Still several students with unlinked accounts</li>
+<li><a href="https://classroom.github.com/classrooms/68973473-mle-2022/assignments/mle-module-0?unlinked_github=true">The Unlinked</a></li>
 </ul>
 
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Review">Review<a class="anchor-link" href="#Review">&#182;</a></h1>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Function-Type">Function Type<a class="anchor-link" href="#Function-Type">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+
+
+<span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+
+
+<span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
+
+
+<span class="n">v</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Functions-as-Arguments">Functions as Arguments<a class="anchor-link" href="#Functions-as-Arguments">&#182;</a></h1>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span>
+    <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">combine3</span><span class="p">(</span><span class="n">add</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">combine3</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>9
+15
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Functional-Python">Functional Python<a class="anchor-link" href="#Functional-Python">&#182;</a></h2><p>Functions as Returns</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span>
+    <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">new_fn</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">new_fn</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">add3</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+<span class="n">mul3</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">mul</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>9
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Quiz">Quiz<a class="anchor-link" href="#Quiz">&#182;</a></h2>
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14673,56 +14832,52 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Image-Models">Image Models<a class="anchor-link" href="#Image-Models">&#182;</a></h2><p>.. image:: <a href="https://research.fb.com/wp-content/uploads/2018/01/mask-detectron-post.jpg">https://research.fb.com/wp-content/uploads/2018/01/mask-detectron-post.jpg</a></p>
+<h2 id="Image-Models">Image Models<a class="anchor-link" href="#Image-Models">&#182;</a></h2><p><img src="https://sylabs.io/wp-content/uploads/2022/05/mask-detectron-post-768x482-1.jpg" alt="" /></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Image-Recognition">Image Recognition<a class="anchor-link" href="#Image-Recognition">&#182;</a></h2><p>.. image:: <a href="https://www.apriorit.com/images/articles/applying_inception_v3/figure-1.jpg">https://www.apriorit.com/images/articles/applying_inception_v3/figure-1.jpg</a></p>
+<h2 id="Image-Recognition">Image Recognition<a class="anchor-link" href="#Image-Recognition">&#182;</a></h2><p><img src="https://www.apriorit.com/images/articles/applying_inception_v3/figure-1.jpg" alt="" /></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Text-Generation">Text Generation<a class="anchor-link" href="#Text-Generation">&#182;</a></h2><p>.. raw:: html
-    <blockquote style="align:center" class="twitter-tweet"> <a href="https://twitter.com/sharifshameem/status/1282676454690451457?ref_src=twsrc%5Etfw"></a></blockquote>
-   <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+<h2 id="Text-Generation">Text Generation<a class="anchor-link" href="#Text-Generation">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Zm9B-DvwOgw?start=99" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Text-Generation">Text Generation<a class="anchor-link" href="#Text-Generation">&#182;</a></h2><p>.. image:: <a href="https://qjjnh3a9hpo1nukrg1fwoh71-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/1_KOtMC1xDW2kEg9YHvhTSXwedited.jpeg">https://qjjnh3a9hpo1nukrg1fwoh71-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/1_KOtMC1xDW2kEg9YHvhTSXwedited.jpeg</a></p>
+<h2 id="Text-Generation">Text Generation<a class="anchor-link" href="#Text-Generation">&#182;</a></h2><p><img src="https://qjjnh3a9hpo1nukrg1fwoh71-wpengine.netdna-ssl.com/wp-content/uploads/2020/02/1_KOtMC1xDW2kEg9YHvhTSXwedited.jpeg" alt="" /></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Model">Model<a class="anchor-link" href="#Model">&#182;</a></h2><ul>
-<li>For our purposes, a model is a parameterized function.</li>
-</ul>
-<p>.. math::</p>
-<p>m(x; \theta)</p>
-<p>x \text{ - input}</p>
-<p>m \text{ - model}</p>
+<li><p>Models: parameterized functions.</p>
 <ul>
-<li>Initial Focus</li>
+<li>$m(x; \theta)$</li>
+<li>$x \text{ - input}$</li>
+<li>$m \text{ - model}$</li>
 </ul>
-<p>.. math::</p>
-<p>\theta \text{ - parameters}</p>
+</li>
+<li><p>Initial Focus:</p>
+<ul>
+<li>$\theta \text{ - parameters}$</li>
+</ul>
+</li>
+</ul>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Parameters">Parameters<a class="anchor-link" href="#Parameters">&#182;</a></h2><ul>
-<li><p>Model is just code.</p>
-</li>
-<li><p>Parameters are everything that you learned.</p>
-</li>
-<li><p>Modern parameters sets are both:</p>
-<ul>
+<li>Anything learned is in the parameters.</li>
+<li>Modern parameters sets are both:<ul>
 <li>Large</li>
 <li>Complex</li>
 </ul>
@@ -14733,16 +14888,15 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Growth-in-Parameter-Size">Growth in Parameter Size<a class="anchor-link" href="#Growth-in-Parameter-Size">&#182;</a></h2><p>.. image:: <a href="https://ruder.io/content/images/2021/01/large_models.png">https://ruder.io/content/images/2021/01/large_models.png</a>
-(I have to update this graph every year)</p>
+<h2 id="Growth-in-Parameter-Size">Growth in Parameter Size<a class="anchor-link" href="#Growth-in-Parameter-Size">&#182;</a></h2> <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2021/10/Model-Size-Chart.png" >
+<p>(I have to update this graph every year)</p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Complex">Complex<a class="anchor-link" href="#Complex">&#182;</a></h2><p>Inception - Table of precise sizes</p>
-<p>.. image:: images/inception_v3.png
-           :width: 400px</p>
+<h2 id="Complexity">Complexity<a class="anchor-link" href="#Complexity">&#182;</a></h2><p>Inception - Table of precise sizes</p>
+<p><img src="images/inception_v3.png" alt="" /></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -14761,10 +14915,9 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data-Structure">Data Structure<a class="anchor-link" href="#Data-Structure">&#182;</a></h2><ul>
-<li>Torch choice - Module Trees</li>
+<h2 id="Module-Trees">Module Trees<a class="anchor-link" href="#Module-Trees">&#182;</a></h2><ul>
 <li>Each Module owns a set of parameters</li>
-<li>Each Module has submodules that own parameters</li>
+<li>Each Module owns a set of submodules</li>
 </ul>
 
 </div>
@@ -14774,8 +14927,10 @@ div.jp-OutputPrompt {
 <h2 id="Module-Trees">Module Trees<a class="anchor-link" href="#Module-Trees">&#182;</a></h2><p>Benefits</p>
 <ul>
 <li>Can extract all parameters without knowing about Modules</li>
-<li>Can use mix and match Modules for different tasks
-Downsides</li>
+<li>Can use mix and match Modules for different tasks</li>
+</ul>
+<p>Downsides</p>
+<ul>
 <li>Verbose, repeats some functionality of declaration and use.</li>
 </ul>
 
@@ -14791,6 +14946,44 @@ Downsides</li>
 </ul>
 
 </div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Module-Example">Module Example<a class="anchor-link" href="#Module-Example">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">minitorch</span> <span class="kn">import</span> <span class="n">Module</span><span class="p">,</span> <span class="n">Parameter</span>
+
+
+<span class="k">class</span> <span class="nc">OtherModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">pass</span>
+
+
+<span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Must initialize the super class!</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># Type 1, a parameter.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+
+        <span class="c1"># Type 2, user data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">25</span>
+
+        <span class="c1"># Type 3. another Module</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -14822,24 +15015,15 @@ Downsides</li>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-Example">Module Example<a class="anchor-link" href="#Module-Example">&#182;</a></h2><p>Simple</p>
-
+<h2 id="Module-Example">Module Example<a class="anchor-link" href="#Module-Example">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">25</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">arg</span> <span class="o">+</span> <span class="mi">10</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">MyModule</span><span class="p">()</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14847,82 +15031,41 @@ Downsides</li>
 </div>
 </div>
 
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="How-does-this-work?">How does this work?<a class="anchor-link" href="#How-does-this-work?">&#182;</a></h2><ul>
-<li>Internally :code:<code>Module</code> spies to find :code:<code>Parameter</code> and :code:<code>Module</code> objects</li>
-<li>A list is stored internally.</li>
-<li>Implemented through Python magic methods</li>
-</ul>
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[(&#39;parameter1&#39;, 15)]</pre>
+</div>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Detail:-Magic-Methods">Detail: Magic Methods<a class="anchor-link" href="#Detail:-Magic-Methods">&#182;</a></h2><ul>
-<li>Any method that starts and ends with __</li>
-<li>Used to override default behavior of the language.</li>
-<li>We will use for many things, including operator overloading</li>
-</ul>
 
 </div>
+
+</div>
+
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Interception-Code">Interception Code<a class="anchor-link" href="#Interception-Code">&#182;</a></h2><p>Module construction</p>
-
+<h2 id="Extended-Example">Extended Example<a class="anchor-link" href="#Extended-Example">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_parameters&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
-        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Module</span><span class="p">):</span>
-            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_modules&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><hr><div class="fragment">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>All subclasses <em>must</em> begin their initialization by calling</p>
-<div class="highlight"><pre><span></span><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-</pre></div>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-Example">Module Example<a class="anchor-link" href="#Module-Example">&#182;</a></h2><p>Modules</p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">Module2</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Module3</span><span class="p">()</span>
-
-
-<span class="k">class</span> <span class="nc">Module2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Module2</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">p2</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
@@ -14945,7 +15088,104 @@ Downsides</li>
 </div>
 </div>
 
-</div></div></section></section></section></section><section><section><section><section>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Extended-Example">Extended Example<a class="anchor-link" href="#Extended-Example">&#182;</a></h2>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Module1</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">p1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">Module2</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">Module3</span><span class="p">()</span>
+
+
+<span class="n">Module1</span><span class="p">()</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[(&#39;p1&#39;, 5), (&#39;a.p2&#39;, 10), (&#39;b.c.p3&#39;, 15)]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-does-this-work?">How does this work?<a class="anchor-link" href="#How-does-this-work?">&#182;</a></h2><ul>
+<li>Internally <code>Module</code> spies to find <code>Parameter</code> and <code>Module</code> objects</li>
+<li>A list is stored internally.</li>
+<li>Implemented through Python magic methods</li>
+</ul>
+
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Detail:-Magic-Methods">Detail: Magic Methods<a class="anchor-link" href="#Detail:-Magic-Methods">&#182;</a></h2><ul>
+<li>Any method that starts and ends with <code>__</code></li>
+<li>Used to override default behavior of the language.</li>
+<li>We will use for many things, including operator overloading</li>
+</ul>
+
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Interception-Code">Interception Code<a class="anchor-link" href="#Interception-Code">&#182;</a></h2><p>Module construction</p>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__setattr__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_parameters&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="n">Module</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="s2">&quot;_modules&quot;</span><span class="p">][</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__setattr__</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Parameter-Naming">Parameter Naming<a class="anchor-link" href="#Parameter-Naming">&#182;</a></h2><ul>
@@ -14958,7 +15198,7 @@ Downsides</li>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Module-Naming">Module Naming<a class="anchor-link" href="#Module-Naming">&#182;</a></h2><p>.. image:: figs/Module/module.png</p>
+<h2 id="Module-Naming">Module Naming<a class="anchor-link" href="#Module-Naming">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Module/module.png" alt="" /></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -14983,73 +15223,85 @@ Downsides</li>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p>Diagram from GPT (You shouldn't know this yet.. )</p>
-<p>.. image:: images/gpt2.png</p>
+<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p>Code from <a href="https://huggingface.co/transformers/_modules/transformers/modeling_gpt2.html">GPT-2</a></p>
 
 </div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">nn</span>
+
+<span class="k">class</span> <span class="nc">Block</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_ctx</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="n">hidden_size</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">n_embd</span>
+        <span class="n">inner_dim</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">n_inner</span> <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">n_inner</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ln_1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">layer_norm_epsilon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">attn</span> <span class="o">=</span> <span class="n">Attention</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">n_ctx</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ln_2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">layer_norm_epsilon</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="o">.</span><span class="n">add_cross_attention</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">crossattention</span> <span class="o">=</span> <span class="n">Attention</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">n_ctx</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">scale</span><span class="p">,</span> <span class="n">is_cross_attention</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">ln_cross_attn</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="n">config</span><span class="o">.</span><span class="n">layer_norm_epsilon</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mlp</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">inner_dim</span><span class="p">,</span> <span class="n">config</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p><code>Code from GPT-2 &lt;https://huggingface.co/transformers/_modules/transformers/modeling_gpt2.html&gt;</code>_ ::</p>
-<p>class Block(nn.Module):
-    def <strong>init</strong>(self, n_ctx, config, scale=False):
-        super().<strong>init</strong>()
-        hidden_size = config.n_embd
-        inner_dim = config.n_inner if config.n_inner is not None else 4 * hidden_size
-        self.ln_1 = nn.LayerNorm(hidden_size, eps=config.layer_norm_epsilon)
-        self.attn = Attention(hidden_size, n_ctx, config, scale)
-        self.ln_2 = nn.LayerNorm(hidden_size, eps=config.layer_norm_epsilon)
-        if config.add_cross_attention:
-            self.crossattention = Attention(hidden_size, n_ctx, config, scale, is_cross_attention=True)
-            self.ln_cross_attn = nn.LayerNorm(hidden_size, eps=config.layer_norm_epsilon)
-        self.mlp = MLP(inner_dim, config)</p>
+<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p>Block from <a href="https://pytorch.org/vision/stable/_modules/torchvision/models/inception.html">Inception</a></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p>Tabular style description:</p>
-<p>.. image:: images/inception_v3.png
-           :width: 400px</p>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Inception3</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">aux_logits</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">transform_input</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                 <span class="n">inception_blocks</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">init_weights</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Inception3</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="o">...</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">aux_logits</span> <span class="o">=</span> <span class="n">aux_logits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transform_input</span> <span class="o">=</span> <span class="n">transform_input</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Conv2d_1a_3x3</span> <span class="o">=</span> <span class="n">conv_block</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Conv2d_2a_3x3</span> <span class="o">=</span> <span class="n">conv_block</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Conv2d_2b_3x3</span> <span class="o">=</span> <span class="n">conv_block</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxpool1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Conv2d_3b_1x1</span> <span class="o">=</span> <span class="n">conv_block</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Conv2d_4a_3x3</span> <span class="o">=</span> <span class="n">conv_block</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">192</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">maxpool2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_5b</span> <span class="o">=</span> <span class="n">inception_a</span><span class="p">(</span><span class="mi">192</span><span class="p">,</span> <span class="n">pool_features</span><span class="o">=</span><span class="mi">32</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_5c</span> <span class="o">=</span> <span class="n">inception_a</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="n">pool_features</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_5d</span> <span class="o">=</span> <span class="n">inception_a</span><span class="p">(</span><span class="mi">288</span><span class="p">,</span> <span class="n">pool_features</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_6a</span> <span class="o">=</span> <span class="n">inception_b</span><span class="p">(</span><span class="mi">288</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_6b</span> <span class="o">=</span> <span class="n">inception_c</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span> <span class="n">channels_7x7</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_6c</span> <span class="o">=</span> <span class="n">inception_c</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span> <span class="n">channels_7x7</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_6d</span> <span class="o">=</span> <span class="n">inception_c</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span> <span class="n">channels_7x7</span><span class="o">=</span><span class="mi">160</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_6e</span> <span class="o">=</span> <span class="n">inception_c</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span> <span class="n">channels_7x7</span><span class="o">=</span><span class="mi">192</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">aux_logits</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">AuxLogits</span> <span class="o">=</span> <span class="n">inception_aux</span><span class="p">(</span><span class="mi">768</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_7a</span> <span class="o">=</span> <span class="n">inception_d</span><span class="p">(</span><span class="mi">768</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_7b</span> <span class="o">=</span> <span class="n">inception_e</span><span class="p">(</span><span class="mi">1280</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Mixed_7c</span> <span class="o">=</span> <span class="n">inception_e</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">avgpool</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">AdaptiveAvgPool2d</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dropout</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2048</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+</pre></div>
 
+     </div>
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Real-World-Examples">Real World Examples<a class="anchor-link" href="#Real-World-Examples">&#182;</a></h2><p><code>Block from Inception &lt;https://pytorch.org/vision/stable/_modules/torchvision/models/inception.html&gt;</code>_ ::</p>
-<p>class Inception3(nn.Module):</p>
-
-<pre><code>def __init__(self, num_classes=1000, aux_logits=True, transform_input=False,
-             inception_blocks=None, init_weights=None):
-    super(Inception3, self).__init__()
-    ...
-    self.aux_logits = aux_logits
-    self.transform_input = transform_input
-    self.Conv2d_1a_3x3 = conv_block(3, 32, kernel_size=3, stride=2)
-    self.Conv2d_2a_3x3 = conv_block(32, 32, kernel_size=3)
-    self.Conv2d_2b_3x3 = conv_block(32, 64, kernel_size=3, padding=1)
-    self.maxpool1 = nn.MaxPool2d(kernel_size=3, stride=2)
-    self.Conv2d_3b_1x1 = conv_block(64, 80, kernel_size=1)
-    self.Conv2d_4a_3x3 = conv_block(80, 192, kernel_size=3)
-    self.maxpool2 = nn.MaxPool2d(kernel_size=3, stride=2)
-    self.Mixed_5b = inception_a(192, pool_features=32)
-    self.Mixed_5c = inception_a(256, pool_features=64)
-    self.Mixed_5d = inception_a(288, pool_features=64)
-    self.Mixed_6a = inception_b(288)
-    self.Mixed_6b = inception_c(768, channels_7x7=128)
-    self.Mixed_6c = inception_c(768, channels_7x7=160)
-    self.Mixed_6d = inception_c(768, channels_7x7=160)
-    self.Mixed_6e = inception_c(768, channels_7x7=192)
-    if aux_logits:
-        self.AuxLogits = inception_aux(768, num_classes)
-    self.Mixed_7a = inception_d(768)
-    self.Mixed_7b = inception_e(1280)
-    self.Mixed_7c = inception_e(2048)
-    self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
-    self.dropout = nn.Dropout()
-    self.fc = nn.Linear(2048, num_classes)</code></pre>
-
 </div>
+</div>
+
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -15068,11 +15320,9 @@ Downsides</li>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Library:-Streamlit">Library: Streamlit<a class="anchor-link" href="#Library:-Streamlit">&#182;</a></h2><p>Easy to use Python GUI ::</p>
-<blockquote><blockquote><blockquote><p>streamlit run app.py -- 0</p>
-</blockquote>
-</blockquote>
-</blockquote>
+<h2 id="Library:-Streamlit">Library: Streamlit<a class="anchor-link" href="#Library:-Streamlit">&#182;</a></h2><p>Easy to use Python GUI</p>
+<div class="highlight"><pre><span></span>&gt;&gt;&gt; streamlit run app.py -- <span class="m">0</span>
+</pre></div>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -15080,9 +15330,9 @@ Downsides</li>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Code-Snippet">Code Snippet<a class="anchor-link" href="#Code-Snippet">&#182;</a></h2><p>Streamlit windows</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">streamlit</span> <span class="k">as</span> <span class="nn">st</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;## Sandbox for Model Training&quot;</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;## Sandbox for Model Training&quot;</span><span class="p">)</span>
     <span class="o">...</span>
-    <span class="n">st</span><span class="o">.</span><span class="n">plotly_chart</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+<span class="n">st</span><span class="o">.</span><span class="n">plotly_chart</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15146,7 +15396,7 @@ Downsides</li>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Sneak-Preview">Sneak Preview<a class="anchor-link" href="#Sneak-Preview">&#182;</a></h2><p><code>Playground &lt;https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.91939&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false&amp;learningRate_hide=true&amp;regularizationRate_hide=true&amp;batchSize_hide=true&amp;noise_hide=true&amp;discretize_hide=true&amp;regularization_hide=true&amp;activation_hide=true&gt;</code>_</p>
+<h2 id="Sneak-Preview">Sneak Preview<a class="anchor-link" href="#Sneak-Preview">&#182;</a></h2><p><a href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss%C2%AEDataset=reg-plane&amp;learningRate=0.03%C2%AEularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.91939&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false&amp;learningRate_hide=true%C2%AEularizationRate_hide=true&amp;batchSize_hide=true&amp;noise_hide=true&amp;discretize_hide=true%C2%AEularization_hide=true&amp;activation_hide=true">Playground</a></p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -15154,44 +15404,6 @@ Downsides</li>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Q&amp;A">Q&amp;A<a class="anchor-link" href="#Q&amp;A">&#182;</a></h2>
 </div>
-</div></section></section></section></section><section><section><section><section><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="kn">import</span> <span class="n">HTML</span>
-
-<span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;link rel=&quot;stylesheet&quot; href=&quot;custom.css&quot;&gt;&#39;</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-
-
-
-<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html">
-<link rel="stylesheet" href="custom.css">
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div></section></section></section></section>
 </div>
 </div>
@@ -15211,11 +15423,12 @@ require(
       waitSeconds: 15
     },
     [
-      "https://unpkg.com/reveal.js@4.0.2/dist/reveal.js",
-      "https://unpkg.com/reveal.js@4.0.2/plugin/notes/notes.js"
+      "https://unpkg.com/reveal.js@4.3.1/dist/reveal.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/notes/notes.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/math/math.js"
     ],
 
-    function(Reveal, RevealNotes){
+    function(Reveal, RevealNotes, RevealMath){
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
             controls: false,
@@ -15223,14 +15436,9 @@ require(
             progress: true,
             history: true,
             transition: "none",
-            plugins: [RevealNotes]
-        });
+            plugins: [RevealNotes  ],
+       });         
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
 
         Reveal.addEventListener('slidechanged', update);
 

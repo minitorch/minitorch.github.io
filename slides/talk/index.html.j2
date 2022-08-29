@@ -1,4 +1,3 @@
-
 {%- extends 'reveal/index.html.j2' -%}
 
 {% block header %}
@@ -49,10 +48,11 @@ require(
     },
     [
       "{{ reveal_url_prefix }}/dist/reveal.js",
-      "{{ reveal_url_prefix }}/plugin/notes/notes.js"
+      "{{ reveal_url_prefix }}/plugin/notes/notes.js",
+      "{{ reveal_url_prefix }}/plugin/math/math.js"
     ],
 
-    function(Reveal, RevealNotes){
+    function(Reveal, RevealNotes, RevealMath){
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
             controls: false,
@@ -60,14 +60,9 @@ require(
             progress: true,
             history: true,
             transition: "{{reveal_transition}}",
-            plugins: [RevealNotes]
-        });
+            plugins: [RevealNotes  ],
+       });         
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
 
         Reveal.addEventListener('slidechanged', update);
 

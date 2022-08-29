@@ -10,7 +10,7 @@
 <title>module0.0 slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/reveal.css">
 
 <!-- If the query includes 'print-pdf', include the PDF print sheet -->
 <script>
@@ -14593,41 +14593,8 @@ div.jp-OutputPrompt {
 }
 </style>
 
-<!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML-full,Safe"> </script>
-    <!-- MathJax configuration -->
-    <script type="text/x-mathjax-config">
-    init_mathjax = function() {
-        if (window.MathJax) {
-        // MathJax loaded
-            MathJax.Hub.Config({
-                TeX: {
-                    equationNumbers: {
-                    autoNumber: "AMS",
-                    useLabelIds: true
-                    }
-                },
-                tex2jax: {
-                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                    processEscapes: true,
-                    processEnvironments: true
-                },
-                displayAlign: 'center',
-                CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
-                    }
-                }
-            });
-        
-            MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
-        }
-    }
-    init_mathjax();
-    </script>
-    <!-- End of mathjax configuration --><!-- Reveal Theme -->
-<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/theme/simple.css" id="theme">
+<!-- Reveal Theme -->
+<link rel="stylesheet" href="https://unpkg.com/reveal.js@4.3.1/dist/theme/simple.css" id="theme">
 
 </head>
 
@@ -14653,7 +14620,7 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Contents">Contents<a class="anchor-link" href="#Contents">&#182;</a></h2><ul>
-<li>Course Context</li>
+<li>Class Context</li>
 <li>Staff Introduction</li>
 <li>Class Goals</li>
 <li>Class Syllabus</li>
@@ -14674,16 +14641,19 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Context:-Image">Context: Image<a class="anchor-link" href="#Context:-Image">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Jv1ayv-04H4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Context:-Code-">Context: Code <a class="anchor-link" href="#Context:-Code-">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Zm9B-DvwOgw?start=99" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="Context:-Code">Context: Code<a class="anchor-link" href="#Context:-Code">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/Zm9B-DvwOgw?start=99" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Context:-Langage-">Context: Langage <a class="anchor-link" href="#Context:-Langage-">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/kKzhLeJvqnE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="Context:-Langage">Context: Langage<a class="anchor-link" href="#Context:-Langage">&#182;</a></h2><iframe width="560" height="315" src="https://www.youtube.com/embed/kKzhLeJvqnE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
@@ -14694,17 +14664,17 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Question">Question<a class="anchor-link" href="#Question">&#182;</a></h2><ul>
-<li>How do I "read" one of these models? </li>
-<li>What technology is powering these tools?</li>
-<li>How can I build models for my own problem </li>
-</ul>
+<h2 id="Issues:-Model-Scale">Issues: Model Scale<a class="anchor-link" href="#Issues:-Model-Scale">&#182;</a></h2> <img src="https://developer-blogs.nvidia.com/wp-content/uploads/2021/10/Model-Size-Chart.png" >
 
 </div>
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model-Scale">Model Scale<a class="anchor-link" href="#Model-Scale">&#182;</a></h2><p><img src="https://developer-blogs.nvidia.com/wp-content/uploads/2021/10/Model-Size-Chart.png" ></p>
+<h2 id="Question">Question<a class="anchor-link" href="#Question">&#182;</a></h2><ul>
+<li>How do I &quot;read&quot; one of these models?</li>
+<li>What technology is powering these tools?</li>
+<li>How can I build models for my own problem?</li>
+</ul>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -14716,7 +14686,7 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Professor">Professor<a class="anchor-link" href="#Professor">&#182;</a></h2><ul>
-<li>Alexander "Sasha" Rush</li>
+<li>Alexander &quot;Sasha&quot; Rush</li>
 </ul>
 
 </div>
@@ -14724,7 +14694,7 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Academic-Work">Academic Work<a class="anchor-link" href="#Academic-Work">&#182;</a></h2><ul>
-<li>Website: <a href="http://rush-nlp.com/">http://rush-nlp.com/</a></li>
+<li>Website: http://rush-nlp.com/</li>
 <li>Area of Study: Natural Language Processing (NLP)</li>
 <li>Area of Study: Deep Learning</li>
 </ul>
@@ -14753,9 +14723,9 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Intro:-Engagement">Intro: Engagement<a class="anchor-link" href="#Intro:-Engagement">&#182;</a></h2><ul>
+<h2 id="Intro:-Open-Source">Intro: Open-Source<a class="anchor-link" href="#Intro:-Open-Source">&#182;</a></h2><ul>
 <li>Open-source development projects for NLP <a href="https://opennmt.net/">OpenNMT</a></li>
-<li>Contributor to <a href="https://pytorch.org/">PyTorch</a>.</li>
+<li>Contributor to <a href="https://pytorch.org/">PyTorch</a></li>
 <li>Part-time at <a href="https://github.com/huggingface/transformers">Hugging Face</a></li>
 </ul>
 
@@ -14763,7 +14733,7 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><p><img src="https://media-exp1.licdn.com/dms/image/C5103AQHRdDLRMLbcTQ/profile-displayphoto-shrink_200_200/0/1516510297022?e=1666828800&amp;v=beta&amp;t=DR3hGxmz4Mt8gmxEy3PUSD_mAUdqtLqNykZ1EUnbQtk" alt=""></p>
+<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><p><img src="https://media-exp1.licdn.com/dms/image/C5103AQHRdDLRMLbcTQ/profile-displayphoto-shrink_200_200/0/1516510297022?e=1666828800&amp;v=beta&amp;t=DR3hGxmz4Mt8gmxEy3PUSD_mAUdqtLqNykZ1EUnbQtk" alt="" /></p>
 <ul>
 <li>Justin Chiu <a href="mailto:jtc257@cornell.edu">jtc257@cornell.edu</a></li>
 </ul>
@@ -14772,7 +14742,7 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><p><img src="https://media-exp1.licdn.com/dms/image/C4D03AQFMns7a0dTcBw/profile-displayphoto-shrink_200_200/0/1517845555124?e=1666828800&amp;v=beta&amp;t=N4dFH5-_n6GEliDHNivtX1-g_cbs_QPmyu7oYN6Kao0" alt=""></p>
+<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><img src="https://avatars.githubusercontent.com/u/22714518?v=4" width="30%">
 <ul>
 <li>Celine Lee <a href="mailto:cl923@cornell.edu">cl923@cornell.edu</a></li>
 </ul>
@@ -14781,7 +14751,7 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><p><img src="https://avatars.githubusercontent.com/u/7989321?v=4" width="30%"></p>
+<h2 id="TAs">TAs<a class="anchor-link" href="#TAs">&#182;</a></h2><img src="https://avatars.githubusercontent.com/u/7989321?v=4" width="30%">
 <ul>
 <li>Anne Wu <a href="mailto:aw588@cornell.edu">aw588@cornell.edu</a></li>
 </ul>
@@ -14796,7 +14766,6 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Class-Focus">Class Focus<a class="anchor-link" href="#Class-Focus">&#182;</a></h2><ul>
-<li><strong>Machine Learning</strong> Engineering</li>
 <li>Machine Learning <strong>Engineering</strong></li>
 <li>Focus: software engineering behind machine learning</li>
 </ul>
@@ -14816,9 +14785,8 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Machine-Learning-Engineering">Machine Learning Engineering<a class="anchor-link" href="#Machine-Learning-Engineering">&#182;</a></h2><ul>
-<li>Coverage of only tensor-based models</li>
 <li>Focus on implementation details and design</li>
-<li>Deep dive into its positives / negatives</li>
+<li>Deep dive into implementation</li>
 <li>(For those who care about the weeds)</li>
 </ul>
 
@@ -14876,7 +14844,7 @@ div.jp-OutputPrompt {
 <li>Implement mathematical functions as efficient code</li>
 <li>Provide organization and structure to ML projects</li>
 <li>Allow for easy training and deployment</li>
-<li>Think: "Programming language for machine learning"</li>
+<li>Think: &quot;Programming language for machine learning&quot;</li>
 </ul>
 
 </div>
@@ -14885,10 +14853,10 @@ div.jp-OutputPrompt {
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Popular-Frameworks">Popular Frameworks<a class="anchor-link" href="#Popular-Frameworks">&#182;</a></h2><ul>
 <li><p><a href="https://tensorflow.org/">TensorFlow</a></p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" alt=""></p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg" alt="" /></p>
 </li>
 <li><p><a href="https://pytorch.org/">PyTorch</a></p>
-<p><img src="data:image/png;base64,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" alt=""></p>
+<p><img src="data:image/png;base64,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" alt="" /></p>
 </li>
 </ul>
 
@@ -14907,15 +14875,15 @@ div.jp-OutputPrompt {
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">hidden</span><span class="p">):</span>
-      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="n">hidden</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">hidden</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-      <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">relu</span><span class="p">()</span>
-      <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">relu</span><span class="p">()</span>
-      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">()</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">relu</span><span class="p">()</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">relu</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">h</span><span class="p">)</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -14945,7 +14913,7 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CS-5781-">CS 5781 <a class="anchor-link" href="#CS-5781-">&#182;</a></h2><p>We're going to build PyTorch.</p>
+<h2 id="CS-5781">CS 5781<a class="anchor-link" href="#CS-5781">&#182;</a></h2><p>We're going to build PyTorch.</p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -15007,10 +14975,7 @@ div.jp-OutputPrompt {
 </div></section></section></section></section><section><section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge">Challenge<a class="anchor-link" href="#Challenge">&#182;</a></h2><ul>
-<li>Q: How are you going to build PyTorch?</li>
-<li>A: One commit at a time</li>
-</ul>
+<h2 id="Challenge">Challenge<a class="anchor-link" href="#Challenge">&#182;</a></h2><p>How are you going to build PyTorch?</p>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -15021,6 +14986,23 @@ div.jp-OutputPrompt {
 <li>Each covers a different topic in MLE</li>
 <li>Final module yields a full image recognition system.</li>
 </ul>
+
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Course-Work">Course Work<a class="anchor-link" href="#Course-Work">&#182;</a></h2><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ReLU</span><span class="p">(</span><span class="n">ScalarFunction</span><span class="p">):</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+        <span class="c1"># TODO: Implement for Task 1.2.</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Need to implement for Task 1.2&#39;</span><span class="p">)</span>
+
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d_output</span><span class="p">):</span>
+        <span class="c1"># TODO: Implement for Task 1.4.</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Need to implement for Task 1.4&#39;</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div></section></section></section></section><section><section><section><section>
@@ -15043,6 +15025,16 @@ div.jp-OutputPrompt {
 <li>Midterm</li>
 <li>In-Class Quizzes</li>
 <li>Assignments are done individually</li>
+</ul>
+
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Tools">Tools<a class="anchor-link" href="#Tools">&#182;</a></h2><ul>
+<li>Github Classroom</li>
+<li>Ed Discussions</li>
+<li>Slido</li>
 </ul>
 
 </div>
@@ -15095,11 +15087,12 @@ require(
       waitSeconds: 15
     },
     [
-      "https://unpkg.com/reveal.js@4.0.2/dist/reveal.js",
-      "https://unpkg.com/reveal.js@4.0.2/plugin/notes/notes.js"
+      "https://unpkg.com/reveal.js@4.3.1/dist/reveal.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/notes/notes.js",
+      "https://unpkg.com/reveal.js@4.3.1/plugin/math/math.js"
     ],
 
-    function(Reveal, RevealNotes){
+    function(Reveal, RevealNotes, RevealMath){
         // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
         Reveal.initialize({
             controls: false,
@@ -15107,14 +15100,13 @@ require(
             progress: true,
             history: true,
             transition: "none",
-            plugins: [RevealNotes]
-        });
+            plugins: [RevealNotes, RevealMath.Katex],
+             mathjax2: {
+                 mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js',
+                     config: 'TeX-MML-AM_SVG',
+                     }       
+       });         
 
-        var update = function(event){
-          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
-            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
-          }
-        };
 
         Reveal.addEventListener('slidechanged', update);
 

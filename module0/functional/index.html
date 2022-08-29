@@ -1830,22 +1830,26 @@ for these: <code>Callable</code>.</p>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
 
+
 <span class="n">v</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">add</span>
 
 
 <span class="k">def</span> <span class="nf">mul</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span>
 
+
 <span class="n">v</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">mul</span>
 </pre></div>
 <div id="cell-2" class="clipboard-copy-txt">def add(a: float, b: float) -> float:
     return a + b
+
 
 v: Callable[[float, float], float] = add
 
 
 def mul(a: float, b: float) -> float:
     return a * b
+
 
 v: Callable[[float, float], float] = mul</div>
     
@@ -1883,12 +1887,14 @@ to a function that uses it.</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span>
-             <span class="n">a</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span><span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span>
+    <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
 </pre></div>
-<div id="cell-3" class="clipboard-copy-txt">def combine3(fn: Callable[[float, float], float],
-             a:float, b:float, c:float) -> float:
+<div id="cell-3" class="clipboard-copy-txt">def combine3(
+    fn: Callable[[float, float], float], a: float, b: float, c: float
+) -> float:
     return fn(fn(a, b), c)</div>
     
         </div>
@@ -1981,13 +1987,13 @@ as reutrn arguments.</p>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">new_fn</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
-    
+
     <span class="k">return</span> <span class="n">new_fn</span>
 </pre></div>
 <div id="cell-5" class="clipboard-copy-txt">def combine3(fn):
     def new_fn(a: float, b: float, c: float) -> float:
         return fn(fn(a, b), c)
-    
+
     return new_fn</div>
     
         </div>
@@ -2016,13 +2022,13 @@ as reutrn arguments.</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">add3</span> <span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
-<span class="n">mul3</span> <span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">mul</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">add3</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">add</span><span class="p">)</span>
+<span class="n">mul3</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="n">combine3</span><span class="p">(</span><span class="n">mul</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">add3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 </pre></div>
-<div id="cell-6" class="clipboard-copy-txt">add3 : Callable[[float, float, float], float] = combine3(add)
-mul3 : Callable[[float, float, float], float] = combine3(mul)
+<div id="cell-6" class="clipboard-copy-txt">add3: Callable[[float, float, float], float] = combine3(add)
+mul3: Callable[[float, float, float], float] = combine3(mul)
 
 print(add3(1, 3, 5))</div>
     
@@ -2083,8 +2089,9 @@ only the values that are true under a function.</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Iterable</span>
 
+
 <span class="k">def</span> <span class="nf">filter</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">bool</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]]:</span>
-    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ls</span> <span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
+    <span class="k">def</span> <span class="nf">apply</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]):</span>
         <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ls</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -2095,8 +2102,9 @@ only the values that are true under a function.</p>
 </pre></div>
 <div id="cell-7" class="clipboard-copy-txt">from typing import Iterable
 
+
 def filter(fn: Callable[[float], bool]) -> Callable[[Iterable[float]], Iterable[float]]:
-    def apply(ls : Iterable[float]):
+    def apply(ls: Iterable[float]):
         ret = []
         for x in ls:
             if fn(x):
@@ -2137,14 +2145,14 @@ def filter(fn: Callable[[float], bool]) -> Callable[[Iterable[float]], Iterable[
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">more_than_4</span><span class="p">(</span><span class="n">x</span> <span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="k">def</span> <span class="nf">more_than_4</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">4</span>
 
 
 <span class="n">filter_for_more_than_4</span> <span class="o">=</span> <span class="nb">filter</span><span class="p">(</span><span class="n">more_than_4</span><span class="p">)</span>
 <span class="n">filter_for_more_than_4</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </pre></div>
-<div id="cell-8" class="clipboard-copy-txt">def more_than_4(x : float) -> bool:
+<div id="cell-8" class="clipboard-copy-txt">def more_than_4(x: float) -> bool:
     return x > 4
 
 

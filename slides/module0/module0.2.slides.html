@@ -14700,7 +14700,8 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Callable</span>
+<span class="k">def</span> <span class="nf">combine3</span><span class="p">(</span>
     <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">c</span><span class="p">:</span> <span class="nb">float</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">fn</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">c</span><span class="p">)</span>
@@ -14953,7 +14954,10 @@ div.jp-OutputPrompt {
 
 
 <span class="k">class</span> <span class="nc">OtherModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">pass</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Must initialize the super class!</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uncool_parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
 
 
 <span class="k">class</span> <span class="nc">MyModule</span><span class="p">(</span><span class="n">Module</span><span class="p">):</span>
@@ -14963,12 +14967,14 @@ div.jp-OutputPrompt {
 
         <span class="c1"># Type 1, a parameter.</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parameter1</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
-
+        <span class="bp">self</span><span class="o">.</span><span class="n">cool_parameter</span> <span class="o">=</span> <span class="n">Parameter</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+        
         <span class="c1"># Type 2, user data</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="mi">25</span>
 
         <span class="c1"># Type 3. another Module</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module_a</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sub_module_b</span> <span class="o">=</span> <span class="n">OtherModule</span><span class="p">()</span>
 </pre></div>
 
      </div>
@@ -15037,7 +15043,10 @@ div.jp-OutputPrompt {
 
 
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[(&#39;parameter1&#39;, 15)]</pre>
+<pre>[(&#39;parameter1&#39;, 15),
+ (&#39;cool_parameter&#39;, 50),
+ (&#39;sub_module_a.uncool_parameter&#39;, 60),
+ (&#39;sub_module_b.uncool_parameter&#39;, 60)]</pre>
 </div>
 
 </div>

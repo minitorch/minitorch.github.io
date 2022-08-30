@@ -16,7 +16,6 @@
 {%- if cell.metadata.get('fragment_start', False) -%}
 <hr>
 {%- endif -%}
-
 {%- if cell.metadata.slide_type == 'notes' -%}
 <aside class="notes">
 {{ super() }}
@@ -25,7 +24,6 @@
 {%- else -%}
 {{ super() }}
 {%- endif -%}
-
 {%- if cell.metadata.get('fragment_end', False) -%}
 
 {%- endif -%}
@@ -60,11 +58,16 @@ require(
             progress: true,
             history: true,
             transition: "{{reveal_transition}}",
-            plugins: [RevealNotes  ],
+            plugins: [RevealNotes, RevealMath.MathJax3  ],
        });
 
+        // var update = function(event){
+        //   if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+        //     MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+        //   }
+        // };
 
-        Reveal.addEventListener('slidechanged', update);
+        // Reveal.addEventListener('slidechanged', update);
 
         function setScrollingSlide() {
             var scroll = {{ reveal_scroll }}

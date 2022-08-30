@@ -72,6 +72,10 @@ p.tensor_out {
 }
 
 
+div.celltag_hide_inp div.jp-Cell-inputWrapper {
+    display: none;
+}
+
 /* .MathJax_CHTML { */
 /*     font-size: 50% !important; */
 /* } */

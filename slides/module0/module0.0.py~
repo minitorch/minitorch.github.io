@@ -1,0 +1,8 @@
+# + slideshow={"slide_type": "skip"}
+from torch import *
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# # Differential Inference: A Criminally Underused Tool
+# 
+# [@srush](https://twitter.com/srush_nlp) 

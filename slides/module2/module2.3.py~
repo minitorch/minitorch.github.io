@@ -1,0 +1,398 @@
+
+
+# Module 2.3 - Gradients
+# ========================
+
+
+
+# Module 2.3 - Gradients
+# -----------------------
+
+#    Gradients
+
+
+# Tensor Functions
+# -----------------
+
+# Unary ::
+
+#     new_tensor = tensor.log()
+
+# Binary (for now, only same shape) ::
+
+#     new_tensor = tensor1 + tensor2
+
+# Reductions ::
+
+#     new_tensor = tensor.sum()
+
+
+# Tensor Ops
+# -----------------
+
+# .. revealjs_fragments::
+
+#    1) **Map** - Apply to all elements
+
+#    2) **Zip** (same as zipWith) - Apply to all pairs
+
+#    3) **Reduce** - Reduce a subset
+
+
+# Map
+# ---------
+
+# .. image:: figs/Ops/map.png
+#            :align: center
+
+
+# Zip
+# ---------
+
+# .. image:: figs/Ops/zip.png
+#            :align: center
+
+# Reduce
+# ---------
+
+# .. image:: figs/Ops/reduce.png
+#            :align: center
+
+
+# Reduction
+# ---------
+# .. image:: figs/Reduce/sum0.png
+#            :align: center
+
+# Reduction
+# ---------
+
+# .. image:: figs/Reduce/sum1.png
+#            :align: center
+
+# Reduction
+# ---------
+
+# .. image:: figs/Reduce/implement.png
+#            :align: center
+
+
+# Reduction
+# ---------
+
+# .. image:: figs/Reduce/sum2.png
+#            :align: center
+
+
+
+# Outline
+# --------
+
+# .. revealjs_fragments::
+
+#    * Gradients
+#    * Challenges
+
+
+
+# Broadcasting
+# ==============
+
+# High Level
+# ---------------
+
+# .. revealjs_fragments::
+
+#    * Apply same operation multiple times
+#    * Avoid loops and writes
+#    * Save memory
+
+
+# First Challenge
+# ---------------
+
+# .. revealjs_fragments::
+
+#    * Relaxing Zip constraints
+#    * Apply zip without shapes being identical
+
+
+# Motivation: Scalar Addition
+# ------------------------------
+
+# .. math::
+
+#    vector1 + 10
+
+# Naive Scalar Addition 1
+# -----------------------
+
+# * Repeat vector-size
+
+# .. math::
+
+#    vector1 + [10, 10, 10]
+
+# .. code::
+
+#   vector1 + tensor([10, 10, 10])
+
+# Naive Scalar Addition 2
+# -------------------------
+
+# * Write a `for` loop
+
+# .. code::
+
+#   temp_vector = zeros(vector1.shape)
+#   for i in vector.shape[0]:
+#       temp_vector[i] = vector1[i] + 10
+
+
+
+# Broadcasting
+# ------------
+
+# .. revealjs_fragments::
+
+#    * No intermediate terms
+#    * Define rules to make different shapes work together
+#    * Avoid for loops entirely
+
+
+# Zip With Broadcasting
+# ---------------------
+
+
+# .. image:: figs/Ops/zip\ broad\ back.png
+
+# Zip With Broadcasting
+# ---------------------
+
+# Code ::
+
+#   out = zeros(3, 2)
+#   for i in range(3):
+#       for j in range(2):
+#           out[i, j] = a[i] + b[j]
+
+# Zip Broadcasting
+# ---------------------
+
+# .. image:: figs/Ops/zip\ broad.png
+
+
+# Rules
+# -----
+
+# *   **Rule 1**: Dimension of size 1 broadcasts with anything
+# *   **Rule 2**: Extra dimensions of 1 can be added with `view`
+# *   **Rule 3**: Zip automatically adds starting dims of size 1
+
+
+# Matrix Scalar Addition
+# -----------------------
+
+# Matrix + Scalar ::
+
+#     matrix1 + tensor([10])
+
+# Matrix Scalar Addition
+# -----------------------
+
+# Matrix + Vector ::
+
+#     matrix1.view(4, 3) + tensor([1, 2, 3])
+
+# Matrix Scalar Addition
+# -----------------------
+
+# Doesn't Work! ::
+
+#     matrix1.view(4, 3) + tensor([1, 2, 3, 5])
+
+# Does Work! ::
+
+#     matrix1.view(4, 3) + tensor([1, 2, 3, 5]).view(4, 1)
+
+# Applying the Rules
+# -------------------
+
+
+# * (3, 4, 5) | (3, 1, 5) => (3, 4, 5)
+# * (3, 4, 1) | (3, 1, 5) => (3, 4, 5)
+# * (3, 4, 1) | (1, 5) => (3, 4, 5)
+# * (3, 4, 1) | (3, 5) => X
+
+# Exercises
+# -------------------
+
+# * (1, 3, 4) | (1, 3, 1) => ?
+# * (1, 4, 4) | (3, 1, 5) => ?
+# * (3, 4, 1) | (1) => ?
+
+
+# Examples
+# =========
+
+# Tensor-Scalar operations
+# ------------------------
+
+# .. image:: figs/Broadcast/scalar.png
+#            :align: center
+
+# Matrix-vector operations
+# -------------------------
+
+
+# .. image:: figs/Broadcast/vector.png
+#            :align: center
+
+# Matrix-matrix operations
+# ---------------------------
+
+# .. image:: figs/Broadcast/threed.png
+#            :align: center
+
+# Matrix-Matrix Operations
+# ------------------------
+
+
+# .. image:: figs/Broadcast/matmul.png
+#            :width: 600px
+#            :align: center
+
+
+
+
+# Implementation
+# ---------------
+
+# * Never create an intermediate value.
+# * Implicit map between output space / input space
+
+
+# Functions
+# ----------
+
+# * `shape_broadcast` - create the broadcast dims
+
+# * `broadcast_index` - map from broadcasted to original value
+
+
+
+# Gradients
+# ==========
+
+# Derivatives
+# ------------
+
+# .. revealjs_fragments::
+
+#    * Each tensor arg is many args
+#    * Returning tensor is like running several Functions
+#    * Result `backward` needs to run chain-rule for each arg and output.
+
+
+# Graph
+# ------
+
+
+# Terminology
+# ------------
+
+# .. revealjs_fragments::
+
+#    * Scalar -> Tensor
+#    * Derivative -> Gradient
+#    * `d_out` ->  `grad_out`
+#    * Recommendation: Reason through gradients as many derivatives
+
+
+# Gradient
+# --------
+
+# .. math::
+
+#    F([x_1, x_2, ..., x_N])
+
+# Note -> producing a scalar
+
+
+# Gradient
+# --------
+
+# .. math::
+
+#    F'_{x_1}([x_1, x_2, ..., x_N]) \\
+#    F'_{x_2}([x_1, x_2, ..., x_N]) \\
+#    ... \\
+#    F'_{x_N}([x_1, x_2, ..., x_N]) \\
+
+
+# Each is a standard derivative
+
+
+# Gradient
+# --------
+
+# .. math::
+
+#    [F'_{x_1}([x_1, x_2, ..., x_N]), \\
+#     F'_{x_2}([x_1, x_2, ..., x_N]), \\
+#     ... \\
+#     F'_{x_N}([x_1, x_2, ..., x_N])]
+
+
+# Tensor of derivatives.
+
+
+# Chain Rule For Gradients
+# ---------------------------
+
+# .. math::
+
+#   F(G(x))
+
+# .. math::
+
+#   F'_x(G(x)) = F'_{G(x)}(G(x)) \cdot G'(x)
+
+# (Not Critical for us)
+
+
+# Avoiding Gradient Math
+# ---------------------------
+
+# * All of this is just notation for scalars
+
+# * Can always reason about it with scalars directly
+
+
+
+# Map Gradient
+# ------------
+
+# .. image:: figs/Ops/map\ back.png
+#            :align: center
+
+# Zip Gradient
+# ------------
+
+# .. image:: figs/Ops/zip\ back.png
+#            :align: center
+
+
+# Reduce Gradient
+# ----------------
+
+
+# .. image:: figs/Ops/reduce\ back.png
+#            :align: center
+
+
+
+# Q&A
+# ----
+
+

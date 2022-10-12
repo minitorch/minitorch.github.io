@@ -1,0 +1,485 @@
+# + slideshow={"slide_type": "skip"}
+import sys
+import minitorch
+
+sys.path.append("project/interface")
+sys.path.append("../project/interface")
+sys.path.append("../../project/interface")
+sys.path.append("/home/srush/projects/chalk")
+
+import chalk
+import drawing
+from chalk import *
+from chalk import vstrut
+from colour import Color
+from drawing import matrix, tensor
+
+x = minitorch.tensor([[1,2,3,4,5] for _ in range(2)])
+set_svg_draw_height(400)
+set_svg_height(400)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Module 2.1 - Tensors
+# =============================================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Starting Point
+# --------------------------
+
+# .. image:: figs/Graphs/splitfail.png
+#            :align: center
+#            :width: 300px
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Final Layer
+# --------------
+# .. image:: figs/Graphs/split1.png
+#            :align: center
+#            :width: 200px
+
+# .. image:: figs/Graphs/split2.png
+#            :align: center
+#            :width: 200px
+
+
+# .. image:: figs/Graphs/mlpmid.png
+#            :align: center
+#            :width: 300px
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Final Layer
+# --------------
+
+# .. image:: figs/Graphs/mlpmid.png
+#            :align: center
+#            :width: 300px
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Math View (Alt)
+# ---------------
+
+#  $$
+#    \begin{eqnarray*}
+#    \text{lin}(x; w, b) &=& x_1 \times w_1 + x_2 \times w_2 + b \\
+#    h_ 1 &=& \text{ReLU}(\text{lin}(x; w^0, b^0)) \\
+#    h_ 2 &=& \text{ReLU}(\text{lin}(x; w^1, b^1))\\
+#    m(x_1, x_2) &=& \text{lin}(h; w, b)
+#    \end{eqnarray*}
+# $$
+
+# Parameters:
+#  $w_1, w_2, w^0_1, w^0_2, w^1_1, w^1_2, b, b^0, b^1$
+
+    
+# + [markdown] slideshow={"slide_type": "slide"}
+# Quiz
+# -------
+    
+# + [markdown] slideshow={"slide_type": "slide"}
+# Outline
+# --------
+# * Tensors
+# * Views
+# * Strides
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tensors
+# ================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tensors?
+# --------
+# What is it?
+# * Fancy multi-dimensional arrays
+# * Embedded mathmatical programming language
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tensors!
+# ----------
+# Key Building Block
+# * Matlab
+# * Numpy
+# * Tensorflow, etc.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Terminology
+# ------------
+
+# * 0-Dimensional Scalar
+
+# * `Scalar` from module-0
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Terminology
+# ------------
+
+# * 1-Dimensional -  Vector
+
+# +  slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(5, 1)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Terminology
+# ------------
+
+# * 2-Dimensional - Matrix
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(3, 5)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Terminology
+# ------------
+
+# * Arbitrary dimensions - Tensor (Array in numpy)
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+tensor(0.75, 2, 3, 5)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Terminology
+# ------------
+
+# * Dims - # dimensions (`x.dims`)
+# * Shape -  # cells per dimension (`x.shape`)
+#  * Size - # cells (`x.size`)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Example
+# ------------
+
+# * dims: 2
+# * shape: (2, 5)
+# * size : 10
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(3, 5)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Example
+# ------------
+
+# * dims: ?
+# * shape: ?
+# * size : ?
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(4, 3)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Indexing
+# ------------
+
+# * Indexing syntax: `tensor[0, 1, 2]`
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+tensor(0.75, 2, 3, 5)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Convention
+# ----------------
+# * depth
+# * row
+# * columns
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Shape Manipulation
+# ------------------
+
+# * Permutation
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(3, 5)
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(5, 3)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Shape Maniputation
+# ---------------------
+
+# * Views
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+matrix(3, 5)
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+tensor(0.75, 1, 3, 5)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# What's Bad?
+# ------------
+# * Hard to grow or shrink
+# * Only numerical values
+# * Lose comprehensions / python built-ins
+# * Shapes are easy to mess up
+
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Request
+# ---------
+# * No autodifferentiation for now
+# * Only consider standard tensor operations
+# * Add autodiff afterwards
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Views
+# ================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Goal
+# -----
+
+# * Support user api
+# * Keep track of tensor properties
+# * Setup fast / simple Functions
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tensor Usage
+# -------------
+
+# Unary
+# + slideshow={"slide_type": "x"}
+
+new_tensor = x.log()
+
+# + [markdown] slideshow={"slide_type": "x"}
+# Binary (for now, only same shape) 
+
+# + slideshow={"slide_type": "x"}
+new_tensor = x + x
+
+# + [markdown] slideshow={"slide_type": "x"}
+# Reductions 
+
+# + slideshow={"slide_type": "x"}
+new_tensor = x.sum()
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Why not just use lists?
+# ------------------------
+# * Functions to manipulate shape
+# * Mathematical notation
+# * Can act as Variables / Parameters
+# * Efficient control of memory (Module-3)
+
+# + [markdown] slideshow={"slide_type": "slide"}    
+# Why not lists?
+# ---------------
+
+# + [markdown] slideshow={"slide_type": "x"}
+# Matrix (5, 2)::
+
+# + slideshow={"slide_type": "x"}
+
+ls = [[1, 2], [3, 4], [5, 7], [2, 3], [2, 4]]
+
+# + [markdown] slideshow={"slide_type": "x"}
+# View (1, 5, 2) 
+
+# + slideshow={"slide_type": "x"}
+new_ls = [[[ls[j][i] for i in range(2)]
+            for j in range(5)]]
+
+# + [markdown] slideshow={"slide_type": "x"}
+# Transpose (2, 5) 
+
+# + slideshow={"slide_type": "x"}
+matrix_trans = [[ls[i][j] for i in range(5)]
+                      for j in range(2)]
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Issues
+# ---------------
+
+# * Operators requires copying 
+
+# + slideshow={"slide_type": "x"}
+matrix_trans = [[ls[i][j] for i in range(5)]
+                 for j in range(2)]
+
+# + [markdown] slideshow={"slide_type": "x"}
+# * Storage shaped based on usage ::
+
+# + slideshow={"slide_type": "x"}
+new_tensor = [[[ls[j][i] for i in range(2)]
+               for j in range(5)]]
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Idea 1: Views
+# -----------------
+# * Seperate storing information from user view
+# * Keep a mapping from users version to storage
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Idea 2: Immutable Operations
+# ----------------------------------------------
+# * Minitorch doesn't let you update tensors
+# * All operations return a "new" tensor
+# * Since there are no updates, maybe point to the same storage.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tensor Internals
+# =================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# How does this work
+# --------------------
+
+# * **Storage** :  1-D array of numbers of length `size`
+
+# * **Strides** : tuple that provides the mapping from user `indexing`
+#   to the `position` in the 1-D `storage`.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Strides
+# --------
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+def color(h, m):
+    v = list(drawing.aqua.range_to(drawing.papaya, h * m))
+    return lambda i, j: v[m * i + j]
+
+d = (
+    matrix(5, 2, "n", colormap=color(5, 2))
+    / vstrut(1)
+    / matrix(1, 10, "s", colormap=lambda i, j: color(5, 2)(j % 5, j // 5))
+)
+d.connect(("n", 3, 0), ("s", 0, 3)).connect(("n", 3, 1), ("s", 0, 8))
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Strides
+# --------
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+d = (
+    matrix(2, 5, "n", colormap=lambda i, j: color(5, 2)(j, i))
+    / vstrut(1)
+    / matrix(1, 10, "s", colormap=color(1, 10))
+)
+d.connect(("n", 0, 3), ("s", 0, 6)).connect(("n", 1, 3), ("s", 0, 7))
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Strides
+# --------
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+d = (
+    tensor(0.5, 2, 2, 3, "n", colormap=lambda i, j, k: color(4, 3)(i * 2 + j, k))
+    / vstrut(1)
+    / matrix(1, 12, "s", colormap=color(1, 12))
+)
+d.connect(("n", 0, 1, 1), ("s", 0, 4)).connect_perim(("n", 1, 0, 2),  ("s", 0, 2 + 6), unit_x -unit_y, -unit_y)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Which is best?
+# ----------------
+
+# * Can be useful when it is contiguous
+# * Bigger strides left
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Strides
+# --------
+
+# .. image:: figs/Tensors/stride4.png
+#            :align: center
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Stride Arithmetic
+# ------------------
+
+# Calculating from strides  
+# + slideshow={"slide_type": "x"}
+
+# `s1 * index1 + s2 * index2 + s3 * index3`
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Stride Intuition
+# -----------------------
+
+# * Numerical bases, 
+
+# + slideshow={"slide_type": "x"} tags=["hide_inp"]
+tensor(0.75, 2, 2, 2)
+
+
+# Implied strides: (4, 2, 1)
+#   110?
+
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Key Operations
+# ---------------
+
+# * Map from index to position 
+# * Map from position to index 
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Implementation
+# ----------------
+
+# * TensorData : Manager of strides and storage
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Module-2
+# ==========
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Overview
+# ----------
+
+#    * `tensor.py` - Tensor Variable
+#    * `tensor_functions.py` - Tensor Functions
+#    * `tensor_data.py` - Storage and Indexing
+#    * `tensor_ops.py` - Low-level tensor operations
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tasks 2.1: Indexing
+# -----------------------
+
+# .. image:: figs/Tensors/tensor2.png
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tasks 2.2: Operations
+# -----------------------
+
+# .. image:: figs/Ops/zip.png
+#            :align: center
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tasks 2.3:  Autograd
+# ----------------------
+
+# .. image:: figs/Ops/zip\ back.png
+#            :align: center
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tasks 2.4: Broadcasting
+# -------------------------
+
+# .. image:: figs/Ops/zip\ broad\ back.png
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Task 2.5: Training
+# -------------------
+
+# .. image:: complete.png
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Q&A
+# -----

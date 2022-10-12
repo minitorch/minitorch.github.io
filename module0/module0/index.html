@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/module0/module0/">
       
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.3">
     
     
       
@@ -236,6 +236,22 @@
     <li class="md-tabs__item">
       <a href="../../module2/module2/" class="md-tabs__link">
         Tensors
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../module3/module3/" class="md-tabs__link">
+        Efficiency
       </a>
     </li>
   
@@ -779,6 +795,106 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Efficiency
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Efficiency" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Efficiency
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3/" class="md-nav__link">
+        Assignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/parallel/" class="md-nav__link">
+        Parallel Computation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/matrixmult/" class="md-nav__link">
+        Fusing Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/cuda/" class="md-nav__link">
+        GPU Programming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1129,8 +1245,11 @@ tests marked as <code>tasks0_3</code>.</p>
   <ul>
       <li class="field-body">
             <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>A function that takes a list, applies <code>fn</code> to each element, and returns a
-new list</p>
+        – <p>A function that takes a list, applies <code>fn</code> to each element, and returns a</p>
+      </li>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
+        – <p>new list</p>
       </li>
   </ul>
 
@@ -1184,8 +1303,11 @@ new list</p>
   <ul>
       <li class="field-body">
             <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float], <span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>Function that takes two equally sized lists <code>ls1</code> and <code>ls2</code>, produce a new list by
-applying fn(x, y) on each pair of elements.</p>
+        – <p>Function that takes two equally sized lists <code>ls1</code> and <code>ls2</code>, produce a new list by</p>
+      </li>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float], <span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
+        – <p>applying fn(x, y) on each pair of elements.</p>
       </li>
   </ul>
 
@@ -1243,9 +1365,15 @@ applying fn(x, y) on each pair of elements.</p>
   <ul>
       <li class="field-body">
             <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
-        – <p>Function that takes a list <code>ls</code> of elements
-<span class="arithmatex">\(x_1 \ldots x_n\)</span> and computes the reduction :math:<code>fn(x_3, fn(x_2,
-fn(x_1, x_0)))</code></p>
+        – <p>Function that takes a list <code>ls</code> of elements</p>
+      </li>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
+        – <p><span class="arithmatex">\(x_1 \ldots x_n\)</span> and computes the reduction :math:`fn(x_3, fn(x_2,</p>
+      </li>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
+        – <p>fn(x_1, x_0)))`</p>
       </li>
   </ul>
 

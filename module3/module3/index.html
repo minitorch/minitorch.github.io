@@ -1,0 +1,1674 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MiniTorch">
+      
+      
+        <meta name="author" content="Sasha Rush">
+      
+      
+        <link rel="canonical" href="https://minitorch.github.io/module3/module3/">
+      
+      <link rel="icon" href="../../logo-sm.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.3">
+    
+    
+      
+        <title>Assignment - MiniTorch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+        
+      
+    
+    
+<script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+
+
+
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
+    
+      <link rel="stylesheet" href="../../assets/css-js/mkdocs-tooltips/css/custom.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../assets/css-js/fastapi/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#efficiency" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../logo-sm.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiniTorch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Assignment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
+          
+        
+      </form>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      MiniTorch
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../install/" class="md-tabs__link">
+      Setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../module0/module0/" class="md-tabs__link">
+        Fundamentals
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../mlprimer/" class="md-tabs__link">
+      ML Primer
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../module1/module1/" class="md-tabs__link">
+        Autodiff
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../module2/module2/" class="md-tabs__link">
+        Tensors
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Efficiency
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../logo-sm.png" alt="logo">
+
+    </a>
+    MiniTorch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        MiniTorch
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        Setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          Fundamentals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Fundamentals" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Fundamentals
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/module0/" class="md-nav__link">
+        Assignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/property_testing/" class="md-nav__link">
+        Property Testing
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/modules/" class="md-nav__link">
+        Modules
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/functional/" class="md-nav__link">
+        Functional
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module0/visualization/" class="md-nav__link">
+        Visualization
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mlprimer/" class="md-nav__link">
+        ML Primer
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Autodiff
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Autodiff" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Autodiff
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/module1/" class="md-nav__link">
+        Assignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/derivative/" class="md-nav__link">
+        Derivatives
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/scalar/" class="md-nav__link">
+        Scalar
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/chainrule/" class="md-nav__link">
+        Autodifferentiation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module1/backpropagate/" class="md-nav__link">
+        Backpropagate
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          Tensors
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Tensors" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Tensors
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/module2/" class="md-nav__link">
+        Assignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/tensordata/" class="md-nav__link">
+        Tensors
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/broadcasting/" class="md-nav__link">
+        Broadcasting
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/tensorops/" class="md-nav__link">
+        Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module2/tensor/" class="md-nav__link">
+        Auto-Grad
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Efficiency
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Efficiency" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Efficiency
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Assignment
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Assignment
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guides" class="md-nav__link">
+    Guides
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-31-parallelization" class="md-nav__link">
+    Task 3.1: Parallelization
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-32-matrix-multiplication" class="md-nav__link">
+    Task 3.2: Matrix Multiplication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-33-cuda-operations" class="md-nav__link">
+    Task 3.3: CUDA Operations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-34-cuda-matrix-multiplication" class="md-nav__link">
+    Task 3.4: CUDA Matrix Multiplication
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#task-35-training" class="md-nav__link">
+    Task 3.5: Training
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../parallel/" class="md-nav__link">
+        Parallel Computation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../matrixmult/" class="md-nav__link">
+        Fusing Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cuda/" class="md-nav__link">
+        GPU Programming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+
+                
+
+<h1 id="efficiency">Efficiency</h1>
+<p>In addition to helping simplify code, tensors provide a basis for
+speeding up computation. In fact, they are really the only way to
+efficiently write deep learning code in a slow language like Python.
+However, nothing we have done so far really makes anything faster than
+<code>module0</code>. This module is focused on taking advantage of tensors
+to write fast code, first on standard CPUs and then using GPUs.</p>
+<p>You need the files from previous assignments, so maker sure to pull them over
+to your new repo.</p>
+<h2 id="guides">Guides</h2>
+<ul>
+<li><a href="../parallel/">Parallelism</a></li>
+<li><a href="../matrixmult/">Matrix Multiply</a></li>
+<li><a href="../cuda/">CUDA</a></li>
+</ul>
+<p>For this assignment, you will need access to a GPU.  We recommend
+running commands in a Google Colab environment.  Follow these
+instructions for <a href="https://colab.research.google.com/drive/1zVoQCaTlTU6bkuqMXQTakJxr7oFYdSV2?usp=sharing">Colab
+setup</a>.</p>
+<p>This assignment does not require you to change the main tensor object.
+Instead you will only change the core higher-order operations code.</p>
+<ul>
+<li><code>fast_ops.py</code> : Low-level CPU operations</li>
+<li><code>cuda_ops.py</code> : Low-level GPU operations</li>
+</ul>
+<h2 id="task-31-parallelization">Task 3.1: Parallelization</h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This task requires basic familiarity with Numba <code>prange</code>.</p>
+<p>Be sure to very carefully read the section on
+parallelism,
+<a href="https://numba.pydata.org/numba-doc/latest/user/parallel.html">Numba</a>.</p>
+</div>
+<p>The main backend for our codebase are the three functions <code>map</code>,
+<code>zip</code>, and <code>reduce</code>. If we can speed up these three, everything we
+built so far will get better. This exercise asks you to utilize Numba
+and the <code>njit</code> function to speed up these functions. In particular if
+you can utilize parallelization through <code>prange</code> you can get some big
+wins. Be careful though! Parallelization can lead to funny bugs.</p>
+<p>In order to help debug this code, we have created a parallel analytics
+script for you</p>
+<div class="highlight"><pre><span></span><code>python project/parallel_check.py
+</code></pre></div>
+<p>Running this script will run NUMBA diagnostics on your functions.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Complete the following in <code>minitorch/fast_ops.py</code> and pass tests
+marked as <code>task3_1</code>.</p>
+<ul>
+<li>Include the diagnostics output from the above script in your README.</li>
+<li>Be sure that the code implements the optimizations specified in the
+  docstrings. We will check for this explicitly.</li>
+</ul>
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.fast_ops.tensor_map" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">fast_ops</span><span class="o">.</span><span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>NUMBA low_level tensor_map function. See <code>tensor_ops.py</code> for description.</p>
+<p>Optimizations:</p>
+<ul>
+<li>Main loop in parallel</li>
+<li>All indices use numpy buffers</li>
+<li>When <code>out</code> and <code>in</code> are stride-aligned, avoid indexing</li>
+</ul>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float], float]</code>)
+        – <p>function mappings floats-to-floats to apply.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor map function.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.fast_ops.tensor_zip" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">fast_ops</span><span class="o">.</span><span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>NUMBA higher-order tensor zip function. See <code>tensor_ops.py</code> for description.</p>
+<p>Optimizations:</p>
+<ul>
+<li>Main loop in parallel</li>
+<li>All indices use numpy buffers</li>
+<li>When <code>out</code>, <code>a</code>, <code>b</code> are stride-aligned, avoid indexing</li>
+</ul>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+        – <p>function maps two floats to float to apply.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor zip function.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.fast_ops.tensor_reduce" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">fast_ops</span><span class="o">.</span><span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>NUMBA higher-order tensor reduce function. See <code>tensor_ops.py</code> for description.</p>
+<p>Optimizations:</p>
+<ul>
+<li>Main loop in parallel</li>
+<li>All indices use numpy buffers</li>
+<li>Inner-loop should not call any functions or write non-local variables</li>
+</ul>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+        – <p>reduction function mapping two floats to float.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, int], None]</code>
+        – <p>Tensor reduce function</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div><h2 id="task-32-matrix-multiplication">Task 3.2: Matrix Multiplication</h2>
+<p>Matrix multiplication is key to all of the models that we have trained
+so far.  In the last module, we computed matrix multiplication using
+broadcasting.  In this task, we ask you to implement it directly as a
+function. Do your best to make the function efficient, but for now all
+that matters is that you correctly produce a multiply function that
+passes our tests and has some parallelism.</p>
+<p>In order to use this function, you will also need to add a new
+<code>MatMul</code> Function to <code>tensor_functions.py</code>. We have added a version in
+the starter code you can copy.  You might also find it useful to add a
+slow broadcasted <code>matrix_multiply</code> to <code>tensor_ops.py</code> for debugging.</p>
+<p>In order to help debug this code, we have created a parallel analytics
+script for you.</p>
+<div class="highlight"><pre><span></span><code>python project/parallel_test.py
+</code></pre></div>
+<p>Running this script will run Numba diagnostics on your functions.</p>
+<p>After you finish this task, you may want to skip to 3.5 and experiment
+with training on the real task under speed conditions.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Complete the following function in <code>minitorch/fast_ops.py</code>.
+Pass tests marked as <code>task3_2</code>.</p>
+<ul>
+<li>Include the diagnostics output from the above script in your README.</li>
+<li>Be sure that the code implements the optimizations specified in the
+  docstrings. We will check for this explicitly.</li>
+</ul>
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.fast_ops._tensor_matrix_multiply" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">fast_ops</span><span class="o">.</span><span class="n">_tensor_matrix_multiply</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">out_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">a_storage</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">a_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">a_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">b_storage</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">b_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">b_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>NUMBA tensor matrix multiply function.</p>
+<p>Should work for any tensor shapes that broadcast as long as</p>
+<div class="highlight"><pre><span></span><code>assert a_shape[-1] == b_shape[-2]
+</code></pre></div>
+<p>Optimizations:</p>
+<ul>
+<li>Outer loop in parallel</li>
+<li>No index buffers or function calls</li>
+<li>Inner loop should have no global writes, 1 multiply.</li>
+</ul>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>out</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>out</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>out_shape</b>
+            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
+        – <p>shape for <code>out</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>out_strides</b>
+            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
+        – <p>strides for <code>out</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>a_storage</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>a</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>a_shape</b>
+            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
+        – <p>shape for <code>a</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>a_strides</b>
+            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
+        – <p>strides for <code>a</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>b_storage</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>b</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>b_shape</b>
+            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
+        – <p>shape for <code>b</code> tensor</p>
+      </li>
+      <li class="field-body">
+        <b>b_strides</b>
+            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
+        – <p>strides for <code>b</code> tensor</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+<b>None</b>(            <code>None</code>
+)        – <p>Fills in <code>out</code></p>
+      </li>
+  </ul>
+
+  </div>
+
+</div><h2 id="task-33-cuda-operations">Task 3.3: CUDA Operations</h2>
+<p>We can do even better than parallelization if we have access to
+specialized hardware. This task asks you to build a GPU implementation
+of the backend operations. It will be hard to equal what PyTorch does, but
+if you are clever you can make these computations really fast (aim for 2x
+of task 3.1).</p>
+<p>Reduce is a particularly challenging function. We provide guides and a simple
+practice function to help you get started.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Complete the following functions in <code>minitorch/cuda_ops.py</code>, and pass the tests marked as
+<code>task3_3</code>.</p>
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops.tensor_map" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>CUDA higher-order tensor map function. ::</p>
+<p>fn_map = tensor_map(fn)
+  fn_map(out, ... )</p>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float], float]</code>)
+        – <p>function mappings floats-to-floats to apply.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor map function.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops.tensor_zip" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>CUDA higher-order tensor zipWith (or map2) function ::</p>
+<p>fn_zip = tensor_zip(fn)
+  fn_zip(out, ...)</p>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+        – <p>function mappings two floats to float to apply.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor zip function.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops._sum_practice" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">_sum_practice</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>This is a practice sum kernel to prepare for reduce.</p>
+<p>Given an array of length <span class="arithmatex">\(n\)</span> and out of size <span class="arithmatex">\(n //  ext{blockDIM}\)</span>
+it should sum up each blockDim values into an out cell.</p>
+<p><span class="arithmatex">\([a_1, a_2, ..., a_{100}]\)</span></p>
+<p>|</p>
+<p><span class="arithmatex">\([a_1 +...+ a_{31}, a_{32} + ... + a_{64}, ... ,]\)</span></p>
+<p>Note: Each block must do the sum using shared memory!</p>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>out</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>out</code> tensor.</p>
+      </li>
+      <li class="field-body">
+        <b>a</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>a</code> tensor.</p>
+      </li>
+      <li class="field-body">
+        <b>size</b>
+            (<code>int</code>)
+        – <p>length of a.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops.tensor_reduce" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>CUDA higher-order tensor reduce function.</p>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>fn</b>
+            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+        – <p>reduction function maps two floats to float.</p>
+      </li>
+  </ul>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, int], None]</code>
+        – <p>Tensor reduce function.</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div><h2 id="task-34-cuda-matrix-multiplication">Task 3.4: CUDA Matrix Multiplication</h2>
+<p>Finally we can combine both these approaches and implement CUDA
+<code>matmul</code>. This operation is probably the most important in all of deep
+learning and is central to making models fast. Again, we first strive for
+accuracy, but, the faster you can make it, the better.</p>
+<p>Implementing matrix multiplication and reduction efficiently is
+hugely important for many deep learning tasks. Follow the guides provided
+in class for implementing these functions.</p>
+<p>You should document your code to show us that you
+understand each line. Prove to us that these lead to speed-ups on
+large matrix operations by making a graph comparing them to naive
+operations.</p>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Implement  <code>minitorch/cuda_ops.py</code> with CUDA, and pass tests marked as <code>task3_4</code>. Follow the requirements
+specified in the docs.</p>
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops._mm_practice" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">_mm_practice</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">size</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>This is a practice square MM kernel to prepare for matmul.</p>
+<p>Given a storage <code>out</code> and two storage <code>a</code> and <code>b</code>. Where we know
+both are shape [size, size] with strides [size, 1].</p>
+<p>Size is always &lt; 32.</p>
+<p>Requirements:</p>
+<ul>
+<li>All data must be first moved to shared memory.</li>
+<li>Only read each cell in <code>a</code> and <code>b</code> once.</li>
+<li>Only write to global memory once per kernel.</li>
+</ul>
+<p>Compute</p>
+<div class="highlight"><pre><span></span><code> for i:
+     for j:
+          for k:
+              out[i, j] += a[i, k] * b[k, j]
+</code></pre></div>
+
+  <p>Parameters:</p>
+  <ul>
+      <li class="field-body">
+        <b>out</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>out</code> tensor.</p>
+      </li>
+      <li class="field-body">
+        <b>a</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>a</code> tensor.</p>
+      </li>
+      <li class="field-body">
+        <b>b</b>
+            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
+        – <p>storage for <code>b</code> tensor.</p>
+      </li>
+      <li class="field-body">
+        <b>size</b>
+            (<code>int</code>)
+        – <p>size of the square</p>
+      </li>
+  </ul>
+
+  </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.cuda_ops._tensor_matrix_multiply" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">cuda_ops</span><span class="o">.</span><span class="n">_tensor_matrix_multiply</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">out_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">out_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">a_storage</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">a_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">a_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">b_storage</span><span class="p">:</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">b_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">b_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+  
+      <p>CUDA tensor matrix multiply function.</p>
+<p>Requirements:</p>
+<ul>
+<li>All data must be first moved to shared memory.</li>
+<li>Only read each cell in <code>a</code> and <code>b</code> once.</li>
+<li>Only write to global memory once per kernel.</li>
+</ul>
+<p>Should work for any tensor shapes that broadcast as long as ::</p>
+<div class="highlight"><pre><span></span><code><span class="k">assert</span> <span class="n">a_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="n">b_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+</code></pre></div>
+
+  <p>Returns:</p>
+  <ul>
+      <li class="field-body">
+<b>None</b>(            <code>None</code>
+)        – <p>Fills in <code>out</code></p>
+      </li>
+  </ul>
+
+  </div>
+
+</div><h2 id="task-35-training">Task 3.5: Training</h2>
+<p>If your code works, you should now be able to move on to the tensor
+training script in <code>project/run_fast_tensor.py</code>.  This code is the same
+basic training setup as <code>module2</code>, but now utilizes your fast tensor
+code. We have left the <code>matmul</code> layer blank for you to implement with
+your tensor code.</p>
+<p>Here is the command ::</p>
+<div class="highlight"><pre><span></span><code>python run_fast_tensor.py --BACKEND gpu --HIDDEN <span class="m">100</span> --DATASET split --RATE <span class="m">0</span>.05
+python run_fast_tensor.py --BACKEND cpu --HIDDEN <span class="m">100</span> --DATASET split --RATE <span class="m">0</span>.05
+</code></pre></div>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<ul>
+<li>
+<p>Implement the missing functions in <code>project/run_fast_tensor.py</code>. These
+  should
+  do exactly the same thing as the corresponding functions in
+  <code>project/run_tensor.py</code>,
+  but now use the faster backend</p>
+</li>
+<li>
+<p>Train a tensor model and add your results for all dataset
+  to the README.</p>
+</li>
+<li>
+<p>Run a bigger model and record the time per epoch reported by the
+  trainer.</p>
+</li>
+</ul>
+<p>Train a tensor model and add your results for all three dataset
+to the README. Also record the time per epoch reported by the
+trainer. (As a reference, our parallel implementation gave a 10x speedup).
+On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
+GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
+</div>
+<p><img alt="" src="../robot.png" /></p>
+
+              
+
+
+<style>
+// Do whatever changes you need here
+
+img.centered {
+    display: block;
+    margin: 0 auto;
+}
+
+div.jp-RenderedSVG svg {
+    max-width: none;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.jupyter-wrapper div.jp-RenderedText > pre {
+    color: darkred;
+    padding: 10px;
+    background: aliceblue;
+}
+
+
+.jp-RenderedHTMLCommon p {
+
+}
+
+.jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt {
+   display: none;
+}
+.jupyter-wrapper .jp-CodeCell .jp-Cell-outputWrapper .jp-OutputPrompt {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide_inp .jp-InputArea {
+   display: none;
+}
+
+.jupyter-wrapper .jp-OutputArea-output dt {
+    width: 100%;
+}
+.jupyter-wrapper .jp-OutputArea-output dd {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.jupyter-wrapper .jp-OutputArea-output.jp-RenderedSVG {
+    text-align: center;
+    padding-top: 10px;
+}
+
+div.doc-contents {
+    padding-left: 20px;
+
+}
+
+</style>
+
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../../module2/tensor/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto-Grad" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Auto-Grad
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../parallel/" class="md-footer__link md-footer__link--next" aria-label="Next: Parallel Computation" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Parallel Computation
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://github.com/srush">Sasha Rush</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../assets/css-js/general/js/tables.js"></script>
+      
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../assets/css-js/general/js/highlight-config.js"></script>
+      
+    
+  </body>
+</html>

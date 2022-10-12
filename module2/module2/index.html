@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/module2/module2/">
       
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.3">
     
     
       
@@ -236,6 +236,22 @@
     <li class="md-tabs__item">
       <a href="./" class="md-tabs__link md-tabs__link--active">
         Tensors
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../module3/module3/" class="md-tabs__link">
+        Efficiency
       </a>
     </li>
   
@@ -779,6 +795,106 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7">
+          Efficiency
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Efficiency" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          Efficiency
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/module3/" class="md-nav__link">
+        Assignment
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/parallel/" class="md-nav__link">
+        Parallel Computation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/matrixmult/" class="md-nav__link">
+        Fusing Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../module3/cuda/" class="md-nav__link">
+        GPU Programming
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -930,8 +1046,8 @@ may not be the inverse of <code>index_to_position</code>.</p>
   <p>Parameters:</p>
   <ul>
       <li class="field-body">
-        <b>order</b>
-            (<code>list</code>)
+        <b>*order</b>
+            (<code>int</code>)
         – <p>a permutation of the dimensions</p>
       </li>
   </ul>
@@ -1080,7 +1196,7 @@ marked as <code>task2_3</code>.</p>
 
 
 <h4 id="minitorch.tensor_ops.tensor_map" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span></code>
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_map</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
 
 </h4>
 
@@ -1109,43 +1225,13 @@ tensors with <em>possibly different strides</em>.</p>
             (<code><span title="typing.Callable">Callable</span>[[float], float]</code>)
         – <p>function from float-to-float to apply</p>
       </li>
-      <li class="field-body">
-        <b>out</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for out tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for out tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for out tensor</p>
-      </li>
-      <li class="field-body">
-        <b>in_storage</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for in tensor</p>
-      </li>
-      <li class="field-body">
-        <b>in_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for in tensor</p>
-      </li>
-      <li class="field-body">
-        <b>in_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for in tensor</p>
-      </li>
   </ul>
 
   <p>Returns:</p>
   <ul>
       <li class="field-body">
-<b>None</b>(            <code><span title="typing.Any">Any</span></code>
-)        – <p>Fills in <code>out</code></p>
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor map function.</p>
       </li>
   </ul>
 
@@ -1158,7 +1244,7 @@ tensors with <em>possibly different strides</em>.</p>
 
 
 <h4 id="minitorch.tensor_ops.tensor_zip" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span></code>
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_zip</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
 
 </h4>
 
@@ -1187,58 +1273,13 @@ tensors with <em>possibly different strides</em>.</p>
             (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
         – <p>function mapping two floats to float to apply</p>
       </li>
-      <li class="field-body">
-        <b>out</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_storage</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>b_storage</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for <code>b</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>b_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for <code>b</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>b_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for <code>b</code> tensor</p>
-      </li>
   </ul>
 
   <p>Returns:</p>
   <ul>
       <li class="field-body">
-<b>None</b>(            <code><span title="typing.Any">Any</span></code>
-)        – <p>Fills in <code>out</code></p>
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+        – <p>Tensor zip function.</p>
       </li>
   </ul>
 
@@ -1251,7 +1292,7 @@ tensors with <em>possibly different strides</em>.</p>
 
 
 <h4 id="minitorch.tensor_ops.tensor_reduce" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Any</span></code>
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_ops</span><span class="o">.</span><span class="n">tensor_reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">Storage</span><span class="p">,</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">Strides</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span> <span class="kc">None</span><span class="p">]</span></code>
 
 </h4>
 
@@ -1271,48 +1312,13 @@ tensors with <em>possibly different strides</em>.</p>
             (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
         – <p>reduction function mapping two floats to float</p>
       </li>
-      <li class="field-body">
-        <b>out</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>out_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for <code>out</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_storage</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>storage for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_shape</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>shape for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>a_strides</b>
-            (<code><span title="minitorch.tensor_data.array">array</span></code>)
-        – <p>strides for <code>a</code> tensor</p>
-      </li>
-      <li class="field-body">
-        <b>reduce_dim</b>
-            (<code>int</code>)
-        – <p>dimension to reduce out</p>
-      </li>
   </ul>
 
   <p>Returns:</p>
   <ul>
       <li class="field-body">
-<b>None</b>(            <code><span title="typing.Any">Any</span></code>
-)        – <p>Fills in <code>out</code></p>
+            <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, int], None]</code>
+        – <p>Tensor reduce function.</p>
       </li>
   </ul>
 
@@ -1478,13 +1484,33 @@ tensors with <em>possibly different strides</em>.</p>
 
   </div>
 
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+
+<h4 id="minitorch.tensor_functions.IsClose.forward" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">IsClose</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h4>
+
+
+  <div class="doc doc-contents first">
+
+  </div>
+
 </div><h2 id="tasks-24-gradients-and-autograd">Tasks 2.4: Gradients and Autograd</h2>
 <p>Similar to <code>minitorch.Scalar</code>, <code>minitorch.Tensor</code>
 is a Variable that supports autodifferentiation. In this task, you
 will implement <code>backward</code> functions for tensor operations.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Complete following functions in <code>minitorch/tensor_ops.py</code>, and pass
+<p>Complete following functions in <code>minitorch/tensor_functions.py</code>, and pass
   tests marked as <code>task2_4</code>.</p>
 </div>
 

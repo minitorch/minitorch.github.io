@@ -1,0 +1,361 @@
+# Module 0.1 - Fundamentals
+# =============================================
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Lecture 2
+# ------------
+#
+#   Fundamentals
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Survey
+# ---------
+#
+# * Thanks so much for filling out the survey
+# * Link: https://forms.gle/eUhmZWX9mzZLXyMp8
+# * Please fill out this week!
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Today's Class
+# ----------------
+#
+# * Module 0
+# * Development Setup
+# * Property Testing
+# * Functional Python
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# The Guidebook
+# --------------
+#
+# * https://minitorch.github.io/
+# * Full description of the material
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Module 0: Fundamentals
+# -----------------------
+#
+# Learning Goals:
+#
+# * Setup
+# * Testing
+# * Modules
+# * Visualization
+# * No ML yet! We'll get to it.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Code Setup: Interactive
+# =========================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# GitHub
+# ---------
+#
+# * http://github.com/
+# * Important: Link your Cornell email to your Github.
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Base Repo Template
+# --------------------
+#
+# * Each repo starts with a template
+# * https://github.com/minitorch/Module-0
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Tour of Repo
+# ------------------
+#
+# * minitorch/
+# * tests/
+# * project/
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Recommendations
+# -------------------------
+#
+#
+# * Development Setup
+# * Github Tutorials
+# * Speed of Debugging
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Contributing Guidelines
+# =========================
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Style
+# ------
+#
+# * Configure your development environment to check for style errors ::
+#   ```base
+#    >>> black minitorch/ tests/ project/
+#   ```
+# * Checks for any style or documentation errors ::
+#
+#   >>> flake8 minitorch/ tests/ project/
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Continuous Integration
+# --------------------------
+#
+# * Runs behind the scenes on every commit.
+#
+# .. image:: https://classroom.github.com/images/help/autograding/actions-logs.png
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Documentation
+# -----------------
+#
+# Doc style (`Google <https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html>`_) 
+
+# + slideshow={"slide_type": "x"}
+
+def index(ls, i):
+    """
+    List indexing.
+
+    Args:
+      ls (list): A list of any type.
+      i (int): An index into the list
+
+    Returns:
+       Value at ls[i].
+    """
+    ...
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Testing
+# ==================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Running Tests
+# ----------------
+#
+# Run tests ::
+#
+#   >>> pytest
+#
+# Or per task ::
+#
+#   >>> pytest -m task0_1
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# PyTest
+# -------------
+
+# * Finds files that begin with `test`
+# * Finds functions that begin with `test`
+# * Select based on filters
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Gotchas
+# -------------
+
+# * Test output is verbose
+# * Read tests
+# * Protip: minimize testing speed
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Helpful Filters
+# ------------------
+
+# Specific task ::
+
+#   >>> pytest -m task0_1
+
+# Specific test ::
+
+#   >>> pytest -k test_sum
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# How do unit tests work?
+# ------------------------
+
+# * Tries to run code
+# * If there is a False assert it fails
+# * Only prints if test fails!
+# * `assert` and `assert_close`
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Module 0 Functions
+# -------------------
+
+# Implement 
+
+def relu(x):
+    """
+    :math:`f(x) =` x if x is greater than 0, else 0
+
+    (See `<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>`_ .)
+    """
+    ...
+
+
+#    * Pretty basic function.
+#    * How do we know it works?
+
+# + [markdown] slideshow={"slide_type": "slide"}
+
+# Standard Unit Test
+# --------------------
+
+
+# Test for values with given inputs 
+
+def test_relu():
+    assert operators.relu(10.0) == 10.0
+    assert operators.relu(-10.0) == 0.0
+
+
+# * (PyTest succeeds if no assertions are called)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+
+# Ideal: Property Test
+# ---------------------
+
+# Test that all values satisfy property ::
+
+def test_relu():
+    for a in range(0, 1e9):
+        assert operators.relu(a) == a
+        
+    for a in range(-1e9, 0):
+        assert operators.relu(a) == 0.0
+
+
+# * Intractable
+
+# + [markdown] slideshow={"slide_type": "slide"}
+
+# QuickCheck (Hypothesis)
+# ------------------------
+
+# * https://en.wikipedia.org/wiki/QuickCheck
+# * https://hypothesis.readthedocs.io/en/latest/
+
+# + [markdown] slideshow={"slide_type": "slide"}
+
+# Compromise: Randomized Property Test
+# --------------------------------------
+
+# Test that randomly selected values satisfy property. ::
+
+# @given(floats())
+# def test_relu(a):
+#     value = operators.relu(a)
+#     if a >= 0:
+#         assert value == a
+#     else:
+#         assert value == 0.0
+
+# * Greater coverage with less code
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Custom Generators
+# --------------------------------------
+
+
+# * Can provide your own randomized generators
+# * Future assignments will utilize this feature.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Functional Python
+# ==================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Functional Programming
+# ------------------------
+
+# * Style of programming where functions can be passed and used like other objects.
+# * One of several programming styles supported in Python.
+# * Good paradigm for mathematical programming
+
+# + [markdown] slideshow={"slide_type": "slide"}
+
+# Functional Python
+# -----------------------
+
+# Functions as Arguments
+
+
+def combine3(fn, a, b, c):
+    return fn(fn(a, b), c)
+
+def add(a, b):
+    return a + b
+
+def mul(a, b):
+    return a * b
+
+# print(combine3(add, 1, 3, 5))
+# print(combine3(mul, 1, 3, 5))
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Functional Python
+# -----------------------
+
+# Functions as Returns
+
+# + slideshow={"slide_type": "x"}
+
+def combine3(fn):
+    def apply(a, b, c):
+        return fn(fn(a, b), c)
+    return apply
+
+add3 = combine3(add)
+mul3 = combine3(mul)
+
+add3(1, 3, 5) # 9
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Higher-order Filter
+# -----------------------
+
+# Extended example
+
+# + slideshow={"slide_type": "x"}
+
+def filter(fn):
+    def apply(ls):
+        ret = []
+        for x in ls:
+            if fn(x):
+                ret.append(x)
+        return ret
+    return apply
+
+#   def more_than_4(x):
+#       return x > 4
+
+#   filter_for_more_than_4 = filter(more_than_4)
+#   filter_for_more_than_4([1, 10, 3, 5])
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Functional Python
+# ------------------
+# Rules of Thumbs
+#   * When in doubt, write out defs
+#   * Document the arguments that functions take and send
+#   * Write tests in for loops to sanity check
+
+
+
+
+# Q&A
+# ======
+
+
+
+# + slideshow={"slide_type": "slide"}
+from IPython.core.display import HTML
+HTML('<link rel="stylesheet" href="custom.css">')

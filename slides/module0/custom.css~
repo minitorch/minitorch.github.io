@@ -1,0 +1,58 @@
+.jp-InputArea-editor {
+    border:None;
+    background: None;
+
+}
+
+.jp-OutputArea-child {
+    text-align: center;
+
+}
+
+.jp-InputPrompt {
+    display: None;
+}
+
+
+.jp-OutputPrompt {
+    display: None;
+}
+
+p.tensor_out {
+    text-align: left;
+    font-family: monospace;
+    margin-left: 20px;
+}
+
+.reveal section hr {
+    border: gray 0.5px solid;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.reveal section blockquote  {
+    border: none;
+}
+
+.reveal pre {
+    margin: 0px;
+    width: auto;
+    font-size: 1em;
+}
+
+
+.reveal section p {
+    font-size: 1.1em !important;
+}
+.reveal section h2 {
+    font-size: 2.7em !important;
+}
+
+.reveal section li {
+    font-size: 1.1em !important;
+}
+
+.reveal section pre code {
+    font-size: 0.6em !important;
+}
+

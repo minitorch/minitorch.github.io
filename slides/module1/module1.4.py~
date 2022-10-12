@@ -1,0 +1,384 @@
+
+
+Machine Learning Engineering
+=============================================
+
+
+Module 1.4
+------------
+
+  Neural Networks
+
+
+Lecture
+=========
+
+
+
+
+Outline
+---------
+
+.. revealjs_fragments::
+
+   * Review: Backpropagation
+   * Neural Networks
+   * Model Training
+
+Backpropagation
+================
+
+
+
+
+Math View
+-----------
+
+.. math::
+
+   \begin{eqnarray*}
+   z &=& x \times y \\
+   h(x, y) &=& \log(z) + \exp(z)
+   \end{eqnarray*}
+
+
+.. image:: figs/Autograd/backprop1.png
+           :align: center
+
+Code View
+-----------
+
+.. code::
+
+   def h(x, y):
+      z = x * y
+      return z.log() + z.exp()
+   x = minitorch.Scalar(5.)
+   y = minitorch.Scalar(3.)
+   h(x, y).backward(1)
+   print(x.derivative)
+
+
+.. image:: figs/Autograd/backprop1.png
+           :align: center
+
+Terminology
+------------
+
+.. revealjs_fragments::
+
+   * Leaf: Variable created from scratch
+   * Non-Leaf: Variable created with a Function
+   * Constant: Term passed in that is not a variable
+
+
+Method
+------
+
+.. revealjs_fragments::
+
+   * Graph propagation on Variables
+   * `Breadth-first search <https://en.wikipedia.org/wiki/Breadth-first_search>`_ i.e. Queue
+   * Ensure flow to original Variables
+
+
+Algorithm
+----------
+
+Start with final Variable / derivative (:math:`d_{out}`)
+
+a. if Variable is a leaf, add derivative to .derivative
+b. if Variable is not a leaf,
+
+   1) Apply chainrule with :math:`d_{out}`
+   2) Add non-constant Variables to queue
+
+
+
+Example
+-----------
+
+Red -> Pending Variables / derivatives (:math:`d_{out}`)
+
+.. image:: figs/Autograd/backprop2.png
+           :align: center
+
+Example
+-----------
+
+.. image:: figs/Autograd/backprop3.png
+           :align: center
+
+Example
+-----------
+
+.. image:: figs/Autograd/backprop4.png
+           :align: center
+
+Example
+-----------
+
+.. image:: figs/Autograd/backprop5.png
+           :align: center
+Example
+-----------
+
+.. image:: figs/Autograd/backprop6.png
+           :align: center
+Example
+-----------
+
+.. image:: figs/Autograd/backprop7.png
+           :align: center
+
+Caveats
+--------
+
+* Simple implementation
+* Many optimizations, alternatives
+* Works for most NNs
+
+
+Lecture Quiz
+-------------
+
+  `Quiz <https://canvas.cornell.edu/courses/20583/assignments/160489>`_
+
+
+
+Neural Networks
+=================
+Reminder
+----------
+
+* Dataset - Data to fit
+* Model - Shape of fit
+* Loss - Goodness of fit
+
+
+Linear Model Example
+--------------
+
+* Parameters
+
+.. image:: figs/Graphs/weight.png
+           :align: center
+           :width: 400px
+
+
+.. image:: figs/Graphs/bias.png
+           :align: center
+           :width: 400px
+
+
+
+Loss Function
+--------------
+
+
+.. image:: figs/Graphs/distance.png
+           :align: center
+           :width: 350px
+
+Example Dataset
+----------------
+
+.. image:: figs/Graphs/sector2.png
+           :align: center
+           :width: 350px
+
+
+Harder Datasets
+----------------
+
+* Model may be too "weak"
+
+.. image:: figs/Graphs/splitfail.png
+           :align: center
+           :width: 300px
+
+
+
+Neural Networks
+------------------
+
+.. revealjs_fragments::
+
+   * New *model*
+   * Uses repeated linear splits of data
+   * Produces non-linear separators
+   * Loss will not change
+
+
+Intuition: Neural Networks
+--------------------------
+
+1) Apply many linear seperators
+2) Reshape the data space based on results
+3) Apply a linear model on new space
+
+
+Starting Point
+--------------------------
+
+
+.. image:: figs/Graphs/splitfail.png
+           :align: center
+           :width: 300px
+
+
+
+Intuition: Split 1
+--------------------------
+
+
+.. image:: figs/Graphs/split1.png
+           :align: center
+           :width: 300px
+
+
+Intuition: Split 2
+--------------------------
+
+.. image:: figs/Graphs/split2.png
+           :align: center
+           :width: 300px
+
+
+
+Reshape: ReLU
+--------------
+
+.. image:: figs/Graphs/relu2.png
+           :align: center
+           :width: 600px
+
+Key: Non-linear function
+
+Split 1
+--------------
+
+.. image:: figs/Graphs/relu.png
+           :align: center
+           :width: 400px
+
+
+.. image:: figs/Graphs/split1.png
+           :align: center
+           :width: 300px
+
+Split 2
+--------------
+
+.. image:: figs/Graphs/split2.png
+           :align: center
+           :width: 300px
+
+
+Final Layer
+--------------
+.. image:: figs/Graphs/split1.png
+           :align: center
+           :width: 200px
+
+.. image:: figs/Graphs/split2.png
+           :align: center
+           :width: 200px
+
+
+.. image:: figs/Graphs/mlpmid.png
+           :align: center
+           :width: 300px
+
+Final Layer
+--------------
+
+.. image:: figs/Graphs/mlpmid.png
+           :align: center
+           :width: 300px
+
+
+Zoomed Out
+--------------
+
+.. image:: figs/Graphs/mlpgraph.png
+           :align: center
+           :width: 300px
+
+
+Math View
+----------
+
+.. math::
+
+   \begin{eqnarray*}
+   h_ 1 &=& \text{ReLU}(x_1 \times w^0_1 + x_2 \times w^0_2 + b^0) \\
+   h_ 2 &=& \text{ReLU}(x_1 \times w^1_1 + x_2 \times w^1_2 + b^1)\\
+   m(x_1, x_2) &=& h_1 \times w_1 + h_2 \times w_2 + b
+   \end{eqnarray*}
+
+Parameters:
+ :math:`w_1, w_2, w^0_1, w^0_2, w^1_1, w^1_2, b, b^0, b^1`
+
+Math View (Alt)
+---------------
+
+.. math::
+
+   \begin{eqnarray*}
+   \text{lin}(x; w, b) &=& x_1 \times w_1 + x_2 \times w_2 + b \\
+   h_ 1 &=& \text{ReLU}(\text{lin}(x; w^0, b^0)) \\
+   h_ 2 &=& \text{ReLU}(\text{lin}(x; w^1, b^1))\\
+   m(x_1, x_2) &=& \text{lin}(h; w, b)
+   \end{eqnarray*}
+
+Parameters:
+ :math:`w_1, w_2, w^0_1, w^0_2, w^1_1, w^1_2, b, b^0, b^1`
+
+
+
+Code View
+----------
+
+Linear ::
+
+  class Linear(minitorch.Module):
+    def __init__(self):
+        super().__init__()
+        self.w_1 = minitorch.Parameter(minitorch.Scalar())
+        self.w_2 = minitorch.Parameter(minitorch.Scalar())
+        self.b = minitorch.Parameter(minitorch.Scalar())
+
+    def forward(self, inputs):
+        return (inputs[0] * self.w_1.value +
+               inputs[1] * self.w_2.value +
+               self.b.value)
+Code View
+----------
+
+Model ::
+
+  class Network(minitorch.Module):
+    def __init__(self):
+        super().__init__()
+        self.unit1 = Linear()
+        self.unit2 = Linear()
+        self.unit3 = Linear()
+
+    def forward(self, x):
+        h_1 = self.unit1.foward(x).relu()
+        h_2 = self.unit2.foward(x).relu()
+        return self.unit3.foward([h_1, h_2])
+
+
+Training
+---------
+
+.. code ::
+
+   model = Network()
+   ...
+   model.named_parameters()
+
+* All the parameters in model are leaf Variables
+* Computing backward on loss fills their derivative

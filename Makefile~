@@ -1,0 +1,9 @@
+INPUTS = $(wildcard *.py) $(wildcard */*.py)
+OUTPUTS = $(patsubst %.py,%.ipynb,$(INPUTS))
+
+
+
+all: $(OUTPUTS)
+
+$(OUTPUTS): $(INPUTS)
+	jupytext --execute --run-path .. --to notebook mlprimer.py 

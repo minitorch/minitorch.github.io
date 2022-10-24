@@ -2170,7 +2170,7 @@ Next, we consider a 1-dimensional tensor (vector):</p>
 are its
 <code>shape</code> and <code>size</code>. The shape of the above vector is (5,)) and its size
 (i.e. number of squares in the graph) is 5.
-The shape of the above matrix is (2,5) and its size is 10.</p>
+The shape of the above matrix is (4,4) and its size is 20.</p>
 
 </div>
 </div>
@@ -2940,7 +2940,7 @@ d.connect(("n", 0, 3), ("s", 0, 6)).connect(("n", 1, 3), ("s", 0, 7))</div>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>It has new strides (1,2) and new shape (5,2), in contrast to the previous (2,1)
+<p>It has new strides (1,2) and new shape (2,5), in contrast to the previous (2,1)
 stride map on the (5,2) matrix. But notably no change in the
 <code>storage</code>. This is one of the super powers of tensors mentioned above:
 we can easily manipulate how we view the same underlying <code>storage</code>.</p>

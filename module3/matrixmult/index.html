@@ -1990,7 +1990,7 @@ intermediate tensors. This is particularly helpful for saving memory.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>There is a lot of ongoing work on how to do this operator fusion
-automatically. However, for very common operators. it is worth just
+automatically. However, for very common operators, it is worth just
 writing these operators directly and speeding them up.</p>
 
 </div>
@@ -2063,11 +2063,21 @@ find it useful, we will add these operations in Numba</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">chalk</span><span class="o">.</span><span class="n">hcat</span><span class="p">([</span><span class="n">matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">)),</span>
-            <span class="n">matrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">))],</span> <span class="mf">0.5</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">chalk</span><span class="o">.</span><span class="n">hcat</span><span class="p">(</span>
+    <span class="p">[</span>
+        <span class="n">matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">j</span><span class="p">)),</span>
+        <span class="n">matrix</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">:</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">)(</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">)),</span>
+    <span class="p">],</span>
+    <span class="mf">0.5</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
-<div id="cell-2" class="clipboard-copy-txt">chalk.hcat([matrix(2, 4, colormap=lambda i, j: color(1, 4)(0, j)),
-            matrix(4, 3, colormap=lambda i, j: color(1, 4)(0, i))], 0.5)</div>
+<div id="cell-2" class="clipboard-copy-txt">chalk.hcat(
+    [
+        matrix(2, 4, colormap=lambda i, j: color(1, 4)(0, j)),
+        matrix(4, 3, colormap=lambda i, j: color(1, 4)(0, i)),
+    ],
+    0.5,
+)</div>
     
         </div>
     </div>
@@ -2538,7 +2548,7 @@ the forward arrows:</p>
 <p>It would be a bit annoying to optimize this code as well, but again
 luckily, to compute the <code>backward</code> step , we can reuse our forward
 optimization.  In fact we can simply use the following identity from
-matrix calculus that tells use backward can be computed as a transpose
+matrix calculus that tells us backward can be computed as a transpose
 and another matrix multiply.</p>
 
 </div>

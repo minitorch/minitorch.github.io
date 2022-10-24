@@ -2403,7 +2403,7 @@ n &gt; 1 by assuming the dimension  is copied n times.</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Here we are trying to zip a matrix (2-D) of shape (4, 3) with a vector
+<p>Here we are trying to zip a matrix (2-D) of shape (5, 3) with a vector
 (1-D) of shape (1,). Here we are not just off on the shape, but also on
 the number of dimensions.</p>
 
@@ -2616,11 +2616,11 @@ output will be. For example</p>
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># This will fail: mismatch of (4, 3) and (4,)</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="c1"># This will fail: mismatch of (5, 3) and (3,)</span>
 <span class="n">vector2</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">matrix1</span> <span class="o">*</span> <span class="n">vector2</span>
 </pre></div>
-<div id="cell-9" class="clipboard-copy-txt"># This will fail: mismatch of (4, 3) and (4,)
+<div id="cell-9" class="clipboard-copy-txt"># This will fail: mismatch of (5, 3) and (3,)
 vector2 = tensor([2, 2, 3])
 matrix1 * vector2</div>
     

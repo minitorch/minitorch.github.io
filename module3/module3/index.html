@@ -916,7 +916,7 @@ efficiently write deep learning code in a slow language like Python.
 However, nothing we have done so far really makes anything faster than
 <code>module0</code>. This module is focused on taking advantage of tensors
 to write fast code, first on standard CPUs and then using GPUs.</p>
-<p>You need the files from previous assignments, so maker sure to pull them over
+<p>You need the files from previous assignments, so make sure to pull them over
 to your new repo.</p>
 <h2 id="guides">Guides</h2>
 <ul>
@@ -1087,7 +1087,7 @@ marked as <code>task3_1</code>.</p>
   </div>
 
 </div><h2 id="task-32-matrix-multiplication">Task 3.2: Matrix Multiplication</h2>
-<p>Matrix multiplication is key to all of the models that we have trained
+<p>Matrix multiplication is key to all the models that we have trained
 so far.  In the last module, we computed matrix multiplication using
 broadcasting.  In this task, we ask you to implement it directly as a
 function. Do your best to make the function efficient, but for now all
@@ -1097,11 +1097,8 @@ passes our tests and has some parallelism.</p>
 <code>MatMul</code> Function to <code>tensor_functions.py</code>. We have added a version in
 the starter code you can copy.  You might also find it useful to add a
 slow broadcasted <code>matrix_multiply</code> to <code>tensor_ops.py</code> for debugging.</p>
-<p>In order to help debug this code, we have created a parallel analytics
-script for you.</p>
-<div class="highlight"><pre><span></span><code>python project/parallel_test.py
-</code></pre></div>
-<p>Running this script will run Numba diagnostics on your functions.</p>
+<p>In order to help debug this code, you can use the parallel analytics
+script.</p>
 <p>After you finish this task, you may want to skip to 3.5 and experiment
 with training on the real task under speed conditions.</p>
 <div class="admonition todo">

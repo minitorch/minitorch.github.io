@@ -15,10 +15,10 @@ slides: $(SLIDES)
 checks: $(CHECKS)
 
 %.ipynb : %.py
-	jupytext --execute --run-path . --to notebook $<
+	jupytext --execute --set-kernel minitorch --run-path . --to notebook $< 
 
 %.slides.html : %.ipynb
-	jupyter nbconvert  $< --to slides --SlidesExporter.reveal_transition="none" --template slides/talk/ --SlidesExporter.reveal_url_prefix="https://unpkg.com/reveal.js@4.3.1"
+	jupyter nbconvert  $< --to slides --ExecutePreprocessor.kernel_name minitorch --SlidesExporter.reveal_transition="none" --template slides/talk/ --SlidesExporter.reveal_url_prefix="https://unpkg.com/reveal.js@4.3.1"
 
 
 %.html : %.ipynb

@@ -1044,22 +1044,6 @@ for digit recognition, and for a 1D conv for NLP sentiment classification.</p>
 them over to your new repo.  We recommend you to get familiar with
 tensor.py, since you might find some of those functions useful for
 implementing this Module.</p>
-<p>Additionally, you need to install and download an MNIST library:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; pip install python-mnist
-&gt;&gt;&gt; <span class="nb">cd</span> project/<span class="p">;</span> bash mnist_get_data.sh
-</code></pre></div>
-<p>(Mac OS users may need to install wget in order to run the .sh file.)</p>
-<p>It will add a <code>data/</code> directory in your module.  You can try the
-following code to test the installation</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">mnist</span> <span class="kn">import</span> <span class="n">MNIST</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">mndata</span> <span class="o">=</span> <span class="n">MNIST</span><span class="p">(</span><span class="s2">&quot;data/&quot;</span><span class="p">)</span>
-<span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">mndata</span><span class="o">.</span><span class="n">load_training</span><span class="p">()</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">images</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">28</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
-</code></pre></div>
 <h2 id="guides">Guides</h2>
 <ul>
 <li><a href="../convolution/">Convolution</a></li>
@@ -1356,21 +1340,18 @@ the dropout and max-pooling operations.</p>
 </div>
 
 
-<div class="doc doc-object doc-attribute">
+<div class="doc doc-object doc-function">
 
 
 
 <h4 id="minitorch.max" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">max</span> <span class="o">=</span> <span class="n">Max</span><span class="o">.</span><span class="n">apply</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-module-attribute"><code>module-attribute</code></small>
-  </span>
+<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
   <div class="doc doc-contents first">
+
   </div>
 
 </div>
@@ -1485,8 +1466,8 @@ the dropout and max-pooling operations.</p>
   <p>Returns:</p>
   <ul>
       <li class="field-body">
-            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>class:<code>Tensor</code> : pooled tensor</p>
+<b>Tensor</b>(            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
+)        – <p>pooled tensor</p>
       </li>
   </ul>
 
@@ -1528,7 +1509,7 @@ the dropout and max-pooling operations.</p>
   <ul>
       <li class="field-body">
             <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>tensor with randoom positions dropped out</p>
+        – <p>tensor with random positions dropped out</p>
       </li>
   </ul>
 
@@ -1555,17 +1536,14 @@ hidden states of your model, like the following:</p>
 <ul>
 <li>
 <p>Train a model on Sentiment (SST2), and add your training printout
-  logs (i.e. training loss, performance on validation set) to the
-  README. (The model should get to 75% best validation accuracy.)</p>
+  logs as a text file <code>sentiment.txt</code> to the repo. It should show
+  train loss, train accuracy and validation accuracy.
+  (The model should get to &gt;70% best validation accuracy.)</p>
 </li>
 <li>
-<p>Train a model on Digit classification (MNIST), and add your
-  training printout logs (i.e. training loss, performance on
-  validation set) to the README.</p>
-</li>
-<li>
-<p>Report the Streamlit visualizations of your final model's hidden
-  states at the end of training.</p>
+<p>Train a model on Digit classification (MNIST) logs as a text
+  file <code>mnist.txt</code> to the repo. It should show train loss and validation
+  accuracy out of 16</p>
 </li>
 </ul>
 </div>

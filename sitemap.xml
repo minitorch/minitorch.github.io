@@ -2,137 +2,137 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://minitorch.github.io/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/install/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/mlprimer/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/contributing/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/functional/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/module0/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/modules/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/property_testing/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module0/visualization/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module1/backpropagate/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module1/chainrule/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module1/derivative/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module1/module1/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module1/scalar/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module2/broadcasting/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module2/module2/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module2/tensor/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module2/tensordata/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module2/tensorops/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module3/cuda/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module3/matrixmult/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module3/module3/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module3/parallel/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module4/convolution/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module4/module4/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module4/pooling/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://minitorch.github.io/module4/softmax/</loc>
-         <lastmod>2022-11-14</lastmod>
+         <lastmod>2022-11-21</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

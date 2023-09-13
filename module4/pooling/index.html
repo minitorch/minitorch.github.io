@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/module4/pooling/">
       
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
     
     
       
@@ -1153,6 +1153,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight-ipynb .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight-ipynb .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight-ipynb .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight-ipynb .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight-ipynb .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight-ipynb .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight-ipynb .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -1977,24 +1978,34 @@ Licensed under the Apache License, Version 2.0.
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
     init_mathjax();
     </script>
     <!-- End of mathjax configuration --><div class="jupyter-wrapper">
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h1>
+<h1 id="pooling">Pooling<a class="anchor-link" href="#pooling">&#182;</a></h1>
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>In previous modules, we have found it useful to reduce over certain
 dimensions to reduce the shape of tensors. For example, in the NLP
@@ -2006,7 +2017,13 @@ classification decision based on a fixed-sized representation.</p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>This style of network goes by the informal name <code>pooling</code> in the
 neural network literature. When we reduce part of the input in order
@@ -2015,7 +2032,13 @@ representations.</p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Applying reduction over length or other dimensions
 is one form of pooling. For sequential cases, we might call it
@@ -2023,13 +2046,25 @@ X-over-time pooling (where X might be a sum, mean, max etc.):</p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="http://minitorch.github.io/figs/Conv/pool1.png" alt="" /></p>
+<p><img src="http://minitorch.github.io/figs/Conv/pool1.png" alt=""></p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Another common form of pooling is to only pool locally within a
 dimension. For instance, we might pool together neighboring elements
@@ -2039,15 +2074,21 @@ are very long.</p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="http://minitorch.github.io/figs/Conv/pool2.png" alt="" /></p>
+<p><img src="http://minitorch.github.io/figs/Conv/pool2.png" alt=""></p>
 <p>In practice, to avoid implementing the pooling operation as a loop, we
 can manipulate the shape and strides of the input tensor in order to
 pool it directly. Assuming the input tensor is contiguous, we can
 simply add an extra dimension by applying <code>view</code>.  For instance, we
 can <code>view</code> a (8,) input as (4, 2):</p>
-<p><img src="http://minitorch.github.io/figs/Conv/pool3.png" alt="" /></p>
+<p><img src="http://minitorch.github.io/figs/Conv/pool3.png" alt=""></p>
 <p>Once we have the input in this form, we can reduce over the second
 dimension to get a (4,1) tensor, which can be viewed as a (4,). As
 long as the dimensions for pooling are divisible by the pooling
@@ -2055,11 +2096,17 @@ constant (i.e. the input size for each individual pooling operation),
 this procedure will produce the correct pooled result, as visualized
 below.  If not divisible, we can pad our input tensors, or add padding
 along the way.</p>
-<p><img src="http://minitorch.github.io/figs/Conv/pool4.png" alt="" /></p>
+<p><img src="http://minitorch.github.io/figs/Conv/pool4.png" alt=""></p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>You will implement a version of this type of pooling in two
 dimensions for images. You need to generalize the above idea in 1D
@@ -2067,19 +2114,33 @@ pooling to create a shape with two extra dimesions to reduce over:</p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><img src="http://minitorch.github.io/figs/Conv/pool2d.png" alt="" /></p>
+<p><img src="http://minitorch.github.io/figs/Conv/pool2d.png" alt=""></p>
 
 </div>
 </div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>The benefit of pooling is that applying a small convolution over the
 pooled results covers a larger region in the original input
 image. These later layers ideally can learn higher-level properties of
 the input image.</p>
 
+</div>
+</div>
 </div>
 </div>
 </div>

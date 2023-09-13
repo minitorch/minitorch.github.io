@@ -1,0 +1,1 @@
+ScalarHistory(last_fn=<class '__main__.Neg'>, ctx=Context(no_grad=False, saved_values=()), inputs=[Scalar(-10.000000)])

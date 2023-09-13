@@ -14495,6 +14495,9 @@ a.anchor-link {
 .reveal {
   font-size: 160%;
 }
+.reveal table {
+  font-size: var(--jp-ui-font-size1);
+}
 .reveal pre {
   width: inherit;
   padding: 0.4em;
@@ -14538,6 +14541,23 @@ div.jp-OutputPrompt {
   margin: 5px 5px 0 0;
 }
 
+.reveal div.highlight {
+  margin: 0;
+}
+
+.reveal div.highlight > pre {
+  margin: 0;
+  width: 100%;
+  font-size: var(--jp-code-font-size);
+}
+
+.reveal div.jp-OutputArea-output > pre {
+  margin: 0;
+  width: 90%;
+  font-size: var(--jp-code-font-size);
+  box-shadow: none;
+}
+
 /* Reveal navigation controls */
 
 .reveal .controls .navigate-left,
@@ -14578,17 +14598,14 @@ div.jp-OutputPrompt {
 
 /* Scrollbars */
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar *
-{
-  background:transparent;
+::-webkit-scrollbar * {
+  background: transparent;
 }
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background: #727272 !important;
 }
 </style>
@@ -14615,12 +14632,12 @@ div.jp-OutputPrompt {
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -14637,41 +14654,73 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Module-3.3---CUDA-2">Module 3.3 - CUDA 2<a class="anchor-link" href="#Module-3.3---CUDA-2">&#182;</a></h1>
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CUDA-Abstraction">CUDA Abstraction<a class="anchor-link" href="#CUDA-Abstraction">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/thread@3x.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CUDA-Abstraction">CUDA Abstraction<a class="anchor-link" href="#CUDA-Abstraction">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/blockid@3x.png" alt="" /></p>
+<p><img src="https://minitorch.github.io/figs/gpu/thread@3x.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/gpu/blockid@3x.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Stack">Stack<a class="anchor-link" href="#Stack">&#182;</a></h2><ul>
 <li>Threads: Run the code</li>
-<li>Block: Groups &quot;close&quot; threads</li>
+<li>Block: Groups "close" threads</li>
 <li>Grid: All the thread blocks</li>
 <li>Total Threads: <code>threads_per_block</code> x <code>total_blocks</code></li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Thread-Names">Thread Names<a class="anchor-link" href="#Thread-Names">&#182;</a></h2><p>Printing code</p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14679,9 +14728,9 @@ div.jp-OutputPrompt {
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">printer</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
     <span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">50</span>
-<span class="n">printer</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">printer</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">printer</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)](</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># printer = cuda.jit()(printer)</span>
+<span class="c1"># a = np.zeros(10)</span>
+<span class="c1"># printer[1, (10, 10)](a)</span>
 </pre></div>
 
      </div>
@@ -14689,130 +14738,15 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>6 9
-7 9
-8 9
-9 9
-0 0
-1 0
-2 0
-3 0
-4 0
-5 0
-6 0
-7 0
-8 0
-9 0
-0 1
-1 1
-2 1
-3 1
-4 1
-5 1
-6 1
-7 1
-8 1
-9 1
-0 2
-1 2
-2 2
-3 2
-4 2
-5 2
-6 2
-7 2
-8 2
-9 2
-0 3
-1 3
-2 3
-3 3
-4 3
-5 3
-6 3
-7 3
-8 3
-9 3
-0 4
-1 4
-2 4
-3 4
-4 4
-5 4
-6 4
-7 4
-8 4
-9 4
-0 5
-1 5
-2 5
-3 5
-4 5
-5 5
-6 5
-7 5
-8 5
-9 5
-0 6
-1 6
-2 6
-3 6
-4 6
-5 6
-6 6
-7 6
-8 6
-9 6
-0 7
-1 7
-2 7
-3 7
-4 7
-5 7
-6 7
-7 7
-8 7
-9 7
-0 8
-1 8
-2 8
-3 8
-4 8
-5 8
-6 8
-7 8
-8 8
-9 8
-0 9
-1 9
-2 9
-3 9
-4 9
-5 9
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Output">Output<a class="anchor-link" href="#Output">&#182;</a></h2><p>Output</p>
+
 <pre><code> 6 3
  7 3
  8 3
@@ -14821,23 +14755,38 @@ div.jp-OutputPrompt {
  1 4
  2 4
  3 4
- 4 4
-</code></pre>
+ 4 4</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Block-Names">Block Names<a class="anchor-link" href="#Block-Names">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/block1d@3x.png" alt="" /></p>
+<p><img src="https://minitorch.github.io/figs/gpu/block1d@3x.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Thread-Names">Thread Names<a class="anchor-link" href="#Thread-Names">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14846,9 +14795,9 @@ div.jp-OutputPrompt {
     <span class="nb">print</span><span class="p">(</span><span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span><span class="p">,</span>
           <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
     <span class="n">a</span><span class="p">[:]</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">+</span> <span class="mi">50</span>
-<span class="n">printer</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">printer</span><span class="p">)</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-<span class="n">printer</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)](</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># printer = cuda.jit()(printer)</span>
+<span class="c1"># a = np.zeros(10)</span>
+<span class="c1"># printer[10, (10, 10)](a)</span>
 </pre></div>
 
      </div>
@@ -14856,1046 +14805,40 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0 6 9
-0 7 9
-0 8 9
-0 9 9
-6 6 9
-6 7 9
-6 8 9
-6 9 9
-3 6 9
-3 7 9
-3 8 9
-3 9 9
-9 6 9
-9 7 9
-9 8 9
-9 9 9
-5 6 9
-5 7 9
-5 8 9
-5 9 9
-7 6 9
-7 7 9
-7 8 9
-7 9 9
-4 6 9
-4 7 9
-4 8 9
-4 9 9
-1 6 9
-1 7 9
-1 8 9
-1 9 9
-8 6 9
-8 7 9
-8 8 9
-8 9 9
-2 6 9
-2 7 9
-2 8 9
-2 9 9
-0 0 0
-0 1 0
-0 2 0
-0 3 0
-0 4 0
-0 5 0
-0 6 0
-0 7 0
-0 8 0
-0 9 0
-0 0 1
-0 1 1
-0 2 1
-0 3 1
-0 4 1
-0 5 1
-0 6 1
-0 7 1
-0 8 1
-0 9 1
-0 0 2
-0 1 2
-0 2 2
-0 3 2
-0 4 2
-0 5 2
-0 6 2
-0 7 2
-0 8 2
-0 9 2
-0 0 3
-0 1 3
-6 0 0
-6 1 0
-6 2 0
-6 3 0
-6 4 0
-6 5 0
-6 6 0
-6 7 0
-6 8 0
-6 9 0
-6 0 1
-6 1 1
-6 2 1
-6 3 1
-6 4 1
-6 5 1
-6 6 1
-6 7 1
-6 8 1
-6 9 1
-6 0 2
-6 1 2
-6 2 2
-6 3 2
-6 4 2
-6 5 2
-6 6 2
-6 7 2
-6 8 2
-6 9 2
-6 0 3
-6 1 3
-3 0 0
-3 1 0
-3 2 0
-3 3 0
-3 4 0
-3 5 0
-3 6 0
-3 7 0
-3 8 0
-3 9 0
-3 0 1
-3 1 1
-3 2 1
-3 3 1
-3 4 1
-3 5 1
-3 6 1
-3 7 1
-3 8 1
-3 9 1
-3 0 2
-3 1 2
-3 2 2
-3 3 2
-3 4 2
-3 5 2
-3 6 2
-3 7 2
-3 8 2
-3 9 2
-3 0 3
-3 1 3
-5 0 0
-5 1 0
-5 2 0
-5 3 0
-5 4 0
-5 5 0
-5 6 0
-5 7 0
-5 8 0
-5 9 0
-5 0 1
-5 1 1
-5 2 1
-5 3 1
-5 4 1
-5 5 1
-5 6 1
-5 7 1
-5 8 1
-5 9 1
-5 0 2
-5 1 2
-5 2 2
-5 3 2
-5 4 2
-5 5 2
-5 6 2
-5 7 2
-5 8 2
-5 9 2
-5 0 3
-5 1 3
-9 0 0
-9 1 0
-9 2 0
-9 3 0
-9 4 0
-9 5 0
-9 6 0
-9 7 0
-9 8 0
-9 9 0
-9 0 1
-9 1 1
-9 2 1
-9 3 1
-9 4 1
-9 5 1
-9 6 1
-9 7 1
-9 8 1
-9 9 1
-9 0 2
-9 1 2
-9 2 2
-9 3 2
-9 4 2
-9 5 2
-9 6 2
-9 7 2
-9 8 2
-9 9 2
-9 0 3
-9 1 3
-0 2 3
-0 3 3
-0 4 3
-0 5 3
-0 6 3
-0 7 3
-0 8 3
-0 9 3
-0 0 4
-0 1 4
-0 2 4
-0 3 4
-0 4 4
-0 5 4
-0 6 4
-0 7 4
-0 8 4
-0 9 4
-0 0 5
-0 1 5
-0 2 5
-0 3 5
-0 4 5
-0 5 5
-0 6 5
-0 7 5
-0 8 5
-0 9 5
-0 0 6
-0 1 6
-0 2 6
-0 3 6
-4 0 0
-4 1 0
-4 2 0
-4 3 0
-4 4 0
-4 5 0
-4 6 0
-4 7 0
-4 8 0
-4 9 0
-4 0 1
-4 1 1
-4 2 1
-4 3 1
-4 4 1
-4 5 1
-4 6 1
-4 7 1
-4 8 1
-4 9 1
-4 0 2
-4 1 2
-4 2 2
-4 3 2
-4 4 2
-4 5 2
-4 6 2
-4 7 2
-4 8 2
-4 9 2
-4 0 3
-4 1 3
-0 4 6
-0 5 6
-0 6 6
-0 7 6
-0 8 6
-0 9 6
-0 0 7
-0 1 7
-0 2 7
-0 3 7
-0 4 7
-0 5 7
-0 6 7
-0 7 7
-0 8 7
-0 9 7
-0 0 8
-0 1 8
-0 2 8
-0 3 8
-0 4 8
-0 5 8
-0 6 8
-0 7 8
-0 8 8
-0 9 8
-0 0 9
-0 1 9
-0 2 9
-0 3 9
-0 4 9
-0 5 9
-6 2 3
-6 3 3
-6 4 3
-6 5 3
-6 6 3
-6 7 3
-6 8 3
-6 9 3
-6 0 4
-6 1 4
-6 2 4
-6 3 4
-6 4 4
-6 5 4
-6 6 4
-6 7 4
-6 8 4
-6 9 4
-6 0 5
-6 1 5
-6 2 5
-6 3 5
-6 4 5
-6 5 5
-6 6 5
-6 7 5
-6 8 5
-6 9 5
-6 0 6
-6 1 6
-6 2 6
-6 3 6
-6 4 6
-6 5 6
-6 6 6
-6 7 6
-6 8 6
-6 9 6
-6 0 7
-6 1 7
-6 2 7
-6 3 7
-6 4 7
-6 5 7
-6 6 7
-6 7 7
-6 8 7
-6 9 7
-6 0 8
-6 1 8
-6 2 8
-6 3 8
-6 4 8
-6 5 8
-6 6 8
-6 7 8
-6 8 8
-6 9 8
-6 0 9
-6 1 9
-6 2 9
-6 3 9
-6 4 9
-6 5 9
-7 0 0
-7 1 0
-7 2 0
-7 3 0
-7 4 0
-7 5 0
-7 6 0
-7 7 0
-7 8 0
-7 9 0
-7 0 1
-7 1 1
-7 2 1
-7 3 1
-7 4 1
-7 5 1
-7 6 1
-7 7 1
-7 8 1
-7 9 1
-7 0 2
-7 1 2
-7 2 2
-7 3 2
-7 4 2
-7 5 2
-7 6 2
-7 7 2
-7 8 2
-7 9 2
-7 0 3
-7 1 3
-5 2 3
-5 3 3
-5 4 3
-5 5 3
-5 6 3
-5 7 3
-5 8 3
-5 9 3
-5 0 4
-5 1 4
-5 2 4
-5 3 4
-5 4 4
-5 5 4
-5 6 4
-5 7 4
-5 8 4
-5 9 4
-5 0 5
-5 1 5
-5 2 5
-5 3 5
-5 4 5
-5 5 5
-5 6 5
-5 7 5
-5 8 5
-5 9 5
-5 0 6
-5 1 6
-5 2 6
-5 3 6
-3 2 3
-3 3 3
-3 4 3
-3 5 3
-3 6 3
-3 7 3
-3 8 3
-3 9 3
-3 0 4
-3 1 4
-3 2 4
-3 3 4
-3 4 4
-3 5 4
-3 6 4
-3 7 4
-3 8 4
-3 9 4
-3 0 5
-3 1 5
-3 2 5
-3 3 5
-3 4 5
-3 5 5
-3 6 5
-3 7 5
-3 8 5
-3 9 5
-3 0 6
-3 1 6
-3 2 6
-3 3 6
-3 4 6
-3 5 6
-3 6 6
-3 7 6
-3 8 6
-3 9 6
-3 0 7
-3 1 7
-3 2 7
-3 3 7
-3 4 7
-3 5 7
-3 6 7
-3 7 7
-3 8 7
-3 9 7
-3 0 8
-3 1 8
-3 2 8
-3 3 8
-3 4 8
-3 5 8
-3 6 8
-3 7 8
-3 8 8
-3 9 8
-3 0 9
-3 1 9
-3 2 9
-3 3 9
-3 4 9
-3 5 9
-5 4 6
-5 5 6
-5 6 6
-5 7 6
-5 8 6
-5 9 6
-5 0 7
-5 1 7
-5 2 7
-5 3 7
-5 4 7
-5 5 7
-5 6 7
-5 7 7
-5 8 7
-5 9 7
-5 0 8
-5 1 8
-5 2 8
-5 3 8
-5 4 8
-5 5 8
-5 6 8
-5 7 8
-5 8 8
-5 9 8
-5 0 9
-5 1 9
-5 2 9
-5 3 9
-5 4 9
-5 5 9
-4 2 3
-4 3 3
-4 4 3
-4 5 3
-4 6 3
-4 7 3
-4 8 3
-4 9 3
-4 0 4
-4 1 4
-4 2 4
-4 3 4
-4 4 4
-4 5 4
-4 6 4
-4 7 4
-4 8 4
-4 9 4
-4 0 5
-4 1 5
-4 2 5
-4 3 5
-4 4 5
-4 5 5
-4 6 5
-4 7 5
-4 8 5
-4 9 5
-4 0 6
-4 1 6
-4 2 6
-4 3 6
-9 2 3
-9 3 3
-9 4 3
-9 5 3
-9 6 3
-9 7 3
-9 8 3
-9 9 3
-9 0 4
-9 1 4
-9 2 4
-9 3 4
-9 4 4
-9 5 4
-9 6 4
-9 7 4
-9 8 4
-9 9 4
-9 0 5
-9 1 5
-9 2 5
-9 3 5
-9 4 5
-9 5 5
-9 6 5
-9 7 5
-9 8 5
-9 9 5
-9 0 6
-9 1 6
-9 2 6
-9 3 6
-9 4 6
-9 5 6
-9 6 6
-9 7 6
-9 8 6
-9 9 6
-9 0 7
-9 1 7
-9 2 7
-9 3 7
-9 4 7
-9 5 7
-9 6 7
-9 7 7
-9 8 7
-9 9 7
-9 0 8
-9 1 8
-9 2 8
-9 3 8
-9 4 8
-9 5 8
-9 6 8
-9 7 8
-9 8 8
-9 9 8
-9 0 9
-9 1 9
-9 2 9
-9 3 9
-9 4 9
-9 5 9
-4 4 6
-4 5 6
-4 6 6
-4 7 6
-4 8 6
-4 9 6
-4 0 7
-4 1 7
-4 2 7
-4 3 7
-4 4 7
-4 5 7
-4 6 7
-4 7 7
-4 8 7
-4 9 7
-4 0 8
-4 1 8
-4 2 8
-4 3 8
-4 4 8
-4 5 8
-4 6 8
-4 7 8
-4 8 8
-4 9 8
-4 0 9
-4 1 9
-4 2 9
-4 3 9
-4 4 9
-4 5 9
-7 2 3
-7 3 3
-7 4 3
-7 5 3
-7 6 3
-7 7 3
-7 8 3
-7 9 3
-7 0 4
-7 1 4
-7 2 4
-7 3 4
-7 4 4
-7 5 4
-7 6 4
-7 7 4
-7 8 4
-7 9 4
-7 0 5
-7 1 5
-7 2 5
-7 3 5
-7 4 5
-7 5 5
-7 6 5
-7 7 5
-7 8 5
-7 9 5
-7 0 6
-7 1 6
-7 2 6
-7 3 6
-7 4 6
-7 5 6
-7 6 6
-7 7 6
-7 8 6
-7 9 6
-7 0 7
-7 1 7
-7 2 7
-7 3 7
-7 4 7
-7 5 7
-7 6 7
-7 7 7
-7 8 7
-7 9 7
-7 0 8
-7 1 8
-7 2 8
-7 3 8
-7 4 8
-7 5 8
-7 6 8
-7 7 8
-7 8 8
-7 9 8
-7 0 9
-7 1 9
-7 2 9
-7 3 9
-7 4 9
-7 5 9
-2 0 0
-2 1 0
-2 2 0
-2 3 0
-2 4 0
-2 5 0
-2 6 0
-2 7 0
-2 8 0
-2 9 0
-2 0 1
-2 1 1
-2 2 1
-2 3 1
-2 4 1
-2 5 1
-2 6 1
-2 7 1
-2 8 1
-2 9 1
-2 0 2
-2 1 2
-2 2 2
-2 3 2
-2 4 2
-2 5 2
-2 6 2
-2 7 2
-2 8 2
-2 9 2
-2 0 3
-2 1 3
-8 0 0
-8 1 0
-8 2 0
-8 3 0
-8 4 0
-8 5 0
-8 6 0
-8 7 0
-8 8 0
-8 9 0
-8 0 1
-8 1 1
-8 2 1
-8 3 1
-8 4 1
-8 5 1
-8 6 1
-8 7 1
-8 8 1
-8 9 1
-8 0 2
-8 1 2
-8 2 2
-8 3 2
-8 4 2
-8 5 2
-8 6 2
-8 7 2
-8 8 2
-8 9 2
-8 0 3
-8 1 3
-1 0 0
-1 1 0
-1 2 0
-1 3 0
-1 4 0
-1 5 0
-1 6 0
-1 7 0
-1 8 0
-1 9 0
-1 0 1
-1 1 1
-1 2 1
-1 3 1
-1 4 1
-1 5 1
-1 6 1
-1 7 1
-1 8 1
-1 9 1
-1 0 2
-1 1 2
-1 2 2
-1 3 2
-1 4 2
-1 5 2
-1 6 2
-1 7 2
-1 8 2
-1 9 2
-1 0 3
-1 1 3
-1 2 3
-1 3 3
-1 4 3
-1 5 3
-1 6 3
-1 7 3
-1 8 3
-1 9 3
-1 0 4
-1 1 4
-1 2 4
-1 3 4
-1 4 4
-1 5 4
-1 6 4
-1 7 4
-1 8 4
-1 9 4
-1 0 5
-1 1 5
-1 2 5
-1 3 5
-1 4 5
-1 5 5
-1 6 5
-1 7 5
-1 8 5
-1 9 5
-1 0 6
-1 1 6
-1 2 6
-1 3 6
-1 4 6
-1 5 6
-1 6 6
-1 7 6
-1 8 6
-1 9 6
-1 0 7
-1 1 7
-1 2 7
-1 3 7
-1 4 7
-1 5 7
-1 6 7
-1 7 7
-1 8 7
-1 9 7
-1 0 8
-1 1 8
-1 2 8
-1 3 8
-1 4 8
-1 5 8
-1 6 8
-1 7 8
-1 8 8
-1 9 8
-1 0 9
-1 1 9
-1 2 9
-1 3 9
-1 4 9
-1 5 9
-2 2 3
-2 3 3
-2 4 3
-2 5 3
-2 6 3
-2 7 3
-2 8 3
-2 9 3
-2 0 4
-2 1 4
-2 2 4
-2 3 4
-2 4 4
-2 5 4
-2 6 4
-2 7 4
-2 8 4
-2 9 4
-2 0 5
-2 1 5
-2 2 5
-2 3 5
-2 4 5
-2 5 5
-2 6 5
-2 7 5
-2 8 5
-2 9 5
-2 0 6
-2 1 6
-2 2 6
-2 3 6
-8 2 3
-8 3 3
-8 4 3
-8 5 3
-8 6 3
-8 7 3
-8 8 3
-8 9 3
-8 0 4
-8 1 4
-8 2 4
-8 3 4
-8 4 4
-8 5 4
-8 6 4
-8 7 4
-8 8 4
-8 9 4
-8 0 5
-8 1 5
-8 2 5
-8 3 5
-8 4 5
-8 5 5
-8 6 5
-8 7 5
-8 8 5
-8 9 5
-8 0 6
-8 1 6
-8 2 6
-8 3 6
-2 4 6
-2 5 6
-2 6 6
-2 7 6
-2 8 6
-2 9 6
-2 0 7
-2 1 7
-2 2 7
-2 3 7
-2 4 7
-2 5 7
-2 6 7
-2 7 7
-2 8 7
-2 9 7
-2 0 8
-2 1 8
-2 2 8
-2 3 8
-2 4 8
-2 5 8
-2 6 8
-2 7 8
-2 8 8
-2 9 8
-2 0 9
-2 1 9
-2 2 9
-2 3 9
-2 4 9
-2 5 9
-8 4 6
-8 5 6
-8 6 6
-8 7 6
-8 8 6
-8 9 6
-8 0 7
-8 1 7
-8 2 7
-8 3 7
-8 4 7
-8 5 7
-8 6 7
-8 7 7
-8 8 7
-8 9 7
-8 0 8
-8 1 8
-8 2 8
-8 3 8
-8 4 8
-8 5 8
-8 6 8
-8 7 8
-8 8 8
-8 9 8
-8 0 9
-8 1 9
-8 2 9
-8 3 9
-8 4 9
-8 5 9
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Output">Output<a class="anchor-link" href="#Output">&#182;</a></h2><p>Output</p>
+
 <pre><code>  7 6 9
   7 7 9
   7 8 9
   7 9 9
   2 6 9
-  2 7 9
-</code></pre>
+  2 7 9</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="What's-my-name?">What's my name?<a class="anchor-link" href="#What's-my-name?">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -15908,8 +14851,8 @@ div.jp-OutputPrompt {
     <span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">THREADS_X</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">y</span> <span class="o">*</span> <span class="n">THREADS_Y</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">y</span>
 
-<span class="n">fn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn</span><span class="p">[(</span><span class="n">BLOCKS_X</span><span class="p">,</span> <span class="n">BLOCKS_Y</span><span class="p">),</span> <span class="p">(</span><span class="n">THREADS_X</span><span class="p">,</span> <span class="n">THREADS_Y</span><span class="p">)](</span><span class="n">a</span><span class="p">)</span>
+<span class="c1"># fn = cuda.jit()(fn)</span>
+<span class="c1"># fn[(BLOCKS_X, BLOCKS_Y), (THREADS_X, THREADS_Y)](a)</span>
 </pre></div>
 
      </div>
@@ -15918,12 +14861,20 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Simple-Map">Simple Map<a class="anchor-link" href="#Simple-Map">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -15934,8 +14885,8 @@ div.jp-OutputPrompt {
     <span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">THREADS_X</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
         <span class="n">out</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span>
-<span class="n">fn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">fn</span><span class="p">)</span>
-<span class="n">fn</span><span class="p">[</span><span class="n">BLOCKS_X</span><span class="p">,</span> <span class="n">THREADS_X</span><span class="p">](</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="c1"># fn = cuda.jit()(fn)</span>
+<span class="c1"># fn[BLOCKS_X, THREADS_X](out, a)</span>
 </pre></div>
 
      </div>
@@ -15944,7 +14895,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Guards">Guards<a class="anchor-link" href="#Guards">&#182;</a></h2><p>Guards</p>
 <div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">blockIdx</span><span class="o">.</span><span class="n">x</span> <span class="o">*</span> <span class="n">BLOCKS_X</span> <span class="o">+</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
@@ -15952,23 +14907,41 @@ div.jp-OutputPrompt {
 </pre></div>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Communication">Communication<a class="anchor-link" href="#Communication">&#182;</a></h1>
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Names">Names<a class="anchor-link" href="#Names">&#182;</a></h2><ul>
 <li>Why do the names matter?</li>
 <li>Determine communication</li>
-<li>Locality is key for speed.</li>
+<li>Locality is key for speed. </li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Memory">Memory<a class="anchor-link" href="#Memory">&#182;</a></h2><ul>
 <li>CUDA memory hierarchy</li>
@@ -15977,19 +14950,35 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Local-Memory">Local Memory<a class="anchor-link" href="#Local-Memory">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/local%20mem@3x.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/gpu/local%20mem@3x.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -16001,9 +14990,9 @@ div.jp-OutputPrompt {
     <span class="n">local</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="n">local</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">10</span>
     <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">local</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
     
-<span class="n">local_fn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">local_fn</span><span class="p">)</span>
-<span class="n">local_fn</span><span class="p">[</span><span class="n">BLOCKS</span><span class="p">,</span> <span class="n">THREADS</span><span class="p">](</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">out</span>
+<span class="c1"># local_fn = cuda.jit()(local_fn)</span>
+<span class="c1"># local_fn[BLOCKS, THREADS](out, a)</span>
+<span class="c1"># out</span>
 </pre></div>
 
      </div>
@@ -16011,31 +15000,12 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([20, 20, 20, 20, 20, 20, 20, 20, 20, 20])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h2><ul>
 <li>Memory must be typed</li>
@@ -16044,8 +15014,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="BAD-Example">BAD Example<a class="anchor-link" href="#BAD-Example">&#182;</a></h2><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">local_fn</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
     <span class="n">local</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="n">numba</span><span class="o">.</span><span class="n">int32</span><span class="p">)</span>
@@ -16057,19 +15033,35 @@ div.jp-OutputPrompt {
 </pre></div>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Block-Shared-Memory">Block Shared Memory<a class="anchor-link" href="#Block-Shared-Memory">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/figs/gpu/sharedmem@3x.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/figs/gpu/sharedmem@3x.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -16079,8 +15071,8 @@ div.jp-OutputPrompt {
     <span class="n">shared</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">shared</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span>
     
-<span class="n">block_fn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">block_fn</span><span class="p">)</span>
-<span class="n">block_fn</span><span class="p">[</span><span class="n">BLOCKS</span><span class="p">,</span> <span class="n">THREADS</span><span class="p">](</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<span class="c1"># block_fn = cuda.jit()(block_fn)</span>
+<span class="c1"># block_fn[BLOCKS, THREADS](out, a)</span>
 </pre></div>
 
      </div>
@@ -16089,7 +15081,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Communication">Communication<a class="anchor-link" href="#Communication">&#182;</a></h2><ul>
 <li>Threads can read from shared memory</li>
@@ -16097,13 +15093,23 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Real-Example">Real Example<a class="anchor-link" href="#Real-Example">&#182;</a></h2>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -16115,9 +15121,9 @@ div.jp-OutputPrompt {
     <span class="n">cuda</span><span class="o">.</span><span class="n">syncthreads</span><span class="p">()</span>
     <span class="n">out</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span> <span class="o">%</span> <span class="n">THREADS</span><span class="p">]</span> <span class="o">=</span> <span class="n">shared</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     
-<span class="n">block_fn</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">jit</span><span class="p">()(</span><span class="n">block_fn</span><span class="p">)</span>
-<span class="n">block_fn</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">THREADS</span><span class="p">](</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
-<span class="n">out</span>
+<span class="c1"># block_fn = cuda.jit()(block_fn)</span>
+<span class="c1"># block_fn[1, THREADS](out, a)</span>
+<span class="c1"># out</span>
 </pre></div>
 
      </div>
@@ -16125,31 +15131,12 @@ div.jp-OutputPrompt {
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>array([20, 60, 60, 60, 60, 60, 60, 60, 60, 60])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h2><ul>
 <li>Memory must be typed</li>
@@ -16158,13 +15145,25 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Algorithms">Algorithms<a class="anchor-link" href="#Algorithms">&#182;</a></h1>
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Thinking-about-Speed">Thinking about Speed<a class="anchor-link" href="#Thinking-about-Speed">&#182;</a></h2><ul>
 <li>Algorithms: Reduce computation complexity</li>
@@ -16172,14 +15171,24 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Sliding-Average">Sliding Average<a class="anchor-link" href="#Sliding-Average">&#182;</a></h2><p>Compute sliding average over a list</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -16195,13 +15204,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Local-Sum">Local Sum<a class="anchor-link" href="#Local-Sum">&#182;</a></h2><p>Compute sliding average over a list</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -16220,7 +15237,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Planning-for-CUDA">Planning for CUDA<a class="anchor-link" href="#Planning-for-CUDA">&#182;</a></h2><ul>
 <li>Count up the memory accesses</li>
@@ -16229,18 +15250,28 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Basic-CUDA">Basic CUDA<a class="anchor-link" href="#Basic-CUDA">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># @cuda.jit</span>
 <span class="k">def</span> <span class="nf">slide_cuda</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
    <span class="n">i</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
    <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">sub_size</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
@@ -16256,7 +15287,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Planning-for-CUDA">Planning for CUDA<a class="anchor-link" href="#Planning-for-CUDA">&#182;</a></h2><ul>
 <li><code>sub_size</code> global reads per thread</li>
@@ -16265,8 +15300,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Strategy">Strategy<a class="anchor-link" href="#Strategy">&#182;</a></h2><ul>
 <li>Use blocks to move from global to shared</li>
@@ -16274,19 +15315,29 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Better-CUDA">Better CUDA<a class="anchor-link" href="#Better-CUDA">&#182;</a></h2><p>One global write per thread</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># @cuda.jit</span>
 <span class="k">def</span> <span class="nf">slide_cuda</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">sub_size</span> <span class="o">&lt;</span> <span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">:</span>
@@ -16302,7 +15353,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Pattern">Pattern<a class="anchor-link" href="#Pattern">&#182;</a></h2><p>Copy from global to shared</p>
 <div class="highlight"><pre><span></span><span class="n">local_idx</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
@@ -16311,18 +15366,28 @@ div.jp-OutputPrompt {
 </pre></div>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Better-CUDA">Better CUDA<a class="anchor-link" href="#Better-CUDA">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nd">@cuda</span><span class="o">.</span><span class="n">jit</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># @cuda.jit</span>
 <span class="k">def</span> <span class="nf">slide_cuda</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
     <span class="n">shared</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">shared</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">THREADS</span> <span class="o">+</span> <span class="n">sub_size</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">cuda</span><span class="o">.</span><span class="n">threadIdx</span><span class="o">.</span><span class="n">x</span>
@@ -16343,13 +15408,19 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Counts">Counts<a class="anchor-link" href="#Counts">&#182;</a></h2><ul>
 <li>Significantly reduced global reads and writes</li>
 <li>Needed block shared memory to do this</li>
 </ul>
 
+</div>
+</div>
 </div>
 </div></section></section></section></section>
 </div>
@@ -16382,6 +15453,7 @@ require(
             center: false,
             progress: true,
             history: true,
+            pdfMaxPagesPerSlide: 1,             
             transition: "none",
             plugins: [RevealNotes, RevealMath.MathJax3  ],
        });

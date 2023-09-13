@@ -1,0 +1,93 @@
+
+{%- extends 'reveal/index.html.j2' -%}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="base.css">
+{% endblock %}
+
+
+{%- block any_cell scoped -%}
+{%- if cell.metadata.get('slide_start', False) -%}
+<section>
+{%- endif -%}
+{%- if cell.metadata.get('subslide_start', False) -%}
+<section>
+{%- endif -%}
+{%- if cell.metadata.get('fragment_start', False) -%}
+<hr>
+{%- endif -%}
+
+{%- if cell.metadata.slide_type == 'notes' -%}
+<aside class="notes">
+{{ super() }}
+</aside>
+{%- elif cell.metadata.slide_type == 'skip' -%}
+{%- else -%}
+{{ super() }}
+{%- endif -%}
+
+{%- if cell.metadata.get('fragment_end', False) -%}
+
+{%- endif -%}
+{%- if cell.metadata.get('subslide_end', False) -%}
+</section>
+{%- endif -%}
+{%- if cell.metadata.get('slide_end', False) -%}
+</section>
+{%- endif -%}
+{%- endblock any_cell -%}
+
+
+{% block footer_js %}
+<script>
+require(
+    {
+      // it makes sense to wait a little bit when you are loading
+      // reveal from a cdn in a slow connection environment
+      waitSeconds: 15
+    },
+    [
+      "{{ reveal_url_prefix }}/dist/reveal.js",
+      "{{ reveal_url_prefix }}/plugin/notes/notes.js"
+    ],
+
+    function(Reveal, RevealNotes){
+        // Full list of configuration options available here: https://github.com/hakimel/reveal.js#configuration
+        Reveal.initialize({
+            controls: false,
+            center: false,
+            progress: true,
+            history: true,
+            transition: "{{reveal_transition}}",
+            plugins: [RevealNotes]
+        });
+
+        var update = function(event){
+          if(MathJax.Hub.getAllJax(Reveal.getCurrentSlide())){
+            MathJax.Hub.Rerender(Reveal.getCurrentSlide());
+          }
+        };
+
+        Reveal.addEventListener('slidechanged', update);
+
+        function setScrollingSlide() {
+            var scroll = {{ reveal_scroll }}
+            if (scroll === true) {
+              var h = $('.reveal').height() * 0.95;
+              $('section.present').find('section')
+                .filter(function() {
+                  return $(this).height() > h;
+                })
+                .css('height', 'calc(95vh)')
+                .css('overflow-y', 'scroll')
+                .css('margin-top', '20px');
+            }
+        }
+
+        // check and set the scrolling slide every time the slide change
+        Reveal.addEventListener('slidechanged', setScrollingSlide);
+    }
+);
+</script>
+{% endblock footer_js %}

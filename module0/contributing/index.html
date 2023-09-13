@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/module0/contributing/">
       
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
     
     
       
@@ -1041,12 +1041,12 @@ reformat
 all of your code to fit most of the requirements (see
 <a class="magiclink magiclink-github magiclink-repository" href="https://github.com/psf/black" title="GitHub Repository: psf/black">psf/black</a> for
 more details):</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; black .
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>black<span class="w"> </span>.
 </code></pre></div>
 <p>Black will fix many of your issues, but cannot check for aspects
 like using unknown variables.  You will also need to run the <code>flake8</code>
 linter in your directory to check for remaining issues:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; flake8
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>flake8
 </code></pre></div>
 <p>We recommend setting up your editor or IDE to highlight other style
 issues. Many developers utilize VSCode with plugins to check for these
@@ -1057,18 +1057,18 @@ These tests are in the <code>tests/</code> directory and are in the <code>pytest
 format (<a href="https://docs.pytest.org/en/stable/">https://docs.pytest.org/en/stable/</a>). Any function in that
 directory starting with <code>test</code>  is run as part of the test
 suite.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; pytest
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest
 </code></pre></div>
 <p>Each assignment has 4 task groups that you will need to pass. To run
 individual task groups you can use the <code>-m</code> option.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; pytest -m task0_0
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>task0_0
 </code></pre></div>
 <p>In addition to running a full task which runs all of the tests, you can run
 tests in a single file with:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; pytest tests/test_operators.py
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>tests/test_operators.py
 </code></pre></div>
 <p>Or even a particular test with:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; pytest tests/test_operators.py -k test_sum
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>tests/test_operators.py<span class="w"> </span>-k<span class="w"> </span>test_sum
 </code></pre></div>
 <p>Note: PyTest will hide all print statements unless a test fails. If you want to
 see output for a given tests you may need to cause an assertion failure.</p>
@@ -1098,7 +1098,7 @@ we use it to convey requirements on many functions.
 Functions should have docstrings in the following form (known as Google
 docstyle):</p>
 <div class="highlight"><pre><span></span><code>  <span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Any</span><span class="p">],</span> <span class="n">i</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
-      <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">      </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">      List indexing.</span>
 
 <span class="sd">      Args:</span>
@@ -1124,11 +1124,11 @@ by running,</p>
 <div class="highlight"><pre><span></span><code>pip install pre-commit
 </code></pre></div>
 <p>You can run all the checks (black, flake8, mypy, etc) and corrections on your code with the following command:</p>
-<div class="highlight"><pre><span></span><code>pre-commit run --all
+<div class="highlight"><pre><span></span><code>pre-commit<span class="w"> </span>run<span class="w"> </span>--all
 </code></pre></div>
 <p>You can also 'install' pre-commits which will run on every commit
 automatically, and prevent you from committing bad code.</p>
-<div class="highlight"><pre><span></span><code>pre-commit install
+<div class="highlight"><pre><span></span><code>pre-commit<span class="w"> </span>install
 </code></pre></div>
 <h2 id="continuous-integration-ci">Continuous Integration (CI)</h2>
 <p>In addition to local testing, the project is set up such that on each
@@ -1138,8 +1138,8 @@ your code, pushing to the server, and then logging in to GitHub. This
 process takes several minutes, but it is an easy way to keep track of
 your progress as you go.</p>
 <p>Specifically, you can run:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; git commit -am <span class="s2">&quot;First commit&quot;</span>
-&gt;&gt;&gt; git push origin master
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">&quot;First commit&quot;</span>
+&gt;&gt;&gt;<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>master
 </code></pre></div>
 <p>Then go to your GitHub and click on "Pull requests". Clicking on the
 request itself gives a link to show the current progress of your

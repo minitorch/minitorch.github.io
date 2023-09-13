@@ -14495,6 +14495,9 @@ a.anchor-link {
 .reveal {
   font-size: 160%;
 }
+.reveal table {
+  font-size: var(--jp-ui-font-size1);
+}
 .reveal pre {
   width: inherit;
   padding: 0.4em;
@@ -14538,6 +14541,23 @@ div.jp-OutputPrompt {
   margin: 5px 5px 0 0;
 }
 
+.reveal div.highlight {
+  margin: 0;
+}
+
+.reveal div.highlight > pre {
+  margin: 0;
+  width: 100%;
+  font-size: var(--jp-code-font-size);
+}
+
+.reveal div.jp-OutputArea-output > pre {
+  margin: 0;
+  width: 90%;
+  font-size: var(--jp-code-font-size);
+  box-shadow: none;
+}
+
 /* Reveal navigation controls */
 
 .reveal .controls .navigate-left,
@@ -14578,17 +14598,14 @@ div.jp-OutputPrompt {
 
 /* Scrollbars */
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar *
-{
-  background:transparent;
+::-webkit-scrollbar * {
+  background: transparent;
 }
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background: #727272 !important;
 }
 </style>
@@ -14615,12 +14632,12 @@ div.jp-OutputPrompt {
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -14637,36 +14654,68 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Module-4.1---Convolutions">Module 4.1 - Convolutions<a class="anchor-link" href="#Module-4.1---Convolutions">&#182;</a></h1>
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Vector-Form">Vector Form<a class="anchor-link" href="#Vector-Form">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/onehot.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge:-Length-Dimension">Challenge: Length Dimension<a class="anchor-link" href="#Challenge:-Length-Dimension">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/senthot.png" alt="" /></p>
+<h2 id="Vector-Form">Vector Form<a class="anchor-link" href="#Vector-Form">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/onehot.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Embedding-Table">Embedding Table<a class="anchor-link" href="#Embedding-Table">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/embweight.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge:-Length-Dimension">Challenge: Length Dimension<a class="anchor-link" href="#Challenge:-Length-Dimension">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/senthot.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Embedding-Table">Embedding Table<a class="anchor-link" href="#Embedding-Table">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/embweight.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Embedding-Layer">Embedding Layer<a class="anchor-link" href="#Embedding-Layer">&#182;</a></h2><p>Easy to write as a layer</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14688,19 +14737,35 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Reduction-/-%22Pooling%22">Reduction / "Pooling"<a class="anchor-link" href="#Reduction-/-%22Pooling%22">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/pooling.png" alt="" /></p>
+<h2 id="Reduction-/-%22Pooling%22">Reduction / "Pooling"<a class="anchor-link" href="#Reduction-/-%22Pooling%22">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/pooling.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Full-Model">Full Model<a class="anchor-link" href="#Full-Model">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/full.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Full-Model">Full Model<a class="anchor-link" href="#Full-Model">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/full.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h2><ul>
 <li>Completely ignores relative order</li>
@@ -14709,69 +14774,135 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-1:-Input-Representation">Challenge 1: Input Representation<a class="anchor-link" href="#Challenge-1:-Input-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnist.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-1:-Input-Features">Challenge 1: Input Features<a class="anchor-link" href="#Challenge-1:-Input-Features">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv.png" alt="" /></p>
+<h2 id="Challenge-1:-Input-Representation">Challenge 1: Input Representation<a class="anchor-link" href="#Challenge-1:-Input-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnist.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-1:-Input-Features">Challenge 1: Input Features<a class="anchor-link" href="#Challenge-1:-Input-Features">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv2.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-1:-Input-Representation">Challenge 1: Input Representation<a class="anchor-link" href="#Challenge-1:-Input-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnistregion.png" alt="" /></p>
+<h2 id="Challenge-1:-Input-Features">Challenge 1: Input Features<a class="anchor-link" href="#Challenge-1:-Input-Features">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-2:-Variable-Size-Area">Challenge 2: Variable Size Area<a class="anchor-link" href="#Challenge-2:-Variable-Size-Area">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/pool2d.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-2:-Variable-Size-Area">Challenge 2: Variable Size Area<a class="anchor-link" href="#Challenge-2:-Variable-Size-Area">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/pool2d.png" alt="" /></p>
+<h2 id="Challenge-1:-Input-Features">Challenge 1: Input Features<a class="anchor-link" href="#Challenge-1:-Input-Features">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv2.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-2:-MNist-Zoom">Challenge 2: MNist Zoom<a class="anchor-link" href="#Challenge-2:-MNist-Zoom">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnistzoom.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-3:-Multiple-Output">Challenge 3: Multiple Output<a class="anchor-link" href="#Challenge-3:-Multiple-Output">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/value.png" alt="" /></p>
-<p><img src="https://minitorch.github.io/figs/Conv/softmax.png" alt="" /></p>
+<h2 id="Challenge-1:-Input-Representation">Challenge 1: Input Representation<a class="anchor-link" href="#Challenge-1:-Input-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnistregion.png" alt=""></p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge-3:-Multiple-Output">Challenge 3: Multiple Output<a class="anchor-link" href="#Challenge-3:-Multiple-Output">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/hist.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge-2:-Variable-Size-Area">Challenge 2: Variable Size Area<a class="anchor-link" href="#Challenge-2:-Variable-Size-Area">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/pool2d.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge-2:-Variable-Size-Area">Challenge 2: Variable Size Area<a class="anchor-link" href="#Challenge-2:-Variable-Size-Area">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/pool2d.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge-2:-MNist-Zoom">Challenge 2: MNist Zoom<a class="anchor-link" href="#Challenge-2:-MNist-Zoom">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/mnistzoom.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge-3:-Multiple-Output">Challenge 3: Multiple Output<a class="anchor-link" href="#Challenge-3:-Multiple-Output">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/value.png" alt=""></p>
+<p><img src="https://minitorch.github.io/figs/Conv/softmax.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Challenge-3:-Multiple-Output">Challenge 3: Multiple Output<a class="anchor-link" href="#Challenge-3:-Multiple-Output">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/hist.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Quiz">Quiz<a class="anchor-link" href="#Quiz">&#182;</a></h2><p>Quiz</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Today's-Class">Today's Class<a class="anchor-link" href="#Today's-Class">&#182;</a></h2><ul>
 <li>Conv 1D</li>
@@ -14780,26 +14911,50 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Challenge">Challenge<a class="anchor-link" href="#Challenge">&#182;</a></h2><p>How do we handle locality in features?</p>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="NLP">NLP<a class="anchor-link" href="#NLP">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/sentcnn.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Speech-Recognition">Speech Recognition<a class="anchor-link" href="#Speech-Recognition">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/speech.png" alt="" /></p>
+<h2 id="NLP">NLP<a class="anchor-link" href="#NLP">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/sentcnn.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Speech-Recognition">Speech Recognition<a class="anchor-link" href="#Speech-Recognition">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/speech.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Intuition">Intuition<a class="anchor-link" href="#Intuition">&#182;</a></h2><ul>
 <li>Apply a linear model.</li>
@@ -14808,30 +14963,52 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Convolution-Forward">Convolution Forward<a class="anchor-link" href="#Convolution-Forward">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv1d.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Convolution-Forward">Convolution Forward<a class="anchor-link" href="#Convolution-Forward">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv1d.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Computation">Computation<a class="anchor-link" href="#Computation">&#182;</a></h2><p>Output Values</p>
+
 <pre><code>  output[0] = weight[0] * input[0] + weight[1] * input[1]  + weight[2] * input[2]
   output[1] = weight[0] * input[1] + weight[1] * input[2]  + weight[2] * input[3]
-  output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]
-</code></pre>
+  output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Alternative-View">Alternative View<a class="anchor-link" href="#Alternative-View">&#182;</a></h2><p>Unroll</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14849,13 +15026,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Alternative-View">Alternative View<a class="anchor-link" href="#Alternative-View">&#182;</a></h2><p>Unroll</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14864,7 +15049,7 @@ div.jp-OutputPrompt {
 <span class="n">K</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">T</span> <span class="o">=</span> <span class="nb">input</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">unrolled_input</span> <span class="o">=</span> <span class="n">unroll</span><span class="p">(</span><span class="nb">input</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">unrolled_input</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14873,6 +15058,8 @@ div.jp-OutputPrompt {
 </div>
 
 <div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
@@ -14885,7 +15072,13 @@ div.jp-OutputPrompt {
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
-[1.00 2.00 3.00 4.00 5.00 6.00]
+[
+	[1.00 2.00 3.00]
+	[2.00 3.00 4.00]
+	[3.00 4.00 5.00]
+	[4.00 5.00 6.00]
+	[5.00 6.00 0.00]
+	[6.00 0.00 0.00]]
 </pre>
 </div>
 </div>
@@ -14895,13 +15088,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Alternative-View">Alternative View<a class="anchor-link" href="#Alternative-View">&#182;</a></h2><p>Unroll + zip + reduce ::</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14917,6 +15118,8 @@ div.jp-OutputPrompt {
 </div>
 
 <div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
@@ -14939,28 +15142,48 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Alternative-View">Alternative View<a class="anchor-link" href="#Alternative-View">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/convvec.png" alt="" /></p>
+<h2 id="Alternative-View">Alternative View<a class="anchor-link" href="#Alternative-View">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/convvec.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Gradient">Gradient<a class="anchor-link" href="#Gradient">&#182;</a></h2><p>Output Values</p>
+
 <pre><code>  output[0] = weight[0] * input[0] + weight[1] * input[1]  + weight[2] * input[2]
   output[1] = weight[0] * input[1] + weight[1] * input[2]  + weight[2] * input[3]
-  output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]
-</code></pre>
+  output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Gradient">Gradient<a class="anchor-link" href="#Gradient">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14980,25 +15203,47 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Conv-Back---Input">Conv Back - Input<a class="anchor-link" href="#Conv-Back---Input">&#182;</a></h2><p>Reverse the convolutional anchor</p>
-<p><img src="https://minitorch.github.io/figs/Conv/conv1dback.png" alt="" /></p>
+<p><img src="https://minitorch.github.io/figs/Conv/conv1dback.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conv-Back---Weight">Conv Back - Weight<a class="anchor-link" href="#Conv-Back---Weight">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv1dback2.png" alt="" /></p>
+<h2 id="Conv-Back---Weight">Conv Back - Weight<a class="anchor-link" href="#Conv-Back---Weight">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv1dback2.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Channels">Channels<a class="anchor-link" href="#Channels">&#182;</a></h1>
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Intuition">Intuition<a class="anchor-link" href="#Intuition">&#182;</a></h2><ul>
 <li>Each position may have multiple values</li>
@@ -15007,8 +15252,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Key-Points">Key Points<a class="anchor-link" href="#Key-Points">&#182;</a></h2><ul>
 <li>Convolution is a Linear applied to all channels in position</li>
@@ -15018,19 +15269,35 @@ is 10 * K.</li>
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Graphical-Representation">Graphical Representation<a class="anchor-link" href="#Graphical-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/channels.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Graphical-Representation">Graphical Representation<a class="anchor-link" href="#Graphical-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/channels.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Code">Code<a class="anchor-link" href="#Code">&#182;</a></h2>
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -15055,6 +15322,8 @@ is 10 * K.</li>
 </div>
 
 <div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
@@ -15076,13 +15345,21 @@ is 10 * K.</li>
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Graphical-Representation">Graphical Representation<a class="anchor-link" href="#Graphical-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/channels.png" alt="" /></p>
+<h2 id="Graphical-Representation">Graphical Representation<a class="anchor-link" href="#Graphical-Representation">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/channels.png" alt=""></p>
 
+</div>
+</div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -15099,6 +15376,8 @@ is 10 * K.</li>
 </div>
 
 <div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
@@ -15120,7 +15399,11 @@ is 10 * K.</li>
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li>All about understanding sizes.</li>
@@ -15129,8 +15412,14 @@ is 10 * K.</li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Two-Dimensional-Convolution">Two Dimensional Convolution<a class="anchor-link" href="#Two-Dimensional-Convolution">&#182;</a></h2><ul>
 <li>Instead of line, now use box</li>
@@ -15139,30 +15428,54 @@ is 10 * K.</li>
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Convolution">Convolution<a class="anchor-link" href="#Convolution">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Convolution">Convolution<a class="anchor-link" href="#Convolution">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/conv.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Conventions">Conventions<a class="anchor-link" href="#Conventions">&#182;</a></h2><p>Sizes</p>
+
 <pre><code> # Input image - batch x in_channel x height x width
  # Weight - out_channel x in_channel x kernel_height x kernel_width
- # Output image - batch x out_channel x height x width
-</code></pre>
+ # Output image - batch x out_channel x height x width</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Backward">Backward<a class="anchor-link" href="#Backward">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/backward.png" alt="" /></p>
+<h2 id="Backward">Backward<a class="anchor-link" href="#Backward">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Conv/backward.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Backward">Backward<a class="anchor-link" href="#Backward">&#182;</a></h2><p>Same idea as 1D</p>
 <ul>
@@ -15172,15 +15485,27 @@ is 10 * K.</li>
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Channels">Channels<a class="anchor-link" href="#Channels">&#182;</a></h2><p>Nothing different from 1D version</p>
-<p><img src="https://minitorch.github.io/figs/Conv/conv2.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Channels">Channels<a class="anchor-link" href="#Channels">&#182;</a></h2><p>Nothing different from 1D version</p>
+<p><img src="https://minitorch.github.io/figs/Conv/conv2.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Implementation">Implementation<a class="anchor-link" href="#Implementation">&#182;</a></h2><ul>
 <li>All about understanding sizes.</li>
@@ -15189,8 +15514,14 @@ is 10 * K.</li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Advice">Advice<a class="anchor-link" href="#Advice">&#182;</a></h2><ul>
 <li>Implement 1D first it is easier</li>
@@ -15199,11 +15530,19 @@ is 10 * K.</li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Where-are-we?">Where are we?<a class="anchor-link" href="#Where-are-we?">&#182;</a></h2><p>https://poloclub.github.io/cnn-explainer/</p>
+<h2 id="Where-are-we?">Where are we?<a class="anchor-link" href="#Where-are-we?">&#182;</a></h2><p><a href="https://poloclub.github.io/cnn-explainer/">https://poloclub.github.io/cnn-explainer/</a></p>
 
+</div>
+</div>
 </div>
 </div></section></section></section></section>
 </div>
@@ -15236,6 +15575,7 @@ require(
             center: false,
             progress: true,
             history: true,
+            pdfMaxPagesPerSlide: 1,             
             transition: "none",
             plugins: [RevealNotes, RevealMath.MathJax3  ],
        });

@@ -80,6 +80,6 @@ div.celltag_hide_inp div.jp-Cell-inputWrapper {
 /*     font-size: 50% !important; */
 /* } */
 .jp-RenderedHTMLCommon img, .jp-RenderedImage img, .jp-RenderedHTMLCommon svg, .jp-RenderedSVG svg {
-    max-width: max-content;
+    max-width: 100%;
     height: auto;
 }

@@ -4994,7 +4994,7 @@ form{
   .bp3-running-text table th, table.bp3-html-table th{
     color:#182026;
     font-weight:600; }
-
+  
   .bp3-running-text table td,
   table.bp3-html-table td{
     color:#182026; }
@@ -14689,7 +14689,7 @@ div.jp-OutputPrompt {
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">draw_boxes</span><span class="p">([</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">draw_boxes</span><span class="p">([</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14706,14 +14706,55 @@ div.jp-OutputPrompt {
 
 <div class="jp-OutputArea-child">
 
-
+    
     <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
 
 
 
 <div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
 <?xml version="1.0" encoding="utf-8" ?>
-<svg baseProfile="full" height="400" version="1.1" width="1142" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 571.4285714285714, 199.99999999999997)"><g transform="matrix(181.40589569160997, 0.0, 0.0, 181.40589569160997, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -3.0, -0.0)"><g><g><g><g><g><g><g><g><g /><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.5, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 1.75, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.55)"><g><g><g><g style="fill: #cccccc;stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.0, -1.0, 1.0, 0.0, 0.0, 0.55)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 1.1)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 3.0, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 4.25, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.5, -0.38500000000000006)"><g transform="matrix(0.9766444667050899, 0.21486178267512027, -0.21486178267512027, 0.9766444667050899, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0239140588936164 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0239140588936164, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.5, 0.38500000000000006)"><g transform="matrix(0.97664446670509, -0.21486178267511985, 0.21486178267511985, 0.97664446670509, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0239140588936164 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0239140588936164, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 5.5, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 6.0, 0.0)"><g /></g></g></g><g /></g></g></g></g></svg>
+<svg baseProfile="full" height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 599.9999999999999, 199.99999999999997)"><g transform="matrix(181.40589569160997, 0.0, 0.0, 181.40589569160997, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -3.1249999999999996, -0.0)"><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 0.0;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.525, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 1.8250000000000002, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.7750000000000001, -0.55)"><g><g><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.0, -1.0, 1.0, 0.0, 0.0, 0.55)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 1.1)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><g transform="matrix(0.8858315352801553, -0.46400699467055756, 0.46400699467055756, 0.8858315352801553, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.18532695911297 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.18532695911297, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 0.5250000000000001, -0.47500000000000003)"><g transform="scale(0.05) translate(-7.5760000000000005 -6.639333333333333)"><g>
+<defs>
+<g>
+<symbol overflow="visible" id="embed-8591997912470742295-glyph0-0">
+<path style="stroke:none;" d="" />
+</symbol>
+<symbol overflow="visible" id="embed-8591997912470742295-glyph0-1">
+<path style="stroke:none;" d="M 3.328125 -3.015625 C 3.390625 -3.265625 3.625 -4.1875 4.3125 -4.1875 C 4.359375 -4.1875 4.609375 -4.1875 4.8125 -4.0625 C 4.53125 -4 4.34375 -3.765625 4.34375 -3.515625 C 4.34375 -3.359375 4.453125 -3.171875 4.71875 -3.171875 C 4.9375 -3.171875 5.25 -3.34375 5.25 -3.75 C 5.25 -4.265625 4.671875 -4.40625 4.328125 -4.40625 C 3.75 -4.40625 3.40625 -3.875 3.28125 -3.65625 C 3.03125 -4.3125 2.5 -4.40625 2.203125 -4.40625 C 1.171875 -4.40625 0.59375 -3.125 0.59375 -2.875 C 0.59375 -2.765625 0.703125 -2.765625 0.71875 -2.765625 C 0.796875 -2.765625 0.828125 -2.796875 0.84375 -2.875 C 1.1875 -3.9375 1.84375 -4.1875 2.1875 -4.1875 C 2.375 -4.1875 2.71875 -4.09375 2.71875 -3.515625 C 2.71875 -3.203125 2.546875 -2.546875 2.1875 -1.140625 C 2.03125 -0.53125 1.671875 -0.109375 1.234375 -0.109375 C 1.171875 -0.109375 0.953125 -0.109375 0.734375 -0.234375 C 0.984375 -0.296875 1.203125 -0.5 1.203125 -0.78125 C 1.203125 -1.046875 0.984375 -1.125 0.84375 -1.125 C 0.53125 -1.125 0.296875 -0.875 0.296875 -0.546875 C 0.296875 -0.09375 0.78125 0.109375 1.21875 0.109375 C 1.890625 0.109375 2.25 -0.59375 2.265625 -0.640625 C 2.390625 -0.28125 2.75 0.109375 3.34375 0.109375 C 4.375 0.109375 4.9375 -1.171875 4.9375 -1.421875 C 4.9375 -1.53125 4.859375 -1.53125 4.828125 -1.53125 C 4.734375 -1.53125 4.71875 -1.484375 4.6875 -1.421875 C 4.359375 -0.34375 3.6875 -0.109375 3.375 -0.109375 C 2.984375 -0.109375 2.828125 -0.421875 2.828125 -0.765625 C 2.828125 -0.984375 2.875 -1.203125 2.984375 -1.640625 Z M 3.328125 -3.015625 " />
+</symbol>
+</g>
+</defs>
+<g id="embed-8591997912470742295-surface1">
+<g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+  <use href="#embed-8591997912470742295-glyph0-1" x="2.835" y="7.124" />
+</g>
+</g>
+</g></g></g><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><g transform="matrix(0.8858315352801553, 0.46400699467055756, -0.46400699467055756, 0.8858315352801553, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.18532695911297 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.18532695911297, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 0.5250000000000001, 0.07500000000000001)"><g transform="scale(0.05) translate(-7.5760000000000005 -6.639333333333333)"><g>
+<defs>
+<g>
+<symbol overflow="visible" id="embed-8591997912470742295-glyph0-0">
+<path style="stroke:none;" d="" />
+</symbol>
+<symbol overflow="visible" id="embed-8591997912470742295-glyph0-1">
+<path style="stroke:none;" d="M 3.328125 -3.015625 C 3.390625 -3.265625 3.625 -4.1875 4.3125 -4.1875 C 4.359375 -4.1875 4.609375 -4.1875 4.8125 -4.0625 C 4.53125 -4 4.34375 -3.765625 4.34375 -3.515625 C 4.34375 -3.359375 4.453125 -3.171875 4.71875 -3.171875 C 4.9375 -3.171875 5.25 -3.34375 5.25 -3.75 C 5.25 -4.265625 4.671875 -4.40625 4.328125 -4.40625 C 3.75 -4.40625 3.40625 -3.875 3.28125 -3.65625 C 3.03125 -4.3125 2.5 -4.40625 2.203125 -4.40625 C 1.171875 -4.40625 0.59375 -3.125 0.59375 -2.875 C 0.59375 -2.765625 0.703125 -2.765625 0.71875 -2.765625 C 0.796875 -2.765625 0.828125 -2.796875 0.84375 -2.875 C 1.1875 -3.9375 1.84375 -4.1875 2.1875 -4.1875 C 2.375 -4.1875 2.71875 -4.09375 2.71875 -3.515625 C 2.71875 -3.203125 2.546875 -2.546875 2.1875 -1.140625 C 2.03125 -0.53125 1.671875 -0.109375 1.234375 -0.109375 C 1.171875 -0.109375 0.953125 -0.109375 0.734375 -0.234375 C 0.984375 -0.296875 1.203125 -0.5 1.203125 -0.78125 C 1.203125 -1.046875 0.984375 -1.125 0.84375 -1.125 C 0.53125 -1.125 0.296875 -0.875 0.296875 -0.546875 C 0.296875 -0.09375 0.78125 0.109375 1.21875 0.109375 C 1.890625 0.109375 2.25 -0.59375 2.265625 -0.640625 C 2.390625 -0.28125 2.75 0.109375 3.34375 0.109375 C 4.375 0.109375 4.9375 -1.171875 4.9375 -1.421875 C 4.9375 -1.53125 4.859375 -1.53125 4.828125 -1.53125 C 4.734375 -1.53125 4.71875 -1.484375 4.6875 -1.421875 C 4.359375 -0.34375 3.6875 -0.109375 3.375 -0.109375 C 2.984375 -0.109375 2.828125 -0.421875 2.828125 -0.765625 C 2.828125 -0.984375 2.875 -1.203125 2.984375 -1.640625 Z M 3.328125 -3.015625 " />
+</symbol>
+</g>
+</defs>
+<g id="embed-8591997912470742295-surface1">
+<g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
+  <use href="#embed-8591997912470742295-glyph0-1" x="2.835" y="7.124" />
+</g>
+</g>
+</g></g></g><g /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 3.125, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 4.425, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.7750000000000001, -0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.275)"><g><g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.0, -1.0, 1.0, 0.0, 0.0, 0.275)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.55)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.6, -0.55)"><g transform="matrix(0.9673722233802453, 0.2533593918376833, -0.2533593918376833, 0.9673722233802453, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0854146673046199 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0854146673046199, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 3.125, -0.6125)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
+<g id="embed--2395143793157453205-surface1">
+</g>
+</g></g></g><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.6, 0.55)"><g transform="matrix(0.9673722233802453, -0.25335939183768347, 0.25335939183768347, 0.9673722233802453, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0854146673046199 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0854146673046199, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 3.125, 0.21250000000000002)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
+<g id="embed--2395143793157453205-surface1">
+</g>
+</g></g></g><g /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 5.725, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 6.25, 0.0)"><g><g style="stroke: black;stroke-width: 0.0;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 5.199999999999999, 0.0)"><g transform="matrix(1.0, -0.0, 0.0, 1.0, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0500000000000007 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0500000000000007, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 5.725, -0.2)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
+<g id="embed--2395143793157453205-surface1">
+</g>
+</g></g></g><g /></g></g></g><g /></g></g></g></g></svg>
 </div>
 
 </div>
@@ -15279,446 +15320,6 @@ $$</p>
 </div>
 </div>
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Simple-NLP">Simple NLP<a class="anchor-link" href="#Simple-NLP">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Context">Context<a class="anchor-link" href="#Context">&#182;</a></h2><ul>
-<li>What are dimensions for?</li>
-<li>What does broadcasting buy us?</li>
-<li>What are non-spatial dimensions for?</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Natural-Language-Processing">Natural Language Processing<a class="anchor-link" href="#Natural-Language-Processing">&#182;</a></h2><ul>
-<li>Systems for human language</li>
-<li>Broad area of study with lots of challenges</li>
-<li>Heavily uses ML, more in recent years</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Sentiment-Classification">Sentiment Classification<a class="anchor-link" href="#Sentiment-Classification">&#182;</a></h2><ul>
-<li>Canonical sentence classification problem</li>
-<li>Given sentence predict sentiment class</li>
-<li>Key aspects: word polarity</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/negative.png" alt=""></p>
-<p><img src="https://minitorch.github.io/figs/NLP/positive.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problem-Setup">Problem Setup<a class="anchor-link" href="#Problem-Setup">&#182;</a></h2><ul>
-<li>Training: Exactly the same as simple</li>
-<li>Loss: Exactly the same as simple</li>
-<li>Models: Mostly similar to the simple problem.</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Modeling-Challenges">Modeling Challenges<a class="anchor-link" href="#Modeling-Challenges">&#182;</a></h2><ol>
-<li>Converting words to tensors</li>
-<li>Converting sentences to tensors</li>
-<li>Handling word combinations</li>
-</ol>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Word--%3E-Tensors">Word -&gt; Tensors<a class="anchor-link" href="#Word--%3E-Tensors">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="What-is-a-word?">What is a word?<a class="anchor-link" href="#What-is-a-word?">&#182;</a></h2><ul>
-<li>Treat words as index in vocabulary</li>
-<li>Represent as a one-hot vector</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge1:-Vector-Form">Challenge1: Vector Form<a class="anchor-link" href="#Challenge1:-Vector-Form">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/onehot.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="One-Hot-Issue">One-Hot Issue<a class="anchor-link" href="#One-Hot-Issue">&#182;</a></h2><ul>
-<li>Tens of thousands of words</li>
-<li>Opposite problem as before, 2-features to 10,000</li>
-<li>``Embedding'' represent high-dim space in low dim</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Embedding-Table">Embedding Table<a class="anchor-link" href="#Embedding-Table">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/embweight.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Intuition:-Lookup-in-Table">Intuition: Lookup in Table<a class="anchor-link" href="#Intuition:-Lookup-in-Table">&#182;</a></h2><p>Get word vector</p>
-
-<pre><code>embeddings[word]</code></pre>
-<ul>
-<li>Challenge:  How to compute <code>backward</code></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Alternative:-Lookup-by-broadcast">Alternative: Lookup by broadcast<a class="anchor-link" href="#Alternative:-Lookup-by-broadcast">&#182;</a></h2><p>Get word vector</p>
-
-<pre><code>(embeddings * word_one_hot.view(VOCAB, 1)).sum(0)</code></pre>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Embedding-One">Embedding One<a class="anchor-link" href="#Embedding-One">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/embone.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="How-does-this-share-information?">How does this share information?<a class="anchor-link" href="#How-does-this-share-information?">&#182;</a></h2><ul>
-<li><p>Similar words have similar embedding dim</p>
-</li>
-<li><p>Dot-product - easy way to tell similarity</p>
-</li>
-</ul>
-
-<pre><code>(word_emb1 * word_emb2).sum()</code></pre>
-<ul>
-<li>Differentiable!</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Embedding-Layer">Embedding Layer<a class="anchor-link" href="#Embedding-Layer">&#182;</a></h2><p>Easy to write as a layer</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Embedding</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">weights</span> <span class="o">=</span> \
-          <span class="n">minitorch</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">rand</span><span class="p">((</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">emb_size</span><span class="p">))</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span> <span class="o">=</span> <span class="n">vocab_size</span>
-
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="nb">input</span><span class="p">):</span>
-        <span class="k">return</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">values</span> <span class="o">*</span> <span class="nb">input</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vocab_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Where-do-these-come-from?">Where do these come from?<a class="anchor-link" href="#Where-do-these-come-from?">&#182;</a></h2><ul>
-<li>Trained from a different model</li>
-<li>Extracted and posted to use</li>
-<li>(Many more details in NLP class)</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h2><p>Embeddings</p>
-
-<pre><code>   embedding.weights.value.update(pretrained_weights)</code></pre>
-<ul>
-<li><a href="https://projector.tensorflow.org/">https://projector.tensorflow.org/</a></li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h2><p>Query 1 ::</p>
-<p>^(lisbon|portugal|america|washington|rome|athens|london|england|greece|italy)$</p>
-<p>Query 2 ::</p>
-<p>^(doctor|patient|lawyer|client|clerk|customer|author|reader)$</p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Challenge-2-:-Sentence-Length">Challenge 2 : Sentence Length<a class="anchor-link" href="#Challenge-2-:-Sentence-Length">&#182;</a></h1>
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Sentence-Length">Sentence Length<a class="anchor-link" href="#Sentence-Length">&#182;</a></h2><ul>
-<li>Examples may be of different length</li>
-<li>Need to all be converted to vectors and utilized</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Challenge:-Length-Dimension">Challenge: Length Dimension<a class="anchor-link" href="#Challenge:-Length-Dimension">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/senthot.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Value-Transformation">Value Transformation<a class="anchor-link" href="#Value-Transformation">&#182;</a></h2><ul>
-<li>batch x length x vocab</li>
-<li>batch x length x feature</li>
-<li>batch x feature</li>
-<li>batch x hidden</li>
-<li>batch</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Network">Network<a class="anchor-link" href="#Network">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/sentemb.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Reduction-/-%22Pooling%22">Reduction / "Pooling"<a class="anchor-link" href="#Reduction-/-%22Pooling%22">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/pooling.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Benefits">Benefits<a class="anchor-link" href="#Benefits">&#182;</a></h2><ul>
-<li>Extremely simple</li>
-<li>Embeddings encode key information</li>
-<li>Have all the tools we need</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Full-Model">Full Model<a class="anchor-link" href="#Full-Model">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/full.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h2><ul>
-<li>Completely ignores relative order</li>
-<li>Completley ignores absolute order</li>
-<li>Embeddings for all words, even rare ones</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Q&amp;A">Q&amp;A<a class="anchor-link" href="#Q&amp;A">&#182;</a></h2>
-</div>
-</div>
-</div>
 </div></section></section></section></section>
 </div>
 </div>
@@ -15750,6 +15351,7 @@ require(
             center: false,
             progress: true,
             history: true,
+            pdfMaxPagesPerSlide: 1,             
             transition: "none",
             plugins: [RevealNotes, RevealMath.MathJax3  ],
        });

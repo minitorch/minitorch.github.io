@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/install/">
       
       <link rel="icon" href="../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
     
     
       
@@ -955,20 +955,20 @@
   <h1>Setup</h1>
 
 <p>MiniTorch requires Python 3.7 or higher. To check your version of Python, run either:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; python --version
-&gt;&gt;&gt; python3 --version
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>--version
+&gt;&gt;&gt;<span class="w"> </span>python3<span class="w"> </span>--version
 </code></pre></div>
 <p>We recommend creating a global MiniTorch workspace directory that you will use
 for all modules.</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; mkdir workspace<span class="p">;</span> <span class="nb">cd</span> workspace
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>mkdir<span class="w"> </span>workspace<span class="p">;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>workspace
 </code></pre></div>
 <p>We also highly recommand setting up a <em>virtual
 environment</em>. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
 system. We suggest venv or anaconda.</p>
 <p>For example, if you choose venv, run the following command:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; python -m venv venv
-&gt;&gt;&gt; <span class="nb">source</span> venv/bin/activate
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
+&gt;&gt;&gt;<span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </code></pre></div>
 <p>The first line should be run only once, whereas the second needs to
 be run whenever you open a new terminal to get started for the class.
@@ -981,21 +981,21 @@ for a tutorial about using git and GitHub.</p>
 <p>You should fork the template of the assignment and then edit yours in
 your forked repo. Once you have forked the template code, you can
 clone your own version by running the following command:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; git clone <span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
-&gt;&gt;&gt; <span class="nb">cd</span> <span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
+&gt;&gt;&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
 </code></pre></div>
 <p>The last step is to install packages.  There are several packages
 used throughout these assignments, and you can install them in
 your virtual enviroment by running:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; python -m pip install -r requirements.txt
-&gt;&gt;&gt; python -m pip install -r requirements.extra.txt
-&gt;&gt;&gt; python -m pip install -Ue .
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.extra.txt
+&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-Ue<span class="w"> </span>.
 </code></pre></div>
 <p>For anaconda users, you need to run an extra command to install llvmlite:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; conda install llvmlite
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>conda<span class="w"> </span>install<span class="w"> </span>llvmlite
 </code></pre></div>
 <p>Make sure that everything is installed by running <code>python</code> and then checking:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt; import minitorch
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>import<span class="w"> </span>minitorch
 </code></pre></div>
 
               

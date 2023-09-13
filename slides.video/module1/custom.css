@@ -1,0 +1,81 @@
+.jp-InputArea-editor {
+    border:None;
+    background: None;
+
+}
+
+.jp-OutputArea-child {
+    text-align: center;
+
+}
+
+.jp-InputPrompt {
+    display: None;
+}
+
+
+.jp-OutputPrompt {
+    display: None;
+}
+
+p.tensor_out {
+    text-align: left;
+    font-family: monospace;
+    margin-left: 20px;
+}
+
+.reveal section hr {
+    border: gray 0.5px solid;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.reveal section blockquote  {
+    border: none;
+}
+
+.reveal pre {
+    margin: 0px;
+    width: auto;
+    font-size: 15pt;
+}
+
+.reveal img {
+      display: block;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
+.reveal section li {
+    font-size: 25pt;
+}
+
+.reveal section p {
+    font-size: 25pt;
+}
+.reveal section h2 {
+    font-size: 35pt;
+    padding-bottom: 1em;
+}
+.reveal section h1 {
+    font-size: 40pt;
+    padding-bottom: 1em;
+}
+
+.reveal section li {
+    margin-bottom: 25px;
+}
+
+.reveal section pre code {
+    font-size: 0.6em !important;
+}
+
+
+div.celltag_hide_inp div.jp-Cell-inputWrapper {
+    display: none;
+}
+
+/* .MathJax_CHTML { */
+/*     font-size: 50% !important; */
+/* } */

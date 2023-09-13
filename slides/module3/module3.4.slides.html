@@ -14495,6 +14495,9 @@ a.anchor-link {
 .reveal {
   font-size: 160%;
 }
+.reveal table {
+  font-size: var(--jp-ui-font-size1);
+}
 .reveal pre {
   width: inherit;
   padding: 0.4em;
@@ -14538,6 +14541,23 @@ div.jp-OutputPrompt {
   margin: 5px 5px 0 0;
 }
 
+.reveal div.highlight {
+  margin: 0;
+}
+
+.reveal div.highlight > pre {
+  margin: 0;
+  width: 100%;
+  font-size: var(--jp-code-font-size);
+}
+
+.reveal div.jp-OutputArea-output > pre {
+  margin: 0;
+  width: 90%;
+  font-size: var(--jp-code-font-size);
+  box-shadow: none;
+}
+
 /* Reveal navigation controls */
 
 .reveal .controls .navigate-left,
@@ -14578,17 +14598,14 @@ div.jp-OutputPrompt {
 
 /* Scrollbars */
 
-::-webkit-scrollbar
-{
+::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-::-webkit-scrollbar *
-{
-  background:transparent;
+::-webkit-scrollbar * {
+  background: transparent;
 }
-::-webkit-scrollbar-thumb
-{
+::-webkit-scrollbar-thumb {
   background: #727272 !important;
 }
 </style>
@@ -14615,12 +14632,12 @@ div.jp-OutputPrompt {
                 },
                 displayAlign: 'center',
                 CommonHTML: {
-                    linebreaks: { 
-                    automatic: true 
+                    linebreaks: {
+                    automatic: true
                     }
                 }
             });
-        
+
             MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
     }
@@ -14637,35 +14654,63 @@ div.jp-OutputPrompt {
 
 <div class="reveal">
 <div class="slides"><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="Module-3.4---CUDA-3">Module 3.4 - CUDA 3<a class="anchor-link" href="#Module-3.4---CUDA-3">&#182;</a></h1>
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CUDA-Abstraction">CUDA Abstraction<a class="anchor-link" href="#CUDA-Abstraction">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/thread@3x.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="CUDA-Abstraction">CUDA Abstraction<a class="anchor-link" href="#CUDA-Abstraction">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/gpu/blockid@3x.png" alt="" /></p>
+<p><img src="https://minitorch.github.io/figs/gpu/thread@3x.png" alt=""></p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/gpu/blockid@3x.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Stack">Stack<a class="anchor-link" href="#Stack">&#182;</a></h2><ul>
 <li>Threads: Run the code</li>
-<li>Block: Groups &quot;close&quot; threads</li>
+<li>Block: Groups "close" threads</li>
 <li>Grid: All the thread blocks</li>
 <li>Total Threads: <code>threads_per_block</code> x <code>total_blocks</code></li>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="CUDA-Code">CUDA Code<a class="anchor-link" href="#CUDA-Code">&#182;</a></h2><ul>
 <li>Every thread runs simultaneously</li>
@@ -14674,8 +14719,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Memory">Memory<a class="anchor-link" href="#Memory">&#182;</a></h2><ul>
 <li>CUDA memory hierarchy</li>
@@ -14684,8 +14735,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Constraints">Constraints<a class="anchor-link" href="#Constraints">&#182;</a></h2><ul>
 <li>Memory must be typed</li>
@@ -14694,37 +14751,71 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Block-Shared-Memory">Block Shared Memory<a class="anchor-link" href="#Block-Shared-Memory">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/figs/gpu/sharedmem@3x.png" alt="" /></p>
-
+</div>
 </div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/figs/gpu/sharedmem@3x.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Quiz">Quiz<a class="anchor-link" href="#Quiz">&#182;</a></h2><p>Quiz</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h1 id="CUDA-Algorithms">CUDA Algorithms<a class="anchor-link" href="#CUDA-Algorithms">&#182;</a></h1>
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Examples-from-Puzzles">Examples from Puzzles<a class="anchor-link" href="#Examples-from-Puzzles">&#182;</a></h2><p>(Puzzles)</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example-1:-Sliding-Average">Example 1: Sliding Average<a class="anchor-link" href="#Example-1:-Sliding-Average">&#182;</a></h2><p>Compute sliding average over a list</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14740,13 +14831,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Basic-CUDA">Basic CUDA<a class="anchor-link" href="#Basic-CUDA">&#182;</a></h2><p>Compute CUDA</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14767,13 +14866,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Better-CUDA">Better CUDA<a class="anchor-link" href="#Better-CUDA">&#182;</a></h2><p>Two global reads per thread ::</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14800,13 +14907,21 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example-2:-Reduction">Example 2: Reduction<a class="anchor-link" href="#Example-2:-Reduction">&#182;</a></h2><p>Compute sum reduction over a list</p>
 
 </div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
 <div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
@@ -14821,7 +14936,11 @@ div.jp-OutputPrompt {
 </div>
 
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Algorithm">Algorithm<a class="anchor-link" href="#Algorithm">&#182;</a></h2><ul>
 <li>Parallel Prefix Sum Computation</li>
@@ -14829,8 +14948,14 @@ div.jp-OutputPrompt {
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Associative-Trick">Associative Trick<a class="anchor-link" href="#Associative-Trick">&#182;</a></h2><p>Formula 
 $$a = 4 + 2 + 5 + 6 + 1 + 2 + 4 + 1$$
@@ -14838,8 +14963,14 @@ Same as
 $$a = (((4 + 2) + (5 + 6)) + ((1 + 2) + (4 + 1)))$$</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Associative-Trick">Associative Trick<a class="anchor-link" href="#Associative-Trick">&#182;</a></h2><p>Round 1 
 $$a = (((4 + 2) + (5 + 6)) + ((1 + 2) + (4 + 1)))$$
@@ -14851,8 +14982,14 @@ Round 4
 $$a = 25$$</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Thread-Assignments">Thread Assignments<a class="anchor-link" href="#Thread-Assignments">&#182;</a></h2><p>Round 1 (4 threads needed, 8 loads) 
 $$a = (((4 + 2) + (5 + 6)) + ((1 + 2) + (4 + 1)))$$</p>
@@ -14864,8 +15001,14 @@ Round 4
 $$a = 25$$</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Open-Questions">Open Questions<a class="anchor-link" href="#Open-Questions">&#182;</a></h2><ul>
 <li>When do we read / write from global memory?</li>
@@ -14875,19 +15018,31 @@ $$a = 25$$</p>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Table">Table<a class="anchor-link" href="#Table">&#182;</a></h2><pre><code>   | Thread 0 |  Thread 1 | Thread 2 | Thread 3 |
+<h2 id="Table">Table<a class="anchor-link" href="#Table">&#182;</a></h2>
+<pre><code>   | Thread 0 |  Thread 1 | Thread 2 | Thread 3 |
    |----------|-----------|----------|----------|
    | 4 + 2    |  5 + 6    | 1 + 2    |  4 + 1   |
    | 6 + 11   | (zzz)     |  3 + 5   |  (zzz)   |
-   | 17 + 18  | (zzz)     | (zzz)    |(zzz)     | 
-</code></pre>
+   | 17 + 18  | (zzz)     | (zzz)    |(zzz)     |</code></pre>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Harder-Questions">Harder Questions<a class="anchor-link" href="#Harder-Questions">&#182;</a></h2><ul>
 <li>What if the sequence is too short?</li>
@@ -14895,8 +15050,14 @@ $$a = 25$$</p>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Too-Short---Padding">Too Short - Padding<a class="anchor-link" href="#Too-Short---Padding">&#182;</a></h2><ul>
 <li>Recall that we always have a <code>start</code>, e.g. 0</li>
@@ -14905,8 +15066,14 @@ $$a = 25$$</p>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Too-Long---Multiple-Runs">Too Long - Multiple Runs<a class="anchor-link" href="#Too-Long---Multiple-Runs">&#182;</a></h2><ul>
 <li><p>Sequence may have more elements than our block.</p>
@@ -14918,8 +15085,14 @@ $$a = 25$$</p>
 </ul>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example---Long-Sequence">Example - Long Sequence<a class="anchor-link" href="#Example---Long-Sequence">&#182;</a></h2><p>Formula 
 $$a = 4 + 2 + 5 + 6 + 1 + 2 + 4 + 1 + 10$$
@@ -14927,8 +15100,14 @@ Block size 8
 $$a = (((4 + 2) + (5 + 6)) + ((1 + 2) + (4 + 1))) + 10$$</p>
 
 </div>
+</div>
+</div>
 </div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Homework-Tips">Homework Tips<a class="anchor-link" href="#Homework-Tips">&#182;</a></h2><ul>
 <li>Implement simple cases first. (power of 2, no padding).</li>
@@ -14936,6 +15115,8 @@ $$a = (((4 + 2) + (5 + 6)) + ((1 + 2) + (4 + 1))) + 10$$</p>
 <li>Draw lots of diagrams, hard to debug the code directly</li>
 </ul>
 
+</div>
+</div>
 </div>
 </div></section></section></section></section>
 </div>
@@ -14968,6 +15149,7 @@ require(
             center: false,
             progress: true,
             history: true,
+            pdfMaxPagesPerSlide: 1,             
             transition: "none",
             plugins: [RevealNotes, RevealMath.MathJax3  ],
        });

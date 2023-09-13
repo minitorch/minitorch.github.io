@@ -1,0 +1,397 @@
+# + slideshow={"slide_type": "skip"}
+from mt_diagrams.drawing import connect
+from mt_diagrams.tensor_draw import color, draw_equation, matrix, matrix_op, t, image_matmul_full, image_matmul_simple, m
+import chalk
+chalk.set_svg_draw_height(400)
+chalk.set_svg_height(200)
+import numba
+import minitorch
+FastTensorBackend = minitorch.TensorBackend(minitorch.FastOps)
+def tensor(x):
+    return minitorch.tensor(x, backend=FastTensorBackend)
+
+def rand(*shape):
+    return minitorch.rand(shape, backend=FastTensorBackend)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Module 4.1 - Convolutions
+# ===================================
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Vector Form
+# ------------------------
+# ![](https://minitorch.github.io/figs/NLP/onehot.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge: Length Dimension
+# ------------------------------
+# ![](https://minitorch.github.io/figs/NLP/senthot.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Embedding Table
+# ------------------------
+# ![](https://minitorch.github.io/figs/NLP/embweight.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Embedding Layer
+# ----------------
+
+# Easy to write as a layer
+
+# + slideshow={"slide_type": "x"}
+class Embedding(minitorch.Module):
+    def __init__(self, vocab_size, emb_size):
+        super().__init__()
+        self.weights = \
+            minitorch.Parameter(minitorch.rand((vocab_size, emb_size)))
+        self.vocab_size = vocab_size
+
+    def forward(input):
+        return (input @ self.weights.values)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Reduction / "Pooling"
+# ------------------------
+# ![](https://minitorch.github.io/figs/NLP/pooling.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Full Model
+# ------------------------
+# ![](https://minitorch.github.io/figs/NLP/full.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Issues
+# ------
+# * Completely ignores relative order
+# * Completley ignores absolute order
+# * Embeddings for all words, even rare ones
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 1: Input Representation
+# ----------------------------------
+
+
+# ![](https://minitorch.github.io/figs/mnist.png)
+#           
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 1: Input Features
+# ----------------------------
+
+# ![](https://minitorch.github.io/figs/Conv/conv.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 1: Input Features
+# ----------------------------
+
+# ![](https://minitorch.github.io/figs/Conv/conv2.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 1: Input Representation
+# ----------------------------------
+
+# ![](https://minitorch.github.io/figs/mnistregion.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 2: Variable Size Area
+# ---------------------------------
+
+# ![](https://minitorch.github.io/figs/Conv/pool2d.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 2: Variable Size Area
+# ---------------------------------
+# ![](https://minitorch.github.io/figs/Conv/pool2d.png)
+#           
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 2: MNist Zoom
+# ---------------------------------
+# ![](https://minitorch.github.io/figs/mnistzoom.png)
+#          
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 3: Multiple Output
+# ---------------------------------
+
+# ![](https://minitorch.github.io/figs/Conv/value.png)
+
+# ![](https://minitorch.github.io/figs/Conv/softmax.png)
+#          
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge 3: Multiple Output
+# ---------------------------------
+
+# ![](https://minitorch.github.io/figs/hist.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Quiz
+# -----
+# Quiz
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Today's Class
+# ----------------
+# * Conv 1D
+# * Channels
+# * Conv 2D
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Challenge
+# ----------
+# How do we handle locality in features?
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# NLP
+# ----
+# ![](https://minitorch.github.io/figs/sentcnn.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Speech Recognition
+# -------------------
+# ![](https://minitorch.github.io/figs/speech.png)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Intuition
+# ----------
+# * Apply a linear model.
+# * Run it as a sliding window
+# * Hope for splits to detect patterns
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Convolution Forward
+# --------------------
+# ![](https://minitorch.github.io/figs/Conv/conv1d.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Computation
+# -----------
+# Output Values
+# ```
+#   output[0] = weight[0] * input[0] + weight[1] * input[1]  + weight[2] * input[2]
+#   output[1] = weight[0] * input[1] + weight[1] * input[2]  + weight[2] * input[3]
+#   output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]
+# ``` 
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Alternative View
+# -----------------
+# Unroll 
+
+# + slideshow={"slide_type": "x"}
+def unroll(input, T, K):
+    out = [[input[i + k] if i + k < T else 0
+            for k in range(K)]
+           for i in range(T)]           
+    return tensor(out)
+
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Alternative View
+# -----------------
+# Unroll 
+# + slideshow={"slide_type": "x"}
+input = tensor([1, 2, 3, 4, 5, 6])
+K = 3
+T = input.shape[0]
+unrolled_input = unroll(input, T, K)
+print(unrolled_input)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Alternative View
+# -----------------
+
+# Unroll + zip + reduce ::
+
+# + slideshow={"slide_type": "x"}
+weight = tensor([5, 2, 3])
+output = (unrolled_input @ weight.view(K, 1)).view(T)
+print(output)
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Alternative View
+# -----------------
+# ![](https://minitorch.github.io/figs/Conv/convvec.png)
+#           
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Gradient
+# ---------
+# Output Values 
+#
+# ```
+#   output[0] = weight[0] * input[0] + weight[1] * input[1]  + weight[2] * input[2]
+#   output[1] = weight[0] * input[1] + weight[1] * input[2]  + weight[2] * input[3]
+#   output[2] = weight[0] * input[2] + weight[1] * input[3]  + weight[2] * input[4]
+# ```
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Gradient
+# ---------
+
+# + slideshow={"slide_type": "x"}
+class Conv:
+
+    @staticmethod
+    def backward(ctx, d):
+        ...
+        grad_input[2] = weight[0] * d[2] + weight[1] * d[1]  + weight[2] * d[0]
+        ...
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Conv Back - Input
+# ------------------
+
+# Reverse the convolutional anchor
+
+# ![](https://minitorch.github.io/figs/Conv/conv1dback.png)
+#  
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Conv Back - Weight
+# ------------------
+
+# ![](https://minitorch.github.io/figs/Conv/conv1dback2.png)
+#        
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Channels
+# =========
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Intuition
+# ------------
+# * Each position may have multiple values
+# * These may be meaningful - i.e. color channels
+# * These may be learned - i.e. hidden states
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Key Points
+# ----------
+# * Convolution is a Linear applied to all channels in position
+# * If weight is length K and there are 10 channels, the input to the linear
+#   is 10 * K.
+# * Output channels are just like the output of the Linear.
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Graphical Representation
+# -------------------------
+# ![](https://minitorch.github.io/figs/Conv/channels.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Code
+# ------
+
+# + slideshow={"slide_type": "x"}
+def unroll_chan(input, T, C, K):
+    out = [[input[i + k, c] if i + k < T else 0
+             for k in range(K)
+            for c in range(C)]
+           for i in range(T)]
+
+    return tensor(out)
+
+in_channels = 2
+input = rand(T, in_channels)
+unrolled_input = unroll_chan(input, T, in_channels, K)
+print(unrolled_input.shape) # Shape: T x (in_channels * K)
+# -
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Graphical Representation
+# -------------------------
+# ![](https://minitorch.github.io/figs/Conv/channels.png)
+
+# + slideshow={"slide_type": "x"}
+out_channels = 3
+weight = rand(in_channels * K, out_channels)
+output = unrolled_input @ weight
+print(output.shape)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Implementation
+# --------------
+# * All about understanding sizes.
+# * Should be similar to matmul, start with output
+# * If outside boundaries, use 0
+
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Two Dimensional Convolution
+# ----------------------------
+# * Instead of line, now use box
+# * Box is anchored at the top-left
+# * Zip-reduce is over full box!
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Convolution
+# -----------
+# ![](https://minitorch.github.io/figs/Conv/conv.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Conventions
+# -------------
+# Sizes 
+# ```
+#  # Input image - batch x in_channel x height x width
+#  # Weight - out_channel x in_channel x kernel_height x kernel_width
+#  # Output image - batch x out_channel x height x width
+# ```
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Backward
+# ---------
+# ![](https://minitorch.github.io/figs/Conv/backward.png)
+#
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Backward
+# ---------
+# Same idea as 1D
+# * Reverse weight (bottom-top, left-right)
+# * Anchor bottom-right
+# * Compute convolution
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Channels
+# --------
+# Nothing different from 1D version
+
+# ![](https://minitorch.github.io/figs/Conv/conv2.png)
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Implementation
+# --------------
+# * All about understanding sizes.
+# * Should be similar to matmul, start with output
+# * If outside boundaries, use 0
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Advice
+# -------
+
+# * Implement 1D first it is easier
+# * Compute a couple manually yourself.
+# * All about indexing
+
+# + [markdown] slideshow={"slide_type": "slide"}
+# Where are we?
+# ---------------
+
+# https://poloclub.github.io/cnn-explainer/
+

@@ -1,0 +1,213 @@
+# # Derivatives
+
+
+# Let's begin by discussing derivatives in the setting of programming. We
+# assume that you have not seen derivatives in a while, so we will start
+# slow and develop some notation first.
+
+# ## Symbolic Derivatives
+
+# + tags=["hide_inp"]
+import sys
+from typing import Callable
+
+import minitorch
+
+sys.path.append("project/interface/")
+sys.path.append("../project/interface/")
+import math
+
+from chalk import *
+from plots import plot_function, plot_function3D
+
+set_svg_draw_height(300)
+# -
+
+# Assume we are given a function, $f(x) = \sin(2 \times x)$.
+# We can compute a function for its derivative by applying rules from
+# univariate calculus. We will use *Lagrange* notation where the
+# derivative of a one-argument function $f'$ as is denoted $f'$. To
+# compute $f'$ we can apply standard univariate derivative rules.
+
+# $$f'(x) = 2 \times \cos(2 x)$$
+
+# +
+def f(x):
+    return math.sin(2 * x)
+
+
+def d_f(x):
+    return 2 * math.cos(2 * x)
+
+
+plot_function("f(x) = sin(2x)", f)
+plot_function("f'(x) = cos(2x)", d_f)
+# -
+
+# We also will work with two-argument functions.
+
+# $$ \begin{eqnarray*}
+# f(x, y) &=& \sin(x) + 2 \cos(y) \\
+# \end{eqnarray*}
+# $$
+
+# +
+def f(x, y):
+    return math.sin(x) + 2 * math.cos(y)
+
+
+plot_function3D("f(x, y) = sin(x) + 2 * cos(y)", f)
+# -
+
+# We use a subscript notation to indicate which argument we are taking a
+# derivative with respect to.
+
+# +
+def d_f_x(x, y):
+    return math.cos(x)
+
+
+plot_function3D("f'_x(x, y) = cos(x)", d_f_x)
+# -
+
+# In general, we will refer to this process of mathematical transformation
+# as the *symbolic* derivative of the function. When available
+# symbolic derivatives are ideal, they tell us everything we need to know
+# about the derivative of the function.
+
+# ## Numerical Derivatives
+
+# Visually, derivative functions correspond to slopes of tangent lines in
+# 2D. Let's start with this simple function:
+
+# $$f(x) = x^2 + 1$$
+
+# +
+def f(x):
+    return x * x + 1.0
+
+
+plot_function("f(x)", f)
+# -
+
+# Its derivative at an arbitrary input is the slope of the line tangent to
+# that input.
+
+# +
+def d_f(x):
+    return 2 * x
+
+
+def tangent_line(slope, x, y):
+    def line(x_):
+        return slope * (x_ - x) + y
+
+    return line
+
+
+plot_function("f(x) vs f'(2)", f, fn2=tangent_line(d_f(2), 2, f(2)))
+# -
+
+# The above visual representation motivates an alternative approach to
+# estimate a [numerical]{.title-ref} derivative. The underlying assumption
+# is that we assume we do not know the symbolic form of the function, and
+# instead want to estimate it by querying specific values.
+
+# Recall one definition of the derivative function is this slope as we
+# approach to a tangent line:
+
+# If we set $epsilon$ to be very small, we get an approximation of the
+# derivative function:
+
+# Alternatively, you could imagine approaching x from the other side,
+# which would yield a different derivative function:
+
+# You can show that doing both simultaneously yields a better
+# approximation (you probably proved this in high school!):
+
+# ![image](figs/Grad/approx.png){.align-center}
+
+eps = 1e-5
+slope = (f(2 + eps) - f(2 - eps)) / (2 * eps)
+plot_function("f(x) vs f'(2)", f, fn2=tangent_line(slope, 2, f(2)))
+
+
+# This formula is known as the central difference, and is a
+# specific case of [finite
+# differences](https://en.wikipedia.org/wiki/Finite_difference).
+
+# When working with functions of multiple arguments. The each derivative
+# corresponds to the slope of one dimension of the tangent plane. The
+# central difference approach can only tell us one of these slope at a
+# time.
+
+# Specifically we would need to compute,
+
+# The more variables we have, the more function calls we need to make.
+
+# ## Implementing Numerical Approximations
+
+
+# The key benefit of the [numerical]{.title-ref} approach is that we do
+# not need to know everything about the function: all we need is to be able
+# to compute its value under a given input. From a programming sense, this
+# means we can approximate the derivative for any black-box function.
+# Note, we did not need to actually know the specifics of the function to
+# compute this derivative.
+
+# In implementation, it means we can write a [higher-order
+# function]{.title-ref} of the following form:
+
+
+def central_difference(f: Callable[[float], float], x: float) -> float:
+    ...
+
+
+# Assume we are just given an arbitrary python function:
+
+
+def f(x: float) -> float:
+    "Compute some unknown function of x."
+    ...
+
+
+# we can call `central_difference(f, x)` to immediately approximate the
+# derivative of this function f on input x.
+
+# We will see that this approach is not a great way to train machine
+# learning models, but it provides a generic alternative approach to check
+# if your derivative functions are correct, e.g. free
+# property testing.
+
+# Here are some examples of Module-0 functions with central difference
+# applied. It is important to know what derivatives of these important
+# functions look like.
+
+plot_function("sigmoid", minitorch.operators.sigmoid)
+
+
+def d_sigmoid(x):
+    return minitorch.central_difference(minitorch.operators.sigmoid, x)
+
+
+plot_function("Derivative of sigmoid", d_sigmoid)
+
+
+plot_function("exp", minitorch.operators.exp)
+
+
+def d_exp(x):
+    return minitorch.central_difference(minitorch.operators.exp, x)
+
+
+plot_function("Derivative of exp", d_exp)
+
+
+plot_function("ReLU", minitorch.operators.relu)
+
+
+def d_relu(x):
+    return minitorch.central_difference(minitorch.operators.relu, x)
+
+
+plot_function("Derivative of ReLU", d_relu)

@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://minitorch.github.io/module3/module3/">
       
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
     
     
       
@@ -1066,7 +1066,7 @@ you can utilize parallelization through <code>prange</code> you can get some big
 wins. Be careful though! Parallelization can lead to funny bugs.</p>
 <p>In order to help debug this code, we have created a parallel analytics
 script for you</p>
-<div class="highlight"><pre><span></span><code>python project/parallel_check.py
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>project/parallel_check.py
 </code></pre></div>
 <p>Running this script will run NUMBA diagnostics on your functions.</p>
 <div class="admonition todo">
@@ -1592,8 +1592,8 @@ basic training setup as <code>module2</code>, but now utilizes your fast tensor
 code. We have left the <code>matmul</code> layer blank for you to implement with
 your tensor code.</p>
 <p>Here is the command ::</p>
-<div class="highlight"><pre><span></span><code>python run_fast_tensor.py --BACKEND gpu --HIDDEN <span class="m">100</span> --DATASET split --RATE <span class="m">0</span>.05
-python run_fast_tensor.py --BACKEND cpu --HIDDEN <span class="m">100</span> --DATASET split --RATE <span class="m">0</span>.05
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>run_fast_tensor.py<span class="w"> </span>--BACKEND<span class="w"> </span>gpu<span class="w"> </span>--HIDDEN<span class="w"> </span><span class="m">100</span><span class="w"> </span>--DATASET<span class="w"> </span>split<span class="w"> </span>--RATE<span class="w"> </span><span class="m">0</span>.05
+python<span class="w"> </span>run_fast_tensor.py<span class="w"> </span>--BACKEND<span class="w"> </span>cpu<span class="w"> </span>--HIDDEN<span class="w"> </span><span class="m">100</span><span class="w"> </span>--DATASET<span class="w"> </span>split<span class="w"> </span>--RATE<span class="w"> </span><span class="m">0</span>.05
 </code></pre></div>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
@@ -1620,7 +1620,7 @@ trainer. (As a reference, our parallel implementation gave a 10x speedup).
 On a standard Colab GPU setup, aim for you CPU to get below 2 seconds per epoch and
 GPU to be below 1 second per epoch. (With some cleverness you can do much better.)</p>
 </div>
-<p><img alt="" src="robot.png" /></p>
+<p><img alt="" src="../robot.png" /></p>
 
               
 

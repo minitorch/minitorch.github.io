@@ -4541,8 +4541,6 @@ Here is what this looks like in code.</p>
 <span class="c1">#    most reduces the loss.</span>
 
 <span class="c1"># Let&#39;s return to the incorrect model above.</span>
-
-<span class="n">m</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
 </pre></div>
 <div id="cell-32" class="clipboard-copy-txt">def full_loss(m):
     l = 0
@@ -4572,9 +4570,39 @@ Here is what this looks like in code.</p>
 # 3. Update the parameters with a small change in the direction that locally
 #    most reduces the loss.
 
-# Let's return to the incorrect model above.
+# Let's return to the incorrect model above.</div>
+    
+        </div>
+    </div>
 
-m = Linear(1, 1, -0.5)</div>
+</div>
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+        <div class="CodeMirror cm-s-jupyter">
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-33">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+<div id="cell-33" class="clipboard-copy-txt">m = Linear(1, 1, -0.5)</div>
     
         </div>
     </div>
@@ -4589,7 +4617,7 @@ m = Linear(1, 1, -0.5)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -4604,7 +4632,7 @@ m = Linear(1, 1, -0.5)</div>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-33">
+            <clipboard-copy for="cell-34">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -4617,7 +4645,7 @@ m = Linear(1, 1, -0.5)</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
 <span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;figs/Graphs/fit1.svg&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 </pre></div>
-<div id="cell-33" class="clipboard-copy-txt">d = show(m)
+<div id="cell-34" class="clipboard-copy-txt">d = show(m)
 r(d, "figs/Graphs/fit1.svg", 500)</div>
     
         </div>
@@ -4636,7 +4664,7 @@ r(d, "figs/Graphs/fit1.svg", 500)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[33]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[34]:</div>
 
 
 
@@ -4685,50 +4713,8 @@ parameter. It seems like the loss will go down if we move the intercept a bit.</
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[34]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-        
-        
-        <div class="CodeMirror cm-s-jupyter">
-        <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-34">
-            <div>
-                <span class="notice" hidden>Copied!</span>
-                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
-                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
-                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
-                </svg>
-                </div>
-            </clipboard-copy>
-        </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.55</span><span class="p">)</span>
-</pre></div>
-<div id="cell-34" class="clipboard-copy-txt">m = Linear(1, 1, -0.55)</div>
-    
-        </div>
-    </div>
-
-</div>
-</div>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
-<div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[35]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
-        
-            <div class="celltoolbar">
-                
-                <div class="button_container tags_button_container">
-                    <span class="tag-container">
-                        <span class="cell-tag">hide_inp</span>
-                    </span>
-                </div>
-                
-            </div>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
@@ -4742,41 +4728,14 @@ parameter. It seems like the loss will go down if we move the intercept a bit.</
                 </div>
             </clipboard-copy>
         </div>
-            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
-<span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;figs/Graphs/fit2.svg&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.55</span><span class="p">)</span>
 </pre></div>
-<div id="cell-35" class="clipboard-copy-txt">d = show(m)
-r(d, "figs/Graphs/fit2.svg", 500)</div>
+<div id="cell-35" class="clipboard-copy-txt">m = Linear(1, 1, -0.55)</div>
     
         </div>
     </div>
 
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
-
-
-
-<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
-<?xml version="1.0" encoding="utf-8" ?>
-<svg baseProfile="full" height="300" version="1.1" width="311" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 155.69740629976232, 150.0)"><g transform="matrix(283.37347158744717, 0.0, 0.0, 283.37347158744717, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.5232784962697276, 0.49868664579817235)"><g><g><g transform="matrix(1.0, 0.0, 0.0, -1.0, 0.0, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.5, 0.0)"><g><g><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.5)"><g><g><g><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.5, 0.0)"><path d="M 0.0 0.0 L 0.5 0.0 L 0.5 0.5 L 0.0 0.5 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.8;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, -1.0)"><path d="M 0.0 0.0 L 0.0 1.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.8;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g></g></g><g><g><g /><g><g><g><g><g /><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5780913011344704, -0.20609823213950174)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.6534725339011758, -0.16022955651881965)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5206693596399246, -0.32777281162209315)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.3816059859191179, -0.28361821790671515)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g><g><g><g><g><g><g /><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.5214025946899135, -0.45388905467511464)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.76332125135732, -0.8485888725334455)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.19999667668640037, -0.9778169091459117)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.9465569925394551, -0.06955638245043302)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.810161037286291, -0.6281906109681851)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.6249648471349559, -0.48183115105830565)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g /></g></g></g></g></svg>
-</div>
-
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -4811,12 +4770,81 @@ r(d, "figs/Graphs/fit2.svg", 500)</div>
                 </div>
             </clipboard-copy>
         </div>
+            <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;figs/Graphs/fit2.svg&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+</pre></div>
+<div id="cell-36" class="clipboard-copy-txt">d = show(m)
+r(d, "figs/Graphs/fit2.svg", 500)</div>
+    
+        </div>
+    </div>
+
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="300" version="1.1" width="311" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 155.69740629976232, 150.0)"><g transform="matrix(283.37347158744717, 0.0, 0.0, 283.37347158744717, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.5232784962697276, 0.49868664579817235)"><g><g><g transform="matrix(1.0, 0.0, 0.0, -1.0, 0.0, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.5, 0.0)"><g><g><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.5)"><g><g><g><g><g><g><g><g><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.03125)"><g><g style="fill: #7f80ff;stroke: #7f80ff;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.03125, 0.0)"><path d="M 0.0 0.0 L 0.03125 0.0 L 0.03125 0.03125 L 0.0 0.03125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0625)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0625, 0.0)"><path d="M 0.0 0.0 L 0.0625 0.0 L 0.0625 0.0625 L 0.0 0.0625 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.125)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.125, 0.0)"><path d="M 0.0 0.0 L 0.125 0.0 L 0.125 0.125 L 0.0 0.125 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.25)"><g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.25, 0.0)"><path d="M 0.0 0.0 L 0.25 0.0 L 0.25 0.25 L 0.0 0.25 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g style="fill: #fd7f7f;stroke: #fd7f7f;stroke-width: 0.9;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.5, 0.0)"><path d="M 0.0 0.0 L 0.5 0.0 L 0.5 0.5 L 0.0 0.5 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.8;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, -1.0)"><path d="M 0.0 0.0 L 0.0 1.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.8;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g></g></g><g><g><g /><g><g><g><g><g /><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5780913011344704, -0.20609823213950174)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.6534725339011758, -0.16022955651881965)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5206693596399246, -0.32777281162209315)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 1.8;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.3816059859191179, -0.28361821790671515)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g><g><g><g><g><g><g /><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.5214025946899135, -0.45388905467511464)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.76332125135732, -0.8485888725334455)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.19999667668640037, -0.9778169091459117)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.9465569925394551, -0.06955638245043302)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.810161037286291, -0.6281906109681851)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 1.8;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.6249648471349559, -0.48183115105830565)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g /></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+        
+        
+            <div class="celltoolbar">
+                
+                <div class="button_container tags_button_container">
+                    <span class="tag-container">
+                        <span class="cell-tag">hide_inp</span>
+                    </span>
+                </div>
+                
+            </div>
+        
+        <div class="CodeMirror cm-s-jupyter">
+        <div class="zeroclipboard-container">
+            <clipboard-copy for="cell-37">
+            <div>
+                <span class="notice" hidden>Copied!</span>
+                <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
+                    <path fill="currentColor" fill-rule="evenodd" d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"></path>
+                    <path fill="currentColor" fill-rule="evenodd" d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"></path>
+                </svg>
+                </div>
+            </clipboard-copy>
+        </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">show_loss</span><span class="p">(</span><span class="n">full_loss</span><span class="p">,</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="n">chalk</span><span class="o">.</span><span class="n">set_svg_height</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;figs/Graphs/loss.svg&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
 <span class="n">d</span>
 </pre></div>
-<div id="cell-36" class="clipboard-copy-txt">d = show_loss(full_loss, Linear(1, 1, 0))
+<div id="cell-37" class="clipboard-copy-txt">d = show_loss(full_loss, Linear(1, 1, 0))
 chalk.set_svg_height(500)
 r(d, "figs/Graphs/loss.svg", 500)
 d</div>
@@ -4837,7 +4865,7 @@ d</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[37]:</div>
 
 
 
@@ -4871,12 +4899,12 @@ d</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[37]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-37">
+            <clipboard-copy for="cell-38">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -4888,7 +4916,7 @@ d</div>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">chalk</span><span class="o">.</span><span class="n">set_svg_height</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
 </pre></div>
-<div id="cell-37" class="clipboard-copy-txt">chalk.set_svg_height(200)</div>
+<div id="cell-38" class="clipboard-copy-txt">chalk.set_svg_height(200)</div>
     
         </div>
     </div>
@@ -4967,12 +4995,12 @@ a very simple dataset with this property.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-38">
+            <clipboard-copy for="cell-39">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -4984,7 +5012,7 @@ a very simple dataset with this property.</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">split_graph</span><span class="p">(</span><span class="n">s1_hard</span><span class="p">,</span> <span class="n">s2_hard</span><span class="p">,</span> <span class="n">show_origin</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
-<div id="cell-38" class="clipboard-copy-txt">split_graph(s1_hard, s2_hard, show_origin=True)</div>
+<div id="cell-39" class="clipboard-copy-txt">split_graph(s1_hard, s2_hard, show_origin=True)</div>
     
         </div>
     </div>
@@ -5002,7 +5030,7 @@ a very simple dataset with this property.</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 
 
 
@@ -5036,12 +5064,12 @@ a very simple dataset with this property.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-39">
+            <clipboard-copy for="cell-40">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5053,7 +5081,7 @@ a very simple dataset with this property.</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7</span><span class="p">)</span>
 </pre></div>
-<div id="cell-39" class="clipboard-copy-txt">model = Linear(1, 1, -0.7)</div>
+<div id="cell-40" class="clipboard-copy-txt">model = Linear(1, 1, -0.7)</div>
     
         </div>
     </div>
@@ -5068,7 +5096,7 @@ a very simple dataset with this property.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5083,7 +5111,7 @@ a very simple dataset with this property.</p>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-40">
+            <clipboard-copy for="cell-41">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5095,7 +5123,7 @@ a very simple dataset with this property.</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">draw_with_hard_points</span><span class="p">(</span><span class="n">model</span><span class="p">)</span>
 </pre></div>
-<div id="cell-40" class="clipboard-copy-txt">draw_with_hard_points(model)</div>
+<div id="cell-41" class="clipboard-copy-txt">draw_with_hard_points(model)</div>
     
         </div>
     </div>
@@ -5113,7 +5141,7 @@ a very simple dataset with this property.</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
 
 
 
@@ -5177,7 +5205,7 @@ Instead of splitting all the points directly, we might first split off the left 
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5192,7 +5220,7 @@ Instead of splitting all the points directly, we might first split off the left 
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-41">
+            <clipboard-copy for="cell-42">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5206,7 +5234,7 @@ Instead of splitting all the points directly, we might first split off the left 
 <span class="n">ycolor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s2">&quot;#fde699&quot;</span><span class="p">)</span>
 <span class="n">draw_with_hard_points</span><span class="p">(</span><span class="n">yellow</span><span class="p">,</span> <span class="n">ycolor</span><span class="p">,</span> <span class="n">Color</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">))</span>
 </pre></div>
-<div id="cell-41" class="clipboard-copy-txt">yellow = Linear(-1, 0, 0.25)
+<div id="cell-42" class="clipboard-copy-txt">yellow = Linear(-1, 0, 0.25)
 ycolor = Color("#fde699")
 draw_with_hard_points(yellow, ycolor, Color("white"))</div>
     
@@ -5226,7 +5254,7 @@ draw_with_hard_points(yellow, ycolor, Color("white"))</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
 
 
 
@@ -5260,7 +5288,7 @@ draw_with_hard_points(yellow, ycolor, Color("white"))</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[42]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5275,7 +5303,7 @@ draw_with_hard_points(yellow, ycolor, Color("white"))</div>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-42">
+            <clipboard-copy for="cell-43">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5289,7 +5317,7 @@ draw_with_hard_points(yellow, ycolor, Color("white"))</div>
 <span class="n">gcolor</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s2">&quot;#d1e9c3&quot;</span><span class="p">)</span>
 <span class="n">draw_with_hard_points</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">gcolor</span><span class="p">,</span> <span class="n">Color</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">))</span>
 </pre></div>
-<div id="cell-42" class="clipboard-copy-txt">green = Linear(1, 0, -0.8)
+<div id="cell-43" class="clipboard-copy-txt">green = Linear(1, 0, -0.8)
 gcolor = Color("#d1e9c3")
 draw_with_hard_points(green, gcolor, Color("white"))</div>
     
@@ -5309,7 +5337,7 @@ draw_with_hard_points(green, gcolor, Color("white"))</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
 
 
 
@@ -5347,7 +5375,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[43]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[44]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5362,7 +5390,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-43">
+            <clipboard-copy for="cell-44">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5381,7 +5409,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
     <span class="n">c</span><span class="o">=</span><span class="n">ycolor</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
-<div id="cell-43" class="clipboard-copy-txt">graph(
+<div id="cell-44" class="clipboard-copy-txt">graph(
     minitorch.operators.relu,
     [yellow.forward(*pt) for pt in s2_hard],
     [yellow.forward(*pt) for pt in s1_hard],
@@ -5406,7 +5434,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
 
 
 
@@ -5440,7 +5468,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[44]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5455,7 +5483,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-44">
+            <clipboard-copy for="cell-45">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5474,7 +5502,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
     <span class="n">c</span><span class="o">=</span><span class="n">gcolor</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
-<div id="cell-44" class="clipboard-copy-txt">graph(
+<div id="cell-45" class="clipboard-copy-txt">graph(
     minitorch.operators.relu,
     [green.forward(*pt) for pt in s2_hard],
     [green.forward(*pt) for pt in s1_hard],
@@ -5499,7 +5527,7 @@ $$ \text{ReLU}(z) = \begin{cases} z &amp; z \geq 0\\
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
 
 
 
@@ -5546,7 +5574,7 @@ are now at the origin it is very easy to separate out the space.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5561,7 +5589,7 @@ are now at the origin it is very easy to separate out the space.</p>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-45">
+            <clipboard-copy for="cell-46">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5573,7 +5601,7 @@ are now at the origin it is very easy to separate out the space.</p>
         </div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">draw_nn_graph</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">yellow</span><span class="p">)</span>
 </pre></div>
-<div id="cell-45" class="clipboard-copy-txt">draw_nn_graph(green, yellow)</div>
+<div id="cell-46" class="clipboard-copy-txt">draw_nn_graph(green, yellow)</div>
     
         </div>
     </div>
@@ -5591,7 +5619,7 @@ are now at the origin it is very easy to separate out the space.</p>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[45]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[46]:</div>
 
 
 
@@ -5626,12 +5654,12 @@ two lines to pull apart the data.</p>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[46]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-46">
+            <clipboard-copy for="cell-47">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5652,7 +5680,7 @@ two lines to pull apart the data.</p>
         <span class="n">x2_1</span> <span class="o">=</span> <span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">lin2</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">))</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x1_1</span><span class="p">,</span> <span class="n">x2_1</span><span class="p">)</span>
 </pre></div>
-<div id="cell-46" class="clipboard-copy-txt">@dataclass
+<div id="cell-47" class="clipboard-copy-txt">@dataclass
 class MLP:
     lin1: Linear
     lin2: Linear
@@ -5676,12 +5704,12 @@ class MLP:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-47">
+            <clipboard-copy for="cell-48">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5694,7 +5722,7 @@ class MLP:
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">mlp</span> <span class="o">=</span> <span class="n">MLP</span><span class="p">(</span><span class="n">green</span><span class="p">,</span> <span class="n">yellow</span><span class="p">,</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3</span><span class="p">))</span>
 <span class="n">draw_with_hard_points</span><span class="p">(</span><span class="n">mlp</span><span class="p">)</span>
 </pre></div>
-<div id="cell-47" class="clipboard-copy-txt">mlp = MLP(green, yellow, Linear(3, 3, -0.3))
+<div id="cell-48" class="clipboard-copy-txt">mlp = MLP(green, yellow, Linear(3, 3, -0.3))
 draw_with_hard_points(mlp)</div>
     
         </div>
@@ -5713,7 +5741,7 @@ draw_with_hard_points(mlp)</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[47]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
 
 
 
@@ -5735,7 +5763,7 @@ draw_with_hard_points(mlp)</div>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div><div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
         
         
             <div class="celltoolbar">
@@ -5750,7 +5778,7 @@ draw_with_hard_points(mlp)</div>
         
         <div class="CodeMirror cm-s-jupyter">
         <div class="zeroclipboard-container">
-            <clipboard-copy for="cell-48">
+            <clipboard-copy for="cell-49">
             <div>
                 <span class="notice" hidden>Copied!</span>
                 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 16 16" version="1.1"  data-view-component="true" class="clipboard-copy-icon">
@@ -5763,7 +5791,7 @@ draw_with_hard_points(mlp)</div>
             <div class="highlight-ipynb hl-python"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="n">draw_with_hard_points</span><span class="p">(</span><span class="n">mlp</span><span class="p">)</span>
 <span class="n">r</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="s2">&quot;figs/Graphs/hard.svg&quot;</span><span class="p">)</span>
 </pre></div>
-<div id="cell-48" class="clipboard-copy-txt">d = draw_with_hard_points(mlp)
+<div id="cell-49" class="clipboard-copy-txt">d = draw_with_hard_points(mlp)
 r(d, "figs/Graphs/hard.svg")</div>
     
         </div>
@@ -5782,7 +5810,7 @@ r(d, "figs/Graphs/hard.svg")</div>
 <div class="jp-OutputArea-child">
 
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
 
 
 

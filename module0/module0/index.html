@@ -1367,10 +1367,13 @@ the guides suggested for each task.</p>
 <li><a href="../modules/">Modules</a></li>
 <li><a href="../visualization/">Visualization</a></li>
 </ul>
+<p>In addition to completing each of the tasks below, you need to
+ensure that all the unit tests and style checks pass in the module. This may
+require writing docstrings or adding types to functions.</p>
 <h2 id="task-01-operators">Task 0.1: Operators</h2>
 <p>This task is designed to help you get comfortable with style checking
 and testing. We ask you to implement a series of basic mathematical
-functions.  These functions are simple, but they form the basis
+functions. These functions are simple, but they form the basis
 of MiniTorch. Make sure that you understand each of them as
 some terminologies might be new.</p>
 <div class="admonition todo">
@@ -1430,7 +1433,7 @@ tests marked as <code>tasks0_3</code>.</p>
 </div>
 <h2 id="task-04-modules">Task 0.4: Modules</h2>
 <p>This task is to implement the core structure of the :class:<code>minitorch.Module</code>
-class.  We ask you to implement a tree data structure that
+class. We ask you to implement a tree data structure that
 stores named :class:<code>minitorch.Parameter</code> on each node. Such a data structure
 makes it
 easy for users to create trees that can be <code>walked</code> to find all of the
@@ -1521,7 +1524,7 @@ interest.</p>
 which are 2D point classification datasets. (See <a href="https://playground.tensorflow.org/">TensorFlow Playground</a>
 for similar examples.) Each of these dataset can be added to the visualization.</p>
 <p>To experiment with the system use:</p>
-<div class="highlight"><pre><span></span><code>streamlit run app.py -- 0
+<div class="highlight"><pre><span></span><code>streamlit run project/app.py -- 0
 </code></pre></div>
 <p>Read through the code in <code>project/run_torch.py</code> to get a sneak peek of
 an implementation of a model for these datasets using Torch.</p>
@@ -1530,6 +1533,7 @@ classification by manipulating the parameters.</p>
 <p><img alt="" src="../../misc/streamlitmanual.png" /></p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
+<p>Add docstrings for all the different datasets required for this part.</p>
 <p>Start a streamlit server and print an image of the dataset. Hand-create
 classifiers that
 split the linear dataset into the correct colors.</p>

@@ -1257,7 +1257,7 @@
 
   <h1>Setup</h1>
 
-<p>MiniTorch requires Python 3.8 or higher. To check your version of Python, run either:</p>
+<p>MiniTorch requires Python 3.11 or higher. To check your version of Python, run either:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>--version
 &gt;&gt;&gt;<span class="w"> </span>python3<span class="w"> </span>--version
 </code></pre></div>
@@ -1270,8 +1270,8 @@ environment</em>. The virtual environment lets you install packages that
 are only used for your assignments and do not impact the rest of the
 system. We suggest venv or anaconda.</p>
 <p>For example, if you choose venv, run the following command:</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
-&gt;&gt;&gt;<span class="w"> </span><span class="nb">source</span><span class="w"> </span>venv/bin/activate
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
+&gt;&gt;&gt;<span class="w"> </span><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </code></pre></div>
 <p>The first line should be run only once, whereas the second needs to
 be run whenever you open a new terminal to get started for the class.
@@ -1287,7 +1287,7 @@ clone your own version by running the following command:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span><span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
 &gt;&gt;&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="o">{{</span>ASSIGNMENT<span class="o">}}</span>
 </code></pre></div>
-<p>The last step is to install packages.  There are several packages
+<p>The last step is to install packages. There are several packages
 used throughout these assignments, and you can install them in
 your virtual enviroment by running:</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt

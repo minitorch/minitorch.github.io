@@ -8,6 +8,9 @@
     text-align: center;
 
 }
+.jp-RenderedSVG {
+    overflow:hidden;
+}
 
 .jp-InputPrompt {
     display: None;

@@ -14,8 +14,15 @@
       
         <link rel="canonical" href="https://minitorch.github.io/module0/module0/">
       
+      
+        <link rel="prev" href="../../install/">
+      
+      
+        <link rel="next" href="../contributing/">
+      
+      
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -23,23 +30,28 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
+      
+
+
     
     
 <script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
 
+      
+    
 
 
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -54,10 +66,11 @@
     
       <link rel="stylesheet" href="../../assets/css-js/fastapi/custom.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -72,9 +85,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -96,7 +106,7 @@
 
   
 
-<header class="md-header md-header--lifted" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
       
@@ -104,7 +114,8 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -123,14 +134,20 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -139,7 +156,7 @@
         <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     minitorch/minitorch
@@ -152,31 +169,41 @@
     
       
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  MiniTorch
 
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      MiniTorch
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../../install/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
 
-
-  <li class="md-tabs__item">
-    <a href="../../install/" class="md-tabs__link">
-      Setup
-    </a>
-  </li>
+      </a>
+    </li>
+  
 
       
         
@@ -184,14 +211,35 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamentals
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
-        Fundamentals
+      <a href="../../mlprimer/" class="md-tabs__link">
+        
+  
+    
+  
+  ML Primer
+
       </a>
     </li>
   
@@ -200,76 +248,80 @@
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../../mlprimer/" class="md-tabs__link">
-      ML Primer
-    </a>
-  </li>
-
-      
-        
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module1/module1/" class="md-tabs__link">
+          
   
+    
+  
+  Autodiff
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../module1/module1/" class="md-tabs__link">
-        Autodiff
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module2/module2/" class="md-tabs__link">
+          
+  
+    
+  
+  Tensors
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../module2/module2/" class="md-tabs__link">
-        Tensors
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../module3/module3/" class="md-tabs__link">
-        Efficiency
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module3/module3/" class="md-tabs__link">
+          
+  
+    
+  
+  Efficiency
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../module4/module4/" class="md-tabs__link">
-        Networks
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module4/module4/" class="md-tabs__link">
+          
+  
+    
+  
+  Networks
+
+        </a>
+      </li>
+    
   
 
       
@@ -295,6 +347,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -314,7 +367,7 @@
       <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     minitorch/minitorch
@@ -326,14 +379,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        MiniTorch
+        
+  
+  <span class="md-ellipsis">
+    MiniTorch
+  </span>
+  
+
       </a>
     </li>
   
@@ -341,14 +399,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../install/" class="md-nav__link">
-        Setup
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
       </a>
     </li>
   
@@ -356,70 +419,98 @@
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
 
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
-      
-      
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Fundamentals
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Fundamentals" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Fundamentals
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Assignment
+          
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
       
         
@@ -439,42 +530,54 @@
       
         <li class="md-nav__item">
   <a href="#guides" class="md-nav__link">
-    Guides
+    <span class="md-ellipsis">
+      Guides
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-01-operators" class="md-nav__link">
-    Task 0.1: Operators
+    <span class="md-ellipsis">
+      Task 0.1: Operators
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-02-testing-and-debugging" class="md-nav__link">
-    Task 0.2: Testing and Debugging
+    <span class="md-ellipsis">
+      Task 0.2: Testing and Debugging
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-03-functional-python" class="md-nav__link">
-    Task 0.3: Functional Python
+    <span class="md-ellipsis">
+      Task 0.3: Functional Python
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-04-modules" class="md-nav__link">
-    Task 0.4: Modules
+    <span class="md-ellipsis">
+      Task 0.4: Modules
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-05-visualization" class="md-nav__link">
-    Task 0.5: Visualization
+    <span class="md-ellipsis">
+      Task 0.5: Visualization
+    </span>
   </a>
   
 </li>
@@ -486,94 +589,135 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../contributing/" class="md-nav__link">
-        Contributing
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../property_testing/" class="md-nav__link">
-        Property Testing
+        
+  
+  <span class="md-ellipsis">
+    Property Testing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../modules/" class="md-nav__link">
-        Modules
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../functional/" class="md-nav__link">
-        Functional
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../visualization/" class="md-nav__link">
-        Visualization
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../mlprimer/" class="md-nav__link">
-        ML Primer
+        
+  
+  <span class="md-ellipsis">
+    ML Primer
+  </span>
+  
+
       </a>
     </li>
   
@@ -581,432 +725,610 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autodiff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Autodiff
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Autodiff" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Autodiff
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Autodiff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/module1/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/derivative/" class="md-nav__link">
-        Derivatives
+        
+  
+  <span class="md-ellipsis">
+    Derivatives
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/scalar/" class="md-nav__link">
-        Scalar
+        
+  
+  <span class="md-ellipsis">
+    Scalar
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/chainrule/" class="md-nav__link">
-        Autodifferentiation
+        
+  
+  <span class="md-ellipsis">
+    Autodifferentiation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/backpropagate/" class="md-nav__link">
-        Backpropagate
+        
+  
+  <span class="md-ellipsis">
+    Backpropagate
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Tensors
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tensors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Tensors
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tensors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/module2/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensordata/" class="md-nav__link">
-        Tensors
+        
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/broadcasting/" class="md-nav__link">
-        Broadcasting
+        
+  
+  <span class="md-ellipsis">
+    Broadcasting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensorops/" class="md-nav__link">
-        Operations
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensor/" class="md-nav__link">
-        Auto-Grad
+        
+  
+  <span class="md-ellipsis">
+    Auto-Grad
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Efficiency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Efficiency
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Efficiency" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Efficiency
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Efficiency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/module3/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/parallel/" class="md-nav__link">
-        Parallel Computation
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/matrixmult/" class="md-nav__link">
-        Fusing Operations
+        
+  
+  <span class="md-ellipsis">
+    Fusing Operations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/cuda/" class="md-nav__link">
-        GPU Programming
+        
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Networks
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Networks" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Networks
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module4/module4/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module4/convolution/" class="md-nav__link">
-        Convolution
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module4/pooling/" class="md-nav__link">
-        Pooling
+        
+  
+  <span class="md-ellipsis">
+    Pooling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module4/softmax/" class="md-nav__link">
-        Multiclass Classification
+        
+  
+  <span class="md-ellipsis">
+    Multiclass Classification
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1019,11 +1341,13 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+
+                  
+
 
 <h1 id="fundamentals">Fundamentals</h1>
 <p>This introductory module is focused on introducing several core
@@ -1053,265 +1377,26 @@ some terminologies might be new.</p>
 <p class="admonition-title">Todo</p>
 <p>Complete the following functions in <code>minitorch/operators.py</code> and pass
 tests marked as <code>task0_1</code>.</p>
+<ul>
+<li><code>mul</code> - Multiplies two numbers</li>
+<li><code>id</code> - Returns the input unchanged</li>
+<li><code>add</code> - Adds two numbers</li>
+<li><code>neg</code> - Negates a number</li>
+<li><code>lt</code> - Checks if one number is less than another</li>
+<li><code>eq</code> - Checks if two numbers are equal</li>
+<li><code>max</code> - Returns the larger of two numbers</li>
+<li><code>is_close</code> - Checks if two numbers are close in value</li>
+<li><code>sigmoid</code> - Calculates the sigmoid function</li>
+<li><code>relu</code> - Applies the ReLU activation function</li>
+<li><code>log</code> - Calculates the natural logarithm</li>
+<li><code>exp</code> - Calculates the exponential function</li>
+<li><code>inv</code> - Calculates the reciprocal</li>
+<li><code>log_back</code> - Computes the derivative of log times a second arg</li>
+<li><code>inv_back</code> - Computes the derivative of reciprocal times a second arg</li>
+<li><code>relu_back</code> - Computes the derivative of ReLU times a second arg</li>
+</ul>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.mul" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">mul</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x, y) = x * y\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.id" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) = x\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.eq" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">eq</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) =\)</span> 1.0 if x is equal to y else 0.0</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.neg" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">neg</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) = -x\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.add" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x, y) = x + y\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.max" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) =\)</span> x if x is greater than y else y</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.lt" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">lt</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) =\)</span> 1.0 if x is less than y else 0.0</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.sigmoid" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span></p>
-<p>(See <a href="https://en.wikipedia.org/wiki/Sigmoid_function">https://en.wikipedia.org/wiki/Sigmoid_function</a> )</p>
-<p>Calculate as</p>
-<p><span class="arithmatex">\(f(x) =  \frac{1.0}{(1.0 + e^{-x})}\)</span> if x &gt;=0 else <span class="arithmatex">\(\frac{e^x}{(1.0 + e^{x})}\)</span></p>
-<p>for stability.</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.relu" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) =\)</span> x if x is greater than 0, else 0</p>
-<p>(See <a href="https://en.wikipedia.org/wiki/Rectifier_(neural_networks">https://en.wikipedia.org/wiki/Rectifier_(neural_networks</a>) .)</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.inv" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) = 1/x\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.inv_back" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">inv_back</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>If <span class="arithmatex">\(f(x) = 1/x\)</span> compute <span class="arithmatex">\(d \times f'(x)\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.relu_back" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">relu_back</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>If <span class="arithmatex">\(f = relu\)</span> compute <span class="arithmatex">\(d \times f'(x)\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.log_back" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">log_back</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>If <span class="arithmatex">\(f = log\)</span> as above, compute <span class="arithmatex">\(d \times f'(x)\)</span></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.is_close" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">is_close</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p><span class="arithmatex">\(f(x) = |x - y| &lt; 1e-2\)</span></p>
-
-  </div>
-
-</div><h2 id="task-02-testing-and-debugging">Task 0.2: Testing and Debugging</h2>
+<h2 id="task-02-testing-and-debugging">Task 0.2: Testing and Debugging</h2>
 <p>We ask you to implement property tests for your operators from Task 0.1. These
 tests should ensure that your functions not only work but also obey
 high-level mathematical properties for any input.
@@ -1330,208 +1415,20 @@ operations that work on lists instead of single values.</p>
 <p class="admonition-title">Todo</p>
 <p>Complete the following functions in <code>minitorch/operators.py</code> and pass
 tests marked as <code>tasks0_3</code>.</p>
+<ul>
+<li><code>map</code> - Higher-order function that applies a given function to each element of an iterable</li>
+<li><code>zipWith</code> - Higher-order function that combines elements from two iterables using a given function</li>
+<li><code>reduce</code> - Higher-order function that reduces an iterable to a single value using a given function</li>
+</ul>
+<p>Using the above functions, implement:</p>
+<ul>
+<li><code>negList</code> - Negate all elements in a list using <code>map</code></li>
+<li><code>addLists</code> - Add corresponding elements from two lists using <code>zipWith</code></li>
+<li><code>sum</code> - Sum all elements in a list using <code>reduce</code></li>
+<li><code>prod</code> - Calculate the product of all elements in a list using <code>reduce</code></li>
+</ul>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.map" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Higher-order map.</p>
-<p>See <a href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p>
-
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>fn</b>
-            (<code><span title="typing.Callable">Callable</span>[[float], float]</code>)
-        – <p>Function from one value to one value.</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>A function that takes a list, applies <code>fn</code> to each element, and returns a</p>
-      </li>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>new list</p>
-      </li>
-  </ul>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.negList" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">negList</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Use <code>map</code> and <code>neg</code> to negate each element in <code>ls</code></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.zipWith" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">zipWith</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Higher-order zipwith (or map2).</p>
-<p>See <a href="https://en.wikipedia.org/wiki/Map_(higher-order_function">https://en.wikipedia.org/wiki/Map_(higher-order_function</a>)</p>
-
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>fn</b>
-            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
-        – <p>combine two values</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float], <span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>Function that takes two equally sized lists <code>ls1</code> and <code>ls2</code>, produce a new list by</p>
-      </li>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float], <span title="typing.Iterable">Iterable</span>[float]], <span title="typing.Iterable">Iterable</span>[float]]</code>
-        – <p>applying fn(x, y) on each pair of elements.</p>
-      </li>
-  </ul>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.addLists" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">addLists</span><span class="p">(</span><span class="n">ls1</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">ls2</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Add the elements of <code>ls1</code> and <code>ls2</code> using <code>zipWith</code> and <code>add</code></p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.reduce" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span> <span class="nb">float</span><span class="p">],</span> <span class="n">start</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="nb">float</span><span class="p">]</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Higher-order reduce.</p>
-
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>fn</b>
-            (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
-        – <p>combine two values</p>
-      </li>
-      <li class="field-body">
-        <b>start</b>
-            (<code>float</code>)
-        – <p>start value <span class="arithmatex">\(x_0\)</span></p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
-        – <p>Function that takes a list <code>ls</code> of elements</p>
-      </li>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
-        – <p><span class="arithmatex">\(x_1 \ldots x_n\)</span> and computes the reduction :math:`fn(x_3, fn(x_2,</p>
-      </li>
-      <li class="field-body">
-            <code><span title="typing.Callable">Callable</span>[[<span title="typing.Iterable">Iterable</span>[float]], float]</code>
-        – <p>fn(x_1, x_0)))`</p>
-      </li>
-  </ul>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.sum" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Sum up a list using <code>reduce</code> and <code>add</code>.</p>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch.operators.prod" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">operators</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">ls</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">float</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>Product of a list using <code>reduce</code> and <code>mul</code>.</p>
-
-  </div>
-
-</div><h2 id="task-04-modules">Task 0.4: Modules</h2>
+<h2 id="task-04-modules">Task 0.4: Modules</h2>
 <p>This task is to implement the core structure of the :class:<code>minitorch.Module</code>
 class.  We ask you to implement a tree data structure that
 stores named :class:<code>minitorch.Parameter</code> on each node. Such a data structure
@@ -1552,80 +1449,71 @@ interest.</p>
 <div class="doc doc-object doc-function">
 
 
-
-<h4 id="minitorch.module.Module.train" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">train</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+<h4 id="minitorch.Module.train" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">train</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Set the mode of this module and all descendent modules to <code>train</code>.</p>
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
-<h4 id="minitorch.module.Module.eval" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
+<h4 id="minitorch.Module.eval" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Set the mode of this module and all descendent modules to <code>eval</code>.</p>
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
-<h4 id="minitorch.module.Module.named_parameters" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">]]</span></code>
+<h4 id="minitorch.Module.named_parameters" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">named_parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Parameter</span><span class="p">]]</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Collect all the parameters of this module and its descendents.</p>
+<h6 id="minitorch.Module.named_parameters--returns">Returns</h6>
+<div class="highlight"><pre><span></span><code>The name and `Parameter` of each ancestor parameter.
+</code></pre></div>
 
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="typing.Sequence">Sequence</span>[<span title="typing.Tuple">Tuple</span>[str, <span title="minitorch.module.Parameter">Parameter</span>]]</code>
-        – <p>The name and <code>Parameter</code> of each ancestor parameter.</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
-<h4 id="minitorch.module.Module.parameters" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">module</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Parameter</span><span class="p">]</span></code>
+<h4 id="minitorch.Module.parameters" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">parameters</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Parameter</span><span class="p">]</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Enumerate over all the parameters of this module and its descendents.</p>
 
-  </div>
+    </div>
 
 </div><h2 id="task-05-visualization">Task 0.5: Visualization</h2>
 <p>For the first few assignments, we use a set of datasets implemented in
@@ -1649,7 +1537,18 @@ split the linear dataset into the correct colors.</p>
 repo along with the parameters that your used.</p>
 </div>
 
-              
+
+
+
+
+
+
+
+
+
+
+
+                
 
 
 <style>
@@ -1715,53 +1614,24 @@ div.doc-contents {
 
 </style>
 
-            </article>
-          </div>
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../install/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Setup" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Setup
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Contributing
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1788,10 +1658,12 @@ div.doc-contents {
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
       

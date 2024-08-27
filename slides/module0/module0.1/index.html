@@ -1,0 +1,1706 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MiniTorch">
+      
+      
+        <meta name="author" content="Sasha Rush">
+      
+      
+        <link rel="canonical" href="https://minitorch.github.io/slides/module0/module0.1/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../logo-sm.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Module0.1 - MiniTorch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+<script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/custom.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/fastapi/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-01-fundamentals" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiniTorch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module0.1
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  MiniTorch
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../install/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module0/module0/" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamentals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mlprimer/" class="md-tabs__link">
+        
+  
+    
+  
+  ML Primer
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module1/module1/" class="md-tabs__link">
+          
+  
+    
+  
+  Autodiff
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module2/module2/" class="md-tabs__link">
+          
+  
+    
+  
+  Tensors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module3/module3/" class="md-tabs__link">
+          
+  
+    
+  
+  Efficiency
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module4/module4/" class="md-tabs__link">
+          
+  
+    
+  
+  Networks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    MiniTorch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MiniTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/module0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/property_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/functional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mlprimer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Primer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autodiff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Autodiff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/module1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/derivative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Derivatives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/scalar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scalar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/chainrule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodifferentiation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/backpropagate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backpropagate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tensors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/module2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensordata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/broadcasting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcasting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensorops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auto-Grad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Efficiency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Efficiency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/module3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/matrixmult/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fusing Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/module4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/pooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/softmax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiclass Classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+<h1 id="module-01-fundamentals">Module 0.1 - Fundamentals</h1>
+<h2 id="module-01">Module 0.1</h2>
+<p>Fundamentals</p>
+<h2 id="todays-class">Today's Class</h2>
+<ul>
+<li>Intro: Module 0</li>
+<li>Development Setup</li>
+<li>Property Testing</li>
+<li>Functional Python</li>
+</ul>
+<h2 id="the-guidebook">The Guidebook</h2>
+<p><a href="https://minitorch.github.io/">MiniTorch</a></p>
+<p>Full description of the material</p>
+<h2 id="module-0-fundamentals">Module 0: Fundamentals</h2>
+<p>Learning Goals:</p>
+<ul>
+<li>Setup</li>
+<li>Testing</li>
+<li>Modules</li>
+<li>Visualization</li>
+<li>No ML yet! We'll get to it.</li>
+</ul>
+<h1 id="code-setup-interactive">Code Setup: Interactive</h1>
+<h2 id="github">GitHub</h2>
+<ul>
+<li><a href="http://github.com/minitorch/Module-0">http://github.com/minitorch/Module-0</a></li>
+</ul>
+<h2 id="graduating-to-code">Graduating to Code</h2>
+<p>Why not notebooks?</p>
+<ul>
+<li>Style</li>
+<li>Version Control</li>
+<li>Testing</li>
+</ul>
+<h2 id="base-repo-template">Base Repo Template</h2>
+<ul>
+<li>Each repo starts with a template</li>
+<li><a class="magiclink magiclink-github magiclink-repository" href="https://github.com/minitorch/Module-0" title="GitHub Repository: minitorch/Module-0">minitorch/Module-0</a></li>
+</ul>
+<h2 id="tour-of-repo">Tour of Repo</h2>
+<ul>
+<li><code>minitorch/</code></li>
+<li><code>tests/</code></li>
+<li><code>project/</code></li>
+</ul>
+<h2 id="recommendations">Recommendations</h2>
+<ul>
+<li>Development Setup</li>
+<li>Github Tutorials</li>
+<li>Speed of Debugging</li>
+</ul>
+<h2 id="vs-code">VS Code</h2>
+<ul>
+<li>Popular choice for the class</li>
+<li>Test</li>
+<li>Debugging</li>
+</ul>
+<h1 id="contributing-guidelines">Contributing Guidelines</h1>
+<h2 id="contributing">Contributing</h2>
+<p><a href="https://github.com/pytorch/pytorch/blob/master/CONTRIBUTING.md">Torch Contrib</a></p>
+<ul>
+<li>Style, guidelines, typing, etc.</li>
+</ul>
+<h2 id="precommit">Precommit</h2>
+<p>Command to run before commit.</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all
+</code></pre></div>
+<h2 id="consistent-styling">Consistent Styling</h2>
+<p>Standardized formatting</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>black<span class="w"> </span>minitorch/<span class="w"> </span>tests/<span class="w"> </span>project/
+</code></pre></div>
+<h2 id="linting">Linting</h2>
+<p>Checks for any style or documentation errors</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>flake8<span class="w"> </span>minitorch/<span class="w"> </span>tests/<span class="w"> </span>project/
+</code></pre></div>
+<h2 id="continuous-integration">Continuous Integration</h2>
+<p>Runs behind the scenes on every commit.</p>
+<p><a href="https://github.com/pytorch/pytorch/blob/master/.github/workflows/lint.yml">Torch CI</a></p>
+<p><img alt="" src="https://classroom.github.com/images/help/autograding/actions-logs.png" /></p>
+<h2 id="documentation">Documentation</h2>
+<p>Doc style - <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Google</a></p>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>def index(ls, i):
+    """
+    List indexing.</p>
+<div class="highlight"><pre><span></span><code>Args:
+  ls: A list of any type.
+  i: An index into the list
+
+Returns:
+   Value at ls[i].
+&quot;&quot;&quot;
+...
+</code></pre></div>
+<p>```
+
+
+</p>
+<h2 id="type-checks">Type Checks</h2>
+<p>Modern Python support static type checks
+
+```bash</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>mypy
+```</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>def mul(x: float, y: float) -&gt; float: ...
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+## Type Checks
+
+Compound types
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+from typing import Iterable
+
+
+def negList(ls: Iterable[float]) -&gt; Iterable[float]: ...
+</code></pre></div></p>
+<h1 id="testing">Testing</h1>
+<h2 id="pytorch-testing">PyTorch Testing</h2>
+<p><a href="https://github.com/pytorch/pytorch/blob/master/test/autograd/test_functional.py#L1097">PyTorch Tests</a></p>
+<h2 id="running-tests">Running Tests</h2>
+<p>Run tests</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest
+</code></pre></div>
+<p>Or per task</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>task0_1
+</code></pre></div>
+<h2 id="pytest">PyTest</h2>
+<ul>
+<li>Finds files that begin with <code>test</code></li>
+<li>Finds functions that begin with <code>test</code></li>
+<li>Select based on filters</li>
+</ul>
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li>Test output is verbose</li>
+<li>Read tests</li>
+</ul>
+<h2 id="helpful-filters">Helpful Filters</h2>
+<p>Specific task</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>-m<span class="w"> </span>task0_1
+</code></pre></div>
+<p>Specific test</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pytest<span class="w"> </span>-k<span class="w"> </span>test_sum
+</code></pre></div>
+<h2 id="how-do-unit-tests-work">How do unit tests work?</h2>
+<ul>
+<li>Tries to run code</li>
+<li>If there is a False assert it fails</li>
+<li>Only prints if test fails!</li>
+<li><code>assert</code> and <code>assert_close</code></li>
+</ul>
+<h2 id="module-0-functions">Module 0 Functions</h2>
+<p>```python slideshow={"slide_type": "x"}
+def relu(x):
+    """
+    f(x) = x if x is greater than 0, else 0
+    """
+    ...
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+## Mathematical Testing
+
+* How do we know that it works?
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+
+## Standard Unit Test
+
+
+* Test for values with given inputs
+
+* PyTest succeeds if no assertions are called
+&lt;!-- #endregion --&gt;
+
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+def test_relu():
+    assert operators.relu(10.0) == 10.0
+    assert operators.relu(-10.0) == 0.0
+</code></pre></div></p>
+<h2 id="ideal-property-test">Ideal: Property Test</h2>
+<p>Test that all values satisfy property</p>
+<p>```python slideshow={"slide_type": "x"}
+def test_relu():
+    for a in range(0, 1e9):
+        assert operators.relu(a) == a</p>
+<div class="highlight"><pre><span></span><code>for a in range(-1e9, 0):
+    assert operators.relu(a) == 0.0
+</code></pre></div>
+<p>```
+</p>
+<h2 id="quickcheck-hypothesis">QuickCheck / Hypothesis</h2>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/QuickCheck">https://en.wikipedia.org/wiki/QuickCheck</a></li>
+<li><a href="https://hypothesis.readthedocs.io/en/latest/">https://hypothesis.readthedocs.io/en/latest/</a>
+</li>
+</ul>
+<h2 id="compromise-randomized-property-test">Compromise: Randomized Property Test</h2>
+<p>Test that sampled values satisfy property.
+<code>python slideshow={"slide_type": "x"}
+from hypothesis import example, given
+from hypothesis.strategies import floats
+
+
+@given(floats())
+@example(1.0)
+def test_relu(a: float):
+    value = relu(a)
+    if a &gt;= 0:
+        assert value == a
+    else:
+        assert value == 0.0</code></p>
+<h2 id="custom-generators">Custom Generators</h2>
+<ul>
+<li>Can provide your own randomized generators</li>
+<li>Future assignments will utilize this feature.</li>
+</ul>
+<h1 id="functional-python">Functional Python</h1>
+<h2 id="functional-programming">Functional Programming</h2>
+<ul>
+<li>Style of programming where functions can be passed and used like other objects.</li>
+<li>One of several programming styles supported in Python.</li>
+<li>Good paradigm for mathematical programming</li>
+</ul>
+<h2 id="function-type">Function Type</h2>
+<p>```python slideshow={"slide_type": "x"}
+from typing import Callable</p>
+<p>def add(a: float, b: float) -&gt; float:
+    return a + b</p>
+<p>def mul(a: float, b: float) -&gt; float:
+    return a * b</p>
+<p>v: Callable[[float, float], float] = add
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+# Functions as Arguments
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+
+def combine3(
+    fn: Callable[[float, float], float], a: float, b: float, c: float
+) -&gt; float:
+    return fn(fn(a, b), c)
+
+
+print(combine3(add, 1, 3, 5))
+print(combine3(mul, 1, 3, 5))
+</code></pre></div></p>
+<h2 id="functional-python_1">Functional Python</h2>
+<p>Functions as Returns</p>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>def combine3(
+    fn: Callable[[float, float], float],
+) -&gt; Callable[[float, float, float], float]:
+    def new_fn(a: float, b: float, c: float) -&gt; float:
+        return fn(fn(a, b), c)</p>
+<div class="highlight"><pre><span></span><code>return new_fn
+</code></pre></div>
+<p><code></code>python slideshow={"slide_type": "x"}
+add3: Callable[[float, float, float], float] = combine3(add)
+mul3: Callable[[float, float, float], float] = combine3(mul)
+
+print(add3(1, 3, 5))
+```</p>
+<div class="highlight"><pre><span></span><code><span class="nb">type</span><span class="p">(</span><span class="n">add3</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="higher-order-filter">Higher-order Filter</h2>
+<p>Extended example</p>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>def filter(fn: Callable[[float], bool]) -&gt; Callable[[Iterable[float]], Iterable[float]]:
+    def apply(ls: Iterable[float]):
+        ret = []
+        for x in ls:
+            if fn(x):
+                ret.append(x)
+        return ret</p>
+<div class="highlight"><pre><span></span><code>return apply
+</code></pre></div>
+<p>```
+
+
+</p>
+<h2 id="higher-order-filter_1">Higher-order Filter</h2>
+<p>Extended example
+<code>python slideshow={"slide_type": "x"}
+
+
+def more_than_4(x: float) -&gt; bool:
+    return x &gt; 4
+
+
+filter_for_more_than_4: Callable[[Iterable[float]], Iterable[float]] = filter(
+    more_than_4
+)
+filter_for_more_than_4([1, 10, 3, 5])</code></p>
+<h2 id="functional-python_2">Functional Python</h2>
+<p>Rules of Thumbs:
+  * When in doubt, write out defs
+  * Document the arguments that functions take and send
+  * Write tests in for loops to sanity check</p>
+<h1 id="qa">Q&amp;A</h1>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+
+<style>
+// Do whatever changes you need here
+
+img.centered {
+    display: block;
+    margin: 0 auto;
+}
+
+div.jp-RenderedSVG svg {
+    max-width: none;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.jupyter-wrapper div.jp-RenderedText > pre {
+    color: darkred;
+    padding: 10px;
+    background: aliceblue;
+}
+
+
+.jp-RenderedHTMLCommon p {
+
+}
+
+.jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt {
+   display: none;
+}
+.jupyter-wrapper .jp-CodeCell .jp-Cell-outputWrapper .jp-OutputPrompt {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide_inp .jp-InputArea {
+   display: none;
+}
+
+.jupyter-wrapper .jp-OutputArea-output dt {
+    width: 100%;
+}
+.jupyter-wrapper .jp-OutputArea-output dd {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.jupyter-wrapper .jp-OutputArea-output.jp-RenderedSVG {
+    text-align: center;
+    padding-top: 10px;
+}
+
+div.doc-contents {
+    padding-left: 20px;
+
+}
+
+</style>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://github.com/srush">Sasha Rush</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/tables.js"></script>
+      
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/highlight-config.js"></script>
+      
+    
+  </body>
+</html>

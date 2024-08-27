@@ -50,6 +50,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -4994,7 +4995,7 @@ form{
   .bp3-running-text table th, table.bp3-html-table th{
     color:#182026;
     font-weight:600; }
-  
+
   .bp3-running-text table td,
   table.bp3-html-table td{
     color:#182026; }
@@ -14671,203 +14672,6 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Review:-Chain-Rule">Review: Chain Rule<a class="anchor-link" href="#Review:-Chain-Rule">&#182;</a></h2><p>$f(G(x))$</p>
-<ul>
-<li>$z_1 = g^1(x)$,  $z_2 = g^2(x)$</li>
-<li>$d_1 = f'_{z_1}(z_1, z_2), d_2 = f'_{z_2}(z_1, z_2)$</li>
-<li>$f'_{x}(G(x)) = d_1 g^{'1}_{x}(x) + d_2 g^{'2}_{x}(x)$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">draw_boxes</span><span class="p">([</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">),</span> <span class="s2">&quot;&quot;</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">lr</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-
-
-
-<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
-<?xml version="1.0" encoding="utf-8" ?>
-<svg baseProfile="full" height="400" version="1.1" width="1200" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 599.9999999999999, 199.99999999999997)"><g transform="matrix(181.40589569160997, 0.0, 0.0, 181.40589569160997, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -3.1249999999999996, -0.0)"><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 0.0;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.525, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 1.8250000000000002, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.7750000000000001, -0.55)"><g><g><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.0, -1.0, 1.0, 0.0, 0.0, 0.55)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 1.1)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><g transform="matrix(0.8858315352801553, -0.46400699467055756, 0.46400699467055756, 0.8858315352801553, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.18532695911297 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.18532695911297, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 0.5250000000000001, -0.47500000000000003)"><g transform="scale(0.05) translate(-7.5760000000000005 -6.639333333333333)"><g>
-<defs>
-<g>
-<symbol overflow="visible" id="embed-8591997912470742295-glyph0-0">
-<path style="stroke:none;" d="" />
-</symbol>
-<symbol overflow="visible" id="embed-8591997912470742295-glyph0-1">
-<path style="stroke:none;" d="M 3.328125 -3.015625 C 3.390625 -3.265625 3.625 -4.1875 4.3125 -4.1875 C 4.359375 -4.1875 4.609375 -4.1875 4.8125 -4.0625 C 4.53125 -4 4.34375 -3.765625 4.34375 -3.515625 C 4.34375 -3.359375 4.453125 -3.171875 4.71875 -3.171875 C 4.9375 -3.171875 5.25 -3.34375 5.25 -3.75 C 5.25 -4.265625 4.671875 -4.40625 4.328125 -4.40625 C 3.75 -4.40625 3.40625 -3.875 3.28125 -3.65625 C 3.03125 -4.3125 2.5 -4.40625 2.203125 -4.40625 C 1.171875 -4.40625 0.59375 -3.125 0.59375 -2.875 C 0.59375 -2.765625 0.703125 -2.765625 0.71875 -2.765625 C 0.796875 -2.765625 0.828125 -2.796875 0.84375 -2.875 C 1.1875 -3.9375 1.84375 -4.1875 2.1875 -4.1875 C 2.375 -4.1875 2.71875 -4.09375 2.71875 -3.515625 C 2.71875 -3.203125 2.546875 -2.546875 2.1875 -1.140625 C 2.03125 -0.53125 1.671875 -0.109375 1.234375 -0.109375 C 1.171875 -0.109375 0.953125 -0.109375 0.734375 -0.234375 C 0.984375 -0.296875 1.203125 -0.5 1.203125 -0.78125 C 1.203125 -1.046875 0.984375 -1.125 0.84375 -1.125 C 0.53125 -1.125 0.296875 -0.875 0.296875 -0.546875 C 0.296875 -0.09375 0.78125 0.109375 1.21875 0.109375 C 1.890625 0.109375 2.25 -0.59375 2.265625 -0.640625 C 2.390625 -0.28125 2.75 0.109375 3.34375 0.109375 C 4.375 0.109375 4.9375 -1.171875 4.9375 -1.421875 C 4.9375 -1.53125 4.859375 -1.53125 4.828125 -1.53125 C 4.734375 -1.53125 4.71875 -1.484375 4.6875 -1.421875 C 4.359375 -0.34375 3.6875 -0.109375 3.375 -0.109375 C 2.984375 -0.109375 2.828125 -0.421875 2.828125 -0.765625 C 2.828125 -0.984375 2.875 -1.203125 2.984375 -1.640625 Z M 3.328125 -3.015625 " />
-</symbol>
-</g>
-</defs>
-<g id="embed-8591997912470742295-surface1">
-<g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use href="#embed-8591997912470742295-glyph0-1" x="2.835" y="7.124" />
-</g>
-</g>
-</g></g></g><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><g transform="matrix(0.8858315352801553, 0.46400699467055756, -0.46400699467055756, 0.8858315352801553, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.18532695911297 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.18532695911297, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 0.5250000000000001, 0.07500000000000001)"><g transform="scale(0.05) translate(-7.5760000000000005 -6.639333333333333)"><g>
-<defs>
-<g>
-<symbol overflow="visible" id="embed-8591997912470742295-glyph0-0">
-<path style="stroke:none;" d="" />
-</symbol>
-<symbol overflow="visible" id="embed-8591997912470742295-glyph0-1">
-<path style="stroke:none;" d="M 3.328125 -3.015625 C 3.390625 -3.265625 3.625 -4.1875 4.3125 -4.1875 C 4.359375 -4.1875 4.609375 -4.1875 4.8125 -4.0625 C 4.53125 -4 4.34375 -3.765625 4.34375 -3.515625 C 4.34375 -3.359375 4.453125 -3.171875 4.71875 -3.171875 C 4.9375 -3.171875 5.25 -3.34375 5.25 -3.75 C 5.25 -4.265625 4.671875 -4.40625 4.328125 -4.40625 C 3.75 -4.40625 3.40625 -3.875 3.28125 -3.65625 C 3.03125 -4.3125 2.5 -4.40625 2.203125 -4.40625 C 1.171875 -4.40625 0.59375 -3.125 0.59375 -2.875 C 0.59375 -2.765625 0.703125 -2.765625 0.71875 -2.765625 C 0.796875 -2.765625 0.828125 -2.796875 0.84375 -2.875 C 1.1875 -3.9375 1.84375 -4.1875 2.1875 -4.1875 C 2.375 -4.1875 2.71875 -4.09375 2.71875 -3.515625 C 2.71875 -3.203125 2.546875 -2.546875 2.1875 -1.140625 C 2.03125 -0.53125 1.671875 -0.109375 1.234375 -0.109375 C 1.171875 -0.109375 0.953125 -0.109375 0.734375 -0.234375 C 0.984375 -0.296875 1.203125 -0.5 1.203125 -0.78125 C 1.203125 -1.046875 0.984375 -1.125 0.84375 -1.125 C 0.53125 -1.125 0.296875 -0.875 0.296875 -0.546875 C 0.296875 -0.09375 0.78125 0.109375 1.21875 0.109375 C 1.890625 0.109375 2.25 -0.59375 2.265625 -0.640625 C 2.390625 -0.28125 2.75 0.109375 3.34375 0.109375 C 4.375 0.109375 4.9375 -1.171875 4.9375 -1.421875 C 4.9375 -1.53125 4.859375 -1.53125 4.828125 -1.53125 C 4.734375 -1.53125 4.71875 -1.484375 4.6875 -1.421875 C 4.359375 -0.34375 3.6875 -0.109375 3.375 -0.109375 C 2.984375 -0.109375 2.828125 -0.421875 2.828125 -0.765625 C 2.828125 -0.984375 2.875 -1.203125 2.984375 -1.640625 Z M 3.328125 -3.015625 " />
-</symbol>
-</g>
-</defs>
-<g id="embed-8591997912470742295-surface1">
-<g style="fill:rgb(0%,0%,0%);fill-opacity:1;">
-  <use href="#embed-8591997912470742295-glyph0-1" x="2.835" y="7.124" />
-</g>
-</g>
-</g></g></g><g /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 3.125, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 4.425, 0.0)"><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.7750000000000001, -0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.0, -0.275)"><g><g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.0, -1.0, 1.0, 0.0, 0.0, 0.275)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.55)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="fill: #cccccc;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.75, -0.5)"><path d="M 0.0 0.0 L 1.5 0.0 L 1.5 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 0.775, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.6, -0.55)"><g transform="matrix(0.9673722233802453, 0.2533593918376833, -0.2533593918376833, 0.9673722233802453, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0854146673046199 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0854146673046199, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 3.125, -0.6125)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
-<g id="embed--2395143793157453205-surface1">
-</g>
-</g></g></g><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 2.6, 0.55)"><g transform="matrix(0.9673722233802453, -0.25335939183768347, 0.25335939183768347, 0.9673722233802453, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0854146673046199 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0854146673046199, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 3.125, 0.21250000000000002)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
-<g id="embed--2395143793157453205-surface1">
-</g>
-</g></g></g><g /></g></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 5.725, 0.0)"><g /></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 6.25, 0.0)"><g><g style="stroke: black;stroke-width: 0.0;" transform="matrix(1.0, 0.0, 0.0, 1.0, -0.025, -0.025)"><path d="M 0.0 0.0 L 0.05 0.0 L 0.05 0.05 L 0.0 0.05 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g transform="matrix(1.0, 0.0, 0.0, 1.0, 5.199999999999999, 0.0)"><g transform="matrix(1.0, -0.0, 0.0, 1.0, 0.0, 0.0)"><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0500000000000007 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 1.0500000000000007, 0.0)"><g style="fill: #000000;stroke: black;stroke-width: 0.0;" transform="matrix(0.0, 0.12, -0.12, 0.0, -0.144, 0.0)"><path d="M 0.0 -0.2 L 1.0 0.2 L 0.0 -1.2 L -1.0 0.19999999999999996 L 0.0 -0.2 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g></g></g><g><g style="stroke: black;stroke-width: 1.2000000000000002;" transform="matrix(0.35, 0.0, 0.0, 0.35, 5.725, -0.2)"><g transform="scale(0.05) translate(-3.78 -3.78)"><g>
-<g id="embed--2395143793157453205-surface1">
-</g>
-</g></g></g><g /></g></g></g><g /></g></g></g></g></svg>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Review:-Chain-Rule">Review: Chain Rule<a class="anchor-link" href="#Review:-Chain-Rule">&#182;</a></h2><p>$f(G(x))$</p>
-<ul>
-<li>$z_1 = g^1(x)$,  $z_2 = g^2(x), \ldots$</li>
-<li>$d_1 = f'_{z_1}(z), d_2 = f'_{z_2}(z), \ldots$</li>
-<li>$f'_{x}(G(x)) = \sum_i d_i g^{'i}_{x}(x)$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Tensor-Functions">Tensor Functions<a class="anchor-link" href="#Tensor-Functions">&#182;</a></h2><p>Think of it as many functions with many arguments</p>
-<p>$$
-   G(x) = [G^1(x_1, \ldots), G^2(x_1, \ldots), \ldots, G^N(x_1, \ldots)]
- $$</p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Derivative">Derivative<a class="anchor-link" href="#Derivative">&#182;</a></h2><p>Derivative of $i$'th output wrt $j'th$ input</p>
-<p>$G^{'i}_{x_j}(x)$</p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Full-Chain-Rule-For-Gradients">Full Chain Rule For Gradients<a class="anchor-link" href="#Full-Chain-Rule-For-Gradients">&#182;</a></h2><p>$f(G(x))$</p>
-<ul>
-<li>$z_1 = G^1(x)$,  $z_2 = G^2(x), \ldots$</li>
-<li>$d_1 = f'_{z_1}(z), d_2 = f'_{z_2}(z), \ldots$</li>
-<li>$f'_{x_j}(G(x)) = \sum_i d_i G^{'i}_{x_j}(x)$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Backward-Function">Backward Function<a class="anchor-link" href="#Backward-Function">&#182;</a></h2><p>Backward function needs to compute:</p>
-<ul>
-<li>$d_i$ - tensor</li>
-<li>$G^{'i}_{x_j}$ change in $i$</li>
-</ul>
-<p>$\sum_i d_i G^{'i}_{x_j}(x)$</p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Special-Function:-Map">Special Function: Map<a class="anchor-link" href="#Special-Function:-Map">&#182;</a></h2><ul>
-<li>$G^{'i}_{x_j}(x) = 0$ if $i\neq j$</li>
-<li>$f'_{x_j}(G(x)) = d_i g^{'j}_{x_j}(x)$</li>
-</ul>
-<p>Implies:</p>
-<ul>
-<li>$f'_{x_i}(G(x)) = d_i G^{'i}_{x_i}(x)$</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Map-Gradient">Map Gradient<a class="anchor-link" href="#Map-Gradient">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Ops/map\ back.png" alt=""></p>
 
 </div>
@@ -14880,60 +14684,8 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example:-Tensor-Negation">Example: Tensor Negation<a class="anchor-link" href="#Example:-Tensor-Negation">&#182;</a></h2><ul>
-<li>$G^{i}(x) = -x_i$</li>
-<li><p>$G'^{i}_{x_i}(x) = -1$</p>
-</li>
-<li><p>$f'_{x_i}(G(x)) = -d_i$</p>
-</li>
-</ul>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example:-Tensor-Negation">Example: Tensor Negation<a class="anchor-link" href="#Example:-Tensor-Negation">&#182;</a></h2>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Neg</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">t1</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">neg_map</span><span class="p">(</span><span class="n">t1</span><span class="p">)</span>
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">neg_map</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Example:-Tensor-Inversion">Example: Tensor Inversion<a class="anchor-link" href="#Example:-Tensor-Inversion">&#182;</a></h2><ul>
-<li>$G^{i}(x) = 1/ x_i$</li>
+<li>$G^{i}(x) = 1 / x_i$</li>
 <li><p>$G'^{i}_{x_i}(x) = -(x_i)^{-2}$</p>
 </li>
 <li><p>$f'_{x_i}(G(x)) = -(x_i)^{-2} * d_i$</p>
@@ -14959,7 +14711,7 @@ div.jp-OutputPrompt {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Inv</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
@@ -14986,23 +14738,11 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Zip-Gradient">Zip Gradient<a class="anchor-link" href="#Zip-Gradient">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/Ops/zip back.png" alt=""></p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example:-Tensor-Inversion">Example: Tensor Inversion<a class="anchor-link" href="#Example:-Tensor-Inversion">&#182;</a></h2><ul>
-<li>$G^{i}(x, y) =  x_i + y_i$</li>
-<li><p>$G'^{i}_{x_i}(x, y) = 1$</p>
+<h2 id="Example:-Multiplicaiton">Example: Multiplicaiton<a class="anchor-link" href="#Example:-Multiplicaiton">&#182;</a></h2><ul>
+<li>$G^{i}(x, y) = x_i  * y_i$</li>
+<li><p>$G'^{i}_{x_i}(x, y) = y_i$</p>
 </li>
-<li><p>$f'_{x_i}(G(x)) =  d_i$</p>
+<li><p>$f'_{x_i}(G(x, y)) = y_i * d_i$</p>
 </li>
 </ul>
 
@@ -15016,7 +14756,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example:-Add">Example: Add<a class="anchor-link" href="#Example:-Add">&#182;</a></h2>
+<h2 id="Example:-Mult">Example: Mult<a class="anchor-link" href="#Example:-Mult">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -15025,17 +14765,19 @@ div.jp-OutputPrompt {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Add</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Mul</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Function</span><span class="p">):</span>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">t1</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">add_zip</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">t2</span><span class="p">:</span><span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="n">ctx</span><span class="o">.</span><span class="n">save_for_backwards</span><span class="p">((</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">t1</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">mul_map</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
 
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="n">grad_output</span><span class="p">,</span> <span class="n">grad_output</span>
+    <span class="k">def</span> <span class="nf">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">d</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span><span class="p">:</span>
+        <span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">saved_values</span>
+        <span class="k">return</span> <span class="n">d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">mul_map</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">d</span><span class="p">),</span> <span class="n">d</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">mul_map</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -15050,7 +14792,7 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Example:-Tensor-Inversion">Example: Tensor Inversion<a class="anchor-link" href="#Example:-Tensor-Inversion">&#182;</a></h2><ul>
+<h2 id="Example:-Sum">Example: Sum<a class="anchor-link" href="#Example:-Sum">&#182;</a></h2><ul>
 <li>$G(x) =  \sum_i x_i$</li>
 <li><p>$G'_{x_i}(x) = 1$</p>
 </li>
@@ -15117,8 +14859,79 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Model:-Math">Model: Math<a class="anchor-link" href="#Model:-Math">&#182;</a></h2><p>$$
+   \begin{eqnarray*}
+   \text{lin}(x; w, b) &amp;=&amp; x_1 \times w_1 + x_2 \times w_2 + b \\
+   h_ 1 &amp;=&amp; \text{ReLU}(\text{lin}(x; w^0, b^0)) \\
+   h_ 2 &amp;=&amp; \text{ReLU}(\text{lin}(x; w^1, b^1))\\
+   m(x) &amp;=&amp; \text{lin}(h; w, b)
+   \end{eqnarray*}
+$$</p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Simple-Dataset">Simple Dataset<a class="anchor-link" href="#Simple-Dataset">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell    celltag_hide_inp">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">split_graph</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[4]:</div>
+
+
+
+<div class="jp-RenderedSVG jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="image/svg+xml">
+<?xml version="1.0" encoding="utf-8" ?>
+<svg baseProfile="full" height="400" version="1.1" width="415" xmlns="http://www.w3.org/2000/svg" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><marker id="arrow" markerHeight="3.5" markerWidth="5" orient="auto" refX="5.0" refY="1.7"><polygon points="0,0 5,1.75 0,3.5" /></marker></defs><g style="fill:white;"><g transform="matrix(1.0, 0.0, 0.0, 1.0, 207.59654173301644, 200.0)"><g transform="matrix(377.8312954499296, 0.0, 0.0, 377.8312954499296, 0.0, 0.0)"><g><g transform="matrix(1.0, 0.0, 0.0, 1.0, -0.5232784962697276, 0.49868664579817235)"><g><g><g><g style="fill: #ffffff;stroke: #ffffff;stroke-width: 1.2000000000000002;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, -1.0)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g><g><g style="stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, -1.0)"><path d="M 0.0 0.0 L 0.0 1.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g><g style="stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(1.0, 0.0, 0.0, 1.0, 0.0, 0.0)"><path d="M 0.0 0.0 L 1.0 0.0" style="vector-effect: non-scaling-stroke;fill:none;" /></g></g></g><g><g><g><g><g /><g style="fill: #69bac9;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5780913011344704, -0.20609823213950174)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.6534725339011758, -0.16022955651881965)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.5206693596399246, -0.32777281162209315)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #69bac9;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.025, 0.0, 0.0, 0.025, 0.3816059859191179, -0.28361821790671515)"><path d="M 2.0 -0.0 A 2.0 2.0 0.0 0 0 0.0 -2.0 A 2.0 2.0 -90.0 0 0 -2.0 0.0 A 2.0 2.0 180.0 0 0 0.0 2.0 A 2.0 2.0 90.0 0 0 2.0 0.0 Z M 1.0 -0.0 A 1.0 1.0 0.0 0 1 0.0 1.0 A 1.0 1.0 90.0 0 1 -1.0 0.0 A 1.0 1.0 180.0 0 1 0.0 -1.0 A 1.0 1.0 -90.0 0 1 1.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g><g><g><g><g><g><g><g /><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.5214025946899135, -0.45388905467511464)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.76332125135732, -0.8485888725334455)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.19999667668640037, -0.9778169091459117)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.9465569925394551, -0.06955638245043302)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.810161037286291, -0.6281906109681851)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g><g style="fill: #ff0000;stroke: black;stroke-width: 2.4000000000000004;" transform="matrix(0.024999999999999998, -0.02499999999999999, 0.02499999999999999, 0.024999999999999998, 0.6249648471349559, -0.48183115105830565)"><path d="M 0.0 0.0 L 1.0 0.0 L 1.0 1.0 L 2.0 1.0 L 2.0 2.0 L 1.0 2.0 L 1.0 3.0 L 0.0 3.0 L 0.0 2.0 L -1.0 2.0 L -1.0 1.0 L 0.0 1.0 L 0.0 0.0 Z" style="vector-effect: non-scaling-stroke;" /></g></g></g></g><g /></g></g></g></g></svg>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Parameter-Fitting">Parameter Fitting<a class="anchor-link" href="#Parameter-Fitting">&#182;</a></h2><ol>
-<li>Compute the loss function, :math:<code>L(w_1, w_2, b)</code></li>
+<li>Compute the loss function, $\mathcal{L}(\theta)$</li>
 <li>See how small changes would change the loss</li>
 <li>Update to parameters to locally reduce the loss</li>
 </ol>
@@ -15145,9 +14958,13 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Loss">Loss<a class="anchor-link" href="#Loss">&#182;</a></h2><p>1) Compute Loss ::</p>
-<div class="highlight"><pre><span></span><span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
-    <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">((</span><span class="n">out</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">out</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">))</span><span class="o">.</span><span class="n">log</span><span class="p">()</span>
+<h2 id="How-to-Compute-Loss">How to Compute Loss<a class="anchor-link" href="#How-to-Compute-Loss">&#182;</a></h2><div class="highlight"><pre><span></span><span class="c1"># X - (BATCH, FEATURES)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># out - (BATCH)</span>
+<span class="n">l</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+<span class="c1"># l - (1)</span>
 </pre></div>
 
 </div>
@@ -15160,32 +14977,12 @@ div.jp-OutputPrompt {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model:-Math">Model: Math<a class="anchor-link" href="#Model:-Math">&#182;</a></h2><p>$$
-   \begin{eqnarray*}
-   \text{lin}(x; w, b) &amp;=&amp; x_1 \times w_1 + x_2 \times w_2 + b \\
-   h_ 1 &amp;=&amp; \text{ReLU}(\text{lin}(x; w^0, b^0)) \\
-   h_ 2 &amp;=&amp; \text{ReLU}(\text{lin}(x; w^1, b^1))\\
-   m(x_1, x_2) &amp;=&amp; \text{lin}(h; w, b)
-   \end{eqnarray*}
-$$</p>
-
-</div>
-</div>
-</div>
-</div></section></section></section></section><section><section><section><section>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Model:-Code">Model: Code<a class="anchor-link" href="#Model:-Code">&#182;</a></h2><p>1) Model</p>
-<div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-      <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="o">...</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">HIDDEN</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">HIDDEN</span><span class="p">,</span> <span class="n">HIDDEN</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">HIDDEN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<h2 id="Model:-Code">Model: Code<a class="anchor-link" href="#Model:-Code">&#182;</a></h2><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Network</span><span class="p">(</span><span class="n">minitorch</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="o">...</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layer1</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">FEATURES</span><span class="p">,</span> <span class="n">HIDDEN</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layer2</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">HIDDEN</span><span class="p">,</span> <span class="n">HIDDEN</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">layer3</span> <span class="o">=</span> <span class="n">Linear</span><span class="p">(</span><span class="n">HIDDEN</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -15222,9 +15019,29 @@ $$</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Key-Task">Key Task<a class="anchor-link" href="#Key-Task">&#182;</a></h2><ul>
+<h2 id="Linear-Model">Linear Model<a class="anchor-link" href="#Linear-Model">&#182;</a></h2><ul>
 <li>Use broadcasting to implement the linear function</li>
-<li>Hint: Align <code>batch</code> x <code>features</code> x <code>hidden</code> to make it work</li>
+<li>Sizes<ul>
+<li>X - (BATCH, FEATURES)</li>
+<li>weight - (FEATURES, HIDDEN)</li>
+<li>bias - (HIDDEN)</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-Much-Does-it-Cost?">How Much Does it Cost?<a class="anchor-link" href="#How-Much-Does-it-Cost?">&#182;</a></h2><ul>
+<li>Counting the operations</li>
+<li>Counting the memory</li>
 </ul>
 
 </div>
@@ -15250,7 +15067,7 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Compute-Derivatives">Compute Derivatives<a class="anchor-link" href="#Compute-Derivatives">&#182;</a></h2><p>Step 2</p>
-<div class="highlight"><pre><span></span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">layer1</span><span class="o">.</span><span class="n">w_1</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
 </pre></div>
 <p><img src="https://minitorch.github.io/figs/NLP/weight.png" alt=""></p>
@@ -15266,7 +15083,6 @@ $$</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Layer-1:-Weight-Grad">Layer 1: Weight Grad<a class="anchor-link" href="#Layer-1:-Weight-Grad">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/weight.png" alt=""></p>
-<p><img src="https://minitorch.github.io/figs/NLP/weight.png" alt=""></p>
 
 </div>
 </div>
@@ -15280,8 +15096,8 @@ $$</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Update-Parameters">Update Parameters<a class="anchor-link" href="#Update-Parameters">&#182;</a></h2><p>Step 3</p>
 <div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
-        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">RATE</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">grad</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">N</span><span class="p">)))</span>
+  <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">grad</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">p</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span> <span class="o">-</span> <span class="n">RATE</span> <span class="o">*</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">grad</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">N</span><span class="p">)))</span>
 </pre></div>
 
 </div>
@@ -15320,6 +15136,321 @@ $$</p>
 </div>
 </div>
 </div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Simple-NLP">Simple NLP<a class="anchor-link" href="#Simple-NLP">&#182;</a></h1>
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Sentiment-Classification">Sentiment Classification<a class="anchor-link" href="#Sentiment-Classification">&#182;</a></h2><ul>
+<li>Canonical sentence classification problem</li>
+<li>Given sentence predict sentiment class</li>
+<li>Key aspects: word polarity</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Data">Data<a class="anchor-link" href="#Data">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/negative.png" alt=""></p>
+<p><img src="https://minitorch.github.io/figs/NLP/positive.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="What-is-a-word?">What is a word?<a class="anchor-link" href="#What-is-a-word?">&#182;</a></h2><ul>
+<li>Treat words as index in vocabulary</li>
+<li>Represent as a one-hot vector</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/onehot.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Layer-1">Layer 1<a class="anchor-link" href="#Layer-1">&#182;</a></h2><ul>
+<li>First layers is called an <code>embedding</code></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/embweight.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Hidden-vector-for-word">Hidden vector for word<a class="anchor-link" href="#Hidden-vector-for-word">&#182;</a></h2><p>Get word vector</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="n">word_one_hot</span> <span class="o">=</span> <span class="n">tensor</span><span class="p">([</span><span class="mi">0</span> <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">word</span> <span class="k">else</span> <span class="mi">1</span>
+                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">VOCAB</span><span class="p">)])</span>
+<span class="n">embedding</span> <span class="o">=</span> <span class="p">(</span><span class="n">layer1</span> <span class="o">*</span> <span class="n">word_one_hot</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/embone.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="How-does-this-share-information?">How does this share information?<a class="anchor-link" href="#How-does-this-share-information?">&#182;</a></h2><ul>
+<li>Similar words have similar embedding dim</li>
+<li>Dot-product - easy way to tell similarity</li>
+</ul>
+
+<pre><code>(word_emb1 * word_emb2).sum()</code></pre>
+<ul>
+<li>Differentiable!</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Where-do-these-come-from?">Where do these come from?<a class="anchor-link" href="#Where-do-these-come-from?">&#182;</a></h2><ul>
+<li>Trained from a different model</li>
+<li>Extracted and posted to use</li>
+<li>(Many more details in NLP class)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h2><p>Embeddings</p>
+<div class="highlight"><pre><span></span><span class="n">embedding</span><span class="o">.</span><span class="n">weights</span><span class="o">.</span><span class="n">value</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">pretrained_weights</span><span class="p">)</span>
+</pre></div>
+<ul>
+<li><a href="https://projector.tensorflow.org/">https://projector.tensorflow.org/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Examples">Examples<a class="anchor-link" href="#Examples">&#182;</a></h2><p>Query 1</p>
+
+<pre><code>   ^(lisbon|portugal|america|washington|rome|athens|london|england|greece|italy)$</code></pre>
+<p>Query 2</p>
+
+<pre><code>  ^(doctor|patient|lawyer|client|clerk|customer|author|reader)$</code></pre>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Sentence-Length">Sentence Length<a class="anchor-link" href="#Sentence-Length">&#182;</a></h2><ul>
+<li>Examples may be of different length</li>
+<li>Need to all be converted to vectors and utilized</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/senthot.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Value-Transformation">Value Transformation<a class="anchor-link" href="#Value-Transformation">&#182;</a></h2><ul>
+<li>batch x length x vocab</li>
+<li>batch x length x feature</li>
+<li>batch x feature</li>
+<li>batch x hidden</li>
+<li>batch</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/sentemb.png" alt=""></p>
+<h2 id="Pooling">Pooling<a class="anchor-link" href="#Pooling">&#182;</a></h2>
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><img src="https://minitorch.github.io/figs/NLP/pooling.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Benefits">Benefits<a class="anchor-link" href="#Benefits">&#182;</a></h2><ul>
+<li>Extremely simple</li>
+<li>Embeddings encode key information</li>
+<li>Have all the tools we need</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Full-Model">Full Model<a class="anchor-link" href="#Full-Model">&#182;</a></h2><p><img src="https://minitorch.github.io/figs/NLP/full.png" alt=""></p>
+
+</div>
+</div>
+</div>
+</div></section></section></section></section><section><section><section><section>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Issues">Issues<a class="anchor-link" href="#Issues">&#182;</a></h2><ul>
+<li>Ignores relative order</li>
+<li>Ignores absolute order</li>
+<li>Embeddings for all words, even rare ones</li>
+</ul>
+
+</div>
+</div>
+</div>
 </div></section></section></section></section>
 </div>
 </div>
@@ -15351,7 +15482,7 @@ require(
             center: false,
             progress: true,
             history: true,
-            pdfMaxPagesPerSlide: 1,             
+            pdfMaxPagesPerSlide: 1,
             transition: "none",
             plugins: [RevealNotes, RevealMath.MathJax3  ],
        });

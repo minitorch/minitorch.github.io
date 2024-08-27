@@ -14,8 +14,15 @@
       
         <link rel="canonical" href="https://minitorch.github.io/module4/module4/">
       
+      
+        <link rel="prev" href="../../module3/cuda/">
+      
+      
+        <link rel="next" href="../convolution/">
+      
+      
       <link rel="icon" href="../../logo-sm.png">
-      <meta name="generator" content="mkdocs-1.5.2, mkdocs-material-8.1.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
@@ -23,23 +30,28 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.edf004c2.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
-        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
       
+      
+
+
     
     
 <script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
 
+      
+    
 
 
     
       
         
+        
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -54,10 +66,11 @@
     
       <link rel="stylesheet" href="../../assets/css-js/fastapi/custom.css">
     
-    <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
+    
     
     
   </head>
@@ -72,9 +85,6 @@
     
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
   
-    
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -96,7 +106,7 @@
 
   
 
-<header class="md-header md-header--lifted" data-md-component="header">
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
       
@@ -104,7 +114,8 @@
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -123,14 +134,20 @@
       </div>
     </div>
     
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_1">
-          
-        
-      </form>
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -139,7 +156,7 @@
         <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     minitorch/minitorch
@@ -152,44 +169,21 @@
     
       
 <nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
-  <div class="md-tabs__inner md-grid">
+  <div class="md-grid">
     <ul class="md-tabs__list">
       
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../.." class="md-tabs__link">
-      MiniTorch
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  <li class="md-tabs__item">
-    <a href="../../install/" class="md-tabs__link">
-      Setup
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../../module0/module0/" class="md-tabs__link">
-        Fundamentals
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  MiniTorch
+
       </a>
     </li>
   
@@ -198,26 +192,15 @@
         
   
   
-
-
-  <li class="md-tabs__item">
-    <a href="../../mlprimer/" class="md-tabs__link">
-      ML Primer
-    </a>
-  </li>
-
-      
-        
-  
-  
-
-
-  
-  
   
     <li class="md-tabs__item">
-      <a href="../../module1/module1/" class="md-tabs__link">
-        Autodiff
+      <a href="../../install/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
       </a>
     </li>
   
@@ -226,14 +209,35 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module0/module0/" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamentals
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
     <li class="md-tabs__item">
-      <a href="../../module2/module2/" class="md-tabs__link">
-        Tensors
+      <a href="../../mlprimer/" class="md-tabs__link">
+        
+  
+    
+  
+  ML Primer
+
       </a>
     </li>
   
@@ -242,16 +246,60 @@
         
   
   
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module1/module1/" class="md-tabs__link">
+          
+  
+    
+  
+  Autodiff
 
+        </a>
+      </li>
+    
+  
 
+      
+        
   
   
   
-    <li class="md-tabs__item">
-      <a href="../../module3/module3/" class="md-tabs__link">
-        Efficiency
-      </a>
-    </li>
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module2/module2/" class="md-tabs__link">
+          
+  
+    
+  
+  Tensors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../module3/module3/" class="md-tabs__link">
+          
+  
+    
+  
+  Efficiency
+
+        </a>
+      </li>
+    
   
 
       
@@ -260,16 +308,20 @@
   
     
   
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+    
+  
+  Networks
 
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
-        Networks
-      </a>
-    </li>
+        </a>
+      </li>
+    
   
 
       
@@ -295,6 +347,7 @@
                   <div class="md-sidebar__inner">
                     
 
+
   
 
 
@@ -314,7 +367,7 @@
       <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
   </div>
   <div class="md-source__repository">
     minitorch/minitorch
@@ -326,14 +379,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../.." class="md-nav__link">
-        MiniTorch
+        
+  
+  <span class="md-ellipsis">
+    MiniTorch
+  </span>
+  
+
       </a>
     </li>
   
@@ -341,14 +399,19 @@
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../install/" class="md-nav__link">
-        Setup
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
       </a>
     </li>
   
@@ -356,146 +419,206 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_3">
-          Fundamentals
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Fundamentals" data-md-level="1">
-        <label class="md-nav__title" for="__nav_3">
-          <span class="md-nav__icon md-icon"></span>
-          Fundamentals
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/module0/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/contributing/" class="md-nav__link">
-        Contributing
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/property_testing/" class="md-nav__link">
-        Property Testing
+        
+  
+  <span class="md-ellipsis">
+    Property Testing
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/modules/" class="md-nav__link">
-        Modules
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/functional/" class="md-nav__link">
-        Functional
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module0/visualization/" class="md-nav__link">
-        Visualization
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../mlprimer/" class="md-nav__link">
-        ML Primer
+        
+  
+  <span class="md-ellipsis">
+    ML Primer
+  </span>
+  
+
       </a>
     </li>
   
@@ -503,398 +626,563 @@
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autodiff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_5">
-          Autodiff
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Autodiff" data-md-level="1">
-        <label class="md-nav__title" for="__nav_5">
-          <span class="md-nav__icon md-icon"></span>
-          Autodiff
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Autodiff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/module1/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/derivative/" class="md-nav__link">
-        Derivatives
+        
+  
+  <span class="md-ellipsis">
+    Derivatives
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/scalar/" class="md-nav__link">
-        Scalar
+        
+  
+  <span class="md-ellipsis">
+    Scalar
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/chainrule/" class="md-nav__link">
-        Autodifferentiation
+        
+  
+  <span class="md-ellipsis">
+    Autodifferentiation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module1/backpropagate/" class="md-nav__link">
-        Backpropagate
+        
+  
+  <span class="md-ellipsis">
+    Backpropagate
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_6">
-          Tensors
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Tensors" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
-          <span class="md-nav__icon md-icon"></span>
-          Tensors
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tensors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/module2/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensordata/" class="md-nav__link">
-        Tensors
+        
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/broadcasting/" class="md-nav__link">
-        Broadcasting
+        
+  
+  <span class="md-ellipsis">
+    Broadcasting
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensorops/" class="md-nav__link">
-        Operations
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module2/tensor/" class="md-nav__link">
-        Auto-Grad
+        
+  
+  <span class="md-ellipsis">
+    Auto-Grad
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
-      
-
+  
   
   
   
     
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
     <li class="md-nav__item md-nav__item--nested">
       
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
-      
-      
-      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Efficiency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_7">
-          Efficiency
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Efficiency" data-md-level="1">
-        <label class="md-nav__title" for="__nav_7">
-          <span class="md-nav__icon md-icon"></span>
-          Efficiency
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Efficiency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/module3/" class="md-nav__link">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/parallel/" class="md-nav__link">
-        Parallel Computation
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computation
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/matrixmult/" class="md-nav__link">
-        Fusing Operations
+        
+  
+  <span class="md-ellipsis">
+    Fusing Operations
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../../module3/cuda/" class="md-nav__link">
-        GPU Programming
+        
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
     
       
       
+  
+  
+    
+  
+  
+  
+    
+    
       
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
 
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" checked>
-      
-      
-      
+            <span class="md-nav__icon md-icon"></span>
+          </label>
         
-          
-        
-          
-        
-          
-        
-          
-        
-      
-      
-        <label class="md-nav__link" for="__nav_8">
-          Networks
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <nav class="md-nav" aria-label="Networks" data-md-level="1">
-        <label class="md-nav__title" for="__nav_8">
-          <span class="md-nav__icon md-icon"></span>
-          Networks
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
             
               
+                
   
   
     
+  
   
   
     <li class="md-nav__item md-nav__item--active">
       
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
         
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Assignment
+          
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Assignment
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
       </a>
       
         
@@ -914,49 +1202,63 @@
       
         <li class="md-nav__item">
   <a href="#guides" class="md-nav__link">
-    Guides
+    <span class="md-ellipsis">
+      Guides
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-41-1d-convolution" class="md-nav__link">
-    Task 4.1: 1D Convolution
+    <span class="md-ellipsis">
+      Task 4.1: 1D Convolution
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-42-2d-convolution" class="md-nav__link">
-    Task 4.2: 2D Convolution
+    <span class="md-ellipsis">
+      Task 4.2: 2D Convolution
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-43-pooling" class="md-nav__link">
-    Task 4.3: Pooling
+    <span class="md-ellipsis">
+      Task 4.3: Pooling
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-44-softmax-and-dropout" class="md-nav__link">
-    Task 4.4: Softmax and Dropout
+    <span class="md-ellipsis">
+      Task 4.4: Softmax and Dropout
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-44b-extra-credit" class="md-nav__link">
-    Task 4.4b: Extra Credit
+    <span class="md-ellipsis">
+      Task 4.4b: Extra Credit
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#task-45-training-an-image-classifier" class="md-nav__link">
-    Task 4.5: Training an Image Classifier
+    <span class="md-ellipsis">
+      Task 4.5: Training an Image Classifier
+    </span>
   </a>
   
 </li>
@@ -968,52 +1270,74 @@
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../convolution/" class="md-nav__link">
-        Convolution
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../pooling/" class="md-nav__link">
-        Pooling
+        
+  
+  <span class="md-ellipsis">
+    Pooling
+  </span>
+  
+
       </a>
     </li>
   
 
-            
-          
+              
             
               
+                
+  
   
   
   
     <li class="md-nav__item">
       <a href="../softmax/" class="md-nav__link">
-        Multiclass Classification
+        
+  
+  <span class="md-ellipsis">
+    Multiclass Classification
+  </span>
+  
+
       </a>
     </li>
   
 
+              
             
-          
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -1026,11 +1350,13 @@
             
             
           
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
                 
+
+                  
+
 
 <h1 id="networks">Networks</h1>
 <p>We now have a fully working deep learning library with most of the
@@ -1041,7 +1367,7 @@ recognition system. We will do this by build the infrastructure for a
 version of LeNet on MNIST: a classic convolutional neural network (CNN)
 for digit recognition, and for a 1D conv for NLP sentiment classification.</p>
 <p>You need the files from previous assignments, so maker sure to pull
-them over to your new repo.  We recommend you to get familiar with
+them over to your new repo. We recommend you to get familiar with
 tensor.py, since you might find some of those functions useful for
 implementing this Module.</p>
 <h2 id="guides">Guides</h2>
@@ -1058,92 +1384,10 @@ implementing this Module.</p>
 <p>Complete the following function in <code>minitorch/fast_conv.py</code>, and pass tests marked
 as <code>task4_1</code>.</p>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch._tensor_conv1d" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">_tensor_conv1d</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">out_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">out_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">input_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">weight_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>1D Convolution implementation.</p>
-<p>Given input tensor of</p>
-<p><code>batch, in_channels, width</code></p>
-<p>and weight tensor</p>
-<p><code>out_channels, in_channels, k_width</code></p>
-<p>Computes padded output of</p>
-<p><code>batch, out_channels, width</code></p>
-<p><code>reverse</code> decides if weight is anchored left (False) or right.
-(See diagrams)</p>
-
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>out</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_size</b>
-            (<code>int</code>)
-        – <p>size of the <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>reverse</b>
-            (<code>bool</code>)
-        – <p>anchor weight at left or right</p>
-      </li>
-  </ul>
-
-  </div>
-
-</div><h2 id="task-42-2d-convolution">Task 4.2: 2D Convolution</h2>
+<ul>
+<li>_tensor_conv1d</li>
+</ul>
+<h2 id="task-42-2d-convolution">Task 4.2: 2D Convolution</h2>
 <p>You will implement the 2D convolution in Numba. This function gets used by the
 <code>forward</code> and <code>backward</code> pass of conv2d.</p>
 <div class="admonition todo">
@@ -1151,92 +1395,10 @@ as <code>task4_1</code>.</p>
 <p>Complete the following function in <code>minitorch/fast_conv.py</code>, and pass tests marked
 as <code>task4_2</code>.</p>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h4 id="minitorch._tensor_conv2d" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">_tensor_conv2d</span><span class="p">(</span><span class="n">out</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">out_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">out_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">out_size</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">input_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">weight</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">weight_shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">,</span> <span class="n">weight_strides</span><span class="p">:</span> <span class="n">Strides</span><span class="p">,</span> <span class="n">reverse</span><span class="p">:</span> <span class="nb">bool</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span></code>
-
-</h4>
-
-
-  <div class="doc doc-contents first">
-  
-      <p>2D Convolution implementation.</p>
-<p>Given input tensor of</p>
-<p><code>batch, in_channels, height, width</code></p>
-<p>and weight tensor</p>
-<p><code>out_channels, in_channels, k_height, k_width</code></p>
-<p>Computes padded output of</p>
-<p><code>batch, out_channels, height, width</code></p>
-<p><code>Reverse</code> decides if weight is anchored top-left (False) or bottom-right.
-(See diagrams)</p>
-
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>out</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>out_size</b>
-            (<code>int</code>)
-        – <p>size of the <code>out</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>input_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight</b>
-            (<code><span title="minitorch.tensor_data.Storage">Storage</span></code>)
-        – <p>storage for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight_shape</b>
-            (<code><span title="minitorch.tensor_data.Shape">Shape</span></code>)
-        – <p>shape for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>weight_strides</b>
-            (<code><span title="minitorch.tensor_data.Strides">Strides</span></code>)
-        – <p>strides for <code>input</code> tensor.</p>
-      </li>
-      <li class="field-body">
-        <b>reverse</b>
-            (<code>bool</code>)
-        – <p>anchor weight at top-left or bottom-right</p>
-      </li>
-  </ul>
-
-  </div>
-
-</div><h2 id="task-43-pooling">Task 4.3: Pooling</h2>
+<ul>
+<li>_tensor_conv2d</li>
+</ul>
+<h2 id="task-43-pooling">Task 4.3: Pooling</h2>
 <p>You will implement 2D pooling on tensors with an average operation.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
@@ -1248,78 +1410,48 @@ marked as <code>task4_3</code>.</p>
 <div class="doc doc-object doc-function">
 
 
-
 <h4 id="minitorch.tile" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Reshape an image tensor for 2D pooling</p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input: batch x channel x height x width
+kernel: height x width of pooling
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code>Tensor of size batch x channel x new_height x new_width x (kernel_height * kernel_width) as well as the new_height and new_width value.
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-            (<code><span title="minitorch.tensor.Tensor">Tensor</span></code>)
-        – <p>batch x channel x height x width</p>
-      </li>
-      <li class="field-body">
-        <b>kernel</b>
-            (<code><span title="typing.Tuple">Tuple</span>[int, int]</code>)
-        – <p>height x width of pooling</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="typing.Tuple">Tuple</span>[<span title="minitorch.tensor.Tensor">Tensor</span>, int, int]</code>
-        – <p>Tensor of size batch x channel x new_height x new_width x (kernel_height * kernel_width) as well as the new_height and new_width value.</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h4 id="minitorch.avgpool2d" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">avgpool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">avgpool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Tiled average pooling 2D</p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input : batch x channel x height x width
+kernel : height x width of pooling
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code>Pooled tensor
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-        – <p>batch x channel x height x width</p>
-      </li>
-      <li class="field-body">
-        <b>kernel</b>
-        – <p>height x width of pooling</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>Pooled tensor</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div><h2 id="task-44-softmax-and-dropout">Task 4.4: Softmax and Dropout</h2>
 <p>You will implement max, softmax, and log softmax on tensors as well as
@@ -1343,188 +1475,126 @@ the dropout and max-pooling operations.</p>
 <div class="doc doc-object doc-function">
 
 
-
 <h4 id="minitorch.max" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
+    <div class="doc doc-contents first">
 
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
-
 
 
 <h4 id="minitorch.softmax" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Compute the softmax as a tensor.</p>
 <p><span class="arithmatex">\(z_i = \frac{e^{x_i}}{\sum_i e^{x_i}}\)</span></p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input : input tensor
+dim : dimension to apply softmax
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code>softmax tensor
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-        – <p>input tensor</p>
-      </li>
-      <li class="field-body">
-        <b>dim</b>
-        – <p>dimension to apply softmax</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>softmax tensor</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
-
 
 
 <h4 id="minitorch.logsoftmax" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">logsoftmax</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">logsoftmax</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">dim</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Compute the log of the softmax as a tensor.</p>
 <p><span class="arithmatex">\(z_i = x_i - \log \sum_i e^{x_i}\)</span></p>
 <p>See <a href="https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations">https://en.wikipedia.org/wiki/LogSumExp#log-sum-exp_trick_for_log-domain_calculations</a></p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input : input tensor
+dim : dimension to apply log-softmax
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code> log of softmax tensor
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-        – <p>input tensor</p>
-      </li>
-      <li class="field-body">
-        <b>dim</b>
-        – <p>dimension to apply log-softmax</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>log of softmax tensor</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
-
 
 
 <h4 id="minitorch.maxpool2d" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">maxpool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">maxpool2d</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Tiled max pooling 2D</p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input: batch x channel x height x width
+kernel: height x width of pooling
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code>Tensor : pooled tensor
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-            (<code><span title="minitorch.tensor.Tensor">Tensor</span></code>)
-        – <p>batch x channel x height x width</p>
-      </li>
-      <li class="field-body">
-        <b>kernel</b>
-            (<code><span title="typing.Tuple">Tuple</span>[int, int]</code>)
-        – <p>height x width of pooling</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-<b>Tensor</b>(            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-)        – <p>pooled tensor</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div>
 
 <div class="doc doc-object doc-function">
 
 
-
 <h4 id="minitorch.dropout" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ignore</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
+            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">dropout</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">rate</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">ignore</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
 
 </h4>
 
 
-  <div class="doc doc-contents first">
-  
+    <div class="doc doc-contents first">
+
       <p>Dropout positions based on random noise.</p>
+      <hr />
+<div class="highlight"><pre><span></span><code>input : input tensor
+rate : probability [0, 1) of dropping out each position
+ignore : skip dropout, i.e. do nothing at all
+</code></pre></div>
+      <hr />
+<div class="highlight"><pre><span></span><code>tensor with random positions dropped out
+</code></pre></div>
 
-  <p>Parameters:</p>
-  <ul>
-      <li class="field-body">
-        <b>input</b>
-        – <p>input tensor</p>
-      </li>
-      <li class="field-body">
-        <b>rate</b>
-        – <p>probability [0, 1) of dropping out each position</p>
-      </li>
-      <li class="field-body">
-        <b>ignore</b>
-        – <p>skip dropout, i.e. do nothing at all</p>
-      </li>
-  </ul>
-
-  <p>Returns:</p>
-  <ul>
-      <li class="field-body">
-            <code><span title="minitorch.tensor.Tensor">Tensor</span></code>
-        – <p>tensor with random positions dropped out</p>
-      </li>
-  </ul>
-
-  </div>
+    </div>
 
 </div><h2 id="task-44b-extra-credit">Task 4.4b: Extra Credit</h2>
 <p>Implementing convolution and pooling efficiently is critical for
 large-scale image recognition. However, both are a bit harder than
 some of the basic CUDA functions we have written so far. For this
 task, add an extra file <code>cuda_conv.py</code> that implements
-<code>conv1d</code> and <code>conv2d</code>  on CUDA. Show the output on colab.</p>
+<code>conv1d</code> and <code>conv2d</code> on CUDA. Show the output on colab.</p>
 <h2 id="task-45-training-an-image-classifier">Task 4.5: Training an Image Classifier</h2>
 <p>If your code works, you should now be able to move on to the NLP and
 CV training scripts in <code>project/run_sentiment.py</code> and
-<code>project/run_mnist_multiclass.py</code>.  This script has the same basic
+<code>project/run_mnist_multiclass.py</code>. This script has the same basic
 training setup as :doc:<code>module3</code>, but now adapted to sentiment and
 image classification. You need to implement <code>Conv1D</code>, <code>Conv2D</code>, and
 <code>Network</code> for both files.</p>
@@ -1548,7 +1618,18 @@ hidden states of your model, like the following:</p>
 </ul>
 </div>
 
-              
+
+
+
+
+
+
+
+
+
+
+
+                
 
 
 <style>
@@ -1614,53 +1695,24 @@ div.doc-contents {
 
 </style>
 
-            </article>
-          </div>
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
-            Back to top
-          </a>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
         
       </main>
       
         <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../../module3/cuda/" class="md-footer__link md-footer__link--prev" aria-label="Previous: GPU Programming" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              GPU Programming
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../convolution/" class="md-footer__link md-footer__link--next" aria-label="Next: Convolution" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Convolution
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -1687,10 +1739,12 @@ div.doc-contents {
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.0bbba5b5.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e1a181d9.min.js"></script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
       

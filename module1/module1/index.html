@@ -1405,166 +1405,24 @@ guidelines. You may find it useful to reuse the operators from Module 0.</p>
 expressions to see how the graph is built. You can run it in the
 <em>Autodiff Sandbox</em>. You can alter the expression at the top
 of the file and then run the code to create a graph in Streamlit:</p>
-<div class="highlight"><pre><span></span><code>streamlit run app.py -- 1
+<div class="highlight"><pre><span></span><code>streamlit run project/app.py -- 1
 </code></pre></div>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Complete the following functions in
-<code>minitorch/scalar_functions.py</code>.</p>
+<p>Add <code>ScalarFunction</code> classes with the following <code>forward</code> methods in
+<code>minitorch/scalar_functions.py</code> for the following math functions.</p>
+<ul>
+<li>mul</li>
+<li>inv</li>
+<li>neg</li>
+<li>sigmoid</li>
+<li>relu</li>
+<li>exp</li>
+<li>lt</li>
+<li>eq</li>
+</ul>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Mul.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Mul</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Inv.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Inv</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Neg.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Neg</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Sigmoid.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Sigmoid</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.ReLU.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">ReLU</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Exp.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Exp</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.LT.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">LT</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.EQ.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">EQ</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div><div class="admonition todo">
+<div class="admonition todo">
 <p class="admonition-title">Todo</p>
 <p>Complete the following function in <code>minitorch/scalar.py</code>,
 and pass tests marked as <code>task1_2</code>. See <a href="https://docs.python.org/3/reference/datamodel.html#emulating-numeric-types/">Python numerical
@@ -1572,15 +1430,17 @@ overrides</a>
 for the interface of these methods. All of these functions should return
 <code>minitorch.Scalar</code> arguments.</p>
 <ul>
-<li>minitorch.Scalar.__lt__</li>
-<li>minitorch.Scalar.__gt__</li>
-<li>minitorch.Scalar.__sub__</li>
-<li>minitorch.Scalar.__neg__</li>
-<li>minitorch.Scalar.__add__</li>
-<li>minitorch.Scalar.log</li>
-<li>minitorch.Scalar.exp</li>
-<li>minitorch.Scalar.sigmoid</li>
-<li>minitorch.Scalar.relu</li>
+<li>&lt;</li>
+<li>
+<blockquote></blockquote>
+</li>
+<li>subtract</li>
+<li>negation</li>
+<li>+</li>
+<li>log</li>
+<li>exp</li>
+<li>sigmoid</li>
+<li>relu</li>
 </ul>
 </div>
 <h2 id="task-13-chain-rule">Task 1.3: Chain Rule</h2>
@@ -1624,7 +1484,6 @@ forget how these identities work.</p>
 <p>Complete the following functions in <code>minitorch/autodiff.py</code>
 and <code>minitorch/scalar.py</code>, and pass tests marked as
 <code>task1_4</code>.</p>
-</div>
 
 
 <div class="doc doc-object doc-function">
@@ -1671,121 +1530,9 @@ deriv  : Its derivative that we want to propagate backward to the leaves.
 
     </div>
 
+</div><p>And add backward methods to each of your <code>ScalarFunction</code>s.</p>
 </div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Mul.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Mul</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Inv.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Inv</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Neg.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Neg</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Sigmoid.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Sigmoid</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.ReLU.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">ReLU</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.scalar_functions.Exp.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">scalar_functions</span><span class="o">.</span><span class="n">Exp</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">d_output</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div><h2 id="task-15-training">Task 1.5: Training</h2>
+<h2 id="task-15-training">Task 1.5: Training</h2>
 <p>If your code works, you should now be able to run the training script.
 Study the code in <code>project/run_scalar.py</code> carefully to
 understand what the neural network is doing.</p>
@@ -1807,7 +1554,7 @@ RATE = 0.5
 </code></pre></div>
 <p>If your code is successful, you should be able to run the full
 visualization:</p>
-<div class="highlight"><pre><span></span><code>streamlit<span class="w"> </span>run<span class="w"> </span>app.py<span class="w"> </span>--<span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code>streamlit<span class="w"> </span>run<span class="w"> </span>project/app.py<span class="w"> </span>--<span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>

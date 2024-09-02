@@ -23,13 +23,14 @@ checks: $(CHECKS)
 
 
 %.ipynb : %.md
-	jupytext --execute --set-kernel minitorch --run-path . --from md:myst --to notebook $<
+	jupytext --execute --set-kernel minitorch --run-path . --from md --to notebook $<
 
 %.slides.html : %.ipynb
 	jupyter nbconvert  $< --to slides --ExecutePreprocessor.kernel_name minitorch --SlidesExporter.reveal_transition="none" --template slides/talk/ --SlidesExporter.reveal_url_prefix="https://unpkg.com/reveal.js@4.3.1"
 
 %.slides.pdf : %.slides.html
-	 chromium --headless=new --hide-scrollbars --disable-translate --disable-gpu --run-all-compositor-stages-before-draw --virtual-time-budget=10000 --print-to-pdf "http://localhost:8910/$<?print-pdf" ; mv output.pdf $@
+	decktape generic "http://0.0.0.0:8910/$<" $@
+
 
 %.html : %.ipynb
 	jupyter nbconvert  $< --to html

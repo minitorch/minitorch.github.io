@@ -1295,7 +1295,7 @@
 <li>Github Tutorials</li>
 <li>Speed of Debugging</li>
 </ul>
-<h2 id="vs-code">VS Code</h2>
+<h2 id="vs-code-cursor">VS Code / Cursor</h2>
 <ul>
 <li>Popular choice for the class</li>
 <li>Test</li>
@@ -1307,17 +1307,21 @@
 <ul>
 <li>Style, guidelines, typing, etc.</li>
 </ul>
+<h2 id="configuations">Configuations</h2>
+<ul>
+<li>pyproject.toml</li>
+</ul>
 <h2 id="precommit">Precommit</h2>
 <p>Command to run before commit.</p>
 <div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pre-commit<span class="w"> </span>run<span class="w"> </span>--all
 </code></pre></div>
 <h2 id="consistent-styling">Consistent Styling</h2>
 <p>Standardized formatting</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>black<span class="w"> </span>minitorch/<span class="w"> </span>tests/<span class="w"> </span>project/
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>ruff
 </code></pre></div>
 <h2 id="linting">Linting</h2>
-<p>Checks for any style or documentation errors</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>flake8<span class="w"> </span>minitorch/<span class="w"> </span>tests/<span class="w"> </span>project/
+<p>Ruff will also do linting for you now</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>ruff<span class="w"> </span>check
 </code></pre></div>
 <h2 id="continuous-integration">Continuous Integration</h2>
 <p>Runs behind the scenes on every commit.</p>
@@ -1339,27 +1343,33 @@ Returns:
 ...
 </code></pre></div>
 <p>```
-
-
 </p>
-<h2 id="type-checks">Type Checks</h2>
-<p>Modern Python support static type checks
+<h2 id="documentation_1">Documentation</h2>
+<p>Simple Docs
+<code>python slideshow={"slide_type": "x"}
 
-```bash</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>mypy
-```</p>
-</blockquote>
-</blockquote>
-</blockquote>
+
+def mul(x, y):
+    "Multiply `x` by `y`"
+    ...</code></p>
+<h2 id="ai-tools">AI Tools</h2>
+<ul>
+<li>AI for understanding the code base</li>
+<li>AI for documentation / typing</li>
+<li>AI for code generation</li>
+</ul>
+<h2 id="type-checks">Type Checks</h2>
+<p>Modern Python support static type checks</p>
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>pyright
+</code></pre></div>
 <p>```python slideshow={"slide_type": "x"}</p>
 <p>def mul(x: float, y: float) -&gt; float: ...
 <div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+
 ## Type Checks
 
 Compound types
+
 &lt;!-- #endregion --&gt;
 
 ```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
@@ -1411,21 +1421,20 @@ def relu(x):
     """
     ...
 <div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+
 ## Mathematical Testing
 
-* How do we know that it works?
+- How do we know that it works?
 &lt;!-- #endregion --&gt;
 
 &lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
 
 ## Standard Unit Test
 
+- Test for values with given inputs
 
-* Test for values with given inputs
-
-* PyTest succeeds if no assertions are called
+- PyTest succeeds if no assertions are called
 &lt;!-- #endregion --&gt;
-
 
 ```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
 def test_relu():
@@ -1485,7 +1494,9 @@ from typing import Callable</p>
     return a * b</p>
 <p>v: Callable[[float, float], float] = add
 <div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+
 # Functions as Arguments
+
 &lt;!-- #endregion --&gt;
 
 ```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
@@ -1531,8 +1542,6 @@ print(add3(1, 3, 5))
 <div class="highlight"><pre><span></span><code>return apply
 </code></pre></div>
 <p>```
-
-
 </p>
 <h2 id="higher-order-filter_1">Higher-order Filter</h2>
 <p>Extended example
@@ -1548,10 +1557,12 @@ filter_for_more_than_4: Callable[[Iterable[float]], Iterable[float]] = filter(
 )
 filter_for_more_than_4([1, 10, 3, 5])</code></p>
 <h2 id="functional-python_2">Functional Python</h2>
-<p>Rules of Thumbs:
-  * When in doubt, write out defs
-  * Document the arguments that functions take and send
-  * Write tests in for loops to sanity check</p>
+<p>Rules of Thumbs:</p>
+<ul>
+<li>When in doubt, write out defs</li>
+<li>Document the arguments that functions take and send</li>
+<li>Write tests in for loops to sanity check</li>
+</ul>
 <h1 id="qa">Q&amp;A</h1>
 
 

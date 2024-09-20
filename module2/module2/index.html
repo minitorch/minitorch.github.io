@@ -1374,6 +1374,7 @@ assignment. Before starting, it is worth reading through this file to
 have a sense of what a Tensor does. Each of the following tasks asks
 you to implement the methods this file relies on:</p>
 <ul>
+<li><code>tensor.py</code> : User facing interface to tensor</li>
 <li><code>tensor_data.py</code> : Indexing, strides, and storage</li>
 <li><code>tensor_ops.py</code> : Higher-order tensor operations</li>
 <li><code>tensor_functions.py</code> : Autodifferentiation-ready functions</li>
@@ -1546,9 +1547,48 @@ the expression at in <code>Streamlit</code> to view the graph</p>
 <p><img alt="" src="../../misc/expgraph2.png" /></p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Add functions in <code>minitorch/tensor_ops.py</code> and
+<p>Add functions in <code>minitorch/tensor.py</code>, <code>minitorch/tensor_ops.py</code> and
 <code>minitorch/tensor_functions.py</code> for each of the following, and pass tests
 marked as <code>task2_3</code>.</p>
+<p>In the base tensor.py file you need to implement many of the same functions
+from <code>minitorch/scalar.py</code>.</p>
+<p>Information:</p>
+<ul>
+<li>shape</li>
+<li>size</li>
+<li>dims</li>
+</ul>
+<p>Operators (you will likely find <code>_ensure_tensor</code> useful here):</p>
+<ul>
+<li>add</li>
+<li>sub</li>
+<li>mul</li>
+<li>lt</li>
+<li>eq</li>
+<li>gt</li>
+<li>neg</li>
+<li>radd</li>
+<li>rmul</li>
+<li>all</li>
+<li>is_close</li>
+<li>sigmoid</li>
+<li>relu</li>
+<li>log</li>
+<li>exp</li>
+</ul>
+<p>Should take an optional <code>dim</code> argument:
+- sum
+- mean</p>
+<ul>
+<li>permute</li>
+<li>view</li>
+</ul>
+<p>Should set grad to None</p>
+<ul>
+<li>zero_grad_</li>
+</ul>
+<p>Next in the <code>tensor_ops.py</code> file you need to implement these three
+core functions. See the docs for detailed explanations.</p>
 </div>
 
 
@@ -1649,350 +1689,44 @@ tensors with <em>possibly different strides</em>.</p>
 
     </div>
 
+</div><div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Finally implement the forward version of the
+<code>tensor_functions.py</code> file.</p>
+<ul>
+<li>Mul</li>
+<li>Sigmoid</li>
+<li>ReLU</li>
+<li>Log</li>
+<li>Exp</li>
+<li>Sum</li>
+<li>All</li>
+<li>LT</li>
+<li>EQ</li>
+<li>IsClose</li>
+<li>Permute</li>
+</ul>
 </div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Mul.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Mul</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Sigmoid.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Sigmoid</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.ReLU.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">ReLU</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Log.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Exp.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Exp</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">t1</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.LT.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">LT</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.EQ.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">EQ</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Permute.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Permute</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">order</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.IsClose.forward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">IsClose</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div><h2 id="tasks-24-gradients-and-autograd">Tasks 2.4: Gradients and Autograd</h2>
+<h2 id="tasks-24-gradients-and-autograd">Tasks 2.4: Gradients and Autograd</h2>
 <p>Similar to <code>minitorch.Scalar</code>, <code>minitorch.Tensor</code>
 is a Variable that supports autodifferentiation. In this task, you
 will implement <code>backward</code> functions for tensor operations.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Complete following functions in <code>minitorch/tensor_functions.py</code>, and pass
+<p>Complete the background functions in <code>minitorch/tensor_functions.py</code>, and pass
   tests marked as <code>task2_4</code>.</p>
 </div>
-
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Mul.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Mul</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Sigmoid.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Sigmoid</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.ReLU.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">ReLU</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Log.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Log</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Exp.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Exp</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tensor</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.LT.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">LT</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.EQ.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">EQ</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="n">Tensor</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div>
-
-<div class="doc doc-object doc-function">
-
-
-<h4 id="minitorch.tensor_functions.Permute.backward" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tensor_functions</span><span class="o">.</span><span class="n">Permute</span><span class="o">.</span><span class="n">backward</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">grad_output</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span></code>
-
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-    </div>
-
-</div><h2 id="task-25-training">Task 2.5: Training</h2>
+<h2 id="task-25-training">Task 2.5: Training</h2>
 <p>If your code works you should now be able to move on to the tensor
 training script in <code>project/run_tensor.py</code>.  This code runs the same
 basic training setup as in <code>module1</code>, but now utilize your tensor
 code.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Implement the missing <code>forward</code> functions in <code>project/run_tensor.py</code>. They
-should
-do exactly the same thing as the corresponding functions in
-<code>project/run_scalar.py</code>,
-but now use the tensor code base.</p>
+<p>Implement a neural network over the data with three linears (2-&gt; Hidden (relu), Hidden -&gt; Hidden (relu),
+Hidden -&gt; Output (sigmoid)).
+It should do exactly the same thing as the corresponding functions in
+<code>project/run_scalar.py</code>, but now use the tensor code base.</p>
 <ul>
 <li>
 <p>Train a tensor model and add your results for all datasets to the

@@ -1,0 +1,1790 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MiniTorch">
+      
+      
+        <meta name="author" content="Sasha Rush">
+      
+      
+        <link rel="canonical" href="https://minitorch.github.io/slides/module1/module1.2/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../logo-sm.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Module1.2 - MiniTorch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+<script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/custom.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/fastapi/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#derivatives-with-multiple-arguments" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiniTorch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module1.2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  MiniTorch
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../install/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module0/module0/" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamentals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mlprimer/" class="md-tabs__link">
+        
+  
+    
+  
+  ML Primer
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module1/module1/" class="md-tabs__link">
+          
+  
+    
+  
+  Autodiff
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module2/module2/" class="md-tabs__link">
+          
+  
+    
+  
+  Tensors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module3/module3/" class="md-tabs__link">
+          
+  
+    
+  
+  Efficiency
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module4/module4/" class="md-tabs__link">
+          
+  
+    
+  
+  Networks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    MiniTorch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MiniTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/module0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/property_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/functional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mlprimer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Primer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autodiff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Autodiff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/module1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/derivative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Derivatives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/scalar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scalar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/chainrule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodifferentiation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/backpropagate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backpropagate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tensors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/module2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensordata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/broadcasting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcasting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensorops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auto-Grad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Efficiency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Efficiency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/module3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/matrixmult/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fusing Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/module4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/pooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/softmax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiclass Classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+<p>```python slideshow={"slide_type": "skip"}
+import math
+from typing import Callable, Tuple</p>
+<p>import chalk
+from mt_diagrams.autodiff_draw import backprop, draw_boxes
+from mt_diagrams.plots import plot_function, plot_function3D</p>
+<p>chalk.set_svg_draw_height(400)</p>
+<p>import minitorch
+from minitorch import Context, Scalar, ScalarFunction
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Module 1.2 - Autodifferentiation
+=================================
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Symbolic Derivative
+--------------------
+
+ $$f(x) = \sin(2 x) \Rightarrow f&#39;(x) = 2 \cos(2 x)$$
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+plot_function(&quot;f&#39;(x) = 2*cos(2x)&quot;, lambda x: 2 * math.cos(2 * x))
+</code></pre></div></p>
+<h2 id="derivatives-with-multiple-arguments">Derivatives with Multiple Arguments</h2>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f_x'(x, y) = \cos(x) \ \ \  f_y'(x, y) = -2 \sin(y)\)</span>\)</span></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+plot_function3D("f'_x(x, y) = cos(x)", lambda x, y: math.cos(x))
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Review: Derivative
+----------------------
+
+ $$f(x) = x^2 + 1$$
+&lt;!-- #endregion --&gt;
+
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+def f(x):
+    return x * x + 1.0
+
+
+plot_function(&quot;f(x)&quot;, f)
+</code></pre></div></p>
+<h2 id="review-derivative">Review: Derivative</h2>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f'(x) = 2x\)</span>\)</span></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+def d_f(x):
+    return 2 * x</p>
+<p>def tangent_line(slope, x, y):
+    def line(x_):
+        return slope * (x_ - x) + y</p>
+<div class="highlight"><pre><span></span><code>return line
+</code></pre></div>
+<p>plot_function("f(x) vs f'(2)", f, fn2=tangent_line(d_f(2), 2, f(2)))
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Numerical Derivative: Central Difference
+--------------------
+Approximate derivatative
+
+ $$f&#39;(x) \approx  \frac{f(x + \epsilon) - f(x-\epsilon)}{2\epsilon}$$
+
+![](https://minitorch.github.io/figs/Grad/approx.png)
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Derivative as higher-order function
+-----------------------------------
+ $$f(x) = ...$$
+ $$f&#39;(x) = ...$$
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+
+def derivative(f: Callable[[float], float]) -&gt; Callable[[float], float]:
+    def f_prime(x: float) -&gt; float: ...
+
+    return f_prime
+</code></pre></div></p>
+<h2 id="quiz">Quiz</h2>
+<h2 id="outline">Outline</h2>
+<ul>
+<li>Autodifferentiation</li>
+<li>Computational Graph</li>
+<li>Backward</li>
+<li>Chain Rule</li>
+</ul>
+<h1 id="autodifferentiation">Autodifferentiation</h1>
+<h2 id="goal">Goal</h2>
+<ul>
+<li>Write down arbitrary code</li>
+<li>Transform to compute deriviative</li>
+<li>Use this to fit models</li>
+</ul>
+<h2 id="how-does-this-differ">How does this differ?</h2>
+<ul>
+<li>Are these symbolic derivatives?</li>
+<li>No, don't get out mathematical form</li>
+<li>Are these numerical derivatives?</li>
+<li>No, don't use local evaluation.</li>
+</ul>
+<h2 id="overview-autodifferentiation">Overview: Autodifferentiation</h2>
+<ul>
+<li><em>Forward</em> Pass - Trace arbitrary function</li>
+<li><em>Backward</em> Pass - Compute derivatives of function</li>
+</ul>
+<h2 id="forward-pass">Forward Pass</h2>
+<ul>
+<li>User writes mathematical code</li>
+<li>Collect results and computation graph</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<div class="highlight"><pre><span></span><code>```python tags=[&quot;hide_inp&quot;]
+
+draw_boxes([(&quot;&quot;, &quot;&quot;), &quot;&quot;, (&quot;&quot;, &quot;&quot;), &quot;&quot;], [1, 2, 1], lr=True)
+</code></pre></div>
+<h2 id="backward-pass">Backward Pass</h2>
+<ul>
+<li>Minitorch uses graph to compute derivative
+1, 2,</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>backprop(6)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Example : Linear Model
+-----------------------
+* Our forward computes
+
+ $${\cal L}(w_1, w_2, b) = \text{ReLU}(m(x;w, b))$$
+where
+
+ $$m(x; w_1, w_2, b) = x_1 \times w_1 + x_2 \times w_2 + b$$
+* Our backward computes
+
+ $${\cal L}&#39;_{w_1}(w_1, w_2, b) \ \  {\cal L}&#39;_{w_2}(w_1, w_2, b) \ \   {\cal L}&#39;_b(w_1, w_2, b)$$
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Derivative Checks
+--------------------
+*  Property: All three of these should roughly match
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Strategy
+-----------
+1. Replace generic numbers.
+2. Replace mathematical functions.
+3. Track with functions have been applied.
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Computation Graph
+=====================
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Strategy
+---------
+* Act like a numerical value to user
+* Trace the operations that are applied
+* Hide access to internal storage
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Box Diagrams
+-------------
+ $$f(x) = \text{ReLU}(x)$$
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+
+
+draw_boxes([&quot;$x_2$&quot;, &quot;$f(x_2)$&quot;], [1]).center_xy().scale_uniform_to_x(1).with_envelope(
+    chalk.rectangle(1, 0.5)
+)
+</code></pre></div></p>
+<h2 id="box-diagrams">Box Diagrams</h2>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f(x, y) = x \times y\)</span>\)</span></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>draw_boxes([("<span class="arithmatex">\(x\)</span>", "<span class="arithmatex">\(y\)</span>"), "<span class="arithmatex">\(f(x, y)\)</span>"], [1]).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.5))
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Code Demo
+-------------
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+How does this work
+-------------------
+* Arrows are intermediate values
+* Boxes  are function application
+
+ $$f(x) = \text{ReLU}(x)$$
+ $$g(x) = \log(x) $$
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+
+draw_boxes([&quot;$x$&quot;, &quot;$g(x)$&quot;, &quot;$f(g(x))$&quot;], [1, 1]).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.5))
+</code></pre></div></p>
+<h1 id="implementation">Implementation</h1>
+<h2 id="functions">Functions</h2>
+<ul>
+<li>Functions are implemented as static classes</li>
+<li>We implement hidden <code>forward</code> and <code>backward</code> methods</li>
+<li>User calls <code>apply</code> which handles wrapping / unwrapping</li>
+</ul>
+<h2 id="functions_1">Functions</h2>
+<p><span class="arithmatex">\(<span class="arithmatex">\(f(x) = x \times 5\)</span>\)</span></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+draw_boxes(["<span class="arithmatex">\(x_1\)</span>", "<span class="arithmatex">\(f(x_1)\)</span>"], [1]).center_xy().scale_uniform_to_x(1).with_envelope(
+    chalk.rectangle(1, 0.5)
+)
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+class TimesFive(ScalarFunction):
+    @staticmethod
+    def forward(ctx: Context, x: float) -&gt; float:
+        return x * 5
+</code></pre></div></p>
+<h2 id="multi-arg-functions">Multi-arg Functions</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>draw_boxes([("<span class="arithmatex">\(x\)</span>", "<span class="arithmatex">\(y\)</span>"), "<span class="arithmatex">\(f(x, y)\)</span>"], [1]).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.5))
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+class Mul(ScalarFunction):
+    @staticmethod
+    def forward(ctx: Context, x: float, y: float) -&gt; float:
+        return x * y
+</code></pre></div></p>
+<h2 id="variables">Variables</h2>
+<ul>
+<li><em>Wrap</em> a numerical value</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>x_1 = Scalar(10.0)
+x_2 = Scalar(0.0)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Using scalar variables.
+-----------------------
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+x = Scalar(10.0)
+z = TimesFive.apply(x)
+
+
+def apply(cls, val: Scalar) -&gt; Scalar:
+    ...
+    unwrapped = val.data
+    new = cls.forward(unwapped)
+    return Scalar(new)
+    ...
+</code></pre></div></p>
+<h2 id="multiple-steps">Multiple Steps</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>draw_boxes(["<span class="arithmatex">\(x\)</span>", "<span class="arithmatex">\(g(x)\)</span>", "<span class="arithmatex">\(f(g(x))\)</span>"], [1, 1]).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.3))
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+x = Scalar(10.0)
+y = Scalar(5.0)
+z = TimesFive.apply(x)
+out = TimesFive.apply(z)
+</code></pre></div></p>
+<h2 id="tricks">Tricks</h2>
+<ul>
+<li>Use operator overloading to ensure that functions are called</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}
+out2 = x * y</p>
+<p>def <strong>mul</strong>(self, b: Scalar) -&gt; Scalar:
+    return Mul.apply(self, b)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;x&quot;} --&gt;
+* Many functions e.g. `sub` can be implemented with other calls.
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Notes
+------------------
+* Since each operation creates a new variable, there are no loops.
+* Cannot modify a variable. Graph only gets larger.
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Backwards
+==========
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+How do we get derivatives?
+--------------------------
+* Base case: compute derivatives for single functions
+* Inductive case: define how to propagate a derivative
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Base Case: Coding Derivatives
+-----------------------------
+
+* For each $f$ we need to also provide $f&#39;$
+* This part can be done through manual symbolic  differentiation
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+
+# TODO!
+draw_boxes([&quot;&quot;, &quot;&quot;, (&quot;&quot;, &quot;&quot;), &quot;&quot;], [1, 1], lr=False).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.3))
+</code></pre></div></p>
+<h2 id="code">Code</h2>
+<ul>
+<li>Backward use <span class="arithmatex">\(f'\)</span></li>
+<li>Returns <span class="arithmatex">\(f'(x) \times d\)</span></li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}
+class TimesFive(ScalarFunction):
+    <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/staticmethod" title="GitHub User: staticmethod">@staticmethod</a>
+    def forward(ctx, x: float) -&gt; float:
+        return x * 5</p>
+<div class="highlight"><pre><span></span><code>@staticmethod
+def backward(ctx, d: float) -&gt; float:
+    f_prime = 5
+    return f_prime * d
+</code></pre></div>
+<p>```
+Two Arg</p>
+<hr />
+<ul>
+<li>What about <span class="arithmatex">\(f(x, y)\)</span></li>
+<li>Returns <span class="arithmatex">\(f'_x(x,y) \times d\)</span> and  <span class="arithmatex">\(f'_y(x,y) \times d\)</span>
+<code>python slideshow={"slide_type": "x"} tags=["hide_inp"]
+draw_boxes([("", ""), ""], [1], lr=False).center_xy().scale_uniform_to_x(
+    1
+).with_envelope(chalk.rectangle(1, 0.5))</code></li>
+</ul>
+<h2 id="code_1">Code</h2>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>class AddTimes2(ScalarFunction):
+    <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/staticmethod" title="GitHub User: staticmethod">@staticmethod</a>
+    def forward(ctx, x: float, y: float) -&gt; float:
+        return x + 2 * y</p>
+<div class="highlight"><pre><span></span><code>@staticmethod
+def backward(ctx, d) -&gt; Tuple[float, float]:
+    return d, 2 * d
+</code></pre></div>
+<p>```
+What is Context?</p>
+<hr />
+<ul>
+<li>Context on <code>forward</code> is given to <code>backward</code></li>
+<li>May be called at different times.
+Context</li>
+</ul>
+<hr />
+<p>Consider a function <code>Square</code>
+
+* <span class="arithmatex">\(g(x) = x^2\)</span> that squares x
+* Derivative function uses variable <span class="arithmatex">\(g'(x) = 2 \times x\)</span>
+* However backward doesn't take args
+<code>python slideshow={"slide_type": "x"}
+def backward(ctx, d_out): ...</code></p>
+<h2 id="context">Context</h2>
+<p>Arguments to backward must be saved in context.</p>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>class Square(ScalarFunction):
+    <a class="magiclink magiclink-github magiclink-mention" href="https://github.com/staticmethod" title="GitHub User: staticmethod">@staticmethod</a>
+    def forward(ctx: Context, x: float) -&gt; float:
+        ctx.save_for_backward(x)
+        return x * x</p>
+<div class="highlight"><pre><span></span><code>@staticmethod
+def backward(ctx: Context, d_out: float) -&gt; Tuple[float, float]:
+    x = ctx.saved_values
+    f_prime = 2 * x
+    return f_prime * d_out
+</code></pre></div>
+<p>```
+Context Internals</p>
+<hr />
+<p>Run <code>Square</code>
+<code>python slideshow={"slide_type": "x"}
+
+x = minitorch.Scalar(10)
+x_2 = Square.apply(x)
+x_2.history</code></p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+
+<style>
+// Do whatever changes you need here
+
+img.centered {
+    display: block;
+    margin: 0 auto;
+}
+
+div.jp-RenderedSVG svg {
+    max-width: none;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.jupyter-wrapper div.jp-RenderedText > pre {
+    color: darkred;
+    padding: 10px;
+    background: aliceblue;
+}
+
+
+.jp-RenderedHTMLCommon p {
+
+}
+
+.jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt {
+   display: none;
+}
+.jupyter-wrapper .jp-CodeCell .jp-Cell-outputWrapper .jp-OutputPrompt {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide_inp .jp-InputArea {
+   display: none;
+}
+
+.jupyter-wrapper .jp-OutputArea-output dt {
+    width: 100%;
+}
+.jupyter-wrapper .jp-OutputArea-output dd {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.jupyter-wrapper .jp-OutputArea-output.jp-RenderedSVG {
+    text-align: center;
+    padding-top: 10px;
+}
+
+div.doc-contents {
+    padding-left: 20px;
+
+}
+
+</style>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://github.com/srush">Sasha Rush</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/tables.js"></script>
+      
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/highlight-config.js"></script>
+      
+    
+  </body>
+</html>

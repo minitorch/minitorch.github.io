@@ -1,0 +1,1799 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="MiniTorch">
+      
+      
+        <meta name="author" content="Sasha Rush">
+      
+      
+        <link rel="canonical" href="https://minitorch.github.io/slides/module1/module1.0/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../logo-sm.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Module1.0 - MiniTorch</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+<script data-main="scripts/main" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+
+      
+    
+
+
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/custom.css">
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
+    
+      <link rel="stylesheet" href="../../../assets/css-js/fastapi/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#module-naming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MiniTorch
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Module1.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="amber"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  MiniTorch
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../install/" class="md-tabs__link">
+        
+  
+    
+  
+  Setup
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module0/module0/" class="md-tabs__link">
+          
+  
+    
+  
+  Fundamentals
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../mlprimer/" class="md-tabs__link">
+        
+  
+    
+  
+  ML Primer
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module1/module1/" class="md-tabs__link">
+          
+  
+    
+  
+  Autodiff
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module2/module2/" class="md-tabs__link">
+          
+  
+    
+  
+  Tensors
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module3/module3/" class="md-tabs__link">
+          
+  
+    
+  
+  Efficiency
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../module4/module4/" class="md-tabs__link">
+          
+  
+    
+  
+  Networks
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+      
+  <img src="../../../logo-sm.png" alt="logo">
+
+    </a>
+    MiniTorch
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/minitorch/minitorch" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    minitorch/minitorch
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MiniTorch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Fundamentals
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Fundamentals
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/module0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/contributing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contributing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/property_testing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Property Testing
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/modules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Modules
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/functional/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Functional
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module0/visualization/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Visualization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../mlprimer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ML Primer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Autodiff
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Autodiff
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/module1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/derivative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Derivatives
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/scalar/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scalar
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/chainrule/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Autodifferentiation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module1/backpropagate/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Backpropagate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Tensors
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/module2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensordata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tensors
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/broadcasting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Broadcasting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensorops/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module2/tensor/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Auto-Grad
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Efficiency
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Efficiency
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/module3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/parallel/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Parallel Computation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/matrixmult/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Fusing Operations
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module3/cuda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GPU Programming
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Networks
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Networks
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/module4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assignment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/convolution/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Convolution
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/pooling/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pooling
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../module4/softmax/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multiclass Classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+<p>```python slideshow={"slide_type": "skip"}</p>
+<p>from dataclasses import dataclass
+import math
+import chalk
+from chalk import hcat
+from mt_diagrams.mlprimer_draw import (
+    compare,
+    draw_graph,
+    graph,
+    s,
+    s1,
+    s2,
+    show,
+    split_graph,
+    with_points,
+)</p>
+<p>import minitorch</p>
+<p>chalk.set_svg_draw_height(400)</p>
+<p>def linear(*parameters, x=0):
+    return parameters[1] * x[0] + parameters[1] * x[1] + parameters[2]
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Module 1.0 - Mini-ML
+------------
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+
+Model
+------
+* Models: parameterized functions.
+  * $m(x; \theta)$
+  * $x \text{ - input}$
+  * $m \text{ - model}$
+
+* Initial Focus:
+  * $\theta \text{ - parameters}$
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Specifying Parameters
+-----------------------
+* Datastructures to specify parameters
+* Requirements
+  * Independent of implementation
+  * Compositional
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Module Example
+----------------
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+from minitorch import Module, Parameter
+
+
+class OtherModule(Module):
+    pass
+
+
+class MyModule(Module):
+    def __init__(self):
+        # Must initialize the super class!
+        super().__init__()
+
+        # Type 1, a parameter.
+        self.parameter1 = Parameter(15)
+
+        # Type 2, user data
+        self.data = 25
+
+        # Type 3. another Module
+        self.sub_module = OtherModule()
+</code></pre></div></p>
+<h2 id="module-naming">Module Naming</h2>
+<p><img alt="" src="https://minitorch.github.io/figs/Module/module.png" /></p>
+<h2 id="lecture-quiz">Lecture Quiz</h2>
+<p>Quiz</p>
+<h2 id="outline">Outline</h2>
+<ul>
+<li>
+<p>Model</p>
+</li>
+<li>
+<p>Parameters</p>
+</li>
+<li>
+<p>Loss</p>
+</li>
+</ul>
+<h1 id="datasets">Datasets</h1>
+<h2 id="data-points">Data Points</h2>
+<ul>
+<li>Convention <span class="arithmatex">\(x\)</span></li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>split_graph([s1[0]], [])
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Points
+------------
+
+
+* Convention $x$
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+split_graph([s1[1]], [])
+</code></pre></div></p>
+<h2 id="data-points_1">Data Points</h2>
+<ul>
+<li>Convention <span class="arithmatex">\(x\)</span></li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>split_graph(s1, [])
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Labels
+------------
+* Convention $y$
+
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+split_graph([s1[0]], [s2[0]])
+</code></pre></div></p>
+<h2 id="training-data">Training Data</h2>
+<ul>
+<li>Set of datapoints, each <span class="arithmatex">\((x,y)\)</span></li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+split_graph(s1, s2)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Points
+-------------
+
+* Convention $x$
+
+![](https://minitorch.github.io/figs/Conv/im1.png)
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Points
+-------------
+
+* Convention $x$
+
+![](https://minitorch.github.io/figs/Conv/im2.png)
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Set
+-------------
+
+
+![](https://minitorch.github.io/figs/Conv/mnist.png)
+&lt;!-- #endregion --&gt;
+
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Data Labels
+------------
+
+* Convention $y$
+
+![](https://minitorch.github.io/figs/Conv/im1.png)
+
+
+![](https://minitorch.github.io/figs/Conv/im2.png)
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Model
+===============
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Models
+---------------------
+
+* Functions from data points to labels
+* Functions $m(x; \theta)$
+* Any function is okay (e.g. Modules)
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Example Model
+--------------
+
+* Example of a simple model
+
+   x = (0.5, 0.2)
+
+&lt;!-- #endregion --&gt;
+
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+@dataclass
+class Model:
+    def forward(self, x):
+        return 0 if x[0] &lt; 0.5 else 1
+</code></pre></div></p>
+<h2 id="model-1">Model 1</h2>
+<ul>
+<li>Linear Model</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}
+from minitorch import Parameter, Module
+class Linear(Module):
+    def <strong>init</strong>(self, w1, w2, b):
+        super().<strong>init</strong>()
+        self.w1 = Parameter(w1)
+        self.w2 = Parameter(w2)
+        self.b = Parameter(b)</p>
+<div class="highlight"><pre><span></span><code>def forward(self, x1: float, x2: float) -&gt; float:
+    return self.w1.value * x1 + self.w2.value * x2 + self.b.value
+</code></pre></div>
+<p>```
+Model 1</p>
+<hr />
+<p>
+<code>python slideshow={"slide_type": "x"} tags=["hide_inp"]
+model = Linear(w1=1, w2=1, b=-0.9)
+draw_graph(model)</code></p>
+<h2 id="model-2">Model 2</h2>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>class Split:
+    def <strong>init</strong>(self, linear1, linear2):
+        super().<strong>init</strong>()
+        # Submodules
+        self.m1 = linear1
+        self.m2 = linear2</p>
+<div class="highlight"><pre><span></span><code>def forward(self, x1, x2):
+    return self.m1.forward(x1, x2) * self.m2.forward(x1, x2)
+</code></pre></div>
+<p><code></code>python slideshow={"slide_type": "x"} tags=["hide_inp"]
+model_b = Split(Linear(1, 1, -1.5), Linear(1, 1, -0.5))
+draw_graph(model_b)
+```</p>
+<h2 id="model-3">Model 3</h2>
+<p>```python slideshow={"slide_type": "x"}
+class Part:
+    def forward(self, x1, x2):
+        return 1 if (0.0 &lt;= x1 &lt; 0.5 and 0.0 &lt;= x2 &lt; 0.6) else 0
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+draw_graph(Part())
+</code></pre></div></p>
+<h1 id="parameters">Parameters</h1>
+<h2 id="parameters_1">Parameters</h2>
+<ul>
+<li>Knobs that control the model</li>
+<li>Any information that controls the model shape</li>
+</ul>
+<h2 id="parameters_2">Parameters</h2>
+<ul>
+<li>Change <span class="arithmatex">\(\theta\)</span></li>
+</ul>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+show(Linear(w1=1, w2=1, b=-0.5))</p>
+<p>show(Linear(w1=1, w2=1, b=-1))
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Linear Parameters
+------------------
+
+
+a. rotating the linear separator
+
+
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+model1 = Linear(w1=1, w2=1, b=-1.0)
+model2 = Linear(w1=0.5, w2=1.5, b=-1.0)
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+compare(model1, model2)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Linear Parameters
+------------------
+
+b. changing the separator cutoff
+
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+model1 = Linear(w1=1, w2=1, b=-1.0)
+model2 = Linear(w1=1, w2=1, b=-1.5)
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+compare(model1, model2)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Math
+------------------
+
+* Linear Model
+
+
+ $$m(x; w, b) = x_1 \times w_1 + x_2 \times w_2 + b $$
+
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+
+def forward(self, x1: float, x2: float) -&gt; float:
+    return self.w1 * x1 + self.w2 * x2 + self.b
+</code></pre></div></p>
+<h1 id="loss">Loss</h1>
+<h2 id="what-is-a-good-model">What is a good model?</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>hcat([show(Linear(1, 1, -1.0)), show(Linear(1, 1, -0.5))], 0.3)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Distance
+--------------
+* $|m(x)|$ correct or incorrect
+
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+
+with_points(s1, s2, Linear(1, 1, -0.4))
+</code></pre></div></p>
+<h2 id="points">Points</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>pts = [
+    with_points([s1[0]], [], Linear(1, 1, -1.5)),
+    with_points([s1[0]], [], Linear(1, 1, -1)),
+    with_points([s1[0]], [], Linear(1, 1, -0.5)),
+]
+hcat(pts, 0.3)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Loss
+--------
+
+ * Loss weights our incorrect points
+ * Uses distance from boundary
+
+ $L(w_1, w_2, b)$ is loss, function of parameters.
+
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Warmup: ReLU
+-----------------
+&lt;!-- #endregion --&gt;
+
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+def point_loss(m_x):
+    return minitorch.operators.relu(m_x)
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+graph(point_loss, [], [])
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Loss of points
+--------------
+
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+graph(point_loss, [], [-2, -0.2, 1])
+</code></pre></div></p>
+<h2 id="loss-of-points">Loss of points</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+graph(lambda x: point_loss(-x), [-1, 0.4, 1.3], [])
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Full Loss
+-----------
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+def full_loss(m):
+    l = 0
+    for x, y in zip(s.X, s.y):
+        l += point_loss(-y * m.forward(*x))
+    return -l
+</code></pre></div></p>
+<h2 id="point-loss">Point Loss</h2>
+<p>```python slideshow={"slide_type": "skip"}
+def point_loss(x):
+    return -math.log(minitorch.operators.sigmoid(-x))
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+graph(point_loss, [], [])
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+graph(point_loss, [], [-2, -0.2, 1])
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+What is a good model?
+--------------------
+
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+
+hcat([show(Linear(1, 1, -1.0)), show(Linear(1, 1, -0.5))], 0.3)
+</code></pre></div></p>
+<h2 id="sigmoid-function">Sigmoid Function</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>graph(minitorch.operators.sigmoid, width=8).scale_x(0.5)
+```</p>
+<h2 id="playground">Playground</h2>
+<p><a href="https://playground.tensorflow.org/#activation=tanh&amp;batchSize=10&amp;dataset=gauss&amp;regDataset=reg-plane&amp;learningRate=0.03&amp;regularizationRate=0&amp;noise=0&amp;networkShape=4,2&amp;seed=0.91939&amp;showTestData=false&amp;discretize=false&amp;percTrainData=50&amp;x=true&amp;y=true&amp;xTimesY=false&amp;xSquared=false&amp;ySquared=false&amp;cosX=false&amp;sinX=false&amp;cosY=false&amp;sinY=false&amp;collectStats=false&amp;problem=classification&amp;initZero=false&amp;hideText=false&amp;learningRate_hide=true&amp;regularizationRate_hide=true&amp;batchSize_hide=true&amp;noise_hide=true&amp;discretize_hide=true&amp;regularization_hide=true&amp;activation_hide=true&gt;">Playground</a></p>
+<h2 id="qa">Q&amp;A</h2>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+
+
+<style>
+// Do whatever changes you need here
+
+img.centered {
+    display: block;
+    margin: 0 auto;
+}
+
+div.jp-RenderedSVG svg {
+    max-width: none;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+}
+
+.jupyter-wrapper div.jp-RenderedText > pre {
+    color: darkred;
+    padding: 10px;
+    background: aliceblue;
+}
+
+
+.jp-RenderedHTMLCommon p {
+
+}
+
+.jupyter-wrapper .jp-CodeCell .jp-Cell-inputWrapper .jp-InputPrompt {
+   display: none;
+}
+.jupyter-wrapper .jp-CodeCell .jp-Cell-outputWrapper .jp-OutputPrompt {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide {
+   display: none;
+}
+
+.jupyter-wrapper .celltag_hide_inp .jp-InputArea {
+   display: none;
+}
+
+.jupyter-wrapper .jp-OutputArea-output dt {
+    width: 100%;
+}
+.jupyter-wrapper .jp-OutputArea-output dd {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.jupyter-wrapper .jp-OutputArea-output.jp-RenderedSVG {
+    text-align: center;
+    padding-top: 10px;
+}
+
+div.doc-contents {
+    padding-left: 20px;
+
+}
+
+</style>
+
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Maintained by <a href="https://github.com/srush">Sasha Rush</a>.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/plotly.js/1.33.1/plotly.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/tables.js"></script>
+      
+        <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+        <script src="../../../assets/css-js/general/js/highlight-config.js"></script>
+      
+    
+  </body>
+</html>

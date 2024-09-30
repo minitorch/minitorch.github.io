@@ -1406,13 +1406,37 @@ tests marked as <code>task2_1</code>.</p>
 
       <p>Converts a multidimensional tensor <code>index</code> into a single-dimensional position in
 storage based on strides.</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>index : index tuple of ints
-strides : tensor strides
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>Position in storage
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>index</code></b>
+          –
+          <div class="doc-md-description">
+            <p>index tuple of ints</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>strides</code></b>
+          –
+          <div class="doc-md-description">
+            <p>tensor strides</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>int</code>
+          –
+          <div class="doc-md-description">
+            <p>Position in storage</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1433,11 +1457,33 @@ strides : tensor strides
 Should ensure that enumerating position 0 ... size of a
 tensor produces every index exactly once. It
 may not be the inverse of <code>index_to_position</code>.</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>ordinal: ordinal position to convert.
-shape : tensor shape.
-out_index : return index corresponding to position.
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>ordinal</code></b>
+              (<code>int</code>)
+          –
+          <div class="doc-md-description">
+            <p>ordinal position to convert.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>shape</code></b>
+          –
+          <div class="doc-md-description">
+            <p>tensor shape.</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>out_index</code></b>
+          –
+          <div class="doc-md-description">
+            <p>return index corresponding to position.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1455,12 +1501,33 @@ out_index : return index corresponding to position.
     <div class="doc doc-contents first">
 
       <p>Permute the dimensions of the tensor.</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>*order: a permutation of the dimensions
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>New `TensorData` with the same storage and a new dimension order.
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>*order</code></b>
+              (<code>int</code>, default:
+                  <code>()</code>
+)
+          –
+          <div class="doc-md-description">
+            <p>a permutation of the dimensions</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="minitorch.tensor_data.TensorData">TensorData</span></code>
+          –
+          <div class="doc-md-description">
+            <p>New <code>TensorData</code> with the same storage and a new dimension order.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1484,16 +1551,49 @@ and pass tests marked as <code>task2_2</code>.</p>
     <div class="doc doc-contents first">
 
       <p>Broadcast two shapes to create a new union shape.</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>shape1 : first shape
-shape2 : second shape
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>broadcasted shape
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>IndexingError : if cannot broadcast
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>shape1</code></b>
+          –
+          <div class="doc-md-description">
+            <p>first shape</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>shape2</code></b>
+          –
+          <div class="doc-md-description">
+            <p>second shape</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="minitorch.tensor_data.UserShape">UserShape</span></code>
+          –
+          <div class="doc-md-description">
+            <p>broadcasted shape</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="minitorch.tensor_data.IndexingError">IndexingError</span></code>
+            –
+          <div class="doc-md-description">
+            <p>if cannot broadcast</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1515,15 +1615,51 @@ into <code>shape</code> following broadcasting rules. In this case
 it may be larger or with more dimensions than the <code>shape</code>
 given. Additional dimensions may need to be mapped to 0 or
 removed.</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>big_index : multidimensional index of bigger tensor
-big_shape : tensor shape of bigger tensor
-shape : tensor shape of smaller tensor
-out_index : multidimensional index of smaller tensor
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>None
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>big_index</code></b>
+          –
+          <div class="doc-md-description">
+            <p>multidimensional index of bigger tensor</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>big_shape</code></b>
+          –
+          <div class="doc-md-description">
+            <p>tensor shape of bigger tensor</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>shape</code></b>
+          –
+          <div class="doc-md-description">
+            <p>tensor shape of smaller tensor</p>
+          </div>
+        </li>
+        <li class="doc-section-item field-body">
+          <b><code>out_index</code></b>
+          –
+          <div class="doc-md-description">
+            <p>multidimensional index of smaller tensor</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code>None</code>
+          –
+          <div class="doc-md-description">
+            <p>None</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1542,52 +1678,12 @@ can alter
 the expression at in <code>Streamlit</code> to view the graph</p>
 <div class="highlight"><pre><span></span><code><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="mf">10.0</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>python<span class="w"> </span>project/show_expression.py
+<div class="highlight"><pre><span></span><code>&gt;&gt;&gt;<span class="w"> </span>streamlit<span class="w"> </span>run<span class="w"> </span>project/app.py<span class="w"> </span>--<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<p><img alt="" src="../../misc/expgraph2.png" /></p>
+<p><img alt="" src="../../misc/expgraph3.webp" /></p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Add functions in <code>minitorch/tensor.py</code>, <code>minitorch/tensor_ops.py</code> and
-<code>minitorch/tensor_functions.py</code> for each of the following, and pass tests
-marked as <code>task2_3</code>.</p>
-<p>In the base tensor.py file you need to implement many of the same functions
-from <code>minitorch/scalar.py</code>.</p>
-<p>Information:</p>
-<ul>
-<li>shape</li>
-<li>size</li>
-<li>dims</li>
-</ul>
-<p>Operators (you will likely find <code>_ensure_tensor</code> useful here):</p>
-<ul>
-<li>add</li>
-<li>sub</li>
-<li>mul</li>
-<li>lt</li>
-<li>eq</li>
-<li>gt</li>
-<li>neg</li>
-<li>radd</li>
-<li>rmul</li>
-<li>all</li>
-<li>is_close</li>
-<li>sigmoid</li>
-<li>relu</li>
-<li>log</li>
-<li>exp</li>
-</ul>
-<p>Should take an optional <code>dim</code> argument:
-- sum
-- mean</p>
-<ul>
-<li>permute</li>
-<li>view</li>
-</ul>
-<p>Should set grad to None</p>
-<ul>
-<li>zero_grad_</li>
-</ul>
-<p>Next in the <code>tensor_ops.py</code> file you need to implement these three
+<p>First in the <code>tensor_ops.py</code> file you need to implement these three
 core functions. See the docs for detailed explanations.</p>
 </div>
 
@@ -1617,12 +1713,31 @@ tensors with <em>possibly different strides</em>.</p>
   value of <code>in_storage</code> assuming <code>out_shape</code> and <code>in_shape</code>
   broadcast. (<code>in_shape</code> must be smaller than <code>out_shape</code>).</li>
 </ul>
-      <hr />
-<div class="highlight"><pre><span></span><code>fn: function from float-to-float to apply
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>Tensor map function.
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>fn</code></b>
+              (<code><span title="typing.Callable">Callable</span>[[float], float]</code>)
+          –
+          <div class="doc-md-description">
+            <p>function from float-to-float to apply</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+          –
+          <div class="doc-md-description">
+            <p>Tensor map function.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1653,12 +1768,31 @@ tensors with <em>possibly different strides</em>.</p>
   value of <code>a_storage</code> and <code>b_storage</code> assuming <code>a_shape</code>
   and <code>b_shape</code> broadcast to <code>out_shape</code>.</li>
 </ul>
-      <hr />
-<div class="highlight"><pre><span></span><code>fn: function mapping two floats to float to apply
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>Tensor zip function.
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>fn</code></b>
+              (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+          –
+          <div class="doc-md-description">
+            <p>function mapping two floats to float to apply</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>], None]</code>
+          –
+          <div class="doc-md-description">
+            <p>Tensor zip function.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
@@ -1680,18 +1814,37 @@ tensors with <em>possibly different strides</em>.</p>
 <li><code>out_shape</code> will be the same as <code>a_shape</code>
    except with <code>reduce_dim</code> turned to size <code>1</code></li>
 </ul>
-      <hr />
-<div class="highlight"><pre><span></span><code>fn: reduction function mapping two floats to float
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>Tensor reduce function.
-</code></pre></div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+          <b><code>fn</code></b>
+              (<code><span title="typing.Callable">Callable</span>[[float, float], float]</code>)
+          –
+          <div class="doc-md-description">
+            <p>reduction function mapping two floats to float</p>
+          </div>
+        </li>
+    </ul>
+
+
+<p><span class="doc-section-title">Returns:</span></p>
+    <ul>
+        <li class="doc-section-item field-body">
+              <code><span title="typing.Callable">Callable</span>[[<span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, <span title="minitorch.tensor_data.Storage">Storage</span>, <span title="minitorch.tensor_data.Shape">Shape</span>, <span title="minitorch.tensor_data.Strides">Strides</span>, int], None]</code>
+          –
+          <div class="doc-md-description">
+            <p>Tensor reduce function.</p>
+          </div>
+        </li>
+    </ul>
 
     </div>
 
 </div><div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Finally implement the forward version of the
+<p>Next implement the forward version of the
 <code>tensor_functions.py</code> file.</p>
 <ul>
 <li>Mul</li>
@@ -1707,13 +1860,55 @@ tensors with <em>possibly different strides</em>.</p>
 <li>Permute</li>
 </ul>
 </div>
+<div class="admonition todo">
+<p class="admonition-title">Todo</p>
+<p>Finally add functions in <code>minitorch/tensor.py</code> for each of the following, and pass tests
+marked as <code>task2_3</code>. You need to implement many of the same functions
+from <code>minitorch/scalar.py</code>.</p>
+<p>Properties:
+- shape
+- size
+- dims</p>
+<p>Operators (you will likely find <code>_ensure_tensor</code> useful here since the user
+may pass in standard python values):</p>
+<ul>
+<li>add</li>
+<li>sub</li>
+<li>mul</li>
+<li>lt</li>
+<li>eq</li>
+<li>gt</li>
+<li>neg</li>
+<li>radd</li>
+<li>rmul</li>
+<li>all</li>
+<li>is_close</li>
+<li>sigmoid</li>
+<li>relu</li>
+<li>log</li>
+<li>exp</li>
+</ul>
+<p>Should take an optional <code>dim</code> argument:</p>
+<ul>
+<li>sum</li>
+<li>
+<p>mean</p>
+</li>
+<li>
+<p>permute</p>
+</li>
+<li>view</li>
+</ul>
+<p>Should set .grad to <code>None</code>
+- zero_grad_</p>
+</div>
 <h2 id="tasks-24-gradients-and-autograd">Tasks 2.4: Gradients and Autograd</h2>
 <p>Similar to <code>minitorch.Scalar</code>, <code>minitorch.Tensor</code>
 is a Variable that supports autodifferentiation. In this task, you
 will implement <code>backward</code> functions for tensor operations.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Complete the background functions in <code>minitorch/tensor_functions.py</code>, and pass
+<p>Implement the background functions in <code>minitorch/tensor_functions.py</code>, and pass
   tests marked as <code>task2_4</code>.</p>
 </div>
 <h2 id="task-25-training">Task 2.5: Training</h2>

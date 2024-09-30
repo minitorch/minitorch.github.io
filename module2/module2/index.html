@@ -1852,11 +1852,10 @@ tensors with <em>possibly different strides</em>.</p>
 <li>ReLU</li>
 <li>Log</li>
 <li>Exp</li>
-<li>Sum</li>
-<li>All</li>
+<li>Sum (with dim arg)</li>
 <li>LT</li>
 <li>EQ</li>
-<li>IsClose</li>
+<li>IsClose (no backward)</li>
 <li>Permute</li>
 </ul>
 </div>
@@ -1866,7 +1865,6 @@ tensors with <em>possibly different strides</em>.</p>
 marked as <code>task2_3</code>. You need to implement many of the same functions
 from <code>minitorch/scalar.py</code>.</p>
 <p>Properties:
-- shape
 - size
 - dims</p>
 <p>Operators (you will likely find <code>_ensure_tensor</code> useful here since the user
@@ -1908,7 +1906,7 @@ is a Variable that supports autodifferentiation. In this task, you
 will implement <code>backward</code> functions for tensor operations.</p>
 <div class="admonition todo">
 <p class="admonition-title">Todo</p>
-<p>Implement the background functions in <code>minitorch/tensor_functions.py</code>, and pass
+<p>Implement the backward functions in <code>minitorch/tensor_functions.py</code>, and pass
   tests marked as <code>task2_4</code>.</p>
 </div>
 <h2 id="task-25-training">Task 2.5: Training</h2>

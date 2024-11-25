@@ -12,28 +12,24 @@
         <meta name="author" content="Sasha Rush">
       
       
-        <link rel="canonical" href="https://minitorch.github.io/module4/module4/">
+        <link rel="canonical" href="https://minitorch.github.io/slides/module2/module2.2/">
       
       
-        <link rel="prev" href="../../module3/cuda/">
       
       
-        <link rel="next" href="../convolution/">
-      
-      
-      <link rel="icon" href="../../logo-sm.png">
+      <link rel="icon" href="../../../logo-sm.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
     
     
       
-        <title>Assignment - MiniTorch</title>
+        <title>Module2.2 - MiniTorch</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.bcfcd587.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.bcfcd587.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -56,17 +52,17 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-      <link rel="stylesheet" href="../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/hint.min.css">
     
-      <link rel="stylesheet" href="../../assets/css-js/mkdocs-tooltips/css/custom.css">
+      <link rel="stylesheet" href="../../../assets/css-js/mkdocs-tooltips/css/custom.css">
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css">
     
-      <link rel="stylesheet" href="../../assets/css-js/fastapi/custom.css">
+      <link rel="stylesheet" href="../../../assets/css-js/fastapi/custom.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -92,7 +88,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#networks" class="md-skip">
+        <a href="#terminology" class="md-skip">
           Skip to content
         </a>
       
@@ -108,9 +104,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+    <a href="../../.." title="MiniTorch" class="md-header__button md-logo" aria-label="MiniTorch" data-md-component="logo">
       
-  <img src="../../logo-sm.png" alt="logo">
+  <img src="../../../logo-sm.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -127,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Assignment
+              Module2.2
             
           </span>
         </div>
@@ -177,7 +173,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -194,7 +190,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../install/" class="md-tabs__link">
+      <a href="../../../install/" class="md-tabs__link">
         
   
     
@@ -213,7 +209,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../module0/module0/" class="md-tabs__link">
+        <a href="../../../module0/module0/" class="md-tabs__link">
           
   
     
@@ -231,7 +227,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../mlprimer/" class="md-tabs__link">
+      <a href="../../../mlprimer/" class="md-tabs__link">
         
   
     
@@ -250,7 +246,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../module1/module1/" class="md-tabs__link">
+        <a href="../../../module1/module1/" class="md-tabs__link">
           
   
     
@@ -270,7 +266,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../module2/module2/" class="md-tabs__link">
+        <a href="../../../module2/module2/" class="md-tabs__link">
           
   
     
@@ -290,7 +286,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../module3/module3/" class="md-tabs__link">
+        <a href="../../../module3/module3/" class="md-tabs__link">
           
   
     
@@ -306,13 +302,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../module4/module4/" class="md-tabs__link">
           
   
     
@@ -355,9 +349,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
+    <a href="../../.." title="MiniTorch" class="md-nav__button md-logo" aria-label="MiniTorch" data-md-component="logo">
       
-  <img src="../../logo-sm.png" alt="logo">
+  <img src="../../../logo-sm.png" alt="logo">
 
     </a>
     MiniTorch
@@ -384,7 +378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -404,7 +398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../install/" class="md-nav__link">
+      <a href="../../../install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -478,7 +472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/module0/" class="md-nav__link">
+      <a href="../../../module0/module0/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -499,7 +493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/contributing/" class="md-nav__link">
+      <a href="../../../module0/contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -520,7 +514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/property_testing/" class="md-nav__link">
+      <a href="../../../module0/property_testing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -541,7 +535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/modules/" class="md-nav__link">
+      <a href="../../../module0/modules/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -562,7 +556,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/functional/" class="md-nav__link">
+      <a href="../../../module0/functional/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -583,7 +577,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module0/visualization/" class="md-nav__link">
+      <a href="../../../module0/visualization/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -611,7 +605,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mlprimer/" class="md-nav__link">
+      <a href="../../../mlprimer/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -683,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module1/module1/" class="md-nav__link">
+      <a href="../../../module1/module1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -704,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module1/derivative/" class="md-nav__link">
+      <a href="../../../module1/derivative/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -725,7 +719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module1/scalar/" class="md-nav__link">
+      <a href="../../../module1/scalar/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -746,7 +740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module1/chainrule/" class="md-nav__link">
+      <a href="../../../module1/chainrule/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -767,7 +761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module1/backpropagate/" class="md-nav__link">
+      <a href="../../../module1/backpropagate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -847,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module2/module2/" class="md-nav__link">
+      <a href="../../../module2/module2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -868,7 +862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module2/tensordata/" class="md-nav__link">
+      <a href="../../../module2/tensordata/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -889,7 +883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module2/broadcasting/" class="md-nav__link">
+      <a href="../../../module2/broadcasting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -910,7 +904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module2/tensorops/" class="md-nav__link">
+      <a href="../../../module2/tensorops/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -931,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module2/tensor/" class="md-nav__link">
+      <a href="../../../module2/tensor/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1009,7 +1003,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module3/module3/" class="md-nav__link">
+      <a href="../../../module3/module3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1030,7 +1024,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module3/parallel/" class="md-nav__link">
+      <a href="../../../module3/parallel/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1051,7 +1045,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module3/matrixmult/" class="md-nav__link">
+      <a href="../../../module3/matrixmult/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,7 +1066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../module3/cuda/" class="md-nav__link">
+      <a href="../../../module3/cuda/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1097,10 +1091,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -1115,22 +1107,19 @@
     
     
       
-        
-        
-      
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
           
-          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1141,7 +1130,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Networks
@@ -1152,30 +1141,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Assignment
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../module4/module4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1184,89 +1153,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#guides" class="md-nav__link">
-    <span class="md-ellipsis">
-      Guides
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-41-1d-convolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.1: 1D Convolution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-42-2d-convolution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.2: 2D Convolution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-43-pooling" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.3: Pooling
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-44-softmax-and-dropout" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.4: Softmax and Dropout
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-44b-extra-credit" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.4b: Extra Credit
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#task-45-training-an-image-classifier" class="md-nav__link">
-    <span class="md-ellipsis">
-      Task 4.5: Training an Image Classifier
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1279,7 +1165,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../convolution/" class="md-nav__link">
+      <a href="../../../module4/convolution/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1300,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pooling/" class="md-nav__link">
+      <a href="../../../module4/pooling/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1321,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../softmax/" class="md-nav__link">
+      <a href="../../../module4/softmax/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1358,139 +1244,524 @@
                   
 
 
-<h1 id="networks">Networks</h1>
-<p>We now have a fully working deep learning library with most of the
-features of a real industrial system like Torch. To take advantage of
-this hard work, this module is entirely based on using the
-software framework. In particular, we are going to build an image
-recognition system. We will do this by build the infrastructure for a
-version of LeNet on MNIST: a classic convolutional neural network (CNN)
-for digit recognition, and for a 1D conv for NLP sentiment classification.</p>
-<p>You need the files from previous assignments, so maker sure to pull
-them over to your new repo. We recommend you to get familiar with
-tensor.py, since you might find some of those functions useful for
-implementing this Module.</p>
-<h2 id="guides">Guides</h2>
+<p>```python slideshow={"slide_type": "skip"}</p>
+<p>import chalk
+from chalk import *
+from chalk import vstrut
+from colour import Color
+from mt_diagrams.tensor_draw import color, matrix, tensor, tensor_to_diagram</p>
+<p>import minitorch</p>
+<p>left_arrow = arrow_at(P2(0, 0), V2(-0.5, 0))
+x = minitorch.tensor([[1, 2, 3, 4, 5] for _ in range(2)])
+set_svg_draw_height(400)
+set_svg_height(300)
+right_arrow = arrow_at(P2(0, 0), V2(0.5, 0))</p>
+<p>minitorch.Tensor.<em>repr_svg</em> = lambda self: tensor_to_diagram(self).<em>repr_svg</em>()
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Module 2.2 - Tensor Functions
+=============================================
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Terminology
+------------
+
+* 2-Dimensional
+* Math: Matrix
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+matrix(3, 5)
+</code></pre></div></p>
+<h2 id="terminology">Terminology</h2>
 <ul>
-<li><a href="../convolution/">Convolution</a></li>
-<li><a href="../pooling/">Pooling</a></li>
-<li><a href="../softmax/">Softmax</a></li>
+<li>Arbitrary dimensions - Tensor (Array in numpy)</li>
 </ul>
-<h2 id="task-41-1d-convolution">Task 4.1: 1D Convolution</h2>
-<p>You will implement the 1D convolution in Numba. This function gets used by the
-<code>forward</code> and <code>backward</code> pass of conv1d.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Complete the following function in <code>minitorch/fast_conv.py</code>, and pass tests marked
-as <code>task4_1</code>.</p>
-</div>
-<ul>
-<li>_tensor_conv1d</li>
-</ul>
-<h2 id="task-42-2d-convolution">Task 4.2: 2D Convolution</h2>
-<p>You will implement the 2D convolution in Numba. This function gets used by the
-<code>forward</code> and <code>backward</code> pass of conv2d.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Complete the following function in <code>minitorch/fast_conv.py</code>, and pass tests marked
-as <code>task4_2</code>.</p>
-</div>
-<ul>
-<li>_tensor_conv2d</li>
-</ul>
-<h2 id="task-43-pooling">Task 4.3: Pooling</h2>
-<p>You will implement 2D pooling on tensors with an average operation.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
-<p>Complete the following function in <code>minitorch/nn.py</code>, and pass tests
-marked as <code>task4_3</code>. Use it to implement <code>avgpool2d</code>.</p>
-</div>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+tensor(0.75, 2, 3, 5)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Terminology
+------------
 
+* Dims - # dimensions (`x.dims`)
+* Shape -  # cells per dimension (`x.shape`)
+* Size - # cells (`x.size`)
+&lt;!-- #endregion --&gt;
 
-<div class="doc doc-object doc-function">
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Why not just use lists?
+------------------------
+* Functions to manipulate shape
+* Mathematical notation
+* Can act as Variables / Parameters
+* Efficient control of memory (Module-3)
+&lt;!-- #endregion --&gt;
 
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Shape - Transpose
+----------------------
+&lt;!-- #endregion --&gt;
 
-<h4 id="minitorch.tile" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">minitorch</span><span class="o">.</span><span class="n">tile</span><span class="p">(</span><span class="nb">input</span><span class="p">:</span> <span class="n">Tensor</span><span class="p">,</span> <span class="n">kernel</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Tensor</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span></code>
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+matrix(3, 5) | chalk.hstrut(1) | matrix(5, 3)
+</code></pre></div></p>
+<h2 id="shape-permutation">Shape Permutation</h2>
+<p>```python slideshow={"slide_type": "x"}</p>
+<p>x = minitorch.tensor([[1, 2, 3], [3, 2, 1]])
+x.shape
+<div class="highlight"><pre><span></span><code>```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
 
-</h4>
-
-
-    <div class="doc doc-contents first">
-
-      <p>Reshape an image tensor for 2D pooling</p>
-      <hr />
-<div class="highlight"><pre><span></span><code>input: batch x channel x height x width
-kernel: height x width of pooling
-</code></pre></div>
-      <hr />
-<div class="highlight"><pre><span></span><code>Tensor of size batch x channel x new_height x new_width x (kernel_height * kernel_width) as well as the new_height and new_width value.
-</code></pre></div>
-
-    </div>
-
-</div><h2 id="task-44-softmax-and-dropout">Task 4.4: Softmax and Dropout</h2>
-<p>You will implement max, softmax, and log softmax on tensors as well as
-the dropout and max-pooling operations.</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
+x.permute(1, 0).shape
+</code></pre></div></p>
+<h2 id="lecture-quiz-1">Lecture Quiz 1</h2>
+<h2 id="how-does-this-work">How does this work</h2>
 <ul>
 <li>
-<p>Complete the following functions in <code>minitorch/nn.py</code>, and pass
-  tests marked as <code>task4_4</code>.</p>
+<p><strong>Storage</strong> :  1-D array of numbers of length <code>size</code></p>
 </li>
 <li>
-<p>Add a property tests for the function in
-  <code>test/test_nn.py</code> and ensure that you understand its gradient
-  computation.</p>
+<p><strong>Strides</strong> : tuple that provides the mapping from user <code>indexing</code>
+  to the <code>position</code> in the 1-D <code>storage</code>.</p>
 </li>
-<li>
-<p>minitorch.max</p>
-</li>
-<li>minitorch.softmax</li>
-<li>minitorch.logsoftmax</li>
-<li>minitorch.maxpool2d</li>
-<li>minitorch.dropout</li>
 </ul>
-</div>
-<h2 id="task-44b-extra-credit">Task 4.4b: Extra Credit</h2>
-<p>Implementing convolution and pooling efficiently is critical for
-large-scale image recognition. However, both are a bit harder than
-some of the basic CUDA functions we have written so far. For this
-task, add an extra file <code>cuda_conv.py</code> that implements
-<code>conv1d</code> and <code>conv2d</code> on CUDA. Show the output on colab.</p>
-<h2 id="task-45-training-an-image-classifier">Task 4.5: Training an Image Classifier</h2>
-<p>If your code works, you should now be able to move on to the NLP and
-CV training scripts in <code>project/run_sentiment.py</code> and
-<code>project/run_mnist_multiclass.py</code>. This script has the same basic
-training setup as :doc:<code>module3</code>, but now adapted to sentiment and
-image classification. You need to implement <code>Conv1D</code>, <code>Conv2D</code>, and
-<code>Network</code> for both files.</p>
-<p>We recommend running on the command line when testing.
-But you can also use the Streamlit visualization to view
-hidden states of your model, like the following:</p>
-<div class="admonition todo">
-<p class="admonition-title">Todo</p>
+<h2 id="strides">Strides</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]</p>
+<p>d = (
+    matrix(5, 2, "n", colormap=color(5, 2))
+    / vstrut(1)
+    / matrix(1, 10, "s", colormap=lambda i, j: color(5, 2)(j % 5, j // 5))
+)
+d.connect(("n", 3, 0), ("s", 0, 3)).connect(("n", 3, 1), ("s", 0, 8))
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Stride Intuition
+-----------------------
+
+* Numerical bases,
+* Index for position 0? Position 1? Position 2?
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;} tags=[&quot;hide_inp&quot;]
+tensor(0.75, 2, 2, 2)
+</code></pre></div></p>
+<h2 id="stride-intuition">Stride Intuition</h2>
 <ul>
 <li>
-<p>Train a model on Sentiment (SST2), and add your training printout
-  logs as a text file <code>sentiment.txt</code> to the repo. It should show
-  train loss, train accuracy and validation accuracy.
-  (The model should get to &gt;70% best validation accuracy.)</p>
+<p>Index for position 0? Position 1? Position 2?</p>
 </li>
 <li>
-<p>Train a model on Digit classification (MNIST) logs as a text
-  file <code>mnist.txt</code> to the repo. It should show train loss and validation
-  accuracy out of 16</p>
+<p><span class="arithmatex">\([0, 0, 0], [0, 0, 1], [0, 1, 0]\)</span></p>
 </li>
 </ul>
-</div>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+(
+    tensor(0.5, 2, 2, 2, "n", colormap=lambda i, j, k: color(4, 2)(i * 2 + j, k))
+    / vstrut(1)
+    / matrix(1, 8, "s", colormap=color(1, 8))
+)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Lecture Quiz 2
+---------------
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Outline
+--------
+* Tensor Functions
+* Operations
+* Broadcasting
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Tensor Functions
+================
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Goal
+-----
+* Support user api
+* Keep track of tensor properties
+* Setup fast / simple functions
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Functions
+----------
+
+* Moving from Scalar to Tensor Functions
+* Implementation?
+&lt;!-- #endregion --&gt;
+
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+def add2(a, b):
+    out_tensor = minitorch.zeros(*a.shape)
+    for i in range(a.shape[0]):
+        for j in range(a.shape[1]):
+            out_tensor[i, j] = a[i, j] + b[i, j]
+    return out_tensor
+</code></pre></div></p>
+<h2 id="issues">Issues</h2>
+<ul>
+<li>Different code per different dims</li>
+<li>Big autodiff graph</li>
+<li>Slow, lots of Python loops</li>
+<li>Lots of code</li>
+</ul>
+<h2 id="tensor-functions">Tensor Functions</h2>
+<ul>
+<li>Track graph at tensor level</li>
+<li>Functions wrap / unwrap Tensors</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}
+a = minitorch.tensor([3, 2, 1])
+b = minitorch.tensor([1, 2, 3])
+out = a + b
+print(out)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Implementation
+---------------
+
+* `Function` class (forward / backward)
+* Similar API as scalars
+* Take / return Tensor objects
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Operations
+================
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Implementing Tensor Functions
+------------------------------
+
+* Option: code `for` loop for each
+* Lazy. We did this already...
+* Optimization. How do we make it fast?
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Strategy
+-----------
+
+* Implement high-level functions
+* Lift scalar operators to tensors
+* Go back and optimize high-level functions
+* Customize important Functions
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Tensor Functions
+-----------------
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+# Unary
+
+new_tensor = a.log()
+
+# Binary (for now, only same shape)
+
+new_tensor = a + b
+
+# Reductions
+
+new_tensor = a.sum()
+</code></pre></div></p>
+<h2 id="tensor-ops">Tensor Ops</h2>
+<ol>
+<li><strong>Map</strong> - Apply to all elements</li>
+<li><strong>Zip</strong>  - Apply to all pairs</li>
+<li><strong>Reduce</strong> - Reduce a subset</li>
+</ol>
+<h2 id="map">Map</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+set_svg_draw_height(200)
+set_svg_height(200)
+astyle = Style().line_width(0.4).line_color(Color("purple"))
+opts = ArrowOpts(shaft_style=astyle)</p>
+<p>d = hcat([matrix(3, 2, "a"), vstrut(1) / right_arrow, matrix(3, 2, "b")], 1)
+d.connect(("a", 0, 0), ("b", 0, 0), style=opts).connect(
+    ("a", 1, 0), ("b", 1, 0), style=opts
+)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Examples: Map
+-------------
+
+Binary operations
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+new_tensor = a.log()
+new_tensor = a.exp()
+new_tensor = -b
+</code></pre></div></p>
+<h2 id="zip">Zip</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+opts = ArrowOpts(arc_height=0.5, shaft_style=astyle)
+opts2 = ArrowOpts(arc_height=0.2, shaft_style=astyle)</p>
+<p>d = hcat([matrix(3, 2, "a"), matrix(3, 2, "b"), right_arrow, matrix(3, 2, "c")], 1)
+d.connect(("a", 0, 0), ("c", 0, 0), opts).connect(
+    ("a", 1, 0), ("c", 1, 0), opts
+).connect(("b", 0, 0), ("c", 0, 0), opts2).connect(("b", 1, 0), ("c", 1, 0), opts2)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Examples: Zip
+-------------
+
+Binary operations
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+
+new_tensor = a + b
+new_tensor = a * b
+new_tensor = a &lt; b
+</code></pre></div></p>
+<h2 id="reduce">Reduce</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+opts = ArrowOpts(shaft_style=astyle)
+d = hcat([matrix(3, 2, "a"), right_arrow, matrix(1, 2, "c")], 1)
+d.connect(("a", 2, 0), ("a", 0, 0), style=opts).connect(
+    ("a", 2, 1), ("a", 0, 1), style=opts
+)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Reduce Options
+---------------
+* Can reduce full tensor
+* Can also just reduce 1 dimension
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+out = minitorch.rand((3, 4, 5)).mean(1)
+print(out.shape)
+# (3, 1, 5)
+</code></pre></div></p>
+<h2 id="examples-reduce">Examples: Reduce</h2>
+<p>Binary operations</p>
+<p>```python slideshow={"slide_type": "x"}
+new_tensor = a.mean()
+new_tensor = out.sum(1)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Reduce Example
+-----------------
+
+Code
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Implementation Notes
+------------------------
+* Needs to work on any strides.
+* Start from output. Where does each final value come from?
+* Make sure you really understand tensor data first.
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Broadcasting
+==============
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+High Level
+---------------
+* Apply same operation multiple times
+* Avoid loops and writes
+* Save memory
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+First Challenge
+---------------
+* Relaxing Zip constraints
+* Apply zip without shapes being identical
+&lt;!-- #endregion --&gt;
+
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Motivation: Scalar Addition
+------------------------------
+```python
+vector1 + 10
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+a = minitorch.tensor([1])
+b = minitorch.tensor([1, 2, 4])
+tensor_to_diagram(b) | chalk.hstrut(1) | tensor_to_diagram(a)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Naive Scalar Addition 1
+-----------------------
+
+* Repeat vector-size
+ $vector1 + [10, 10, 10]$
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+vector1 = minitorch.tensor([1, 2, 3])
+print(vector1 + minitorch.tensor([10, 10, 10]))
+</code></pre></div></p>
+<h2 id="naive-scalar-addition-2">Naive Scalar Addition 2</h2>
+<ul>
+<li>Write a <code>for</code> loop</li>
+</ul>
+<p>```python slideshow={"slide_type": "x"}
+temp_vector = minitorch.zeros((vector1.shape[0],))
+for i in range(temp_vector.shape[0]):
+    temp_vector[i] = vector1[i] + 10
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Broadcasting
+------------
+* No intermediate terms
+* Define rules to make different shapes work together
+* Avoid for loops entirely
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Zip With Broadcasting
+---------------------
+&lt;!-- #endregion --&gt;
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+a = minitorch.tensor([1, 2, 4])
+b = minitorch.tensor([3, 2])
+out = minitorch.zeros((3, 2))
+for i in range(3):
+    for j in range(2):
+        out[i, j] = a[i] + b[j]
+</code></pre></div></p>
+<h2 id="zip-broadcasting">Zip Broadcasting</h2>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+opts = ArrowOpts(head_arrow=empty(), arc_height=0.5, shaft_style=astyle)
+opts2 = ArrowOpts(head_arrow=empty(), arc_height=0.2, shaft_style=astyle)</p>
+<p>d = hcat([matrix(3, 1, "a"), matrix(1, 2, "b"), right_arrow, matrix(3, 2, "c")], 1)
+d.connect(("a", 0, 0), ("c", 0, 0), opts).connect(
+    ("a", 1, 0), ("c", 1, 1), opts
+).connect(("b", 0, 0), ("c", 0, 0), opts2).connect(("b", 0, 1), ("c", 1, 1), opts2)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Rules
+-----
+* **Rule 1**: Dimension of size 1 broadcasts with anything
+* **Rule 2**: Extra dimensions of 1 can be added with `view`
+* **Rule 3**: Zip automatically adds starting dims of size 1
+&lt;!-- #endregion --&gt;
+
+&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Matrix Scalar Addition
+-----------------------
+Matrix + Scalar
+
+```python
+matrix1 + tensor([10])
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+a = minitorch.tensor([1])
+b = minitorch.tensor([[1, 2], [3, 4]])
+tensor_to_diagram(a) | chalk.hstrut(1) | tensor_to_diagram(b)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Matrix Scalar Addition
+-----------------------
+Matrix + Vector
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+matrix1 = minitorch.zeros((4, 3))
+a = matrix1.view(4, 3)
+b = minitorch.tensor([1, 2, 3])
+out = a + b
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"} tags=["hide_inp"]
+(
+    tensor_to_diagram(a)
+    | chalk.hstrut(1)
+    | tensor_to_diagram(b)
+    | chalk.hstrut(1)
+    | tensor_to_diagram(a + b)
+)
+<div class="highlight"><pre><span></span><code>&lt;!-- #region slideshow={&quot;slide_type&quot;: &quot;slide&quot;} --&gt;
+Matrix Scalar Addition
+-----------------------
+&lt;!-- #endregion --&gt;
+
+```python slideshow={&quot;slide_type&quot;: &quot;x&quot;}
+# Doesn&#39;t Work!
+# matrix1.view(4, 3) + minitorch.tensor([1, 2, 3, 5])
+</code></pre></div></p>
+<p>```python slideshow={"slide_type": "x"}</p>
+<h1 id="does-work">Does Work!</h1>
+<h1 id="matrix1view4-3-tensor1-2-3-5view4-1">matrix1.view(4, 3) + tensor([1, 2, 3, 5]).view(4, 1)</h1>
+<p>```</p>
+<h2 id="applying-the-rules">Applying the Rules</h2>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>=</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(3, 4, 5)</td>
+<td>(3, 1, 5)</td>
+<td>(3, 4, 5)</td>
+</tr>
+<tr>
+<td>(3, 4, 1)</td>
+<td>(3, 1, 5)</td>
+<td>(3, 4, 5)</td>
+</tr>
+<tr>
+<td>(3, 4, 1)</td>
+<td>(1, 5)</td>
+<td>(3, 4, 5)</td>
+</tr>
+<tr>
+<td>(3, 4, 1)</td>
+<td>(3, 5)</td>
+<td>Fail</td>
+</tr>
+</tbody>
+</table>
+<h2 id="exercises">Exercises</h2>
+<table>
+<thead>
+<tr>
+<th>A</th>
+<th>B</th>
+<th>=</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(1, 3, 4)</td>
+<td>(1, 3, 1)</td>
+<td></td>
+</tr>
+<tr>
+<td>(1, 4, 4)</td>
+<td>(3, 1, 5)</td>
+<td></td>
+</tr>
+<tr>
+<td>(3, 4, 1)</td>
+<td>(1, )</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="qa">Q&amp;A</h2>
 
 
 
 
 
 
+
+  
+  
 
 
 
@@ -1609,10 +1880,10 @@ div.doc-contents {
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "content.tabs.link", "navigation.indexes", "navigation.instant", "navigation.sections", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "toc.integrate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.1e8ae164.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js"></script>
       
@@ -1622,13 +1893,13 @@ div.doc-contents {
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/tablesort/5.2.1/tablesort.min.js"></script>
       
-        <script src="../../assets/css-js/general/js/tables.js"></script>
+        <script src="../../../assets/css-js/general/js/tables.js"></script>
       
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
       
-        <script src="../../assets/css-js/general/js/highlight-config.js"></script>
+        <script src="../../../assets/css-js/general/js/highlight-config.js"></script>
       
     
   </body>
